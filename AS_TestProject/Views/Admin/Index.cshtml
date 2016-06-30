@@ -1,0 +1,115 @@
+﻿@model IEnumerable<AS_TestProject.Models.AdminUserListModels>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#overview">Employees</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#contact" class="contact-map">Clients</a>
+                </li>
+            </ul>
+        </div><!-- --/panel-heading ---->
+
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="overview" class="tab-pane active">
+                    <div class="widget widget-table">
+                        <div class="widget-header">
+                            <h3><i class="fa fa-users"></i> Users</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable emptable">
+                                    <thead>
+                                        <tr>
+                                            <th>Last</th>
+                                            <th>First</th>
+                                            @*<th>Site</th>*@
+                                            <th>Position</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.user.LastName</td>
+                                                <td>@item.user.FirstName</td>
+                                                @*<td>@item.user.Site.SiteName</td>*@
+                                                <td>@item.user.Position.PositionName</td>
+                                                <td>@item.user.Email</td>
+                                                <td>@item.user.PhoneNumber</td>
+                                                <td>
+                                                    @foreach (var role in item.roles)
+                                                    {
+                                                        <p>@role</p>
+                                                    }
+                                                </td>
+                                                <td><a href="@Url.Action("EditUserRoles","Admin", new { id = item.user.Id })">Manage Role@*<img src="~/assets/img/workhat.png" style="width: 30px"/>*@</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>             
+                </div><!-- --/tab-pane ---->
+
+                <div id="contact" class="tab-pane">
+                    <div class="widget widget-table">
+                        <div class="widget-header">
+                            <h3><i class="fa fa-building"></i> Clients</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable clitable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Address Line 1</th>
+                                            <th>Address Line 2</th>
+                                            <th>City</th>
+                                            <th>State</th>
+                                            <th>Zip Code</th>
+                                            <th>Active?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var client in ViewBag.Customers)
+                                        {
+                                            <tr>
+                                                <td><strong style="color: #29AAE3">@client.CustomerName</strong></td>
+                                                <td>@client.AddressLine1</td>
+                                                <td>@client.AddressLine2</td>
+                                                <td>@client.City</td>
+                                                <td>@client.State</td>
+                                                <td>@client.ZipCode</td>
+                                                @if (client.IsActive == true)
+                                                {
+                                                    <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>                   
+                </div><!-- --/tab-pane ---->            
+            </div><!-- /tab-content -->
+        </div><!-- --/panel-body ---->
+    </div><!-- /col-lg-12 -->
+</div>

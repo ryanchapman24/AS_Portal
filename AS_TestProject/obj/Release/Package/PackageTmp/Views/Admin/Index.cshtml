@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="widget widget-table">
+    <div class="widget-header">
+        <h3><i class="fa fa-users"></i> Employees</h3>
+    </div>
+    <div class="widget-content">
+        <div class="table-responsive">
+            <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable">
+                <thead>
+                    <tr>
+                        <th>Last</th>
+                        <th>First</th>
+                        <th>Title</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in ViewBag.Employees)
+                    {
+                        <tr>
+                            <td>@user.LastName</td>
+                            <td>@user.FirstName</td>
+                            <td>@user.Title</td>
+                            <td>@user.Email</td>
+                            <td>@user.PhoneNumber</td>
+                        </tr>           
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

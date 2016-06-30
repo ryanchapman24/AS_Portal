@@ -1,0 +1,1243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="AddressLine1" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="AddressLine2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="State" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="ZipCode" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="ImplementationDate" Type="date" Nullable="false" />
+    <Property Name="TerminationDate" Type="date" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerContact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="smallint" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="320" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddByEmplloyeeID" Type="int" Nullable="false" />
+    <Property Name="DeactiveDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DomainMaster">
+    <Key>
+      <PropertyRef Name="DomainMasterID" />
+    </Key>
+    <Property Name="DomainMasterID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DomainName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CustomerID" Type="smallint" Nullable="false" />
+    <Property Name="DomainTypeID" Type="tinyint" Nullable="false" />
+    <Property Name="CostCode" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="FileMask" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="DeactiveDate" Type="date" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DomainType">
+    <Key>
+      <PropertyRef Name="DomainTypeID" />
+    </Key>
+    <Property Name="DomainTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DomainTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DomainTypeDescription" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="DeactiveDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressLine1" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="AddressLine2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="State" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="ZipCode" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="320" Nullable="false" />
+    <Property Name="HomePhone" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CellPhone" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="HireDate" Type="date" Nullable="false" />
+    <Property Name="TerminationDate" Type="date" Nullable="false" />
+    <Property Name="IsManager" Type="bit" Nullable="false" />
+    <Property Name="ManagerEmployeeID" Type="int" Nullable="false" />
+    <Property Name="PositionID" Type="int" Nullable="false" />
+    <Property Name="SiteID" Type="tinyint" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
+    <Property Name="RehireDate" Type="date" />
+    <Property Name="FileNumber" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeFive9Agent">
+    <Key>
+      <PropertyRef Name="EmployeeFive9AgentID" />
+    </Key>
+    <Property Name="EmployeeFive9AgentID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="AgentID" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddByEmplloyeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeNote">
+    <Key>
+      <PropertyRef Name="EmployeeNoteID" />
+    </Key>
+    <Property Name="EmployeeNoteID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="EmployeeNoteTypeID" Type="tinyint" Nullable="false" />
+    <Property Name="EmployeeNote" Type="varchar(max)" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeNoteType">
+    <Key>
+      <PropertyRef Name="EmployeeNoteTypeID" />
+    </Key>
+    <Property Name="EmployeeNoteTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoteName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="NoteDescription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+    <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PositionName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PositionDescription" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="SiteID" />
+    </Key>
+    <Property Name="SiteID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressLine1" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="AddressLine2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="State" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="ZipCode" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MainPhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="AddDate" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Report.dbo.ImportedEmployees' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ImportedEmployees">
+          <Property Name="First Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Last Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="File Number" Type="nvarchar" MaxLength="255" />
+          <Property Name=" Address Line 1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address Line 2" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zip Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Location Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Reports To Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Job Title Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Personal Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Work Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Home Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Personal Mobile" Type="nvarchar" MaxLength="255" />
+          <Property Name="Birth Date" Type="nvarchar" MaxLength="255" />
+          <Property Name="Hire Date" Type="datetime" />
+          <Property Name="Rehire Date" Type="datetime" />
+          <Property Name="Employee Status" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="ProblemMaster">
+    <Key>
+      <PropertyRef Name="ProblemID" />
+    </Key>
+    <Property Name="ProblemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="ProcessName" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="ErrorNumber" Type="int" Nullable="false" />
+    <Property Name="LineNumber" Type="int" Nullable="false" />
+    <Property Name="ExceptionMessage" Type="varchar(max)" Nullable="false" />
+    <Property Name="ExceptionSource" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="ExceptionSeverity" Type="int" Nullable="false" />
+    <Property Name="ExceptionState" Type="int" Nullable="false" />
+    <Property Name="IsResolved" Type="bit" Nullable="false" />
+    <Property Name="ResolvedDate" Type="date" Nullable="false" />
+    <Property Name="ResolvedByEmployeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CampaignGroup">
+    <Key>
+      <PropertyRef Name="CampaignGroupID" />
+    </Key>
+    <Property Name="CampaignGroupID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CampaignGroup" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DailyPortfolioInventory">
+    <Key>
+      <PropertyRef Name="ReportDate" />
+      <PropertyRef Name="ListName" />
+      <PropertyRef Name="State" />
+    </Key>
+    <Property Name="ReportDate" Type="date" Nullable="false" />
+    <Property Name="ListName" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="State" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="InitialCount" Type="int" Nullable="false" />
+    <Property Name="CompletedCount" Type="int" Nullable="false" />
+    <Property Name="InProgressCount" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="FreedomHourlyCallMetrics">
+    <Key>
+      <PropertyRef Name="DailyRecordID" />
+      <PropertyRef Name="RecordDate" />
+      <PropertyRef Name="RecordTime" />
+      <PropertyRef Name="ListName" />
+      <PropertyRef Name="CampaignName" />
+      <PropertyRef Name="Disposition" />
+      <PropertyRef Name="CallType" />
+      <PropertyRef Name="HourOfDay" />
+    </Key>
+    <Property Name="DailyRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="RecordTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ListName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="Disposition" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CallType" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="HourOfDay" Type="tinyint" Nullable="false" />
+    <Property Name="CallState" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="CallLogMaster">
+    <Key>
+      <PropertyRef Name="CallLogMasterID" />
+    </Key>
+    <Property Name="CallLogMasterID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="RecordTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
+    <Property Name="Five9Timestamp" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="CallType" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="AgentID" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="Disposition" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="AutomaticNumberIdentification" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="LeadID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="DialedNumberIdentificationService" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CallTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="BillTimeRounded" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+    <Property Name="IVRTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="QueueWaitTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="RingTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="TalkTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="HoldTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ParkTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="AfterCallWorkTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Transfers" Type="tinyint" Nullable="false" />
+    <Property Name="Conferences" Type="tinyint" Nullable="false" />
+    <Property Name="Holds" Type="tinyint" Nullable="false" />
+    <Property Name="Abandonded" Type="bit" Nullable="false" />
+    <Property Name="Recordings" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="CallDayOfMonth" Type="int" Nullable="false" />
+    <Property Name="CallDayOfWeek" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CallHourOfDay" Type="tinyint" Nullable="false" />
+    <Property Name="AbandonRate" Type="decimal" Precision="5" Scale="4" Nullable="false" />
+    <Property Name="ANIAreaCode" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="ANICountry" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ANICountryCode" Type="tinyint" Nullable="false" />
+    <Property Name="ANIState" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Calls" Type="tinyint" Nullable="false" />
+    <Property Name="CallsCompletedInIVR" Type="tinyint" Nullable="false" />
+    <Property Name="CallsTimedOutInIVR" Type="tinyint" Nullable="false" />
+    <Property Name="CampaignType" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Contacted" Type="bit" Nullable="false" />
+    <Property Name="DisconnectedFromHold" Type="bit" Nullable="false" />
+    <Property Name="DNISAreaCode" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="DNISCountry" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="DNISCountryCode" Type="tinyint" Nullable="false" />
+    <Property Name="DNISState" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="ListName" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="LiveConnect" Type="bit" Nullable="false" />
+    <Property Name="NoPartyContact" Type="bit" Nullable="false" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="ServiceLevel" Type="tinyint" Nullable="false" />
+    <Property Name="Skill" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="SpeedOfAnswer" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ThirdPartyTalkTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ConferenceTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ConsultTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DialTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="HandleTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ManualTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Precision="6" Scale="4" Nullable="false" />
+    <Property Name="TalkTimeLessHoldAndPark" Type="time" Precision="7" Nullable="false" />
+    <Property Name="TimeToAbandon" Type="time" Precision="7" Nullable="false" />
+    <Property Name="AgentEmail" Type="varchar" MaxLength="320" Nullable="false" />
+    <Property Name="AgentFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AgentLastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Extension" Type="tinyint" />
+    <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerLastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerCity" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="CustomerState" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Address1" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="Address2" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PhoneNumber1" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="PhoneNumber2" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="PhoneNumber3" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="IsDoNotCall" Type="bit" Nullable="false" />
+    <Property Name="ContactID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CallID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="AgentGroup" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="SessionID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ParentSessionID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ClientID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="CustomerEmailAddress" Type="varchar" MaxLength="320" Nullable="false" />
+    <Property Name="InputWebsite" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="LoanType" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Mortgage1Balance" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoanAmount" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TransferNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateMailed" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DateExpiration" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DateReceived" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CreditGroup" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Agency" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Campaign" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactCreateTimestamp" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ContactModifiedTimestamp" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CreditRate" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HomeValue" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="FormType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HybridFilterID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LoanApplicationID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Citizen" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ListCode" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Vendor" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Vertical" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoanRequestType" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ChildProjectCode" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Dispo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DOB" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Language" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="PatientID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="QualifiedProtocols" Type="varchar" MaxLength="225" Nullable="false" />
+    <Property Name="ReferredDate" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SiteInfo" Type="varchar" MaxLength="225" Nullable="false" />
+    <Property Name="SiteNumber" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Variable1" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Variable2" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DispositionResolutionCode" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="SiteAddress" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="SiteCity" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="SitePI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SiteCoordinatorFirstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoanPurpose" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="NMLSID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="PropertyState" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PropertyType" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="PropertyZip" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PropertyPrice" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="LoanOfficerEmail" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="AppDatestamp" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LeadSource" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Partner" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Script" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SiteCoordinatorPhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TransferType" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PreciseLeadsHourlyCampaignMetrics">
+    <Key>
+      <PropertyRef Name="HourlyCampaignID" />
+    </Key>
+    <Property Name="HourlyCampaignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportDate" Type="date" Nullable="false" />
+    <Property Name="ReportTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="CampaignID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TotalContacts" Type="int" Nullable="false" />
+    <Property Name="ContactToTransfer" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+    <Property Name="TotalLeads" Type="int" Nullable="false" />
+    <Property Name="TotalTransfers" Type="int" Nullable="false" />
+    <Property Name="TotalDials" Type="int" Nullable="false" />
+    <Property Name="CampaignDials" Type="int" Nullable="false" />
+    <Property Name="TransfersPerDial" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TotalAgents" Type="tinyint" Nullable="false" />
+    <Property Name="PercentOfTotalCalls" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TPHHours" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TransfersPerHour" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="HourOfDay" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="SourceID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CostPerTransfer" Type="smallmoney" Nullable="false" />
+    <Property Name="TotalAnswers" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PreciseLeadsRollingCampaignMetrics">
+    <Key>
+      <PropertyRef Name="RollingCampaignID" />
+    </Key>
+    <Property Name="RollingCampaignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportDate" Type="date" Nullable="false" />
+    <Property Name="ReportTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="CampaignID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TotalContacts" Type="int" Nullable="false" />
+    <Property Name="ContactToTransfer" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+    <Property Name="TotalLeads" Type="bigint" Nullable="false" />
+    <Property Name="TotalTransfers" Type="bigint" Nullable="false" />
+    <Property Name="TotalDials" Type="bigint" Nullable="false" />
+    <Property Name="CampaignDials" Type="int" Nullable="false" />
+    <Property Name="TransfersPerDial" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TotalAgents" Type="tinyint" Nullable="false" />
+    <Property Name="PercentOfTotalCalls" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TPHHours" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TransfersPerHour" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="HourOfDay" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="SourceID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CostPerTransfer" Type="smallmoney" Nullable="false" />
+    <Property Name="TotalAnswers" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AgentDailyHours">
+    <Key>
+      <PropertyRef Name="AgentID" />
+      <PropertyRef Name="DomainName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LoginTimestamp" />
+      <PropertyRef Name="LogoutTimestamp" />
+      <PropertyRef Name="LoginDuration" />
+    </Key>
+    <Property Name="AgentID" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="DomainName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="LoginTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.STAGE.CallLogMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CallLogMaster1">
+    <Key>
+      <PropertyRef Name="RecordDate" />
+      <PropertyRef Name="RecordTime" />
+    </Key>
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="RecordTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DomainName" Type="nvarchar" MaxLength="3" />
+    <Property Name="Five9Timestamp" Type="varchar" MaxLength="30" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="75" />
+    <Property Name="CallType" Type="varchar" MaxLength="40" />
+    <Property Name="AgentID" Type="varchar" MaxLength="125" />
+    <Property Name="Disposition" Type="varchar" MaxLength="125" />
+    <Property Name="AutomaticNumberIdentification" Type="varchar" MaxLength="15" />
+    <Property Name="LeadID" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="125" />
+    <Property Name="DialedNumberIdentificationService" Type="varchar" MaxLength="15" />
+    <Property Name="CallTime" Type="varchar" MaxLength="15" />
+    <Property Name="BillTimeRounded" Type="varchar" MaxLength="15" />
+    <Property Name="Cost" Type="varchar" MaxLength="11" />
+    <Property Name="IVRTime" Type="varchar" MaxLength="15" />
+    <Property Name="QueueWaitTime" Type="varchar" MaxLength="15" />
+    <Property Name="RingTime" Type="varchar" MaxLength="15" />
+    <Property Name="TalkTime" Type="varchar" MaxLength="15" />
+    <Property Name="HoldTime" Type="varchar" MaxLength="15" />
+    <Property Name="ParkTime" Type="varchar" MaxLength="15" />
+    <Property Name="AfterCallWorkTime" Type="varchar" MaxLength="15" />
+    <Property Name="Transfers" Type="char" MaxLength="3" />
+    <Property Name="Conferences" Type="char" MaxLength="3" />
+    <Property Name="Holds" Type="char" MaxLength="3" />
+    <Property Name="Abandonded" Type="char" MaxLength="3" />
+    <Property Name="Recordings" Type="varchar" MaxLength="500" />
+    <Property Name="CallDayOfMonth" Type="int" />
+    <Property Name="CallDayOfWeek" Type="varchar" MaxLength="10" />
+    <Property Name="CallHourOfDay" Type="char" MaxLength="5" />
+    <Property Name="AbandonRate" Type="varchar" MaxLength="8" />
+    <Property Name="ANIAreaCode" Type="char" MaxLength="3" />
+    <Property Name="ANICountry" Type="varchar" MaxLength="40" />
+    <Property Name="ANICountryCode" Type="char" MaxLength="5" />
+    <Property Name="ANIState" Type="char" MaxLength="2" />
+    <Property Name="Calls" Type="char" MaxLength="5" />
+    <Property Name="CallsCompletedInIVR" Type="char" MaxLength="5" />
+    <Property Name="CallsTimedOutInIVR" Type="char" MaxLength="5" />
+    <Property Name="CampaignType" Type="varchar" MaxLength="40" />
+    <Property Name="Contacted" Type="char" MaxLength="3" />
+    <Property Name="DisconnectedFromHold" Type="bit" />
+    <Property Name="DNISAreaCode" Type="char" MaxLength="3" />
+    <Property Name="DNISCountry" Type="varchar" MaxLength="40" />
+    <Property Name="DNISCountryCode" Type="char" MaxLength="5" />
+    <Property Name="DNISState" Type="char" MaxLength="2" />
+    <Property Name="ListName" Type="varchar" MaxLength="75" />
+    <Property Name="LiveConnect" Type="char" MaxLength="3" />
+    <Property Name="NoPartyContact" Type="char" MaxLength="3" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="ServiceLevel" Type="char" MaxLength="5" />
+    <Property Name="Skill" Type="varchar" MaxLength="125" />
+    <Property Name="SpeedOfAnswer" Type="varchar" MaxLength="15" />
+    <Property Name="ThirdPartyTalkTime" Type="varchar" MaxLength="15" />
+    <Property Name="ConferenceTime" Type="varchar" MaxLength="15" />
+    <Property Name="ConsultTime" Type="varchar" MaxLength="15" />
+    <Property Name="DialTime" Type="varchar" MaxLength="15" />
+    <Property Name="HandleTime" Type="varchar" MaxLength="15" />
+    <Property Name="ManualTime" Type="varchar" MaxLength="15" />
+    <Property Name="Rate" Type="varchar" MaxLength="10" />
+    <Property Name="TalkTimeLessHoldAndPark" Type="varchar" MaxLength="15" />
+    <Property Name="TimeToAbandon" Type="varchar" MaxLength="15" />
+    <Property Name="AgentEmail" Type="varchar" MaxLength="320" />
+    <Property Name="AgentFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="AgentLastName" Type="varchar" MaxLength="50" />
+    <Property Name="Extension" Type="varchar" MaxLength="15" />
+    <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerLastName" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerCity" Type="varchar" MaxLength="125" />
+    <Property Name="CustomerState" Type="char" MaxLength="2" />
+    <Property Name="Address1" Type="varchar" MaxLength="225" />
+    <Property Name="Address2" Type="varchar" MaxLength="125" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+    <Property Name="PhoneNumber1" Type="varchar" MaxLength="14" />
+    <Property Name="PhoneNumber2" Type="varchar" MaxLength="14" />
+    <Property Name="PhoneNumber3" Type="varchar" MaxLength="14" />
+    <Property Name="IsDoNotCall" Type="char" MaxLength="3" />
+    <Property Name="ContactID" Type="varchar" MaxLength="15" />
+    <Property Name="CallID" Type="varchar" MaxLength="15" />
+    <Property Name="AgentGroup" Type="varchar" MaxLength="125" />
+    <Property Name="SessionID" Type="varchar" MaxLength="40" />
+    <Property Name="ParentSessionID" Type="varchar" MaxLength="40" />
+    <Property Name="ClientID" Type="varchar" MaxLength="12" />
+    <Property Name="CustomerEmailAddress" Type="varchar" MaxLength="320" />
+    <Property Name="InputWebsite" Type="varchar" MaxLength="255" />
+    <Property Name="LoanType" Type="varchar" MaxLength="25" />
+    <Property Name="Mortgage1Balance" Type="varchar" MaxLength="50" />
+    <Property Name="LoanAmount" Type="varchar" MaxLength="30" />
+    <Property Name="TransferNumber" Type="varchar" MaxLength="50" />
+    <Property Name="DateMailed" Type="varchar" MaxLength="25" />
+    <Property Name="DateExpiration" Type="varchar" MaxLength="25" />
+    <Property Name="DateReceived" Type="varchar" MaxLength="25" />
+    <Property Name="CreditGroup" Type="varchar" MaxLength="50" />
+    <Property Name="Agency" Type="varchar" MaxLength="50" />
+    <Property Name="Campaign" Type="varchar" MaxLength="50" />
+    <Property Name="ContactCreateTimestamp" Type="varchar" MaxLength="25" />
+    <Property Name="ContactModifiedTimestamp" Type="varchar" MaxLength="25" />
+    <Property Name="CreditRate" Type="varchar" MaxLength="50" />
+    <Property Name="HomeValue" Type="varchar" MaxLength="25" />
+    <Property Name="FormType" Type="varchar" MaxLength="10" />
+    <Property Name="HybridFilterID" Type="varchar" MaxLength="25" />
+    <Property Name="LoanApplicationID" Type="varchar" MaxLength="25" />
+    <Property Name="Citizen" Type="varchar" MaxLength="5" />
+    <Property Name="ListCode" Type="varchar" MaxLength="30" />
+    <Property Name="Vendor" Type="varchar" MaxLength="10" />
+    <Property Name="Vertical" Type="varchar" MaxLength="50" />
+    <Property Name="LoanRequestType" Type="varchar" MaxLength="25" />
+    <Property Name="ChildProjectCode" Type="varchar" MaxLength="25" />
+    <Property Name="Dispo" Type="varchar" MaxLength="25" />
+    <Property Name="DOB" Type="varchar" MaxLength="25" />
+    <Property Name="Gender" Type="varchar" MaxLength="2" />
+    <Property Name="Language" Type="varchar" MaxLength="5" />
+    <Property Name="PatientID" Type="varchar" MaxLength="25" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" />
+    <Property Name="QualifiedProtocols" Type="varchar" MaxLength="225" />
+    <Property Name="ReferredDate" Type="varchar" MaxLength="30" />
+    <Property Name="SiteInfo" Type="varchar" MaxLength="225" />
+    <Property Name="SiteNumber" Type="varchar" MaxLength="25" />
+    <Property Name="Variable1" Type="varchar" MaxLength="25" />
+    <Property Name="Variable2" Type="varchar" MaxLength="25" />
+    <Property Name="DispositionResolutionCode" Type="varchar" MaxLength="125" />
+    <Property Name="SiteAddress" Type="varchar" MaxLength="125" />
+    <Property Name="SiteCity" Type="varchar" MaxLength="25" />
+    <Property Name="SitePI" Type="varchar" MaxLength="50" />
+    <Property Name="SiteCoordinatorFirstname" Type="varchar" MaxLength="50" />
+    <Property Name="LoanPurpose" Type="varchar" MaxLength="25" />
+    <Property Name="NMLSID" Type="varchar" MaxLength="25" />
+    <Property Name="PropertyState" Type="varchar" MaxLength="10" />
+    <Property Name="PropertyType" Type="varchar" MaxLength="25" />
+    <Property Name="PropertyZip" Type="varchar" MaxLength="10" />
+    <Property Name="PropertyPrice" Type="varchar" MaxLength="10" />
+    <Property Name="LoanOfficerEmail" Type="varchar" MaxLength="125" />
+    <Property Name="AppDatestamp" Type="varchar" MaxLength="25" />
+    <Property Name="LeadSource" Type="varchar" MaxLength="25" />
+    <Property Name="Partner" Type="varchar" MaxLength="50" />
+    <Property Name="ProductType" Type="varchar" MaxLength="10" />
+    <Property Name="Script" Type="varchar" MaxLength="10" />
+    <Property Name="SiteCoordinatorPhoneNumber" Type="varchar" MaxLength="30" />
+    <Property Name="TransferType" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.STAGE.ClientLeads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ClientLeads">
+    <Key>
+      <PropertyRef Name="LeadID" />
+      <PropertyRef Name="ClientName" />
+      <PropertyRef Name="LeadAddDate" />
+      <PropertyRef Name="LeadAddTime" />
+      <PropertyRef Name="ArrivalTimestamp" />
+      <PropertyRef Name="PreserviceTimestamp" />
+      <PropertyRef Name="PostserviceTimestamp" />
+    </Key>
+    <Property Name="LeadID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ClientName" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="LeadAddDate" Type="date" Nullable="false" />
+    <Property Name="LeadAddTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ArrivalTimestamp" Type="datetime" Nullable="false" />
+    <Property Name="PreserviceTimestamp" Type="datetime" Nullable="false" />
+    <Property Name="PostserviceTimestamp" Type="datetime" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="AddressLine1" Type="varchar" MaxLength="125" />
+    <Property Name="AddressLine2" Type="varchar" MaxLength="50" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="25" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="325" />
+    <Property Name="LeadType" Type="varchar" MaxLength="50" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.STAGE.FreedomDailyPortfolioInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="FreedomDailyPortfolioInventory">
+    <Key>
+      <PropertyRef Name="ReportDate" />
+      <PropertyRef Name="LeadID" />
+      <PropertyRef Name="ListName" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="CurrentDisposition" />
+      <PropertyRef Name="LastCallDay" />
+      <PropertyRef Name="LastCallTime" />
+      <PropertyRef Name="CampaignName" />
+    </Key>
+    <Property Name="ReportDate" Type="date" Nullable="false" />
+    <Property Name="LeadID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ListName" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="State" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="CurrentDisposition" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="LastCallDay" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="LastCallTime" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="125" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.STAGE.FreedomHourlyCallMetrics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="FreedomHourlyCallMetrics1">
+    <Key>
+      <PropertyRef Name="DailyRecordID" />
+      <PropertyRef Name="RecordDate" />
+      <PropertyRef Name="RecordTime" />
+      <PropertyRef Name="ListName" />
+      <PropertyRef Name="CampaignName" />
+      <PropertyRef Name="Disposition" />
+      <PropertyRef Name="CallType" />
+      <PropertyRef Name="HourOfDay" />
+    </Key>
+    <Property Name="DailyRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="RecordTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ListName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="Disposition" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CallType" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="HourOfDay" Type="tinyint" Nullable="false" />
+    <Property Name="CallState" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PreciseLeadsHourlyCallLogMaster">
+    <Key>
+      <PropertyRef Name="RecordDate" />
+      <PropertyRef Name="RecordTime" />
+    </Key>
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="RecordTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DomainName" Type="varchar" MaxLength="25" />
+    <Property Name="Five9Timestamp" Type="varchar" MaxLength="30" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="75" />
+    <Property Name="CallType" Type="varchar" MaxLength="75" />
+    <Property Name="AgentID" Type="varchar" MaxLength="125" />
+    <Property Name="Disposition" Type="varchar" MaxLength="125" />
+    <Property Name="AutomaticNumberIdentification" Type="varchar" MaxLength="25" />
+    <Property Name="LeadID" Type="varchar" MaxLength="25" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="125" />
+    <Property Name="DialedNumberIdentificationService" Type="varchar" MaxLength="25" />
+    <Property Name="CallTime" Type="varchar" MaxLength="25" />
+    <Property Name="BillTimeRounded" Type="varchar" MaxLength="25" />
+    <Property Name="Cost" Type="varchar" MaxLength="25" />
+    <Property Name="IVRTime" Type="varchar" MaxLength="25" />
+    <Property Name="QueueWaitTime" Type="varchar" MaxLength="25" />
+    <Property Name="RingTime" Type="varchar" MaxLength="25" />
+    <Property Name="TalkTime" Type="varchar" MaxLength="25" />
+    <Property Name="HoldTime" Type="varchar" MaxLength="25" />
+    <Property Name="ParkTime" Type="varchar" MaxLength="25" />
+    <Property Name="AfterCallWorkTime" Type="varchar" MaxLength="25" />
+    <Property Name="Transfers" Type="varchar" MaxLength="25" />
+    <Property Name="Conferences" Type="varchar" MaxLength="25" />
+    <Property Name="Holds" Type="varchar" MaxLength="25" />
+    <Property Name="Abandonded" Type="varchar" MaxLength="25" />
+    <Property Name="Recordings" Type="varchar" MaxLength="500" />
+    <Property Name="CallDayOfMonth" Type="varchar" MaxLength="10" />
+    <Property Name="CallDayOfWeek" Type="varchar" MaxLength="10" />
+    <Property Name="CallHourOfDay" Type="char" MaxLength="5" />
+    <Property Name="AbandonRate" Type="varchar" MaxLength="8" />
+    <Property Name="ANIAreaCode" Type="varchar" MaxLength="25" />
+    <Property Name="ANICountry" Type="varchar" MaxLength="75" />
+    <Property Name="ANICountryCode" Type="varchar" MaxLength="25" />
+    <Property Name="ANIState" Type="varchar" MaxLength="25" />
+    <Property Name="Calls" Type="varchar" MaxLength="25" />
+    <Property Name="CallsCompletedInIVR" Type="varchar" MaxLength="25" />
+    <Property Name="CallsTimedOutInIVR" Type="varchar" MaxLength="25" />
+    <Property Name="CampaignType" Type="varchar" MaxLength="75" />
+    <Property Name="Contacted" Type="varchar" MaxLength="25" />
+    <Property Name="DisconnectedFromHold" Type="bit" />
+    <Property Name="DNISAreaCode" Type="varchar" MaxLength="25" />
+    <Property Name="DNISCountry" Type="varchar" MaxLength="75" />
+    <Property Name="DNISCountryCode" Type="varchar" MaxLength="25" />
+    <Property Name="DNISState" Type="varchar" MaxLength="25" />
+    <Property Name="ListName" Type="varchar" MaxLength="125" />
+    <Property Name="LiveConnect" Type="varchar" MaxLength="25" />
+    <Property Name="NoPartyContact" Type="varchar" MaxLength="25" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="ServiceLevel" Type="varchar" MaxLength="25" />
+    <Property Name="Skill" Type="varchar" MaxLength="125" />
+    <Property Name="SpeedOfAnswer" Type="varchar" MaxLength="25" />
+    <Property Name="ThirdPartyTalkTime" Type="varchar" MaxLength="25" />
+    <Property Name="ConferenceTime" Type="varchar" MaxLength="25" />
+    <Property Name="ConsultTime" Type="varchar" MaxLength="25" />
+    <Property Name="DialTime" Type="varchar" MaxLength="25" />
+    <Property Name="HandleTime" Type="varchar" MaxLength="25" />
+    <Property Name="ManualTime" Type="varchar" MaxLength="25" />
+    <Property Name="Rate" Type="varchar" MaxLength="10" />
+    <Property Name="TalkTimeLessHoldAndPark" Type="varchar" MaxLength="25" />
+    <Property Name="TimeToAbandon" Type="varchar" MaxLength="25" />
+    <Property Name="AgentEmail" Type="varchar" MaxLength="320" />
+    <Property Name="AgentFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="AgentLastName" Type="varchar" MaxLength="50" />
+    <Property Name="Extension" Type="varchar" MaxLength="25" />
+    <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerLastName" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerCity" Type="varchar" MaxLength="125" />
+    <Property Name="CustomerState" Type="varchar" MaxLength="25" />
+    <Property Name="Address1" Type="varchar" MaxLength="125" />
+    <Property Name="Address2" Type="varchar" MaxLength="125" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+    <Property Name="PhoneNumber1" Type="varchar" MaxLength="25" />
+    <Property Name="PhoneNumber2" Type="varchar" MaxLength="25" />
+    <Property Name="PhoneNumber3" Type="varchar" MaxLength="25" />
+    <Property Name="IsDoNotCall" Type="varchar" MaxLength="25" />
+    <Property Name="ContactID" Type="varchar" MaxLength="25" />
+    <Property Name="CallID" Type="varchar" MaxLength="25" />
+    <Property Name="AgentGroup" Type="varchar" MaxLength="125" />
+    <Property Name="SessionID" Type="varchar" MaxLength="75" />
+    <Property Name="ParentSessionID" Type="varchar" MaxLength="75" />
+    <Property Name="ClientID" Type="varchar" MaxLength="25" />
+    <Property Name="CustomerEmailAddress" Type="varchar" MaxLength="320" />
+    <Property Name="InputWebsite" Type="varchar" MaxLength="255" />
+    <Property Name="SourceID" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <Association Name="FK_CLIENT_Customer_AddByEmployeeID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="AddByEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENT_CustomerContact_CustomerID">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="CustomerContact">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENT_DomainMaster_CustomerID">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="DomainMaster">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENT_DomainMaster_DomainTypeID">
+    <End Role="DomainType" Type="Self.DomainType" Multiplicity="1" />
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainType">
+        <PropertyRef Name="DomainTypeID" />
+      </Principal>
+      <Dependent Role="DomainMaster">
+        <PropertyRef Name="DomainTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPANY_Employee_RoleID">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPANY_Employee_SiteID">
+    <End Role="Site" Type="Self.Site" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="SiteID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="SiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPANY_EmployeeFive9Agent_EmployeeID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmployeeFive9Agent" Type="Self.EmployeeFive9Agent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeFive9Agent">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPANY_EmployeeNote_AddByEmployeeID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmployeeNote" Type="Self.EmployeeNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeNote">
+        <PropertyRef Name="AddByEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPANY_EmployeeNoteType_AddByEmployeeID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmployeeNoteType" Type="Self.EmployeeNoteType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeNoteType">
+        <PropertyRef Name="AddByEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REPORT_CallLogMaster_DomainMasterID">
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
+    <End Role="CallLogMaster" Type="Self.CallLogMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Principal>
+      <Dependent Role="CallLogMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ReportModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="CLIENT" store:Type="Tables" />
+    <EntitySet Name="CustomerContact" EntityType="Self.CustomerContact" Schema="CLIENT" store:Type="Tables" />
+    <EntitySet Name="DomainMaster" EntityType="Self.DomainMaster" Schema="CLIENT" store:Type="Tables" />
+    <EntitySet Name="DomainType" EntityType="Self.DomainType" Schema="CLIENT" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="COMPANY" store:Type="Tables" />
+    <EntitySet Name="EmployeeFive9Agent" EntityType="Self.EmployeeFive9Agent" Schema="COMPANY" store:Type="Tables" />
+    <EntitySet Name="EmployeeNote" EntityType="Self.EmployeeNote" Schema="COMPANY" store:Type="Tables" />
+    <EntitySet Name="EmployeeNoteType" EntityType="Self.EmployeeNoteType" Schema="COMPANY" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="COMPANY" store:Type="Tables" />
+    <EntitySet Name="Site" EntityType="Self.Site" Schema="COMPANY" store:Type="Tables" />
+    <EntitySet Name="ProblemMaster" EntityType="Self.ProblemMaster" Schema="EXCEPTION" store:Type="Tables" />
+    <EntitySet Name="CampaignGroup" EntityType="Self.CampaignGroup" Schema="FREEDOM" store:Type="Tables" />
+    <EntitySet Name="DailyPortfolioInventory" EntityType="Self.DailyPortfolioInventory" Schema="FREEDOM" store:Type="Tables" />
+    <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
+    <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="Self.PreciseLeadsHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
+    <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="Self.PreciseLeadsRollingCampaignMetrics" Schema="REPORT" store:Type="Tables" />
+    <EntitySet Name="FreedomHourlyCallMetrics" EntityType="Self.FreedomHourlyCallMetrics" store:Type="Tables" store:Schema="FREEDOM">
+      <DefiningQuery>SELECT 
+    [FreedomHourlyCallMetrics].[DailyRecordID] AS [DailyRecordID], 
+    [FreedomHourlyCallMetrics].[RecordDate] AS [RecordDate], 
+    [FreedomHourlyCallMetrics].[RecordTime] AS [RecordTime], 
+    [FreedomHourlyCallMetrics].[ListName] AS [ListName], 
+    [FreedomHourlyCallMetrics].[CampaignName] AS [CampaignName], 
+    [FreedomHourlyCallMetrics].[Disposition] AS [Disposition], 
+    [FreedomHourlyCallMetrics].[CallType] AS [CallType], 
+    [FreedomHourlyCallMetrics].[HourOfDay] AS [HourOfDay], 
+    [FreedomHourlyCallMetrics].[CallState] AS [CallState]
+    FROM [FREEDOM].[FreedomHourlyCallMetrics] AS [FreedomHourlyCallMetrics]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AgentDailyHours" EntityType="Self.AgentDailyHours" store:Type="Tables" store:Schema="STAGE">
+      <DefiningQuery>SELECT 
+    [AgentDailyHours].[AgentID] AS [AgentID], 
+    [AgentDailyHours].[DomainName] AS [DomainName], 
+    [AgentDailyHours].[LastName] AS [LastName], 
+    [AgentDailyHours].[FirstName] AS [FirstName], 
+    [AgentDailyHours].[LoginTimestamp] AS [LoginTimestamp], 
+    [AgentDailyHours].[LogoutTimestamp] AS [LogoutTimestamp], 
+    [AgentDailyHours].[LoginDuration] AS [LoginDuration]
+    FROM [STAGE].[AgentDailyHours] AS [AgentDailyHours]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CallLogMaster1" EntityType="Self.CallLogMaster1" store:Type="Tables" store:Schema="STAGE" store:Name="CallLogMaster">
+      <DefiningQuery>SELECT 
+    [CallLogMaster1].[RecordDate] AS [RecordDate], 
+    [CallLogMaster1].[RecordTime] AS [RecordTime], 
+    [CallLogMaster1].[DomainName] AS [DomainName], 
+    [CallLogMaster1].[Five9Timestamp] AS [Five9Timestamp], 
+    [CallLogMaster1].[CampaignName] AS [CampaignName], 
+    [CallLogMaster1].[CallType] AS [CallType], 
+    [CallLogMaster1].[AgentID] AS [AgentID], 
+    [CallLogMaster1].[Disposition] AS [Disposition], 
+    [CallLogMaster1].[AutomaticNumberIdentification] AS [AutomaticNumberIdentification], 
+    [CallLogMaster1].[LeadID] AS [LeadID], 
+    [CallLogMaster1].[CustomerName] AS [CustomerName], 
+    [CallLogMaster1].[DialedNumberIdentificationService] AS [DialedNumberIdentificationService], 
+    [CallLogMaster1].[CallTime] AS [CallTime], 
+    [CallLogMaster1].[BillTimeRounded] AS [BillTimeRounded], 
+    [CallLogMaster1].[Cost] AS [Cost], 
+    [CallLogMaster1].[IVRTime] AS [IVRTime], 
+    [CallLogMaster1].[QueueWaitTime] AS [QueueWaitTime], 
+    [CallLogMaster1].[RingTime] AS [RingTime], 
+    [CallLogMaster1].[TalkTime] AS [TalkTime], 
+    [CallLogMaster1].[HoldTime] AS [HoldTime], 
+    [CallLogMaster1].[ParkTime] AS [ParkTime], 
+    [CallLogMaster1].[AfterCallWorkTime] AS [AfterCallWorkTime], 
+    [CallLogMaster1].[Transfers] AS [Transfers], 
+    [CallLogMaster1].[Conferences] AS [Conferences], 
+    [CallLogMaster1].[Holds] AS [Holds], 
+    [CallLogMaster1].[Abandonded] AS [Abandonded], 
+    [CallLogMaster1].[Recordings] AS [Recordings], 
+    [CallLogMaster1].[CallDayOfMonth] AS [CallDayOfMonth], 
+    [CallLogMaster1].[CallDayOfWeek] AS [CallDayOfWeek], 
+    [CallLogMaster1].[CallHourOfDay] AS [CallHourOfDay], 
+    [CallLogMaster1].[AbandonRate] AS [AbandonRate], 
+    [CallLogMaster1].[ANIAreaCode] AS [ANIAreaCode], 
+    [CallLogMaster1].[ANICountry] AS [ANICountry], 
+    [CallLogMaster1].[ANICountryCode] AS [ANICountryCode], 
+    [CallLogMaster1].[ANIState] AS [ANIState], 
+    [CallLogMaster1].[Calls] AS [Calls], 
+    [CallLogMaster1].[CallsCompletedInIVR] AS [CallsCompletedInIVR], 
+    [CallLogMaster1].[CallsTimedOutInIVR] AS [CallsTimedOutInIVR], 
+    [CallLogMaster1].[CampaignType] AS [CampaignType], 
+    [CallLogMaster1].[Contacted] AS [Contacted], 
+    [CallLogMaster1].[DisconnectedFromHold] AS [DisconnectedFromHold], 
+    [CallLogMaster1].[DNISAreaCode] AS [DNISAreaCode], 
+    [CallLogMaster1].[DNISCountry] AS [DNISCountry], 
+    [CallLogMaster1].[DNISCountryCode] AS [DNISCountryCode], 
+    [CallLogMaster1].[DNISState] AS [DNISState], 
+    [CallLogMaster1].[ListName] AS [ListName], 
+    [CallLogMaster1].[LiveConnect] AS [LiveConnect], 
+    [CallLogMaster1].[NoPartyContact] AS [NoPartyContact], 
+    [CallLogMaster1].[Notes] AS [Notes], 
+    [CallLogMaster1].[ServiceLevel] AS [ServiceLevel], 
+    [CallLogMaster1].[Skill] AS [Skill], 
+    [CallLogMaster1].[SpeedOfAnswer] AS [SpeedOfAnswer], 
+    [CallLogMaster1].[ThirdPartyTalkTime] AS [ThirdPartyTalkTime], 
+    [CallLogMaster1].[ConferenceTime] AS [ConferenceTime], 
+    [CallLogMaster1].[ConsultTime] AS [ConsultTime], 
+    [CallLogMaster1].[DialTime] AS [DialTime], 
+    [CallLogMaster1].[HandleTime] AS [HandleTime], 
+    [CallLogMaster1].[ManualTime] AS [ManualTime], 
+    [CallLogMaster1].[Rate] AS [Rate], 
+    [CallLogMaster1].[TalkTimeLessHoldAndPark] AS [TalkTimeLessHoldAndPark], 
+    [CallLogMaster1].[TimeToAbandon] AS [TimeToAbandon], 
+    [CallLogMaster1].[AgentEmail] AS [AgentEmail], 
+    [CallLogMaster1].[AgentFirstName] AS [AgentFirstName], 
+    [CallLogMaster1].[AgentLastName] AS [AgentLastName], 
+    [CallLogMaster1].[Extension] AS [Extension], 
+    [CallLogMaster1].[CustomerFirstName] AS [CustomerFirstName], 
+    [CallLogMaster1].[CustomerLastName] AS [CustomerLastName], 
+    [CallLogMaster1].[CustomerCity] AS [CustomerCity], 
+    [CallLogMaster1].[CustomerState] AS [CustomerState], 
+    [CallLogMaster1].[Address1] AS [Address1], 
+    [CallLogMaster1].[Address2] AS [Address2], 
+    [CallLogMaster1].[ZipCode] AS [ZipCode], 
+    [CallLogMaster1].[PhoneNumber1] AS [PhoneNumber1], 
+    [CallLogMaster1].[PhoneNumber2] AS [PhoneNumber2], 
+    [CallLogMaster1].[PhoneNumber3] AS [PhoneNumber3], 
+    [CallLogMaster1].[IsDoNotCall] AS [IsDoNotCall], 
+    [CallLogMaster1].[ContactID] AS [ContactID], 
+    [CallLogMaster1].[CallID] AS [CallID], 
+    [CallLogMaster1].[AgentGroup] AS [AgentGroup], 
+    [CallLogMaster1].[SessionID] AS [SessionID], 
+    [CallLogMaster1].[ParentSessionID] AS [ParentSessionID], 
+    [CallLogMaster1].[ClientID] AS [ClientID], 
+    [CallLogMaster1].[CustomerEmailAddress] AS [CustomerEmailAddress], 
+    [CallLogMaster1].[InputWebsite] AS [InputWebsite], 
+    [CallLogMaster1].[LoanType] AS [LoanType], 
+    [CallLogMaster1].[Mortgage1Balance] AS [Mortgage1Balance], 
+    [CallLogMaster1].[LoanAmount] AS [LoanAmount], 
+    [CallLogMaster1].[TransferNumber] AS [TransferNumber], 
+    [CallLogMaster1].[DateMailed] AS [DateMailed], 
+    [CallLogMaster1].[DateExpiration] AS [DateExpiration], 
+    [CallLogMaster1].[DateReceived] AS [DateReceived], 
+    [CallLogMaster1].[CreditGroup] AS [CreditGroup], 
+    [CallLogMaster1].[Agency] AS [Agency], 
+    [CallLogMaster1].[Campaign] AS [Campaign], 
+    [CallLogMaster1].[ContactCreateTimestamp] AS [ContactCreateTimestamp], 
+    [CallLogMaster1].[ContactModifiedTimestamp] AS [ContactModifiedTimestamp], 
+    [CallLogMaster1].[CreditRate] AS [CreditRate], 
+    [CallLogMaster1].[HomeValue] AS [HomeValue], 
+    [CallLogMaster1].[FormType] AS [FormType], 
+    [CallLogMaster1].[HybridFilterID] AS [HybridFilterID], 
+    [CallLogMaster1].[LoanApplicationID] AS [LoanApplicationID], 
+    [CallLogMaster1].[Citizen] AS [Citizen], 
+    [CallLogMaster1].[ListCode] AS [ListCode], 
+    [CallLogMaster1].[Vendor] AS [Vendor], 
+    [CallLogMaster1].[Vertical] AS [Vertical], 
+    [CallLogMaster1].[LoanRequestType] AS [LoanRequestType], 
+    [CallLogMaster1].[ChildProjectCode] AS [ChildProjectCode], 
+    [CallLogMaster1].[Dispo] AS [Dispo], 
+    [CallLogMaster1].[DOB] AS [DOB], 
+    [CallLogMaster1].[Gender] AS [Gender], 
+    [CallLogMaster1].[Language] AS [Language], 
+    [CallLogMaster1].[PatientID] AS [PatientID], 
+    [CallLogMaster1].[ProjectCode] AS [ProjectCode], 
+    [CallLogMaster1].[QualifiedProtocols] AS [QualifiedProtocols], 
+    [CallLogMaster1].[ReferredDate] AS [ReferredDate], 
+    [CallLogMaster1].[SiteInfo] AS [SiteInfo], 
+    [CallLogMaster1].[SiteNumber] AS [SiteNumber], 
+    [CallLogMaster1].[Variable1] AS [Variable1], 
+    [CallLogMaster1].[Variable2] AS [Variable2], 
+    [CallLogMaster1].[DispositionResolutionCode] AS [DispositionResolutionCode], 
+    [CallLogMaster1].[SiteAddress] AS [SiteAddress], 
+    [CallLogMaster1].[SiteCity] AS [SiteCity], 
+    [CallLogMaster1].[SitePI] AS [SitePI], 
+    [CallLogMaster1].[SiteCoordinatorFirstname] AS [SiteCoordinatorFirstname], 
+    [CallLogMaster1].[LoanPurpose] AS [LoanPurpose], 
+    [CallLogMaster1].[NMLSID] AS [NMLSID], 
+    [CallLogMaster1].[PropertyState] AS [PropertyState], 
+    [CallLogMaster1].[PropertyType] AS [PropertyType], 
+    [CallLogMaster1].[PropertyZip] AS [PropertyZip], 
+    [CallLogMaster1].[PropertyPrice] AS [PropertyPrice], 
+    [CallLogMaster1].[LoanOfficerEmail] AS [LoanOfficerEmail], 
+    [CallLogMaster1].[AppDatestamp] AS [AppDatestamp], 
+    [CallLogMaster1].[LeadSource] AS [LeadSource], 
+    [CallLogMaster1].[Partner] AS [Partner], 
+    [CallLogMaster1].[ProductType] AS [ProductType], 
+    [CallLogMaster1].[Script] AS [Script], 
+    [CallLogMaster1].[SiteCoordinatorPhoneNumber] AS [SiteCoordinatorPhoneNumber], 
+    [CallLogMaster1].[TransferType] AS [TransferType]
+    FROM [STAGE].[CallLogMaster] AS [CallLogMaster1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ClientLeads" EntityType="Self.ClientLeads" store:Type="Tables" store:Schema="STAGE">
+      <DefiningQuery>SELECT 
+    [ClientLeads].[LeadID] AS [LeadID], 
+    [ClientLeads].[ClientName] AS [ClientName], 
+    [ClientLeads].[LeadAddDate] AS [LeadAddDate], 
+    [ClientLeads].[LeadAddTime] AS [LeadAddTime], 
+    [ClientLeads].[ArrivalTimestamp] AS [ArrivalTimestamp], 
+    [ClientLeads].[PreserviceTimestamp] AS [PreserviceTimestamp], 
+    [ClientLeads].[PostserviceTimestamp] AS [PostserviceTimestamp], 
+    [ClientLeads].[PhoneNumber] AS [PhoneNumber], 
+    [ClientLeads].[FirstName] AS [FirstName], 
+    [ClientLeads].[LastName] AS [LastName], 
+    [ClientLeads].[AddressLine1] AS [AddressLine1], 
+    [ClientLeads].[AddressLine2] AS [AddressLine2], 
+    [ClientLeads].[ZipCode] AS [ZipCode], 
+    [ClientLeads].[City] AS [City], 
+    [ClientLeads].[State] AS [State], 
+    [ClientLeads].[EmailAddress] AS [EmailAddress], 
+    [ClientLeads].[LeadType] AS [LeadType], 
+    [ClientLeads].[CampaignName] AS [CampaignName]
+    FROM [STAGE].[ClientLeads] AS [ClientLeads]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="FreedomDailyPortfolioInventory" EntityType="Self.FreedomDailyPortfolioInventory" store:Type="Tables" store:Schema="STAGE">
+      <DefiningQuery>SELECT 
+    [FreedomDailyPortfolioInventory].[ReportDate] AS [ReportDate], 
+    [FreedomDailyPortfolioInventory].[LeadID] AS [LeadID], 
+    [FreedomDailyPortfolioInventory].[ListName] AS [ListName], 
+    [FreedomDailyPortfolioInventory].[Status] AS [Status], 
+    [FreedomDailyPortfolioInventory].[State] AS [State], 
+    [FreedomDailyPortfolioInventory].[CurrentDisposition] AS [CurrentDisposition], 
+    [FreedomDailyPortfolioInventory].[LastCallDay] AS [LastCallDay], 
+    [FreedomDailyPortfolioInventory].[LastCallTime] AS [LastCallTime], 
+    [FreedomDailyPortfolioInventory].[CampaignName] AS [CampaignName]
+    FROM [STAGE].[FreedomDailyPortfolioInventory] AS [FreedomDailyPortfolioInventory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="FreedomHourlyCallMetrics1" EntityType="Self.FreedomHourlyCallMetrics1" store:Type="Tables" store:Schema="STAGE" store:Name="FreedomHourlyCallMetrics">
+      <DefiningQuery>SELECT 
+    [FreedomHourlyCallMetrics1].[DailyRecordID] AS [DailyRecordID], 
+    [FreedomHourlyCallMetrics1].[RecordDate] AS [RecordDate], 
+    [FreedomHourlyCallMetrics1].[RecordTime] AS [RecordTime], 
+    [FreedomHourlyCallMetrics1].[ListName] AS [ListName], 
+    [FreedomHourlyCallMetrics1].[CampaignName] AS [CampaignName], 
+    [FreedomHourlyCallMetrics1].[Disposition] AS [Disposition], 
+    [FreedomHourlyCallMetrics1].[CallType] AS [CallType], 
+    [FreedomHourlyCallMetrics1].[HourOfDay] AS [HourOfDay], 
+    [FreedomHourlyCallMetrics1].[CallState] AS [CallState]
+    FROM [STAGE].[FreedomHourlyCallMetrics] AS [FreedomHourlyCallMetrics1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PreciseLeadsHourlyCallLogMaster" EntityType="Self.PreciseLeadsHourlyCallLogMaster" store:Type="Tables" store:Schema="STAGE">
+      <DefiningQuery>SELECT 
+    [PreciseLeadsHourlyCallLogMaster].[RecordDate] AS [RecordDate], 
+    [PreciseLeadsHourlyCallLogMaster].[RecordTime] AS [RecordTime], 
+    [PreciseLeadsHourlyCallLogMaster].[DomainName] AS [DomainName], 
+    [PreciseLeadsHourlyCallLogMaster].[Five9Timestamp] AS [Five9Timestamp], 
+    [PreciseLeadsHourlyCallLogMaster].[CampaignName] AS [CampaignName], 
+    [PreciseLeadsHourlyCallLogMaster].[CallType] AS [CallType], 
+    [PreciseLeadsHourlyCallLogMaster].[AgentID] AS [AgentID], 
+    [PreciseLeadsHourlyCallLogMaster].[Disposition] AS [Disposition], 
+    [PreciseLeadsHourlyCallLogMaster].[AutomaticNumberIdentification] AS [AutomaticNumberIdentification], 
+    [PreciseLeadsHourlyCallLogMaster].[LeadID] AS [LeadID], 
+    [PreciseLeadsHourlyCallLogMaster].[CustomerName] AS [CustomerName], 
+    [PreciseLeadsHourlyCallLogMaster].[DialedNumberIdentificationService] AS [DialedNumberIdentificationService], 
+    [PreciseLeadsHourlyCallLogMaster].[CallTime] AS [CallTime], 
+    [PreciseLeadsHourlyCallLogMaster].[BillTimeRounded] AS [BillTimeRounded], 
+    [PreciseLeadsHourlyCallLogMaster].[Cost] AS [Cost], 
+    [PreciseLeadsHourlyCallLogMaster].[IVRTime] AS [IVRTime], 
+    [PreciseLeadsHourlyCallLogMaster].[QueueWaitTime] AS [QueueWaitTime], 
+    [PreciseLeadsHourlyCallLogMaster].[RingTime] AS [RingTime], 
+    [PreciseLeadsHourlyCallLogMaster].[TalkTime] AS [TalkTime], 
+    [PreciseLeadsHourlyCallLogMaster].[HoldTime] AS [HoldTime], 
+    [PreciseLeadsHourlyCallLogMaster].[ParkTime] AS [ParkTime], 
+    [PreciseLeadsHourlyCallLogMaster].[AfterCallWorkTime] AS [AfterCallWorkTime], 
+    [PreciseLeadsHourlyCallLogMaster].[Transfers] AS [Transfers], 
+    [PreciseLeadsHourlyCallLogMaster].[Conferences] AS [Conferences], 
+    [PreciseLeadsHourlyCallLogMaster].[Holds] AS [Holds], 
+    [PreciseLeadsHourlyCallLogMaster].[Abandonded] AS [Abandonded], 
+    [PreciseLeadsHourlyCallLogMaster].[Recordings] AS [Recordings], 
+    [PreciseLeadsHourlyCallLogMaster].[CallDayOfMonth] AS [CallDayOfMonth], 
+    [PreciseLeadsHourlyCallLogMaster].[CallDayOfWeek] AS [CallDayOfWeek], 
+    [PreciseLeadsHourlyCallLogMaster].[CallHourOfDay] AS [CallHourOfDay], 
+    [PreciseLeadsHourlyCallLogMaster].[AbandonRate] AS [AbandonRate], 
+    [PreciseLeadsHourlyCallLogMaster].[ANIAreaCode] AS [ANIAreaCode], 
+    [PreciseLeadsHourlyCallLogMaster].[ANICountry] AS [ANICountry], 
+    [PreciseLeadsHourlyCallLogMaster].[ANICountryCode] AS [ANICountryCode], 
+    [PreciseLeadsHourlyCallLogMaster].[ANIState] AS [ANIState], 
+    [PreciseLeadsHourlyCallLogMaster].[Calls] AS [Calls], 
+    [PreciseLeadsHourlyCallLogMaster].[CallsCompletedInIVR] AS [CallsCompletedInIVR], 
+    [PreciseLeadsHourlyCallLogMaster].[CallsTimedOutInIVR] AS [CallsTimedOutInIVR], 
+    [PreciseLeadsHourlyCallLogMaster].[CampaignType] AS [CampaignType], 
+    [PreciseLeadsHourlyCallLogMaster].[Contacted] AS [Contacted], 
+    [PreciseLeadsHourlyCallLogMaster].[DisconnectedFromHold] AS [DisconnectedFromHold], 
+    [PreciseLeadsHourlyCallLogMaster].[DNISAreaCode] AS [DNISAreaCode], 
+    [PreciseLeadsHourlyCallLogMaster].[DNISCountry] AS [DNISCountry], 
+    [PreciseLeadsHourlyCallLogMaster].[DNISCountryCode] AS [DNISCountryCode], 
+    [PreciseLeadsHourlyCallLogMaster].[DNISState] AS [DNISState], 
+    [PreciseLeadsHourlyCallLogMaster].[ListName] AS [ListName], 
+    [PreciseLeadsHourlyCallLogMaster].[LiveConnect] AS [LiveConnect], 
+    [PreciseLeadsHourlyCallLogMaster].[NoPartyContact] AS [NoPartyContact], 
+    [PreciseLeadsHourlyCallLogMaster].[Notes] AS [Notes], 
+    [PreciseLeadsHourlyCallLogMaster].[ServiceLevel] AS [ServiceLevel], 
+    [PreciseLeadsHourlyCallLogMaster].[Skill] AS [Skill], 
+    [PreciseLeadsHourlyCallLogMaster].[SpeedOfAnswer] AS [SpeedOfAnswer], 
+    [PreciseLeadsHourlyCallLogMaster].[ThirdPartyTalkTime] AS [ThirdPartyTalkTime], 
+    [PreciseLeadsHourlyCallLogMaster].[ConferenceTime] AS [ConferenceTime], 
+    [PreciseLeadsHourlyCallLogMaster].[ConsultTime] AS [ConsultTime], 
+    [PreciseLeadsHourlyCallLogMaster].[DialTime] AS [DialTime], 
+    [PreciseLeadsHourlyCallLogMaster].[HandleTime] AS [HandleTime], 
+    [PreciseLeadsHourlyCallLogMaster].[ManualTime] AS [ManualTime], 
+    [PreciseLeadsHourlyCallLogMaster].[Rate] AS [Rate], 
+    [PreciseLeadsHourlyCallLogMaster].[TalkTimeLessHoldAndPark] AS [TalkTimeLessHoldAndPark], 
+    [PreciseLeadsHourlyCallLogMaster].[TimeToAbandon] AS [TimeToAbandon], 
+    [PreciseLeadsHourlyCallLogMaster].[AgentEmail] AS [AgentEmail], 
+    [PreciseLeadsHourlyCallLogMaster].[AgentFirstName] AS [AgentFirstName], 
+    [PreciseLeadsHourlyCallLogMaster].[AgentLastName] AS [AgentLastName], 
+    [PreciseLeadsHourlyCallLogMaster].[Extension] AS [Extension], 
+    [PreciseLeadsHourlyCallLogMaster].[CustomerFirstName] AS [CustomerFirstName], 
+    [PreciseLeadsHourlyCallLogMaster].[CustomerLastName] AS [CustomerLastName], 
+    [PreciseLeadsHourlyCallLogMaster].[CustomerCity] AS [CustomerCity], 
+    [PreciseLeadsHourlyCallLogMaster].[CustomerState] AS [CustomerState], 
+    [PreciseLeadsHourlyCallLogMaster].[Address1] AS [Address1], 
+    [PreciseLeadsHourlyCallLogMaster].[Address2] AS [Address2], 
+    [PreciseLeadsHourlyCallLogMaster].[ZipCode] AS [ZipCode], 
+    [PreciseLeadsHourlyCallLogMaster].[PhoneNumber1] AS [PhoneNumber1], 
+    [PreciseLeadsHourlyCallLogMaster].[PhoneNumber2] AS [PhoneNumber2], 
+    [PreciseLeadsHourlyCallLogMaster].[PhoneNumber3] AS [PhoneNumber3], 
+    [PreciseLeadsHourlyCallLogMaster].[IsDoNotCall] AS [IsDoNotCall], 
+    [PreciseLeadsHourlyCallLogMaster].[ContactID] AS [ContactID], 
+    [PreciseLeadsHourlyCallLogMaster].[CallID] AS [CallID], 
+    [PreciseLeadsHourlyCallLogMaster].[AgentGroup] AS [AgentGroup], 
+    [PreciseLeadsHourlyCallLogMaster].[SessionID] AS [SessionID], 
+    [PreciseLeadsHourlyCallLogMaster].[ParentSessionID] AS [ParentSessionID], 
+    [PreciseLeadsHourlyCallLogMaster].[ClientID] AS [ClientID], 
+    [PreciseLeadsHourlyCallLogMaster].[CustomerEmailAddress] AS [CustomerEmailAddress], 
+    [PreciseLeadsHourlyCallLogMaster].[InputWebsite] AS [InputWebsite], 
+    [PreciseLeadsHourlyCallLogMaster].[SourceID] AS [SourceID]
+    FROM [STAGE].[PreciseLeadsHourlyCallLogMaster] AS [PreciseLeadsHourlyCallLogMaster]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CLIENT_Customer_AddByEmployeeID" Association="Self.FK_CLIENT_Customer_AddByEmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENT_CustomerContact_CustomerID" Association="Self.FK_CLIENT_CustomerContact_CustomerID">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="CustomerContact" EntitySet="CustomerContact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENT_DomainMaster_CustomerID" Association="Self.FK_CLIENT_DomainMaster_CustomerID">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENT_DomainMaster_DomainTypeID" Association="Self.FK_CLIENT_DomainMaster_DomainTypeID">
+      <End Role="DomainType" EntitySet="DomainType" />
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_Employee_RoleID" Association="Self.FK_COMPANY_Employee_RoleID">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_Employee_SiteID" Association="Self.FK_COMPANY_Employee_SiteID">
+      <End Role="Site" EntitySet="Site" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_EmployeeFive9Agent_EmployeeID" Association="Self.FK_COMPANY_EmployeeFive9Agent_EmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeFive9Agent" EntitySet="EmployeeFive9Agent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_EmployeeNote_AddByEmployeeID" Association="Self.FK_COMPANY_EmployeeNote_AddByEmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeNote" EntitySet="EmployeeNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_EmployeeNoteType_AddByEmployeeID" Association="Self.FK_COMPANY_EmployeeNoteType_AddByEmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeNoteType" EntitySet="EmployeeNoteType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPORT_CallLogMaster_DomainMasterID" Association="Self.FK_REPORT_CallLogMaster_DomainMasterID">
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
+      <End Role="CallLogMaster" EntitySet="CallLogMaster" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

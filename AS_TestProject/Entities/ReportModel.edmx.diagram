@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="beac64d0e12341b4835494dc276df4eb" Name="Diagram1">
+        <EntityTypeShape EntityType="ReportModel.Customer" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.CustomerContact" Width="1.5" PointX="7.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.DomainMaster" Width="1.5" PointX="10.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.DomainType" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.Employee" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeFive9Agent" Width="1.5" PointX="5.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeNote" Width="1.5" PointX="5.25" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeNoteType" Width="1.5" PointX="5.25" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.Position" Width="1.5" PointX="0.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.Site" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.ProblemMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.CampaignGroup" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.DailyPortfolioInventory" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.CallLogMaster" Width="1.5" PointX="12.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.FreedomHourlyCallMetric" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.AgentDailyHour" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.CallLogMaster1" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.ClientLead" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.FreedomDailyPortfolioInventory" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.FreedomHourlyCallMetrics1" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsHourlyCallLogMaster" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_Customer_AddByEmployeeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_CustomerContact_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_DomainMaster_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_DomainMaster_DomainTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_Employee_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_Employee_SiteID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeFive9Agent_EmployeeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeNote_AddByEmployeeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

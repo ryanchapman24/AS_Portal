@@ -1,0 +1,28 @@
+﻿@model AS_TestProject.Models.AdminUserViewModels
+
+@{
+    ViewBag.Title = "EditUserRoles";
+}
+<div style="text-align: center">
+    <h2>Edit User Role</h2>
+
+    <hr />
+
+    @using (Html.BeginForm("EditUserRoles", "Admin", FormMethod.Post))
+    {
+        <h4 style="color: #29AAE3">@Html.DisplayFor(model => model.Name)</h4>
+        @Html.HiddenFor((model => model.Id), new { })
+        <hr />
+
+        @Html.ListBox("SelectedRoles", Model.Roles, new { @id = "my-select" })
+        <br />
+        <div class="form-group">
+            <div style="margin-top: 20px">
+                <input type="submit" value="Assign Roles" class="btn btn-theme" />
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

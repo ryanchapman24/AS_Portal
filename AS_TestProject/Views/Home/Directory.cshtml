@@ -1,0 +1,53 @@
+﻿<div class="widget widget-table">
+    <div class="widget-header">
+        <h3><i class="fa fa-users"></i> Directory</h3>
+    </div>
+    <div class="widget-content">
+        <div class="table-responsive">
+            <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Last</th>
+                        <th>First</th>
+                        <th style="width: 10%">Title</th>
+                        <th>Site</th>
+                        <th style="width: 15%">Address</th>
+                        <th style="width: 10%">Email</th>
+                        <th>Phone</th>
+                        <th>Active?</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in ViewBag.Directory)
+                    {
+                        <tr>
+                            <td>@employee.EmployeeID</td>
+                            <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
+                            <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
+                            <td>@employee.Position.PositionName</td>
+                            <td>@employee.Site.SiteName</td>
+                            <td>@employee.AddressLine1 @employee.AddressLine2<br />
+                                @employee.City, @employee.State @employee.ZipCode
+                            </td>
+                            <td>@employee.EmailAddress</td>
+                            <td>HOME: @employee.HomePhone<br />
+                                CELL: @employee.CellPhone
+                            </td>
+                            @if (employee.IsActive == true)
+                            {
+                                <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
+                            }
+                            else
+                            {
+                                <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
+                            }
+                            <td><a href="">Manage Time</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
