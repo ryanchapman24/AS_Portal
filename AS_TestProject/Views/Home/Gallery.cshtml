@@ -14,7 +14,7 @@
             foreach (var photo in Model.PhotoList)
             {
                 <a class="fancybox" href="@photo.File"><img class="img-responsive" src="@photo.File" alt="" style="display: inline; margin: 10px; border: 2px solid #29AAE3; width: 500px"></a>
-                @Html.CheckBox("Published", photo.Published)
+                <input type="checkbox" name="Published" value ="@photo.Id">
                 <br/>
             }
             <hr />
