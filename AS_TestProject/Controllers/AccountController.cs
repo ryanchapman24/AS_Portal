@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AS_TestProject.Models;
+using AS_TestProject.Models.Helpers;
 
 namespace AS_TestProject.Controllers
 {
@@ -139,7 +140,12 @@ namespace AS_TestProject.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            model.EmployeeID = null;
+            ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName");
+            ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName");
+
+            return View(model);
         }
 
         //
@@ -151,20 +157,28 @@ namespace AS_TestProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.Position = new SelectList(db.Positions, "PositionID", "PositionName"/*, user.PositionID*/);
-                ViewBag.Site = new SelectList(db.Sites, "SiteID", "SiteName"/*, user.PositionID*/);
 
+                ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
+                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, EmployeeID = model.EmployeeID, PositionID = model.PositionID, SiteID = model.SiteID, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    var position = db.Positions.Find(user.PositionID);
+
+                    if (position.PositionName == "CSR")
+                    {
+                        var helper = new UserRolesHelper(db);
+                        helper.AddUserToRole(user.Id, "CSR");
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }

@@ -635,5 +635,13 @@
             jQuery(".fancybox").fancybox();
         });
     </script>
+
+    <script>
+        $(document).on("keypress", "no-neg", function () {
+            if (event.which == 45 || event.which == 109 || event.which == 189) {
+                event.preventDefault();
+            }
+        });
+    </script>
   </body>
 </html>

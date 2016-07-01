@@ -72,13 +72,13 @@
 
                             <div class="col-md-4 profile-text">
                                 <h3 style="color: #29AAE3">@ViewBag.DisplayName</h3>
-                                <h6>@ViewBag.Site</h6>
-                                <h6>@ViewBag.Position</h6>
-                                <p>@ViewBag.PositionDescr</p>
+                                <h5>@ViewBag.Site</h5>
+                                <h5><strong>@ViewBag.Position</strong></h5>
+                                <p><em>@ViewBag.PositionDescr</em></p>
                                 <a href="@Url.Action("Index","Manage")">Edit Info</a>
                                 <br />
                                 <br />
-                                <p><button class="btn btn-theme"><i class="fa fa-camera"></i> Send Message</button></p>
+                                <p><button class="btn btn-theme">@*<i class="fa fa-camera"></i>*@ Send Message</button></p>
                             </div><!-- --/col-md-4 ---->
 
                             <div class="col-md-4 centered">

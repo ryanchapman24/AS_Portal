@@ -78,8 +78,16 @@ namespace AS_TestProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Publish(PhotoJudgment model)
+        public ActionResult Publish(PhotoJudgment model, List<int> Published)
         {
+            int count = Published.Count();
+            for (int i = 0; i < count; i++)
+            {
+                var photo = db.GalleryPhotos.Find(Published[i]);
+                photo.Published = true;
+                db.SaveChanges();               
+            }
+
             if (model.PhotoList.Any(m => m.Published == true))
             {
                 db.SaveChanges();

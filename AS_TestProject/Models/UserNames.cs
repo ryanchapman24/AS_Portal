@@ -22,7 +22,7 @@ namespace AS_TestProject.Models
                 ViewBag.LastName = user.LastName;
                 ViewBag.Position = user.Position.PositionName;
                 ViewBag.PositionDescr = user.Position.PositionDescription;
-                //ViewBag.Site = user.Site.SiteName;
+                ViewBag.Site = user.Site.SiteName;
                 ViewBag.Email = user.Email;
                 ViewBag.PhoneNumber = user.PhoneNumber;
                 //ViewBag.ProfilePic = user.ProfilePic;
