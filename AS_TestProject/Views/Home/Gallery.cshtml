@@ -3,7 +3,7 @@
     ViewBag.Title = "Gallery";
 }
 
-@if (Model.PhotoList != null)
+@if (Model.PhotoList.Count > 0)
 {
     <div class="showback">
         <h4 style="margin-bottom: 20px"><i class="fa fa-angle-right"></i> Unpublished</h4>

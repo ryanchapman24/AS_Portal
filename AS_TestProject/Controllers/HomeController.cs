@@ -78,7 +78,7 @@ namespace AS_TestProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Publish(PhotoJudgment model, List<int> Published)
+        public ActionResult Publish(List<int> Published)
         {
             int count = Published.Count();
             for (int i = 0; i < count; i++)
@@ -87,31 +87,8 @@ namespace AS_TestProject.Controllers
                 photo.Published = true;
                 db.SaveChanges();               
             }
-
-            if (model.PhotoList.Any(m => m.Published == true))
-            {
-                db.SaveChanges();
-            }
             
             return RedirectToAction("Gallery", "Home");
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Publish(IEnumerable<GalleryPhoto> galleryPhotos, bool published)
-        //{
-        //    var user = db.Users.Find(User.Identity.GetUserId());
-
-        //    foreach (var photo in galleryPhotos)
-        //    {
-        //        if (published == true)
-        //        {
-        //            photo.Published = true;
-        //            db.SaveChanges();
-        //        }
-        //    }
-
-        //    return RedirectToAction("Gallery", "Home");
-        //}
     }
 }
