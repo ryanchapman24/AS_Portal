@@ -23,6 +23,7 @@
     <link href="~/assets/css/style-responsive.css" rel="stylesheet">
     <link rel="shortcut icon" href="~/assets/img/AS_logo.png">
     <link href="~/Multiselect PlugIn/css/multi-select.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
     
     <script src="~/assets/js/jquery.js"></script>
     <script src="~/assets/js/chart-master/Chart.js"></script>
@@ -194,7 +195,7 @@
                     @Html.Partial("_LoginPartial")
                     @*<li><a class="logout" href="login.html">Logout</a></li>*@
                 </ul>
-                <div class="pull-right" style="font-size: 18px; padding-top: 20px; padding-right: 50px; color: white">
+                <div class="pull-right hidden-xs hidden-sm" style="font-size: 18px; padding-top: 20px; padding-right: 50px; color: white">
                     <a href="javascript:history.go(-1)" class=""><i class="fa fa-chevron-left" style="color: white; padding-right: 8px"></i></a>
                     <a href="javascript:history.go(+1)" class=""><i class="fa fa-chevron-right" style="color: white; padding-right: 8px"></i></a>
                     <a href="javascript:history.go(0)" class=""><i class="fa fa-refresh" style="color: white"></i></a>
@@ -267,7 +268,7 @@
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  @*<li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-desktop"></i>
                           <span>UI Elements</span>
@@ -329,7 +330,7 @@
                           <li><a  href="morris.html">Morris</a></li>
                           <li><a  href="chartjs.html">Chartjs</a></li>
                       </ul>
-                  </li>
+                  </li>*@
 
               </ul>
               <!-- sidebar menu end-->
@@ -642,6 +643,12 @@
                 event.preventDefault();
             }
         });
+    </script>
+    <script>
+        $('#log-out').hover(
+           function () { $('#wave').removeClass("hidden"); }, //shows when hovering over
+           function () { $('#wave').addClass("hidden"); } //Hides when hovering finished
+        );
     </script>
   </body>
 </html>

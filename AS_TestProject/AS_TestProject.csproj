@@ -381,6 +381,7 @@
     <Content Include="assets\img\gallery\maxresdefault.jpg" />
     <Content Include="assets\img\gallery\o %281%29.jpg" />
     <Content Include="assets\img\gallery\o.jpg" />
+    <Content Include="assets\img\handwaving.png" />
     <Content Include="assets\img\Headshot_Square.png" />
     <Content Include="assets\img\InsertionOrder.png" />
     <Content Include="assets\img\instagram.jpg" />
@@ -474,6 +475,8 @@
     <Content Include="buttons.html" />
     <Content Include="calendar.html" />
     <Content Include="chartjs.html" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -562,11 +565,6 @@
     <Content Include="assets\lineicons\fonts\linecons.eot" />
     <Content Include="assets\lineicons\fonts\linecons.ttf" />
     <Content Include="assets\lineicons\fonts\linecons.woff" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="assets\forms\Anomaly-Insertion-Order-Form.pdf" />
     <Content Include="assets\forms\AnomalySquared_EmployeeHandbook_V.2.02.pdf" />
     <Content Include="assets\forms\Anomaly_AccessControl.pdf" />
@@ -586,6 +584,11 @@
     <Content Include="Multiselect PlugIn\multi-select.jquery.json" />
     <Content Include="Multiselect PlugIn\README.markdown" />
     <Content Include="Multiselect PlugIn\test\lib\jasmine-1.2.0\MIT.LICENSE" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

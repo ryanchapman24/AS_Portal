@@ -4,13 +4,15 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
-
     <ul class="nav pull-right top-menu">
-        <li>
-            <a class="logout" title="manage" href="@Url.Action("ProfilePage","Home")" style="font-size: 14px">@ViewBag.DisplayName</a>
-        </li>
-        <li>
-            <a class="logout" href="javascript:document.getElementById('logoutForm').submit()" style="font-size: 14px">Logout</a>
+        <li class="btn-group">
+            <button class="logout dropdown-toggle" data-toggle="dropdown" style="font-size: 14px">@ViewBag.DisplayName<span class="caret" style="margin-left: 8px"></span></button>         
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="@Url.Action("ProfilePage","Home")">Go to Profile</a></li>
+                <li><a href="@Url.Action("Index","Manage")">Manage Account</a></li>
+                <li class="divider"></li>
+                <li><a class="logout" id="log-out" href="javascript:document.getElementById('logoutForm').submit()" style="font-size: 14px; line-height: 30px">Logout<img id="wave" class="hidden animated wobble infinite fa fa-thumbs-up" src="~/assets/img/handwaving.png" style="width: 30px; margin-left: 20px"/></a></li>
+            </ul>           
         </li>
     </ul>
     }
