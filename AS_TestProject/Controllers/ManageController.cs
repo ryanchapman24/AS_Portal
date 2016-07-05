@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AS_TestProject.Models;
+using System.IO;
 
 namespace AS_TestProject.Controllers
 {
@@ -255,6 +256,7 @@ namespace AS_TestProject.Controllers
             model.LastName = user.LastName;
             model.PhoneNumber = user.PhoneNumber;
             model.EmployeeID = user.EmployeeID;
+            model.ProfilePic = user.ProfilePic;
             ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", user.PositionID);
             ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", user.SiteID);
 
@@ -265,22 +267,40 @@ namespace AS_TestProject.Controllers
         // POST: /Manage/UpdateInformation
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateInformation(UpdateInformationViewModel model)
+        public ActionResult UpdateInformation(UpdateInformationViewModel model, HttpPostedFileBase image)
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
+                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
                 return View(model);
             }
             var user = UserManager.FindById(User.Identity.GetUserId());
+
+            var pPic = model.ProfilePic;
+            if (ImageUploadValidator.IsWebFriendlyImage(image))
+            {
+                var fileName = Path.GetFileName(image.FileName);
+                image.SaveAs(Path.Combine(Server.MapPath("~/ProfilePics/"), fileName));
+                pPic = "/ProfilePics/" + fileName;
+            }
+
+            var defaultMedia = "/assets/img/ASPortal-DefaultProfilePic.png";
+            if (String.IsNullOrWhiteSpace(user.ProfilePic))
+            {
+                pPic = defaultMedia;
+            }
+
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.DisplayName = model.FirstName + ' ' + model.LastName;
             user.PhoneNumber = model.PhoneNumber;
             user.EmployeeID = model.EmployeeID;
-            ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
-            ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
+            //ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", user.PositionID);
+            //ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", user.SiteID);
             user.PositionID = model.PositionID;
             user.SiteID = model.SiteID;
+            user.ProfilePic = pPic;
 
             UserManager.Update(user);
 

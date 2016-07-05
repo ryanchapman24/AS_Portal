@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity;
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -241,7 +243,7 @@
                   </li>
                   
                   <li>
-                      <a href="@Url.Action("ProfilePage","Home")">
+                      <a href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
                           <i class="fa fa-user"></i>
                           <span>Profile</span>
                       </a>
@@ -543,6 +545,7 @@
     <script src="~/assets/js/plugins/datatable/dataTables.bootstrap.js"></script>
     <script src="~/Multiselect PlugIn/js/jquery.multi-select.js"></script>
     <script src="~/Multiselect PlugIn/js/jquery.quicksearch.js"></script>
+    <script src="~/Scripts/MultiSelect.js"></script>
 
     <!--common script for all pages-->
     <script src="~/assets/js/common-scripts.js"></script>
@@ -575,6 +578,12 @@
         });
 	</script>*@
 
+    <script>
+        $('#custom-headers').multiSelect({
+            selectableHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>Available Roles</strong></div>",
+            selectionHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>User Roles</strong></div>"
+        });
+    </script>
     <script>
         $(document).ready( function () {
             $('.emptable').DataTable({
@@ -705,5 +714,37 @@
             });
         });
       </script>
+      @*<script>
+
+       var fileInput = document.getElementById('fileUploadThree');
+       var fileDisplayArea = document.getElementById('fileDisplay');
+
+       //File Reader Function for displaying images
+       fileInput.addEventListener('change', function (e) {
+           var file = fileInput.files[0];
+           var imageType = /image.*/;
+
+           if (file.type.match(imageType)) {
+               var reader = new FileReader();
+
+               reader.onload = function (e) {
+                   fileDisplayArea.innerHTML = "";
+
+                   // Create a new image.
+                   var img = new Image();
+                   // Set the img src property using the data URL.
+                   img.src = reader.result;
+                   // Add the image to the page.
+                   fileDisplayArea.appendChild(img);
+               }
+
+               reader.readAsDataURL(file);
+           }
+
+           else {
+               fileDisplayArea.innerHTML = "File not supported!";
+           }
+       });
+      </script>*@
   </body>
 </html>

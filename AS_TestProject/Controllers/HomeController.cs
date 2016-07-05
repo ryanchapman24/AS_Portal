@@ -28,9 +28,26 @@ namespace AS_TestProject.Controllers
             return View();
         }
 
-        public ActionResult ProfilePage()
+        public ActionResult ProfilePage(string id)
         {
-            return View();
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                var userCheck = db.Users.Find(id);
+                if (userCheck != null)
+                {
+                    var userA = userCheck.Id;
+
+                    return View(userCheck);
+                }
+
+            }
+
+            //might need later when I want to send specific info to profile page
+            //var user1 = User.Identity.GetUserId();
+
+            return View(user);
         }
 
         public ActionResult Forms()

@@ -10,6 +10,12 @@
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>Account Information:</dt>
+        <dd>
+            [
+            @Html.ActionLink("Update your account information", "UpdateInformation")
+            ]
+        </dd>
         <dt>Password:</dt>
         <dd>
             [
@@ -21,12 +27,6 @@
             {
                 @Html.ActionLink("Create", "SetPassword")
             }
-            ]
-        </dd>
-        <dt>Account Information:</dt>
-        <dd>
-            [
-            @Html.ActionLink("Update your account information", "UpdateInformation")
             ]
         </dd>
         @*<dt>External Logins:</dt>

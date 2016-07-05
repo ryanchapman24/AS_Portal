@@ -1,4 +1,7 @@
-﻿    @*<style type="text/css">
+﻿@model AS_TestProject.Models.ApplicationUser
+@using Microsoft.AspNet.Identity;
+
+    @*<style type="text/css">
         .gm-err-container {
             height: 100%;
             width: 100%;
@@ -50,7 +53,6 @@
             background-size: 15px 15px;
         }
     </style>*@
- 
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
@@ -71,11 +73,14 @@
                             </div><!-- --/col-md-4 ---->
 
                             <div class="col-md-4 profile-text">
-                                <h3 style="color: #29AAE3">@ViewBag.DisplayName</h3>
-                                <h5>@ViewBag.Site</h5>
-                                <h5><strong>@ViewBag.Position</strong></h5>
-                                <p><em>@ViewBag.PositionDescr</em></p>
+                                <h3 style="color: #29AAE3">@Model.DisplayName</h3>
+                                <h5>@Model.Site.SiteName</h5>
+                                <h5><strong>@Model.Position.PositionName</strong></h5>
+                                <p><em>@Model.Position.PositionDescription</em></p>
+                                @if (Model.Id == User.Identity.GetUserId())
+                                {
                                 <a href="@Url.Action("Index","Manage")">Edit Info</a>
+                                }
                                 <br />
                                 <br />
                                 <p><button class="btn btn-theme">@*<i class="fa fa-camera"></i>*@ Send Message</button></p>
@@ -83,7 +88,7 @@
 
                             <div class="col-md-4 centered">
                                 <div class="profile-pic">
-                                    <p><img src="~/assets/img/Headshot_Square.png" class="img-circle" style="width: 280px"></p>
+                                    <p><img src="@Model.ProfilePic" class="img-circle" style="width: 280px"></p>
                                     <p>
                                     </p>
                                 </div>
@@ -112,7 +117,7 @@
                                     <div id="overview" class="tab-pane active">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <textarea rows="8" class="form-control" placeholder="What's on your mind, @ViewBag.FirstName?"></textarea>
+                                                <textarea rows="8" class="form-control" placeholder="What's on your mind, @Model.FirstName?"></textarea>
                                                 <div class="grey-style" style="margin-top: 7px">
                                                     <div class="pull-left">
                                                         <button class="btn btn-sm btn-theme"><i class="fa fa-camera"></i></button>
@@ -209,7 +214,7 @@
                                                 <h4>EMAIL</h4>
                                                 <div class="col-md-8 col-md-offset-2 mt">
                                                     <p style="color: #29AAE3">
-                                                        <strong>@ViewBag.Email</strong>
+                                                        <strong>@Model.Email</strong>
                                                     </p>
                                                 </div>
                                             </div><!-- --/col-md-6 ---->
@@ -217,7 +222,7 @@
                                                 <h4>PHONE</h4>
                                                 <div class="col-md-8 col-md-offset-2 mt">
                                                     <p style="margin-left: 12px; color: #29AAE3">
-                                                        <strong>@ViewBag.PhoneNumber</strong>
+                                                        <strong>@Model.PhoneNumber</strong>
                                                     </p>
                                                 </div>
                                             </div>

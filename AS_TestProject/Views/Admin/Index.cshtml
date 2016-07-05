@@ -30,7 +30,7 @@
                                         <tr>
                                             <th>Last</th>
                                             <th>First</th>
-                                            @*<th>Site</th>*@
+                                            <th>Site</th>
                                             <th>Position</th>
                                             <th>Email</th>
                                             <th>Phone</th>
@@ -44,7 +44,7 @@
                                             <tr>
                                                 <td>@item.user.LastName</td>
                                                 <td>@item.user.FirstName</td>
-                                                @*<td>@item.user.Site.SiteName</td>*@
+                                                <td>@item.user.Site.SiteName</td>
                                                 <td>@item.user.Position.PositionName</td>
                                                 <td>@item.user.Email</td>
                                                 <td>@item.user.PhoneNumber</td>
@@ -54,7 +54,10 @@
                                                         <p>@role</p>
                                                     }
                                                 </td>
-                                                <td><a href="@Url.Action("EditUserRoles","Admin", new { id = item.user.Id })">Manage Role@*<img src="~/assets/img/workhat.png" style="width: 30px"/>*@</a></td>
+                                                <td>
+                                                    @Html.ActionLink("Manage Roles", "EditUserRoles", new { id = item.user.Id }) <br />
+                                                    @Html.ActionLink("Profile", "ProfilePage", "Home", new { id = item.user.Id }, null)
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>

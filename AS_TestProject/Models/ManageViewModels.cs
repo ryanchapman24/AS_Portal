@@ -85,6 +85,9 @@ namespace AS_TestProject.Models
         [Display(Name = "Site")]
         public int SiteID { get; set; }
 
+        [Required]
+        [Display(Name = "Profile Picture")]
+        public string ProfilePic { get; set; }
     }
 
     public class AddPhoneNumberViewModel

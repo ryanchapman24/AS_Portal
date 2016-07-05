@@ -157,10 +157,11 @@ namespace AS_TestProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                var pPic = "/assets/img/ASPortal-DefaultProfilePic.png";
 
                 ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
                 ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, EmployeeID = model.EmployeeID, PositionID = model.PositionID, SiteID = model.SiteID, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, EmployeeID = model.EmployeeID, PositionID = model.PositionID, SiteID = model.SiteID,  ProfilePic = pPic, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
