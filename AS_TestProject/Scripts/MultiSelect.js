@@ -1,3 +1,4 @@
+$('#my-select').multiSelect()
 
 $('.searchable').multiSelect({
     selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='' style=''>",
