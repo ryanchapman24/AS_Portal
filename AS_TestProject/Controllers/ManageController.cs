@@ -56,6 +56,7 @@ namespace AS_TestProject.Controllers
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.UpdateInformationSuccess ? "Your account information has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
@@ -245,6 +246,48 @@ namespace AS_TestProject.Controllers
         }
 
         //
+        // GET: /Manage/UpdateInformation
+        public ActionResult UpdateInformation()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var model = new UpdateInformationViewModel();
+            model.FirstName = user.FirstName;
+            model.LastName = user.LastName;
+            model.PhoneNumber = user.PhoneNumber;
+            model.EmployeeID = user.EmployeeID;
+            ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", user.PositionID);
+            ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", user.SiteID);
+
+            return View(model);
+        }
+
+        //
+        // POST: /Manage/UpdateInformation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateInformation(UpdateInformationViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.DisplayName = model.FirstName + ' ' + model.LastName;
+            user.PhoneNumber = model.PhoneNumber;
+            user.EmployeeID = model.EmployeeID;
+            ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
+            ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
+            user.PositionID = model.PositionID;
+            user.SiteID = model.SiteID;
+
+            UserManager.Update(user);
+
+            return RedirectToAction("Index", new { Message = ManageMessageId.UpdateInformationSuccess });
+        }
+
+        //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
@@ -377,6 +420,7 @@ namespace AS_TestProject.Controllers
         {
             AddPhoneSuccess,
             ChangePasswordSuccess,
+            UpdateInformationSuccess,
             SetTwoFactorSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,

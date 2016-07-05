@@ -58,6 +58,35 @@ namespace AS_TestProject.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class UpdateInformationViewModel
+    {
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Employee ID")]
+        public int? EmployeeID { get; set; }
+
+        [Required]
+        [Display(Name = "Position")]
+        public int PositionID { get; set; }
+
+        [Required]
+        [Display(Name = "Site")]
+        public int SiteID { get; set; }
+
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]

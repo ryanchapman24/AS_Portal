@@ -13,8 +13,8 @@ namespace AS_TestProject.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string DisplayName { get; set; }
-        public int? PositionID { get; set; }
-        public int? SiteID { get; set; }
+        public int PositionID { get; set; }
+        public int SiteID { get; set; }
         public string ProfilePic { get; set; }
 
         public virtual Site Site { get; set; }

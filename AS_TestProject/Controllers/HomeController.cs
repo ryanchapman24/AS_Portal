@@ -78,16 +78,30 @@ namespace AS_TestProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Publish(List<int> Published)
+        public ActionResult Publish(List<int> Published, List<int> Delete)
         {
-            int count = Published.Count();
-            for (int i = 0; i < count; i++)
+            if (Published != null)
             {
-                var photo = db.GalleryPhotos.Find(Published[i]);
-                photo.Published = true;
-                db.SaveChanges();               
+                int count = Published.Count();
+                for (int i = 0; i < count; i++)
+                {
+                    var photo = db.GalleryPhotos.Find(Published[i]);
+                    photo.Published = true;
+                    db.SaveChanges();
+                }
             }
-            
+
+            if (Delete != null)
+            {
+                int total = Delete.Count();
+                for (int i = 0; i < total; i++)
+                {
+                    var photo = db.GalleryPhotos.Find(Delete[i]);
+                    db.GalleryPhotos.Remove(photo);
+                    db.SaveChanges();
+                }
+            }
+
             return RedirectToAction("Gallery", "Home");
         }
     }
