@@ -12,10 +12,9 @@ namespace AS_TestProject.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class CallLogMaster1
+    public partial class EverQuoteHourlyCallLogMaster
     {
         public System.DateTime RecordDate { get; set; }
-        public System.TimeSpan RecordTime { get; set; }
         public string DomainName { get; set; }
         public string Five9Timestamp { get; set; }
         public string CampaignName { get; set; }
@@ -41,7 +40,7 @@ namespace AS_TestProject.Entities
         public string Holds { get; set; }
         public string Abandonded { get; set; }
         public string Recordings { get; set; }
-        public Nullable<int> CallDayOfMonth { get; set; }
+        public string CallDayOfMonth { get; set; }
         public string CallDayOfWeek { get; set; }
         public string CallHourOfDay { get; set; }
         public string AbandonRate { get; set; }
@@ -98,59 +97,6 @@ namespace AS_TestProject.Entities
         public string ClientID { get; set; }
         public string CustomerEmailAddress { get; set; }
         public string InputWebsite { get; set; }
-        public string LoanType { get; set; }
-        public string Mortgage1Balance { get; set; }
-        public string LoanAmount { get; set; }
-        public string TransferNumber { get; set; }
-        public string DateMailed { get; set; }
-        public string DateExpiration { get; set; }
-        public string DateReceived { get; set; }
-        public string CreditGroup { get; set; }
-        public string Agency { get; set; }
-        public string Campaign { get; set; }
-        public string ContactCreateTimestamp { get; set; }
-        public string ContactModifiedTimestamp { get; set; }
-        public string CreditRate { get; set; }
-        public string HomeValue { get; set; }
-        public string FormType { get; set; }
-        public string HybridFilterID { get; set; }
-        public string LoanApplicationID { get; set; }
-        public string Citizen { get; set; }
-        public string ListCode { get; set; }
-        public string Vendor { get; set; }
-        public string Vertical { get; set; }
-        public string LoanRequestType { get; set; }
-        public string ChildProjectCode { get; set; }
-        public string Dispo { get; set; }
-        public string DOB { get; set; }
-        public string Gender { get; set; }
-        public string Language { get; set; }
-        public string PatientID { get; set; }
-        public string ProjectCode { get; set; }
-        public string QualifiedProtocols { get; set; }
-        public string ReferredDate { get; set; }
-        public string SiteInfo { get; set; }
-        public string SiteNumber { get; set; }
-        public string Variable1 { get; set; }
-        public string Variable2 { get; set; }
-        public string DispositionResolutionCode { get; set; }
-        public string SiteAddress { get; set; }
-        public string SiteCity { get; set; }
-        public string SitePI { get; set; }
-        public string SiteCoordinatorFirstname { get; set; }
-        public string LoanPurpose { get; set; }
-        public string NMLSID { get; set; }
-        public string PropertyState { get; set; }
-        public string PropertyType { get; set; }
-        public string PropertyZip { get; set; }
-        public string PropertyPrice { get; set; }
-        public string LoanOfficerEmail { get; set; }
-        public string AppDatestamp { get; set; }
-        public string LeadSource { get; set; }
-        public string Partner { get; set; }
-        public string ProductType { get; set; }
-        public string Script { get; set; }
-        public string SiteCoordinatorPhoneNumber { get; set; }
-        public string TransferType { get; set; }
+        public string SourceID { get; set; }
     }
 }

@@ -233,10 +233,13 @@
     <Compile Include="Entities\AgentDailyHour.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\CallLogMaster.cs">
+    <Compile Include="Entities\AgentDailyHours1.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\CallLogMaster1.cs">
+    <Compile Include="Entities\AgentTimeAdjustmentReason.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CallLogMaster.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\CampaignGroup.cs">
@@ -272,6 +275,15 @@
     <Compile Include="Entities\EmployeeNoteType.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\EverQuoteHourlyCallLogMaster.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EverQuoteHourlyCampaignMetric.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EverQuoteRollingCampaignMetric.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\FreedomDailyPortfolioInventory.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
@@ -279,6 +291,9 @@
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\FreedomHourlyCallMetrics1.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PayPeriod.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Position.cs">

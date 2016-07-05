@@ -17,6 +17,8 @@ namespace AS_TestProject.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DomainMaster()
         {
+            this.AgentDailyHours = new HashSet<AgentDailyHour>();
+            this.PayPeriods = new HashSet<PayPeriod>();
             this.CallLogMasters = new HashSet<CallLogMaster>();
         }
     
@@ -34,6 +36,10 @@ namespace AS_TestProject.Entities
     
         public virtual Customer Customer { get; set; }
         public virtual DomainType DomainType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgentDailyHour> AgentDailyHours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PayPeriod> PayPeriods { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CallLogMaster> CallLogMasters { get; set; }
     }

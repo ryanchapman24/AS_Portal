@@ -38,13 +38,18 @@ namespace AS_TestProject.Entities
         public virtual DbSet<ProblemMaster> ProblemMasters { get; set; }
         public virtual DbSet<CampaignGroup> CampaignGroups { get; set; }
         public virtual DbSet<DailyPortfolioInventory> DailyPortfolioInventories { get; set; }
+        public virtual DbSet<AgentDailyHour> AgentDailyHours { get; set; }
+        public virtual DbSet<AgentTimeAdjustmentReason> AgentTimeAdjustmentReasons { get; set; }
+        public virtual DbSet<PayPeriod> PayPeriods { get; set; }
         public virtual DbSet<CallLogMaster> CallLogMasters { get; set; }
+        public virtual DbSet<EverQuoteHourlyCampaignMetric> EverQuoteHourlyCampaignMetrics { get; set; }
+        public virtual DbSet<EverQuoteRollingCampaignMetric> EverQuoteRollingCampaignMetrics { get; set; }
         public virtual DbSet<PreciseLeadsHourlyCampaignMetric> PreciseLeadsHourlyCampaignMetrics { get; set; }
         public virtual DbSet<PreciseLeadsRollingCampaignMetric> PreciseLeadsRollingCampaignMetrics { get; set; }
         public virtual DbSet<FreedomHourlyCallMetric> FreedomHourlyCallMetrics { get; set; }
-        public virtual DbSet<AgentDailyHour> AgentDailyHours { get; set; }
-        public virtual DbSet<CallLogMaster1> CallLogMaster1 { get; set; }
+        public virtual DbSet<AgentDailyHours1> AgentDailyHours1 { get; set; }
         public virtual DbSet<ClientLead> ClientLeads { get; set; }
+        public virtual DbSet<EverQuoteHourlyCallLogMaster> EverQuoteHourlyCallLogMasters { get; set; }
         public virtual DbSet<FreedomDailyPortfolioInventory> FreedomDailyPortfolioInventories { get; set; }
         public virtual DbSet<FreedomHourlyCallMetrics1> FreedomHourlyCallMetrics1 { get; set; }
         public virtual DbSet<PreciseLeadsHourlyCallLogMaster> PreciseLeadsHourlyCallLogMasters { get; set; }

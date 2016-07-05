@@ -1,24 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ReportEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="ReportModel.Customer" />
+    <EntitySet Name="CustomerContacts" EntityType="ReportModel.CustomerContact" />
+    <EntitySet Name="DomainMasters" EntityType="ReportModel.DomainMaster" />
+    <EntitySet Name="DomainTypes" EntityType="ReportModel.DomainType" />
+    <EntitySet Name="Employees" EntityType="ReportModel.Employee" />
+    <EntitySet Name="EmployeeFive9Agent" EntityType="ReportModel.EmployeeFive9Agent" />
+    <EntitySet Name="EmployeeNotes" EntityType="ReportModel.EmployeeNote" />
+    <EntitySet Name="EmployeeNoteTypes" EntityType="ReportModel.EmployeeNoteType" />
+    <EntitySet Name="Positions" EntityType="ReportModel.Position" />
+    <EntitySet Name="Sites" EntityType="ReportModel.Site" />
+    <EntitySet Name="ProblemMasters" EntityType="ReportModel.ProblemMaster" />
+    <EntitySet Name="CampaignGroups" EntityType="ReportModel.CampaignGroup" />
+    <EntitySet Name="DailyPortfolioInventories" EntityType="ReportModel.DailyPortfolioInventory" />
+    <EntitySet Name="AgentDailyHours" EntityType="ReportModel.AgentDailyHour" />
+    <EntitySet Name="AgentTimeAdjustmentReasons" EntityType="ReportModel.AgentTimeAdjustmentReason" />
+    <EntitySet Name="PayPeriods" EntityType="ReportModel.PayPeriod" />
+    <EntitySet Name="CallLogMasters" EntityType="ReportModel.CallLogMaster" />
+    <EntitySet Name="EverQuoteHourlyCampaignMetrics" EntityType="ReportModel.EverQuoteHourlyCampaignMetric" />
+    <EntitySet Name="EverQuoteRollingCampaignMetrics" EntityType="ReportModel.EverQuoteRollingCampaignMetric" />
+    <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" />
+    <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" />
+    <EntitySet Name="FreedomHourlyCallMetrics" EntityType="ReportModel.FreedomHourlyCallMetric" />
+    <EntitySet Name="AgentDailyHours1" EntityType="ReportModel.AgentDailyHours1" />
+    <EntitySet Name="ClientLeads" EntityType="ReportModel.ClientLead" />
+    <EntitySet Name="EverQuoteHourlyCallLogMasters" EntityType="ReportModel.EverQuoteHourlyCallLogMaster" />
+    <EntitySet Name="FreedomDailyPortfolioInventories" EntityType="ReportModel.FreedomDailyPortfolioInventory" />
+    <EntitySet Name="FreedomHourlyCallMetrics1" EntityType="ReportModel.FreedomHourlyCallMetrics1" />
+    <EntitySet Name="PreciseLeadsHourlyCallLogMasters" EntityType="ReportModel.PreciseLeadsHourlyCallLogMaster" />
+    <AssociationSet Name="FK_CLIENT_Customer_AddByEmployeeID" Association="ReportModel.FK_CLIENT_Customer_AddByEmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENT_CustomerContact_CustomerID" Association="ReportModel.FK_CLIENT_CustomerContact_CustomerID">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="CustomerContact" EntitySet="CustomerContacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENT_DomainMaster_CustomerID" Association="ReportModel.FK_CLIENT_DomainMaster_CustomerID">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="DomainMaster" EntitySet="DomainMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENT_DomainMaster_DomainTypeID" Association="ReportModel.FK_CLIENT_DomainMaster_DomainTypeID">
+      <End Role="DomainType" EntitySet="DomainTypes" />
+      <End Role="DomainMaster" EntitySet="DomainMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYROLL_AgentDailyHours_DomainMasterID" Association="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID">
+      <End Role="DomainMaster" EntitySet="DomainMasters" />
+      <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYROLL_PayPeriod_DomainMasterID" Association="ReportModel.FK_PAYROLL_PayPeriod_DomainMasterID">
+      <End Role="DomainMaster" EntitySet="DomainMasters" />
+      <End Role="PayPeriod" EntitySet="PayPeriods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPORT_CallLogMaster_DomainMasterID" Association="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID">
+      <End Role="DomainMaster" EntitySet="DomainMasters" />
+      <End Role="CallLogMaster" EntitySet="CallLogMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_Employee_RoleID" Association="ReportModel.FK_COMPANY_Employee_RoleID">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_Employee_SiteID" Association="ReportModel.FK_COMPANY_Employee_SiteID">
+      <End Role="Site" EntitySet="Sites" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_EmployeeFive9Agent_EmployeeID" Association="ReportModel.FK_COMPANY_EmployeeFive9Agent_EmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeFive9Agent" EntitySet="EmployeeFive9Agent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_EmployeeNote_AddByEmployeeID" Association="ReportModel.FK_COMPANY_EmployeeNote_AddByEmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeNote" EntitySet="EmployeeNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPANY_EmployeeNoteType_AddByEmployeeID" Association="ReportModel.FK_COMPANY_EmployeeNoteType_AddByEmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeNoteType" EntitySet="EmployeeNoteTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYROLL_AgentDailyHours_EmployeeID" Association="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYROLL_PayPeriod_EmployeeID" Association="ReportModel.FK_PAYROLL_PayPeriod_EmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="PayPeriod" EntitySet="PayPeriods" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="CustomerID" />
     </Key>
     <Property Name="CustomerID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AddressLine1" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="City" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
     <Property Name="ImplementationDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TerminationDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddByEmployeeID" Type="Int32" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK_CLIENT_Customer_AddByEmployeeID" FromRole="Customer" ToRole="Employee" />
-    <NavigationProperty Name="CustomerContacts" Relationship="Self.FK_CLIENT_CustomerContact_CustomerID" FromRole="Customer" ToRole="CustomerContact" />
-    <NavigationProperty Name="DomainMasters" Relationship="Self.FK_CLIENT_DomainMaster_CustomerID" FromRole="Customer" ToRole="DomainMaster" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_CLIENT_Customer_AddByEmployeeID" FromRole="Customer" ToRole="Employee" />
+    <NavigationProperty Name="CustomerContacts" Relationship="ReportModel.FK_CLIENT_CustomerContact_CustomerID" FromRole="Customer" ToRole="CustomerContact" />
+    <NavigationProperty Name="DomainMasters" Relationship="ReportModel.FK_CLIENT_DomainMaster_CustomerID" FromRole="Customer" ToRole="DomainMaster" />
   </EntityType>
   <EntityType Name="CustomerContact">
     <Key>
@@ -26,64 +112,66 @@
     </Key>
     <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CustomerID" Type="Int16" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="EmailAddress" Type="String" MaxLength="320" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddByEmplloyeeID" Type="Int32" Nullable="false" />
     <Property Name="DeactiveDate" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK_CLIENT_CustomerContact_CustomerID" FromRole="CustomerContact" ToRole="Customer" />
+    <NavigationProperty Name="Customer" Relationship="ReportModel.FK_CLIENT_CustomerContact_CustomerID" FromRole="CustomerContact" ToRole="Customer" />
   </EntityType>
   <EntityType Name="DomainMaster">
     <Key>
       <PropertyRef Name="DomainMasterID" />
     </Key>
     <Property Name="DomainMasterID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DomainName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DomainName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="CustomerID" Type="Int16" Nullable="false" />
     <Property Name="DomainTypeID" Type="Byte" Nullable="false" />
-    <Property Name="CostCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FileMask" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CostCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FileMask" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="DeactiveDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddTime" Type="Time" Nullable="false" Precision="7" />
     <Property Name="AddByEmployeeID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK_CLIENT_DomainMaster_CustomerID" FromRole="DomainMaster" ToRole="Customer" />
-    <NavigationProperty Name="DomainType" Relationship="Self.FK_CLIENT_DomainMaster_DomainTypeID" FromRole="DomainMaster" ToRole="DomainType" />
-    <NavigationProperty Name="CallLogMasters" Relationship="Self.FK_REPORT_CallLogMaster_DomainMasterID" FromRole="DomainMaster" ToRole="CallLogMaster" />
+    <NavigationProperty Name="Customer" Relationship="ReportModel.FK_CLIENT_DomainMaster_CustomerID" FromRole="DomainMaster" ToRole="Customer" />
+    <NavigationProperty Name="DomainType" Relationship="ReportModel.FK_CLIENT_DomainMaster_DomainTypeID" FromRole="DomainMaster" ToRole="DomainType" />
+    <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" FromRole="DomainMaster" ToRole="AgentDailyHour" />
+    <NavigationProperty Name="PayPeriods" Relationship="ReportModel.FK_PAYROLL_PayPeriod_DomainMasterID" FromRole="DomainMaster" ToRole="PayPeriod" />
+    <NavigationProperty Name="CallLogMasters" Relationship="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" FromRole="DomainMaster" ToRole="CallLogMaster" />
   </EntityType>
   <EntityType Name="DomainType">
     <Key>
       <PropertyRef Name="DomainTypeID" />
     </Key>
     <Property Name="DomainTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DomainTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DomainTypeDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DomainTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DomainTypeDescription" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddTime" Type="Time" Nullable="false" Precision="7" />
     <Property Name="AddByEmployeeID" Type="Int32" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="DeactiveDate" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="DomainMasters" Relationship="Self.FK_CLIENT_DomainMaster_DomainTypeID" FromRole="DomainType" ToRole="DomainMaster" />
+    <NavigationProperty Name="DomainMasters" Relationship="ReportModel.FK_CLIENT_DomainMaster_DomainTypeID" FromRole="DomainType" ToRole="DomainMaster" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
       <PropertyRef Name="EmployeeID" />
     </Key>
     <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AddressLine1" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="City" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="EmailAddress" Type="String" MaxLength="320" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="HomePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="HomePhone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CellPhone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TerminationDate" Type="DateTime" Nullable="false" Precision="0" />
@@ -95,13 +183,15 @@
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddByEmployeeID" Type="Int32" Nullable="false" />
     <Property Name="RehireDate" Type="DateTime" Precision="0" />
-    <Property Name="FileNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Customers" Relationship="Self.FK_CLIENT_Customer_AddByEmployeeID" FromRole="Employee" ToRole="Customer" />
-    <NavigationProperty Name="Position" Relationship="Self.FK_COMPANY_Employee_RoleID" FromRole="Employee" ToRole="Position" />
-    <NavigationProperty Name="Site" Relationship="Self.FK_COMPANY_Employee_SiteID" FromRole="Employee" ToRole="Site" />
-    <NavigationProperty Name="EmployeeFive9Agent" Relationship="Self.FK_COMPANY_EmployeeFive9Agent_EmployeeID" FromRole="Employee" ToRole="EmployeeFive9Agent" />
-    <NavigationProperty Name="EmployeeNotes" Relationship="Self.FK_COMPANY_EmployeeNote_AddByEmployeeID" FromRole="Employee" ToRole="EmployeeNote" />
-    <NavigationProperty Name="EmployeeNoteTypes" Relationship="Self.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" FromRole="Employee" ToRole="EmployeeNoteType" />
+    <Property Name="FileNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="ReportModel.FK_CLIENT_Customer_AddByEmployeeID" FromRole="Employee" ToRole="Customer" />
+    <NavigationProperty Name="Position" Relationship="ReportModel.FK_COMPANY_Employee_RoleID" FromRole="Employee" ToRole="Position" />
+    <NavigationProperty Name="Site" Relationship="ReportModel.FK_COMPANY_Employee_SiteID" FromRole="Employee" ToRole="Site" />
+    <NavigationProperty Name="EmployeeFive9Agent" Relationship="ReportModel.FK_COMPANY_EmployeeFive9Agent_EmployeeID" FromRole="Employee" ToRole="EmployeeFive9Agent" />
+    <NavigationProperty Name="EmployeeNotes" Relationship="ReportModel.FK_COMPANY_EmployeeNote_AddByEmployeeID" FromRole="Employee" ToRole="EmployeeNote" />
+    <NavigationProperty Name="EmployeeNoteTypes" Relationship="ReportModel.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" FromRole="Employee" ToRole="EmployeeNoteType" />
+    <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="Employee" ToRole="AgentDailyHour" />
+    <NavigationProperty Name="PayPeriods" Relationship="ReportModel.FK_PAYROLL_PayPeriod_EmployeeID" FromRole="Employee" ToRole="PayPeriod" />
   </EntityType>
   <EntityType Name="EmployeeFive9Agent">
     <Key>
@@ -109,11 +199,11 @@
     </Key>
     <Property Name="EmployeeFive9AgentID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-    <Property Name="AgentID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddByEmplloyeeID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK_COMPANY_EmployeeFive9Agent_EmployeeID" FromRole="EmployeeFive9Agent" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_COMPANY_EmployeeFive9Agent_EmployeeID" FromRole="EmployeeFive9Agent" ToRole="Employee" />
   </EntityType>
   <EntityType Name="EmployeeNote">
     <Key>
@@ -122,46 +212,46 @@
     <Property Name="EmployeeNoteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EmployeeID" Type="Int32" Nullable="false" />
     <Property Name="EmployeeNoteTypeID" Type="Byte" Nullable="false" />
-    <Property Name="EmployeeNote1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeNote1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddByEmployeeID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK_COMPANY_EmployeeNote_AddByEmployeeID" FromRole="EmployeeNote" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_COMPANY_EmployeeNote_AddByEmployeeID" FromRole="EmployeeNote" ToRole="Employee" />
   </EntityType>
   <EntityType Name="EmployeeNoteType">
     <Key>
       <PropertyRef Name="EmployeeNoteTypeID" />
     </Key>
     <Property Name="EmployeeNoteTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NoteName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NoteDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NoteName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="NoteDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AddByEmployeeID" Type="Int32" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" FromRole="EmployeeNoteType" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" FromRole="EmployeeNoteType" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Position">
     <Key>
       <PropertyRef Name="PositionID" />
     </Key>
     <Property Name="PositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PositionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PositionDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Employees" Relationship="Self.FK_COMPANY_Employee_RoleID" FromRole="Position" ToRole="Employee" />
+    <Property Name="PositionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositionDescription" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employees" Relationship="ReportModel.FK_COMPANY_Employee_RoleID" FromRole="Position" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Site">
     <Key>
       <PropertyRef Name="SiteID" />
     </Key>
     <Property Name="SiteID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AddressLine1" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="City" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MainPhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SiteName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="MainPhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Employees" Relationship="Self.FK_COMPANY_Employee_SiteID" FromRole="Site" ToRole="Employee" />
+    <NavigationProperty Name="Employees" Relationship="ReportModel.FK_COMPANY_Employee_SiteID" FromRole="Site" ToRole="Employee" />
   </EntityType>
   <EntityType Name="ProblemMaster">
     <Key>
@@ -170,12 +260,12 @@
     <Property Name="ProblemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="UserID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ProcessName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="ErrorNumber" Type="Int32" Nullable="false" />
     <Property Name="LineNumber" Type="Int32" Nullable="false" />
-    <Property Name="ExceptionMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ExceptionSource" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExceptionMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ExceptionSource" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="ExceptionSeverity" Type="Int32" Nullable="false" />
     <Property Name="ExceptionState" Type="Int32" Nullable="false" />
     <Property Name="IsResolved" Type="Boolean" Nullable="false" />
@@ -187,8 +277,8 @@
       <PropertyRef Name="CampaignGroupID" />
     </Key>
     <Property Name="CampaignGroupID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CampaignName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CampaignGroup1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignGroup1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DailyPortfolioInventory">
     <Key>
@@ -197,156 +287,236 @@
       <PropertyRef Name="State" />
     </Key>
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ListName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ListName" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
     <Property Name="InitialCount" Type="Int32" Nullable="false" />
     <Property Name="CompletedCount" Type="Int32" Nullable="false" />
     <Property Name="InProgressCount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AgentDailyHour">
+    <Key>
+      <PropertyRef Name="AgentDailyHoursID" />
+    </Key>
+    <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+    <Property Name="LoginTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LogoutTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" FromRole="AgentDailyHour" ToRole="DomainMaster" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="AgentDailyHour" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="AgentTimeAdjustmentReason">
+    <Key>
+      <PropertyRef Name="AgentTimeAdjustmentReasonID" />
+    </Key>
+    <Property Name="AgentTimeAdjustmentReasonID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReasonCode" Type="Int16" Nullable="false" />
+    <Property Name="Reason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PayPeriod">
+    <Key>
+      <PropertyRef Name="PayPeriodID" />
+    </Key>
+    <Property Name="PayPeriodID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="StartPeriod" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MidPeriod" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_PAYROLL_PayPeriod_DomainMasterID" FromRole="PayPeriod" ToRole="DomainMaster" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_PAYROLL_PayPeriod_EmployeeID" FromRole="PayPeriod" ToRole="Employee" />
   </EntityType>
   <EntityType Name="CallLogMaster">
     <Key>
       <PropertyRef Name="CallLogMasterID" />
     </Key>
     <Property Name="CallLogMasterID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="RecordTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="RecordDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RecordTime" Type="Time" Precision="7" />
     <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
-    <Property Name="Five9Timestamp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CampaignName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CallType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AgentID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Disposition" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AutomaticNumberIdentification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LeadID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CustomerName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DialedNumberIdentificationService" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CallTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="BillTimeRounded" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="Cost" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
-    <Property Name="IVRTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="QueueWaitTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="RingTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="TalkTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="HoldTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="ParkTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="AfterCallWorkTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="Transfers" Type="Byte" Nullable="false" />
-    <Property Name="Conferences" Type="Byte" Nullable="false" />
-    <Property Name="Holds" Type="Byte" Nullable="false" />
-    <Property Name="Abandonded" Type="Boolean" Nullable="false" />
-    <Property Name="Recordings" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CallDayOfMonth" Type="Int32" Nullable="false" />
-    <Property Name="CallDayOfWeek" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CallHourOfDay" Type="Byte" Nullable="false" />
-    <Property Name="AbandonRate" Type="Decimal" Precision="5" Scale="4" Nullable="false" />
-    <Property Name="ANIAreaCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="ANICountry" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ANICountryCode" Type="Byte" Nullable="false" />
-    <Property Name="ANIState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="Calls" Type="Byte" Nullable="false" />
-    <Property Name="CallsCompletedInIVR" Type="Byte" Nullable="false" />
-    <Property Name="CallsTimedOutInIVR" Type="Byte" Nullable="false" />
-    <Property Name="CampaignType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Contacted" Type="Boolean" Nullable="false" />
-    <Property Name="DisconnectedFromHold" Type="Boolean" Nullable="false" />
-    <Property Name="DNISAreaCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="DNISCountry" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DNISCountryCode" Type="Byte" Nullable="false" />
-    <Property Name="DNISState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="ListName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LiveConnect" Type="Boolean" Nullable="false" />
-    <Property Name="NoPartyContact" Type="Boolean" Nullable="false" />
+    <Property Name="Five9Timestamp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="CallType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="AgentID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Disposition" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="AutomaticNumberIdentification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="LeadID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="DialedNumberIdentificationService" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CallTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="BillTimeRounded" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Cost" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IVRTime" Type="Time" Precision="7" />
+    <Property Name="QueueWaitTime" Type="Time" Precision="7" />
+    <Property Name="RingTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TalkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="HoldTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ParkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AfterCallWorkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Transfers" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Conferences" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Holds" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Abandonded" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Recordings" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CallDayOfMonth" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallDayOfWeek" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CallHourOfDay" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AbandonRate" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ANIAreaCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ANICountry" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ANICountryCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="ANIState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Calls" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CallsCompletedInIVR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CallsTimedOutInIVR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CampaignType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Contacted" Type="Boolean" />
+    <Property Name="DisconnectedFromHold" Type="Boolean" />
+    <Property Name="DNISAreaCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DNISCountryCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DNISState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DNISCountry" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ListName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="LiveConnect" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="NoPartyContact" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="ServiceLevel" Type="Byte" Nullable="false" />
-    <Property Name="Skill" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SpeedOfAnswer" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="ThirdPartyTalkTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="ConferenceTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="ConsultTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="DialTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="HandleTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="ManualTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="Rate" Type="Decimal" Precision="6" Scale="4" Nullable="false" />
-    <Property Name="TalkTimeLessHoldAndPark" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="TimeToAbandon" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="AgentEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AgentFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AgentLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Extension" Type="Byte" />
-    <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CustomerState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="Address1" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Address2" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PhoneNumber1" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PhoneNumber2" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PhoneNumber3" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="IsDoNotCall" Type="Boolean" Nullable="false" />
-    <Property Name="ContactID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CallID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AgentGroup" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SessionID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ParentSessionID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ClientID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CustomerEmailAddress" Type="String" MaxLength="320" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="InputWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoanType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Mortgage1Balance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoanAmount" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="TransferNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DateMailed" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DateExpiration" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DateReceived" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CreditGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Agency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Campaign" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ContactCreateTimestamp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ContactModifiedTimestamp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CreditRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="HomeValue" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FormType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="HybridFilterID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoanApplicationID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Citizen" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ListCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Vendor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Vertical" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoanRequestType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ChildProjectCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Dispo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DOB" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Gender" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Language" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PatientID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ProjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="QualifiedProtocols" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ReferredDate" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SiteInfo" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SiteNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Variable1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Variable2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DispositionResolutionCode" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SiteAddress" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SiteCity" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SitePI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SiteCoordinatorFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoanPurpose" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NMLSID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PropertyState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PropertyType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PropertyZip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PropertyPrice" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoanOfficerEmail" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AppDatestamp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LeadSource" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Partner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ProductType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Script" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SiteCoordinatorPhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="TransferType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="DomainMaster" Relationship="Self.FK_REPORT_CallLogMaster_DomainMasterID" FromRole="CallLogMaster" ToRole="DomainMaster" />
+    <Property Name="ServiceLevel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Skill" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="SpeedOfAnswer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ThirdPartyTalkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ConferenceTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConsultTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DialTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HandleTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ManualTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rate" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TalkTimeLessHoldAndPark" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TimeToAbandon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AgentEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="AgentFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgentLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Extension" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber1" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber2" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber3" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="IsDoNotCall" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ListCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LoanAmount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LoanPurpose" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoanType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Number1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Number2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Number3" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PropertyType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PurchasePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Street" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="ContactID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ContactCreateTimestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactModifiedTimestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Dispo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FacilityName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PatientID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="QualifiedProtocols" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RefferedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Site1Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Site1City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SiteInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DispositionResolutionCode" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="FilterID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ListEntry" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="NMLSID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PropertyState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PropertyZip" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateExpiration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateMailed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateReceived" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ListEntryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ScriptType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TransferNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreditRate" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FormType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Homevalue" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="HybridFilterID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Mortgage1Balance" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PropertyUse" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ShortFilterID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Agency" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Campaign" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoanRequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubmitTimeStamp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Vertical" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="LoanApplicationID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoanOfficerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AppDateStamp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LeadSource" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" FromRole="CallLogMaster" ToRole="DomainMaster" />
+  </EntityType>
+  <EntityType Name="EverQuoteHourlyCampaignMetric">
+    <Key>
+      <PropertyRef Name="HourlyCampaignID" />
+    </Key>
+    <Property Name="HourlyCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TotalContacts" Type="Int32" Nullable="false" />
+    <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+    <Property Name="TotalLeads" Type="Int32" Nullable="false" />
+    <Property Name="TotalTransfers" Type="Int32" Nullable="false" />
+    <Property Name="TotalDials" Type="Int32" Nullable="false" />
+    <Property Name="CampaignDials" Type="Int32" Nullable="false" />
+    <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TotalAgents" Type="Byte" Nullable="false" />
+    <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EverQuoteRollingCampaignMetric">
+    <Key>
+      <PropertyRef Name="RollingCampaignID" />
+    </Key>
+    <Property Name="RollingCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TotalContacts" Type="Int32" Nullable="false" />
+    <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+    <Property Name="TotalLeads" Type="Int64" Nullable="false" />
+    <Property Name="TotalTransfers" Type="Int64" Nullable="false" />
+    <Property Name="TotalDials" Type="Int64" Nullable="false" />
+    <Property Name="CampaignDials" Type="Int32" Nullable="false" />
+    <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TotalAgents" Type="Byte" Nullable="false" />
+    <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="PreciseLeadsHourlyCampaignMetric">
     <Key>
@@ -355,21 +525,21 @@
     <Property Name="HourlyCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="CampaignID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="TotalContacts" Type="Int32" Nullable="false" />
-    <Property Name="ContactToTransfer" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
+    <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
     <Property Name="TotalLeads" Type="Int32" Nullable="false" />
     <Property Name="TotalTransfers" Type="Int32" Nullable="false" />
     <Property Name="TotalDials" Type="Int32" Nullable="false" />
     <Property Name="CampaignDials" Type="Int32" Nullable="false" />
-    <Property Name="TransfersPerDial" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TotalAgents" Type="Byte" Nullable="false" />
-    <Property Name="PercentOfTotalCalls" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
-    <Property Name="TPHHours" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
-    <Property Name="TransfersPerHour" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
-    <Property Name="HourOfDay" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="SourceID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CostPerTransfer" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
     <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="PreciseLeadsRollingCampaignMetric">
@@ -379,21 +549,21 @@
     <Property Name="RollingCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="CampaignID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="TotalContacts" Type="Int32" Nullable="false" />
-    <Property Name="ContactToTransfer" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
+    <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
     <Property Name="TotalLeads" Type="Int64" Nullable="false" />
     <Property Name="TotalTransfers" Type="Int64" Nullable="false" />
     <Property Name="TotalDials" Type="Int64" Nullable="false" />
     <Property Name="CampaignDials" Type="Int32" Nullable="false" />
-    <Property Name="TransfersPerDial" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
+    <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TotalAgents" Type="Byte" Nullable="false" />
-    <Property Name="PercentOfTotalCalls" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
-    <Property Name="TPHHours" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
-    <Property Name="TransfersPerHour" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
-    <Property Name="HourOfDay" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="SourceID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CostPerTransfer" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
     <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="FreedomHourlyCallMetric">
@@ -410,14 +580,14 @@
     <Property Name="DailyRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="RecordTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="ListName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CampaignName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Disposition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CallType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ListName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="Disposition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CallType" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="HourOfDay" Type="Byte" Nullable="false" />
     <Property Name="CallState" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="AgentDailyHour">
+  <EntityType Name="AgentDailyHours1">
     <Key>
       <PropertyRef Name="AgentID" />
       <PropertyRef Name="DomainName" />
@@ -427,157 +597,13 @@
       <PropertyRef Name="LogoutTimestamp" />
       <PropertyRef Name="LoginDuration" />
     </Key>
-    <Property Name="AgentID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DomainName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoginTimestamp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LogoutTimestamp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="DomainName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
-  </EntityType>
-  <EntityType Name="CallLogMaster1">
-    <Key>
-      <PropertyRef Name="RecordDate" />
-      <PropertyRef Name="RecordTime" />
-    </Key>
-    <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="RecordTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="DomainName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-    <Property Name="Five9Timestamp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="CampaignName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
-    <Property Name="CallType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="AgentID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="Disposition" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="AutomaticNumberIdentification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="LeadID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="DialedNumberIdentificationService" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="CallTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="BillTimeRounded" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Cost" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-    <Property Name="IVRTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="QueueWaitTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="RingTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="TalkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="HoldTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="ParkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="AfterCallWorkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Transfers" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="Conferences" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="Holds" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="Abandonded" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="Recordings" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="CallDayOfMonth" Type="Int32" />
-    <Property Name="CallDayOfWeek" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="CallHourOfDay" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="AbandonRate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="ANIAreaCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="ANICountry" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="ANICountryCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="ANIState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-    <Property Name="Calls" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="CallsCompletedInIVR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="CallsTimedOutInIVR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="CampaignType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="Contacted" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="DisconnectedFromHold" Type="Boolean" />
-    <Property Name="DNISAreaCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="DNISCountry" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="DNISCountryCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="DNISState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-    <Property Name="ListName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
-    <Property Name="LiveConnect" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="NoPartyContact" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="ServiceLevel" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="Skill" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="SpeedOfAnswer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="ThirdPartyTalkTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="ConferenceTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="ConsultTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="DialTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="HandleTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="ManualTime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Rate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="TalkTimeLessHoldAndPark" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="TimeToAbandon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="AgentEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
-    <Property Name="AgentFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="AgentLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Extension" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-    <Property Name="Address1" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
-    <Property Name="Address2" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="PhoneNumber1" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="PhoneNumber2" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="PhoneNumber3" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="IsDoNotCall" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-    <Property Name="ContactID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="CallID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="AgentGroup" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="SessionID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="ParentSessionID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="ClientID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerEmailAddress" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
-    <Property Name="InputWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="LoanType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Mortgage1Balance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LoanAmount" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="TransferNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DateMailed" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="DateExpiration" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="DateReceived" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="CreditGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Agency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Campaign" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ContactCreateTimestamp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="ContactModifiedTimestamp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="CreditRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="HomeValue" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="FormType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="HybridFilterID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="LoanApplicationID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Citizen" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-    <Property Name="ListCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="Vendor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Vertical" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LoanRequestType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="ChildProjectCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Dispo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="DOB" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Gender" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="Language" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-    <Property Name="PatientID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="ProjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="QualifiedProtocols" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
-    <Property Name="ReferredDate" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="SiteInfo" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
-    <Property Name="SiteNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Variable1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Variable2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="DispositionResolutionCode" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="SiteAddress" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="SiteCity" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="SitePI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SiteCoordinatorFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LoanPurpose" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="NMLSID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="PropertyState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="PropertyType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="PropertyZip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="PropertyPrice" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="LoanOfficerEmail" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="AppDatestamp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="LeadSource" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Partner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ProductType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Script" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="SiteCoordinatorPhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="TransferType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ClientLead">
     <Key>
@@ -589,8 +615,8 @@
       <PropertyRef Name="PreserviceTimestamp" />
       <PropertyRef Name="PostserviceTimestamp" />
     </Key>
-    <Property Name="LeadID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ClientName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LeadID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ClientName" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="LeadAddDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="LeadAddTime" Type="Time" Nullable="false" Precision="7" />
     <Property Name="ArrivalTimestamp" Type="DateTime" Nullable="false" Precision="3" />
@@ -608,6 +634,95 @@
     <Property Name="LeadType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CampaignName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="EverQuoteHourlyCallLogMaster">
+    <Key>
+      <PropertyRef Name="RecordDate" />
+    </Key>
+    <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DomainName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Five9Timestamp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="CallType" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="AgentID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Disposition" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="AutomaticNumberIdentification" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LeadID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="DialedNumberIdentificationService" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="BillTimeRounded" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Cost" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IVRTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="QueueWaitTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="RingTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TalkTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="HoldTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ParkTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AfterCallWorkTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Transfers" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Conferences" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Holds" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Abandonded" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Recordings" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CallDayOfMonth" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CallDayOfWeek" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CallHourOfDay" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="AbandonRate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="ANIAreaCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ANICountry" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="ANICountryCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ANIState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Calls" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallsCompletedInIVR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallsTimedOutInIVR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignType" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="Contacted" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DisconnectedFromHold" Type="Boolean" />
+    <Property Name="DNISAreaCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DNISCountry" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="DNISCountryCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DNISState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ListName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="LiveConnect" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="NoPartyContact" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceLevel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Skill" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="SpeedOfAnswer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ThirdPartyTalkTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ConferenceTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ConsultTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DialTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="HandleTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ManualTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Rate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TalkTimeLessHoldAndPark" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TimeToAbandon" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AgentEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="AgentFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgentLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Extension" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber3" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsDoNotCall" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ContactID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AgentGroup" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="SessionID" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="ParentSessionID" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="ClientID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerEmailAddress" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="InputWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SourceID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="FreedomDailyPortfolioInventory">
     <Key>
       <PropertyRef Name="ReportDate" />
@@ -621,14 +736,14 @@
       <PropertyRef Name="CampaignName" />
     </Key>
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="LeadID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ListName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Status" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="CurrentDisposition" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LastCallDay" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LastCallTime" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CampaignName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LeadID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ListName" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="CurrentDisposition" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="LastCallDay" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="LastCallTime" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="FreedomHourlyCallMetrics1">
     <Key>
@@ -644,10 +759,10 @@
     <Property Name="DailyRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="RecordTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="ListName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CampaignName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Disposition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CallType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ListName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="Disposition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CallType" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="HourOfDay" Type="Byte" Nullable="false" />
     <Property Name="CallState" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
@@ -743,8 +858,8 @@
     <Property Name="SourceID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_CLIENT_Customer_AddByEmployeeID">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.Customer" Role="Customer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmployeeID" />
@@ -755,8 +870,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CLIENT_CustomerContact_CustomerID">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-    <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="*" />
+    <End Type="ReportModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="ReportModel.CustomerContact" Role="CustomerContact" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="CustomerID" />
@@ -767,8 +882,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CLIENT_DomainMaster_CustomerID">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="*" />
+    <End Type="ReportModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="CustomerID" />
@@ -779,8 +894,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CLIENT_DomainMaster_DomainTypeID">
-    <End Role="DomainType" Type="Self.DomainType" Multiplicity="1" />
-    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="*" />
+    <End Type="ReportModel.DomainType" Role="DomainType" Multiplicity="1" />
+    <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DomainType">
         <PropertyRef Name="DomainTypeID" />
@@ -790,9 +905,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PAYROLL_AgentDailyHours_DomainMasterID">
+    <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="1" />
+    <End Type="ReportModel.AgentDailyHour" Role="AgentDailyHour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Principal>
+      <Dependent Role="AgentDailyHour">
+        <PropertyRef Name="DomainMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAYROLL_PayPeriod_DomainMasterID">
+    <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="1" />
+    <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Principal>
+      <Dependent Role="PayPeriod">
+        <PropertyRef Name="DomainMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_REPORT_CallLogMaster_DomainMasterID">
-    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
-    <End Role="CallLogMaster" Type="Self.CallLogMaster" Multiplicity="*" />
+    <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="1" />
+    <End Type="ReportModel.CallLogMaster" Role="CallLogMaster" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DomainMaster">
         <PropertyRef Name="DomainMasterID" />
@@ -803,8 +942,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMPANY_Employee_RoleID">
-    <End Role="Position" Type="Self.Position" Multiplicity="1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <End Type="ReportModel.Position" Role="Position" Multiplicity="1" />
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Position">
         <PropertyRef Name="PositionID" />
@@ -815,8 +954,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMPANY_Employee_SiteID">
-    <End Role="Site" Type="Self.Site" Multiplicity="1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <End Type="ReportModel.Site" Role="Site" Multiplicity="1" />
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Site">
         <PropertyRef Name="SiteID" />
@@ -827,8 +966,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMPANY_EmployeeFive9Agent_EmployeeID">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="EmployeeFive9Agent" Type="Self.EmployeeFive9Agent" Multiplicity="*" />
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.EmployeeFive9Agent" Role="EmployeeFive9Agent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmployeeID" />
@@ -839,8 +978,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMPANY_EmployeeNote_AddByEmployeeID">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="EmployeeNote" Type="Self.EmployeeNote" Multiplicity="*" />
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.EmployeeNote" Role="EmployeeNote" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmployeeID" />
@@ -851,8 +990,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMPANY_EmployeeNoteType_AddByEmployeeID">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="EmployeeNoteType" Type="Self.EmployeeNoteType" Multiplicity="*" />
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.EmployeeNoteType" Role="EmployeeNoteType" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="EmployeeID" />
@@ -862,69 +1001,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ReportEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="CustomerContacts" EntityType="Self.CustomerContact" />
-    <EntitySet Name="DomainMasters" EntityType="Self.DomainMaster" />
-    <EntitySet Name="DomainTypes" EntityType="Self.DomainType" />
-    <EntitySet Name="Employees" EntityType="Self.Employee" />
-    <EntitySet Name="EmployeeFive9Agent" EntityType="Self.EmployeeFive9Agent" />
-    <EntitySet Name="EmployeeNotes" EntityType="Self.EmployeeNote" />
-    <EntitySet Name="EmployeeNoteTypes" EntityType="Self.EmployeeNoteType" />
-    <EntitySet Name="Positions" EntityType="Self.Position" />
-    <EntitySet Name="Sites" EntityType="Self.Site" />
-    <EntitySet Name="ProblemMasters" EntityType="Self.ProblemMaster" />
-    <EntitySet Name="CampaignGroups" EntityType="Self.CampaignGroup" />
-    <EntitySet Name="DailyPortfolioInventories" EntityType="Self.DailyPortfolioInventory" />
-    <EntitySet Name="CallLogMasters" EntityType="Self.CallLogMaster" />
-    <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="Self.PreciseLeadsHourlyCampaignMetric" />
-    <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="Self.PreciseLeadsRollingCampaignMetric" />
-    <EntitySet Name="FreedomHourlyCallMetrics" EntityType="Self.FreedomHourlyCallMetric" />
-    <EntitySet Name="AgentDailyHours" EntityType="Self.AgentDailyHour" />
-    <EntitySet Name="CallLogMaster1" EntityType="Self.CallLogMaster1" />
-    <EntitySet Name="ClientLeads" EntityType="Self.ClientLead" />
-    <EntitySet Name="FreedomDailyPortfolioInventories" EntityType="Self.FreedomDailyPortfolioInventory" />
-    <EntitySet Name="FreedomHourlyCallMetrics1" EntityType="Self.FreedomHourlyCallMetrics1" />
-    <EntitySet Name="PreciseLeadsHourlyCallLogMasters" EntityType="Self.PreciseLeadsHourlyCallLogMaster" />
-    <AssociationSet Name="FK_CLIENT_Customer_AddByEmployeeID" Association="Self.FK_CLIENT_Customer_AddByEmployeeID">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CLIENT_CustomerContact_CustomerID" Association="Self.FK_CLIENT_CustomerContact_CustomerID">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="CustomerContact" EntitySet="CustomerContacts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CLIENT_DomainMaster_CustomerID" Association="Self.FK_CLIENT_DomainMaster_CustomerID">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="DomainMaster" EntitySet="DomainMasters" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CLIENT_DomainMaster_DomainTypeID" Association="Self.FK_CLIENT_DomainMaster_DomainTypeID">
-      <End Role="DomainType" EntitySet="DomainTypes" />
-      <End Role="DomainMaster" EntitySet="DomainMasters" />
-    </AssociationSet>
-    <AssociationSet Name="FK_REPORT_CallLogMaster_DomainMasterID" Association="Self.FK_REPORT_CallLogMaster_DomainMasterID">
-      <End Role="DomainMaster" EntitySet="DomainMasters" />
-      <End Role="CallLogMaster" EntitySet="CallLogMasters" />
-    </AssociationSet>
-    <AssociationSet Name="FK_COMPANY_Employee_RoleID" Association="Self.FK_COMPANY_Employee_RoleID">
-      <End Role="Position" EntitySet="Positions" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK_COMPANY_Employee_SiteID" Association="Self.FK_COMPANY_Employee_SiteID">
-      <End Role="Site" EntitySet="Sites" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK_COMPANY_EmployeeFive9Agent_EmployeeID" Association="Self.FK_COMPANY_EmployeeFive9Agent_EmployeeID">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="EmployeeFive9Agent" EntitySet="EmployeeFive9Agent" />
-    </AssociationSet>
-    <AssociationSet Name="FK_COMPANY_EmployeeNote_AddByEmployeeID" Association="Self.FK_COMPANY_EmployeeNote_AddByEmployeeID">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="EmployeeNote" EntitySet="EmployeeNotes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_COMPANY_EmployeeNoteType_AddByEmployeeID" Association="Self.FK_COMPANY_EmployeeNoteType_AddByEmployeeID">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="EmployeeNoteType" EntitySet="EmployeeNoteTypes" />
-    </AssociationSet>
-  </EntityContainer>
+  <Association Name="FK_PAYROLL_AgentDailyHours_EmployeeID">
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.AgentDailyHour" Role="AgentDailyHour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="AgentDailyHour">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAYROLL_PayPeriod_EmployeeID">
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="PayPeriod">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

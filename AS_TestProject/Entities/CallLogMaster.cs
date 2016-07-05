@@ -15,8 +15,8 @@ namespace AS_TestProject.Entities
     public partial class CallLogMaster
     {
         public long CallLogMasterID { get; set; }
-        public System.DateTime RecordDate { get; set; }
-        public System.TimeSpan RecordTime { get; set; }
+        public string RecordDate { get; set; }
+        public Nullable<System.TimeSpan> RecordTime { get; set; }
         public byte DomainMasterID { get; set; }
         public string Five9Timestamp { get; set; }
         public string CampaignName { get; set; }
@@ -27,59 +27,59 @@ namespace AS_TestProject.Entities
         public string LeadID { get; set; }
         public string CustomerName { get; set; }
         public string DialedNumberIdentificationService { get; set; }
-        public System.TimeSpan CallTime { get; set; }
-        public System.TimeSpan BillTimeRounded { get; set; }
-        public decimal Cost { get; set; }
-        public System.TimeSpan IVRTime { get; set; }
-        public System.TimeSpan QueueWaitTime { get; set; }
-        public System.TimeSpan RingTime { get; set; }
-        public System.TimeSpan TalkTime { get; set; }
-        public System.TimeSpan HoldTime { get; set; }
-        public System.TimeSpan ParkTime { get; set; }
-        public System.TimeSpan AfterCallWorkTime { get; set; }
-        public byte Transfers { get; set; }
-        public byte Conferences { get; set; }
-        public byte Holds { get; set; }
-        public bool Abandonded { get; set; }
+        public string CallTime { get; set; }
+        public string BillTimeRounded { get; set; }
+        public string Cost { get; set; }
+        public Nullable<System.TimeSpan> IVRTime { get; set; }
+        public Nullable<System.TimeSpan> QueueWaitTime { get; set; }
+        public string RingTime { get; set; }
+        public string TalkTime { get; set; }
+        public string HoldTime { get; set; }
+        public string ParkTime { get; set; }
+        public string AfterCallWorkTime { get; set; }
+        public string Transfers { get; set; }
+        public string Conferences { get; set; }
+        public string Holds { get; set; }
+        public string Abandonded { get; set; }
         public string Recordings { get; set; }
-        public int CallDayOfMonth { get; set; }
+        public string CallDayOfMonth { get; set; }
         public string CallDayOfWeek { get; set; }
-        public byte CallHourOfDay { get; set; }
-        public decimal AbandonRate { get; set; }
+        public string CallHourOfDay { get; set; }
+        public string AbandonRate { get; set; }
         public string ANIAreaCode { get; set; }
         public string ANICountry { get; set; }
-        public byte ANICountryCode { get; set; }
+        public string ANICountryCode { get; set; }
         public string ANIState { get; set; }
-        public byte Calls { get; set; }
-        public byte CallsCompletedInIVR { get; set; }
-        public byte CallsTimedOutInIVR { get; set; }
+        public string Calls { get; set; }
+        public string CallsCompletedInIVR { get; set; }
+        public string CallsTimedOutInIVR { get; set; }
         public string CampaignType { get; set; }
-        public bool Contacted { get; set; }
-        public bool DisconnectedFromHold { get; set; }
+        public Nullable<bool> Contacted { get; set; }
+        public Nullable<bool> DisconnectedFromHold { get; set; }
         public string DNISAreaCode { get; set; }
-        public string DNISCountry { get; set; }
-        public byte DNISCountryCode { get; set; }
+        public string DNISCountryCode { get; set; }
         public string DNISState { get; set; }
+        public string DNISCountry { get; set; }
         public string ListName { get; set; }
-        public bool LiveConnect { get; set; }
-        public bool NoPartyContact { get; set; }
+        public string LiveConnect { get; set; }
+        public string NoPartyContact { get; set; }
         public string Notes { get; set; }
-        public byte ServiceLevel { get; set; }
+        public string ServiceLevel { get; set; }
         public string Skill { get; set; }
-        public System.TimeSpan SpeedOfAnswer { get; set; }
-        public System.TimeSpan ThirdPartyTalkTime { get; set; }
-        public System.TimeSpan ConferenceTime { get; set; }
-        public System.TimeSpan ConsultTime { get; set; }
-        public System.TimeSpan DialTime { get; set; }
-        public System.TimeSpan HandleTime { get; set; }
-        public System.TimeSpan ManualTime { get; set; }
-        public decimal Rate { get; set; }
-        public System.TimeSpan TalkTimeLessHoldAndPark { get; set; }
-        public System.TimeSpan TimeToAbandon { get; set; }
+        public string SpeedOfAnswer { get; set; }
+        public string ThirdPartyTalkTime { get; set; }
+        public string ConferenceTime { get; set; }
+        public string ConsultTime { get; set; }
+        public string DialTime { get; set; }
+        public string HandleTime { get; set; }
+        public string ManualTime { get; set; }
+        public string Rate { get; set; }
+        public string TalkTimeLessHoldAndPark { get; set; }
+        public string TimeToAbandon { get; set; }
         public string AgentEmail { get; set; }
         public string AgentFirstName { get; set; }
         public string AgentLastName { get; set; }
-        public Nullable<byte> Extension { get; set; }
+        public string Extension { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
         public string CustomerCity { get; set; }
@@ -90,69 +90,65 @@ namespace AS_TestProject.Entities
         public string PhoneNumber1 { get; set; }
         public string PhoneNumber2 { get; set; }
         public string PhoneNumber3 { get; set; }
-        public bool IsDoNotCall { get; set; }
-        public string ContactID { get; set; }
-        public string CallID { get; set; }
-        public string AgentGroup { get; set; }
-        public string SessionID { get; set; }
-        public string ParentSessionID { get; set; }
-        public string ClientID { get; set; }
-        public string CustomerEmailAddress { get; set; }
-        public string InputWebsite { get; set; }
-        public string LoanType { get; set; }
-        public string Mortgage1Balance { get; set; }
+        public string IsDoNotCall { get; set; }
+        public string ListCode { get; set; }
         public string LoanAmount { get; set; }
-        public string TransferNumber { get; set; }
-        public string DateMailed { get; set; }
-        public string DateExpiration { get; set; }
-        public string DateReceived { get; set; }
-        public string CreditGroup { get; set; }
-        public string Agency { get; set; }
-        public string Campaign { get; set; }
+        public string LoanPurpose { get; set; }
+        public string LoanType { get; set; }
+        public string Number1 { get; set; }
+        public string Number2 { get; set; }
+        public string Number3 { get; set; }
+        public string PropertyType { get; set; }
+        public string PurchasePrice { get; set; }
+        public string State { get; set; }
+        public string Street { get; set; }
+        public string ContactID { get; set; }
         public string ContactCreateTimestamp { get; set; }
         public string ContactModifiedTimestamp { get; set; }
-        public string CreditRate { get; set; }
-        public string HomeValue { get; set; }
-        public string FormType { get; set; }
-        public string HybridFilterID { get; set; }
-        public string LoanApplicationID { get; set; }
-        public string Citizen { get; set; }
-        public string ListCode { get; set; }
-        public string Vendor { get; set; }
-        public string Vertical { get; set; }
-        public string LoanRequestType { get; set; }
-        public string ChildProjectCode { get; set; }
+        public string Country { get; set; }
         public string Dispo { get; set; }
         public string DOB { get; set; }
+        public string FacilityName { get; set; }
         public string Gender { get; set; }
         public string Language { get; set; }
         public string PatientID { get; set; }
         public string ProjectCode { get; set; }
         public string QualifiedProtocols { get; set; }
-        public string ReferredDate { get; set; }
+        public string RefferedDate { get; set; }
+        public string Site1Address { get; set; }
+        public string Site1City { get; set; }
         public string SiteInfo { get; set; }
-        public string SiteNumber { get; set; }
-        public string Variable1 { get; set; }
-        public string Variable2 { get; set; }
         public string DispositionResolutionCode { get; set; }
-        public string SiteAddress { get; set; }
-        public string SiteCity { get; set; }
-        public string SitePI { get; set; }
-        public string SiteCoordinatorFirstname { get; set; }
-        public string LoanPurpose { get; set; }
+        public string FilterID { get; set; }
+        public string ListEntry { get; set; }
         public string NMLSID { get; set; }
         public string PropertyState { get; set; }
-        public string PropertyType { get; set; }
         public string PropertyZip { get; set; }
-        public string PropertyPrice { get; set; }
+        public string DateExpiration { get; set; }
+        public string DateMailed { get; set; }
+        public string DateReceived { get; set; }
+        public string ListEntryDate { get; set; }
+        public string ScriptType { get; set; }
+        public string TransferNumber { get; set; }
+        public string Vendor { get; set; }
+        public string CreditRate { get; set; }
+        public string FormType { get; set; }
+        public string Homevalue { get; set; }
+        public string HybridFilterID { get; set; }
+        public string Mortgage1Balance { get; set; }
+        public string PropertyUse { get; set; }
+        public string ShortFilterID { get; set; }
+        public string Agency { get; set; }
+        public string Campaign { get; set; }
+        public string LoanRequestType { get; set; }
+        public string SubmitTimeStamp { get; set; }
+        public string Vertical { get; set; }
+        public string LoanApplicationID { get; set; }
+        public string Website { get; set; }
         public string LoanOfficerEmail { get; set; }
-        public string AppDatestamp { get; set; }
+        public string AppDateStamp { get; set; }
         public string LeadSource { get; set; }
-        public string Partner { get; set; }
-        public string ProductType { get; set; }
-        public string Script { get; set; }
-        public string SiteCoordinatorPhoneNumber { get; set; }
-        public string TransferType { get; set; }
+        public string CallID { get; set; }
     
         public virtual DomainMaster DomainMaster { get; set; }
     }

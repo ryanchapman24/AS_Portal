@@ -12,16 +12,14 @@ namespace AS_TestProject.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class AgentDailyHour
+    public partial class AgentDailyHours1
     {
-        public int AgentDailyHoursID { get; set; }
-        public int EmployeeID { get; set; }
-        public byte DomainMasterID { get; set; }
-        public System.DateTime LoginTimeStamp { get; set; }
-        public System.DateTime LogoutTimeStamp { get; set; }
+        public string AgentID { get; set; }
+        public string DomainName { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LoginTimestamp { get; set; }
+        public string LogoutTimestamp { get; set; }
         public System.TimeSpan LoginDuration { get; set; }
-    
-        public virtual DomainMaster DomainMaster { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }
