@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace AS_TestProject.Models
 {
@@ -16,9 +17,17 @@ namespace AS_TestProject.Models
         public int PositionID { get; set; }
         public int SiteID { get; set; }
         public string ProfilePic { get; set; }
+        public int? TaskTally { get; set; }
 
         public virtual Site Site { get; set; }
         public virtual Position Position { get; set; }
+
+        public ApplicationUser()
+        {
+            this.Tasks = new HashSet<WorkTask>();
+        }
+
+        public virtual ICollection<WorkTask> Tasks { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -44,5 +53,7 @@ namespace AS_TestProject.Models
         public DbSet<GalleryPhoto> GalleryPhotos { get; set; }
         public DbSet<Site> Sites { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<WorkTask> Tasks { get; set; }
+        public DbSet<TaskPriority> TaskPriorities { get; set; }
     }
 }

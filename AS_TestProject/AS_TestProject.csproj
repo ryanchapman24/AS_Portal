@@ -344,7 +344,9 @@
     <Compile Include="Models\PhotoJudgment.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\TaskPriority.cs" />
     <Compile Include="Models\UserNames.cs" />
+    <Compile Include="Models\WorkTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -371,6 +373,7 @@
     <Content Include="assets\img\AS_Background.jpg" />
     <Content Include="assets\img\AS_logo.png" />
     <Content Include="assets\img\blog-bg.jpg" />
+    <Content Include="assets\img\blue_priority.png" />
     <Content Include="assets\img\BonusPayment.jpg" />
     <Content Include="assets\img\checkbox-gray.png" />
     <Content Include="assets\img\friends\fr-01.jpg" />
@@ -421,6 +424,7 @@
     <Content Include="assets\img\lorde.jpg" />
     <Content Include="assets\img\mask.png" />
     <Content Include="assets\img\ny.jpg" />
+    <Content Include="assets\img\orange_priority.png" />
     <Content Include="assets\img\palmtree.png" />
     <Content Include="assets\img\portfolio\port01.jpg" />
     <Content Include="assets\img\portfolio\port02.jpg" />
@@ -434,6 +438,7 @@
     <Content Include="assets\img\profile-02.jpg" />
     <Content Include="assets\img\PTO.jpg" />
     <Content Include="assets\img\radio-gray.png" />
+    <Content Include="assets\img\red_priority.png" />
     <Content Include="assets\img\Reimbursement.png" />
     <Content Include="assets\img\ReimbursementAlt.png" />
     <Content Include="assets\img\StatusChange.png" />
@@ -444,6 +449,7 @@
     <Content Include="assets\img\ui-zac.jpg" />
     <Content Include="assets\img\weather.jpg" />
     <Content Include="assets\img\workhat.png" />
+    <Content Include="assets\img\yellow_priority.png" />
     <Content Include="assets\img\zoom.png" />
     <Content Include="assets\js\bootstrap-inputmask\bootstrap-inputmask.min.js" />
     <Content Include="assets\js\bootstrap-switch.js" />
@@ -655,6 +661,7 @@
     <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Manage\UpdateInformation.cshtml" />
+    <Content Include="Views\Home\Calendar.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

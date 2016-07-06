@@ -161,7 +161,7 @@ namespace AS_TestProject.Controllers
 
                 ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
                 ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, EmployeeID = model.EmployeeID, PositionID = model.PositionID, SiteID = model.SiteID,  ProfilePic = pPic, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, EmployeeID = model.EmployeeID, PositionID = model.PositionID, SiteID = model.SiteID, ProfilePic = pPic, TaskTally = 0, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

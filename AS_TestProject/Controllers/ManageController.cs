@@ -280,9 +280,27 @@ namespace AS_TestProject.Controllers
             var pPic = model.ProfilePic;
             if (ImageUploadValidator.IsWebFriendlyImage(image))
             {
-                var fileName = Path.GetFileName(image.FileName);
-                image.SaveAs(Path.Combine(Server.MapPath("~/ProfilePics/"), fileName));
-                pPic = "/ProfilePics/" + fileName;
+                //var fileName = Path.GetFileName(image.FileName);
+                //image.SaveAs(Path.Combine(Server.MapPath("~/ProfilePics/"), fileName));
+                //pPic = "/ProfilePics/" + fileName;
+
+                //Counter
+                var num = 0;
+                //Gets Filename without the extension
+                var fileName = Path.GetFileNameWithoutExtension(image.FileName);              
+                pPic = Path.Combine("/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                //Checks if pPic matches any of the current attachments, 
+                //if so it will loop and add a (number) to the end of the filename
+                while (db.Users.Any(u => u.ProfilePic == pPic))
+                {
+                    //Sets "filename" back to the default value
+                    fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                    //Add's parentheses after the name with a number ex. filename(4)
+                    fileName = string.Format(fileName + "(" + ++num + ")");
+                    //Makes sure pPic gets updated with the new filename so it could check
+                    pPic = Path.Combine("/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                }
+                image.SaveAs(Path.Combine(Server.MapPath("~/ProfilePics/"), fileName + Path.GetExtension(image.FileName)));
             }
 
             var defaultMedia = "/assets/img/ASPortal-DefaultProfilePic.png";

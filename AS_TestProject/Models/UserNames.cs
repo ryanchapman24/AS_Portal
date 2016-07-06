@@ -25,7 +25,14 @@ namespace AS_TestProject.Models
                 ViewBag.Site = user.Site.SiteName;
                 ViewBag.Email = user.Email;
                 ViewBag.PhoneNumber = user.PhoneNumber;
-                //ViewBag.ProfilePic = user.ProfilePic;
+                ViewBag.ProfilePic = user.ProfilePic;
+
+                ViewBag.TaskTally = user.TaskTally;
+                ViewBag.UrgentTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 4).OrderBy(t => t.Id).ToList();
+                ViewBag.HighTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 3).OrderBy(t => t.Id).ToList();
+                ViewBag.MediumTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 2).OrderBy(t => t.Id).ToList();
+                ViewBag.LowTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
+
                 base.OnActionExecuting(filterContext);
             }
         }

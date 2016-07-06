@@ -33,7 +33,7 @@ var Script = function () {
     var m = date.getMonth();
     var y = date.getFullYear();
 
-    $('#calendar').fullCalendar({
+    $('#full-calendar').fullCalendar({
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -55,7 +55,7 @@ var Script = function () {
 
             // render the event on the calendar
             // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+            $('#full-calendar').fullCalendar('renderEvent', copiedEventObject, true);
 
             // is the "remove after drop" checkbox checked?
             if ($('#drop-remove').is(':checked')) {
