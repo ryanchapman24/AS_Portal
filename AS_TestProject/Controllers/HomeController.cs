@@ -44,6 +44,7 @@ namespace AS_TestProject.Controllers
                     ViewBag.High = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 3).OrderBy(t => t.Id).ToList();
                     ViewBag.Medium = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 2).OrderBy(t => t.Id).ToList();
                     ViewBag.Low = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
+                    ViewBag.TaskCounter = userCheck.TaskTally;
 
                     return View(userCheck);
                 }
@@ -57,6 +58,7 @@ namespace AS_TestProject.Controllers
             ViewBag.High = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 3).OrderBy(t => t.Id).ToList();
             ViewBag.Medium = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 2).OrderBy(t => t.Id).ToList();
             ViewBag.Low = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
+            ViewBag.TaskCounter = user.TaskTally;
 
             return View(user);
         }

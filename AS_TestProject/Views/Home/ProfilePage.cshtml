@@ -131,7 +131,7 @@
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <h1><i class="fa fa-trophy"></i></h1>
-                                                        <h3>@ViewBag.TaskTally</h3>
+                                                        <h3>@ViewBag.TaskCounter</h3>
                                                         <h6>COMPLETED TASKS</h6>
                                                     </div>
                                                     <div class="col-sm-4">
@@ -148,7 +148,7 @@
                                                 {
                                                     @Html.AntiForgeryToken()
                                                     <h4>New Task<button type="submit" class="btn btn-sm btn-theme pull-right" style="margin-top: -10px">+ Add</button></h4>
-                                                    <textarea rows="4" class="form-control capitalize" name="Description" id="Description" placeholder="task description here..." style="margin-bottom: 10px" required></textarea>
+                                                    <textarea rows="4" class="form-control capitalize" name="Description" id="Description" placeholder="task description here..." style="margin-bottom: 10px" maxlength="55" required></textarea>
                                                     <div class="form-group row" style="margin-bottom: 20px">
                                                         <div class="col-md-2 control-label">
                                                             Priority
@@ -166,7 +166,7 @@
                                                 <div class="row center">
                                                     <div class="col-md-12">
                                                         <!-- TODO PANEL -->
-                                                            <div class="steps pn">
+                                                            <div class="steps task-pn">
                                                                 @using (Html.BeginForm("SubmitTask", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                                                 {
                                                                 @Html.AntiForgeryToken()
@@ -199,6 +199,7 @@
                                                                     <input id='op4' name='op4' type='checkbox' />
                                                                     <label for='op4'>WTF</label>*@
                                                                     <input id="complete" class="all-done" type='submit' name="complete" value='Complete' />
+                                                                    <hr style="padding: 0px; margin: 0px; color: #889199"/>
                                                                     <input id="abort" class="all-done" type='submit' name="abort" value='Abort' />
                                                                 }
                                                             </div>

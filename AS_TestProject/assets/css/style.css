@@ -1003,11 +1003,20 @@ PANELS CONFIGURATIONS
 /*Panel Size*/
 
 .pn {
-	/*height: 250px;*/
+	height: 250px;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.task-pn {
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .pn:hover {
+	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
+	
+}
+
+.task-pn:hover {
 	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
 	
 }
@@ -1515,7 +1524,7 @@ PANELS CONFIGURATIONS
   border: 1px solid white;
 }
 
-.steps input:checked ~ label:before{
+.steps input:checked + label:before{
   border: 2px solid #96c93c;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGFJREFUeNpinHLMhgEHKADia0xQThIQs6JJ9gPxZhYQAcS6QHwDiI8hSYJAC0gBPxDLAvFcIJ6JJJkDxFNBVtgBcQ8Qa6BLghgwN4A4a9ElQYAFSj8C4mwg3o8sCQIAAQYA78QTYqnPZuEAAAAASUVORK5CYII=') no-repeat center center;
 }
