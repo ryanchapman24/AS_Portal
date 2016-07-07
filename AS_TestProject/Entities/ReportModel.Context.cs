@@ -40,6 +40,7 @@ namespace AS_TestProject.Entities
         public virtual DbSet<DailyPortfolioInventory> DailyPortfolioInventories { get; set; }
         public virtual DbSet<AgentDailyHour> AgentDailyHours { get; set; }
         public virtual DbSet<AgentTimeAdjustmentReason> AgentTimeAdjustmentReasons { get; set; }
+        public virtual DbSet<EmployeeHoursTotal> EmployeeHoursTotals { get; set; }
         public virtual DbSet<PayPeriod> PayPeriods { get; set; }
         public virtual DbSet<CallLogMaster> CallLogMasters { get; set; }
         public virtual DbSet<EverQuoteHourlyCampaignMetric> EverQuoteHourlyCampaignMetrics { get; set; }

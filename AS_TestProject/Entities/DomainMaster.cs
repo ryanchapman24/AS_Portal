@@ -18,8 +18,8 @@ namespace AS_TestProject.Entities
         public DomainMaster()
         {
             this.AgentDailyHours = new HashSet<AgentDailyHour>();
-            this.PayPeriods = new HashSet<PayPeriod>();
             this.CallLogMasters = new HashSet<CallLogMaster>();
+            this.EmployeeHoursTotals = new HashSet<EmployeeHoursTotal>();
         }
     
         public byte DomainMasterID { get; set; }
@@ -39,8 +39,8 @@ namespace AS_TestProject.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AgentDailyHour> AgentDailyHours { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PayPeriod> PayPeriods { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CallLogMaster> CallLogMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeHoursTotal> EmployeeHoursTotals { get; set; }
     }
 }

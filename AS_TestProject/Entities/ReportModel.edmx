@@ -255,15 +255,23 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="Reason" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="EmployeeHoursTotal">
+          <Key>
+            <PropertyRef Name="EmployeeHoursTotalID" />
+          </Key>
+          <Property Name="EmployeeHoursTotalID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayPeriodID" Type="smallint" Nullable="false" />
+          <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="TotalDuration" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
         <EntityType Name="PayPeriod">
           <Key>
             <PropertyRef Name="PayPeriodID" />
           </Key>
-          <Property Name="PayPeriodID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
-          <Property Name="EmployeeID" Type="int" Nullable="false" />
-          <Property Name="StartPeriod" Type="date" Nullable="false" />
-          <Property Name="MidPeriod" Type="date" Nullable="false" />
+          <Property Name="PayPeriodID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="MidDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="PayDate" Type="date" Nullable="false" />
         </EntityType>
@@ -1057,30 +1065,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PAYROLL_PayPeriod_DomainMasterID">
-          <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
-          <End Role="PayPeriod" Type="Self.PayPeriod" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DomainMaster">
-              <PropertyRef Name="DomainMasterID" />
-            </Principal>
-            <Dependent Role="PayPeriod">
-              <PropertyRef Name="DomainMasterID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PAYROLL_PayPeriod_EmployeeID">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="PayPeriod" Type="Self.PayPeriod" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="PayPeriod">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_REPORT_CallLogMaster_DomainMasterID">
           <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
           <End Role="CallLogMaster" Type="Self.CallLogMaster" Multiplicity="*" />
@@ -1090,6 +1074,42 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Principal>
             <Dependent Role="CallLogMaster">
               <PropertyRef Name="DomainMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_EmployeeHoursTotal_DomainMasterID">
+          <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
+          <End Role="EmployeeHoursTotal" Type="Self.EmployeeHoursTotal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Principal>
+            <Dependent Role="EmployeeHoursTotal">
+              <PropertyRef Name="DomainMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_EmployeeHoursTotal_EmployeeID">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeHoursTotal" Type="Self.EmployeeHoursTotal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeHoursTotal">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID">
+          <End Role="PayPeriod" Type="Self.PayPeriod" Multiplicity="1" />
+          <End Role="EmployeeHoursTotal" Type="Self.EmployeeHoursTotal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayPeriod">
+              <PropertyRef Name="PayPeriodID" />
+            </Principal>
+            <Dependent Role="EmployeeHoursTotal">
+              <PropertyRef Name="PayPeriodID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1109,6 +1129,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="DailyPortfolioInventory" EntityType="Self.DailyPortfolioInventory" Schema="FREEDOM" store:Type="Tables" />
           <EntitySet Name="AgentDailyHours" EntityType="Self.AgentDailyHours" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="AgentTimeAdjustmentReason" EntityType="Self.AgentTimeAdjustmentReason" Schema="PAYROLL" store:Type="Tables" />
+          <EntitySet Name="EmployeeHoursTotal" EntityType="Self.EmployeeHoursTotal" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="PayPeriod" EntityType="Self.PayPeriod" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="EverQuoteHourlyCampaignMetrics" EntityType="Self.EverQuoteHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
@@ -1408,17 +1429,21 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="Employee" EntitySet="Employee" />
             <End Role="AgentDailyHours" EntitySet="AgentDailyHours" />
           </AssociationSet>
-          <AssociationSet Name="FK_PAYROLL_PayPeriod_DomainMasterID" Association="Self.FK_PAYROLL_PayPeriod_DomainMasterID">
-            <End Role="DomainMaster" EntitySet="DomainMaster" />
-            <End Role="PayPeriod" EntitySet="PayPeriod" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PAYROLL_PayPeriod_EmployeeID" Association="Self.FK_PAYROLL_PayPeriod_EmployeeID">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="PayPeriod" EntitySet="PayPeriod" />
-          </AssociationSet>
           <AssociationSet Name="FK_REPORT_CallLogMaster_DomainMasterID" Association="Self.FK_REPORT_CallLogMaster_DomainMasterID">
             <End Role="DomainMaster" EntitySet="DomainMaster" />
             <End Role="CallLogMaster" EntitySet="CallLogMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_DomainMasterID" Association="Self.FK_REPORT_EmployeeHoursTotal_DomainMasterID">
+            <End Role="DomainMaster" EntitySet="DomainMaster" />
+            <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_EmployeeID" Association="Self.FK_REPORT_EmployeeHoursTotal_EmployeeID">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID" Association="Self.FK_REPORT_EmployeeHoursTotal_PayPeriodID">
+            <End Role="PayPeriod" EntitySet="PayPeriod" />
+            <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotal" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1441,6 +1466,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="DailyPortfolioInventories" EntityType="ReportModel.DailyPortfolioInventory" />
           <EntitySet Name="AgentDailyHours" EntityType="ReportModel.AgentDailyHour" />
           <EntitySet Name="AgentTimeAdjustmentReasons" EntityType="ReportModel.AgentTimeAdjustmentReason" />
+          <EntitySet Name="EmployeeHoursTotals" EntityType="ReportModel.EmployeeHoursTotal" />
           <EntitySet Name="PayPeriods" EntityType="ReportModel.PayPeriod" />
           <EntitySet Name="CallLogMasters" EntityType="ReportModel.CallLogMaster" />
           <EntitySet Name="EverQuoteHourlyCampaignMetrics" EntityType="ReportModel.EverQuoteHourlyCampaignMetric" />
@@ -1474,13 +1500,13 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="DomainMaster" EntitySet="DomainMasters" />
             <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
           </AssociationSet>
-          <AssociationSet Name="FK_PAYROLL_PayPeriod_DomainMasterID" Association="ReportModel.FK_PAYROLL_PayPeriod_DomainMasterID">
-            <End Role="DomainMaster" EntitySet="DomainMasters" />
-            <End Role="PayPeriod" EntitySet="PayPeriods" />
-          </AssociationSet>
           <AssociationSet Name="FK_REPORT_CallLogMaster_DomainMasterID" Association="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID">
             <End Role="DomainMaster" EntitySet="DomainMasters" />
             <End Role="CallLogMaster" EntitySet="CallLogMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_DomainMasterID" Association="ReportModel.FK_REPORT_EmployeeHoursTotal_DomainMasterID">
+            <End Role="DomainMaster" EntitySet="DomainMasters" />
+            <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
           </AssociationSet>
           <AssociationSet Name="FK_COMPANY_Employee_RoleID" Association="ReportModel.FK_COMPANY_Employee_RoleID">
             <End Role="Position" EntitySet="Positions" />
@@ -1506,9 +1532,13 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="Employee" EntitySet="Employees" />
             <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
           </AssociationSet>
-          <AssociationSet Name="FK_PAYROLL_PayPeriod_EmployeeID" Association="ReportModel.FK_PAYROLL_PayPeriod_EmployeeID">
+          <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_EmployeeID" Association="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID">
             <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID" Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID">
             <End Role="PayPeriod" EntitySet="PayPeriods" />
+            <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
@@ -1565,8 +1595,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="Customer" Relationship="ReportModel.FK_CLIENT_DomainMaster_CustomerID" FromRole="DomainMaster" ToRole="Customer" />
           <NavigationProperty Name="DomainType" Relationship="ReportModel.FK_CLIENT_DomainMaster_DomainTypeID" FromRole="DomainMaster" ToRole="DomainType" />
           <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" FromRole="DomainMaster" ToRole="AgentDailyHour" />
-          <NavigationProperty Name="PayPeriods" Relationship="ReportModel.FK_PAYROLL_PayPeriod_DomainMasterID" FromRole="DomainMaster" ToRole="PayPeriod" />
           <NavigationProperty Name="CallLogMasters" Relationship="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" FromRole="DomainMaster" ToRole="CallLogMaster" />
+          <NavigationProperty Name="EmployeeHoursTotals" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_DomainMasterID" FromRole="DomainMaster" ToRole="EmployeeHoursTotal" />
         </EntityType>
         <EntityType Name="DomainType">
           <Key>
@@ -1616,7 +1646,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="EmployeeNotes" Relationship="ReportModel.FK_COMPANY_EmployeeNote_AddByEmployeeID" FromRole="Employee" ToRole="EmployeeNote" />
           <NavigationProperty Name="EmployeeNoteTypes" Relationship="ReportModel.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" FromRole="Employee" ToRole="EmployeeNoteType" />
           <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="Employee" ToRole="AgentDailyHour" />
-          <NavigationProperty Name="PayPeriods" Relationship="ReportModel.FK_PAYROLL_PayPeriod_EmployeeID" FromRole="Employee" ToRole="PayPeriod" />
+          <NavigationProperty Name="EmployeeHoursTotals" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID" FromRole="Employee" ToRole="EmployeeHoursTotal" />
         </EntityType>
         <EntityType Name="EmployeeFive9Agent">
           <Key>
@@ -1740,19 +1770,29 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="Reason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="EmployeeHoursTotal">
+          <Key>
+            <PropertyRef Name="EmployeeHoursTotalID" />
+          </Key>
+          <Property Name="EmployeeHoursTotalID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayPeriodID" Type="Int16" Nullable="false" />
+          <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="TotalDuration" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_DomainMasterID" FromRole="EmployeeHoursTotal" ToRole="DomainMaster" />
+          <NavigationProperty Name="Employee" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID" FromRole="EmployeeHoursTotal" ToRole="Employee" />
+          <NavigationProperty Name="PayPeriod" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" FromRole="EmployeeHoursTotal" ToRole="PayPeriod" />
+        </EntityType>
         <EntityType Name="PayPeriod">
           <Key>
             <PropertyRef Name="PayPeriodID" />
           </Key>
-          <Property Name="PayPeriodID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="StartPeriod" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="MidPeriod" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PayPeriodID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MidDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_PAYROLL_PayPeriod_DomainMasterID" FromRole="PayPeriod" ToRole="DomainMaster" />
-          <NavigationProperty Name="Employee" Relationship="ReportModel.FK_PAYROLL_PayPeriod_EmployeeID" FromRole="PayPeriod" ToRole="Employee" />
+          <NavigationProperty Name="EmployeeHoursTotals" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" FromRole="PayPeriod" ToRole="EmployeeHoursTotal" />
         </EntityType>
         <EntityType Name="CallLogMaster">
           <Key>
@@ -2342,18 +2382,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PAYROLL_PayPeriod_DomainMasterID">
-          <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="1" />
-          <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DomainMaster">
-              <PropertyRef Name="DomainMasterID" />
-            </Principal>
-            <Dependent Role="PayPeriod">
-              <PropertyRef Name="DomainMasterID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_REPORT_CallLogMaster_DomainMasterID">
           <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="1" />
           <End Type="ReportModel.CallLogMaster" Role="CallLogMaster" Multiplicity="*" />
@@ -2362,6 +2390,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
               <PropertyRef Name="DomainMasterID" />
             </Principal>
             <Dependent Role="CallLogMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORT_EmployeeHoursTotal_DomainMasterID">
+          <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="1" />
+          <End Type="ReportModel.EmployeeHoursTotal" Role="EmployeeHoursTotal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Principal>
+            <Dependent Role="EmployeeHoursTotal">
               <PropertyRef Name="DomainMasterID" />
             </Dependent>
           </ReferentialConstraint>
@@ -2438,19 +2478,31 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PAYROLL_PayPeriod_EmployeeID">
+        <Association Name="FK_REPORT_EmployeeHoursTotal_EmployeeID">
           <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
-          <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="*" />
+          <End Type="ReportModel.EmployeeHoursTotal" Role="EmployeeHoursTotal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeID" />
             </Principal>
-            <Dependent Role="PayPeriod">
+            <Dependent Role="EmployeeHoursTotal">
               <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID">
+          <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="1" />
+          <End Type="ReportModel.EmployeeHoursTotal" Role="EmployeeHoursTotal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayPeriod">
+              <PropertyRef Name="PayPeriodID" />
+            </Principal>
+            <Dependent Role="EmployeeHoursTotal">
+              <PropertyRef Name="PayPeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -2673,15 +2725,24 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeHoursTotals">
+            <EntityTypeMapping TypeName="ReportModel.EmployeeHoursTotal">
+              <MappingFragment StoreEntitySet="EmployeeHoursTotal">
+                <ScalarProperty Name="TotalDuration" ColumnName="TotalDuration" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+                <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
+                <ScalarProperty Name="EmployeeHoursTotalID" ColumnName="EmployeeHoursTotalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PayPeriods">
             <EntityTypeMapping TypeName="ReportModel.PayPeriod">
               <MappingFragment StoreEntitySet="PayPeriod">
                 <ScalarProperty Name="PayDate" ColumnName="PayDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="MidPeriod" ColumnName="MidPeriod" />
-                <ScalarProperty Name="StartPeriod" ColumnName="StartPeriod" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+                <ScalarProperty Name="MidDate" ColumnName="MidDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
               </MappingFragment>
             </EntityTypeMapping>

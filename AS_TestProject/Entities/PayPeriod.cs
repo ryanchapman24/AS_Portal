@@ -14,15 +14,19 @@ namespace AS_TestProject.Entities
     
     public partial class PayPeriod
     {
-        public long PayPeriodID { get; set; }
-        public byte DomainMasterID { get; set; }
-        public int EmployeeID { get; set; }
-        public System.DateTime StartPeriod { get; set; }
-        public System.DateTime MidPeriod { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PayPeriod()
+        {
+            this.EmployeeHoursTotals = new HashSet<EmployeeHoursTotal>();
+        }
+    
+        public short PayPeriodID { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime MidDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public System.DateTime PayDate { get; set; }
     
-        public virtual DomainMaster DomainMaster { get; set; }
-        public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeHoursTotal> EmployeeHoursTotals { get; set; }
     }
 }
