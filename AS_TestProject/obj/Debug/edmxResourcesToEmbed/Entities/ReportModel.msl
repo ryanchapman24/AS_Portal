@@ -199,6 +199,8 @@
     <EntitySetMapping Name="AgentDailyHours">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
         <MappingFragment StoreEntitySet="AgentDailyHours">
+          <ScalarProperty Name="PPID" ColumnName="PPID" />
+          <ScalarProperty Name="AgentTimeAdjustmentReasonID" ColumnName="AgentTimeAdjustmentReasonID" />
           <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
           <ScalarProperty Name="LogoutTimeStamp" ColumnName="LogoutTimeStamp" />
           <ScalarProperty Name="LoginTimeStamp" ColumnName="LoginTimeStamp" />
@@ -218,15 +220,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeHoursTotals">
+      <EntityTypeMapping TypeName="ReportModel.EmployeeHoursTotal">
+        <MappingFragment StoreEntitySet="EmployeeHoursTotal">
+          <ScalarProperty Name="TotalDuration" ColumnName="TotalDuration" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
+          <ScalarProperty Name="EmployeeHoursTotalID" ColumnName="EmployeeHoursTotalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="PayPeriods">
       <EntityTypeMapping TypeName="ReportModel.PayPeriod">
         <MappingFragment StoreEntitySet="PayPeriod">
           <ScalarProperty Name="PayDate" ColumnName="PayDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="MidPeriod" ColumnName="MidPeriod" />
-          <ScalarProperty Name="StartPeriod" ColumnName="StartPeriod" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="MidDate" ColumnName="MidDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
         </MappingFragment>
       </EntityTypeMapping>

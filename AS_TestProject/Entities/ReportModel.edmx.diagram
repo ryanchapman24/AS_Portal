@@ -49,6 +49,7 @@
         <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" />
         <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID" />
         <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

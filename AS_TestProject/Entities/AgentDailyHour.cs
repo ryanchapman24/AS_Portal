@@ -20,8 +20,11 @@ namespace AS_TestProject.Entities
         public System.DateTime LoginTimeStamp { get; set; }
         public System.DateTime LogoutTimeStamp { get; set; }
         public System.TimeSpan LoginDuration { get; set; }
+        public Nullable<short> AgentTimeAdjustmentReasonID { get; set; }
+        public Nullable<short> PPID { get; set; }
     
         public virtual DomainMaster DomainMaster { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual AgentTimeAdjustmentReason AgentTimeAdjustmentReason { get; set; }
     }
 }

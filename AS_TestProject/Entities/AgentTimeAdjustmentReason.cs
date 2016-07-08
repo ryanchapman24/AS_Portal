@@ -14,9 +14,18 @@ namespace AS_TestProject.Entities
     
     public partial class AgentTimeAdjustmentReason
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AgentTimeAdjustmentReason()
+        {
+            this.AgentDailyHours = new HashSet<AgentDailyHour>();
+        }
+    
         public short AgentTimeAdjustmentReasonID { get; set; }
         public short ReasonCode { get; set; }
         public string Reason { get; set; }
         public bool IsActive { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgentDailyHour> AgentDailyHours { get; set; }
     }
 }
