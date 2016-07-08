@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AS_TestProject.Entities.AgentDailyHour>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="widget widget-table">
+    <div class="widget-header">
+        <h3 style="color: #29AAE3"><i class="fa fa-user"></i> @ViewBag.AgentName<button class="btn btn-theme btn-md pull-right" style="">+ New Entry</button></h3>
+        <h4><strong>Current Pay Period</strong> (@ViewBag.PayPeriodStart.ToString("MM/dd/yy") - @ViewBag.PayperiodEnd.ToString("MM/dd/yy"))</h4>
+    </div>
+    <div class="widget-content">
+        <div class="table-responsive">
+            <table id="datatable-basic-scrolling" class="table table-hover datatable timetable">
+                <thead>
+                    <tr>
+                        <th>Login</th>
+                        <th>Logout</th>
+                        <th>Duration</th>
+                        <th>Domain</th>
+                        <th>Adjustment Reason</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.LoginTimeStamp)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LogoutTimeStamp)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LoginDuration)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AgentTimeAdjustmentReason.Reason)</td>
+                            <td>@Html.ActionLink("Edit", "Edit", new { id = item.AgentDailyHoursID })</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

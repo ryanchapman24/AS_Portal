@@ -230,6 +230,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Entities\AgentDailyHour.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
@@ -667,6 +668,9 @@
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Manage\UpdateInformation.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
+    <Content Include="Views\Payroll\Create.cshtml" />
+    <Content Include="Views\Payroll\Edit.cshtml" />
+    <Content Include="Views\Payroll\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

@@ -626,8 +626,8 @@
     <script>
         $(document).ready( function () {
             $('.emptable').DataTable({
-            "iDisplayLength": 50,
-            "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+                "iDisplayLength": 50,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
             });
 
             $('.clitable').DataTable({
@@ -640,6 +640,12 @@
                 "aaSorting": [],
                 "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
             });
+
+            $('.timetable').DataTable({
+                "iDisplayLength": 50,
+                "bSort" : false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+            });        
         });
     </script> 
     
@@ -757,6 +763,9 @@
           $('.timepicker-default').timepicker({
               autoclose: true,
               minuteStep: 1,
+              showSeconds: true,
+              secondStep: 1,
+              defaultTime: false
           });
 
           $('.timepicker-24').timepicker({
