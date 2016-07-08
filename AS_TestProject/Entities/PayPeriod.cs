@@ -18,6 +18,7 @@ namespace AS_TestProject.Entities
         public PayPeriod()
         {
             this.EmployeeHoursTotals = new HashSet<EmployeeHoursTotal>();
+            this.AgentDailyHours = new HashSet<AgentDailyHour>();
         }
     
         public short PayPeriodID { get; set; }
@@ -28,5 +29,7 @@ namespace AS_TestProject.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeHoursTotal> EmployeeHoursTotals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgentDailyHour> AgentDailyHours { get; set; }
     }
 }

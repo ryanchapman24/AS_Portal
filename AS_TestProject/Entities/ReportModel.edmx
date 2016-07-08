@@ -223,7 +223,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="LogoutTimeStamp" Type="datetime" Nullable="false" />
           <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
           <Property Name="AgentTimeAdjustmentReasonID" Type="smallint" />
-          <Property Name="PPID" Type="smallint" />
+          <Property Name="PayPeriodID" Type="smallint" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -916,6 +916,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PAYROLL_AgentDailyHours_PayPeriodID">
+          <End Role="PayPeriod" Type="Self.PayPeriod" Multiplicity="0..1" />
+          <End Role="AgentDailyHours" Type="Self.AgentDailyHours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayPeriod">
+              <PropertyRef Name="PayPeriodID" />
+            </Principal>
+            <Dependent Role="AgentDailyHours">
+              <PropertyRef Name="PayPeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_REPORT_CallLogMaster_DomainMasterID">
           <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
           <End Role="CallLogMaster" Type="Self.CallLogMaster" Multiplicity="*" />
@@ -1284,6 +1296,10 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="Employee" EntitySet="Employee" />
             <End Role="AgentDailyHours" EntitySet="AgentDailyHours" />
           </AssociationSet>
+          <AssociationSet Name="FK_PAYROLL_AgentDailyHours_PayPeriodID" Association="Self.FK_PAYROLL_AgentDailyHours_PayPeriodID">
+            <End Role="PayPeriod" EntitySet="PayPeriod" />
+            <End Role="AgentDailyHours" EntitySet="AgentDailyHours" />
+          </AssociationSet>
           <AssociationSet Name="FK_REPORT_CallLogMaster_DomainMasterID" Association="Self.FK_REPORT_CallLogMaster_DomainMasterID">
             <End Role="DomainMaster" EntitySet="DomainMaster" />
             <End Role="CallLogMaster" EntitySet="CallLogMaster" />
@@ -1397,6 +1413,10 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           </AssociationSet>
           <AssociationSet Name="FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" Association="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID">
             <End Role="AgentTimeAdjustmentReason" EntitySet="AgentTimeAdjustmentReasons" />
+            <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYROLL_AgentDailyHours_PayPeriodID" Association="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID">
+            <End Role="PayPeriod" EntitySet="PayPeriods" />
             <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
           </AssociationSet>
         </EntityContainer>
@@ -1622,6 +1642,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="AgentTimeAdjustmentReasonID" Type="Int16" />
           <Property Name="PPID" Type="Int16" />
           <NavigationProperty Name="AgentTimeAdjustmentReason" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" FromRole="AgentDailyHour" ToRole="AgentTimeAdjustmentReason" />
+          <Property Name="PayPeriodID" Type="Int16" />
+          <NavigationProperty Name="PayPeriod" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" FromRole="AgentDailyHour" ToRole="PayPeriod" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -1656,6 +1678,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="EmployeeHoursTotals" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" FromRole="PayPeriod" ToRole="EmployeeHoursTotal" />
+          <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" FromRole="PayPeriod" ToRole="AgentDailyHour" />
         </EntityType>
         <EntityType Name="CallLogMaster">
           <Key>
@@ -2377,6 +2400,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PAYROLL_AgentDailyHours_PayPeriodID">
+          <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="0..1" />
+          <End Type="ReportModel.AgentDailyHour" Role="AgentDailyHour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayPeriod">
+              <PropertyRef Name="PayPeriodID" />
+            </Principal>
+            <Dependent Role="AgentDailyHour">
+              <PropertyRef Name="PayPeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2581,7 +2616,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="AgentDailyHours">
             <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
               <MappingFragment StoreEntitySet="AgentDailyHours">
-                <ScalarProperty Name="PPID" ColumnName="PPID" />
+                <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
                 <ScalarProperty Name="AgentTimeAdjustmentReasonID" ColumnName="AgentTimeAdjustmentReasonID" />
                 <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
                 <ScalarProperty Name="LogoutTimeStamp" ColumnName="LogoutTimeStamp" />

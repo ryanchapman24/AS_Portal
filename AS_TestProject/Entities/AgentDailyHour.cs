@@ -22,9 +22,11 @@ namespace AS_TestProject.Entities
         public System.TimeSpan LoginDuration { get; set; }
         public Nullable<short> AgentTimeAdjustmentReasonID { get; set; }
         public Nullable<short> PPID { get; set; }
+        public Nullable<short> PayPeriodID { get; set; }
     
         public virtual DomainMaster DomainMaster { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual AgentTimeAdjustmentReason AgentTimeAdjustmentReason { get; set; }
+        public virtual PayPeriod PayPeriod { get; set; }
     }
 }
