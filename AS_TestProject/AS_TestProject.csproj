@@ -269,6 +269,9 @@
     <Compile Include="Entities\EmployeeFive9Agent.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\EmployeeHoursTotal.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\EmployeeNote.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
@@ -453,6 +456,8 @@
     <Content Include="assets\img\zoom.png" />
     <Content Include="assets\js\bootstrap-inputmask\bootstrap-inputmask.min.js" />
     <Content Include="assets\js\bootstrap-switch.js" />
+    <Content Include="assets\js\bootstrap-timepicker\timepicker.css" />
+    <Content Include="assets\js\bootstrap-timepicker\timepicker.js" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\calendar-conf-events.js" />
     <Content Include="assets\js\chart-master\Chart.js" />
