@@ -86,13 +86,17 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
     </AssociationSet>
-    <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID" Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID">
-      <End Role="PayPeriod" EntitySet="PayPeriods" />
-      <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
-    </AssociationSet>
     <AssociationSet Name="FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" Association="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID">
       <End Role="AgentTimeAdjustmentReason" EntitySet="AgentTimeAdjustmentReasons" />
       <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYROLL_AgentDailyHours_PayPeriodID" Association="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID">
+      <End Role="PayPeriod" EntitySet="PayPeriods" />
+      <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID" Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID">
+      <End Role="PayPeriod" EntitySet="PayPeriods" />
+      <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Customer">
@@ -312,11 +316,12 @@
     <Property Name="LoginTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="LogoutTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="AgentTimeAdjustmentReasonID" Type="Int16" />
+    <Property Name="PayPeriodID" Type="Int16" />
     <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" FromRole="AgentDailyHour" ToRole="DomainMaster" />
     <NavigationProperty Name="Employee" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="AgentDailyHour" ToRole="Employee" />
-    <Property Name="AgentTimeAdjustmentReasonID" Type="Int16" />
-    <Property Name="PPID" Type="Int16" />
     <NavigationProperty Name="AgentTimeAdjustmentReason" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" FromRole="AgentDailyHour" ToRole="AgentTimeAdjustmentReason" />
+    <NavigationProperty Name="PayPeriod" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" FromRole="AgentDailyHour" ToRole="PayPeriod" />
   </EntityType>
   <EntityType Name="AgentTimeAdjustmentReason">
     <Key>
@@ -350,6 +355,7 @@
     <Property Name="MidDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" FromRole="PayPeriod" ToRole="AgentDailyHour" />
     <NavigationProperty Name="EmployeeHoursTotals" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" FromRole="PayPeriod" ToRole="EmployeeHoursTotal" />
   </EntityType>
   <EntityType Name="CallLogMaster">
@@ -1048,18 +1054,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID">
-    <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="1" />
-    <End Type="ReportModel.EmployeeHoursTotal" Role="EmployeeHoursTotal" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PayPeriod">
-        <PropertyRef Name="PayPeriodID" />
-      </Principal>
-      <Dependent Role="EmployeeHoursTotal">
-        <PropertyRef Name="PayPeriodID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID">
     <End Type="ReportModel.AgentTimeAdjustmentReason" Role="AgentTimeAdjustmentReason" Multiplicity="0..1" />
     <End Type="ReportModel.AgentDailyHour" Role="AgentDailyHour" Multiplicity="*" />
@@ -1069,6 +1063,30 @@
       </Principal>
       <Dependent Role="AgentDailyHour">
         <PropertyRef Name="AgentTimeAdjustmentReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAYROLL_AgentDailyHours_PayPeriodID">
+    <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="0..1" />
+    <End Type="ReportModel.AgentDailyHour" Role="AgentDailyHour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PayPeriod">
+        <PropertyRef Name="PayPeriodID" />
+      </Principal>
+      <Dependent Role="AgentDailyHour">
+        <PropertyRef Name="PayPeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REPORT_EmployeeHoursTotal_PayPeriodID">
+    <End Type="ReportModel.PayPeriod" Role="PayPeriod" Multiplicity="1" />
+    <End Type="ReportModel.EmployeeHoursTotal" Role="EmployeeHoursTotal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PayPeriod">
+        <PropertyRef Name="PayPeriodID" />
+      </Principal>
+      <Dependent Role="EmployeeHoursTotal">
+        <PropertyRef Name="PayPeriodID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

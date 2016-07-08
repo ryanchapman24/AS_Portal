@@ -144,6 +144,29 @@
     <Property Name="MainPhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="AddDate" Type="date" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Report.dbo.ImportedEmployees' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ImportedEmployees">
+          <Property Name="First Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Last Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="File Number" Type="nvarchar" MaxLength="255" />
+          <Property Name=" Address Line 1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address Line 2" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zip Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Location Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Reports To Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Job Title Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Personal Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Work Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Home Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Personal Mobile" Type="nvarchar" MaxLength="255" />
+          <Property Name="Birth Date" Type="nvarchar" MaxLength="255" />
+          <Property Name="Hire Date" Type="datetime" />
+          <Property Name="Rehire Date" Type="datetime" />
+          <Property Name="Employee Status" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
   <EntityType Name="ProblemMaster">
     <Key>
       <PropertyRef Name="ProblemID" />
@@ -218,7 +241,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="LogoutTimeStamp" Type="datetime" Nullable="false" />
     <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
     <Property Name="AgentTimeAdjustmentReasonID" Type="smallint" />
-    <Property Name="PPID" Type="smallint" />
+    <Property Name="PayPeriodID" Type="smallint" />
   </EntityType>
   <EntityType Name="AgentTimeAdjustmentReason">
     <Key>
@@ -505,6 +528,146 @@ warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a prim
     <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Report.STAGE.CallLogMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CallLogMaster1">
+          <Property Name="RecordDate" Type="varchar" MaxLength="50" />
+          <Property Name="RecordTime" Type="time" Precision="7" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="5" />
+          <Property Name="Five9Timestamp" Type="varchar" MaxLength="30" />
+          <Property Name="CampaignName" Type="varchar" MaxLength="75" />
+          <Property Name="CallType" Type="varchar" MaxLength="40" />
+          <Property Name="AgentID" Type="varchar" MaxLength="125" />
+          <Property Name="Disposition" Type="varchar" MaxLength="125" />
+          <Property Name="AutomaticNumberIdentification" Type="varchar" MaxLength="15" />
+          <Property Name="LeadID" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="125" />
+          <Property Name="DialedNumberIdentificationService" Type="varchar" MaxLength="15" />
+          <Property Name="CallTime" Type="varchar" MaxLength="15" />
+          <Property Name="BillTimeRounded" Type="varchar" MaxLength="15" />
+          <Property Name="Cost" Type="varchar" MaxLength="25" />
+          <Property Name="IVRTime" Type="time" Precision="7" />
+          <Property Name="QueueWaitTime" Type="time" Precision="7" />
+          <Property Name="RingTime" Type="varchar" MaxLength="15" />
+          <Property Name="TalkTime" Type="varchar" MaxLength="15" />
+          <Property Name="HoldTime" Type="varchar" MaxLength="15" />
+          <Property Name="ParkTime" Type="varchar" MaxLength="15" />
+          <Property Name="AfterCallWorkTime" Type="varchar" MaxLength="15" />
+          <Property Name="Transfers" Type="varchar" MaxLength="25" />
+          <Property Name="Conferences" Type="varchar" MaxLength="25" />
+          <Property Name="Holds" Type="varchar" MaxLength="25" />
+          <Property Name="Abandonded" Type="varchar" MaxLength="25" />
+          <Property Name="Recordings" Type="varchar" MaxLength="500" />
+          <Property Name="CallDayOfMonth" Type="varchar" MaxLength="25" />
+          <Property Name="CallDayOfWeek" Type="varchar" MaxLength="10" />
+          <Property Name="CallHourOfDay" Type="varchar" MaxLength="25" />
+          <Property Name="AbandonRate" Type="varchar" MaxLength="25" />
+          <Property Name="ANIAreaCode" Type="varchar" MaxLength="25" />
+          <Property Name="ANICountry" Type="varchar" MaxLength="40" />
+          <Property Name="ANICountryCode" Type="varchar" MaxLength="25" />
+          <Property Name="ANIState" Type="varchar" MaxLength="25" />
+          <Property Name="Calls" Type="char" MaxLength="5" />
+          <Property Name="CallsCompletedInIVR" Type="char" MaxLength="5" />
+          <Property Name="CallsTimedOutInIVR" Type="char" MaxLength="5" />
+          <Property Name="CampaignType" Type="varchar" MaxLength="40" />
+          <Property Name="Contacted" Type="bit" />
+          <Property Name="ParentSessionID" Type="varchar" MaxLength="50" />
+          <Property Name="SessionID" Type="varchar" MaxLength="50" />
+          <Property Name="DisconnectedFromHold" Type="bit" />
+          <Property Name="DNISAreaCode" Type="varchar" MaxLength="25" />
+          <Property Name="DNISCountry" Type="varchar" MaxLength="40" />
+          <Property Name="DNISCountryCode" Type="varchar" MaxLength="25" />
+          <Property Name="DNISState" Type="varchar" MaxLength="25" />
+          <Property Name="ListName" Type="varchar" MaxLength="75" />
+          <Property Name="LiveConnect" Type="char" MaxLength="3" />
+          <Property Name="NoPartyContact" Type="varchar" MaxLength="25" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="ServiceLevel" Type="varchar" MaxLength="25" />
+          <Property Name="Skill" Type="varchar" MaxLength="125" />
+          <Property Name="SpeedOfAnswer" Type="varchar" MaxLength="15" />
+          <Property Name="ThirdPartyTalkTime" Type="varchar" MaxLength="15" />
+          <Property Name="ConferenceTime" Type="varchar" MaxLength="50" />
+          <Property Name="ConsultTime" Type="varchar" MaxLength="50" />
+          <Property Name="DialTime" Type="varchar" MaxLength="50" />
+          <Property Name="HandleTime" Type="varchar" MaxLength="50" />
+          <Property Name="ManualTime" Type="varchar" MaxLength="50" />
+          <Property Name="Rate" Type="varchar" MaxLength="25" />
+          <Property Name="TalkTimeLessHoldAndPark" Type="varchar" MaxLength="15" />
+          <Property Name="TimeToAbandon" Type="varchar" MaxLength="15" />
+          <Property Name="AgentEmail" Type="varchar" MaxLength="320" />
+          <Property Name="AgentFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="AgentLastName" Type="varchar" MaxLength="50" />
+          <Property Name="Extension" Type="varchar" MaxLength="15" />
+          <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerLastName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerCity" Type="varchar" MaxLength="125" />
+          <Property Name="CustomerState" Type="char" MaxLength="2" />
+          <Property Name="Address1" Type="varchar" MaxLength="125" />
+          <Property Name="Address2" Type="varchar" MaxLength="125" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="PhoneNumber1" Type="varchar" MaxLength="14" />
+          <Property Name="PhoneNumber2" Type="varchar" MaxLength="14" />
+          <Property Name="PhoneNumber3" Type="varchar" MaxLength="14" />
+          <Property Name="IsDoNotCall" Type="varchar" MaxLength="50" />
+          <Property Name="ListCode" Type="varchar" MaxLength="20" />
+          <Property Name="LoanAmount" Type="varchar" MaxLength="20" />
+          <Property Name="LoanPurpose" Type="varchar" MaxLength="50" />
+          <Property Name="LoanType" Type="varchar" MaxLength="50" />
+          <Property Name="Number1" Type="varchar" MaxLength="25" />
+          <Property Name="Number2" Type="varchar" MaxLength="25" />
+          <Property Name="Number3" Type="varchar" MaxLength="25" />
+          <Property Name="PropertyType" Type="varchar" MaxLength="50" />
+          <Property Name="PurchasePrice" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="25" />
+          <Property Name="Street" Type="varchar" MaxLength="125" />
+          <Property Name="ContactID" Type="varchar" MaxLength="25" />
+          <Property Name="ContactCreateTimestamp" Type="varchar" MaxLength="50" />
+          <Property Name="ContactModifiedTimestamp" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="10" />
+          <Property Name="Dispo" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="varchar" MaxLength="25" />
+          <Property Name="FacilityName" Type="varchar" MaxLength="125" />
+          <Property Name="Gender" Type="varchar" MaxLength="5" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
+          <Property Name="PatientID" Type="varchar" MaxLength="25" />
+          <Property Name="ProjectCode" Type="varchar" MaxLength="25" />
+          <Property Name="QualifiedProtocols" Type="varchar(max)" />
+          <Property Name="RefferedDate" Type="varchar" MaxLength="50" />
+          <Property Name="Site1Address" Type="varchar" MaxLength="50" />
+          <Property Name="Site1City" Type="varchar" MaxLength="255" />
+          <Property Name="SiteInfo" Type="varchar(max)" />
+          <Property Name="DispositionResolutionCode" Type="varchar" MaxLength="125" />
+          <Property Name="FilterID" Type="varchar" MaxLength="25" />
+          <Property Name="ListEntry" Type="varchar" MaxLength="25" />
+          <Property Name="NMLSID" Type="varchar" MaxLength="50" />
+          <Property Name="PropertyState" Type="varchar" MaxLength="25" />
+          <Property Name="PropertyZip" Type="varchar" MaxLength="25" />
+          <Property Name="DateExpiration" Type="varchar" MaxLength="50" />
+          <Property Name="DateMailed" Type="varchar" MaxLength="50" />
+          <Property Name="DateReceived" Type="varchar" MaxLength="50" />
+          <Property Name="ListEntryDate" Type="varchar" MaxLength="50" />
+          <Property Name="ScriptType" Type="varchar" MaxLength="50" />
+          <Property Name="TransferNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Vendor" Type="varchar" MaxLength="50" />
+          <Property Name="CreditRate" Type="varchar" MaxLength="25" />
+          <Property Name="FormType" Type="varchar" MaxLength="25" />
+          <Property Name="Homevalue" Type="varchar" MaxLength="25" />
+          <Property Name="HybridFilterID" Type="varchar" MaxLength="25" />
+          <Property Name="Mortgage1Balance" Type="varchar" MaxLength="25" />
+          <Property Name="PropertyUse" Type="varchar" MaxLength="25" />
+          <Property Name="ShortFilterID" Type="varchar" MaxLength="25" />
+          <Property Name="Agency" Type="varchar" MaxLength="25" />
+          <Property Name="Campaign" Type="varchar" MaxLength="50" />
+          <Property Name="LoanRequestType" Type="varchar" MaxLength="50" />
+          <Property Name="SubmitTimeStamp" Type="varchar" MaxLength="50" />
+          <Property Name="Vertical" Type="varchar" MaxLength="125" />
+          <Property Name="LoanApplicationID" Type="varchar" MaxLength="50" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="LoanOfficerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="AppDateStamp" Type="varchar" MaxLength="50" />
+          <Property Name="LeadSource" Type="varchar" MaxLength="25" />
+          <Property Name="CallID" Type="varchar" MaxLength="25" />
+        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Report.STAGE.ClientLeads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ClientLeads">
@@ -911,6 +1074,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PAYROLL_AgentDailyHours_PayPeriodID">
+    <End Role="PayPeriod" Type="Self.PayPeriod" Multiplicity="0..1" />
+    <End Role="AgentDailyHours" Type="Self.AgentDailyHours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PayPeriod">
+        <PropertyRef Name="PayPeriodID" />
+      </Principal>
+      <Dependent Role="AgentDailyHours">
+        <PropertyRef Name="PayPeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_REPORT_CallLogMaster_DomainMasterID">
     <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
     <End Role="CallLogMaster" Type="Self.CallLogMaster" Multiplicity="*" />
@@ -1277,6 +1452,10 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     </AssociationSet>
     <AssociationSet Name="FK_PAYROLL_AgentDailyHours_EmployeeID" Association="Self.FK_PAYROLL_AgentDailyHours_EmployeeID">
       <End Role="Employee" EntitySet="Employee" />
+      <End Role="AgentDailyHours" EntitySet="AgentDailyHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYROLL_AgentDailyHours_PayPeriodID" Association="Self.FK_PAYROLL_AgentDailyHours_PayPeriodID">
+      <End Role="PayPeriod" EntitySet="PayPeriod" />
       <End Role="AgentDailyHours" EntitySet="AgentDailyHours" />
     </AssociationSet>
     <AssociationSet Name="FK_REPORT_CallLogMaster_DomainMasterID" Association="Self.FK_REPORT_CallLogMaster_DomainMasterID">

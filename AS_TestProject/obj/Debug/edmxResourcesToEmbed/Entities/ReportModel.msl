@@ -199,7 +199,7 @@
     <EntitySetMapping Name="AgentDailyHours">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
         <MappingFragment StoreEntitySet="AgentDailyHours">
-          <ScalarProperty Name="PPID" ColumnName="PPID" />
+          <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
           <ScalarProperty Name="AgentTimeAdjustmentReasonID" ColumnName="AgentTimeAdjustmentReasonID" />
           <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
           <ScalarProperty Name="LogoutTimeStamp" ColumnName="LogoutTimeStamp" />
