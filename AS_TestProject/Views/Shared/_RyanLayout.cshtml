@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity;
+@using System;
+@using System.Globalization;
 
 @{ 
     var tasks = ViewBag.UrgentTasks.Count + ViewBag.HighTasks.Count + ViewBag.MediumTasks.Count + ViewBag.LowTasks.Count;
@@ -567,7 +569,6 @@
     <!-- js placed at the end of the document so the pages load faster -->
       @*@Scripts.Render("~/bundles/jquery")
       @Scripts.Render("~/bundles/bootstrap")*@
-    @RenderSection("scripts", required: false)
     <script src="~/assets/js/jquery.js"></script>
     <script src="~/assets/js/jquery-1.8.3.min.js"></script>
     <script src="~/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
@@ -584,6 +585,7 @@
     <script src="~/Multiselect PlugIn/js/jquery.multi-select.js"></script>
     <script src="~/Multiselect PlugIn/js/jquery.quicksearch.js"></script>
     <script src="~/Scripts/MultiSelect.js"></script>
+    @RenderSection("scripts", required: false)
 
     <!--common script for all pages-->
     <script src="~/assets/js/common-scripts.js"></script>
@@ -776,36 +778,26 @@
           });
       </script>
       @*<script>
-
-       var fileInput = document.getElementById('fileUploadThree');
-       var fileDisplayArea = document.getElementById('fileDisplay');
-
-       //File Reader Function for displaying images
-       fileInput.addEventListener('change', function (e) {
-           var file = fileInput.files[0];
-           var imageType = /image.*/;
-
-           if (file.type.match(imageType)) {
-               var reader = new FileReader();
-
-               reader.onload = function (e) {
-                   fileDisplayArea.innerHTML = "";
-
-                   // Create a new image.
-                   var img = new Image();
-                   // Set the img src property using the data URL.
-                   img.src = reader.result;
-                   // Add the image to the page.
-                   fileDisplayArea.appendChild(img);
-               }
-
-               reader.readAsDataURL(file);
-           }
-
-           else {
-               fileDisplayArea.innerHTML = "File not supported!";
-           }
-       });
+          $("input[name='LoginTimeStamp'],[name='LogoutTimeStamp']").change(function () {            
+              var login = $("#login").val();
+              var logout = $("#logout").val();
+              var td = $("input[name='LoginDuration']").value = logout - login;
+              console.log(login);
+              console.log(logout);
+             
+          })
       </script>*@
+      <script>
+          function toSeconds(time_str) {
+              // Extract hours, minutes and seconds
+              var parts = time_str.split(':');
+              // compute  and return total seconds
+              return parts[0] * 3600 + // an hour has 3600 seconds
+              parts[1] * 60 + // a minute has 60 seconds
+              +
+              parts[2]; // seconds
+          }
+
+      </script>
   </body>
 </html>

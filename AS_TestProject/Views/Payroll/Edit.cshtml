@@ -30,7 +30,8 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group bootstrap-timepicker">
-                    @Html.EditorFor(model => model.LoginTimeStamp, new { htmlAttributes = new { @class = "form-control timepicker-default" } })
+                    @*@Html.EditorFor(model => model.LoginTimeStamp, new { htmlAttributes = new { @class = "form-control timepicker-default" } })*@
+                    <input id="time1" class="form-control timepicker-default" type="text" name="LoginTimeStamp" value="@Model.LoginTimeStamp.ToString("hh:mm:ss tt")" />
                     @Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })
                     <span class="input-group-btn">
                         <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
@@ -41,11 +42,12 @@
 
         <div class="form-group">
             <div class="col-md-2 control-label">
-                Login Time
+                Logout Time
             </div>
             <div class="col-md-4">
                 <div class="input-group bootstrap-timepicker">
-                    @Html.EditorFor(model => model.LogoutTimeStamp, new { htmlAttributes = new { @class = "form-control timepicker-default" } })
+                    @*@Html.EditorFor(model => model.LogoutTimeStamp, new { htmlAttributes = new { @class = "form-control timepicker-default" } })*@
+                    <input id="time2" class="form-control timepicker-default" type="text" name="LogoutTimeStamp" value="@Model.LogoutTimeStamp.ToString("hh:mm:ss tt")" />
                     @Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })
                     <span class="input-group-btn">
                         <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
@@ -59,7 +61,8 @@
                 Duration
             </div>
             <div class="col-md-4">
-                @Html.EditorFor(model => model.LoginDuration, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.LoginDuration, new { htmlAttributes = new { @id = "totalTime", @class = "form-control", @readonly = "readonly" } })*@
+                <input id="totalTime" class="form-control" readonly="readonly" name="LoginDuration" value="@Model.LoginDuration"/>
                 @Html.ValidationMessageFor(model => model.LoginDuration, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,14 +72,14 @@
                 Adjustment Reason
             </div>
             <div class="col-md-4">
-                @Html.DropDownList("AgentTimeAdjustmentReasonID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("AgentTimeAdjustmentReasonID", null, "", htmlAttributes: new { @id = "reason", @class = "form-control", required="true" })
                 @Html.ValidationMessageFor(model => model.AgentTimeAdjustmentReasonID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Update" class="btn btn-theme" />
+                <input id="time-update" type="submit" value="Update" class="btn btn-theme" />
             </div>
         </div>
     </div>
@@ -88,4 +91,51 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+              $(document).ready(function () {
+                  var $time1 = $("#time1");
+                  var $time2 = $("#time2");
+                  var $diff = $("#totalTime");
+
+                  function updateHours() {
+                      var dtStart = new Date("7/20/2015 " + $time1.val());
+                      var dtEnd = new Date("7/20/2015 " + $time2.val());
+
+                      var diff = dtEnd - dtStart;
+                      var totalSec = diff / 1000;
+                      var hours = parseInt(totalSec / 3600) % 24;
+                      var minutes = parseInt(totalSec / 60) % 60;
+                      var seconds = totalSec % 60;
+                      var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                      if (dtStart > dtEnd)
+                      {
+                          $("#time-update").prop('disabled', true);
+                          $diff.val("Login time can't be greater than logout time!")
+                      }
+
+                      if (dtStart <= dtEnd)
+                      {
+                          $("#time-update").prop('disabled', false);
+                          $diff.val(result);
+                      }
+                      
+                  }
+                  $time1.add($time2).change(function(){
+                      if($time1.val() && $time2.val()){
+                          updateHours()
+                      }
+                  });
+              });
+    </script>
+    @*<script>
+        if ($("#reason").val() == "")
+        {
+            $("#time-update").prop('disabled', true);
+        }
+        else {
+            $("#time-update").prop('disabled', false);
+        }
+    </script>*@
+
 }
