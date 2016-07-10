@@ -15,9 +15,14 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.AgentDailyHoursID)
+        @Html.HiddenFor(model => model.EmployeeID)
+        @Html.HiddenFor(model => model.DomainMasterID)
+        @Html.HiddenFor(model => model.PayPeriodID)
 
         <input id="login" type="hidden" name="LoginTimeStamp" readonly="readonly" value="@ViewBag.Date"/>
+                    @Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })
         <input id="logout" type="hidden" name="LogoutTimeStamp" readonly="readonly" value="@ViewBag.Date"/>
+                    @Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.DomainMasterID, "DomainMasterID", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -34,7 +39,6 @@
             <div class="col-md-4">
                 <div class="input-group bootstrap-timepicker">
                     <input id="time1" class="form-control timepicker-default" type="text" value="@Model.LoginTimeStamp.ToString("hh:mm:ss tt")" />
-                    @Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })
                     <span class="input-group-btn">
                         <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
                     </span>
@@ -49,7 +53,6 @@
             <div class="col-md-4">
                 <div class="input-group bootstrap-timepicker">
                     <input id="time2" class="form-control timepicker-default" type="text" value="@Model.LogoutTimeStamp.ToString("hh:mm:ss tt")" />
-                    @Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })
                     <span class="input-group-btn">
                         <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
                     </span>
@@ -79,7 +82,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="time-update" type="submit" value="Update" class="btn btn-theme" onclick="updateTime()"/>
+                <input id="time-update" type="submit" value="Update" class="btn btn-theme" />
             </div>
         </div>
     </div>
@@ -164,10 +167,12 @@
             });
         });
     </script>
-    <script>  
-        function updateTime() {
+    <script>
+        $(document).ready ( function(){
             var $login = $("#login");
             var $logout = $("#logout");
+            var $time1 = $("#time1");
+            var $time2 = $("#time2");
 
             var inStr = $login.val().toString();
             var inSub = inStr.substring(0, inStr.indexOf(' '));
@@ -197,6 +202,6 @@
 
             $login.val(login);
             $logout.val(logout);
-        }
+        })
     </script>
 }

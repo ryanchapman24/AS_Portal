@@ -93,9 +93,13 @@ namespace AS_TestProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                mb.Entry(agentDailyHour).State = EntityState.Modified;
+                mb.AgentDailyHours.Attach(agentDailyHour);
+                mb.Entry(agentDailyHour).Property("LoginTimeStamp").IsModified = true;
+                mb.Entry(agentDailyHour).Property("LogoutTimeStamp").IsModified = true;
+                mb.Entry(agentDailyHour).Property("LoginDuration").IsModified = true;
+                mb.Entry(agentDailyHour).Property("AgentTimeAdjustmentReasonID").IsModified = true;
                 mb.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = agentDailyHour.EmployeeID });
             }
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
             ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName", agentDailyHour.EmployeeID);
