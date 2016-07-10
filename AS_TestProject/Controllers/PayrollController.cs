@@ -71,6 +71,8 @@ namespace AS_TestProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             AgentDailyHour agentDailyHour = mb.AgentDailyHours.Find(id);
+            var date = agentDailyHour.LoginTimeStamp.ToString("d");
+            ViewBag.Date = date + " ";
             if (agentDailyHour == null)
             {
                 return HttpNotFound();

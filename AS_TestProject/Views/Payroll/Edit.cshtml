@@ -16,6 +16,9 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.AgentDailyHoursID)
 
+        <input id="login" type="hidden" name="LoginTimeStamp" readonly="readonly" value="@ViewBag.Date"/>
+        <input id="logout" type="hidden" name="LogoutTimeStamp" readonly="readonly" value="@ViewBag.Date"/>
+
         @*<div class="form-group">
             @Html.LabelFor(model => model.DomainMasterID, "DomainMasterID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
@@ -30,8 +33,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group bootstrap-timepicker">
-                    @*@Html.EditorFor(model => model.LoginTimeStamp, new { htmlAttributes = new { @class = "form-control timepicker-default" } })*@
-                    <input id="time1" class="form-control timepicker-default" type="text" name="LoginTimeStamp" value="@Model.LoginTimeStamp.ToString("hh:mm:ss tt")" />
+                    <input id="time1" class="form-control timepicker-default" type="text" value="@Model.LoginTimeStamp.ToString("hh:mm:ss tt")" />
                     @Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })
                     <span class="input-group-btn">
                         <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
@@ -46,8 +48,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group bootstrap-timepicker">
-                    @*@Html.EditorFor(model => model.LogoutTimeStamp, new { htmlAttributes = new { @class = "form-control timepicker-default" } })*@
-                    <input id="time2" class="form-control timepicker-default" type="text" name="LogoutTimeStamp" value="@Model.LogoutTimeStamp.ToString("hh:mm:ss tt")" />
+                    <input id="time2" class="form-control timepicker-default" type="text" value="@Model.LogoutTimeStamp.ToString("hh:mm:ss tt")" />
                     @Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })
                     <span class="input-group-btn">
                         <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
@@ -61,7 +62,6 @@
                 Duration
             </div>
             <div class="col-md-4">
-                @*@Html.EditorFor(model => model.LoginDuration, new { htmlAttributes = new { @id = "totalTime", @class = "form-control", @readonly = "readonly" } })*@
                 <input id="totalTime" class="form-control" readonly="readonly" name="LoginDuration" value="@Model.LoginDuration"/>
                 @Html.ValidationMessageFor(model => model.LoginDuration, "", new { @class = "text-danger" })
             </div>
@@ -79,7 +79,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="time-update" type="submit" value="Update" class="btn btn-theme" />
+                <input id="time-update" type="submit" value="Update" class="btn btn-theme" onclick="updateTime()"/>
             </div>
         </div>
     </div>
@@ -92,50 +92,111 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-              $(document).ready(function () {
-                  var $time1 = $("#time1");
-                  var $time2 = $("#time2");
-                  var $diff = $("#totalTime");
+        $(document).ready(function () {
+            var $time1 = $("#time1");
+            var $time2 = $("#time2");
+            var $diff = $("#totalTime");
 
-                  function updateHours() {
-                      var dtStart = new Date("7/20/2015 " + $time1.val());
-                      var dtEnd = new Date("7/20/2015 " + $time2.val());
+            function updateHours() {
+                     
+                var dtStart = new Date("7/8/2016 " + $time1.val());
+                var dtEnd = new Date("7/8/2016 " + $time2.val());
 
-                      var diff = dtEnd - dtStart;
-                      var totalSec = diff / 1000;
-                      var hours = parseInt(totalSec / 3600) % 24;
-                      var minutes = parseInt(totalSec / 60) % 60;
-                      var seconds = totalSec % 60;
-                      var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+                var diff = dtEnd - dtStart;
+                var totalSec = diff / 1000;
+                var hours = parseInt(totalSec / 3600) % 24;
+                var minutes = parseInt(totalSec / 60) % 60;
+                var seconds = totalSec % 60;
+                var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
 
-                      if (dtStart > dtEnd)
-                      {
-                          $("#time-update").prop('disabled', true);
-                          $diff.val("Login time can't be greater than logout time!")
-                      }
+                if (dtStart > dtEnd)
+                {
+                    $("#time-update").prop('disabled', true);
+                    $diff.val("Login time can't be greater than logout time!");
+                }
 
-                      if (dtStart <= dtEnd)
-                      {
-                          $("#time-update").prop('disabled', false);
-                          $diff.val(result);
-                      }
-                      
-                  }
-                  $time1.add($time2).change(function(){
-                      if($time1.val() && $time2.val()){
-                          updateHours()
-                      }
-                  });
-              });
+                if (dtStart <= dtEnd)
+                {
+                    $("#time-update").prop('disabled', false);
+                    $diff.val(result);
+                }                                       
+            }
+
+            function updateTime() {
+                var $login = $("#login");
+                var $logout = $("#logout");
+
+                var inStr = $login.val().toString();
+                var inSub = inStr.substring(0, inStr.indexOf(' '));
+
+                var outStr = $logout.val().toString();
+                var outSub = outStr.substring(0, outStr.indexOf(' '));
+
+                var time1Str = $time1.val().toString();
+                var time2Str = $time2.val().toString();
+
+                if (time1Str.match("^0")) {
+                    var time1Sub = time1Str.substring(1, time1Str.length);
+                }
+                else {
+                    var time1Sub = time1Str;
+                }
+                        
+                if (time2Str.match("^0")) {
+                    var time2Sub = time2Str.substring(1, time2Str.length);
+                }
+                else {
+                    var time2Sub = time2Str;
+                }
+
+                var login = inSub + " " + time1Sub;
+                var logout = outSub + " " + time2Sub;
+
+                $login.val(login);
+                $logout.val(logout);
+            }
+
+            $time1.add($time2).change(function(){
+                if ($time1.val() && $time2.val()) {
+                    updateHours();
+                    updateTime()
+                }
+            });
+        });
     </script>
-    @*<script>
-        if ($("#reason").val() == "")
-        {
-            $("#time-update").prop('disabled', true);
-        }
-        else {
-            $("#time-update").prop('disabled', false);
-        }
-    </script>*@
+    <script>  
+        function updateTime() {
+            var $login = $("#login");
+            var $logout = $("#logout");
 
+            var inStr = $login.val().toString();
+            var inSub = inStr.substring(0, inStr.indexOf(' '));
+
+            var outStr = $logout.val().toString();
+            var outSub = outStr.substring(0, outStr.indexOf(' '));
+
+            var time1Str = $time1.val().toString();
+            var time2Str = $time2.val().toString();
+
+            if (time1Str.match("^0")) {
+                var time1Sub = time1Str.substring(1, time1Str.length);
+            }
+            else {
+                var time1Sub = time1Str;
+            }
+
+            if (time2Str.match("^0")) {
+                var time2Sub = time2Str.substring(1, time2Str.length);
+            }
+            else {
+                var time2Sub = time2Str;
+            }
+
+            var login = inSub + " " + time1Sub;
+            var logout = outSub + " " + time2Sub;
+
+            $login.val(login);
+            $logout.val(logout);
+        }
+    </script>
 }
