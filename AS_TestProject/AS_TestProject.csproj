@@ -282,10 +282,10 @@
     <Compile Include="Entities\EverQuoteHourlyCallLogMaster.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\EverQuoteHourlyCampaignMetric.cs">
+    <Compile Include="Entities\EverquoteHourlyCampaignMetric.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\EverQuoteRollingCampaignMetric.cs">
+    <Compile Include="Entities\EverquoteRollingCampaignMetric.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\FreedomDailyPortfolioInventory.cs">
@@ -331,6 +331,12 @@
       <DependentUpon>ReportModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Site.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\uspInsertClientLeads_Result.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\uspInsertProblemMaster_Result.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

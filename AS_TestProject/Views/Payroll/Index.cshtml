@@ -87,6 +87,8 @@
                         <th>Logout</th>
                         <th>Duration</th>
                         <th>Domain</th>
+                        <th>Regular Hours</th>
+                        <th>Overtime Hours</th>
                         <th>Adjustment Reason</th>
                         <th>Action</th>
                     </tr>
@@ -99,6 +101,8 @@
                             <td>@Html.DisplayFor(modelItem => item.LogoutTimeStamp)</td>
                             <td>@Html.DisplayFor(modelItem => item.LoginDuration)</td>
                             <td>@Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RegularHours)</td>
+                            <td>@Html.DisplayFor(modelItem => item.OverTimeHours)</td>
                             <td>@Html.DisplayFor(modelItem => item.AgentTimeAdjustmentReason.Reason)</td>
                             <td>@Html.ActionLink("Edit", "Edit", new { id = item.AgentDailyHoursID })</td>
                         </tr>

@@ -12,6 +12,8 @@ namespace AS_TestProject.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ReportEntities : DbContext
     {
@@ -43,8 +45,8 @@ namespace AS_TestProject.Entities
         public virtual DbSet<EmployeeHoursTotal> EmployeeHoursTotals { get; set; }
         public virtual DbSet<PayPeriod> PayPeriods { get; set; }
         public virtual DbSet<CallLogMaster> CallLogMasters { get; set; }
-        public virtual DbSet<EverQuoteHourlyCampaignMetric> EverQuoteHourlyCampaignMetrics { get; set; }
-        public virtual DbSet<EverQuoteRollingCampaignMetric> EverQuoteRollingCampaignMetrics { get; set; }
+        public virtual DbSet<EverquoteHourlyCampaignMetric> EverquoteHourlyCampaignMetrics { get; set; }
+        public virtual DbSet<EverquoteRollingCampaignMetric> EverquoteRollingCampaignMetrics { get; set; }
         public virtual DbSet<PreciseLeadsHourlyCampaignMetric> PreciseLeadsHourlyCampaignMetrics { get; set; }
         public virtual DbSet<PreciseLeadsRollingCampaignMetric> PreciseLeadsRollingCampaignMetrics { get; set; }
         public virtual DbSet<FreedomHourlyCallMetric> FreedomHourlyCallMetrics { get; set; }
@@ -54,5 +56,146 @@ namespace AS_TestProject.Entities
         public virtual DbSet<FreedomDailyPortfolioInventory> FreedomDailyPortfolioInventories { get; set; }
         public virtual DbSet<FreedomHourlyCallMetrics1> FreedomHourlyCallMetrics1 { get; set; }
         public virtual DbSet<PreciseLeadsHourlyCallLogMaster> PreciseLeadsHourlyCallLogMasters { get; set; }
+    
+        public virtual ObjectResult<uspInsertProblemMaster_Result> uspInsertProblemMaster(string userID, string processName, Nullable<int> errorNumber, Nullable<int> lineNumber, string exceptionMessage, string exceptionSource, Nullable<int> exceptionSeverity, Nullable<int> exceptionState)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var processNameParameter = processName != null ?
+                new ObjectParameter("ProcessName", processName) :
+                new ObjectParameter("ProcessName", typeof(string));
+    
+            var errorNumberParameter = errorNumber.HasValue ?
+                new ObjectParameter("ErrorNumber", errorNumber) :
+                new ObjectParameter("ErrorNumber", typeof(int));
+    
+            var lineNumberParameter = lineNumber.HasValue ?
+                new ObjectParameter("LineNumber", lineNumber) :
+                new ObjectParameter("LineNumber", typeof(int));
+    
+            var exceptionMessageParameter = exceptionMessage != null ?
+                new ObjectParameter("ExceptionMessage", exceptionMessage) :
+                new ObjectParameter("ExceptionMessage", typeof(string));
+    
+            var exceptionSourceParameter = exceptionSource != null ?
+                new ObjectParameter("ExceptionSource", exceptionSource) :
+                new ObjectParameter("ExceptionSource", typeof(string));
+    
+            var exceptionSeverityParameter = exceptionSeverity.HasValue ?
+                new ObjectParameter("ExceptionSeverity", exceptionSeverity) :
+                new ObjectParameter("ExceptionSeverity", typeof(int));
+    
+            var exceptionStateParameter = exceptionState.HasValue ?
+                new ObjectParameter("ExceptionState", exceptionState) :
+                new ObjectParameter("ExceptionState", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspInsertProblemMaster_Result>("uspInsertProblemMaster", userIDParameter, processNameParameter, errorNumberParameter, lineNumberParameter, exceptionMessageParameter, exceptionSourceParameter, exceptionSeverityParameter, exceptionStateParameter);
+        }
+    
+        public virtual int uspAgentDailyHours()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAgentDailyHours");
+        }
+    
+        public virtual int uspAssignPayPeriod()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAssignPayPeriod");
+        }
+    
+        public virtual int uspEmployeeHoursCalculation()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspEmployeeHoursCalculation");
+        }
+    
+        public virtual int uspOverTimeHoursCalculation()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspOverTimeHoursCalculation");
+        }
+    
+        public virtual int uspInsertEverquoteHourlyCallMetrics()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspInsertEverquoteHourlyCallMetrics");
+        }
+    
+        public virtual int uspInsertPreciseLeadsHourlyCallLogMetrics()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspInsertPreciseLeadsHourlyCallLogMetrics");
+        }
+    
+        public virtual int uspDailyPortfolioInventoryReport()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspDailyPortfolioInventoryReport");
+        }
+    
+        public virtual ObjectResult<uspInsertClientLeads_Result> uspInsertClientLeads(string leadID, string clientName, Nullable<System.DateTime> arrivalTimestamp, Nullable<System.DateTime> preserviceTimestamp, Nullable<System.DateTime> postserviceTimestamp, string phoneNumber, string firstName, string lastName, string addressLine1, string addressLine2, string zipCode, string city, string state, string emailAddress, string leadType, string campaignName)
+        {
+            var leadIDParameter = leadID != null ?
+                new ObjectParameter("LeadID", leadID) :
+                new ObjectParameter("LeadID", typeof(string));
+    
+            var clientNameParameter = clientName != null ?
+                new ObjectParameter("ClientName", clientName) :
+                new ObjectParameter("ClientName", typeof(string));
+    
+            var arrivalTimestampParameter = arrivalTimestamp.HasValue ?
+                new ObjectParameter("ArrivalTimestamp", arrivalTimestamp) :
+                new ObjectParameter("ArrivalTimestamp", typeof(System.DateTime));
+    
+            var preserviceTimestampParameter = preserviceTimestamp.HasValue ?
+                new ObjectParameter("PreserviceTimestamp", preserviceTimestamp) :
+                new ObjectParameter("PreserviceTimestamp", typeof(System.DateTime));
+    
+            var postserviceTimestampParameter = postserviceTimestamp.HasValue ?
+                new ObjectParameter("PostserviceTimestamp", postserviceTimestamp) :
+                new ObjectParameter("PostserviceTimestamp", typeof(System.DateTime));
+    
+            var phoneNumberParameter = phoneNumber != null ?
+                new ObjectParameter("PhoneNumber", phoneNumber) :
+                new ObjectParameter("PhoneNumber", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var addressLine1Parameter = addressLine1 != null ?
+                new ObjectParameter("AddressLine1", addressLine1) :
+                new ObjectParameter("AddressLine1", typeof(string));
+    
+            var addressLine2Parameter = addressLine2 != null ?
+                new ObjectParameter("AddressLine2", addressLine2) :
+                new ObjectParameter("AddressLine2", typeof(string));
+    
+            var zipCodeParameter = zipCode != null ?
+                new ObjectParameter("ZipCode", zipCode) :
+                new ObjectParameter("ZipCode", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            var leadTypeParameter = leadType != null ?
+                new ObjectParameter("LeadType", leadType) :
+                new ObjectParameter("LeadType", typeof(string));
+    
+            var campaignNameParameter = campaignName != null ?
+                new ObjectParameter("CampaignName", campaignName) :
+                new ObjectParameter("CampaignName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspInsertClientLeads_Result>("uspInsertClientLeads", leadIDParameter, clientNameParameter, arrivalTimestampParameter, preserviceTimestampParameter, postserviceTimestampParameter, phoneNumberParameter, firstNameParameter, lastNameParameter, addressLine1Parameter, addressLine2Parameter, zipCodeParameter, cityParameter, stateParameter, emailAddressParameter, leadTypeParameter, campaignNameParameter);
+        }
     }
 }

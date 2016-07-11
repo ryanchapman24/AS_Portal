@@ -19,8 +19,8 @@
     <EntitySet Name="EmployeeHoursTotals" EntityType="ReportModel.EmployeeHoursTotal" />
     <EntitySet Name="PayPeriods" EntityType="ReportModel.PayPeriod" />
     <EntitySet Name="CallLogMasters" EntityType="ReportModel.CallLogMaster" />
-    <EntitySet Name="EverQuoteHourlyCampaignMetrics" EntityType="ReportModel.EverQuoteHourlyCampaignMetric" />
-    <EntitySet Name="EverQuoteRollingCampaignMetrics" EntityType="ReportModel.EverQuoteRollingCampaignMetric" />
+    <EntitySet Name="EverquoteHourlyCampaignMetrics" EntityType="ReportModel.EverquoteHourlyCampaignMetric" />
+    <EntitySet Name="EverquoteRollingCampaignMetrics" EntityType="ReportModel.EverquoteRollingCampaignMetric" />
     <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" />
     <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" />
     <EntitySet Name="FreedomHourlyCallMetrics" EntityType="ReportModel.FreedomHourlyCallMetric" />
@@ -98,6 +98,41 @@
       <End Role="PayPeriod" EntitySet="PayPeriods" />
       <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
     </AssociationSet>
+    <FunctionImport Name="uspInsertProblemMaster" ReturnType="Collection(ReportModel.uspInsertProblemMaster_Result)">
+      <Parameter Name="UserID" Mode="In" Type="String" />
+      <Parameter Name="ProcessName" Mode="In" Type="String" />
+      <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
+      <Parameter Name="LineNumber" Mode="In" Type="Int32" />
+      <Parameter Name="ExceptionMessage" Mode="In" Type="String" />
+      <Parameter Name="ExceptionSource" Mode="In" Type="String" />
+      <Parameter Name="ExceptionSeverity" Mode="In" Type="Int32" />
+      <Parameter Name="ExceptionState" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgentDailyHours" />
+    <FunctionImport Name="uspAssignPayPeriod" />
+    <FunctionImport Name="uspEmployeeHoursCalculation" />
+    <FunctionImport Name="uspOverTimeHoursCalculation" />
+    <FunctionImport Name="uspInsertEverquoteHourlyCallMetrics" />
+    <FunctionImport Name="uspInsertPreciseLeadsHourlyCallLogMetrics" />
+    <FunctionImport Name="uspDailyPortfolioInventoryReport" />
+    <FunctionImport Name="uspInsertClientLeads" ReturnType="Collection(ReportModel.uspInsertClientLeads_Result)">
+      <Parameter Name="LeadID" Mode="In" Type="String" />
+      <Parameter Name="ClientName" Mode="In" Type="String" />
+      <Parameter Name="ArrivalTimestamp" Mode="In" Type="DateTime" />
+      <Parameter Name="PreserviceTimestamp" Mode="In" Type="DateTime" />
+      <Parameter Name="PostserviceTimestamp" Mode="In" Type="DateTime" />
+      <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="AddressLine1" Mode="In" Type="String" />
+      <Parameter Name="AddressLine2" Mode="In" Type="String" />
+      <Parameter Name="ZipCode" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="LeadType" Mode="In" Type="String" />
+      <Parameter Name="CampaignName" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Customer">
     <Key>
@@ -318,6 +353,8 @@
     <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
     <Property Name="AgentTimeAdjustmentReasonID" Type="Int16" />
     <Property Name="PayPeriodID" Type="Int16" />
+    <Property Name="RegularHours" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="OverTimeHours" Type="Decimal" Precision="5" Scale="2" />
     <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" FromRole="AgentDailyHour" ToRole="DomainMaster" />
     <NavigationProperty Name="Employee" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="AgentDailyHour" ToRole="Employee" />
     <NavigationProperty Name="AgentTimeAdjustmentReason" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" FromRole="AgentDailyHour" ToRole="AgentTimeAdjustmentReason" />
@@ -499,31 +536,30 @@
     <Property Name="CallID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" FromRole="CallLogMaster" ToRole="DomainMaster" />
   </EntityType>
-  <EntityType Name="EverQuoteHourlyCampaignMetric">
+  <EntityType Name="EverquoteHourlyCampaignMetric">
     <Key>
       <PropertyRef Name="HourlyCampaignID" />
     </Key>
     <Property Name="HourlyCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
     <Property Name="TotalContacts" Type="Int32" Nullable="false" />
     <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
     <Property Name="TotalLeads" Type="Int32" Nullable="false" />
-    <Property Name="TotalTransfers" Type="Int32" Nullable="false" />
-    <Property Name="TotalDials" Type="Int32" Nullable="false" />
-    <Property Name="CampaignDials" Type="Int32" Nullable="false" />
+    <Property Name="TotalTransfers" Type="Int16" Nullable="false" />
+    <Property Name="TotalDials" Type="Int16" Nullable="false" />
+    <Property Name="CampaignDials" Type="Int16" Nullable="false" />
     <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TotalAgents" Type="Byte" Nullable="false" />
     <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
-    <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-    <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
+    <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="LeadSource" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="EverQuoteRollingCampaignMetric">
+  <EntityType Name="EverquoteRollingCampaignMetric">
     <Key>
       <PropertyRef Name="RollingCampaignID" />
     </Key>
@@ -531,21 +567,21 @@
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
     <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
     <Property Name="TotalContacts" Type="Int32" Nullable="false" />
     <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
-    <Property Name="TotalLeads" Type="Int64" Nullable="false" />
-    <Property Name="TotalTransfers" Type="Int64" Nullable="false" />
-    <Property Name="TotalDials" Type="Int64" Nullable="false" />
-    <Property Name="CampaignDials" Type="Int32" Nullable="false" />
+    <Property Name="TotalLeads" Type="Int32" Nullable="false" />
+    <Property Name="TotalTransfers" Type="Int16" Nullable="false" />
+    <Property Name="TotalDials" Type="Int16" Nullable="false" />
+    <Property Name="CampaignDials" Type="Int16" Nullable="false" />
     <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TotalAgents" Type="Byte" Nullable="false" />
     <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
-    <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="LeadSource" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-    <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="PreciseLeadsHourlyCampaignMetric">
     <Key>
@@ -1090,4 +1126,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="uspInsertProblemMaster_Result">
+    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+    <Property Type="Int32" Name="ErrorState" Nullable="true" />
+    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="uspInsertClientLeads_Result">
+    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+    <Property Type="Int32" Name="ErrorState" Nullable="true" />
+    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+  </ComplexType>
 </Schema>

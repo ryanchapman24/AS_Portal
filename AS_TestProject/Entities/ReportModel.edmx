@@ -149,29 +149,6 @@
           <Property Name="MainPhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="AddDate" Type="date" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Report.dbo.ImportedEmployees' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ImportedEmployees">
-          <Property Name="First Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Last Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="File Number" Type="nvarchar" MaxLength="255" />
-          <Property Name=" Address Line 1" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address Line 2" Type="nvarchar" MaxLength="255" />
-          <Property Name="City" Type="nvarchar" MaxLength="255" />
-          <Property Name="State" Type="nvarchar" MaxLength="255" />
-          <Property Name="Zip Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="Location Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="Reports To Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Job Title Description" Type="nvarchar" MaxLength="255" />
-          <Property Name="Personal Email" Type="nvarchar" MaxLength="255" />
-          <Property Name="Work Email" Type="nvarchar" MaxLength="255" />
-          <Property Name="Home Phone" Type="nvarchar" MaxLength="255" />
-          <Property Name="Personal Mobile" Type="nvarchar" MaxLength="255" />
-          <Property Name="Birth Date" Type="nvarchar" MaxLength="255" />
-          <Property Name="Hire Date" Type="datetime" />
-          <Property Name="Rehire Date" Type="datetime" />
-          <Property Name="Employee Status" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="ProblemMaster">
           <Key>
             <PropertyRef Name="ProblemID" />
@@ -247,6 +224,8 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
           <Property Name="AgentTimeAdjustmentReasonID" Type="smallint" />
           <Property Name="PayPeriodID" Type="smallint" />
+          <Property Name="RegularHours" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="OverTimeHours" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -417,31 +396,30 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="LeadSource" Type="varchar" MaxLength="25" />
           <Property Name="CallID" Type="varchar" MaxLength="25" />
         </EntityType>
-        <EntityType Name="EverQuoteHourlyCampaignMetrics">
+        <EntityType Name="EverquoteHourlyCampaignMetrics">
           <Key>
             <PropertyRef Name="HourlyCampaignID" />
           </Key>
           <Property Name="HourlyCampaignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReportDate" Type="date" Nullable="false" />
           <Property Name="ReportTime" Type="time" Precision="7" Nullable="false" />
-          <Property Name="CampaignID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CampaignID" Type="varchar" MaxLength="125" Nullable="false" />
+          <Property Name="TotalAnswers" Type="int" Nullable="false" />
           <Property Name="TotalContacts" Type="int" Nullable="false" />
           <Property Name="ContactToTransfer" Type="decimal" Precision="7" Scale="4" Nullable="false" />
           <Property Name="TotalLeads" Type="int" Nullable="false" />
-          <Property Name="TotalTransfers" Type="int" Nullable="false" />
-          <Property Name="TotalDials" Type="int" Nullable="false" />
-          <Property Name="CampaignDials" Type="int" Nullable="false" />
+          <Property Name="TotalTransfers" Type="smallint" Nullable="false" />
+          <Property Name="TotalDials" Type="smallint" Nullable="false" />
+          <Property Name="CampaignDials" Type="smallint" Nullable="false" />
           <Property Name="TransfersPerDial" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TotalAgents" Type="tinyint" Nullable="false" />
           <Property Name="PercentOfTotalCalls" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TPHHours" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TransfersPerHour" Type="decimal" Precision="9" Scale="3" Nullable="false" />
-          <Property Name="HourOfDay" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="SourceID" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="CostPerTransfer" Type="smallmoney" Nullable="false" />
-          <Property Name="TotalAnswers" Type="int" Nullable="false" />
+          <Property Name="CallHourOfDay" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="LeadSource" Type="varchar" MaxLength="125" />
         </EntityType>
-        <EntityType Name="EverQuoteRollingCampaignMetrics">
+        <EntityType Name="EverquoteRollingCampaignMetrics">
           <Key>
             <PropertyRef Name="RollingCampaignID" />
           </Key>
@@ -449,21 +427,21 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="ReportDate" Type="date" Nullable="false" />
           <Property Name="ReportTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="CampaignID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TotalAnswers" Type="int" Nullable="false" />
           <Property Name="TotalContacts" Type="int" Nullable="false" />
           <Property Name="ContactToTransfer" Type="decimal" Precision="7" Scale="4" Nullable="false" />
-          <Property Name="TotalLeads" Type="bigint" Nullable="false" />
-          <Property Name="TotalTransfers" Type="bigint" Nullable="false" />
-          <Property Name="TotalDials" Type="bigint" Nullable="false" />
-          <Property Name="CampaignDials" Type="int" Nullable="false" />
+          <Property Name="TotalLeads" Type="int" Nullable="false" />
+          <Property Name="TotalTransfers" Type="smallint" Nullable="false" />
+          <Property Name="TotalDials" Type="smallint" Nullable="false" />
+          <Property Name="CampaignDials" Type="smallint" Nullable="false" />
           <Property Name="TransfersPerDial" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TotalAgents" Type="tinyint" Nullable="false" />
           <Property Name="PercentOfTotalCalls" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TPHHours" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TransfersPerHour" Type="decimal" Precision="9" Scale="3" Nullable="false" />
-          <Property Name="HourOfDay" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="SourceID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CallHourOfDay" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="LeadSource" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="CostPerTransfer" Type="smallmoney" Nullable="false" />
-          <Property Name="TotalAnswers" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PreciseLeadsHourlyCampaignMetrics">
           <Key>
@@ -533,146 +511,6 @@ warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a prim
           <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Report.STAGE.CallLogMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CallLogMaster1">
-          <Property Name="RecordDate" Type="varchar" MaxLength="50" />
-          <Property Name="RecordTime" Type="time" Precision="7" />
-          <Property Name="DomainName" Type="nvarchar" MaxLength="5" />
-          <Property Name="Five9Timestamp" Type="varchar" MaxLength="30" />
-          <Property Name="CampaignName" Type="varchar" MaxLength="75" />
-          <Property Name="CallType" Type="varchar" MaxLength="40" />
-          <Property Name="AgentID" Type="varchar" MaxLength="125" />
-          <Property Name="Disposition" Type="varchar" MaxLength="125" />
-          <Property Name="AutomaticNumberIdentification" Type="varchar" MaxLength="15" />
-          <Property Name="LeadID" Type="varchar" MaxLength="50" />
-          <Property Name="CustomerName" Type="varchar" MaxLength="125" />
-          <Property Name="DialedNumberIdentificationService" Type="varchar" MaxLength="15" />
-          <Property Name="CallTime" Type="varchar" MaxLength="15" />
-          <Property Name="BillTimeRounded" Type="varchar" MaxLength="15" />
-          <Property Name="Cost" Type="varchar" MaxLength="25" />
-          <Property Name="IVRTime" Type="time" Precision="7" />
-          <Property Name="QueueWaitTime" Type="time" Precision="7" />
-          <Property Name="RingTime" Type="varchar" MaxLength="15" />
-          <Property Name="TalkTime" Type="varchar" MaxLength="15" />
-          <Property Name="HoldTime" Type="varchar" MaxLength="15" />
-          <Property Name="ParkTime" Type="varchar" MaxLength="15" />
-          <Property Name="AfterCallWorkTime" Type="varchar" MaxLength="15" />
-          <Property Name="Transfers" Type="varchar" MaxLength="25" />
-          <Property Name="Conferences" Type="varchar" MaxLength="25" />
-          <Property Name="Holds" Type="varchar" MaxLength="25" />
-          <Property Name="Abandonded" Type="varchar" MaxLength="25" />
-          <Property Name="Recordings" Type="varchar" MaxLength="500" />
-          <Property Name="CallDayOfMonth" Type="varchar" MaxLength="25" />
-          <Property Name="CallDayOfWeek" Type="varchar" MaxLength="10" />
-          <Property Name="CallHourOfDay" Type="varchar" MaxLength="25" />
-          <Property Name="AbandonRate" Type="varchar" MaxLength="25" />
-          <Property Name="ANIAreaCode" Type="varchar" MaxLength="25" />
-          <Property Name="ANICountry" Type="varchar" MaxLength="40" />
-          <Property Name="ANICountryCode" Type="varchar" MaxLength="25" />
-          <Property Name="ANIState" Type="varchar" MaxLength="25" />
-          <Property Name="Calls" Type="char" MaxLength="5" />
-          <Property Name="CallsCompletedInIVR" Type="char" MaxLength="5" />
-          <Property Name="CallsTimedOutInIVR" Type="char" MaxLength="5" />
-          <Property Name="CampaignType" Type="varchar" MaxLength="40" />
-          <Property Name="Contacted" Type="bit" />
-          <Property Name="ParentSessionID" Type="varchar" MaxLength="50" />
-          <Property Name="SessionID" Type="varchar" MaxLength="50" />
-          <Property Name="DisconnectedFromHold" Type="bit" />
-          <Property Name="DNISAreaCode" Type="varchar" MaxLength="25" />
-          <Property Name="DNISCountry" Type="varchar" MaxLength="40" />
-          <Property Name="DNISCountryCode" Type="varchar" MaxLength="25" />
-          <Property Name="DNISState" Type="varchar" MaxLength="25" />
-          <Property Name="ListName" Type="varchar" MaxLength="75" />
-          <Property Name="LiveConnect" Type="char" MaxLength="3" />
-          <Property Name="NoPartyContact" Type="varchar" MaxLength="25" />
-          <Property Name="Notes" Type="varchar(max)" />
-          <Property Name="ServiceLevel" Type="varchar" MaxLength="25" />
-          <Property Name="Skill" Type="varchar" MaxLength="125" />
-          <Property Name="SpeedOfAnswer" Type="varchar" MaxLength="15" />
-          <Property Name="ThirdPartyTalkTime" Type="varchar" MaxLength="15" />
-          <Property Name="ConferenceTime" Type="varchar" MaxLength="50" />
-          <Property Name="ConsultTime" Type="varchar" MaxLength="50" />
-          <Property Name="DialTime" Type="varchar" MaxLength="50" />
-          <Property Name="HandleTime" Type="varchar" MaxLength="50" />
-          <Property Name="ManualTime" Type="varchar" MaxLength="50" />
-          <Property Name="Rate" Type="varchar" MaxLength="25" />
-          <Property Name="TalkTimeLessHoldAndPark" Type="varchar" MaxLength="15" />
-          <Property Name="TimeToAbandon" Type="varchar" MaxLength="15" />
-          <Property Name="AgentEmail" Type="varchar" MaxLength="320" />
-          <Property Name="AgentFirstName" Type="varchar" MaxLength="50" />
-          <Property Name="AgentLastName" Type="varchar" MaxLength="50" />
-          <Property Name="Extension" Type="varchar" MaxLength="15" />
-          <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" />
-          <Property Name="CustomerLastName" Type="varchar" MaxLength="50" />
-          <Property Name="CustomerCity" Type="varchar" MaxLength="125" />
-          <Property Name="CustomerState" Type="char" MaxLength="2" />
-          <Property Name="Address1" Type="varchar" MaxLength="125" />
-          <Property Name="Address2" Type="varchar" MaxLength="125" />
-          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
-          <Property Name="PhoneNumber1" Type="varchar" MaxLength="14" />
-          <Property Name="PhoneNumber2" Type="varchar" MaxLength="14" />
-          <Property Name="PhoneNumber3" Type="varchar" MaxLength="14" />
-          <Property Name="IsDoNotCall" Type="varchar" MaxLength="50" />
-          <Property Name="ListCode" Type="varchar" MaxLength="20" />
-          <Property Name="LoanAmount" Type="varchar" MaxLength="20" />
-          <Property Name="LoanPurpose" Type="varchar" MaxLength="50" />
-          <Property Name="LoanType" Type="varchar" MaxLength="50" />
-          <Property Name="Number1" Type="varchar" MaxLength="25" />
-          <Property Name="Number2" Type="varchar" MaxLength="25" />
-          <Property Name="Number3" Type="varchar" MaxLength="25" />
-          <Property Name="PropertyType" Type="varchar" MaxLength="50" />
-          <Property Name="PurchasePrice" Type="varchar" MaxLength="50" />
-          <Property Name="State" Type="varchar" MaxLength="25" />
-          <Property Name="Street" Type="varchar" MaxLength="125" />
-          <Property Name="ContactID" Type="varchar" MaxLength="25" />
-          <Property Name="ContactCreateTimestamp" Type="varchar" MaxLength="50" />
-          <Property Name="ContactModifiedTimestamp" Type="varchar" MaxLength="50" />
-          <Property Name="Country" Type="varchar" MaxLength="10" />
-          <Property Name="Dispo" Type="varchar" MaxLength="10" />
-          <Property Name="DOB" Type="varchar" MaxLength="25" />
-          <Property Name="FacilityName" Type="varchar" MaxLength="125" />
-          <Property Name="Gender" Type="varchar" MaxLength="5" />
-          <Property Name="Language" Type="varchar" MaxLength="10" />
-          <Property Name="PatientID" Type="varchar" MaxLength="25" />
-          <Property Name="ProjectCode" Type="varchar" MaxLength="25" />
-          <Property Name="QualifiedProtocols" Type="varchar(max)" />
-          <Property Name="RefferedDate" Type="varchar" MaxLength="50" />
-          <Property Name="Site1Address" Type="varchar" MaxLength="50" />
-          <Property Name="Site1City" Type="varchar" MaxLength="255" />
-          <Property Name="SiteInfo" Type="varchar(max)" />
-          <Property Name="DispositionResolutionCode" Type="varchar" MaxLength="125" />
-          <Property Name="FilterID" Type="varchar" MaxLength="25" />
-          <Property Name="ListEntry" Type="varchar" MaxLength="25" />
-          <Property Name="NMLSID" Type="varchar" MaxLength="50" />
-          <Property Name="PropertyState" Type="varchar" MaxLength="25" />
-          <Property Name="PropertyZip" Type="varchar" MaxLength="25" />
-          <Property Name="DateExpiration" Type="varchar" MaxLength="50" />
-          <Property Name="DateMailed" Type="varchar" MaxLength="50" />
-          <Property Name="DateReceived" Type="varchar" MaxLength="50" />
-          <Property Name="ListEntryDate" Type="varchar" MaxLength="50" />
-          <Property Name="ScriptType" Type="varchar" MaxLength="50" />
-          <Property Name="TransferNumber" Type="varchar" MaxLength="50" />
-          <Property Name="Vendor" Type="varchar" MaxLength="50" />
-          <Property Name="CreditRate" Type="varchar" MaxLength="25" />
-          <Property Name="FormType" Type="varchar" MaxLength="25" />
-          <Property Name="Homevalue" Type="varchar" MaxLength="25" />
-          <Property Name="HybridFilterID" Type="varchar" MaxLength="25" />
-          <Property Name="Mortgage1Balance" Type="varchar" MaxLength="25" />
-          <Property Name="PropertyUse" Type="varchar" MaxLength="25" />
-          <Property Name="ShortFilterID" Type="varchar" MaxLength="25" />
-          <Property Name="Agency" Type="varchar" MaxLength="25" />
-          <Property Name="Campaign" Type="varchar" MaxLength="50" />
-          <Property Name="LoanRequestType" Type="varchar" MaxLength="50" />
-          <Property Name="SubmitTimeStamp" Type="varchar" MaxLength="50" />
-          <Property Name="Vertical" Type="varchar" MaxLength="125" />
-          <Property Name="LoanApplicationID" Type="varchar" MaxLength="50" />
-          <Property Name="Website" Type="varchar" MaxLength="50" />
-          <Property Name="LoanOfficerEmail" Type="varchar" MaxLength="50" />
-          <Property Name="AppDateStamp" Type="varchar" MaxLength="50" />
-          <Property Name="LeadSource" Type="varchar" MaxLength="25" />
-          <Property Name="CallID" Type="varchar" MaxLength="25" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Report.STAGE.ClientLeads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ClientLeads">
@@ -1139,6 +977,41 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="uspInsertProblemMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EXCEPTION">
+          <Parameter Name="UserID" Type="varchar" Mode="In" />
+          <Parameter Name="ProcessName" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorNumber" Type="int" Mode="In" />
+          <Parameter Name="LineNumber" Type="int" Mode="In" />
+          <Parameter Name="ExceptionMessage" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ExceptionSource" Type="varchar" Mode="In" />
+          <Parameter Name="ExceptionSeverity" Type="int" Mode="In" />
+          <Parameter Name="ExceptionState" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspDailyPortfolioInventoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FREEDOM" />
+        <Function Name="uspAgentDailyHours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+        <Function Name="uspAssignPayPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+        <Function Name="uspEmployeeHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+        <Function Name="uspOverTimeHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+        <Function Name="uspInsertEverquoteHourlyCallMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
+        <Function Name="uspInsertPreciseLeadsHourlyCallLogMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
+        <Function Name="uspInsertClientLeads" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="STAGE">
+          <Parameter Name="LeadID" Type="varchar" Mode="In" />
+          <Parameter Name="ClientName" Type="varchar" Mode="In" />
+          <Parameter Name="ArrivalTimestamp" Type="datetime" Mode="In" />
+          <Parameter Name="PreserviceTimestamp" Type="datetime" Mode="In" />
+          <Parameter Name="PostserviceTimestamp" Type="datetime" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="AddressLine1" Type="varchar" Mode="In" />
+          <Parameter Name="AddressLine2" Type="varchar" Mode="In" />
+          <Parameter Name="ZipCode" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+          <Parameter Name="LeadType" Type="varchar" Mode="In" />
+          <Parameter Name="CampaignName" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="ReportModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="CLIENT" store:Type="Tables" />
           <EntitySet Name="CustomerContact" EntityType="Self.CustomerContact" Schema="CLIENT" store:Type="Tables" />
@@ -1158,8 +1031,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="EmployeeHoursTotal" EntityType="Self.EmployeeHoursTotal" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="PayPeriod" EntityType="Self.PayPeriod" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
-          <EntitySet Name="EverQuoteHourlyCampaignMetrics" EntityType="Self.EverQuoteHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
-          <EntitySet Name="EverQuoteRollingCampaignMetrics" EntityType="Self.EverQuoteRollingCampaignMetrics" Schema="REPORT" store:Type="Tables" />
+          <EntitySet Name="EverquoteHourlyCampaignMetrics" EntityType="Self.EverquoteHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
+          <EntitySet Name="EverquoteRollingCampaignMetrics" EntityType="Self.EverquoteRollingCampaignMetrics" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="Self.PreciseLeadsHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="Self.PreciseLeadsRollingCampaignMetrics" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="FreedomHourlyCallMetrics" EntityType="Self.FreedomHourlyCallMetrics" store:Type="Tables" store:Schema="FREEDOM">
@@ -1503,8 +1376,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="EmployeeHoursTotals" EntityType="ReportModel.EmployeeHoursTotal" />
           <EntitySet Name="PayPeriods" EntityType="ReportModel.PayPeriod" />
           <EntitySet Name="CallLogMasters" EntityType="ReportModel.CallLogMaster" />
-          <EntitySet Name="EverQuoteHourlyCampaignMetrics" EntityType="ReportModel.EverQuoteHourlyCampaignMetric" />
-          <EntitySet Name="EverQuoteRollingCampaignMetrics" EntityType="ReportModel.EverQuoteRollingCampaignMetric" />
+          <EntitySet Name="EverquoteHourlyCampaignMetrics" EntityType="ReportModel.EverquoteHourlyCampaignMetric" />
+          <EntitySet Name="EverquoteRollingCampaignMetrics" EntityType="ReportModel.EverquoteRollingCampaignMetric" />
           <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" />
           <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" />
           <EntitySet Name="FreedomHourlyCallMetrics" EntityType="ReportModel.FreedomHourlyCallMetric" />
@@ -1582,6 +1455,41 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="PayPeriod" EntitySet="PayPeriods" />
             <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
           </AssociationSet>
+          <FunctionImport Name="uspInsertProblemMaster" ReturnType="Collection(ReportModel.uspInsertProblemMaster_Result)">
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="ProcessName" Mode="In" Type="String" />
+            <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
+            <Parameter Name="LineNumber" Mode="In" Type="Int32" />
+            <Parameter Name="ExceptionMessage" Mode="In" Type="String" />
+            <Parameter Name="ExceptionSource" Mode="In" Type="String" />
+            <Parameter Name="ExceptionSeverity" Mode="In" Type="Int32" />
+            <Parameter Name="ExceptionState" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspAgentDailyHours" />
+          <FunctionImport Name="uspAssignPayPeriod" />
+          <FunctionImport Name="uspEmployeeHoursCalculation" />
+          <FunctionImport Name="uspOverTimeHoursCalculation" />
+          <FunctionImport Name="uspInsertEverquoteHourlyCallMetrics" />
+          <FunctionImport Name="uspInsertPreciseLeadsHourlyCallLogMetrics" />
+          <FunctionImport Name="uspDailyPortfolioInventoryReport" />
+          <FunctionImport Name="uspInsertClientLeads" ReturnType="Collection(ReportModel.uspInsertClientLeads_Result)">
+            <Parameter Name="LeadID" Mode="In" Type="String" />
+            <Parameter Name="ClientName" Mode="In" Type="String" />
+            <Parameter Name="ArrivalTimestamp" Mode="In" Type="DateTime" />
+            <Parameter Name="PreserviceTimestamp" Mode="In" Type="DateTime" />
+            <Parameter Name="PostserviceTimestamp" Mode="In" Type="DateTime" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="AddressLine1" Mode="In" Type="String" />
+            <Parameter Name="AddressLine2" Mode="In" Type="String" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="LeadType" Mode="In" Type="String" />
+            <Parameter Name="CampaignName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -1802,6 +1710,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
           <Property Name="AgentTimeAdjustmentReasonID" Type="Int16" />
           <Property Name="PayPeriodID" Type="Int16" />
+          <Property Name="RegularHours" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="OverTimeHours" Type="Decimal" Precision="5" Scale="2" />
           <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" FromRole="AgentDailyHour" ToRole="DomainMaster" />
           <NavigationProperty Name="Employee" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="AgentDailyHour" ToRole="Employee" />
           <NavigationProperty Name="AgentTimeAdjustmentReason" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" FromRole="AgentDailyHour" ToRole="AgentTimeAdjustmentReason" />
@@ -1983,31 +1893,30 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="CallID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" FromRole="CallLogMaster" ToRole="DomainMaster" />
         </EntityType>
-        <EntityType Name="EverQuoteHourlyCampaignMetric">
+        <EntityType Name="EverquoteHourlyCampaignMetric">
           <Key>
             <PropertyRef Name="HourlyCampaignID" />
           </Key>
           <Property Name="HourlyCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
           <Property Name="TotalContacts" Type="Int32" Nullable="false" />
           <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
           <Property Name="TotalLeads" Type="Int32" Nullable="false" />
-          <Property Name="TotalTransfers" Type="Int32" Nullable="false" />
-          <Property Name="TotalDials" Type="Int32" Nullable="false" />
-          <Property Name="CampaignDials" Type="Int32" Nullable="false" />
+          <Property Name="TotalTransfers" Type="Int16" Nullable="false" />
+          <Property Name="TotalDials" Type="Int16" Nullable="false" />
+          <Property Name="CampaignDials" Type="Int16" Nullable="false" />
           <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TotalAgents" Type="Byte" Nullable="false" />
           <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
-          <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
+          <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="LeadSource" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="EverQuoteRollingCampaignMetric">
+        <EntityType Name="EverquoteRollingCampaignMetric">
           <Key>
             <PropertyRef Name="RollingCampaignID" />
           </Key>
@@ -2015,21 +1924,21 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
           <Property Name="TotalContacts" Type="Int32" Nullable="false" />
           <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
-          <Property Name="TotalLeads" Type="Int64" Nullable="false" />
-          <Property Name="TotalTransfers" Type="Int64" Nullable="false" />
-          <Property Name="TotalDials" Type="Int64" Nullable="false" />
-          <Property Name="CampaignDials" Type="Int32" Nullable="false" />
+          <Property Name="TotalLeads" Type="Int32" Nullable="false" />
+          <Property Name="TotalTransfers" Type="Int16" Nullable="false" />
+          <Property Name="TotalDials" Type="Int16" Nullable="false" />
+          <Property Name="CampaignDials" Type="Int16" Nullable="false" />
           <Property Name="TransfersPerDial" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TotalAgents" Type="Byte" Nullable="false" />
           <Property Name="PercentOfTotalCalls" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
-          <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="LeadSource" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PreciseLeadsHourlyCampaignMetric">
           <Key>
@@ -2574,6 +2483,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="uspInsertProblemMaster_Result">
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="uspInsertClientLeads_Result">
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2778,6 +2699,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="AgentDailyHours">
             <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
               <MappingFragment StoreEntitySet="AgentDailyHours">
+                <ScalarProperty Name="OverTimeHours" ColumnName="OverTimeHours" />
+                <ScalarProperty Name="RegularHours" ColumnName="RegularHours" />
                 <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
                 <ScalarProperty Name="AgentTimeAdjustmentReasonID" ColumnName="AgentTimeAdjustmentReasonID" />
                 <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
@@ -2962,13 +2885,11 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EverQuoteHourlyCampaignMetrics">
-            <EntityTypeMapping TypeName="ReportModel.EverQuoteHourlyCampaignMetric">
-              <MappingFragment StoreEntitySet="EverQuoteHourlyCampaignMetrics">
-                <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
-                <ScalarProperty Name="CostPerTransfer" ColumnName="CostPerTransfer" />
-                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
-                <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
+          <EntitySetMapping Name="EverquoteHourlyCampaignMetrics">
+            <EntityTypeMapping TypeName="ReportModel.EverquoteHourlyCampaignMetric">
+              <MappingFragment StoreEntitySet="EverquoteHourlyCampaignMetrics">
+                <ScalarProperty Name="LeadSource" ColumnName="LeadSource" />
+                <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
                 <ScalarProperty Name="TransfersPerHour" ColumnName="TransfersPerHour" />
                 <ScalarProperty Name="TPHHours" ColumnName="TPHHours" />
                 <ScalarProperty Name="PercentOfTotalCalls" ColumnName="PercentOfTotalCalls" />
@@ -2980,6 +2901,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="TotalLeads" ColumnName="TotalLeads" />
                 <ScalarProperty Name="ContactToTransfer" ColumnName="ContactToTransfer" />
                 <ScalarProperty Name="TotalContacts" ColumnName="TotalContacts" />
+                <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
                 <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
                 <ScalarProperty Name="ReportTime" ColumnName="ReportTime" />
                 <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
@@ -2987,13 +2909,12 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EverQuoteRollingCampaignMetrics">
-            <EntityTypeMapping TypeName="ReportModel.EverQuoteRollingCampaignMetric">
-              <MappingFragment StoreEntitySet="EverQuoteRollingCampaignMetrics">
-                <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
+          <EntitySetMapping Name="EverquoteRollingCampaignMetrics">
+            <EntityTypeMapping TypeName="ReportModel.EverquoteRollingCampaignMetric">
+              <MappingFragment StoreEntitySet="EverquoteRollingCampaignMetrics">
                 <ScalarProperty Name="CostPerTransfer" ColumnName="CostPerTransfer" />
-                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
-                <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
+                <ScalarProperty Name="LeadSource" ColumnName="LeadSource" />
+                <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
                 <ScalarProperty Name="TransfersPerHour" ColumnName="TransfersPerHour" />
                 <ScalarProperty Name="TPHHours" ColumnName="TPHHours" />
                 <ScalarProperty Name="PercentOfTotalCalls" ColumnName="PercentOfTotalCalls" />
@@ -3005,6 +2926,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="TotalLeads" ColumnName="TotalLeads" />
                 <ScalarProperty Name="ContactToTransfer" ColumnName="ContactToTransfer" />
                 <ScalarProperty Name="TotalContacts" ColumnName="TotalContacts" />
+                <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
                 <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
                 <ScalarProperty Name="ReportTime" ColumnName="ReportTime" />
                 <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
@@ -3325,6 +3247,33 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="uspInsertProblemMaster" FunctionName="ReportModel.Store.uspInsertProblemMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportModel.uspInsertProblemMaster_Result">
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspAgentDailyHours" FunctionName="ReportModel.Store.uspAgentDailyHours" />
+          <FunctionImportMapping FunctionImportName="uspAssignPayPeriod" FunctionName="ReportModel.Store.uspAssignPayPeriod" />
+          <FunctionImportMapping FunctionImportName="uspEmployeeHoursCalculation" FunctionName="ReportModel.Store.uspEmployeeHoursCalculation" />
+          <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
+          <FunctionImportMapping FunctionImportName="uspInsertEverquoteHourlyCallMetrics" FunctionName="ReportModel.Store.uspInsertEverquoteHourlyCallMetrics" />
+          <FunctionImportMapping FunctionImportName="uspInsertPreciseLeadsHourlyCallLogMetrics" FunctionName="ReportModel.Store.uspInsertPreciseLeadsHourlyCallLogMetrics" />
+          <FunctionImportMapping FunctionImportName="uspDailyPortfolioInventoryReport" FunctionName="ReportModel.Store.uspDailyPortfolioInventoryReport" />
+          <FunctionImportMapping FunctionImportName="uspInsertClientLeads" FunctionName="ReportModel.Store.uspInsertClientLeads">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportModel.uspInsertClientLeads_Result">
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -199,6 +199,8 @@
     <EntitySetMapping Name="AgentDailyHours">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
         <MappingFragment StoreEntitySet="AgentDailyHours">
+          <ScalarProperty Name="OverTimeHours" ColumnName="OverTimeHours" />
+          <ScalarProperty Name="RegularHours" ColumnName="RegularHours" />
           <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
           <ScalarProperty Name="AgentTimeAdjustmentReasonID" ColumnName="AgentTimeAdjustmentReasonID" />
           <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
@@ -383,13 +385,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EverQuoteHourlyCampaignMetrics">
-      <EntityTypeMapping TypeName="ReportModel.EverQuoteHourlyCampaignMetric">
-        <MappingFragment StoreEntitySet="EverQuoteHourlyCampaignMetrics">
-          <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
-          <ScalarProperty Name="CostPerTransfer" ColumnName="CostPerTransfer" />
-          <ScalarProperty Name="SourceID" ColumnName="SourceID" />
-          <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
+    <EntitySetMapping Name="EverquoteHourlyCampaignMetrics">
+      <EntityTypeMapping TypeName="ReportModel.EverquoteHourlyCampaignMetric">
+        <MappingFragment StoreEntitySet="EverquoteHourlyCampaignMetrics">
+          <ScalarProperty Name="LeadSource" ColumnName="LeadSource" />
+          <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
           <ScalarProperty Name="TransfersPerHour" ColumnName="TransfersPerHour" />
           <ScalarProperty Name="TPHHours" ColumnName="TPHHours" />
           <ScalarProperty Name="PercentOfTotalCalls" ColumnName="PercentOfTotalCalls" />
@@ -401,6 +401,7 @@
           <ScalarProperty Name="TotalLeads" ColumnName="TotalLeads" />
           <ScalarProperty Name="ContactToTransfer" ColumnName="ContactToTransfer" />
           <ScalarProperty Name="TotalContacts" ColumnName="TotalContacts" />
+          <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
           <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
           <ScalarProperty Name="ReportTime" ColumnName="ReportTime" />
           <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
@@ -408,13 +409,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EverQuoteRollingCampaignMetrics">
-      <EntityTypeMapping TypeName="ReportModel.EverQuoteRollingCampaignMetric">
-        <MappingFragment StoreEntitySet="EverQuoteRollingCampaignMetrics">
-          <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
+    <EntitySetMapping Name="EverquoteRollingCampaignMetrics">
+      <EntityTypeMapping TypeName="ReportModel.EverquoteRollingCampaignMetric">
+        <MappingFragment StoreEntitySet="EverquoteRollingCampaignMetrics">
           <ScalarProperty Name="CostPerTransfer" ColumnName="CostPerTransfer" />
-          <ScalarProperty Name="SourceID" ColumnName="SourceID" />
-          <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
+          <ScalarProperty Name="LeadSource" ColumnName="LeadSource" />
+          <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
           <ScalarProperty Name="TransfersPerHour" ColumnName="TransfersPerHour" />
           <ScalarProperty Name="TPHHours" ColumnName="TPHHours" />
           <ScalarProperty Name="PercentOfTotalCalls" ColumnName="PercentOfTotalCalls" />
@@ -426,6 +426,7 @@
           <ScalarProperty Name="TotalLeads" ColumnName="TotalLeads" />
           <ScalarProperty Name="ContactToTransfer" ColumnName="ContactToTransfer" />
           <ScalarProperty Name="TotalContacts" ColumnName="TotalContacts" />
+          <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
           <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
           <ScalarProperty Name="ReportTime" ColumnName="ReportTime" />
           <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
@@ -746,5 +747,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="uspInsertProblemMaster" FunctionName="ReportModel.Store.uspInsertProblemMaster">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ReportModel.uspInsertProblemMaster_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspAgentDailyHours" FunctionName="ReportModel.Store.uspAgentDailyHours" />
+    <FunctionImportMapping FunctionImportName="uspAssignPayPeriod" FunctionName="ReportModel.Store.uspAssignPayPeriod" />
+    <FunctionImportMapping FunctionImportName="uspEmployeeHoursCalculation" FunctionName="ReportModel.Store.uspEmployeeHoursCalculation" />
+    <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
+    <FunctionImportMapping FunctionImportName="uspInsertEverquoteHourlyCallMetrics" FunctionName="ReportModel.Store.uspInsertEverquoteHourlyCallMetrics" />
+    <FunctionImportMapping FunctionImportName="uspInsertPreciseLeadsHourlyCallLogMetrics" FunctionName="ReportModel.Store.uspInsertPreciseLeadsHourlyCallLogMetrics" />
+    <FunctionImportMapping FunctionImportName="uspDailyPortfolioInventoryReport" FunctionName="ReportModel.Store.uspDailyPortfolioInventoryReport" />
+    <FunctionImportMapping FunctionImportName="uspInsertClientLeads" FunctionName="ReportModel.Store.uspInsertClientLeads">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ReportModel.uspInsertClientLeads_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

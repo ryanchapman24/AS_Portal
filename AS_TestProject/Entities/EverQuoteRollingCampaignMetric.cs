@@ -12,26 +12,26 @@ namespace AS_TestProject.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class EverQuoteRollingCampaignMetric
+    public partial class EverquoteRollingCampaignMetric
     {
         public int RollingCampaignID { get; set; }
         public System.DateTime ReportDate { get; set; }
         public System.TimeSpan ReportTime { get; set; }
         public string CampaignID { get; set; }
+        public int TotalAnswers { get; set; }
         public int TotalContacts { get; set; }
         public decimal ContactToTransfer { get; set; }
-        public long TotalLeads { get; set; }
-        public long TotalTransfers { get; set; }
-        public long TotalDials { get; set; }
-        public int CampaignDials { get; set; }
+        public int TotalLeads { get; set; }
+        public short TotalTransfers { get; set; }
+        public short TotalDials { get; set; }
+        public short CampaignDials { get; set; }
         public decimal TransfersPerDial { get; set; }
         public byte TotalAgents { get; set; }
         public decimal PercentOfTotalCalls { get; set; }
         public decimal TPHHours { get; set; }
         public decimal TransfersPerHour { get; set; }
-        public string HourOfDay { get; set; }
-        public string SourceID { get; set; }
+        public string CallHourOfDay { get; set; }
+        public string LeadSource { get; set; }
         public decimal CostPerTransfer { get; set; }
-        public int TotalAnswers { get; set; }
     }
 }

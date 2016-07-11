@@ -22,6 +22,8 @@ namespace AS_TestProject.Entities
         public System.TimeSpan LoginDuration { get; set; }
         public Nullable<short> AgentTimeAdjustmentReasonID { get; set; }
         public Nullable<short> PayPeriodID { get; set; }
+        public Nullable<decimal> RegularHours { get; set; }
+        public Nullable<decimal> OverTimeHours { get; set; }
     
         public virtual DomainMaster DomainMaster { get; set; }
         public virtual Employee Employee { get; set; }

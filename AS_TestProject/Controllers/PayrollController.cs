@@ -106,6 +106,11 @@ namespace AS_TestProject.Controllers
                 mb.Entry(agentDailyHour).Property("LoginDuration").IsModified = true;
                 mb.Entry(agentDailyHour).Property("AgentTimeAdjustmentReasonID").IsModified = true;
                 mb.SaveChanges();
+
+                // STORED PROCEDURES
+                mb.uspOverTimeHoursCalculation();
+                mb.SaveChanges();
+
                 return RedirectToAction("Index", new { id = agentDailyHour.EmployeeID });
             }
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
