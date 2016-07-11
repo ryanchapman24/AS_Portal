@@ -19,48 +19,55 @@ namespace AS_TestProject.Controllers
         public ActionResult Index(int id)
         {
             var now = System.DateTime.Now;
-            var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && p.EndDate >= now);
+            var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
             var payPeriodId = payPeriod.PayPeriodID;
 
             var agent = mb.Employees.Find(id);
 
             var agentDailyHours = mb.AgentDailyHours.Where(a => a.EmployeeID == id && a.PayPeriodID == payPeriodId).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
             ViewBag.AgentName = agent.FirstName + ' ' + agent.LastName;
-            ViewBag.PayPeriodStart = payPeriod.StartDate.Date;
-            ViewBag.PayPeriodEnd = payPeriod.EndDate.Date;
-                     
+            ViewBag.PayPeriodStart = payPeriod.StartDate;
+            ViewBag.PayPeriodEnd = payPeriod.EndDate;
+
+            ViewBag.EmployeeID = id;
+            ViewBag.PayPeriodID = payPeriodId;
+            ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
+            ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
+
             return View(agentDailyHours);
         }
 
         // GET: Payroll/Create
-        public ActionResult Create()
-        {
-            ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
-            ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName");
-            ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
-            ViewBag.PayPeriodID = new SelectList(mb.PayPeriods, "PayPeriodID", "PayPeriodID");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
+        //    ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName");
+        //    ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
+        //    ViewBag.PayPeriodID = new SelectList(mb.PayPeriods, "PayPeriodID", "PayPeriodID");
+        //    return View();
+        //}
 
         // POST: Payroll/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID")] AgentDailyHour agentDailyHour)
+        public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID")] AgentDailyHour agentDailyHour, int empId, short ppId)
         {
             if (ModelState.IsValid)
             {
+                agentDailyHour.PayPeriodID = ppId;
+                agentDailyHour.EmployeeID = empId;
                 mb.AgentDailyHours.Add(agentDailyHour);
                 mb.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
-            ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName", agentDailyHour.EmployeeID);
-            ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason", agentDailyHour.AgentTimeAdjustmentReasonID);
-            ViewBag.PayPeriodID = new SelectList(mb.PayPeriods, "PayPeriodID", "PayPeriodID", agentDailyHour.PayPeriodID);
-            return View(agentDailyHour);
+            ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
+
+            return RedirectToAction("Index", new { id = empId });
+            //return View(agentDailyHour);
         }
 
         // GET: Payroll/Edit/5
