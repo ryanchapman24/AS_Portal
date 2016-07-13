@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="beac64d0e12341b4835494dc276df4eb" Name="Diagram1" ZoomLevel="11">
+        <EntityTypeShape EntityType="ReportModel.Customer" Width="1.5" PointX="5.25" PointY="30" />
+        <EntityTypeShape EntityType="ReportModel.CustomerContact" Width="1.5" PointX="7.5" PointY="30.375" />
+        <EntityTypeShape EntityType="ReportModel.DomainMaster" Width="1.5" PointX="10.5" PointY="30" />
+        <EntityTypeShape EntityType="ReportModel.DomainType" Width="1.5" PointX="8.25" PointY="26.625" />
+        <EntityTypeShape EntityType="ReportModel.Employee" Width="1.5" PointX="3" PointY="23.875" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeFive9Agent" Width="1.5" PointX="5.25" PointY="23.75" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeNote" Width="1.5" PointX="5.25" PointY="20.75" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeNoteType" Width="1.5" PointX="5.25" PointY="26.875" />
+        <EntityTypeShape EntityType="ReportModel.Position" Width="1.5" PointX="0.75" PointY="22.375" />
+        <EntityTypeShape EntityType="ReportModel.Site" Width="1.5" PointX="0.75" PointY="25.875" />
+        <EntityTypeShape EntityType="ReportModel.ProblemMaster" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.CampaignGroup" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.DailyPortfolioInventory" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ReportModel.AgentDailyHour" Width="1.5" PointX="15.75" PointY="27.125" />
+        <EntityTypeShape EntityType="ReportModel.AgentTimeAdjustmentReason" Width="1.5" PointX="13.5" PointY="23.375" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeHoursTotal" Width="1.5" PointX="15.75" PointY="31.625" />
+        <EntityTypeShape EntityType="ReportModel.PayPeriod" Width="1.5" PointX="13.5" PointY="20.125" />
+        <EntityTypeShape EntityType="ReportModel.CallLogMaster" Width="1.5" PointX="12.75" PointY="26.125" />
+        <EntityTypeShape EntityType="ReportModel.EverquoteHourlyCampaignMetric" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.EverquoteRollingCampaignMetric" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.FreedomHourlyCallMetric" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.AgentDailyHours1" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.ClientLead" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.EverQuoteHourlyCallLogMaster" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.FreedomDailyPortfolioInventory" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.FreedomHourlyCallMetrics1" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsHourlyCallLogMaster" Width="1.5" PointX="12.75" PointY="0.75" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_Customer_AddByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_CustomerContact_CustomerID" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_DomainMaster_CustomerID" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_DomainMaster_DomainTypeID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_Employee_RoleID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_Employee_SiteID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeFive9Agent_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeNote_AddByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

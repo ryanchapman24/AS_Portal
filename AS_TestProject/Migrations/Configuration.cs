@@ -55,6 +55,11 @@ namespace AS_TestProject.Migrations
                 roleManager.Create(new IdentityRole { Name = "CSR" });
             }
 
+            if (!context.Roles.Any(r => r.Name == "Payroll"))
+            {
+                roleManager.Create(new IdentityRole { Name = "Payroll" });
+            }
+
             var userManager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(context));
 

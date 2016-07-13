@@ -97,7 +97,6 @@ c:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestP
 c:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\Microsoft.Owin.Security.Google.xml
 c:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\Microsoft.Owin.Security.Twitter.xml
 c:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-c:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\obj\Debug\AS_TestProject.csprojResolveAssemblyReference.cache
 c:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\obj\Debug\AS_TestProject.dll
 c:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\obj\Debug\AS_TestProject.pdb
 C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\SendGrid.CSharp.HTTP.Client.dll

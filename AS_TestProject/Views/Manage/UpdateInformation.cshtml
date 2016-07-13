@@ -74,7 +74,7 @@
             <div id="fileDisplay" style="max-width: 180px; padding-top: 10px">
                 @if (Model.ProfilePic != null)
                 {
-                    <img src="@Model.ProfilePic" alt="Profile Picture" style="border: 3px solid #fff; margin-top: 15px; max-width: 180px; background-color: white" />
+                    <img src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",Model.ProfilePic)" alt="Profile Picture" style="border: 3px solid #fff; margin-top: 15px; max-width: 180px; background-color: white" />
                 }
             </div>
         </div>

@@ -100,3 +100,7 @@ C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestP
 C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\obj\Release\AS_TestProject.csprojResolveAssemblyReference.cache
 C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\obj\Release\AS_TestProject.dll
 C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\obj\Release\AS_TestProject.pdb
+C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\SendGrid.CSharp.HTTP.Client.dll
+C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\SendGrid.dll
+C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\SendGrid.SmtpApi.dll
+C:\Users\R Chapman\Documents\Visual Studio 2015\Projects\AS_TestProject\AS_TestProject\bin\SendGridMail.dll

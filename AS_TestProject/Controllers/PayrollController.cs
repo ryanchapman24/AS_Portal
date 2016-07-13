@@ -29,6 +29,7 @@ namespace AS_TestProject.Controllers
             ViewBag.PayPeriodStart = payPeriod.StartDate;
             ViewBag.PayPeriodEnd = payPeriod.EndDate;
 
+            ViewBag.Date = now.ToShortDateString();
             ViewBag.EmployeeID = id;
             ViewBag.PayPeriodID = payPeriodId;
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
@@ -36,16 +37,6 @@ namespace AS_TestProject.Controllers
 
             return View(agentDailyHours);
         }
-
-        // GET: Payroll/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
-        //    ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName");
-        //    ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
-        //    ViewBag.PayPeriodID = new SelectList(mb.PayPeriods, "PayPeriodID", "PayPeriodID");
-        //    return View();
-        //}
 
         // POST: Payroll/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -60,14 +51,18 @@ namespace AS_TestProject.Controllers
                 agentDailyHour.EmployeeID = empId;
                 mb.AgentDailyHours.Add(agentDailyHour);
                 mb.SaveChanges();
-                return RedirectToAction("Index");
+
+                // STORED PROCEDURES
+                mb.uspOverTimeHoursCalculation();
+                mb.SaveChanges();
+
+                return RedirectToAction("Index", new { id = empId });
             }
 
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
 
-            return RedirectToAction("Index", new { id = empId });
-            //return View(agentDailyHour);
+            return RedirectToAction("Index", new { id = empId });            
         }
 
         // GET: Payroll/Edit/5
