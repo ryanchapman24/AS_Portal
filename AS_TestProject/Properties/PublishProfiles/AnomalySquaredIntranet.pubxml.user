@@ -1288,10 +1288,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:31</publishTime>
     </File>
     <File Include="Views/Admin/EditUserRoles.cshtml">
-      <publishTime>07/05/2016 12:51:41</publishTime>
+      <publishTime>07/13/2016 18:10:30</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>07/13/2016 13:59:16</publishTime>
+      <publishTime>07/13/2016 18:10:13</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/20/2016 11:14:03</publishTime>
@@ -1300,55 +1300,55 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Views/Home/Calendar.cshtml">
-      <publishTime>07/06/2016 17:13:14</publishTime>
+      <publishTime>07/13/2016 18:06:40</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>07/13/2016 11:48:23</publishTime>
+      <publishTime>07/13/2016 18:08:00</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
-      <publishTime>06/23/2016 11:37:51</publishTime>
+      <publishTime>07/13/2016 18:08:22</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
-      <publishTime>07/13/2016 13:34:37</publishTime>
+      <publishTime>07/13/2016 18:09:12</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>06/20/2016 16:50:47</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
-      <publishTime>07/13/2016 14:03:17</publishTime>
+      <publishTime>07/13/2016 18:08:57</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
-      <publishTime>06/20/2016 11:14:32</publishTime>
+      <publishTime>07/13/2016 18:25:52</publishTime>
     </File>
     <File Include="Views/Manage/ChangePassword.cshtml">
-      <publishTime>06/20/2016 11:14:32</publishTime>
+      <publishTime>07/13/2016 18:14:12</publishTime>
     </File>
     <File Include="Views/Manage/Index.cshtml">
-      <publishTime>07/05/2016 15:41:32</publishTime>
+      <publishTime>07/13/2016 18:19:19</publishTime>
     </File>
     <File Include="Views/Manage/ManageLogins.cshtml">
-      <publishTime>06/20/2016 11:14:32</publishTime>
+      <publishTime>07/13/2016 18:25:52</publishTime>
     </File>
     <File Include="Views/Manage/SetPassword.cshtml">
-      <publishTime>06/20/2016 11:14:32</publishTime>
+      <publishTime>07/13/2016 18:25:52</publishTime>
     </File>
     <File Include="Views/Manage/UpdateInformation.cshtml">
-      <publishTime>07/13/2016 13:41:25</publishTime>
+      <publishTime>07/13/2016 18:14:59</publishTime>
     </File>
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
-      <publishTime>06/20/2016 11:14:32</publishTime>
+      <publishTime>07/13/2016 18:25:49</publishTime>
     </File>
     <File Include="Views/Payroll/Create.cshtml">
       <publishTime>07/12/2016 12:48:24</publishTime>
     </File>
     <File Include="Views/Payroll/Edit.cshtml">
-      <publishTime>07/12/2016 12:37:06</publishTime>
+      <publishTime>07/13/2016 18:17:02</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>07/12/2016 12:47:59</publishTime>
+      <publishTime>07/13/2016 18:23:43</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>

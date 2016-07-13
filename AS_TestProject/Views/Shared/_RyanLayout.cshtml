@@ -250,7 +250,7 @@
               	  <h5 class="centered">@ViewBag.DisplayName</h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="@Url.Action("Index","Home")">
+                      <a id="dash" href="@Url.Action("Index","Home")">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -259,7 +259,7 @@
                   @if (User.IsInRole("Admin"))
                   {
                   <li>
-                      <a href="@Url.Action("Index","Admin")">
+                      <a id="admin" href="@Url.Action("Index","Admin")">
                           <i class="fa fa-key"></i>
                           <span>Admin</span>
                       </a>
@@ -267,44 +267,45 @@
                   }
 
                   <li>
-                      <a href="@Url.Action("Directory","Home")">
-                          <i class="fa fa-users"></i>
-                          <span>Directory</span>
-                      </a>
-                  </li>
-                  
-                  <li>
-                      <a href="@Url.Action("Calendar","Home")">
-                          <i class="fa fa-calendar"></i>
-                          <span>Calendar</span>
-                      </a>
-                  </li>
-
-                  <li>
-                      <a href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
+                      <a id="profile" href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
                           <i class="fa fa-user"></i>
                           <span>Profile</span>
                       </a>
                   </li>
 
                   <li>
-                      <a href="http://64.215.31.82/Portal" target="_blank">
-                          <i class="fa fa-clock-o"></i>
-                          <span>Timesheet</span>
+                      <a id="direct" href="@Url.Action("Directory","Home")">
+                          <i class="fa fa-users"></i>
+                          <span>Directory</span>
+                      </a>
+                  </li>
+                  
+                  <li>
+                      <a id="calend" href="@Url.Action("Calendar","Home")">
+                          <i class="fa fa-calendar"></i>
+                          <span>Calendar</span>
                       </a>
                   </li>
 
+
                   <li>
-                      <a href="@Url.Action("Forms","Home")">
+                      <a id="forms" href="@Url.Action("Forms","Home")">
                           <i class="fa fa-tasks"></i>
                           <span>Forms</span>
                       </a>
                   </li>
 
                   <li>
-                      <a href="@Url.Action("Gallery","Home")">
+                      <a id="gallery" href="@Url.Action("Gallery","Home")">
                           <i class="fa fa-photo"></i>
                           <span>Gallery</span>
+                      </a>
+                  </li>
+
+                  <li>
+                      <a id="timesheet" href="http://64.215.31.82/Portal" target="_blank">
+                          <i class="fa fa-clock-o"></i>
+                          <span>Timesheet</span>
                       </a>
                   </li>
 

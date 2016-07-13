@@ -118,3 +118,13 @@
         </div><!-- --/panel-body ---->
     </div><!-- /col-lg-12 -->
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('sidebar-menu li a').removeClass("active")
+            $('#admin').addClass("active");
+        });
+    </script>
+}

@@ -217,3 +217,12 @@
         <!--custom chart end-->
     </div><!-- /row -->
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('sidebar-menu li a').removeClass("active")
+            $('#dash').addClass("active");
+        });
+    </script>
+}

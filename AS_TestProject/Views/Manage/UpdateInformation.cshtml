@@ -82,8 +82,8 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Update Information" class="btn btn-default" style="margin-right: 10px"/>
-            <a href="javascript:history.go(-1)" class="btn btn-theme"><i class="fa fa-arrow-left"></i> Cancel</a>
+            <input type="submit" value="Update Information" class="btn btn-theme" style="margin-right: 10px"/>
+            <a href="javascript:history.go(-1)" class="btn btn-default">Cancel</a>
         </div>
     </div>
 }
@@ -122,4 +122,12 @@
            }
        });
     </script>
+    <script>
+        $(document).ready(function () {
+            $('sidebar-menu li a').removeClass("active")
+            $('#profile').addClass("active");
+        });
+    </script>
 }
+
+
