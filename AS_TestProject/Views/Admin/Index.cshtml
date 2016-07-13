@@ -21,7 +21,7 @@
                 <div id="overview" class="tab-pane active">
                     <div class="widget widget-table">
                         <div class="widget-header">
-                            <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Users</h3>
+                            <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Users<button class="btn btn-theme btn-md pull-right" onclick="location.href='@Url.Action("Register", "Account")'" style="margin-top: -10px">+ New User</button></h3>
                         </div>
                         <div class="widget-content">
                             <div class="table-responsive">
@@ -34,6 +34,7 @@
                                             <th>Position</th>
                                             <th>Email</th>
                                             <th>Phone</th>
+                                            <th>Employee ID</th>
                                             <th>Role</th>
                                             <th>Action</th>
                                         </tr>
@@ -42,12 +43,13 @@
                                         @foreach (var item in Model)
                                         {
                                             <tr>
-                                                <td>@item.user.LastName</td>
-                                                <td>@item.user.FirstName</td>
+                                                <td><strong style="color: #29AAE3">@item.user.LastName</strong></td>
+                                                <td><strong style="color: #29AAE3">@item.user.FirstName</strong></td>
                                                 <td>@item.user.Site.SiteName</td>
                                                 <td>@item.user.Position.PositionName</td>
                                                 <td>@item.user.Email</td>
                                                 <td>@item.user.PhoneNumber</td>
+                                                <td>@item.user.EmployeeID</td>
                                                 <td>
                                                     @foreach (var role in item.roles)
                                                     {

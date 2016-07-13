@@ -676,7 +676,6 @@
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Manage\UpdateInformation.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
-    <Content Include="Views\Payroll\Create.cshtml" />
     <Content Include="Views\Payroll\Edit.cshtml" />
     <Content Include="Views\Payroll\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />

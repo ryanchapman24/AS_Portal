@@ -11,11 +11,13 @@ using AS_TestProject.Models;
 
 namespace AS_TestProject.Controllers
 {
+    [Authorize(Roles = "Payroll")]
     public class PayrollController : UserNames
     {
         private ReportEntities mb = new ReportEntities();
 
         // GET: Payroll
+        [Authorize(Roles = "Payroll")]
         public ActionResult Index(int id)
         {
             var now = System.DateTime.Now;
@@ -42,6 +44,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Payroll")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID")] AgentDailyHour agentDailyHour, int empId, short ppId)
         {
@@ -66,6 +69,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Payroll/Edit/5
+        [Authorize(Roles = "Payroll")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +94,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Payroll")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID")] AgentDailyHour agentDailyHour)
         {

@@ -255,7 +255,7 @@ namespace AS_TestProject.Controllers
             model.FirstName = user.FirstName;
             model.LastName = user.LastName;
             model.PhoneNumber = user.PhoneNumber;
-            model.EmployeeID = user.EmployeeID;
+            //model.EmployeeID = user.EmployeeID;
             model.ProfilePic = user.ProfilePic;
             ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", user.PositionID);
             ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", user.SiteID);
@@ -271,8 +271,8 @@ namespace AS_TestProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
-                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
+                //ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
+                //ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
                 return View(model);
             }
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -313,11 +313,11 @@ namespace AS_TestProject.Controllers
             user.LastName = model.LastName;
             user.DisplayName = model.FirstName + ' ' + model.LastName;
             user.PhoneNumber = model.PhoneNumber;
-            user.EmployeeID = model.EmployeeID;
+            //user.EmployeeID = model.EmployeeID;
             //ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", user.PositionID);
             //ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", user.SiteID);
-            user.PositionID = model.PositionID;
-            user.SiteID = model.SiteID;
+            //user.PositionID = model.PositionID;
+            //user.SiteID = model.SiteID;
             user.ProfilePic = pPic;
 
             UserManager.Update(user);

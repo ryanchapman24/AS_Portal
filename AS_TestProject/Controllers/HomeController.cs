@@ -193,6 +193,7 @@ namespace AS_TestProject.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Marketing")]
         [ValidateAntiForgeryToken]
         public ActionResult Publish(List<int> Published, List<int> Delete)
         {

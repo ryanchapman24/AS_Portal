@@ -73,17 +73,17 @@ namespace AS_TestProject.Models
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Employee ID")]
-        public int? EmployeeID { get; set; }
+        //[Required]
+        //[Display(Name = "Employee ID")]
+        //public int? EmployeeID { get; set; }
 
-        [Required]
-        [Display(Name = "Position")]
-        public int PositionID { get; set; }
+        //[Required]
+        //[Display(Name = "Position")]
+        //public int PositionID { get; set; }
 
-        [Required]
-        [Display(Name = "Site")]
-        public int SiteID { get; set; }
+        //[Required]
+        //[Display(Name = "Site")]
+        //public int SiteID { get; set; }
 
         [Required]
         [Display(Name = "Profile Picture")]

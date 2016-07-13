@@ -1,4 +1,6 @@
-﻿<div class="widget widget-table">
+﻿@using Microsoft.AspNet.Identity;
+
+<div class="widget widget-table">
     <div class="widget-header">
         <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Directory</h3>
     </div>
@@ -43,7 +45,12 @@
                             {
                                 <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
                             }
-                            <td>@Html.ActionLink("Manage Time", "Index", "Payroll", new { id = employee.EmployeeID }, null)</td>
+                            <td>
+                                @if (User.IsInRole("Payroll"))
+                                {
+                                     @Html.ActionLink("Manage Time", "Index", "Payroll", new { id = employee.EmployeeID }, null)
+                                }
+                            </td>
                         </tr>
                     }
                 </tbody>

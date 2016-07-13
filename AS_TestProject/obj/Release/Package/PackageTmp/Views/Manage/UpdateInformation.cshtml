@@ -40,32 +40,32 @@
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         <div class="col-md-2 control-label">
             Employee ID
         </div>
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.EmployeeID, new { @class = "form-control onlyNum", min = "0", maxlength = "7", minlength = "7" })
         </div>
-    </div>
+    </div>*@
 
-    <div class="form-group">
+    @*<div class="form-group">
         <div class="col-md-2 control-label">
             Position
         </div>
         <div class="col-md-10">
             @Html.DropDownList("PositionID", null, htmlAttributes: new { @class = "form-control" })
         </div>
-    </div>
+    </div>*@
 
-    <div class="form-group">
+    @*<div class="form-group">
         <div class="col-md-2 control-label">
             Site
         </div>
         <div class="col-md-10">
             @Html.DropDownList("SiteID", null, htmlAttributes: new { @class = "form-control" })
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         <div class="col-md-2 control-label">Profile Picture</div>
@@ -74,7 +74,7 @@
             <div id="fileDisplay" style="max-width: 180px; padding-top: 10px">
                 @if (Model.ProfilePic != null)
                 {
-                    <img src="@Model.ProfilePic" alt="Profile Picture" style="border: 3px solid #fff; margin-top: 15px; max-width: 180px; background-color: white" />
+                    <img src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",Model.ProfilePic)" alt="Profile Picture" style="border: 3px solid #fff; margin-top: 15px; max-width: 180px; background-color: white" />
                 }
             </div>
         </div>
