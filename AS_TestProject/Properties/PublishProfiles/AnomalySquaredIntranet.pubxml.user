@@ -394,7 +394,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2016 11:26:40</publishTime>
     </File>
     <File Include="assets/js/bootstrap-datepicker/datepicker.js">
-      <publishTime>07/12/2016 10:09:01</publishTime>
+      <publishTime>07/14/2016 16:46:45</publishTime>
     </File>
     <File Include="assets/js/bootstrap-inputmask/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -625,7 +625,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/13/2016 13:50:30</publishTime>
+      <publishTime>07/14/2016 16:46:43</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -877,16 +877,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Controllers/AccountController.cs">
-      <publishTime>07/06/2016 14:54:04</publishTime>
+      <publishTime>07/13/2016 12:56:06</publishTime>
     </File>
     <File Include="Controllers/AdminController.cs">
       <publishTime>06/30/2016 16:55:56</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
-      <publishTime>07/12/2016 16:23:36</publishTime>
+      <publishTime>07/14/2016 13:26:07</publishTime>
     </File>
     <File Include="Controllers/ManageController.cs">
-      <publishTime>07/12/2016 16:23:42</publishTime>
+      <publishTime>07/13/2016 13:43:15</publishTime>
     </File>
     <File Include="Controllers/PayrollController.cs">
       <publishTime>07/13/2016 11:59:17</publishTime>
@@ -1306,7 +1306,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>07/14/2016 11:28:13</publishTime>
+      <publishTime>07/14/2016 13:16:09</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
       <publishTime>07/14/2016 09:52:20</publishTime>
@@ -1315,10 +1315,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 09:52:30</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>06/20/2016 16:50:47</publishTime>
+      <publishTime>07/14/2016 09:52:54</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
       <publishTime>07/14/2016 09:53:04</publishTime>
+    </File>
+    <File Include="Views/Home/Slack.cshtml">
+      <publishTime>07/14/2016 15:04:24</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>07/14/2016 09:51:25</publishTime>
@@ -1345,10 +1348,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2016 12:48:24</publishTime>
     </File>
     <File Include="Views/Payroll/Edit.cshtml">
-      <publishTime>07/14/2016 09:48:21</publishTime>
+      <publishTime>07/14/2016 11:43:22</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>07/14/2016 10:16:13</publishTime>
+      <publishTime>07/14/2016 16:39:48</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
@@ -1366,7 +1369,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/05/2016 13:33:52</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>06/22/2016 00:31:01</publishTime>
+      <publishTime>07/14/2016 16:40:10</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2016 16:31:23</publishTime>

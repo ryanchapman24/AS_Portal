@@ -678,6 +678,7 @@
     <Content Include="Views\Home\Calendar.cshtml" />
     <Content Include="Views\Payroll\Edit.cshtml" />
     <Content Include="Views\Payroll\Index.cshtml" />
+    <Content Include="Views\Home\Slack.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

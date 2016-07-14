@@ -25,7 +25,7 @@
                         </div>
                         <div class="widget-content">
                             <div class="table-responsive">
-                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable emptable">
+                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable admin-tables">
                                     <thead>
                                         <tr>
                                             <th>Last</th>
@@ -34,6 +34,7 @@
                                             <th>Position</th>
                                             <th>Email</th>
                                             <th>Phone</th>
+                                            <th>Employee ID</th>
                                             <th>Role</th>
                                             <th>Action</th>
                                         </tr>
@@ -42,12 +43,13 @@
                                         @foreach (var item in Model)
                                         {
                                             <tr>
-                                                <td>@item.user.LastName</td>
-                                                <td>@item.user.FirstName</td>
+                                                <td><strong style="color: #29AAE3">@item.user.LastName</strong></td>
+                                                <td><strong style="color: #29AAE3">@item.user.FirstName</strong></td>
                                                 <td>@item.user.Site.SiteName</td>
                                                 <td>@item.user.Position.PositionName</td>
                                                 <td>@item.user.Email</td>
                                                 <td>@item.user.PhoneNumber</td>
+                                                <td>@item.user.EmployeeID</td>
                                                 <td>
                                                     @foreach (var role in item.roles)
                                                     {
@@ -74,7 +76,7 @@
                         </div>
                         <div class="widget-content">
                             <div class="table-responsive">
-                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable clitable">
+                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable admin-tables">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -116,3 +118,17 @@
         </div><!-- --/panel-body ---->
     </div><!-- /col-lg-12 -->
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#admin').addClass("active");
+
+            $('.admin-tables').DataTable({
+                "iDisplayLength": 50,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+            });
+        });
+    </script>
+}

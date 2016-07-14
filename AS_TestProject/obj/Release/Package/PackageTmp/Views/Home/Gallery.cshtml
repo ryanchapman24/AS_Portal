@@ -77,3 +77,11 @@
     }
 </div><!-- /row -->
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#gallery').addClass("active");
+        });
+    </script>
+}

@@ -29,3 +29,12 @@
     </aside>
 </div>
 <!-- page end-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#calend').addClass("active");
+        });
+    </script>
+}

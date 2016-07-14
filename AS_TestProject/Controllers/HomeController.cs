@@ -19,6 +19,11 @@ namespace AS_TestProject.Controllers
             return View();
         }
 
+        public ActionResult Slack()
+        {
+            return View();
+        }
+
         public ActionResult Directory()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
