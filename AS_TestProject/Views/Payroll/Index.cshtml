@@ -135,6 +135,12 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
+            $('.timetable').DataTable({
+                "iDisplayLength": 10,
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+            });
+
             var $time1 = $("#time1");
             var $time2 = $("#time2");
             var $diff = $("#totalTime");
@@ -169,8 +175,22 @@
 
                 var dateStr = $date.val().toString();
 
-                var time1Sub = $time1.val().toString();
-                var time2Sub = $time2.val().toString();
+                var time1Str = $time1.val().toString();
+                var time2Str = $time2.val().toString();
+
+                if (time1Str.match("^0")) {
+                    var time1Sub = time1Str.substring(1, time1Str.length);
+                }
+                else {
+                    var time1Sub = time1Str;
+                }
+
+                if (time2Str.match("^0")) {
+                    var time2Sub = time2Str.substring(1, time2Str.length);
+                }
+                else {
+                    var time2Sub = time2Str;
+                }
 
                 var login = dateStr + " " + time1Sub;
                 var logout = dateStr + " " + time2Sub;
@@ -201,8 +221,22 @@
 
             var dateStr = $date.val().toString();
 
-            var time1Sub = $time1.val().toString();
-            var time2Sub = $time2.val().toString();
+            var time1Str = $time1.val().toString();
+            var time2Str = $time2.val().toString();
+
+            if (time1Str.match("^0")) {
+                var time1Sub = time1Str.substring(1, time1Str.length);
+            }
+            else {
+                var time1Sub = time1Str;
+            }
+
+            if (time2Str.match("^0")) {
+                var time2Sub = time2Str.substring(1, time2Str.length);
+            }
+            else {
+                var time2Sub = time2Str;
+            }
 
             var login = dateStr + " " + time1Sub;
             var logout = dateStr + " " + time2Sub;
@@ -213,7 +247,6 @@
     </script>
     <script>
             $(document).ready(function () {
-                $('sidebar-menu li a').removeClass("active")
                 $('#direct').addClass("active");
             });
     </script>

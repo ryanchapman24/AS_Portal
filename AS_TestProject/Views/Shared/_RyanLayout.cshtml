@@ -623,37 +623,13 @@
 	</script>*@
 
     <script>
-        $('#custom-headers').multiSelect({
-            selectableHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>Available Roles</strong></div>",
-            selectionHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>User Roles</strong></div>"
+        $(document).ready(function () {
+            $('#custom-headers').multiSelect({
+                selectableHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>Available Roles</strong></div>",
+                selectionHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>User Roles</strong></div>"
+            });
         });
-    </script>
-    <script>
-        $(document).ready( function () {
-            $('.emptable').DataTable({
-                "iDisplayLength": 50,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
-            });
-
-            $('.clitable').DataTable({
-                "iDisplayLength": 50,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
-            });
-
-            $('.directable').DataTable({
-                "iDisplayLength": 50,
-                "aaSorting": [],
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
-            });
-
-            $('.timetable').DataTable({
-                "iDisplayLength": 50,
-                "bSort" : false,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
-            });        
-        });
-    </script> 
-    
+    </script>    
 	<script @*type="application/javascript"*@>
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
@@ -716,10 +692,12 @@
         });
     </script>
     <script>
-        $('#log-out').hover(
-           function () { $('#wave').removeClass("hidden"); }, //shows when hovering over
-           function () { $('#wave').addClass("hidden"); } //Hides when hovering finished
-        );
+        $(document).ready(function () {
+            $('#log-out').hover(
+               function () { $('#wave').removeClass("hidden"); }, //shows when hovering over
+               function () { $('#wave').addClass("hidden"); } //Hides when hovering finished
+            );
+        });
     </script>
       <script>
         $(document).ready(function () {
@@ -769,25 +747,27 @@
               $('.datepicker').datepicker({
                   format: 'm/d/yyyy'
               });
+
               $('.datepicker').on('changeDate', function (ev) {
                   $(this).datepicker('hide').blur();
               });
+
+              $('.timepicker-default').timepicker({
+                  autoclose: true,
+                  minuteStep: 1,
+                  showSeconds: true,
+                  secondStep: 1,
+                  defaultTime: false
+              });
+
+              $('.timepicker-24').timepicker({
+                  autoclose: true,
+                  minuteStep: 1,
+                  showSeconds: true,
+                  showMeridian: false
+              });
           });
       
-          $('.timepicker-default').timepicker({
-              autoclose: true,
-              minuteStep: 1,
-              showSeconds: true,
-              secondStep: 1,
-              defaultTime: false
-          });
-
-          $('.timepicker-24').timepicker({
-              autoclose: true,
-              minuteStep: 1,
-              showSeconds: true,
-              showMeridian: false
-          });
       </script>
   </body>
 </html>
