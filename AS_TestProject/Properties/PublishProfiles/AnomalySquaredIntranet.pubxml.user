@@ -1366,7 +1366,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2016 22:08:44</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>07/05/2016 13:33:52</publishTime>
+      <publishTime>07/15/2016 11:02:41</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
       <publishTime>07/14/2016 16:40:10</publishTime>

@@ -8,7 +8,7 @@
         <li class="btn-group">
             <button class="logout dropdown-toggle" data-toggle="dropdown" style="font-size: 14px">@ViewBag.DisplayName<span class="caret" style="margin-left: 8px"></span></button>         
             <ul class="dropdown-menu" role="menu">
-                <li><a href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">Go to Profile</a></li>
+                <li><a href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">My Profile</a></li>
                 <li><a href="@Url.Action("Index","Manage")">Manage Account</a></li>
                 <li class="divider"></li>
                 <li><a class="logout" id="log-out" href="javascript:document.getElementById('logoutForm').submit()" style="font-size: 14px; line-height: 30px">Logout<img id="wave" class="hidden animated wobble infinite fa fa-thumbs-up" src="~/assets/img/handwaving.png" style="width: 30px; margin-left: 20px"/></a></li>
