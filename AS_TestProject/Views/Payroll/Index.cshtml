@@ -18,81 +18,81 @@
                                 <h4 class="modal-title" id="myModalLabel">Create New Time Entry For @ViewBag.AgentName</h4>
                             </div>
                             @using (Html.BeginForm("Create", "Payroll", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                    @Html.AntiForgeryToken()
-                    <div class="modal-body">
-                        <div class="" style="">
-                            <input id="login" type="hidden" name="LoginTimeStamp" readonly="readonly" />
-                            @*@Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })*@
-                            <input id="logout" type="hidden" name="LogoutTimeStamp" readonly="readonly" />
-                            @*@Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })*@
-                            <div class="form-group">
-                                <div class="col-md-3 control-label">
-                                    Date
-                                </div>
-                                <div class="col-md-9" style="margin-top: -5px">
-                                    <div class="input-group">
-                                        <input id="date" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
-                                        </span>
+                            {
+                            @Html.AntiForgeryToken()
+                            <div class="modal-body">
+                                <div class="" style="">
+                                    <input id="login" type="hidden" name="LoginTimeStamp" readonly="readonly" />
+                                    @*@Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })*@
+                                    <input id="logout" type="hidden" name="LogoutTimeStamp" readonly="readonly" />
+                                    @*@Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })*@
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            Date
+                                        </div>
+                                        <div class="col-md-9" style="margin-top: -5px">
+                                            <div class="input-group">
+                                                <input id="date" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                                </span>
+                                            </div>
+                                        </div><br /><br /><br>
+                                        <div class="col-md-3 control-label">
+                                            Login Time
+                                        </div>
+                                        <div class="col-md-9" style="margin-top: -5px">
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input id="time1" class="form-control timepicker-default" type="text" value="12:00:00 PM" required />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                                </span>
+                                            </div>
+                                        </div><br /><br /><br />
+                                        <div class="col-md-3 control-label">
+                                            Logout Time
+                                        </div>
+                                        <div class="col-md-9" style="margin-top: -5px">
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input id="time2" class="form-control timepicker-default" type="text" value="12:00:00 PM" required />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                                </span>
+                                            </div>
+                                        </div><br /><br /><br />
+                                        <div class="col-md-3 control-label">
+                                            Duration
+                                        </div>
+                                        <div class="col-md-9" style="margin-top: -5px">
+                                            <input id="totalTime" class="form-control" readonly="readonly" name="LoginDuration" value="00:00:00" required />
+                                        </div><br /><br /><br />
+                                        <div class="col-md-3 control-label">
+                                            Domain
+                                        </div>
+                                        <div class="col-md-9" style="margin-top: -5px">
+                                            @Html.DropDownList("DomainMasterID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                            @*@Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })*@
+                                        </div>
+                                        <br /><br /><br />
+                                        <div class="col-md-3 control-label">
+                                            Reason
+                                        </div>
+                                        <div class="col-md-9" style="margin-top: -5px">
+                                            @Html.DropDownList("AgentTimeAdjustmentReasonID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                            @*@Html.ValidationMessageFor(model => model.AgentTimeAdjustmentReasonID, "", new { @class = "text-danger" })*@
+                                        </div>
                                     </div>
-                                </div><br /><br /><br>
-                                <div class="col-md-3 control-label">
-                                    Login Time
-                                </div>
-                                <div class="col-md-9" style="margin-top: -5px">
-                                    <div class="input-group bootstrap-timepicker">
-                                        <input id="time1" class="form-control timepicker-default" type="text" value="12:00:00 PM" required />
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
-                                        </span>
-                                    </div>
-                                </div><br /><br /><br />
-                                <div class="col-md-3 control-label">
-                                    Logout Time
-                                </div>
-                                <div class="col-md-9" style="margin-top: -5px">
-                                    <div class="input-group bootstrap-timepicker">
-                                        <input id="time2" class="form-control timepicker-default" type="text" value="12:00:00 PM" required />
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
-                                        </span>
-                                    </div>
-                                </div><br /><br /><br />
-                                <div class="col-md-3 control-label">
-                                    Duration
-                                </div>
-                                <div class="col-md-9" style="margin-top: -5px">
-                                    <input id="totalTime" class="form-control" readonly="readonly" name="LoginDuration" value="00:00:00" required />
-                                </div><br /><br /><br />
-                                <div class="col-md-3 control-label">
-                                    Domain
-                                </div>
-                                <div class="col-md-9" style="margin-top: -5px">
-                                    @Html.DropDownList("DomainMasterID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
-                                    @*@Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })*@
-                                </div>
-                                <br /><br /><br />
-                                <div class="col-md-3 control-label">
-                                    Reason
-                                </div>
-                                <div class="col-md-9" style="margin-top: -5px">
-                                    @Html.DropDownList("AgentTimeAdjustmentReasonID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
-                                    @*@Html.ValidationMessageFor(model => model.AgentTimeAdjustmentReasonID, "", new { @class = "text-danger" })*@
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer" style="margin-top: 20px">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button id="time-update" type="submit" class="btn btn-theme">Confirm</button>
-                    </div>
-                    }
+                            <div class="modal-footer" style="margin-top: 20px">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button id="time-update" type="submit" class="btn btn-theme">Confirm</button>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>
-                <h4><strong>Current Pay Period</strong> (@ViewBag.PayPeriodStart.ToShortDateString() - @ViewBag.PayPeriodEnd.ToShortDateString())</h4>
+                <h4 style="margin-left: 0px"><strong>Current Pay Period</strong> (@ViewBag.PayPeriodStart.ToShortDateString() - @ViewBag.PayPeriodEnd.ToShortDateString())</h4>
             </div>
             <div class="widget-content">
                 <div class="table-responsive">
@@ -116,7 +116,7 @@
                         <td>@Html.DisplayFor(modelItem => item.LoginTimeStamp)</td>
                         <td>@Html.DisplayFor(modelItem => item.LogoutTimeStamp)</td>
                         <td>@Html.DisplayFor(modelItem => item.LoginDuration)</td>
-                        <td>@Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DomainMaster.FileMask) - @Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
                         <td>@Html.DisplayFor(modelItem => item.RegularHours)</td>
                         <td>@Html.DisplayFor(modelItem => item.OverTimeHours)</td>
                         <td>@Html.DisplayFor(modelItem => item.AgentTimeAdjustmentReason.Reason)</td>
