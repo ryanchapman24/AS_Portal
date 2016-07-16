@@ -366,6 +366,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\clock winding the spring 2.mp3" />
+    <Content Include="assets\audio\Error tone chime_BLASTWAVEFX_16379.mp3" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\datatables.css" />
     <Content Include="assets\css\style-responsive.css" />
@@ -452,6 +454,8 @@
     <Content Include="assets\img\Reimbursement.png" />
     <Content Include="assets\img\ReimbursementAlt.png" />
     <Content Include="assets\img\StatusChange.png" />
+    <Content Include="assets\img\TimeManagement.jpg" />
+    <Content Include="assets\img\TimeManagement_Banner.jpg" />
     <Content Include="assets\img\ui-danro.jpg" />
     <Content Include="assets\img\ui-divya.jpg" />
     <Content Include="assets\img\ui-sam.jpg" />
