@@ -16,6 +16,12 @@ namespace AS_TestProject.Controllers
     {
         private ReportEntities mb = new ReportEntities();
 
+        public class Domain
+        {
+            public byte Id { get; set; }
+            public string FileMaskPlusName { get; set; }
+        }
+
         // GET: Payroll
         [Authorize(Roles = "Payroll")]
         public ActionResult Index(int id)
@@ -34,7 +40,19 @@ namespace AS_TestProject.Controllers
             ViewBag.Date = now.ToShortDateString();
             ViewBag.EmployeeID = id;
             ViewBag.PayPeriodID = payPeriodId;
-            ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters)
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
+            //ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
 
             return View(agentDailyHours);
@@ -62,7 +80,18 @@ namespace AS_TestProject.Controllers
                 return RedirectToAction("Index", new { id = empId });
             }
 
-            ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters)
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
+            //ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
 
             return RedirectToAction("Index", new { id = empId });            
