@@ -33,11 +33,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/.DS_Store">
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
+    <File Include="assets/audio/Camera case pull camera out digital olympus camedia c720_BLASTWAVEFX_09058.mp3">
+      <publishTime>07/18/2016 14:57:51</publishTime>
+    </File>
     <File Include="assets/audio/clock winding the spring 2.mp3">
       <publishTime>07/16/2016 04:26:20</publishTime>
     </File>
     <File Include="assets/audio/Error tone chime_BLASTWAVEFX_16379.mp3">
       <publishTime>07/16/2016 04:43:08</publishTime>
+    </File>
+    <File Include="assets/audio/Sound design digital accent descending 01_SFXBible_ss05706.mp3">
+      <publishTime>07/18/2016 15:09:23</publishTime>
+    </File>
+    <File Include="assets/audio/Sound design multimedia accent button digital 02_SFXBible_ss02551.mp3">
+      <publishTime>07/18/2016 15:17:53</publishTime>
     </File>
     <File Include="assets/css/.DS_Store">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -70,40 +79,49 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/font-awesome/css/font-awesome.css">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:08:07</publishTime>
+    </File>
+    <File Include="assets/font-awesome/css/font-awesome.min.css">
+      <publishTime>07/18/2016 14:08:07</publishTime>
     </File>
     <File Include="assets/font-awesome/fonts/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/font-awesome/fonts/fontawesome-webfont.eot">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:09</publishTime>
     </File>
     <File Include="assets/font-awesome/fonts/fontawesome-webfont.svg">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:09</publishTime>
     </File>
     <File Include="assets/font-awesome/fonts/fontawesome-webfont.ttf">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:09</publishTime>
     </File>
     <File Include="assets/font-awesome/fonts/fontawesome-webfont.woff">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:09</publishTime>
+    </File>
+    <File Include="assets/font-awesome/fonts/fontawesome-webfont.woff2">
+      <publishTime>07/18/2016 14:13:09</publishTime>
     </File>
     <File Include="assets/font-awesome/fonts/FontAwesome.otf">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:09</publishTime>
     </File>
     <File Include="assets/fonts/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/fonts/glyphicons-halflings-regular.eot">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:23</publishTime>
     </File>
     <File Include="assets/fonts/glyphicons-halflings-regular.svg">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:23</publishTime>
     </File>
     <File Include="assets/fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:23</publishTime>
     </File>
     <File Include="assets/fonts/glyphicons-halflings-regular.woff">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 14:13:23</publishTime>
+    </File>
+    <File Include="assets/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>07/18/2016 14:13:23</publishTime>
     </File>
     <File Include="assets/forms/Anomaly-Insertion-Order-Form.pdf">
       <publishTime>06/23/2016 10:11:00</publishTime>
@@ -640,7 +658,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/14/2016 16:46:43</publishTime>
+      <publishTime>07/18/2016 13:50:21</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -810,6 +828,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>01/28/2015 03:02:42</publishTime>
     </File>
+    <File Include="bin/System.Web.Abstractions.dll">
+      <publishTime>05/28/2014 04:35:42</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 03:04:30</publishTime>
     </File>
@@ -827,6 +848,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>01/28/2015 03:02:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Routing.dll">
+      <publishTime>05/28/2014 04:35:42</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
       <publishTime>01/28/2015 03:04:30</publishTime>
@@ -1279,7 +1303,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2016 11:36:55</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>07/16/2016 04:49:37</publishTime>
+      <publishTime>07/18/2016 15:22:02</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>07/13/2016 13:19:13</publishTime>
@@ -1363,10 +1387,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2016 12:48:24</publishTime>
     </File>
     <File Include="Views/Payroll/Edit.cshtml">
-      <publishTime>07/18/2016 11:29:06</publishTime>
+      <publishTime>07/18/2016 14:22:50</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>07/18/2016 11:57:09</publishTime>
+      <publishTime>07/18/2016 14:22:05</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
@@ -1381,10 +1405,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2016 22:08:44</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>07/15/2016 11:02:41</publishTime>
+      <publishTime>07/18/2016 15:23:18</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>07/14/2016 16:40:10</publishTime>
+      <publishTime>07/18/2016 15:23:33</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2016 16:31:23</publishTime>
