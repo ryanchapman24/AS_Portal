@@ -75,6 +75,15 @@
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
+                        Domain
+                    </div>
+                    <div class="col-md-4">
+                        <span style="" readonly="readonly" class="form-control">@Model.DomainMaster.FileMask - @Model.DomainMaster.DomainName</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
                         Adjustment Reason
                     </div>
                     <div class="col-md-4">
@@ -85,7 +94,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input id="time-update" type="submit" value="Update" class="btn btn-theme" />
+                        <input id="time-update" type="submit" value="Update" class="btn btn-theme play" />
                     </div>
                 </div>
             </div>
@@ -99,6 +108,24 @@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', '/assets/audio/clock%20winding%20the%20spring%202.mp3');
+            //audioElement.setAttribute('autoplay', 'autoplay');
+            //audioElement.load()
+
+            $.get();
+
+            //audioElement.addEventListener("load", function() {
+            //    audioElement.play();
+            //}, true);
+
+            $('.play').click(function() {
+                audioElement.play();
+            });
+        });
+    </script>
     <script>
         $(document).ready(function () {
             var $time1 = $("#time1");

@@ -384,6 +384,7 @@
     <Content Include="assets\img\ASPortal-DefaultProfilePic.png" />
     <Content Include="assets\img\AS_Background.jpg" />
     <Content Include="assets\img\AS_logo.png" />
+    <Content Include="assets\img\birthday_cupcake.png" />
     <Content Include="assets\img\blog-bg.jpg" />
     <Content Include="assets\img\blue_priority.png" />
     <Content Include="assets\img\BonusPayment.jpg" />

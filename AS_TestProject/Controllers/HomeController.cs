@@ -16,6 +16,13 @@ namespace AS_TestProject.Controllers
     {
         public ActionResult Index()
         {
+            var mb = new ReportEntities();
+
+            var todayMonth = System.DateTime.Now.Month;
+            var todayDay = System.DateTime.Now.Day;
+
+            ViewBag.birthdayList = mb.Employees.Where(e => e.BirthDate.Month == todayMonth && e.BirthDate.Day == todayDay).ToList();
+
             return View();
         }
 

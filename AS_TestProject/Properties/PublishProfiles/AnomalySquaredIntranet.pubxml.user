@@ -33,6 +33,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/.DS_Store">
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
+    <File Include="assets/audio/clock winding the spring 2.mp3">
+      <publishTime>07/16/2016 04:26:20</publishTime>
+    </File>
+    <File Include="assets/audio/Error tone chime_BLASTWAVEFX_16379.mp3">
+      <publishTime>07/16/2016 04:43:08</publishTime>
+    </File>
     <File Include="assets/css/.DS_Store">
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
@@ -143,6 +149,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/img/AS_logo.png">
       <publishTime>06/21/2016 09:03:32</publishTime>
+    </File>
+    <File Include="assets/img/birthday_cupcake.png">
+      <publishTime>07/18/2016 12:10:56</publishTime>
     </File>
     <File Include="assets/img/blog-bg.jpg">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -359,6 +368,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/img/StatusChange.png">
       <publishTime>06/23/2016 11:30:50</publishTime>
+    </File>
+    <File Include="assets/img/TimeManagement.jpg">
+      <publishTime>07/16/2016 04:24:43</publishTime>
+    </File>
+    <File Include="assets/img/TimeManagement_Banner.jpg">
+      <publishTime>07/16/2016 04:24:43</publishTime>
     </File>
     <File Include="assets/img/ui-danro.jpg">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -589,31 +604,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/lineicons/.DS_Store">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:19:33</publishTime>
     </File>
     <File Include="assets/lineicons/fonts/.DS_Store">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:19:37</publishTime>
     </File>
     <File Include="assets/lineicons/fonts/linecons.eot">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:22:48</publishTime>
     </File>
     <File Include="assets/lineicons/fonts/linecons.svg">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:22:49</publishTime>
     </File>
     <File Include="assets/lineicons/fonts/linecons.ttf">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:22:50</publishTime>
     </File>
     <File Include="assets/lineicons/fonts/linecons.woff">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:22:51</publishTime>
     </File>
     <File Include="assets/lineicons/index.html">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:22:52</publishTime>
     </File>
     <File Include="assets/lineicons/lte-ie7.js">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/18/2016 12:55:48</publishTime>
     </File>
     <File Include="assets/lineicons/style.css">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/16/2016 04:22:54</publishTime>
     </File>
     <File Include="basic_table.html">
       <publishTime>06/20/2016 16:14:36</publishTime>
@@ -1234,7 +1249,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:43</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>07/12/2016 15:29:58</publishTime>
+      <publishTime>07/18/2016 12:55:48</publishTime>
     </File>
     <File Include="Service References/Application Insights/ConnectedService.json">
       <publishTime>06/20/2016 11:15:20</publishTime>
@@ -1264,7 +1279,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2016 11:36:55</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>07/13/2016 13:15:18</publishTime>
+      <publishTime>07/16/2016 04:49:37</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>07/13/2016 13:19:13</publishTime>
@@ -1309,7 +1324,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 13:16:09</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
-      <publishTime>07/14/2016 09:52:20</publishTime>
+      <publishTime>07/18/2016 12:11:01</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
       <publishTime>07/14/2016 09:52:30</publishTime>
@@ -1348,10 +1363,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2016 12:48:24</publishTime>
     </File>
     <File Include="Views/Payroll/Edit.cshtml">
-      <publishTime>07/14/2016 11:43:22</publishTime>
+      <publishTime>07/18/2016 11:29:06</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>07/15/2016 15:50:31</publishTime>
+      <publishTime>07/18/2016 11:57:09</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
