@@ -370,8 +370,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\Camera case pull camera out digital olympus camedia c720_BLASTWAVEFX_09058.mp3" />
     <Content Include="assets\audio\clock winding the spring 2.mp3" />
     <Content Include="assets\audio\Error tone chime_BLASTWAVEFX_16379.mp3" />
+    <Content Include="assets\audio\Sound design digital accent descending 01_SFXBible_ss05706.mp3" />
+    <Content Include="assets\audio\Sound design multimedia accent button digital 02_SFXBible_ss02551.mp3" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\datatables.css" />
     <Content Include="assets\css\style-responsive.css" />
@@ -735,7 +738,9 @@
     <Folder Include="ProfilePics\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

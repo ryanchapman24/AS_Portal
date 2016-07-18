@@ -17,11 +17,11 @@ namespace AS_TestProject.Controllers
         public ActionResult Index()
         {
             var mb = new ReportEntities();
-
+            var user = db.Users.Find(User.Identity.GetUserId());
             var todayMonth = System.DateTime.Now.Month;
             var todayDay = System.DateTime.Now.Day;
 
-            ViewBag.birthdayList = mb.Employees.Where(e => e.BirthDate.Month == todayMonth && e.BirthDate.Day == todayDay).ToList();
+            ViewBag.birthdayList = mb.Employees.Where(e => e.BirthDate.Month == todayMonth && e.BirthDate.Day == todayDay && e.SiteID == user.SiteID).ToList();
 
             return View();
         }
