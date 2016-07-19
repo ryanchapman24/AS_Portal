@@ -151,7 +151,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/img/AccessControl.png">
-      <publishTime>06/23/2016 11:14:54</publishTime>
+      <publishTime>07/19/2016 16:38:49</publishTime>
     </File>
     <File Include="assets/img/AnomalySquared-Logo-Dark-BG%402x.png">
       <publishTime>06/23/2016 15:46:53</publishTime>
@@ -180,8 +180,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/img/BonusPayment.jpg">
       <publishTime>06/23/2016 10:43:07</publishTime>
     </File>
+    <File Include="assets/img/BonusPayment.png">
+      <publishTime>07/19/2016 16:38:49</publishTime>
+    </File>
     <File Include="assets/img/checkbox-gray.png">
       <publishTime>06/20/2016 16:13:43</publishTime>
+    </File>
+    <File Include="assets/img/EmployeeHandbook.png">
+      <publishTime>07/19/2016 16:38:49</publishTime>
+    </File>
+    <File Include="assets/img/ExpenseReimbursement.png">
+      <publishTime>07/19/2016 16:38:43</publishTime>
     </File>
     <File Include="assets/img/friends/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -313,7 +322,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 13:47:23</publishTime>
     </File>
     <File Include="assets/img/InsertionOrder.png">
-      <publishTime>06/23/2016 11:30:50</publishTime>
+      <publishTime>07/19/2016 16:41:20</publishTime>
     </File>
     <File Include="assets/img/instagram.jpg">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -335,6 +344,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/img/palmtree.png">
       <publishTime>06/22/2016 17:38:25</publishTime>
+    </File>
+    <File Include="assets/img/PayrollDeduction.png">
+      <publishTime>07/19/2016 16:38:49</publishTime>
     </File>
     <File Include="assets/img/portfolio/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -372,6 +384,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/img/PTO.jpg">
       <publishTime>06/22/2016 17:19:58</publishTime>
     </File>
+    <File Include="assets/img/PTO.png">
+      <publishTime>07/19/2016 16:38:49</publishTime>
+    </File>
     <File Include="assets/img/radio-gray.png">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
@@ -385,7 +400,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/23/2016 11:30:50</publishTime>
     </File>
     <File Include="assets/img/StatusChange.png">
-      <publishTime>06/23/2016 11:30:50</publishTime>
+      <publishTime>07/19/2016 16:38:49</publishTime>
     </File>
     <File Include="assets/img/TimeManagement.jpg">
       <publishTime>07/16/2016 04:24:43</publishTime>
@@ -658,7 +673,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/18/2016 15:30:12</publishTime>
+      <publishTime>07/19/2016 17:12:38</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1030,7 +1045,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2016 15:26:02</publishTime>
     </File>
     <File Include="Entities/ReportModel.edmx.diagram">
-      <publishTime>07/11/2016 14:04:13</publishTime>
+      <publishTime>07/19/2016 09:48:26</publishTime>
     </File>
     <File Include="Entities/ReportModel.tt">
       <publishTime>06/27/2016 10:49:54</publishTime>
@@ -1332,6 +1347,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Admin/Index.cshtml">
       <publishTime>07/14/2016 10:12:25</publishTime>
     </File>
+    <File Include="Views/Employees/Create.cshtml">
+      <publishTime>07/19/2016 10:18:45</publishTime>
+    </File>
+    <File Include="Views/Employees/Edit.cshtml">
+      <publishTime>07/19/2016 17:10:47</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
@@ -1345,13 +1366,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>07/14/2016 13:16:09</publishTime>
+      <publishTime>07/19/2016 16:20:57</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
-      <publishTime>07/18/2016 12:11:01</publishTime>
+      <publishTime>07/19/2016 16:49:25</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
-      <publishTime>07/14/2016 09:52:30</publishTime>
+      <publishTime>07/19/2016 17:06:12</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>07/14/2016 09:52:54</publishTime>
@@ -1387,10 +1408,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2016 12:48:24</publishTime>
     </File>
     <File Include="Views/Payroll/Edit.cshtml">
-      <publishTime>07/18/2016 14:22:50</publishTime>
+      <publishTime>07/19/2016 15:34:06</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>07/18/2016 14:22:05</publishTime>
+      <publishTime>07/19/2016 15:24:37</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
@@ -1408,7 +1429,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/18/2016 15:23:18</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>07/18/2016 15:23:33</publishTime>
+      <publishTime>07/19/2016 13:50:07</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2016 16:31:23</publishTime>

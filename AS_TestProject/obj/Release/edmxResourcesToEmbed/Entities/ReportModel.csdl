@@ -217,7 +217,7 @@
     <Property Name="City" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
     <Property Name="State" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
     <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
     <Property Name="HomePhone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="CellPhone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
@@ -488,7 +488,7 @@
     <Property Name="State" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Street" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="ContactID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="ContactCreateTimestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactCreateTimestamp" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="ContactModifiedTimestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Country" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Dispo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />

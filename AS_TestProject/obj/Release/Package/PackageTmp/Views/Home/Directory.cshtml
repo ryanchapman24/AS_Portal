@@ -3,7 +3,7 @@
         <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
             <div class="widget widget-table">
                 <div class="widget-header">
-                    <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Directory</h3>
+                    <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Directory<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="margin-top: -10px">+ New Employee</button></h3>
                 </div>
                 <div class="widget-content">
                     <div class="table-responsive">
@@ -51,7 +51,11 @@
                                     <td class="text-nowrap">
                                         @if (User.IsInRole("Payroll"))
                                         {
-                                        <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a>
+                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
+                                        }
+                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                        {
+                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a>
                                         }
                                     </td>
                                 </tr>
