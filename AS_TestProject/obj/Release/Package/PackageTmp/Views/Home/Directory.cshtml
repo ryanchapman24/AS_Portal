@@ -1,9 +1,220 @@
-﻿@using Microsoft.AspNet.Identity;
+﻿@model AS_TestProject.Entities.Employee
+@using Microsoft.AspNet.Identity;
+@{ 
+    var today = System.DateTime.Now.ToString("M/d/yyyy");
+}
     <div class="col-lg-12 mt">
         <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
             <div class="widget widget-table">
                 <div class="widget-header">
-                    <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Directory<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="margin-top: -10px">+ New Employee</button></h3>
+                    <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Directory @if (User.IsInRole("Admin") || User.IsInRole ("HR")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="margin-top: -10px">+ New Employee</button>}</h3>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="margin-bottom: 15px">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Add New Employee</h4>
+                            </div>
+                            @using (Html.BeginForm("Create", "Employees", new {  }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="modal-body">
+                                    <div class="" style="">
+                                       @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <input type="hidden" name="AddDate" value="@today"/>
+                                        <input type="hidden" name="TerminationDate" value="12/31/9999"/>
+                                        <div class="form-group">
+                                            <div class="col-md-3 control-label">
+                                                First Name
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                              
+                                            <div class="col-md-3 control-label">
+                                                Last Name
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                Address Line 1
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                Address Line 2
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                City
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                State
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                               
+                                            <div class="col-md-3 control-label">
+                                                Zip Code
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                               
+                                            <div class="col-md-3 control-label">
+                                                Email
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                               
+                                            <div class="col-md-3 control-label">
+                                                Home Phone
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                             
+                                            <div class="col-md-3 control-label">
+                                                Cell Phone
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                Birth Date
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                Hire Date
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                               
+                                            @*<div class="col-md-3 control-label">
+                                                Termination Date
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.TerminationDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.TerminationDate, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />*@
+                                                                                
+                                            <div class="col-md-5 control-label">
+                                                Is This Employee a Manager?
+                                            </div>
+                                            <div class="col-md-7" style="margin-top: -10px">
+                                                <div class="checkbox">
+                                                    @Html.EditorFor(model => model.IsManager)
+                                                    @Html.ValidationMessageFor(model => model.IsManager, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div><br /><br /><br />
+                                                                               
+                                            <div class="col-md-3 control-label">
+                                                Manager Employee ID
+                                            </div>
+                                            <div class="col-md-9">
+                                                @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                                                @Html.ValidationMessageFor(model => model.ManagerEmployeeID, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                Position
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.DropDownList("PositionID", null, "", htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                Site
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.DropDownList("SiteID", null, "", htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.SiteID, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />
+                                                                                
+                                            @*<div class="col-md-3 control-label">
+                                                Are They Active?
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -10px">
+                                                <div class="checkbox">
+                                                    @Html.EditorFor(model => model.IsActive)
+                                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div><br /><br /><br />*@
+                                                                                
+                                            @*<div class="col-md-3 control-label">
+                                                Add Date
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.AddDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.AddDate, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />*@
+                                                                               
+                                            @*<div class="col-md-3 control-label">
+                                                Add by Employee ID
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.AddByEmployeeID, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.AddByEmployeeID, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />*@
+                                                                                
+                                            @*<div class="col-md-3 control-label">
+                                                Rehire Date
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.RehireDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.RehireDate, "", new { @class = "text-danger" })
+                                            </div><br /><br /><br />*@
+                                                                                
+                                            <div class="col-md-3 control-label">
+                                                File Number
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.FileNumber, "", new { @class = "text-danger" })
+                                            </div><br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="margin-top: 20px">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button id="time-update" type="submit" class="btn btn-theme play">Confirm</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
                 <div class="widget-content">
                     <div class="table-responsive">

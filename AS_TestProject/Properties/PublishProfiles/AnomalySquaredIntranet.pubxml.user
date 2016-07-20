@@ -673,7 +673,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/19/2016 17:12:38</publishTime>
+      <publishTime>07/20/2016 13:10:59</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1321,7 +1321,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/18/2016 15:22:02</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>07/13/2016 13:19:13</publishTime>
+      <publishTime>07/20/2016 12:36:15</publishTime>
     </File>
     <File Include="Views/Account/ResendEmailConfirmation.cshtml">
       <publishTime>07/02/2016 23:56:56</publishTime>
@@ -1351,7 +1351,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2016 10:18:45</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
-      <publishTime>07/19/2016 17:10:47</publishTime>
+      <publishTime>07/20/2016 10:18:07</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/20/2016 11:14:03</publishTime>
@@ -1366,7 +1366,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>07/19/2016 16:20:57</publishTime>
+      <publishTime>07/20/2016 13:03:53</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
       <publishTime>07/19/2016 16:49:25</publishTime>

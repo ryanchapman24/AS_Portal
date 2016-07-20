@@ -16,14 +16,16 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.EmployeeID)
+                @Html.HiddenFor(model => model.AddByEmployeeID)
+                <input class="form-control" name="AddDate" type="hidden" value="@Model.AddDate.ToString("M/d/yyyy")" />
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
                         First Name
                     </div>                 
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                        @*@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -32,8 +34,8 @@
                         Last Name
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                        @*@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -42,8 +44,8 @@
                         Address Line 1
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                        @*@Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -52,8 +54,8 @@
                         Address Line 2
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control", type = "text"} })
+                        @*@Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -62,8 +64,8 @@
                         City
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                        @*@Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -72,8 +74,8 @@
                         State
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", required = "true", maxlength = "2" } })
+                        @*@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -82,8 +84,8 @@
                         Zip Code
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "5" } })
+                        @*@Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -93,7 +95,7 @@
                     </div>  
                     <div class="col-md-4">
                         @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -102,8 +104,8 @@
                         Home Phone
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                        @*@Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -112,8 +114,8 @@
                         Cell Phone
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                        @*@Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -122,9 +124,9 @@
                         Birth Date
                     </div>  
                     <div class="col-md-4">
-                        <input class="form-control" name="BirthDate" value="@Model.BirthDate.ToString("M/d/yyyy")" />
+                        <input class="form-control" name="BirthDate" value="@Model.BirthDate.ToString("M/d/yyyy")" required />
                         @*@Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })*@
-                        @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -133,9 +135,9 @@
                         Hire Date
                     </div>  
                     <div class="col-md-4">
-                        <input class="form-control" name="HireDate" value="@Model.HireDate.ToString("M/d/yyyy")" />
+                        <input class="form-control" name="HireDate" value="@Model.HireDate.ToString("M/d/yyyy")" required/>
                         @*@Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control" } })*@
-                        @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -144,20 +146,20 @@
                         Termination Date
                     </div>  
                     <div class="col-md-4">
-                        <input class="form-control" name="TerminationDate" value="@Model.TerminationDate.ToString("M/d/yyyy")" />
+                        <input class="form-control" name="TerminationDate" value="@Model.TerminationDate.ToString("M/d/yyyy")" required/>
                         @*@Html.EditorFor(model => model.TerminationDate, new { htmlAttributes = new { @class = "form-control" } })*@
-                        @Html.ValidationMessageFor(model => model.TerminationDate, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(model => model.TerminationDate, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
-                        Is Manager?
+                        Is This Employee a Manager?
                     </div>  
                     <div class="col-md-4">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.IsManager)
-                            @Html.ValidationMessageFor(model => model.IsManager, "", new { @class = "text-danger" })
+                            @*@Html.ValidationMessageFor(model => model.IsManager, "", new { @class = "text-danger" })*@
                         </div>
                     </div>
                 </div>
@@ -167,8 +169,8 @@
                         Manager Employee ID
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ManagerEmployeeID, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control onlyNum", type = "text", required = "true", maxlength = "7" } })
+                        @*@Html.ValidationMessageFor(model => model.ManagerEmployeeID, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -177,8 +179,8 @@
                         Position
                     </div>  
                     <div class="col-md-4">
-                        @Html.DropDownList("PositionID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })
+                        @Html.DropDownList("PositionID", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                        @*@Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -187,41 +189,20 @@
                         Site
                     </div>  
                     <div class="col-md-4">
-                        @Html.DropDownList("SiteID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.SiteID, "", new { @class = "text-danger" })
+                        @Html.DropDownList("SiteID", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                        @*@Html.ValidationMessageFor(model => model.SiteID, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
-                        Is Active?
+                        Is He/She Active?
                     </div>  
                     <div class="col-md-4">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.IsActive)
-                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            @*@Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })*@
                         </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-2 control-label">
-                        Add Date
-                    </div>  
-                    <div class="col-md-4">
-                        <input class="form-control" name="AddDate" value="@Model.AddDate.ToString("M/d/yyyy")"/>
-                        @*@Html.EditorFor(model => model.AddDate, new { htmlAttributes = new { @class = "form-control" } })*@
-                        @Html.ValidationMessageFor(model => model.AddDate, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-2 control-label">
-                        Added by Employee ID
-                    </div>  
-                    <div class="col-md-4">
-                        @Html.EditorFor(model => model.AddByEmployeeID, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.AddByEmployeeID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -238,7 +219,7 @@
                         {
                             @Html.EditorFor(model => model.RehireDate, new { htmlAttributes = new { @class = "form-control" } })
                         }
-                        @Html.ValidationMessageFor(model => model.RehireDate, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(model => model.RehireDate, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
@@ -247,8 +228,8 @@
                         File Number
                     </div>  
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FileNumber, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "6" } })
+                        @*@Html.ValidationMessageFor(model => model.FileNumber, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 

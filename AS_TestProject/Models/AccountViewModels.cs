@@ -74,7 +74,7 @@ namespace AS_TestProject.Models
 
         [Required]
         [Display(Name = "Employee ID")]
-        public int? EmployeeID { get; set; }
+        public int EmployeeID { get; set; }
 
         [Required]
         [Display(Name = "Position")]

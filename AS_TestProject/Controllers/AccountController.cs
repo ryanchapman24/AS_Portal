@@ -140,8 +140,7 @@ namespace AS_TestProject.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Register()
         {
-            RegisterViewModel model = new RegisterViewModel();
-            model.EmployeeID = null;
+            RegisterViewModel model = new RegisterViewModel();           
             ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName");
             ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName");
 

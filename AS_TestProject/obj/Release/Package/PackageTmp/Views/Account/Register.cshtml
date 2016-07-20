@@ -17,7 +17,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control capitalize", placeholder = "first name", required = "true" })<br />
                         @Html.TextBoxFor(m => m.LastName, new { @class = "form-control capitalize", placeholder = "last name", required = "true" })<br />
-                        @Html.TextBoxFor(m => m.EmployeeID, new { @class = "form-control onlyNum", placeholder = "employee id", min = "0", maxlength = "7", minlength = "7", required = "true" })<br />
+                        @Html.TextBoxFor(m => m.EmployeeID, new { @class = "form-control onlyNum", placeholder = "employee id", min = "0", maxlength = "7", minlength = "7", required = "true", @id = "empId"})<br />
                         @Html.DropDownList("PositionID", null, "position", htmlAttributes: new { @class = "form-control", placeholder = "position", required = "true" })<br />
                         @Html.DropDownList("SiteID", null, "site", htmlAttributes: new { @class = "form-control", placeholder = "site", required = "true" })<br />
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "email", required = "true" })<br />
@@ -87,5 +87,11 @@
 }*@
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+        var $empId = $("#empId");
+        $empId.val('');
+    })
+</script>
 }

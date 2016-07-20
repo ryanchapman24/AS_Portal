@@ -36,7 +36,9 @@ namespace AS_TestProject.Controllers
             var user = db.Users.Find(User.Identity.GetUserId());
             var mb = new ReportEntities();                       
             ViewBag.Directory = mb.Employees.Where(d => d.SiteID == user.SiteID).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
-            
+            ViewBag.PositionID = new SelectList(mb.Positions, "PositionID", "PositionName");
+            ViewBag.SiteID = new SelectList(mb.Sites, "SiteID", "SiteName");
+
             return View();
         }
 
