@@ -454,7 +454,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/bootstrap-timepicker/timepicker.css">
-      <publishTime>07/21/2016 11:12:43</publishTime>
+      <publishTime>07/21/2016 16:33:42</publishTime>
     </File>
     <File Include="assets/js/bootstrap-timepicker/timepicker.js">
       <publishTime>07/08/2016 15:25:51</publishTime>
