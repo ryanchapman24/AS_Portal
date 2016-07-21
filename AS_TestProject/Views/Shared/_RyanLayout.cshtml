@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="~/assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="~/assets/lineicons/style.css">    
     <link href="~/assets/css/datatables.css" rel="stylesheet" />
+    <link href="~/assets/js/dropzone/css/dropzone.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="~/assets/css/style.css" rel="stylesheet">
     <link href="~/assets/css/style-responsive.css" rel="stylesheet">
@@ -34,7 +35,7 @@
     <link href="~/Content/animate.css" rel="stylesheet" />
     <link href="~/assets/js/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
     <link href="~/assets/js/bootstrap-timepicker/timepicker.css" rel="stylesheet" />
-    <link href="~/assets/js/bootstrap-datepicker/datepicker.css" rel="stylesheet" />
+    <link href="~/assets/js/bootstrap-datepicker/datepicker.css" rel="stylesheet" />  
     
     <script src="~/assets/js/jquery.js"></script>
     <script src="~/assets/js/chart-master/Chart.js"></script>
@@ -262,6 +263,16 @@
                       <a id="admin" href="@Url.Action("Index","Admin")">
                           <i class="fa fa-key"></i>
                           <span>Admin</span>
+                      </a>
+                  </li>
+                  }
+
+                  @if (User.IsInRole("IT"))
+                  {
+                  <li>
+                      <a id="it" href="@Url.Action("Index", "IT")">
+                          <i class="fa fa-cogs"></i>
+                          <span>IT</span>
                       </a>
                   </li>
                   }
@@ -594,6 +605,7 @@
     <script src="~/Multiselect PlugIn/js/jquery.multi-select.js"></script>
     <script src="~/Multiselect PlugIn/js/jquery.quicksearch.js"></script>
     <script src="~/Scripts/MultiSelect.js"></script>
+    <script src="~/assets/js/dropzone/dropzone.js"></script>
     @RenderSection("scripts", required: false)
 
     <!--common script for all pages-->
@@ -761,6 +773,8 @@
 
               $('.timepicker-default').timepicker({
                   autoclose: true,
+                  showInputs: true,
+                  disableFocus: false,
                   minuteStep: 1,
                   showSeconds: true,
                   secondStep: 1,

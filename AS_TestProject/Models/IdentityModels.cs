@@ -55,5 +55,6 @@ namespace AS_TestProject.Models
         public DbSet<Position> Positions { get; set; }
         public DbSet<WorkTask> Tasks { get; set; }
         public DbSet<TaskPriority> TaskPriorities { get; set; }
+        public DbSet<Document> Documents { get; set; }
     }
 }

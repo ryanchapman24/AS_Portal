@@ -234,6 +234,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ITController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Entities\AgentDailyHour.cs">
@@ -351,6 +352,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserListModels.cs" />
     <Compile Include="Models\AdminUserViewModels.cs" />
+    <Compile Include="Models\Document.cs" />
     <Compile Include="Models\GalleryPhoto.cs" />
     <Compile Include="Models\Helpers\UserRolesHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -491,6 +493,9 @@
     <Content Include="assets\js\chart-master\Chart.js" />
     <Content Include="assets\js\chartjs-conf.js" />
     <Content Include="assets\js\common-scripts.js" />
+    <Content Include="assets\js\dropzone\css\dropzone.css" />
+    <Content Include="assets\js\dropzone\dropzone.js" />
+    <Content Include="assets\js\dropzone\images\spritemap.png" />
     <Content Include="assets\js\easy-pie-chart.js" />
     <Content Include="assets\js\fancybox\jquery.fancybox.css" />
     <Content Include="assets\js\fancybox\jquery.fancybox.js" />
@@ -701,6 +706,7 @@
     <Content Include="Views\Payroll\Index.cshtml" />
     <Content Include="Views\Home\Slack.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\IT\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
@@ -741,6 +747,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Documents\" />
     <Folder Include="GalleryPhotos\" />
     <Folder Include="ProfilePics\" />
   </ItemGroup>
