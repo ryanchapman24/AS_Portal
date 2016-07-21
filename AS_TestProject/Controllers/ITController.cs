@@ -59,5 +59,15 @@ namespace AS_TestProject.Controllers
 
             return RedirectToAction("Index", "IT");
         }
+
+        [Authorize(Roles = "IT")]
+        public ActionResult DeleteDocument(int id)
+        {
+            var document = db.Documents.Find(id);
+            db.Documents.Remove(document);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "IT");
+        }
     }
 }

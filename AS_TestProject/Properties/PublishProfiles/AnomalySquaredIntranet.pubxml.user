@@ -454,7 +454,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/bootstrap-timepicker/timepicker.css">
-      <publishTime>07/08/2016 01:31:59</publishTime>
+      <publishTime>07/21/2016 11:12:43</publishTime>
     </File>
     <File Include="assets/js/bootstrap-timepicker/timepicker.js">
       <publishTime>07/08/2016 15:25:51</publishTime>
@@ -476,6 +476,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/js/common-scripts.js">
       <publishTime>06/22/2016 09:40:07</publishTime>
+    </File>
+    <File Include="assets/js/dropzone/css/dropzone.css">
+      <publishTime>07/21/2016 12:02:05</publishTime>
+    </File>
+    <File Include="assets/js/dropzone/dropzone.js">
+      <publishTime>07/21/2016 11:59:52</publishTime>
+    </File>
+    <File Include="assets/js/dropzone/images/spritemap.png">
+      <publishTime>07/21/2016 12:01:22</publishTime>
     </File>
     <File Include="assets/js/easy-pie-chart.js">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -673,7 +682,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/20/2016 16:40:56</publishTime>
+      <publishTime>07/21/2016 16:05:35</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -939,6 +948,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Controllers/HomeController.cs">
       <publishTime>07/14/2016 13:26:07</publishTime>
     </File>
+    <File Include="Controllers/ITController.cs">
+      <publishTime>07/21/2016 16:03:24</publishTime>
+    </File>
     <File Include="Controllers/ManageController.cs">
       <publishTime>07/13/2016 13:43:15</publishTime>
     </File>
@@ -1128,6 +1140,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Models/AdminUserViewModels.cs">
       <publishTime>06/30/2016 09:29:49</publishTime>
     </File>
+    <File Include="Models/Document.cs">
+      <publishTime>07/21/2016 12:19:02</publishTime>
+    </File>
     <File Include="Models/GalleryPhoto.cs">
       <publishTime>06/27/2016 15:12:18</publishTime>
     </File>
@@ -1288,7 +1303,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:43</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>07/18/2016 12:55:48</publishTime>
+      <publishTime>07/21/2016 16:06:11</publishTime>
     </File>
     <File Include="Service References/Application Insights/ConnectedService.json">
       <publishTime>06/20/2016 11:15:20</publishTime>
@@ -1383,6 +1398,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/Slack.cshtml">
       <publishTime>07/14/2016 15:04:24</publishTime>
     </File>
+    <File Include="Views/IT/Index.cshtml">
+      <publishTime>07/21/2016 15:57:05</publishTime>
+    </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>07/14/2016 09:51:25</publishTime>
     </File>
@@ -1411,7 +1429,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2016 15:34:06</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>07/19/2016 15:24:37</publishTime>
+      <publishTime>07/21/2016 10:55:28</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
