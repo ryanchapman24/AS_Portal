@@ -95,6 +95,7 @@
                                     <p class="green">You have @tasks pending tasks</p>
                                 </li>
                             }
+                            <div id="task-scroll" style="max-height: 600px; overflow-y: auto; overflow-x: hidden">
                             @foreach (var task in ViewBag.UrgentTasks)
                             {
                                 <li>
@@ -139,6 +140,7 @@
                                     </a>
                                 </li>
                             }
+                            </div>
                             @if (tasks > 0 && tasks <= 5)
                             {
                                 <li class="external" style="text-align: center">
@@ -788,6 +790,11 @@
           });
       
       </script>
+      @*<script>
+          $(document).ready( function () {
+              $("#task-scroll").niceScroll();
+          });
+      </script>*@
       <script>
             $(document).ready(function() {
                 var audioElement = document.createElement('audio');

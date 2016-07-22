@@ -33,10 +33,29 @@
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                 <div class="box1">
-                    <span class="li_heart"></span>
-                    <h3>933</h3>
+                    <span class="fa fa-tasks" style="padding-bottom: 20px"></span>
+                    <h3>+@ViewBag.MonthlyTasks.Count</h3>
                 </div>
-                <p>933 People liked your page the last 24hs. Whoohoo!</p>
+                @if (ViewBag.MonthlyTasks.Count == 0)
+                {
+                    <p>You haven't completed any tasks yet this month. Working hard or hardly working? ;)</p>
+                }
+                @if (ViewBag.MonthlyTasks.Count == 1)
+                {
+                    <p>You have completed @ViewBag.MonthlyTasks.Count task this month.</p>
+                }
+                @if (ViewBag.MonthlyTasks.Count > 1 && ViewBag.MonthlyTasks.Count < 10)
+                {
+                    <p>You have completed @ViewBag.MonthlyTasks.Count tasks this month.</p>
+                }
+                @if (ViewBag.MonthlyTasks.Count >= 10 && ViewBag.MonthlyTasks.Count < 20)
+                {
+                    <p>You have completed @ViewBag.MonthlyTasks.Count tasks this month! Not bad, @ViewBag.FirstName!</p>
+                }
+                @if (ViewBag.MonthlyTasks.Count >= 20)
+                {
+                    <p>You have completed @ViewBag.MonthlyTasks.Count tasks this month! WOW!!! Keep up the good work!</p>
+                }
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">

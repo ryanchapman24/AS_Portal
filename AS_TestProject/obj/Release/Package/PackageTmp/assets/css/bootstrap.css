@@ -3158,7 +3158,18 @@ tbody.collapse.in {
   overflow: hidden;
   background-color: #e5e5e5;
 }
+
 .dropdown-menu > li > a {
+  display: block;
+  padding: 6px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+
+.dropdown-menu > div > li > a {
   display: block;
   padding: 6px 20px;
   clear: both;
@@ -3243,7 +3254,7 @@ tbody.collapse.in {
 }
 @media (min-width: 768px) {
   .navbar-right .dropdown-menu {
-    right: 0;
+    right: 14px;
     left: auto;
   }
   .navbar-right .dropdown-menu-left {

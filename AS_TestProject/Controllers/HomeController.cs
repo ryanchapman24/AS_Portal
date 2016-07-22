@@ -22,7 +22,7 @@ namespace AS_TestProject.Controllers
             var todayDay = System.DateTime.Now.Day;
 
             ViewBag.birthdayList = mb.Employees.Where(e => e.BirthDate.Month == todayMonth && e.BirthDate.Day == todayDay && e.SiteID == user.SiteID).ToList();
-
+            ViewBag.MonthlyTasks = user.Tasks.Where(t => t.Complete == true && t.Completed.Value.Month == todayMonth).ToList();
             return View();
         }
 
