@@ -34,7 +34,7 @@ namespace AS_TestProject.Controllers
                 var num = 0;
                 //Gets Filename without the extension
                 var fileName = Path.GetFileNameWithoutExtension(doc.FileName);
-                var gPic = Path.Combine("/Documents/", fileName + Path.GetExtension(doc.FileName));
+                var gPic = Path.Combine("/Documents/IT/", fileName + Path.GetExtension(doc.FileName));
                 //Checks if pPic matches any of the current attachments, 
                 //if so it will loop and add a (number) to the end of the filename
                 while (db.Documents.Any(p => p.File == gPic))
@@ -44,9 +44,9 @@ namespace AS_TestProject.Controllers
                     //Add's parentheses after the name with a number ex. filename(4)
                     fileName = string.Format(fileName + "(" + ++num + ")");
                     //Makes sure pPic gets updated with the new filename so it could check
-                    gPic = Path.Combine("/Documents/", fileName + Path.GetExtension(doc.FileName));
+                    gPic = Path.Combine("/Documents/IT/", fileName + Path.GetExtension(doc.FileName));
                 }
-                doc.SaveAs(Path.Combine(Server.MapPath("~/Documents/"), fileName + Path.GetExtension(doc.FileName)));
+                doc.SaveAs(Path.Combine(Server.MapPath("~/Documents/IT/"), fileName + Path.GetExtension(doc.FileName)));
 
                 document.Created = System.DateTime.Now;
                 document.AuthorId = user.Id;

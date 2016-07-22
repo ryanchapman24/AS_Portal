@@ -176,22 +176,22 @@
                                                                     foreach (var task in ViewBag.Urgent)
                                                                     {
                                                                         <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id'>@task.Description | <span style="color: red">@task.TaskPriority.Priority</span></label>
+                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: red">@task.TaskPriority.Priority</span></label>
                                                                     }
                                                                     foreach (var task in ViewBag.High)
                                                                     {
                                                                         <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id'>@task.Description | <span style="color: orange">@task.TaskPriority.Priority</span></label>
+                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: orange">@task.TaskPriority.Priority</span></label>
                                                                     }
                                                                     foreach (var task in ViewBag.Medium)
                                                                     {
                                                                         <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id'>@task.Description | <span style="color: yellow">@task.TaskPriority.Priority</span></label>
+                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: yellow">@task.TaskPriority.Priority</span></label>
                                                                     }
                                                                     foreach (var task in ViewBag.Low)
                                                                     {
                                                                         <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id'>@task.Description | <span style="color: dodgerblue">@task.TaskPriority.Priority</span></label>
+                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: dodgerblue">@task.TaskPriority.Priority</span></label>
                                                                     }                                  
                                                                     <input id="complete" class="all-done" type='submit' name="complete" value='Complete' />
                                                                     <hr style="padding: 0px; margin: 0px"/>
