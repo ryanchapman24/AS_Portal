@@ -416,6 +416,7 @@
 
                   <div class="col-lg-3 ds">
                       <!--COMPLETED ACTIONS DONUTS CHART-->
+                      <div id="showtime" class="text-nowrap" style="margin-top: 15px; color: #29AAE3; font-size: 36px; font-weight: 700; letter-spacing: 2px"></div>
                       <div class="row">
                           <div class="mb">
                               <div class="content-panel pn" style="margin-left: 15px; margin-right: 15px">
@@ -818,14 +819,21 @@
         {
             var today=new Date();
             var h = today.getHours();
-            var hr = h - 12;
+            if (h > 12) {
+                var hr = h - 12;
+                var mer = " PM"
+            }
+            else {
+                var hr = h;
+                var mer = " AM"
+            }
             var m = today.getMinutes();
             var s = today.getSeconds();
 
             // add a zero in front of numbers<10
             m=checkTime(m);
             s=checkTime(s);
-            document.getElementById('showtime').innerHTML=hr+":"+m+":"+s;
+            document.getElementById('showtime').innerHTML=hr+":"+m+mer;
             t=setTimeout(function(){getTime()},500);
         }
 
