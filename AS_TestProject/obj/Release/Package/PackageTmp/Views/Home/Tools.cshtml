@@ -1,0 +1,66 @@
+﻿<div class="row mt" style="padding-left: 20px; padding-right: 20px">
+        <div class="col-lg-12">
+            <div class="row content-panel" style="text-align: center">
+                <p>This page works only on Google Chrome.  If you are using a different browser and wish to use the tools on this page, switch to <a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank">Google Chrome</a> now.</P>
+                <p>If you are using Google Chrome and still can't see the content displayed within the tabs below, you need to download and activate a Google Chrome Extension called <a href="https://chrome.google.com/webstore/detail/iframe-allow/gifgpciglhhpmeefjdmlpboipkibhbjg?hl=en-US" target="_blank">iFrame Allow</a>.</p>
+            </div><!-- /row -->
+        </div><!-- --/col-lg-12 ---->
+
+        <div class="col-lg-12 mt">
+            <div class="row content-panel">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active">
+                            <a data-toggle="tab" href="#maps">Google Maps</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#search">Google Search</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#edit">Third Option</a>
+                        </li>
+                    </ul>
+                </div><!-- --/panel-heading ---->
+
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="maps" class="tab-pane active">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <iframe id="google-map" src="http://google.com/maps" style="width: 100%; height: 900px"></iframe>
+                                </div>
+                            </div><!-- --/OVERVIEW ---->
+                        </div><!-- --/tab-pane ---->
+
+                        <div id="search" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <iframe id="google-search" src="http://google.com/" style="width: 100%; height: 900px"></iframe>
+                                </div>
+                            </div><!-- --/row ---->
+                        </div><!-- --/tab-pane ---->
+
+                        <div id="edit" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                </div>
+                            </div><!-- --/row ---->
+                        </div><!-- --/tab-pane ---->
+                    </div><!-- /tab-content -->
+
+                </div><!-- --/panel-body ---->
+
+            </div><!-- /col-lg-12 -->
+        </div><!-- --/row ---->
+    </div><!-- --/container ---->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    <script>
+        $(document).ready(function () {
+            $('#google').addClass("active");
+        });
+    </script>
+}

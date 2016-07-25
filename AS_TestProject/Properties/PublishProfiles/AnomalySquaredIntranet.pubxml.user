@@ -61,7 +61,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>07/25/2016 13:38:12</publishTime>
+      <publishTime>07/25/2016 15:16:32</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -513,6 +513,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/js/fullcalendar/fullcalendar.min.js">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
+    <File Include="assets/js/gomap-min.js">
+      <publishTime>07/25/2016 13:48:43</publishTime>
+    </File>
     <File Include="assets/js/gritter-conf.js">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
@@ -685,7 +688,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/25/2016 13:10:47</publishTime>
+      <publishTime>07/25/2016 15:30:42</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1309,7 +1312,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:43</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>07/21/2016 16:06:11</publishTime>
+      <publishTime>07/25/2016 15:30:43</publishTime>
     </File>
     <File Include="Service References/Application Insights/ConnectedService.json">
       <publishTime>06/20/2016 11:15:20</publishTime>
@@ -1406,6 +1409,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Home/Slack.cshtml">
       <publishTime>07/14/2016 15:04:24</publishTime>
+    </File>
+    <File Include="Views/Home/Tools.cshtml">
+      <publishTime>07/25/2016 15:22:05</publishTime>
     </File>
     <File Include="Views/IT/Index.cshtml">
       <publishTime>07/22/2016 11:07:16</publishTime>

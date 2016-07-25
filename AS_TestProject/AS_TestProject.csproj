@@ -706,7 +706,7 @@
     <Content Include="Views\Home\Calendar.cshtml" />
     <Content Include="Views\Payroll\Edit.cshtml" />
     <Content Include="Views\Payroll\Index.cshtml" />
-    <Content Include="Views\Home\Google.cshtml" />
+    <Content Include="Views\Home\Tools.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\IT\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
