@@ -59,7 +59,7 @@
                   <div class="fa fa-bars tooltips" style="color: #031B25" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="@Url.Action("Index","Home")" class="logo"><b>ANOMALY SQUARED</b></a>
+            <a href="@Url.Action("Index","Home")" class="logo" style="margin-top: 17px"><b>ANOMALY SQUARED</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -231,11 +231,12 @@
                     @Html.Partial("_LoginPartial")
                     @*<li><a class="logout" href="login.html">Logout</a></li>*@
                 </ul>
-                <div class="pull-right hidden-xs hidden-sm" style="font-size: 18px; padding-top: 20px; padding-right: 50px; color: white">
+                <div class="pull-right hidden-xs hidden-sm" style="font-size: 18px; padding-top: 19px; padding-right: 50px; color: white">
                     <a href="javascript:history.go(-1)" class=""><i class="fa fa-chevron-left" style="color: white; padding-right: 8px"></i></a>
                     <a href="javascript:history.go(+1)" class=""><i class="fa fa-chevron-right" style="color: white; padding-right: 8px"></i></a>
                     <a href="javascript:history.go(0)" class=""><i class="fa fa-refresh" style="color: white"></i></a>
                 </div>
+                <div id="showtime" class="pull-right text-nowrap hidden-xs hidden-sm" style="margin-top: 19px; margin-bottom: 0px; margin-right: 15px; color: white; font-size: 18px; font-weight: 600; letter-spacing: 2px; width: 150px; background-color: none"></div>
             </div>
         </header>
       <!--header end-->
@@ -416,7 +417,7 @@
 
                   <div class="col-lg-3 ds">
                       <!--COMPLETED ACTIONS DONUTS CHART-->
-                      <div id="showtime" class="text-nowrap" style="margin-top: 15px; color: #29AAE3; font-size: 36px; font-weight: 700; letter-spacing: 2px"></div>
+                      @*<div id="showtime" class="text-nowrap" style="margin-top: 0px; margin-bottom: 10px; color: #031B25; font-size: 36px; font-weight: 700; letter-spacing: 2px"></div>*@
                       <div class="row">
                           <div class="mb">
                               <div class="content-panel pn" style="margin-left: 15px; margin-right: 15px">
@@ -822,6 +823,14 @@
             if (h > 12) {
                 var hr = h - 12;
                 var mer = " PM"
+            }
+            else if (h == 12) {
+                var hr = h;
+                var mer = " PM"
+            }
+            else if (h == 0) {
+                var hr = h + 12;
+                var mer = " AM"
             }
             else {
                 var hr = h;

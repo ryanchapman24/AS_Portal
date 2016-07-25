@@ -890,12 +890,12 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 .box0 p {
 	text-align: center;
-	font-size: 12px;
+	font-size: 13px;
 	color: #f2f2f2;
 }
 
 .box0:hover p {
-	color: #ff865c;
+	color: #FE5607;
 }
 
 .box0:hover {
@@ -953,7 +953,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .custom-bar-chart .bar .value {
     position: absolute;
     bottom: 0;
-    background: #ff865c;
+    background: #29AAE3;
     color: #68dff0;
     width: 100%;
     -webkit-border-radius: 5px 5px 0 0;
@@ -969,7 +969,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 
 .custom-bar-chart .bar .value:hover {
-    background: #2f2f2f;
+    background: #031B25;
     color: #fff;
 }
 
@@ -1154,7 +1154,7 @@ PANELS CONFIGURATIONS
   height: 250px;
 }
 .stock .stock-chart {
-  background: #00c5de;
+  background: #29AAE3;
 }
 .stock .stock-chart #chart {
     height: 10.7em;
@@ -1208,7 +1208,7 @@ PANELS CONFIGURATIONS
 
 /* Weather 1 */
 .weather {
-	background: url(../img/weather.jpg) no-repeat center top;
+	background: url(../img/floor.jpg) no-repeat center top;
 	text-align: center;
 	background-position: center center;
 }

@@ -52,7 +52,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/bootstrap.css">
-      <publishTime>07/22/2016 16:17:52</publishTime>
+      <publishTime>07/25/2016 11:58:31</publishTime>
     </File>
     <File Include="assets/css/datatables.css">
       <publishTime>06/22/2016 00:30:22</publishTime>
@@ -427,7 +427,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/img/weather.jpg">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/22/2016 17:55:18</publishTime>
     </File>
     <File Include="assets/img/workhat.png">
       <publishTime>06/30/2016 10:02:11</publishTime>
@@ -685,7 +685,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/22/2016 16:45:00</publishTime>
+      <publishTime>07/25/2016 11:25:05</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1450,13 +1450,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2016 22:08:44</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>07/18/2016 15:23:18</publishTime>
+      <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
       <publishTime>07/19/2016 13:50:07</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>06/20/2016 11:14:03</publishTime>
+      <publishTime>06/21/2016 16:31:23</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>06/21/2016 11:08:41</publishTime>
