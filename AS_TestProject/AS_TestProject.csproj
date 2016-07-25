@@ -479,6 +479,7 @@
     <Content Include="assets\img\ui-sam.jpg" />
     <Content Include="assets\img\ui-sherman.jpg" />
     <Content Include="assets\img\ui-zac.jpg" />
+    <Content Include="assets\img\US-Timezones-map.png" />
     <Content Include="assets\img\weather.jpg" />
     <Content Include="assets\img\workhat.png" />
     <Content Include="assets\img\yellow_priority.png" />

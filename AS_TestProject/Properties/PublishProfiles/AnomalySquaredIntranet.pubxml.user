@@ -52,7 +52,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/bootstrap.css">
-      <publishTime>07/25/2016 11:58:31</publishTime>
+      <publishTime>07/25/2016 15:51:26</publishTime>
     </File>
     <File Include="assets/css/datatables.css">
       <publishTime>06/22/2016 00:30:22</publishTime>
@@ -425,6 +425,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/img/ui-zac.jpg">
       <publishTime>06/20/2016 16:13:43</publishTime>
+    </File>
+    <File Include="assets/img/US-Timezones-map.png">
+      <publishTime>07/25/2016 16:09:53</publishTime>
     </File>
     <File Include="assets/img/weather.jpg">
       <publishTime>07/22/2016 17:55:18</publishTime>
@@ -1411,7 +1414,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 15:04:24</publishTime>
     </File>
     <File Include="Views/Home/Tools.cshtml">
-      <publishTime>07/25/2016 15:22:05</publishTime>
+      <publishTime>07/25/2016 16:10:15</publishTime>
     </File>
     <File Include="Views/IT/Index.cshtml">
       <publishTime>07/22/2016 11:07:16</publishTime>
