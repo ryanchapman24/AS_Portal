@@ -26,7 +26,7 @@ namespace AS_TestProject.Controllers
             return View();
         }
 
-        public ActionResult Slack()
+        public ActionResult Google()
         {
             return View();
         }
