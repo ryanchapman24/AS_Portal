@@ -503,6 +503,7 @@
     <Content Include="assets\js\form-component.js" />
     <Content Include="assets\js\fullcalendar\bootstrap-fullcalendar.css" />
     <Content Include="assets\js\fullcalendar\fullcalendar.min.js" />
+    <Content Include="assets\js\gomap-min.js" />
     <Content Include="assets\js\gritter-conf.js" />
     <Content Include="assets\js\gritter\css\jquery.gritter.css" />
     <Content Include="assets\js\gritter\css\jquery.gritter0.css" />
@@ -705,7 +706,7 @@
     <Content Include="Views\Home\Calendar.cshtml" />
     <Content Include="Views\Payroll\Edit.cshtml" />
     <Content Include="Views\Payroll\Index.cshtml" />
-    <Content Include="Views\Home\Slack.cshtml" />
+    <Content Include="Views\Home\Google.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\IT\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />

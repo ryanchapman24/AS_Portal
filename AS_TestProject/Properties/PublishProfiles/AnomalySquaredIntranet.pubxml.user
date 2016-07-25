@@ -61,7 +61,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>07/22/2016 18:08:23</publishTime>
+      <publishTime>07/25/2016 13:38:12</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -685,7 +685,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/25/2016 11:25:05</publishTime>
+      <publishTime>07/25/2016 13:10:47</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1394,6 +1394,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Home/Gallery.cshtml">
       <publishTime>07/19/2016 17:06:12</publishTime>
+    </File>
+    <File Include="Views/Home/Google.cshtml">
+      <publishTime>07/25/2016 14:06:09</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>07/14/2016 09:52:54</publishTime>

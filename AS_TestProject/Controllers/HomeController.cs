@@ -26,7 +26,7 @@ namespace AS_TestProject.Controllers
             return View();
         }
 
-        public ActionResult Google()
+        public ActionResult Tools()
         {
             return View();
         }
