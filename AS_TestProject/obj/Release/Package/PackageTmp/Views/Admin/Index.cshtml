@@ -1,24 +1,29 @@
 ﻿@model IEnumerable<AS_TestProject.Models.AdminUserListModels>
 @{
-    ViewBag.Title = "Index";
+    var today = System.DateTime.Now.ToString("M/d/yyyy");
+    var now = System.DateTime.Now.ToString("H:mm:ss.fff");
 }
 
 <div class="col-lg-12 mt">
     <div class="row content-panel">
+    <h1 style="text-align: center; margin-bottom: 20px; color: #29AAE3"><i class="fa fa-key" style="margin-right: 10px"></i>Administrator Panel</h1>
         <div class="panel-heading">
             <ul class="nav nav-tabs nav-justified">
                 <li class="active">
-                    <a data-toggle="tab" href="#overview">Employees</a>
+                    <a data-toggle="tab" href="#users">Users</a>
                 </li>
                 <li>
-                    <a data-toggle="tab" href="#contact" class="contact-map">Clients</a>
+                    <a data-toggle="tab" href="#customers" class="contact-map">Customers</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#domains" class="contact-map">Domains</a>
                 </li>
             </ul>
         </div><!-- --/panel-heading ---->
 
         <div class="panel-body">
             <div class="tab-content">
-                <div id="overview" class="tab-pane active">
+                <div id="users" class="tab-pane active">
                     <div class="widget widget-table">
                         <div class="widget-header">
                             <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Users<button class="btn btn-theme btn-md pull-right" onclick="location.href='@Url.Action("Register", "Account")'" style="margin-top: -10px">+ New User</button></h3>
@@ -69,10 +74,85 @@
                     </div>             
                 </div><!-- --/tab-pane ---->
 
-                <div id="contact" class="tab-pane">
+                <div id="customers" class="tab-pane">
                     <div class="widget widget-table">
                         <div class="widget-header">
-                            <h3 style="color: #29AAE3"><i class="fa fa-building"></i> Clients</h3>
+                            <h3 style="color: #29AAE3"><i class="fa fa-building"></i> Customers<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#customerModal" style="margin-top: -10px">+ New Customer</button></h3>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="margin-bottom: 15px">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="customerModalLabel">Add New Customer</h4>
+                                    </div>
+                                    @using (Html.BeginForm("CreateCustomer", "Admin", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="modal-body">
+                                            <div class="" style="">                         
+                                                <input type="hidden" name="TerminationDate" value="12/31/9999"/>
+                                                <input type="hidden" name="AddDate" value="@today" />
+                                                <div class="form-group">
+                                                    <div class="col-md-3 control-label">
+                                                        Customer Name
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control capitalize" name="CustomerName" type="text" required/>
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        Address Line 1
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control" name="AddressLine1" type="text"/>
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        Address Line 2
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control" name="AddressLine2" type="text" />
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        City
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control capitalize" name="City" type="text" />
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        State
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control" name="State" type="text" maxlength="2"/>
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        Zip Code
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control onlyNum" name="ZipCode" type="text" maxlength="5"/>
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        Implementation Date
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input class="form-control" name="ImplementationDate" required/>
+                                                    </div><br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="margin-top: 20px">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button id="" type="submit" class="btn btn-theme play">Confirm</button>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                         </div>
                         <div class="widget-content">
                             <div class="table-responsive">
@@ -85,19 +165,22 @@
                                             <th>City</th>
                                             <th>State</th>
                                             <th>Zip Code</th>
+                                            <th>Add Date</th>
                                             <th>Active?</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var client in ViewBag.Customers)
                                         {
                                             <tr>
-                                                <td><strong style="color: #29AAE3">@client.CustomerName</strong></td>
+                                                <td><strong style="color: #29AAE3"><a href="@Url.Action("CustomerDetails", "Admin", new { id = client.CustomerID })">@client.CustomerName</a></strong></td>
                                                 <td>@client.AddressLine1</td>
                                                 <td>@client.AddressLine2</td>
                                                 <td>@client.City</td>
                                                 <td>@client.State</td>
                                                 <td>@client.ZipCode</td>
+                                                <td>@client.AddDate.ToString("M/d/yyyy")</td>
                                                 @if (client.IsActive == true)
                                                 {
                                                     <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
@@ -106,6 +189,9 @@
                                                 {
                                                     <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
                                                 }
+                                                <td>
+                                                    <a href="@Url.Action("EditCustomer", "Admin", new { id = client.CustomerID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>
@@ -113,7 +199,117 @@
                             </div>
                         </div>
                     </div>                   
-                </div><!-- --/tab-pane ---->            
+                </div><!-- --/tab-pane ---->    
+            
+                <div id="domains" class="tab-pane">
+                    <div class="widget widget-table">
+                        <div class="widget-header">
+                            <h3 style="color: #29AAE3"><i class="fa fa-usb"></i> Domains<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#domainModal" style="margin-top: -10px">+ New Domain</button></h3>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="domainModal" tabindex="-1" role="dialog" aria-labelledby="domainModalLabel" aria-hidden="true"  onload="addTime()">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="margin-bottom: 15px">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="domainModalLabel">Add New Domain</h4>
+                                    </div>
+                                    @using (Html.BeginForm("CreateDomain", "Admin", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="modal-body">
+                                            <div class="" style="">
+                                                <input type="hidden" name="DeactiveDate" value="12/31/9999" />
+                                                <input type="hidden" name="AddDate" value="@today" />
+                                                <input id="addTime" type="hidden" name="AddTime" />
+                                                <div class="form-group">
+                                                    <div class="col-md-3 control-label">
+                                                        Domain Name
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control capitalize" name="DomainName" type="text" required />
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        Customer
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        @Html.DropDownList("CustomerID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        Domain Type
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        @Html.DropDownList("DomainTypeID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        Cost Code
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control" name="CostCode" type="text" maxlength="6" required/>
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-3 control-label">
+                                                        File Mask
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: -5px">
+                                                        <input class="form-control capitalize" name="FileMask" type="text" maxlength="3" required/>
+                                                    </div><br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="margin-top: 20px">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button id="" type="submit" class="btn btn-theme play">Confirm</button>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable admin-tables">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Customer</th>
+                                            <th>Type</th>
+                                            <th>Cost Code</th>
+                                            <th>Add Date</th>
+                                            <th>Active?</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var domain in ViewBag.Domains)
+                                        {
+                                            <tr>
+                                                <td><strong style="color: #29AAE3"><a href="@Url.Action("DomainDetails", "Admin", new { id = domain.DomainMasterID })">@domain.FileMask - @domain.DomainName</a></strong></td>
+                                                <td>@domain.Customer.CustomerName</td>
+                                                <td>@domain.DomainType.DomainTypeName</td>
+                                                <td>@domain.CostCode</td>
+                                                <td>@domain.AddDate.ToString("M/d/yyyy")</td>
+                                                @if (domain.IsActive == true)
+                                                {
+                                                    <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
+                                                }
+                                                <td>
+                                                    <a href="@Url.Action("EditDomain", "Admin", new { id = domain.DomainMasterID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
             </div><!-- /tab-content -->
         </div><!-- --/panel-body ---->
     </div><!-- /col-lg-12 -->
