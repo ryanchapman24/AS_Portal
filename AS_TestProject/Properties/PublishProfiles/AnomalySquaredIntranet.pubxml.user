@@ -339,6 +339,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/img/mask.png">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
+    <File Include="assets/img/moon-icon.png">
+      <publishTime>07/26/2016 18:09:16</publishTime>
+    </File>
     <File Include="assets/img/ny.jpg">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
@@ -404,6 +407,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/img/StatusChange.png">
       <publishTime>07/19/2016 16:38:49</publishTime>
+    </File>
+    <File Include="assets/img/sun-icon.png">
+      <publishTime>07/26/2016 18:09:16</publishTime>
     </File>
     <File Include="assets/img/TimeManagement.jpg">
       <publishTime>07/16/2016 04:24:43</publishTime>
@@ -1414,7 +1420,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 15:04:24</publishTime>
     </File>
     <File Include="Views/Home/Tools.cshtml">
-      <publishTime>07/25/2016 16:10:15</publishTime>
+      <publishTime>07/26/2016 09:37:52</publishTime>
     </File>
     <File Include="Views/IT/Index.cshtml">
       <publishTime>07/22/2016 11:07:16</publishTime>

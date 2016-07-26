@@ -451,6 +451,7 @@
     <Content Include="assets\img\login-bg.jpg" />
     <Content Include="assets\img\lorde.jpg" />
     <Content Include="assets\img\mask.png" />
+    <Content Include="assets\img\moon-icon.png" />
     <Content Include="assets\img\ny.jpg" />
     <Content Include="assets\img\orange_priority.png" />
     <Content Include="assets\img\palmtree.png" />
@@ -472,6 +473,7 @@
     <Content Include="assets\img\Reimbursement.png" />
     <Content Include="assets\img\ReimbursementAlt.png" />
     <Content Include="assets\img\StatusChange.png" />
+    <Content Include="assets\img\sun-icon.png" />
     <Content Include="assets\img\TimeManagement.jpg" />
     <Content Include="assets\img\TimeManagement_Banner.jpg" />
     <Content Include="assets\img\ui-danro.jpg" />
@@ -710,6 +712,10 @@
     <Content Include="Views\Home\Tools.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\IT\Index.cshtml" />
+    <Content Include="Views\Admin\CustomerDetails.cshtml" />
+    <Content Include="Views\Admin\EditCustomer.cshtml" />
+    <Content Include="Views\Admin\DomainDetails.cshtml" />
+    <Content Include="Views\Admin\EditDomain.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
