@@ -28,7 +28,8 @@ namespace AS_TestProject.Controllers
             ViewBag.Customers = mb.Customers.OrderBy(c => c.CustomerName).ToList();
             ViewBag.Domains = mb.DomainMasters.OrderBy(d => d.FileMask).Include(d => d.Customer).Include(d => d.DomainType).ToList();
 
-            ViewBag.CustomerID = new SelectList(mb.Customers, "CustomerID", "CustomerName");
+            var customers = mb.Customers.Where(c => c.IsActive == true);
+            ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName");
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName");
 
             List<AdminUserListModels> users = new List<AdminUserListModels>();
@@ -242,9 +243,9 @@ namespace AS_TestProject.Controllers
                 mb.SaveChanges();
                 return RedirectToAction("Index", "Admin");
             }
-
-            ViewBag.CustomerID = new SelectList(mb.Customers, "CustomerID", "CustomerName", domain.CustomerID);
-            ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName", domain.DomainTypeID);
+            var customers = mb.Customers.Where(c => c.IsActive == true);
+            ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName");
+            ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName");
             return RedirectToAction("Index", "Admin");
         }
 
@@ -261,7 +262,8 @@ namespace AS_TestProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerID = new SelectList(mb.Customers, "CustomerID", "CustomerName", domain.CustomerID);
+            var customers = mb.Customers.Where(c => c.IsActive == true);
+            ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName", domain.CustomerID);
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName", domain.DomainTypeID);
             return View(domain);
         }
@@ -287,7 +289,8 @@ namespace AS_TestProject.Controllers
                 mb.SaveChanges();
                 return RedirectToAction("Index", "Admin");
             }
-            ViewBag.CustomerID = new SelectList(mb.Customers, "CustomerID", "CustomerName", domain.CustomerID);
+            var customers = mb.Customers.Where(c => c.IsActive == true);
+            ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName", domain.CustomerID);
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName", domain.DomainTypeID);
             return View(domain);
         }
