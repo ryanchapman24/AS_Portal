@@ -61,7 +61,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>07/25/2016 15:16:32</publishTime>
+      <publishTime>07/27/2016 13:37:07</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -511,7 +511,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/form-component.js">
-      <publishTime>06/20/2016 16:13:43</publishTime>
+      <publishTime>07/27/2016 14:53:51</publishTime>
     </File>
     <File Include="assets/js/fullcalendar/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -697,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/26/2016 18:56:26</publishTime>
+      <publishTime>07/27/2016 14:53:50</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1381,22 +1381,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 17:56:40</publishTime>
     </File>
     <File Include="Views/Admin/EditCustomer.cshtml">
-      <publishTime>07/26/2016 17:55:06</publishTime>
+      <publishTime>07/27/2016 13:41:30</publishTime>
     </File>
     <File Include="Views/Admin/EditDomain.cshtml">
-      <publishTime>07/26/2016 17:56:32</publishTime>
+      <publishTime>07/27/2016 13:33:54</publishTime>
+    </File>
+    <File Include="Views/Admin/EditPosition.cshtml">
+      <publishTime>07/27/2016 14:44:27</publishTime>
     </File>
     <File Include="Views/Admin/EditUserRoles.cshtml">
-      <publishTime>07/14/2016 09:53:39</publishTime>
+      <publishTime>07/26/2016 20:50:18</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>07/26/2016 17:45:47</publishTime>
+      <publishTime>07/27/2016 15:01:19</publishTime>
     </File>
     <File Include="Views/Employees/Create.cshtml">
       <publishTime>07/19/2016 10:18:45</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
-      <publishTime>07/26/2016 14:16:59</publishTime>
+      <publishTime>07/27/2016 13:46:53</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/20/2016 11:14:03</publishTime>
@@ -1411,7 +1414,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>07/26/2016 10:04:23</publishTime>
+      <publishTime>07/27/2016 15:02:29</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
       <publishTime>07/19/2016 16:49:25</publishTime>
@@ -1465,7 +1468,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 19:03:06</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>07/26/2016 16:26:10</publishTime>
+      <publishTime>07/27/2016 14:59:28</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>

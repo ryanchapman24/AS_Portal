@@ -121,14 +121,6 @@
                                                 @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control", required = "true" } })
                                                 @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
                                             </div><br /><br /><br />
-                                                                               
-                                            @*<div class="col-md-3 control-label">
-                                                Termination Date
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.TerminationDate, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.TerminationDate, "", new { @class = "text-danger" })
-                                            </div><br /><br /><br />*@
                                                                                 
                                             <div class="col-md-3 control-label">
                                                 Is this Employee a Manager?
@@ -164,40 +156,6 @@
                                                 @Html.DropDownList("SiteID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                 @*@Html.ValidationMessageFor(model => model.SiteID, "", new { @class = "text-danger" })*@
                                             </div><br /><br /><br />
-                                                                                
-                                            @*<div class="col-md-3 control-label">
-                                                Are They Active?
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -10px">
-                                                <div class="checkbox">
-                                                    @Html.EditorFor(model => model.IsActive)
-                                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div><br /><br /><br />*@
-                                                                                
-                                            @*<div class="col-md-3 control-label">
-                                                Add Date
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.AddDate, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.AddDate, "", new { @class = "text-danger" })
-                                            </div><br /><br /><br />*@
-                                                                               
-                                            @*<div class="col-md-3 control-label">
-                                                Add by Employee ID
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.AddByEmployeeID, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.AddByEmployeeID, "", new { @class = "text-danger" })
-                                            </div><br /><br /><br />*@
-                                                                                
-                                            @*<div class="col-md-3 control-label">
-                                                Rehire Date
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.RehireDate, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.RehireDate, "", new { @class = "text-danger" })
-                                            </div><br /><br /><br />*@
                                                                                 
                                             <div class="col-md-3 control-label">
                                                 File Number
