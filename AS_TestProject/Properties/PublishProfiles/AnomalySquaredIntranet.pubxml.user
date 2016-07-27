@@ -61,7 +61,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>07/27/2016 13:37:07</publishTime>
+      <publishTime>07/27/2016 16:29:06</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -466,10 +466,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/bootstrap-timepicker/timepicker.css">
-      <publishTime>07/21/2016 16:33:42</publishTime>
+      <publishTime>07/27/2016 16:35:38</publishTime>
     </File>
     <File Include="assets/js/bootstrap-timepicker/timepicker.js">
-      <publishTime>07/08/2016 15:25:51</publishTime>
+      <publishTime>07/27/2016 16:51:23</publishTime>
     </File>
     <File Include="assets/js/bootstrap.min.js">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -697,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/27/2016 14:53:50</publishTime>
+      <publishTime>07/27/2016 15:53:06</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1486,7 +1486,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>07/19/2016 13:50:07</publishTime>
+      <publishTime>07/27/2016 16:51:00</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2016 16:31:23</publishTime>

@@ -391,6 +391,107 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="LeadSource" Type="varchar" MaxLength="25" />
     <Property Name="CallID" Type="varchar" MaxLength="25" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Report.REPORT.DomainListDetail' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DomainListDetail">
+          <Property Name="ListName" Type="varchar" MaxLength="50" />
+          <Property Name="ListRecordID" Type="varchar" MaxLength="25" />
+          <Property Name="Campaign" Type="varchar" MaxLength="125" />
+          <Property Name="Status" Type="varchar" MaxLength="75" />
+          <Property Name="LastAttemptPhoneNumber" Type="varchar" MaxLength="25" />
+          <Property Name="LastCallTimeStamp" Type="varchar" MaxLength="30" />
+          <Property Name="LastDisposition" Type="varchar" MaxLength="125" />
+          <Property Name="DialAttempts" Type="varchar" MaxLength="10" />
+          <Property Name="FinalDisposition" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="10" />
+          <Property Name="Hour" Type="varchar" MaxLength="10" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="Company" Type="varchar" MaxLength="50" />
+          <Property Name="ContactCreateTimeStamp" Type="varchar" MaxLength="30" />
+          <Property Name="ContactID" Type="varchar" MaxLength="25" />
+          <Property Name="ContactRecordCreateTime" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="75" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+          <Property Name="LeadID" Type="varchar" MaxLength="50" />
+          <Property Name="LoanRequestType" Type="varchar" MaxLength="125" />
+          <Property Name="State" Type="varchar" MaxLength="25" />
+          <Property Name="Street" Type="varchar" MaxLength="125" />
+          <Property Name="SubmitTimeStamp" Type="varchar" MaxLength="30" />
+          <Property Name="Zip" Type="varchar" MaxLength="25" />
+          <Property Name="FinalDispositionTimestamp" Type="varchar" MaxLength="30" />
+          <Property Name="Number1" Type="varchar" MaxLength="25" />
+          <Property Name="Number2" Type="varchar" MaxLength="25" />
+          <Property Name="Number3" Type="varchar" MaxLength="25" />
+          <Property Name="DomainMasterID" Type="tinyint" />
+          <Property Name="DNIS" Type="varchar" MaxLength="25" />
+          <Property Name="PatientID" Type="varchar" MaxLength="25" />
+          <Property Name="Site1Address" Type="varchar" MaxLength="25" />
+          <Property Name="SiteCoordinatorPhoneNumber" Type="varchar" MaxLength="25" />
+          <Property Name="TransferNumber" Type="varchar" MaxLength="25" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="varchar" MaxLength="10" />
+          <Property Name="Indication" Type="varchar" MaxLength="50" />
+          <Property Name="LeadNumber" Type="varchar" MaxLength="50" />
+          <Property Name="QualifiedProtocols" Type="varchar" MaxLength="125" />
+          <Property Name="SiteNo" Type="varchar" MaxLength="25" />
+          <Property Name="Dispo" Type="varchar" MaxLength="50" />
+          <Property Name="FacilityName" Type="varchar" MaxLength="125" />
+          <Property Name="ListCode" Type="varchar" MaxLength="50" />
+          <Property Name="SiteCoordinatorFirstName" Type="varchar" MaxLength="25" />
+          <Property Name="Number1DialAttempts" Type="varchar" MaxLength="15" />
+          <Property Name="Number2DialAttempts" Type="varchar" MaxLength="15" />
+          <Property Name="Number3DialAttempts" Type="varchar" MaxLength="15" />
+          <Property Name="TimeToFirstContact" Type="varchar" MaxLength="25" />
+          <Property Name="Timestamp" Type="varchar" MaxLength="30" />
+          <Property Name="CallThruDate" Type="varchar" MaxLength="10" />
+          <Property Name="FilterID" Type="varchar" MaxLength="25" />
+          <Property Name="HomeValue" Type="varchar" MaxLength="25" />
+          <Property Name="ListEntryDate" Type="varchar" MaxLength="25" />
+          <Property Name="LoanAmount" Type="varchar" MaxLength="25" />
+          <Property Name="LoanType" Type="varchar" MaxLength="50" />
+          <Property Name="NmlsID" Type="varchar" MaxLength="25" />
+          <Property Name="PropertyState" Type="varchar" MaxLength="25" />
+          <Property Name="PropertyType" Type="varchar" MaxLength="50" />
+          <Property Name="PropertyZip" Type="varchar" MaxLength="25" />
+          <Property Name="PurchasePrice" Type="varchar" MaxLength="25" />
+          <Property Name="LastCallStamp" Type="varchar" MaxLength="30" />
+          <Property Name="CallbackdateTime" Type="varchar" MaxLength="30" />
+          <Property Name="DateExpiration" Type="varchar" MaxLength="80" />
+          <Property Name="DateMailed" Type="varchar" MaxLength="10" />
+          <Property Name="DateReceived" Type="varchar" MaxLength="10" />
+          <Property Name="LeadBucket" Type="varchar" MaxLength="25" />
+          <Property Name="Citizen" Type="varchar" MaxLength="25" />
+          <Property Name="Source" Type="varchar" MaxLength="50" />
+          <Property Name="StartDate" Type="varchar" MaxLength="15" />
+          <Property Name="Sub" Type="varchar" MaxLength="25" />
+          <Property Name="Vendor" Type="varchar" MaxLength="25" />
+          <Property Name="Vertical" Type="varchar" MaxLength="25" />
+          <Property Name="LoanApplicationID" Type="varchar" MaxLength="25" />
+          <Property Name="CreditGroup" Type="varchar" MaxLength="50" />
+          <Property Name="Mortgage1Balance" Type="varchar" MaxLength="25" />
+          <Property Name="Program" Type="varchar" MaxLength="50" />
+          <Property Name="LeadCreateDate" Type="varchar" MaxLength="25" />
+          <Property Name="LoanOfficerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="LoanSubType" Type="varchar" MaxLength="50" />
+          <Property Name="LoanToValue" Type="varchar" MaxLength="50" />
+          <Property Name="PropertyUse" Type="varchar" MaxLength="50" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="varchar" MaxLength="10" />
+          <Property Name="AppDatestamp" Type="varchar" MaxLength="30" />
+          <Property Name="LeadSource" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="25" />
+          <Property Name="Partner" Type="varchar" MaxLength="50" />
+          <Property Name="ProductType" Type="varchar" MaxLength="25" />
+          <Property Name="Script" Type="varchar" MaxLength="25" />
+          <Property Name="SourceID" Type="varchar" MaxLength="25" />
+          <Property Name="TransferType" Type="varchar" MaxLength="25" />
+          <Property Name="ClientID" Type="varchar" MaxLength="25" />
+          <Property Name="Industry" Type="varchar" MaxLength="50" />
+          <Property Name="Transfer1" Type="varchar" MaxLength="25" />
+          <Property Name="Transfer2" Type="varchar" MaxLength="25" />
+        </EntityType>-->
   <EntityType Name="EverquoteHourlyCampaignMetrics">
     <Key>
       <PropertyRef Name="HourlyCampaignID" />
@@ -487,6 +588,29 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="TotalAnswers" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6013: The table/view 'Report.STAGE.AcurianDailyExtract' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AcurianDailyExtract">
+          <Property Name="ProjectCode" Type="varchar" MaxLength="25" />
+          <Property Name="ProjectID" Type="varchar" MaxLength="50" />
+          <Property Name="ContactID" Type="varchar" MaxLength="25" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Address1" Type="varchar" MaxLength="125" />
+          <Property Name="Address2" Type="varchar" MaxLength="125" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="25" />
+          <Property Name="Number1" Type="varchar" MaxLength="25" />
+          <Property Name="Number2" Type="varchar" MaxLength="25" />
+          <Property Name="DispositionResolutionCode" Type="varchar" MaxLength="225" />
+          <Property Name="Country" Type="varchar" MaxLength="25" />
+          <Property Name="CallType" Type="varchar" MaxLength="25" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="CallCenterSource" Type="varchar" MaxLength="225" />
+          <Property Name="TrackingPhoneNumber" Type="varchar" MaxLength="225" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="AgentDailyHours1">
     <Key>
@@ -505,6 +629,7 @@ warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a prim
     <Property Name="LoginTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
+    <Property Name="EmployeeID" Type="nvarchar" MaxLength="320" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6013: The table/view 'Report.STAGE.CallLogMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -2983,6 +3108,29 @@ warning 6002: The table/view 'Report.STAGE.FreedomHourlyCallMetrics' does not ha
     <Property Name="CallState" Type="varchar" MaxLength="15" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6013: The table/view 'Report.STAGE.ImportedEmployees' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ImportedEmployees">
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="FileNumber" Type="varchar" MaxLength="255" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="255" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="State" Type="varchar" MaxLength="255" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="255" />
+          <Property Name="LocationCode" Type="varchar" MaxLength="255" />
+          <Property Name="ReportsToName" Type="varchar" MaxLength="255" />
+          <Property Name="JobTitleDescription" Type="varchar" MaxLength="255" />
+          <Property Name="PersonalEmail" Type="varchar" MaxLength="255" />
+          <Property Name="WorkEmail" Type="varchar" MaxLength="255" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="255" />
+          <Property Name="PersonalMobile" Type="varchar" MaxLength="255" />
+          <Property Name="BirthDate" Type="varchar" MaxLength="255" />
+          <Property Name="HireDate" Type="datetime" />
+          <Property Name="RehireDate" Type="datetime" />
+          <Property Name="EmployeeStatus" Type="varchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="PreciseLeadsHourlyCallLogMaster">
     <Key>
@@ -3243,6 +3391,9 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_REPORT_DomainMaster_DomainMasterID" />-->
   <Association Name="FK_REPORT_EmployeeHoursTotal_DomainMasterID">
     <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
     <End Role="EmployeeHoursTotal" Type="Self.EmployeeHoursTotal" Multiplicity="*" />
@@ -3290,9 +3441,13 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <Parameter Name="ExceptionState" Type="int" Mode="In" />
   </Function>
   <Function Name="uspDailyPortfolioInventoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FREEDOM" />
+  <Function Name="AddEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+  <Function Name="FileNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspAgentDailyHours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspAssignPayPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspEmployeeHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+  <Function Name="uspImportedEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+  <Function Name="uspNewEmployeeData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspOverTimeHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspInsertEverquoteHourlyCallMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
   <Function Name="uspInsertPreciseLeadsHourlyCallLogMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
@@ -3358,7 +3513,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [AgentDailyHours1].[FirstName] AS [FirstName], 
     [AgentDailyHours1].[LoginTimestamp] AS [LoginTimestamp], 
     [AgentDailyHours1].[LogoutTimestamp] AS [LogoutTimestamp], 
-    [AgentDailyHours1].[LoginDuration] AS [LoginDuration]
+    [AgentDailyHours1].[LoginDuration] AS [LoginDuration], 
+    [AgentDailyHours1].[EmployeeID] AS [EmployeeID]
     FROM [STAGE].[AgentDailyHours] AS [AgentDailyHours1]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ClientLeads" EntityType="Self.ClientLeads" store:Type="Tables" store:Schema="STAGE">

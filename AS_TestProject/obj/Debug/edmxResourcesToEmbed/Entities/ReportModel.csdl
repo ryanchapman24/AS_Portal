@@ -133,6 +133,10 @@
       <Parameter Name="LeadType" Mode="In" Type="String" />
       <Parameter Name="CampaignName" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="AddEmployee" />
+    <FunctionImport Name="FileNumber" />
+    <FunctionImport Name="uspImportedEmployees" />
+    <FunctionImport Name="uspNewEmployeeData" />
   </EntityContainer>
   <EntityType Name="Customer">
     <Key>
@@ -669,6 +673,7 @@
     <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ClientLead">
     <Key>

@@ -502,6 +502,7 @@
     <EntitySetMapping Name="AgentDailyHours1">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
         <MappingFragment StoreEntitySet="AgentDailyHours1">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
           <ScalarProperty Name="LogoutTimestamp" ColumnName="LogoutTimestamp" />
           <ScalarProperty Name="LoginTimestamp" ColumnName="LoginTimestamp" />
@@ -774,5 +775,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="ReportModel.Store.AddEmployee" />
+    <FunctionImportMapping FunctionImportName="FileNumber" FunctionName="ReportModel.Store.FileNumber" />
+    <FunctionImportMapping FunctionImportName="uspImportedEmployees" FunctionName="ReportModel.Store.uspImportedEmployees" />
+    <FunctionImportMapping FunctionImportName="uspNewEmployeeData" FunctionName="ReportModel.Store.uspNewEmployeeData" />
   </EntityContainerMapping>
 </Mapping>
