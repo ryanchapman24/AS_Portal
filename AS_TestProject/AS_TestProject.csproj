@@ -716,6 +716,7 @@
     <Content Include="Views\Admin\EditCustomer.cshtml" />
     <Content Include="Views\Admin\DomainDetails.cshtml" />
     <Content Include="Views\Admin\EditDomain.cshtml" />
+    <Content Include="Views\Admin\EditPosition.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

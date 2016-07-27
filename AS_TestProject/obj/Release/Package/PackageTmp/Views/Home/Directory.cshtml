@@ -130,13 +130,14 @@
                                                 @Html.ValidationMessageFor(model => model.TerminationDate, "", new { @class = "text-danger" })
                                             </div><br /><br /><br />*@
                                                                                 
-                                            <div class="col-md-5 control-label">
-                                                Is This Employee a Manager?
+                                            <div class="col-md-3 control-label">
+                                                Is this Employee a Manager?
                                             </div>
-                                            <div class="col-md-7" style="margin-top: -10px">
-                                                <div class="checkbox">
+                                            <div class="col-md-9">
+                                                <div class="switch switch-square"
+                                                     data-on-label="<i class=' fa fa-check'></i>"
+                                                     data-off-label="<i class='fa fa-times'></i>">
                                                     @Html.EditorFor(model => model.IsManager)
-                                                    @*@Html.ValidationMessageFor(model => model.IsManager, "", new { @class = "text-danger" })*@
                                                 </div>
                                             </div><br /><br /><br />
                                                                                

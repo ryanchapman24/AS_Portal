@@ -27,6 +27,7 @@ namespace AS_TestProject.Controllers
             ViewBag.Employees = db.Users.Where(e => e.SiteID == loggedUser.SiteID).ToList().OrderBy(e => e.LastName);
             ViewBag.Customers = mb.Customers.OrderBy(c => c.CustomerName).ToList();
             ViewBag.Domains = mb.DomainMasters.OrderBy(d => d.FileMask).Include(d => d.Customer).Include(d => d.DomainType).ToList();
+            ViewBag.Positions = mb.Positions.OrderBy(p => p.PositionName).ToList();
 
             var customers = mb.Customers.Where(c => c.IsActive == true);
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName");
@@ -293,6 +294,71 @@ namespace AS_TestProject.Controllers
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName", domain.CustomerID);
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName", domain.DomainTypeID);
             return View(domain);
+        }
+
+        // POST: Positions/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePosition([Bind(Include = "PositionID,PositionName,PositionDescription")] Entities.Position position)
+        {
+            if (ModelState.IsValid)
+            {
+                mb.Positions.Add(position);
+                mb.SaveChanges();
+
+                Models.Position myPosition = new Models.Position();
+                myPosition.PositionName = position.PositionName;
+                myPosition.PositionDescription = position.PositionDescription;
+                db.Positions.Add(myPosition);
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Admin");
+            }
+            return RedirectToAction("Index", "Admin");
+        }
+
+        // GET: Positions/Edit/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditPosition(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Entities.Position position = mb.Positions.Find(id);
+            if (position == null)
+            {
+                return HttpNotFound();
+            }
+            return View(position);
+        }
+
+        // POST: Positions/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPosition([Bind(Include = "PositionID,PositionName,PositionDescription")] Entities.Position position)
+        {
+            if (ModelState.IsValid)
+            {
+                mb.Positions.Attach(position);
+                mb.Entry(position).Property("PositionName").IsModified = true;
+                mb.Entry(position).Property("PositionDescription").IsModified = true;
+                mb.SaveChanges();
+
+                var myPosition = db.Positions.Find(position.PositionID);
+                myPosition.PositionName = position.PositionName;
+                myPosition.PositionDescription = position.PositionDescription;
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Admin");
+            }
+            return View(position);
         }
     }
 }

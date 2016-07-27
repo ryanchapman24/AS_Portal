@@ -154,12 +154,13 @@
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
-                        Is This Employee a Manager?
+                        Is this Employee a Manager?
                     </div>  
                     <div class="col-md-4">
-                        <div class="checkbox">
+                        <div class="switch switch-square"
+                             data-on-label="<i class=' fa fa-check'></i>"
+                             data-off-label="<i class='fa fa-times'></i>">
                             @Html.EditorFor(model => model.IsManager)
-                            @*@Html.ValidationMessageFor(model => model.IsManager, "", new { @class = "text-danger" })*@
                         </div>
                     </div>
                 </div>
@@ -199,9 +200,10 @@
                         Is He/She Active?
                     </div>  
                     <div class="col-md-4">
-                        <div class="checkbox">
+                        <div class="switch switch-square"
+                             data-on-label="<i class=' fa fa-check'></i>"
+                             data-off-label="<i class='fa fa-times'></i>">
                             @Html.EditorFor(model => model.IsActive)
-                            @*@Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })*@
                         </div>
                     </div>
                 </div>

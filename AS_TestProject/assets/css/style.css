@@ -1901,7 +1901,7 @@ label {
     left: 0%;
 }
 .has-switch > div.switch-on label {
-    background-color: #41cac0;
+    background-color: #29AAE3;
 }
 .has-switch input[type=checkbox] {
     display: none;
@@ -1932,7 +1932,7 @@ label {
 .has-switch span.switch-left {
     border-radius: 30px 0 0 30px;
     background-color: #2A3542;
-    color: #41cac0;
+    color: #29AAE3;
     border-left: 1px solid transparent;
 }
 .has-switch span.switch-right {
@@ -1986,7 +1986,7 @@ label {
 }
 .switch-square label {
     border-radius: 0 6px 6px 0;
-    border-color: #41cac0;
+    border-color: #29AAE3;
 }
 
 
