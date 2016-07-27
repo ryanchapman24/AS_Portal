@@ -42,7 +42,7 @@ namespace AS_TestProject.Controllers
             ViewBag.PayPeriodID = payPeriodId;
 
             var domains = new List<Domain>();
-            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true))
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
             {
                 var selection = new Domain();
                 selection.Id = domain.DomainMasterID;
@@ -81,7 +81,7 @@ namespace AS_TestProject.Controllers
             }
 
             var domains = new List<Domain>();
-            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true))
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
             {
                 var selection = new Domain();
                 selection.Id = domain.DomainMasterID;

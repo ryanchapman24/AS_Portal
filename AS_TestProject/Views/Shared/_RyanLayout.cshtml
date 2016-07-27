@@ -858,9 +858,11 @@
             
             if (h >= 20 || (h >= 0 && h < 6)) {
                 $('#moonIcon').removeClass('hidden');
+                $('#sunIcon').addClass('hidden');
             }
             else if (h >= 6 && h < 20) {
                 $('#sunIcon').removeClass('hidden');
+                $('#moonIcon').addClass('hidden');
             }
         }
 
