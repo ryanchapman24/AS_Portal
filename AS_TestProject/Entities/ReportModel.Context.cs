@@ -197,5 +197,25 @@ namespace AS_TestProject.Entities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspInsertClientLeads_Result>("uspInsertClientLeads", leadIDParameter, clientNameParameter, arrivalTimestampParameter, preserviceTimestampParameter, postserviceTimestampParameter, phoneNumberParameter, firstNameParameter, lastNameParameter, addressLine1Parameter, addressLine2Parameter, zipCodeParameter, cityParameter, stateParameter, emailAddressParameter, leadTypeParameter, campaignNameParameter);
         }
+    
+        public virtual int AddEmployee()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddEmployee");
+        }
+    
+        public virtual int FileNumber()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FileNumber");
+        }
+    
+        public virtual int uspImportedEmployees()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspImportedEmployees");
+        }
+    
+        public virtual int uspNewEmployeeData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspNewEmployeeData");
+        }
     }
 }

@@ -21,5 +21,6 @@ namespace AS_TestProject.Entities
         public string LoginTimestamp { get; set; }
         public string LogoutTimestamp { get; set; }
         public System.TimeSpan LoginDuration { get; set; }
+        public string EmployeeID { get; set; }
     }
 }
