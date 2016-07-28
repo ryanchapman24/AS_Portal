@@ -234,7 +234,7 @@ hr {
 /*Exclusive Theme Colors Configuration*/
 
 .label-theme {
-	background-color: #68dff0;
+	background-color: #29AAE3;
 }
 
 .bg-theme {
@@ -2327,4 +2327,17 @@ label {
 
 .site-min-height {
     min-height: 900px;
+}
+
+.msg-users:hover {
+    background-color: #29AAE3 !important;
+    color: #fff;
+}
+
+.msg-users-pos {
+    color: #666666;
+}
+
+.msg-users:hover .msg-users-pos {
+    color: #fff;
 }

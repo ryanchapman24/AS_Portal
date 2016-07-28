@@ -11,9 +11,11 @@ using Microsoft.AspNet.Identity;
 
 namespace AS_TestProject.Controllers
 {
+    [Authorize]
     public class MessagesController : UserNames
     {
         // GET: Messages
+        [Authorize]
         public ActionResult Index()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
@@ -25,10 +27,12 @@ namespace AS_TestProject.Controllers
             ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.Users = db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
+            ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName");
             return View();
         }
 
         // GET: Messages/Details/5
+        [Authorize]
         public ActionResult OutboundDetails(int? id)
         {
             if (id == null)
@@ -44,6 +48,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Messages/Details/5
+        [Authorize]
         public ActionResult InboundDetails(int? id)
         {
             if (id == null)
@@ -58,17 +63,11 @@ namespace AS_TestProject.Controllers
             return View(inboundMsg);
         }
 
-        // GET: Messages/Create
-        public ActionResult Create()
-        {
-            ViewBag.ReceiverId = new SelectList(db.Users, "Id", "FirstName");
-            return View();
-        }
-
         // POST: Messages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,File,AuthorId,ReceiverId,Out,Read,Urgent,Active")] OutboundMessage outboundMsg)
         {
@@ -101,11 +100,12 @@ namespace AS_TestProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ReceiverId = new SelectList(db.Users, "Id", "FirstName", outboundMsg.ReceiverId);
-            return View(outboundMsg);
+            ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName", outboundMsg.ReceiverId);
+            return RedirectToAction("Index");
         }
 
         // GET: Messages/Delete/5
+        [Authorize]
         public ActionResult DeleteInbound(int? id)
         {
             if (id == null)
@@ -122,6 +122,7 @@ namespace AS_TestProject.Controllers
 
         // POST: Messages/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteInBoundConfirmed(int id)
         {
@@ -132,6 +133,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Messages/Delete/5
+        [Authorize]
         public ActionResult DeleteOutbound(int? id)
         {
             if (id == null)
@@ -148,6 +150,7 @@ namespace AS_TestProject.Controllers
 
         // POST: Messages/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteOutBoundConfirmed(int id)
         {

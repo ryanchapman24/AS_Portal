@@ -2341,3 +2341,7 @@ label {
 .msg-users:hover .msg-users-pos {
     color: #fff;
 }
+
+.message-rows {
+    cursor: pointer;
+}

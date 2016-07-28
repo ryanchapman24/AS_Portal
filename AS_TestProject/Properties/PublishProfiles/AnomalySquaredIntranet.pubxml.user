@@ -52,7 +52,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/bootstrap.css">
-      <publishTime>07/25/2016 15:51:26</publishTime>
+      <publishTime>07/28/2016 12:42:42</publishTime>
     </File>
     <File Include="assets/css/datatables.css">
       <publishTime>06/22/2016 00:30:22</publishTime>
@@ -61,7 +61,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>07/27/2016 16:29:06</publishTime>
+      <publishTime>07/28/2016 12:31:44</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -697,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/28/2016 10:26:32</publishTime>
+      <publishTime>07/28/2016 16:45:46</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -971,6 +971,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Controllers/ManageController.cs">
       <publishTime>07/13/2016 13:43:15</publishTime>
+    </File>
+    <File Include="Controllers/MessagesController.cs">
+      <publishTime>07/28/2016 16:48:24</publishTime>
     </File>
     <File Include="Controllers/PayrollController.cs">
       <publishTime>07/13/2016 11:59:17</publishTime>
@@ -1471,7 +1474,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2016 10:09:08</publishTime>
     </File>
     <File Include="Views/Messages/Index.cshtml">
-      <publishTime>07/28/2016 10:30:46</publishTime>
+      <publishTime>07/28/2016 16:47:07</publishTime>
     </File>
     <File Include="Views/Payroll/Create.cshtml">
       <publishTime>07/12/2016 12:48:24</publishTime>
