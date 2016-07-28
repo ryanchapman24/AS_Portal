@@ -61,7 +61,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>07/28/2016 12:31:44</publishTime>
+      <publishTime>07/28/2016 19:04:02</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -697,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>07/28/2016 16:45:46</publishTime>
+      <publishTime>07/28/2016 19:27:37</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1176,8 +1176,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Models/ImageUploadValidator.cs">
       <publishTime>06/27/2016 14:20:10</publishTime>
     </File>
+    <File Include="Models/InboundMessage.cs">
+      <publishTime>07/28/2016 13:16:44</publishTime>
+    </File>
     <File Include="Models/ManageViewModels.cs">
       <publishTime>06/20/2016 11:14:31</publishTime>
+    </File>
+    <File Include="Models/OutboundMessage.cs">
+      <publishTime>07/28/2016 13:17:02</publishTime>
     </File>
     <File Include="Models/PhotoJudgment.cs">
       <publishTime>06/28/2016 12:16:16</publishTime>
@@ -1474,7 +1480,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2016 10:09:08</publishTime>
     </File>
     <File Include="Views/Messages/Index.cshtml">
-      <publishTime>07/28/2016 16:47:07</publishTime>
+      <publishTime>07/28/2016 19:18:55</publishTime>
     </File>
     <File Include="Views/Payroll/Create.cshtml">
       <publishTime>07/12/2016 12:48:24</publishTime>
