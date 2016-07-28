@@ -236,6 +236,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Entities\AgentDailyHour.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
@@ -358,6 +359,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageUploadValidator.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\PhotoJudgment.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Site.cs" />
@@ -717,6 +719,11 @@
     <Content Include="Views\Admin\DomainDetails.cshtml" />
     <Content Include="Views\Admin\EditDomain.cshtml" />
     <Content Include="Views\Admin\EditPosition.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
