@@ -359,7 +359,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageUploadValidator.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\InboundMessage.cs" />
+    <Compile Include="Models\OutboundMessage.cs" />
     <Compile Include="Models\PhotoJudgment.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Site.cs" />
@@ -722,7 +723,6 @@
     <Content Include="Views\Messages\Create.cshtml" />
     <Content Include="Views\Messages\Delete.cshtml" />
     <Content Include="Views\Messages\Details.cshtml" />
-    <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />

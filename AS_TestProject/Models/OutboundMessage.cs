@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AS_TestProject.Models
 {
-    public class Message
+    public class OutboundMessage
     {
         public int Id { get; set; }
         public DateTimeOffset Sent { get; set; }
@@ -17,6 +17,7 @@ namespace AS_TestProject.Models
         public bool Out { get; set; }
         public bool Read { get; set; }
         public bool Urgent { get; set; }
+        public bool Active { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
         public virtual ApplicationUser Receiver { get; set; }

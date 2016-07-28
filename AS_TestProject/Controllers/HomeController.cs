@@ -18,11 +18,12 @@ namespace AS_TestProject.Controllers
         {
             var mb = new ReportEntities();
             var user = db.Users.Find(User.Identity.GetUserId());
+            var todayYear = System.DateTime.Now.Year;
             var todayMonth = System.DateTime.Now.Month;
             var todayDay = System.DateTime.Now.Day;
 
             ViewBag.birthdayList = mb.Employees.Where(e => e.BirthDate.Month == todayMonth && e.BirthDate.Day == todayDay && e.SiteID == user.SiteID).ToList();
-            ViewBag.MonthlyTasks = user.Tasks.Where(t => t.Complete == true && t.Completed.Value.Month == todayMonth).ToList();
+            ViewBag.MonthlyTasks = user.Tasks.Where(t => t.Complete == true && t.Completed.Value.Month == todayMonth && t.Completed.Value.Year == todayYear).ToList();
             return View();
         }
 
