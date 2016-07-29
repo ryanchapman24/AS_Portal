@@ -40,7 +40,6 @@
                                     </div>
                                     @using (Html.BeginForm("Create", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                                     {
-                                    @Html.AntiForgeryToken()
                                     <input type="hidden" name="ReceiverId" value="@user.Id"/>
                                     <div class="modal-body">
                                         <div class="" style="">
@@ -84,7 +83,8 @@
                                     </div>
                                     <div class="modal-footer" style="margin-top: 20px">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button id="" type="submit" class="btn btn-theme play">Send</button>
+                                        <button name="saveAsDraft" type="submit" class="btn btn-default">Save as Draft</button>
+                                        <button name="createMessage" type="submit" class="btn btn-theme play">Send</button>
                                     </div>
                                     }
                                 </div>
@@ -98,15 +98,26 @@
     <div class="col-md-8">
         <section class="panel" style="padding-right: 20px; padding-left: 20px; padding-bottom: 5px;">
             <div id="inbox-table" class="widget widget-table">
+            @using (Html.BeginForm("UpdateInbox", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
                 <div class="widget-header">
-                    <h3 style="color: #29AAE3"><i class="fa fa-inbox"></i> Inbox</h3>
+                    <h3 style="color: #29AAE3"><i class="fa fa-inbox"></i> Inbox <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
                 </div>
                 <div class="widget-content">
                     <div class="table-responsive">
                         <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable message-tables">
                             <thead>
                                 <tr>
-                                    <th style="width: 5%">Read</th>
+                                    <th><div class="btn-group"><a id="markAllRead" class="btn btn-theme">Mark all</a><a id="unmarkAllRead" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th style="min-width: 114px">Read</th>
                                     <th>From</th>
                                     <th>Subject</th>
                                     <th>Message</th>
@@ -120,52 +131,45 @@
                                 {
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="read" value="@message.Id" />
+                                            <input class="inbox-unread" type="checkbox" name="read" value="@message.Id"/>
                                         </td>
                                         <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
                                         @if (message.Urgent == true)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">
-                                                <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
+                                                <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i><strong>@message.Subject</strong>
                                             </td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
+                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Subject</em></strong></td>
                                         }
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
-                                        @if (message.File != null)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><i class="fa fa-paperclip"></i></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
-                                        }
+                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Content</em></strong></td>
+                                        <!--File Row-->
+                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
+
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("m")<</em></strong></td>
                                         }
-                                        <td>
-                                            <input type="checkbox" name="trash" value="@message.Id"/>
-                                        </td>
+                                        <td></td>
                                     </tr>
                                 }
                                 @foreach (var message in ViewBag.Read)
                                 {
                                     <tr>
                                         <td>
-                                            <input type="checkbox" checked="" readonly/>
+                                            <input type="checkbox" checked="" disabled/>
                                         </td>
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
+                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><span style="color: #29AAE3">@message.Author.DisplayName</span></td>
                                         @if (message.Urgent == true)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">
@@ -177,14 +181,9 @@
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
                                         }
                                         <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
-                                        @if (message.File != null)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><i class="fa fa-paperclip"></i></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
-                                        }
+                                        <!--File Row-->
+                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
+                                        
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
@@ -198,7 +197,7 @@
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input type="checkbox" name="delete" value="@message.Id" />
+                                            <input type="checkbox" name="trash" value="@message.Id" />
                                         </td>
                                     </tr>
                                 }
@@ -206,10 +205,13 @@
                         </table>
                     </div>
                 </div>
+            }
             </div>
             <div id="outbox-table" class="widget widget-table hidden">
+            @using (Html.BeginForm("UpdateOutbox", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
                 <div class="widget-header">
-                    <h3 style="color: #29AAE3"><i class="fa fa-envelope"></i> Outbox</h3>
+                    <h3 style="color: #29AAE3"><i class="fa fa-envelope"></i> Outbox <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
                 </div>
                 <div class="widget-content">
                     <div class="table-responsive">
@@ -240,14 +242,9 @@
                                             <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
                                         }
                                         <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
-                                        @if (message.File != null)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><i class="fa fa-paperclip"></i></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"></td>
-                                        }
+                                        <!--File Row-->
+                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"></td>
+
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
@@ -269,69 +266,142 @@
                         </table>
                     </div>
                 </div>
+            }
             </div>
             <div id="draft-table" class="widget widget-table hidden">
+            @using (Html.BeginForm("UpdateDrafts", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
                 <div class="widget-header">
-                    <h3 style="color: #29AAE3"><i class="fa fa-file-text"></i> Drafts</h3>
+                    <h3 style="color: #29AAE3"><i class="fa fa-file-text"></i> Drafts <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
                 </div>
                 <div class="widget-content">
                     <div class="table-responsive">
                         <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable message-tables">
                             <thead>
                                 <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th><div class="btn-group"><a id="markAllDrafts" class="btn btn-theme">Mark all</a><a id="unmarkAllDrafts" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                </tr>
+                                <tr>
                                     <th>To</th>
                                     <th>Subject</th>
                                     <th>Message</th>
                                     <th></th>
                                     <th></th>
-                                    <th style="width: 5%">Delete</th>
+                                    <th style="min-width: 114px">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var message in ViewBag.Drafts)
                                 {
                                     <tr>
-                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong></td>
+                                        <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong></td>
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">
+                                            <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
                                             </td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
+                                            <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id">@message.Subject</td>
                                         }
-                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
-                                        @if (message.File != null)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><i class="fa fa-paperclip"></i></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"></td>
-                                        }
+                                        <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id">@message.Content</td>
+                                        <!--File Row-->
+                                        <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id"></td>
+
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows" data-toggle="modal" data-target="#Modal-@message.Id">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input type="checkbox" name="delete" value="@message.Id" />
+                                            <input class="draft-delete" type="checkbox" name="delete" value="@message.Id" />
                                         </td>
                                     </tr>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="Modal-@message.Id" tabindex="-1" role="dialog" aria-labelledby="ModalLabel-@message.Id" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="margin-bottom: 15px">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="ModalLabel-@message.Id">Finish New Message for @message.Receiver.DisplayName</h4>
+                                                </div>
+                                                @using (Html.BeginForm("SendDraft", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                {
+                                                    <input type="hidden" name="Id" value="@message.Id"/>
+                                                    <div class="modal-body">
+                                                        <div class="" style="">
+                                                            <div style="text-align: center; margin-bottom: 40px">
+                                                                <img src="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Receiver.ProfilePic)" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-md-3 control-label">
+                                                                    Subject
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <input class="form-control capitalize" name="Subject" type="text" value="@message.Subject" required />
+                                                                </div><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    Body
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <textarea rows="4" class="form-control capitalize" name="Content" required>@message.Content</textarea>
+                                                                </div><br /><br /><br /><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    File(s)
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <input type="file" name="file" />
+                                                                </div><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    Urgent?
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <div class="switch switch-square"
+                                                                         data-on-label="<i class=' fa fa-check'></i>"
+                                                                         data-off-label="<i class='fa fa-times'></i>">
+                                                                        @if (message.Urgent == true)
+                                                                        {
+                                                                            <input type="checkbox" name="Urgent" value="true" checked />
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <input type="checkbox" name="Urgent" value="true" />
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer" style="margin-top: 20px">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-theme play">Send</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
                                 }
                             </tbody>
                         </table>
                     </div>
                 </div>
+            }
             </div>
             <div id="trash-table" class="widget widget-table hidden">
                 <div class="widget-header">
@@ -340,15 +410,25 @@
                 <div class="widget-content">
                     <div class="table-responsive">
                         <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable trash-tables">
-                            <h4 style="color: #29AAE3"><i class="fa fa-sign-in"></i> Inbox Trash</h4>
+                        @using (Html.BeginForm("UpdateInTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <h4 style="color: #29AAE3"><i class="fa fa-sign-in"></i> Inbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -15px">Update</button></h4>
                             <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th><div class="btn-group"><a id="markAllInTrash" class="btn btn-theme">Mark all</a><a id="unmarkAllInTrash" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                </tr>
                                 <tr>
                                     <th style="width: 130px">From</th>
                                     <th>Subject</th>
                                     <th>Message</th>
                                     <th></th>
                                     <th></th>
-                                    <th style="width: 5%">Delete</th>
+                                    <th style="min-width: 114px">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -367,14 +447,9 @@
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
                                         }
                                         <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
-                                        @if (message.File != null)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><i class="fa fa-paperclip"></i></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
-                                        }
+                                        <!--File Row-->
+                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
+
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
@@ -388,23 +463,34 @@
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input type="checkbox" name="delete" value="@message.Id" />
+                                            <input class="intrash-delete" type="checkbox" name="delete" value="@message.Id" />
                                         </td>
                                     </tr>
                                 }
                             </tbody>
+                        }
                         </table>
-                        <hr />
+                        <hr /><br />
                         <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable trash-tables">
-                            <h4 style="color: #29AAE3"><i class="fa fa-sign-out"></i> Outbox Trash</h4>
+                        @using (Html.BeginForm("UpdateOutTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <h4 style="color: #29AAE3"><i class="fa fa-sign-out"></i> Outbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -15px">Update</button></h4>
                             <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th><div class="btn-group"><a id="markAllOutTrash" class="btn btn-theme">Mark all</a><a id="unmarkAllOutTrash" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                </tr>
                                 <tr>
                                     <th style="width: 130px">To</th>
                                     <th>Subject</th>
                                     <th>Message</th>
                                     <th></th>
                                     <th></th>
-                                    <th style="width: 5%">Delete</th>
+                                    <th style="min-width: 114px">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -423,14 +509,9 @@
                                             <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
                                         }
                                         <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
-                                        @if (message.File != null)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><i class="fa fa-paperclip"></i></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"></td>
-                                        }
+                                        <!--File Row-->
+                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"></td>
+
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
@@ -444,11 +525,12 @@
                                             <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input type="checkbox" name="delete" value="@message.Id" />
+                                            <input class="outtrash-delete" type="checkbox" name="delete" value="@message.Id" />
                                         </td>
                                     </tr>
                                 }
                             </tbody>
+                        }
                         </table>
                     </div>
                 </div>
@@ -523,6 +605,40 @@
                 $('#trash-table').addClass("hidden");
             });
         });
-
     </script>
+<script>
+        $(document).ready(function () {
+            $('#markAllRead').click(function () {
+                $('.inbox-unread').attr('checked','checked');
+            });
+
+            $('#unmarkAllRead').click(function () {
+                $('.inbox-unread').removeAttr('checked');
+            });
+
+            $('#markAllDrafts').click(function () {
+                $('.draft-delete').attr('checked','checked');
+            });
+
+            $('#unmarkAllDrafts').click(function () {
+                $('.draft-delete').removeAttr('checked');
+            });
+
+            $('#markAllInTrash').click(function () {
+                $('.intrash-delete').attr('checked','checked');
+            });
+
+            $('#unmarkAllInTrash').click(function () {
+                $('.intrash-delete').removeAttr('checked');
+            });
+
+            $('#markAllOutTrash').click(function () {
+                $('.outtrash-delete').attr('checked','checked');
+            });
+
+            $('#unmarkAllOutTrash').click(function () {
+                $('.outtrash-delete').removeAttr('checked');
+            });
+        });
+</script>
 }
