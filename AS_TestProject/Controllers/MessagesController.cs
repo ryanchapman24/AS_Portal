@@ -20,12 +20,12 @@ namespace AS_TestProject.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
-            ViewBag.Unread = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == false && m.Active == true).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Read = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == true && m.Active == true).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Outbox = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == true && m.Active == true).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Drafts = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == false && m.Active == true).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false).OrderByDescending(m => m.Id).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Unread = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == false && m.Out == true && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Read = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == true && m.Out == true && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Outbox = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == true && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Drafts = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == false && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.Users = db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
             ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName");
             return View();
@@ -68,95 +68,219 @@ namespace AS_TestProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,File,AuthorId,ReceiverId,Out,Read,Urgent,Active")] OutboundMessage outboundMsg)
+        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active")] OutboundMessage outboundMsg)
         {
             if (ModelState.IsValid)
             {
                 var user = db.Users.Find(User.Identity.GetUserId());
 
-                outboundMsg.AuthorId = user.Id;
-                outboundMsg.Sent = System.DateTime.Now;
-                outboundMsg.Out = true;
-                outboundMsg.Read = false;
-                outboundMsg.Active = true;
-                db.OutboundMessages.Add(outboundMsg);
-                db.SaveChanges();
+                if (Request.Form["saveAsDraft"] != null)
+                {
+                    // Code for saving message as a draft
+                    outboundMsg.Sent = System.DateTime.Now;
+                    outboundMsg.AuthorId = user.Id;
+                    outboundMsg.Out = false;
+                    outboundMsg.Read = false;
+                    outboundMsg.Active = true;
+                    db.OutboundMessages.Add(outboundMsg);
+                    db.SaveChanges();
 
-                var inboundMsg = new InboundMessage();
-                inboundMsg.Sent = outboundMsg.Sent;
-                inboundMsg.Subject = outboundMsg.Subject;
-                inboundMsg.Content = outboundMsg.Content;
-                inboundMsg.File = outboundMsg.File;
-                inboundMsg.AuthorId = outboundMsg.AuthorId;
-                inboundMsg.ReceiverId = outboundMsg.ReceiverId;
-                inboundMsg.Out = outboundMsg.Out;
-                inboundMsg.Read = outboundMsg.Read;
-                inboundMsg.Urgent = outboundMsg.Urgent;
-                inboundMsg.Active = outboundMsg.Active;
+                    var inboundMsg = new InboundMessage();
+                    inboundMsg.Sent = outboundMsg.Sent;
+                    inboundMsg.AuthorId = outboundMsg.AuthorId;
+                    inboundMsg.ReceiverId = outboundMsg.ReceiverId;
+                    inboundMsg.Out = outboundMsg.Out;
+                    inboundMsg.Read = outboundMsg.Read;
+                    inboundMsg.Urgent = outboundMsg.Urgent;
+                    inboundMsg.Active = outboundMsg.Active;
+                    inboundMsg.Subject = outboundMsg.Subject;
+                    inboundMsg.Content = outboundMsg.Content;
 
-                db.InboundMessages.Add(inboundMsg);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.InboundMessages.Add(inboundMsg);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                else if (Request.Form["createMessage"] != null)
+                {
+                    // Code for creating an outbound message
+                    outboundMsg.Sent = System.DateTime.Now;
+                    outboundMsg.AuthorId = user.Id;
+                    outboundMsg.Out = true;
+                    outboundMsg.Read = false;
+                    outboundMsg.Active = true;
+                    db.OutboundMessages.Add(outboundMsg);
+                    db.SaveChanges();
+
+                    var inboundMsg = new InboundMessage();
+                    inboundMsg.Sent = outboundMsg.Sent;
+                    inboundMsg.AuthorId = outboundMsg.AuthorId;
+                    inboundMsg.ReceiverId = outboundMsg.ReceiverId;
+                    inboundMsg.Out = outboundMsg.Out;
+                    inboundMsg.Read = outboundMsg.Read;
+                    inboundMsg.Urgent = outboundMsg.Urgent;
+                    inboundMsg.Active = outboundMsg.Active;
+                    inboundMsg.Subject = outboundMsg.Subject;
+                    inboundMsg.Content = outboundMsg.Content;
+
+                    db.InboundMessages.Add(inboundMsg);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName", outboundMsg.ReceiverId);
             return RedirectToAction("Index");
         }
 
-        // GET: Messages/Delete/5
+        // POST: Messages/SendDraft
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [Authorize]
-        public ActionResult DeleteInbound(int? id)
+        public ActionResult SendDraft([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active")] OutboundMessage outboundMsg)
         {
-            if (id == null)
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            InboundMessage inboundMsg = db.InboundMessages.Find(id);
-            if (inboundMsg == null)
-            {
-                return HttpNotFound();
-            }
-            return View(inboundMsg);
-        }
+                var user = db.Users.Find(User.Identity.GetUserId());
 
-        // POST: Messages/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteInBoundConfirmed(int id)
-        {
-            InboundMessage inboundMsg = db.InboundMessages.Find(id);
-            db.InboundMessages.Remove(inboundMsg);
-            db.SaveChanges();
+                db.OutboundMessages.Attach(outboundMsg);
+                outboundMsg.Sent = System.DateTime.Now;
+                outboundMsg.Out = true;
+                db.Entry(outboundMsg).Property("Subject").IsModified = true;
+                db.Entry(outboundMsg).Property("Content").IsModified = true;
+                db.Entry(outboundMsg).Property("Urgent").IsModified = true;
+                db.SaveChanges();
+
+                var inboundMsg = db.InboundMessages.Find(outboundMsg.Id);
+                inboundMsg.Sent = outboundMsg.Sent;
+                inboundMsg.Out = outboundMsg.Out;
+                inboundMsg.Subject = outboundMsg.Subject;
+                inboundMsg.Content = outboundMsg.Content;
+                inboundMsg.Urgent = outboundMsg.Urgent;
+                db.SaveChanges();
+                return RedirectToAction("Index"); 
+            }
+
             return RedirectToAction("Index");
         }
 
-        // GET: Messages/Delete/5
+        // POST: Messages/UpdateInbox
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [Authorize]
-        public ActionResult DeleteOutbound(int? id)
+        public ActionResult UpdateInbox(List<int> trash, List<int> read)
         {
-            if (id == null)
+            if (trash != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                int total = trash.Count();
+                for (int i = 0; i < total; i++)
+                {
+                    var inboundMsg = db.InboundMessages.Find(trash[i]);
+                    inboundMsg.Active = false;
+                    db.SaveChanges();
+                }
             }
-            OutboundMessage outboundMsg = db.OutboundMessages.Find(id);
-            if (outboundMsg == null)
+            if (read != null)
             {
-                return HttpNotFound();
+                int total = read.Count();
+                for (int i = 0; i < total; i++)
+                {
+                    var inboundMsg = db.InboundMessages.Find(read[i]);
+                    inboundMsg.Read = true;
+                    db.SaveChanges();
+
+                    var outboundMsg = db.OutboundMessages.Find(read[i]);
+                    outboundMsg.Read = true;
+                    db.SaveChanges();
+                }
             }
-            return View(outboundMsg);
+            return RedirectToAction("Index");
         }
 
-        // POST: Messages/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: Messages/UpdateOutbox
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteOutBoundConfirmed(int id)
+        public ActionResult UpdateOutbox(List<int> trash)
         {
-            OutboundMessage outboundMsg = db.OutboundMessages.Find(id);
-            db.OutboundMessages.Remove(outboundMsg);
-            db.SaveChanges();
+            if (trash != null)
+            {
+                int total = trash.Count();
+                for (int i = 0; i < total; i++)
+                {
+                    var outboundMsg = db.OutboundMessages.Find(trash[i]);
+                    outboundMsg.Active = false;
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        // POST: Messages/UpdateDrafts
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize]
+        public ActionResult UpdateDrafts(List<int> delete)
+        {
+            if (delete != null)
+            {
+                int total = delete.Count();
+                for (int i = 0; i < total; i++)
+                {
+                    var outboundMsg = db.OutboundMessages.Find(delete[i]);
+                    db.OutboundMessages.Remove(outboundMsg);
+                    db.SaveChanges();
+
+                    var inboundMsg = db.InboundMessages.Find(delete[i]);
+                    db.InboundMessages.Remove(inboundMsg);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+        // POST: Messages/UpdateInTrash
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize]
+        public ActionResult UpdateInTrash(List<int> delete)
+        {
+            if (delete != null)
+            {
+                int total = delete.Count();
+                for (int i = 0; i < total; i++)
+                {
+                    var inboundMsg = db.InboundMessages.Find(delete[i]);
+                    db.InboundMessages.Remove(inboundMsg);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        // POST: Messages/UpdateOutTrash
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize]
+        public ActionResult UpdateOutTrash(List<int> delete)
+        {
+            if (delete != null)
+            {
+                int total = delete.Count();
+                for (int i = 0; i < total; i++)
+                {
+                    var outboundMsg = db.OutboundMessages.Find(delete[i]);
+                    db.OutboundMessages.Remove(outboundMsg);
+                    db.SaveChanges();
+                }
+            }
             return RedirectToAction("Index");
         }
 

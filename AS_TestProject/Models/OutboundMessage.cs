@@ -11,7 +11,6 @@ namespace AS_TestProject.Models
         public DateTimeOffset Sent { get; set; }
         public string Subject { get; set; }
         public string Content { get; set; }
-        public string File { get; set; }
         public string AuthorId { get; set; }
         public string ReceiverId { get; set; }
         public bool Out { get; set; }
