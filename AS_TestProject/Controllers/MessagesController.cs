@@ -20,12 +20,12 @@ namespace AS_TestProject.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
-            ViewBag.Unread = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == false && m.Out == true && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Read = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == true && m.Out == true && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Outbox = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == true && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Drafts = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == false && m.Active == true).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Unread = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == false && m.Out == true && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Read = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == true && m.Out == true && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Outbox = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == true && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.Drafts = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == false && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+            ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.Users = db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
             ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName");
             return View();
@@ -68,7 +68,7 @@ namespace AS_TestProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active")] OutboundMessage outboundMsg)
+        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg)
         {
             if (ModelState.IsValid)
             {
@@ -82,6 +82,7 @@ namespace AS_TestProject.Controllers
                     outboundMsg.Out = false;
                     outboundMsg.Read = false;
                     outboundMsg.Active = true;
+                    outboundMsg.Ghost = false;
                     db.OutboundMessages.Add(outboundMsg);
                     db.SaveChanges();
 
@@ -93,6 +94,7 @@ namespace AS_TestProject.Controllers
                     inboundMsg.Read = outboundMsg.Read;
                     inboundMsg.Urgent = outboundMsg.Urgent;
                     inboundMsg.Active = outboundMsg.Active;
+                    inboundMsg.Ghost = outboundMsg.Ghost;
                     inboundMsg.Subject = outboundMsg.Subject;
                     inboundMsg.Content = outboundMsg.Content;
 
@@ -109,6 +111,7 @@ namespace AS_TestProject.Controllers
                     outboundMsg.Out = true;
                     outboundMsg.Read = false;
                     outboundMsg.Active = true;
+                    outboundMsg.Ghost = false;
                     db.OutboundMessages.Add(outboundMsg);
                     db.SaveChanges();
 
@@ -120,6 +123,7 @@ namespace AS_TestProject.Controllers
                     inboundMsg.Read = outboundMsg.Read;
                     inboundMsg.Urgent = outboundMsg.Urgent;
                     inboundMsg.Active = outboundMsg.Active;
+                    inboundMsg.Ghost = outboundMsg.Ghost;
                     inboundMsg.Subject = outboundMsg.Subject;
                     inboundMsg.Content = outboundMsg.Content;
 
@@ -138,7 +142,7 @@ namespace AS_TestProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize]
-        public ActionResult SendDraft([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active")] OutboundMessage outboundMsg)
+        public ActionResult SendDraft([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg)
         {
             if (ModelState.IsValid)
             {
@@ -257,7 +261,7 @@ namespace AS_TestProject.Controllers
                 for (int i = 0; i < total; i++)
                 {
                     var inboundMsg = db.InboundMessages.Find(delete[i]);
-                    db.InboundMessages.Remove(inboundMsg);
+                    inboundMsg.Ghost = true;
                     db.SaveChanges();
                 }
             }
@@ -277,7 +281,7 @@ namespace AS_TestProject.Controllers
                 for (int i = 0; i < total; i++)
                 {
                     var outboundMsg = db.OutboundMessages.Find(delete[i]);
-                    db.OutboundMessages.Remove(outboundMsg);
+                    outboundMsg.Ghost = true;
                     db.SaveChanges();
                 }
             }

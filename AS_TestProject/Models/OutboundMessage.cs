@@ -17,6 +17,7 @@ namespace AS_TestProject.Models
         public bool Read { get; set; }
         public bool Urgent { get; set; }
         public bool Active { get; set; }
+        public bool Ghost { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
         public virtual ApplicationUser Receiver { get; set; }
