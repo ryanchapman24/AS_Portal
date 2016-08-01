@@ -1510,7 +1510,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2016 16:51:00</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>06/21/2016 16:31:23</publishTime>
+      <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>06/21/2016 11:08:41</publishTime>
