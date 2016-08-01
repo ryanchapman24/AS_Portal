@@ -72,9 +72,28 @@
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="fa fa-inbox" style="padding-bottom: 20px; color: #29AAE3"></span>
-                    <h3>7</h3>
+                    <h3>@ViewBag.DailyMessages.Count</h3>
                 </div>
-                <p><strong>You have 7 unread messages in your inbox.</strong></p>
+                @if (ViewBag.DailyMessages.Count == 0)
+                {
+                    <p><strong>You haven't received any messages today.</strong></p>
+                }
+                @if (ViewBag.DailyMessages.Count == 1)
+                {
+                    <p><strong>You have received 1 message today.</strong></p>
+                }
+                @if (ViewBag.DailyMessages.Count > 1 && ViewBag.DailyMessages.Count < 10)
+                {
+                    <p><strong>You have received @ViewBag.DailyMessages.Count messages today.</strong></p>
+                }
+                @if (ViewBag.DailyMessages.Count >= 10 && ViewBag.DailyMessages.Count < 20)
+                {
+                    <p><strong>You have received @ViewBag.DailyMessages.Count messages today.  You are officially a social butterfly!</strong></p>
+                }
+                @if (ViewBag.DailyMessages.Count >= 20)
+                {
+                    <p><strong>You have received @ViewBag.DailyMessages.Count messages today.  Get back to doing some real work!  Just kidding... or am I? ;)</strong></p>
+                }
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">

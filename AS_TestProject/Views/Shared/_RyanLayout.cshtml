@@ -183,16 +183,16 @@
                             @if (messages == 1)
                                             {
                                 <li>
-                                    <p class="green">You have 1 new message</p>
+                                    <p class="green">You have 1 unread message</p>
                                 </li>
                             }
                             @if (messages > 1)
                                             {
                                 <li>
-                                    <p class="green">You have @messages new messages</p>
+                                    <p class="green">You have @messages unread messages</p>
                                 </li>
                             }
-                            @*<div id="message-scroll" style="max-height: 600px; overflow-y: auto; overflow-x: hidden"*@
+                            <div id="message-scroll" style="max-height: 600px; overflow-y: auto; overflow-x: hidden">
                             @foreach (var newMsg in ViewBag.Messages)
                             {
                                 <li>
@@ -202,27 +202,37 @@
                                             <span class="from" style="overflow: hidden; word-wrap: break-word">@newMsg.Author.FirstName</span>
                                             @if (newMsg.Sent.Day == todayDay && newMsg.Sent.Month == todayMonth && newMsg.Sent.Year == todayYear)
                                             {
-                                                <span class="time">@newMsg.Sent.ToString("t")</span>
+                                                <span class="time pull-right">@newMsg.Sent.ToString("t")</span>
                                             }
                                             else if (newMsg.Sent.Year == todayYear)
                                             {
-                                                <span class="time">@newMsg.Sent.ToString("M/d/yyyy")</span>
+                                                <span class="time pull-right">@newMsg.Sent.ToString("M/d/yyyy")</span>
                                             }
                                             else
                                             {
-                                                <span class="time">@newMsg.Sent.ToString("m")</span>
+                                                <span class="time pull-right">@newMsg.Sent.ToString("m")</span>
                                             }
                                         </span>
                                         <span class="message" style="overflow: hidden; word-wrap: break-word">
-                                            @if (newMsg.Content.Length > 25)
-                                            { @Html.Raw(newMsg.Content.Substring(0, 25) + "...") }
+                                            @if (newMsg.Urgent == true)
+                                            {
+                                                if (newMsg.Content.Length > 21)
+                                                { @Html.Raw(newMsg.Content.Substring(0, 21) + "... ")<i class="fa fa-exclamation" style="color: #ff5050; margin-right: 3px; font-size: 16px"></i> }
+                                                else
+                                                { @Html.Raw(newMsg.Content) <i class="fa fa-exclamation" style="color: #ff5050; font-size: 16px"></i>}
+                                            }
                                             else
-                                            { @Html.Raw(newMsg.Content) }
+                                            {
+                                                if (newMsg.Content.Length > 24)
+                                                { @Html.Raw(newMsg.Content.Substring(0, 24) + "...") }
+                                                else
+                                                { @Html.Raw(newMsg.Content) }                                            
+                                            }
                                         </span>
                                     </a>
                                 </li>
                             }
-                            @*</div>*@
+                            </div>
                             <li style="text-align: center">
                                 <a href="@Url.Action("Index","Messages")" style="background-color: #F7F8F9; color: #FE5607"><strong>Go to Inbox</strong></a>
                             </li>
