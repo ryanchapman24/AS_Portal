@@ -149,6 +149,20 @@
           <Property Name="MainPhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="AddDate" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="NewEmployeeData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="HireDate" Type="date" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="255" />
+          <Property Name="TerminationDate" Type="date" />
+          <Property Name="EmployeeStatus" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="ProblemMaster">
           <Key>
             <PropertyRef Name="ProblemID" />
@@ -256,6 +270,29 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="PayDate" Type="date" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Report.REPORT.AcurianDailyExtract' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AcurianDailyExtract">
+          <Property Name="ProjectCode" Type="varchar" MaxLength="25" />
+          <Property Name="ProjectID" Type="varchar" MaxLength="50" />
+          <Property Name="ContactID" Type="varchar" MaxLength="25" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Address1" Type="varchar" MaxLength="125" />
+          <Property Name="Address2" Type="varchar" MaxLength="125" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="25" />
+          <Property Name="Number1" Type="varchar" MaxLength="25" />
+          <Property Name="Number2" Type="varchar" MaxLength="25" />
+          <Property Name="DispositionResolutionCode" Type="varchar" MaxLength="225" />
+          <Property Name="Country" Type="varchar" MaxLength="25" />
+          <Property Name="CallType" Type="varchar" MaxLength="25" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="CallCenterSource" Type="varchar" MaxLength="225" />
+          <Property Name="TrackingPhoneNumber" Type="varchar" MaxLength="225" />
+        </EntityType>-->
         <EntityType Name="CallLogMaster">
           <Key>
             <PropertyRef Name="CallLogMasterID" />
@@ -551,7 +588,7 @@ warning 6013: The table/view 'Report.REPORT.DomainListDetail' does not have a pr
           <Property Name="HourlyCampaignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReportDate" Type="date" Nullable="false" />
           <Property Name="ReportTime" Type="time" Precision="7" Nullable="false" />
-          <Property Name="CampaignID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CampaignID" Type="varchar" MaxLength="125" />
           <Property Name="TotalContacts" Type="int" Nullable="false" />
           <Property Name="ContactToTransfer" Type="decimal" Precision="7" Scale="4" Nullable="false" />
           <Property Name="TotalLeads" Type="int" Nullable="false" />
@@ -564,8 +601,7 @@ warning 6013: The table/view 'Report.REPORT.DomainListDetail' does not have a pr
           <Property Name="TPHHours" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TransfersPerHour" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="HourOfDay" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="SourceID" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="CostPerTransfer" Type="smallmoney" Nullable="false" />
+          <Property Name="SourceID" Type="varchar" MaxLength="125" />
           <Property Name="TotalAnswers" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PreciseLeadsRollingCampaignMetrics">
@@ -594,7 +630,7 @@ warning 6013: The table/view 'Report.REPORT.DomainListDetail' does not have a pr
         </EntityType>
         <!--Errors Found During Generation:
 warning 6013: The table/view 'Report.STAGE.AcurianDailyExtract' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="AcurianDailyExtract">
+        <EntityType Name="AcurianDailyExtract1">
           <Property Name="ProjectCode" Type="varchar" MaxLength="25" />
           <Property Name="ProjectID" Type="varchar" MaxLength="50" />
           <Property Name="ContactID" Type="varchar" MaxLength="25" />
@@ -3447,13 +3483,15 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
         </Function>
         <Function Name="uspDailyPortfolioInventoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FREEDOM" />
         <Function Name="AddEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
-        <Function Name="FileNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
         <Function Name="uspAgentDailyHours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
         <Function Name="uspAssignPayPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
         <Function Name="uspEmployeeHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
+        <Function Name="uspHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="PayPeriodID" Type="int" Mode="In" />
+        </Function>
         <Function Name="uspImportedEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
         <Function Name="uspNewEmployeeData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
-        <Function Name="uspOverTimeHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
         <Function Name="uspInsertEverquoteHourlyCallMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
         <Function Name="uspInsertPreciseLeadsHourlyCallLogMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
         <Function Name="uspInsertClientLeads" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="STAGE">
@@ -3485,6 +3523,7 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
           <EntitySet Name="EmployeeNoteType" EntityType="Self.EmployeeNoteType" Schema="COMPANY" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="COMPANY" store:Type="Tables" />
           <EntitySet Name="Site" EntityType="Self.Site" Schema="COMPANY" store:Type="Tables" />
+          <EntitySet Name="NewEmployeeData" EntityType="Self.NewEmployeeData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProblemMaster" EntityType="Self.ProblemMaster" Schema="EXCEPTION" store:Type="Tables" />
           <EntitySet Name="CampaignGroup" EntityType="Self.CampaignGroup" Schema="FREEDOM" store:Type="Tables" />
           <EntitySet Name="DailyPortfolioInventory" EntityType="Self.DailyPortfolioInventory" Schema="FREEDOM" store:Type="Tables" />
@@ -3821,6 +3860,49 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
     <edmx:ConceptualModels>
       <Schema Namespace="ReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ReportEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="uspInsertProblemMaster" ReturnType="Collection(ReportModel.uspInsertProblemMaster_Result)">
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="ProcessName" Mode="In" Type="String" />
+            <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
+            <Parameter Name="LineNumber" Mode="In" Type="Int32" />
+            <Parameter Name="ExceptionMessage" Mode="In" Type="String" />
+            <Parameter Name="ExceptionSource" Mode="In" Type="String" />
+            <Parameter Name="ExceptionSeverity" Mode="In" Type="Int32" />
+            <Parameter Name="ExceptionState" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspAgentDailyHours" />
+          <FunctionImport Name="uspAssignPayPeriod" />
+          <FunctionImport Name="uspEmployeeHoursCalculation" />
+          <FunctionImport Name="uspOverTimeHoursCalculation" />
+          <FunctionImport Name="uspInsertEverquoteHourlyCallMetrics" />
+          <FunctionImport Name="uspInsertPreciseLeadsHourlyCallLogMetrics" />
+          <FunctionImport Name="uspDailyPortfolioInventoryReport" />
+          <FunctionImport Name="uspInsertClientLeads" ReturnType="Collection(ReportModel.uspInsertClientLeads_Result)">
+            <Parameter Name="LeadID" Mode="In" Type="String" />
+            <Parameter Name="ClientName" Mode="In" Type="String" />
+            <Parameter Name="ArrivalTimestamp" Mode="In" Type="DateTime" />
+            <Parameter Name="PreserviceTimestamp" Mode="In" Type="DateTime" />
+            <Parameter Name="PostserviceTimestamp" Mode="In" Type="DateTime" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="AddressLine1" Mode="In" Type="String" />
+            <Parameter Name="AddressLine2" Mode="In" Type="String" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="LeadType" Mode="In" Type="String" />
+            <Parameter Name="CampaignName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddEmployee" />
+          <FunctionImport Name="FileNumber" />
+          <FunctionImport Name="uspImportedEmployees" />
+          <FunctionImport Name="uspNewEmployeeData" />
+          <FunctionImport Name="uspHoursCalculation">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="PayPeriodID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Customers" EntityType="ReportModel.Customer" />
           <EntitySet Name="CustomerContacts" EntityType="ReportModel.CustomerContact" />
           <EntitySet Name="DomainMasters" EntityType="ReportModel.DomainMaster" />
@@ -3831,6 +3913,7 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
           <EntitySet Name="EmployeeNoteTypes" EntityType="ReportModel.EmployeeNoteType" />
           <EntitySet Name="Positions" EntityType="ReportModel.Position" />
           <EntitySet Name="Sites" EntityType="ReportModel.Site" />
+          <EntitySet Name="NewEmployeeDatas" EntityType="ReportModel.NewEmployeeData" />
           <EntitySet Name="ProblemMasters" EntityType="ReportModel.ProblemMaster" />
           <EntitySet Name="CampaignGroups" EntityType="ReportModel.CampaignGroup" />
           <EntitySet Name="DailyPortfolioInventories" EntityType="ReportModel.DailyPortfolioInventory" />
@@ -3918,46 +4001,19 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
             <End Role="PayPeriod" EntitySet="PayPeriods" />
             <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
           </AssociationSet>
-          <FunctionImport Name="uspInsertProblemMaster" ReturnType="Collection(ReportModel.uspInsertProblemMaster_Result)">
-            <Parameter Name="UserID" Mode="In" Type="String" />
-            <Parameter Name="ProcessName" Mode="In" Type="String" />
-            <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
-            <Parameter Name="LineNumber" Mode="In" Type="Int32" />
-            <Parameter Name="ExceptionMessage" Mode="In" Type="String" />
-            <Parameter Name="ExceptionSource" Mode="In" Type="String" />
-            <Parameter Name="ExceptionSeverity" Mode="In" Type="Int32" />
-            <Parameter Name="ExceptionState" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="uspAgentDailyHours" />
-          <FunctionImport Name="uspAssignPayPeriod" />
-          <FunctionImport Name="uspEmployeeHoursCalculation" />
-          <FunctionImport Name="uspOverTimeHoursCalculation" />
-          <FunctionImport Name="uspInsertEverquoteHourlyCallMetrics" />
-          <FunctionImport Name="uspInsertPreciseLeadsHourlyCallLogMetrics" />
-          <FunctionImport Name="uspDailyPortfolioInventoryReport" />
-          <FunctionImport Name="uspInsertClientLeads" ReturnType="Collection(ReportModel.uspInsertClientLeads_Result)">
-            <Parameter Name="LeadID" Mode="In" Type="String" />
-            <Parameter Name="ClientName" Mode="In" Type="String" />
-            <Parameter Name="ArrivalTimestamp" Mode="In" Type="DateTime" />
-            <Parameter Name="PreserviceTimestamp" Mode="In" Type="DateTime" />
-            <Parameter Name="PostserviceTimestamp" Mode="In" Type="DateTime" />
-            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
-            <Parameter Name="FirstName" Mode="In" Type="String" />
-            <Parameter Name="LastName" Mode="In" Type="String" />
-            <Parameter Name="AddressLine1" Mode="In" Type="String" />
-            <Parameter Name="AddressLine2" Mode="In" Type="String" />
-            <Parameter Name="ZipCode" Mode="In" Type="String" />
-            <Parameter Name="City" Mode="In" Type="String" />
-            <Parameter Name="State" Mode="In" Type="String" />
-            <Parameter Name="EmailAddress" Mode="In" Type="String" />
-            <Parameter Name="LeadType" Mode="In" Type="String" />
-            <Parameter Name="CampaignName" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="AddEmployee" />
-          <FunctionImport Name="FileNumber" />
-          <FunctionImport Name="uspImportedEmployees" />
-          <FunctionImport Name="uspNewEmployeeData" />
         </EntityContainer>
+        <ComplexType Name="uspInsertProblemMaster_Result">
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="uspInsertClientLeads_Result">
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -4124,6 +4180,20 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
           <Property Name="MainPhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Employees" Relationship="ReportModel.FK_COMPANY_Employee_SiteID" FromRole="Site" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="NewEmployeeData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+          <Property Name="EmployeeStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ProblemMaster">
           <Key>
@@ -4414,7 +4484,7 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
           <Property Name="HourlyCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CampaignID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
           <Property Name="TotalContacts" Type="Int32" Nullable="false" />
           <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
           <Property Name="TotalLeads" Type="Int32" Nullable="false" />
@@ -4427,8 +4497,7 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
           <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SourceID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
           <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PreciseLeadsRollingCampaignMetric">
@@ -4951,24 +5020,42 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="uspInsertProblemMaster_Result">
-          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
-          <Property Type="Int32" Name="ErrorState" Nullable="true" />
-          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
-          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
-        </ComplexType>
-        <ComplexType Name="uspInsertClientLeads_Result">
-          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
-          <Property Type="Int32" Name="ErrorState" Nullable="true" />
-          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
-          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ReportModelStoreContainer" CdmEntityContainer="ReportEntities">
+          <FunctionImportMapping FunctionImportName="uspInsertProblemMaster" FunctionName="ReportModel.Store.uspInsertProblemMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportModel.uspInsertProblemMaster_Result">
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspAgentDailyHours" FunctionName="ReportModel.Store.uspAgentDailyHours" />
+          <FunctionImportMapping FunctionImportName="uspAssignPayPeriod" FunctionName="ReportModel.Store.uspAssignPayPeriod" />
+          <FunctionImportMapping FunctionImportName="uspEmployeeHoursCalculation" FunctionName="ReportModel.Store.uspEmployeeHoursCalculation" />
+          <FunctionImportMapping FunctionImportName="uspInsertEverquoteHourlyCallMetrics" FunctionName="ReportModel.Store.uspInsertEverquoteHourlyCallMetrics" />
+          <FunctionImportMapping FunctionImportName="uspInsertPreciseLeadsHourlyCallLogMetrics" FunctionName="ReportModel.Store.uspInsertPreciseLeadsHourlyCallLogMetrics" />
+          <FunctionImportMapping FunctionImportName="uspDailyPortfolioInventoryReport" FunctionName="ReportModel.Store.uspDailyPortfolioInventoryReport" />
+          <FunctionImportMapping FunctionImportName="uspInsertClientLeads" FunctionName="ReportModel.Store.uspInsertClientLeads">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportModel.uspInsertClientLeads_Result">
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="ReportModel.Store.AddEmployee" />
+          <FunctionImportMapping FunctionImportName="uspImportedEmployees" FunctionName="ReportModel.Store.uspImportedEmployees" />
+          <FunctionImportMapping FunctionImportName="uspNewEmployeeData" FunctionName="ReportModel.Store.uspNewEmployeeData" />
+          <FunctionImportMapping FunctionImportName="uspHoursCalculation" FunctionName="ReportModel.Store.uspHoursCalculation" />
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ReportModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
@@ -5120,6 +5207,21 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
                 <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
                 <ScalarProperty Name="SiteName" ColumnName="SiteName" />
                 <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewEmployeeDatas">
+            <EntityTypeMapping TypeName="ReportModel.NewEmployeeData">
+              <MappingFragment StoreEntitySet="NewEmployeeData">
+                <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5406,7 +5508,6 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
             <EntityTypeMapping TypeName="ReportModel.PreciseLeadsHourlyCampaignMetric">
               <MappingFragment StoreEntitySet="PreciseLeadsHourlyCampaignMetrics">
                 <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
-                <ScalarProperty Name="CostPerTransfer" ColumnName="CostPerTransfer" />
                 <ScalarProperty Name="SourceID" ColumnName="SourceID" />
                 <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
                 <ScalarProperty Name="TransfersPerHour" ColumnName="TransfersPerHour" />
@@ -5716,37 +5817,6 @@ error 6004: The table 'Report.REPORT.DomainListDetail' is referenced by a relati
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="uspInsertProblemMaster" FunctionName="ReportModel.Store.uspInsertProblemMaster">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ReportModel.uspInsertProblemMaster_Result">
-                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
-                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
-                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
-                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="uspAgentDailyHours" FunctionName="ReportModel.Store.uspAgentDailyHours" />
-          <FunctionImportMapping FunctionImportName="uspAssignPayPeriod" FunctionName="ReportModel.Store.uspAssignPayPeriod" />
-          <FunctionImportMapping FunctionImportName="uspEmployeeHoursCalculation" FunctionName="ReportModel.Store.uspEmployeeHoursCalculation" />
-          <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
-          <FunctionImportMapping FunctionImportName="uspInsertEverquoteHourlyCallMetrics" FunctionName="ReportModel.Store.uspInsertEverquoteHourlyCallMetrics" />
-          <FunctionImportMapping FunctionImportName="uspInsertPreciseLeadsHourlyCallLogMetrics" FunctionName="ReportModel.Store.uspInsertPreciseLeadsHourlyCallLogMetrics" />
-          <FunctionImportMapping FunctionImportName="uspDailyPortfolioInventoryReport" FunctionName="ReportModel.Store.uspDailyPortfolioInventoryReport" />
-          <FunctionImportMapping FunctionImportName="uspInsertClientLeads" FunctionName="ReportModel.Store.uspInsertClientLeads">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ReportModel.uspInsertClientLeads_Result">
-                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
-                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
-                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
-                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="ReportModel.Store.AddEmployee" />
-          <FunctionImportMapping FunctionImportName="FileNumber" FunctionName="ReportModel.Store.FileNumber" />
-          <FunctionImportMapping FunctionImportName="uspImportedEmployees" FunctionName="ReportModel.Store.uspImportedEmployees" />
-          <FunctionImportMapping FunctionImportName="uspNewEmployeeData" FunctionName="ReportModel.Store.uspNewEmployeeData" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

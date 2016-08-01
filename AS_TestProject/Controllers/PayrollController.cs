@@ -74,8 +74,8 @@ namespace AS_TestProject.Controllers
                 mb.SaveChanges();
 
                 // STORED PROCEDURES
-                //mb.uspOverTimeHoursCalculation();
-                //mb.SaveChanges();
+                mb.uspHoursCalculation(empId, ppId);
+                mb.SaveChanges();
 
                 return RedirectToAction("Index", new { id = empId });
             }
@@ -137,8 +137,8 @@ namespace AS_TestProject.Controllers
                 mb.SaveChanges();
 
                 // STORED PROCEDURES
-                //mb.uspOverTimeHoursCalculation();
-                //mb.SaveChanges();
+                mb.uspHoursCalculation(agentDailyHour.EmployeeID, agentDailyHour.PayPeriodID);
+                mb.SaveChanges();
 
                 return RedirectToAction("Index", new { id = agentDailyHour.EmployeeID });
             }

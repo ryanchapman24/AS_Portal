@@ -31,7 +31,6 @@ namespace AS_TestProject.Entities
         public decimal TransfersPerHour { get; set; }
         public string HourOfDay { get; set; }
         public string SourceID { get; set; }
-        public decimal CostPerTransfer { get; set; }
         public int TotalAnswers { get; set; }
     }
 }

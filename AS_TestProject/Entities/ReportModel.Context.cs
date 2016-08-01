@@ -37,6 +37,7 @@ namespace AS_TestProject.Entities
         public virtual DbSet<EmployeeNoteType> EmployeeNoteTypes { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<Site> Sites { get; set; }
+        public virtual DbSet<NewEmployeeData> NewEmployeeDatas { get; set; }
         public virtual DbSet<ProblemMaster> ProblemMasters { get; set; }
         public virtual DbSet<CampaignGroup> CampaignGroups { get; set; }
         public virtual DbSet<DailyPortfolioInventory> DailyPortfolioInventories { get; set; }
@@ -216,6 +217,19 @@ namespace AS_TestProject.Entities
         public virtual int uspNewEmployeeData()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspNewEmployeeData");
+        }
+    
+        public virtual int uspHoursCalculation(Nullable<int> employeeID, Nullable<int> payPeriodID)
+        {
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            var payPeriodIDParameter = payPeriodID.HasValue ?
+                new ObjectParameter("PayPeriodID", payPeriodID) :
+                new ObjectParameter("PayPeriodID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspHoursCalculation", employeeIDParameter, payPeriodIDParameter);
         }
     }
 }
