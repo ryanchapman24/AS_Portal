@@ -68,7 +68,7 @@ namespace AS_TestProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg)
+        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg, string pId)
         {
             if (ModelState.IsValid)
             {
@@ -100,6 +100,11 @@ namespace AS_TestProject.Controllers
 
                     db.InboundMessages.Add(inboundMsg);
                     db.SaveChanges();
+
+                    if (pId != null)
+                    {
+                        return RedirectToAction("ProfilePage", "Home", new { id = pId });
+                    }
                     return RedirectToAction("Index");
                 }
 
@@ -129,11 +134,20 @@ namespace AS_TestProject.Controllers
 
                     db.InboundMessages.Add(inboundMsg);
                     db.SaveChanges();
+
+                    if (pId != null)
+                    {
+                        return RedirectToAction("ProfilePage", "Home", new { id = pId });
+                    }
                     return RedirectToAction("Index");
                 }
             }
 
             ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName", outboundMsg.ReceiverId);
+            if (pId != null)
+            {
+                return RedirectToAction("ProfilePage", "Home", new { id = pId });
+            }
             return RedirectToAction("Index");
         }
 

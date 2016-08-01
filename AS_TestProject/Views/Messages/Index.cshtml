@@ -133,7 +133,7 @@
                                         <td>
                                             <input class="inbox-unread" type="checkbox" name="read" value="@message.Id"/>
                                         </td>
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
+                                        <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
                                         @if (message.Urgent == true)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">
@@ -150,15 +150,15 @@
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("m")</em></strong></td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("m")</em></strong></td>
                                         }
                                         <td></td>
                                     </tr>
@@ -169,7 +169,7 @@
                                         <td>
                                             <input type="checkbox" checked="" disabled/>
                                         </td>
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><span style="color: #29AAE3">@message.Author.DisplayName</span></td>
+                                        <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><span style="color: #29AAE3">@message.Author.DisplayName</span></td>
                                         @if (message.Urgent == true)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">
@@ -186,18 +186,18 @@
                                         
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input type="checkbox" name="trash" value="@message.Id" />
+                                            <input class="pull-right" type="checkbox" name="trash" value="@message.Id" />
                                         </td>
                                     </tr>
                                 }
@@ -230,7 +230,7 @@
                                 @foreach (var message in ViewBag.Outbox)
                                 {
                                     <tr>
-                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong></td>
+                                        <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong></td>
                                         @if (message.Urgent == true)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">
@@ -247,18 +247,18 @@
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input type="checkbox" name="trash" value="@message.Id" />
+                                            <input class="pull-right" type="checkbox" name="trash" value="@message.Id" />
                                         </td>
                                     </tr>
                                 }
@@ -269,8 +269,8 @@
             }
             </div>
             <div id="draft-table" class="widget widget-table hidden">
-            @using (Html.BeginForm("UpdateDrafts", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+                @using (Html.BeginForm("UpdateDrafts", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
                 <div class="widget-header">
                     <h3 style="color: #29AAE3"><i class="fa fa-file-text"></i> Drafts <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
                 </div>
@@ -292,14 +292,14 @@
                                     <th>Message</th>
                                     <th></th>
                                     <th></th>
-                                    <th style="min-width: 114px">Delete</th>
+                                    <th style="min-width: 114px; text-align: right">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var message in ViewBag.Drafts)
                                 {
                                     <tr id="draft-rows">
-                                        <td class="message-rows data-name" data-toggle="modal" data-target="#DraftModal" data-name="@message.Receiver.DisplayName" data-id="@message.Id" onclick=""><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
+                                        <td class="message-rows data-name text-nowrap" data-toggle="modal" data-target="#DraftModal" data-name="@message.Receiver.DisplayName" data-id="@message.Id" onclick=""><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
                                             <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Receiver.ProfilePic)" />
                                         </td>
                                         
@@ -319,18 +319,18 @@
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input class="draft-delete" type="checkbox" name="delete" value="@message.Id" />
+                                            <input class="draft-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
                                         </td>
                                     </tr>                             
                                 }
@@ -338,7 +338,7 @@
                         </table>
                     </div>
                 </div>
-            }
+                }
                 <!-- Modal -->
                 <div class="modal fade" id="DraftModal" tabindex="-1" role="dialog" aria-labelledby="DraftModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -398,18 +398,17 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div id="trash-table" class="widget widget-table hidden">
+        <div id="trash-table" class="hidden">
+            <div class="widget widget-table">
+            @using (Html.BeginForm("UpdateInTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
                 <div class="widget-header">
-                    <h3 style="color: #29AAE3; margin-bottom: 20px"><i class="fa fa-trash"></i> Trash</h3>
+                    <h3 style="color: #29AAE3"><i class="fa fa-trash"></i> Inbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
                 </div>
                 <div class="widget-content">
                     <div class="table-responsive">
                         <table id="datatable-basic-scrolling4" class="table table-sorting table-hover datatable trash-tables">
-                        @using (Html.BeginForm("UpdateInTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
-                            <h4 style="color: #29AAE3"><i class="fa fa-sign-in"></i> Inbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -15px">Update</button></h4>
                             <thead>
                                 <tr>
                                     <th></th>
@@ -425,14 +424,14 @@
                                     <th>Message</th>
                                     <th></th>
                                     <th></th>
-                                    <th style="min-width: 114px">Delete</th>
+                                    <th style="min-width: 114px; text-align: right">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var message in ViewBag.TrashIn)
                                 {
                                     <tr>
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
+                                        <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
                                         @if (message.Urgent == true)
                                         {
                                             <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">
@@ -449,91 +448,100 @@
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
-                                            <input class="intrash-delete" type="checkbox" name="delete" value="@message.Id" />
+                                            <input class="intrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
                                         </td>
                                     </tr>
                                 }
                             </tbody>
-                        }
-                        </table>
-                        <hr /><br />
-                        <table id="datatable-basic-scrolling5" class="table table-sorting table-hover datatable trash-tables">
-                        @using (Html.BeginForm("UpdateOutTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
-                            <h4 style="color: #29AAE3"><i class="fa fa-sign-out"></i> Outbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -15px">Update</button></h4>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><div class="btn-group"><a id="markAllOutTrash" class="btn btn-theme">Mark all</a><a id="unmarkAllOutTrash" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
-                                </tr>
-                                <tr>
-                                    <th style="width: 130px">To</th>
-                                    <th>Subject</th>
-                                    <th>Message</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th style="min-width: 114px">Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var message in ViewBag.TrashOut)
-                                {
-                                    <tr>
-                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong></td>
-                                        @if (message.Urgent == true)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">
-                                                <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
-                                        }
-                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
-                                        <!--File Row-->
-                                        <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"></td>
-
-                                        @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
-                                        }
-                                        else if (message.Sent.Year != todayYear)
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
-                                        }
-                                        else
-                                        {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
-                                        }
-                                        <td>
-                                            <input class="outtrash-delete" type="checkbox" name="delete" value="@message.Id" />
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        }
                         </table>
                     </div>
                 </div>
+            }
+            <hr /><br />
+            <div class="widget widget-table">
+                @using (Html.BeginForm("UpdateOutTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div class="widget-header">
+                    <h3 style="color: #29AAE3"><i class="fa fa-trash"></i> Outbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
+                </div>
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table id="datatable-basic-scrolling5" class="table table-sorting table-hover datatable trash-tables">                         
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th><div class="btn-group"><a id="markAllOutTrash" class="btn btn-theme">Mark all</a><a id="unmarkAllOutTrash" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 130px">To</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th style="min-width: 114px; text-align: right">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var message in ViewBag.TrashOut)
+                                    {
+                                        <tr>
+                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong></td>
+                                            @if (message.Urgent == true)
+                                            {
+                                                <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">
+                                                    <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
+                                            }
+                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
+                                            <!--File Row-->
+                                            <td class="message-rows" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'"></td>
+
+                                            @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
+                                            {
+                                                <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
+                                            }
+                                            else if (message.Sent.Year != todayYear)
+                                            {
+                                                <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("OutboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
+                                            }
+                                            <td>
+                                                <input class="outtrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

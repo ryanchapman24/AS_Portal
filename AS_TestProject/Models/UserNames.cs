@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace AS_TestProject.Models
 {
@@ -17,6 +18,7 @@ namespace AS_TestProject.Models
             if (User.Identity.IsAuthenticated)
             {
                 var user = db.Users.Find(User.Identity.GetUserId());
+
                 ViewBag.DisplayName = user.DisplayName;
                 ViewBag.FirstName = user.FirstName;
                 ViewBag.LastName = user.LastName;
@@ -33,6 +35,7 @@ namespace AS_TestProject.Models
                 ViewBag.MediumTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 2).OrderBy(t => t.Id).ToList();
                 ViewBag.LowTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
 
+                ViewBag.Messages = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == false && m.Out == true && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
                 base.OnActionExecuting(filterContext);
             }
         }
