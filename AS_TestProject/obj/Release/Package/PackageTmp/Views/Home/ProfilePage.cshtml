@@ -90,7 +90,67 @@
                                 <br />
                                 @if (Model.Id != User.Identity.GetUserId())
                                 {
-                                    <p><button class="btn btn-theme">@*<i class="fa fa-camera"></i>*@ Send Message</button></p>
+                                    <p><button class="btn btn-theme" data-toggle="modal" data-target="#ProfileMessage">@*<i class="fa fa-camera"></i>*@ Send Message</button></p>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="ProfileMessage" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="margin-bottom: 15px">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="ModalLabel">New Message for @Model.DisplayName</h4>
+                                                </div>
+                                                @using (Html.BeginForm("Create", "Messages", new { pId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                {
+                                                    <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                                    <div class="modal-body">
+                                                        <div class="" style="">
+                                                            <div style="text-align: center; margin-bottom: 40px">
+                                                                <img src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",Model.ProfilePic)" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-md-3 control-label">
+                                                                    Subject
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <input class="form-control capitalize" name="Subject" type="text" required />
+                                                                </div><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    Body
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <textarea rows="4" class="form-control capitalize" name="Content" required></textarea>
+                                                                </div><br /><br /><br /><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    File(s)
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <input type="file" name="file" />
+                                                                </div><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    Urgent?
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <div class="switch switch-square"
+                                                                         data-on-label="<i class=' fa fa-check'></i>"
+                                                                         data-off-label="<i class='fa fa-times'></i>">
+                                                                        <input type="checkbox" name="Urgent" value="true" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer" style="margin-top: 20px">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <button name="saveAsDraft" type="submit" class="btn btn-default">Save as Draft</button>
+                                                        <button name="createMessage" type="submit" class="btn btn-theme play">Send</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
                                 }                             
                             </div><!-- --/col-md-4 ---->
 

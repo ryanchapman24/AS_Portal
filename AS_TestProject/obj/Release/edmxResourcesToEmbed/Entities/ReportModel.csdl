@@ -1,6 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="ReportEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="uspInsertProblemMaster" ReturnType="Collection(ReportModel.uspInsertProblemMaster_Result)">
+      <Parameter Name="UserID" Mode="In" Type="String" />
+      <Parameter Name="ProcessName" Mode="In" Type="String" />
+      <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
+      <Parameter Name="LineNumber" Mode="In" Type="Int32" />
+      <Parameter Name="ExceptionMessage" Mode="In" Type="String" />
+      <Parameter Name="ExceptionSource" Mode="In" Type="String" />
+      <Parameter Name="ExceptionSeverity" Mode="In" Type="Int32" />
+      <Parameter Name="ExceptionState" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgentDailyHours" />
+    <FunctionImport Name="uspAssignPayPeriod" />
+    <FunctionImport Name="uspEmployeeHoursCalculation" />
+    <FunctionImport Name="uspOverTimeHoursCalculation" />
+    <FunctionImport Name="uspInsertEverquoteHourlyCallMetrics" />
+    <FunctionImport Name="uspInsertPreciseLeadsHourlyCallLogMetrics" />
+    <FunctionImport Name="uspDailyPortfolioInventoryReport" />
+    <FunctionImport Name="uspInsertClientLeads" ReturnType="Collection(ReportModel.uspInsertClientLeads_Result)">
+      <Parameter Name="LeadID" Mode="In" Type="String" />
+      <Parameter Name="ClientName" Mode="In" Type="String" />
+      <Parameter Name="ArrivalTimestamp" Mode="In" Type="DateTime" />
+      <Parameter Name="PreserviceTimestamp" Mode="In" Type="DateTime" />
+      <Parameter Name="PostserviceTimestamp" Mode="In" Type="DateTime" />
+      <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="AddressLine1" Mode="In" Type="String" />
+      <Parameter Name="AddressLine2" Mode="In" Type="String" />
+      <Parameter Name="ZipCode" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="LeadType" Mode="In" Type="String" />
+      <Parameter Name="CampaignName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddEmployee" />
+    <FunctionImport Name="FileNumber" />
+    <FunctionImport Name="uspImportedEmployees" />
+    <FunctionImport Name="uspNewEmployeeData" />
+    <FunctionImport Name="uspHoursCalculation">
+      <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+      <Parameter Name="PayPeriodID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <EntitySet Name="Customers" EntityType="ReportModel.Customer" />
     <EntitySet Name="CustomerContacts" EntityType="ReportModel.CustomerContact" />
     <EntitySet Name="DomainMasters" EntityType="ReportModel.DomainMaster" />
@@ -11,6 +54,7 @@
     <EntitySet Name="EmployeeNoteTypes" EntityType="ReportModel.EmployeeNoteType" />
     <EntitySet Name="Positions" EntityType="ReportModel.Position" />
     <EntitySet Name="Sites" EntityType="ReportModel.Site" />
+    <EntitySet Name="NewEmployeeDatas" EntityType="ReportModel.NewEmployeeData" />
     <EntitySet Name="ProblemMasters" EntityType="ReportModel.ProblemMaster" />
     <EntitySet Name="CampaignGroups" EntityType="ReportModel.CampaignGroup" />
     <EntitySet Name="DailyPortfolioInventories" EntityType="ReportModel.DailyPortfolioInventory" />
@@ -98,46 +142,19 @@
       <End Role="PayPeriod" EntitySet="PayPeriods" />
       <End Role="EmployeeHoursTotal" EntitySet="EmployeeHoursTotals" />
     </AssociationSet>
-    <FunctionImport Name="uspInsertProblemMaster" ReturnType="Collection(ReportModel.uspInsertProblemMaster_Result)">
-      <Parameter Name="UserID" Mode="In" Type="String" />
-      <Parameter Name="ProcessName" Mode="In" Type="String" />
-      <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
-      <Parameter Name="LineNumber" Mode="In" Type="Int32" />
-      <Parameter Name="ExceptionMessage" Mode="In" Type="String" />
-      <Parameter Name="ExceptionSource" Mode="In" Type="String" />
-      <Parameter Name="ExceptionSeverity" Mode="In" Type="Int32" />
-      <Parameter Name="ExceptionState" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgentDailyHours" />
-    <FunctionImport Name="uspAssignPayPeriod" />
-    <FunctionImport Name="uspEmployeeHoursCalculation" />
-    <FunctionImport Name="uspOverTimeHoursCalculation" />
-    <FunctionImport Name="uspInsertEverquoteHourlyCallMetrics" />
-    <FunctionImport Name="uspInsertPreciseLeadsHourlyCallLogMetrics" />
-    <FunctionImport Name="uspDailyPortfolioInventoryReport" />
-    <FunctionImport Name="uspInsertClientLeads" ReturnType="Collection(ReportModel.uspInsertClientLeads_Result)">
-      <Parameter Name="LeadID" Mode="In" Type="String" />
-      <Parameter Name="ClientName" Mode="In" Type="String" />
-      <Parameter Name="ArrivalTimestamp" Mode="In" Type="DateTime" />
-      <Parameter Name="PreserviceTimestamp" Mode="In" Type="DateTime" />
-      <Parameter Name="PostserviceTimestamp" Mode="In" Type="DateTime" />
-      <Parameter Name="PhoneNumber" Mode="In" Type="String" />
-      <Parameter Name="FirstName" Mode="In" Type="String" />
-      <Parameter Name="LastName" Mode="In" Type="String" />
-      <Parameter Name="AddressLine1" Mode="In" Type="String" />
-      <Parameter Name="AddressLine2" Mode="In" Type="String" />
-      <Parameter Name="ZipCode" Mode="In" Type="String" />
-      <Parameter Name="City" Mode="In" Type="String" />
-      <Parameter Name="State" Mode="In" Type="String" />
-      <Parameter Name="EmailAddress" Mode="In" Type="String" />
-      <Parameter Name="LeadType" Mode="In" Type="String" />
-      <Parameter Name="CampaignName" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="AddEmployee" />
-    <FunctionImport Name="FileNumber" />
-    <FunctionImport Name="uspImportedEmployees" />
-    <FunctionImport Name="uspNewEmployeeData" />
   </EntityContainer>
+  <ComplexType Name="uspInsertProblemMaster_Result">
+    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+    <Property Type="Int32" Name="ErrorState" Nullable="true" />
+    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="uspInsertClientLeads_Result">
+    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+    <Property Type="Int32" Name="ErrorState" Nullable="true" />
+    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+  </ComplexType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="CustomerID" />
@@ -304,6 +321,20 @@
     <Property Name="MainPhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Employees" Relationship="ReportModel.FK_COMPANY_Employee_SiteID" FromRole="Site" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="NewEmployeeData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="JobTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+    <Property Name="EmployeeStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ProblemMaster">
     <Key>
@@ -594,7 +625,7 @@
     <Property Name="HourlyCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="TotalContacts" Type="Int32" Nullable="false" />
     <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
     <Property Name="TotalLeads" Type="Int32" Nullable="false" />
@@ -607,8 +638,7 @@
     <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="HourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="SourceID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="SourceID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="PreciseLeadsRollingCampaignMetric">
@@ -1131,16 +1161,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="uspInsertProblemMaster_Result">
-    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
-    <Property Type="Int32" Name="ErrorState" Nullable="true" />
-    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
-    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
-  </ComplexType>
-  <ComplexType Name="uspInsertClientLeads_Result">
-    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
-    <Property Type="Int32" Name="ErrorState" Nullable="true" />
-    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
-    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
-  </ComplexType>
 </Schema>

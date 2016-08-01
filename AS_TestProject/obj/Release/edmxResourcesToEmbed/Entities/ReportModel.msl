@@ -1,6 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ReportModelStoreContainer" CdmEntityContainer="ReportEntities">
+    <FunctionImportMapping FunctionImportName="uspInsertProblemMaster" FunctionName="ReportModel.Store.uspInsertProblemMaster">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ReportModel.uspInsertProblemMaster_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspAgentDailyHours" FunctionName="ReportModel.Store.uspAgentDailyHours" />
+    <FunctionImportMapping FunctionImportName="uspAssignPayPeriod" FunctionName="ReportModel.Store.uspAssignPayPeriod" />
+    <FunctionImportMapping FunctionImportName="uspEmployeeHoursCalculation" FunctionName="ReportModel.Store.uspEmployeeHoursCalculation" />
+    <FunctionImportMapping FunctionImportName="uspInsertEverquoteHourlyCallMetrics" FunctionName="ReportModel.Store.uspInsertEverquoteHourlyCallMetrics" />
+    <FunctionImportMapping FunctionImportName="uspInsertPreciseLeadsHourlyCallLogMetrics" FunctionName="ReportModel.Store.uspInsertPreciseLeadsHourlyCallLogMetrics" />
+    <FunctionImportMapping FunctionImportName="uspDailyPortfolioInventoryReport" FunctionName="ReportModel.Store.uspDailyPortfolioInventoryReport" />
+    <FunctionImportMapping FunctionImportName="uspInsertClientLeads" FunctionName="ReportModel.Store.uspInsertClientLeads">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ReportModel.uspInsertClientLeads_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="ReportModel.Store.AddEmployee" />
+    <FunctionImportMapping FunctionImportName="uspImportedEmployees" FunctionName="ReportModel.Store.uspImportedEmployees" />
+    <FunctionImportMapping FunctionImportName="uspNewEmployeeData" FunctionName="ReportModel.Store.uspNewEmployeeData" />
+    <FunctionImportMapping FunctionImportName="uspHoursCalculation" FunctionName="ReportModel.Store.uspHoursCalculation" />
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="ReportModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
@@ -152,6 +182,21 @@
           <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
           <ScalarProperty Name="SiteName" ColumnName="SiteName" />
           <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewEmployeeDatas">
+      <EntityTypeMapping TypeName="ReportModel.NewEmployeeData">
+        <MappingFragment StoreEntitySet="NewEmployeeData">
+          <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
+          <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -438,7 +483,6 @@
       <EntityTypeMapping TypeName="ReportModel.PreciseLeadsHourlyCampaignMetric">
         <MappingFragment StoreEntitySet="PreciseLeadsHourlyCampaignMetrics">
           <ScalarProperty Name="TotalAnswers" ColumnName="TotalAnswers" />
-          <ScalarProperty Name="CostPerTransfer" ColumnName="CostPerTransfer" />
           <ScalarProperty Name="SourceID" ColumnName="SourceID" />
           <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
           <ScalarProperty Name="TransfersPerHour" ColumnName="TransfersPerHour" />
@@ -748,36 +792,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="uspInsertProblemMaster" FunctionName="ReportModel.Store.uspInsertProblemMaster">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="ReportModel.uspInsertProblemMaster_Result">
-          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
-          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
-          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
-          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspAgentDailyHours" FunctionName="ReportModel.Store.uspAgentDailyHours" />
-    <FunctionImportMapping FunctionImportName="uspAssignPayPeriod" FunctionName="ReportModel.Store.uspAssignPayPeriod" />
-    <FunctionImportMapping FunctionImportName="uspEmployeeHoursCalculation" FunctionName="ReportModel.Store.uspEmployeeHoursCalculation" />
-    <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
-    <FunctionImportMapping FunctionImportName="uspInsertEverquoteHourlyCallMetrics" FunctionName="ReportModel.Store.uspInsertEverquoteHourlyCallMetrics" />
-    <FunctionImportMapping FunctionImportName="uspInsertPreciseLeadsHourlyCallLogMetrics" FunctionName="ReportModel.Store.uspInsertPreciseLeadsHourlyCallLogMetrics" />
-    <FunctionImportMapping FunctionImportName="uspDailyPortfolioInventoryReport" FunctionName="ReportModel.Store.uspDailyPortfolioInventoryReport" />
-    <FunctionImportMapping FunctionImportName="uspInsertClientLeads" FunctionName="ReportModel.Store.uspInsertClientLeads">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="ReportModel.uspInsertClientLeads_Result">
-          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
-          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
-          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
-          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="ReportModel.Store.AddEmployee" />
-    <FunctionImportMapping FunctionImportName="FileNumber" FunctionName="ReportModel.Store.FileNumber" />
-    <FunctionImportMapping FunctionImportName="uspImportedEmployees" FunctionName="ReportModel.Store.uspImportedEmployees" />
-    <FunctionImportMapping FunctionImportName="uspNewEmployeeData" FunctionName="ReportModel.Store.uspNewEmployeeData" />
   </EntityContainerMapping>
 </Mapping>
