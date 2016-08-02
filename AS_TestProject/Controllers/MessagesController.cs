@@ -27,7 +27,7 @@ namespace AS_TestProject.Controllers
             ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.Users = db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
-            ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName");
+            ViewBag.ReceiverId = new SelectList(db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName), "Id", "DisplayName");
             return View();
         }
 
@@ -70,9 +70,10 @@ namespace AS_TestProject.Controllers
         [Authorize]
         public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg, string pId)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
+
             if (ModelState.IsValid)
             {
-                var user = db.Users.Find(User.Identity.GetUserId());
 
                 if (Request.Form["saveAsDraft"] != null)
                 {
@@ -143,7 +144,7 @@ namespace AS_TestProject.Controllers
                 }
             }
 
-            ViewBag.ReceiverId = new SelectList(db.Users, "Id", "DisplayName", outboundMsg.ReceiverId);
+            ViewBag.ReceiverId = new SelectList(db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName), "Id", "DisplayName", outboundMsg.ReceiverId);
             if (pId != null)
             {
                 return RedirectToAction("ProfilePage", "Home", new { id = pId });
