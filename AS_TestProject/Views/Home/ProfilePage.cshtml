@@ -69,15 +69,15 @@
                             <div class="col-md-4 profile-text mt mb centered">
                                 <div class="right-divider hidden-sm hidden-xs">
                                     <h4 style="color: #29AAE3">14</h4>
-                                    <h6>DAYS OF PTO</h6>
-                                    <h4 style="color: #29AAE3">290</h4>
-                                    <h6>FOLLOWING</h6>
-                                    <h4 style="color: #29AAE3">$ 13,980</h4>
-                                    <h6>MONTHLY EARNINGS</h6>
+                                    <h6>DAYS OF PTO LEFT</h6>
+                                    <h4 style="color: #29AAE3">74.35</h4>
+                                    <h6>HOURS THIS PAY PERIOD</h6>
+                                    <h4 style="color: #29AAE3">@ViewBag.TimeWithCompany</h4>
+                                    <h6>TIME WITH ANOMALY SQUARED</h6>
                                 </div>
                             </div><!-- --/col-md-4 ---->
 
-                            <div class="col-md-4 profile-text">
+                            <div class="col-md-4 profile-text" style="margin-top: 10px">
                                 <h3 style="color: #29AAE3">@Model.DisplayName</h3>
                                 <h5>@Model.Site.SiteName</h5>
                                 <h5><strong>@Model.Position.PositionName</strong></h5>
@@ -189,18 +189,18 @@
                                                 <div class="row centered mt mb">
                                                     <div class="col-sm-4">
                                                         <h1><i class="fa fa-money"></i></h1>
-                                                        <h3>$22,980</h3>
+                                                        <h3>$220,980</h3>
                                                         <h6>LIFETIME EARNINGS</h6>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <h1><i class="fa fa-trophy"></i></h1>
+                                                        <h1><i class="fa fa-tasks"></i></h1>
                                                         <h3>@ViewBag.TaskCounter</h3>
                                                         <h6>COMPLETED TASKS</h6>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <h1><i class="fa fa-shopping-cart"></i></h1>
+                                                        <h1><i class="fa fa-volume-control-phone"></i></h1>
                                                         <h3>1980</h3>
-                                                        <h6>ITEMS SOLD</h6>
+                                                        <h6>LEADS</h6>
                                                     </div>
                                                 </div><!-- /row -->                                  
                                             </div><!-- --/col-md-6 ---->
@@ -229,71 +229,35 @@
                                                 <div class="row center">
                                                     <div class="col-md-12">
                                                         <!-- TODO PANEL -->
-                                                            <div class="steps task-pn">
-                                                                @using (Html.BeginForm("SubmitTask", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                        <div class="steps task-pn">
+                                                            @using (Html.BeginForm("SubmitTask", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                            {
+                                                            @Html.AntiForgeryToken()
+                                                                foreach (var task in ViewBag.Urgent)
                                                                 {
-                                                                @Html.AntiForgeryToken()
-                                                                    foreach (var task in ViewBag.Urgent)
-                                                                    {
-                                                                        <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: red">@task.TaskPriority.Priority</span></label>
-                                                                    }
-                                                                    foreach (var task in ViewBag.High)
-                                                                    {
-                                                                        <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: orange">@task.TaskPriority.Priority</span></label>
-                                                                    }
-                                                                    foreach (var task in ViewBag.Medium)
-                                                                    {
-                                                                        <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: yellow">@task.TaskPriority.Priority</span></label>
-                                                                    }
-                                                                    foreach (var task in ViewBag.Low)
-                                                                    {
-                                                                        <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
-                                                                        <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: dodgerblue">@task.TaskPriority.Priority</span></label>
-                                                                    }                                  
-                                                                    <input id="complete" class="all-done" type='submit' name="complete" value='Complete' />
-                                                                    <hr style="padding: 0px; margin: 0px"/>
-                                                                    <input id="abort" class="all-done" type='submit' name="abort" value='Abort' />
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: red">@task.TaskPriority.Priority</span></label>
                                                                 }
-                                                            </div>
-                                                        @*@foreach (var task in ViewBag.Urgent)
-                                                        {
-                                                            <h5>@task.Description</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                                    <span class="sr-only">40% Complete (success)</span>
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                        @foreach (var task in ViewBag.High)
-                                                        {
-                                                            <h5>@task.Description</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                                    <span class="sr-only">40% Complete (success)</span>
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                        @foreach (var task in ViewBag.Medium)
-                                                        {
-                                                            <h5>@task.Description</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                                    <span class="sr-only">40% Complete (success)</span>
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                        @foreach (var task in ViewBag.Low)
-                                                        {
-                                                            <h5>@task.Description</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                                    <span class="sr-only">40% Complete (success)</span>
-                                                                </div>
-                                                            </div>
-                                                        }*@                         
+                                                                foreach (var task in ViewBag.High)
+                                                                {
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: orange">@task.TaskPriority.Priority</span></label>
+                                                                }
+                                                                foreach (var task in ViewBag.Medium)
+                                                                {
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: yellow">@task.TaskPriority.Priority</span></label>
+                                                                }
+                                                                foreach (var task in ViewBag.Low)
+                                                                {
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: dodgerblue">@task.TaskPriority.Priority</span></label>
+                                                                }                                  
+                                                                <input id="complete" class="all-done" type='submit' name="complete" value='Complete' />
+                                                                <hr style="padding: 0px; margin: 0px"/>
+                                                                <input id="abort" class="all-done" type='submit' name="abort" value='Abort' />
+                                                            }
+                                                        </div>                                                      
                                                     </div><!-- --/col-md-8 ---->
                                                 </div><!-- --/row ---->
                                                 }
@@ -308,7 +272,7 @@
                                                 <h4>EMAIL</h4>
                                                 <div class="col-md-8 col-md-offset-2 mt">
                                                     <p style="color: #29AAE3">
-                                                        <strong>@Model.Email</strong>
+                                                        <strong><a href="@string.Format("{0}{1}","mailto:",Model.Email)">@Model.Email</a></strong>
                                                     </p>
                                                 </div>
                                             </div><!-- --/col-md-6 ---->

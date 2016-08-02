@@ -67,8 +67,8 @@ namespace AS_TestProject.Migrations
             {
                 userManager.Create(new ApplicationUser
                 {
-                    UserName = "chapman.ryansadler@gmail.com",
-                    Email = "chapman.ryansadler@gmail.com",
+                    UserName = "rchapman@anomalysquared.com",
+                    Email = "rchapman@anomalysquared.com",
                     FirstName = "Ryan",
                     LastName = "Chapman",
                     DisplayName = "Ryan Chapman",                  
@@ -76,7 +76,7 @@ namespace AS_TestProject.Migrations
                 }, "Chappy24!");
             }
 
-            var userId_Admin = userManager.FindByEmail("chapman.ryansadler@gmail.com").Id;
+            var userId_Admin = userManager.FindByEmail("rchapman@anomalysquared.com").Id;
             userManager.AddToRole(userId_Admin, "Admin");
 
             if (!context.Users.Any(u => u.Email == "your email address"))

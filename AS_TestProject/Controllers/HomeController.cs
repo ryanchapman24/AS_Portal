@@ -48,6 +48,7 @@ namespace AS_TestProject.Controllers
         public ActionResult ProfilePage(string id)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
+            var mb = new ReportEntities();
 
             if (!string.IsNullOrWhiteSpace(id))
             {
@@ -63,13 +64,102 @@ namespace AS_TestProject.Controllers
                     ViewBag.Low = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
                     ViewBag.TaskCounter = userCheck.TaskTally;
 
+                    // Computing Time With Company
+                    var userFromEmpTable = mb.Employees.First(e => e.EmployeeID == userCheck.EmployeeID);
+                    var hireDate = userFromEmpTable.HireDate;
+                    var today = System.DateTime.Now;
+                    DateTime date1 = hireDate;
+                    DateTime date2 = today;
+                    int oldMonth = date2.Month;
+                    while (oldMonth == date2.Month)
+                    {
+                        date1 = date1.AddDays(-1);
+                        date2 = date2.AddDays(-1);
+                    }
+                    int years = 0, months = 0, days = 0;
+                    // getting number of years
+                    while (date2.CompareTo(date1) >= 0)
+                    {
+                        years++;
+                        date2 = date2.AddYears(-1);
+                    }
+                    date2 = date2.AddYears(1);
+                    years--;
+                    // getting number of months and days
+                    oldMonth = date2.Month;
+                    while (date2.CompareTo(date1) >= 0)
+                    {
+                        days++;
+                        date2 = date2.AddDays(-1);
+                        if ((date2.CompareTo(date1) >= 0) && (oldMonth != date2.Month))
+                        {
+                            months++;
+                            days = 0;
+                            oldMonth = date2.Month;
+                        }
+                    }
+                    date2 = date2.AddDays(1);
+                    days--;
+                    // Formatting string possibilities
+                    var y = "";
+                    if (years == 1)
+                    {
+                        y = " year, ";
+                    }
+                    else if (years > 1)
+                    {
+                        y = " years, ";
+                    }
+                    var m = "";
+                    if (months == 1)
+                    {
+                        m = " month, ";
+                    }
+                    else if (months > 1)
+                    {
+                        m = " months, ";
+                    }
+                    var d = "";
+                    if (days == 1)
+                    {
+                        d = " day";
+                    }
+                    else if (days > 1)
+                    {
+                        d = " days";
+                    }
+                    if (years == 0 && months > 0 && days > 0)
+                    {
+                        ViewBag.TimeWithCompany = months.ToString() + m + days.ToString() + d;
+                    }
+                    else if (years > 0 && months == 0 && days > 0)
+                    {
+                        ViewBag.TimeWithCompany = years.ToString() + y + days.ToString() + d;
+                    }
+                    else if (years > 0 && months > 0 && days == 0)
+                    {
+                        ViewBag.TimeWithCompany = years.ToString() + y + months.ToString() + m;
+                    }
+                    else if (years == 0 && months == 0 && days > 0)
+                    {
+                        ViewBag.TimeWithCompany = days.ToString() + d;
+                    }
+                    else if (years == 0 && months > 0 && days == 0)
+                    {
+                        ViewBag.TimeWithCompany = months.ToString() + m;
+                    }
+                    else if (years > 0 && months == 0 && days == 0)
+                    {
+                        ViewBag.TimeWithCompany = years.ToString() + y;
+                    }
+                    else
+                    {
+                        ViewBag.TimeWithCompany = years.ToString() + y + months.ToString() + m + days.ToString() + d;
+                    }               
                     return View(userCheck);
                 }
-
             }
 
-            //might need later when I want to send specific info to profile page
-            //var user1 = User.Identity.GetUserId();
             ViewBag.TaskPriorityId = new SelectList(db.TaskPriorities, "Id", "Priority");
             ViewBag.Urgent = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 4).OrderBy(t => t.Id).ToList();
             ViewBag.High = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 3).OrderBy(t => t.Id).ToList();
@@ -77,6 +167,99 @@ namespace AS_TestProject.Controllers
             ViewBag.Low = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
             ViewBag.TaskCounter = user.TaskTally;
 
+            // Computing MY Time With Company
+            var selfUserFromEmpTable = mb.Employees.First(e => e.EmployeeID == user.EmployeeID);
+            var selfHireDate = selfUserFromEmpTable.HireDate;
+            var selfToday = System.DateTime.Now;
+            DateTime selfDate1 = selfHireDate;
+            DateTime selfDate2 = selfToday;
+            int selfOldMonth = selfDate2.Month;
+            while (selfOldMonth == selfDate2.Month)
+            {
+                selfDate1 = selfDate1.AddDays(-1);
+                selfDate2 = selfDate2.AddDays(-1);
+            }
+            int selfYears = 0, selfMonths = 0, selfDays = 0;
+            // getting number of years
+            while (selfDate2.CompareTo(selfDate1) >= 0)
+            {
+                selfYears++;
+                selfDate2 = selfDate2.AddYears(-1);
+            }
+            selfDate2 = selfDate2.AddYears(1);
+            selfYears--;
+            // getting number of months and days
+            selfOldMonth = selfDate2.Month;
+            while (selfDate2.CompareTo(selfDate1) >= 0)
+            {
+                selfDays++;
+                selfDate2 = selfDate2.AddDays(-1);
+                if ((selfDate2.CompareTo(selfDate1) >= 0) && (selfOldMonth != selfDate2.Month))
+                {
+                    selfMonths++;
+                    selfDays = 0;
+                    selfOldMonth = selfDate2.Month;
+                }
+            }
+            selfDate2 = selfDate2.AddDays(1);
+            selfDays--;
+
+            // Formatting string possibilities
+            var selfY = "";
+            if (selfYears == 1)
+            {
+                selfY = " year, ";
+            }
+            else if (selfYears > 1)
+            {
+                selfY = " years, ";
+            }
+            var selfM = "";
+            if (selfMonths == 1)
+            {
+                selfM = " month, ";
+            }
+            else if (selfMonths > 1)
+            {
+                selfM = " months, ";
+            }
+            var selfD = "";
+            if (selfDays == 1)
+            {
+                selfD = " day";
+            }
+            else if (selfDays > 1)
+            {
+                selfD = " days";
+            }
+            if (selfYears == 0 && selfMonths > 0 && selfDays > 0)
+            {
+                ViewBag.TimeWithCompany = selfMonths.ToString() + selfM + selfDays.ToString() + selfD;
+            }
+            else if (selfYears > 0 && selfMonths == 0 && selfDays > 0)
+            {
+                ViewBag.TimeWithCompany = selfYears.ToString() + selfY + selfDays.ToString() + selfD;
+            }
+            else if (selfYears > 0 && selfMonths > 0 && selfDays == 0)
+            {
+                ViewBag.TimeWithCompany = selfYears.ToString() + selfY + selfMonths.ToString() + selfM;
+            }
+            else if (selfYears == 0 && selfMonths == 0 && selfDays > 0)
+            {
+                ViewBag.TimeWithCompany = selfDays.ToString() + selfD;
+            }
+            else if (selfYears == 0 && selfMonths > 0 && selfDays == 0)
+            {
+                ViewBag.TimeWithCompany = selfMonths.ToString() + selfM;
+            }
+            else if (selfYears > 0 && selfMonths == 0 && selfDays == 0)
+            {
+                ViewBag.TimeWithCompany = selfYears.ToString() + selfY;
+            }
+            else
+            {
+                ViewBag.TimeWithCompany = selfYears.ToString() + selfY + selfMonths.ToString() + selfM + selfDays.ToString() + selfD;
+            }
             return View(user);
         }
 
