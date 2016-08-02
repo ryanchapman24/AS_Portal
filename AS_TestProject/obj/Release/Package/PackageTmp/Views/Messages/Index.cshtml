@@ -195,72 +195,76 @@
                             <tbody>
                                 @foreach (var message in ViewBag.Unread)
                                 {
-                                    <tr>
+                                    <tr class="inbound">
                                         <td>
                                             <input class="inbox-unread" type="checkbox" name="read" value="@message.Id"/>
                                         </td>
-                                        <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
+                                        <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><strong style="color: #29AAE3">@message.Author.DisplayName</strong>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Author.ProfilePic)" />
+                                        </td>
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i><strong style="color: #031B25"><em>@message.Subject</em></strong>
                                             </td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Subject</em></strong></td>
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false"><strong style="color: #031B25"><em>@message.Subject</em></strong></td>
                                         }
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Content</em></strong></td>
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content"><strong style="color: #031B25"><em>@message.Content</em></strong></td>
                                         <!--File Row-->
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
+                                        <td class="message-rows" data-id="@message.Id"></td>
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><strong style="color: #031B25"><em>@message.Sent.ToString("m")</em></strong></td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))"><strong style="color: #031B25"><em>@message.Sent.ToString("m")</em></strong></td>
                                         }
                                         <td></td>
                                     </tr>
                                 }
                                 @foreach (var message in ViewBag.Read)
                                 {
-                                    <tr>
+                                    <tr class="inbound">
                                         <td>
                                             <input type="checkbox" checked="" disabled/>
                                         </td>
-                                        <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"><span style="color: #29AAE3">@message.Author.DisplayName</span></td>
+                                        <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><span style="color: #29AAE3">@message.Author.DisplayName</span>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Author.ProfilePic)" />
+                                        </td>
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
                                             </td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Subject</td>
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
                                         }
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Content</td>
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content">@message.Content</td>
                                         <!--File Row-->
-                                        <td class="message-rows" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'"></td>
+                                        <td class="message-rows" data-id="@message.Id"></td>
                                         
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap" onclick="location.href='@Url.Action("InboundDetails", "Messages", new { id = message.Id })'">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
                                             <input class="pull-right" type="checkbox" name="trash" value="@message.Id" />
@@ -365,7 +369,7 @@
                                 @foreach (var message in ViewBag.Drafts)
                                 {
                                     <tr id="draft-rows">
-                                        <td class="message-rows data-name text-nowrap" data-toggle="modal" data-target="#DraftModal" data-name="@message.Receiver.DisplayName" data-id="@message.Id" onclick=""><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
+                                        <td class="message-rows data-name text-nowrap" data-toggle="modal" data-target="#DraftModal" data-name="@message.Receiver.DisplayName" data-id="@message.Id"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
                                             <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Receiver.ProfilePic)" />
                                         </td>
                                         
@@ -385,15 +389,15 @@
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
                                             <input class="draft-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
@@ -606,6 +610,79 @@
                 </div>
             </div>
         </div>
+        <div id="inboundDetail" class="hidden">
+            <section class="panel">
+                <header class="panel-heading wht-bg">
+                    <h3 class="gen-case" style="color: #29AAE3"><i class="fa fa-paper-plane" style="margin-right: 4px"></i>Message Details</h3>
+                </header>
+                <div class="panel-body ">
+                    <hr />
+                    <div class="mail-header row">
+                        <div class="col-md-8">
+                            <input id="detailInboundId" type="hidden" name="Id" value="" />
+                            <h4 class="pull-left" style="margin-top: 0px"><span id="detailInboundFrom"></span><i id="detailInboundUrgent" class="fa fa-warning hidden" style="color: #ff5050; margin-left: 5px"></i></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="compose-btn pull-right">
+                                <span id="detailInboundSent" style="margin-right: 20px"></span>
+                                <a href="#" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> Reply</a>
+                                <button class="btn btn-sm tooltips" data-original-title="Trash" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mail-sender">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img id="detailInboundImg" src="" alt="" style="width: 128px; height: 128px">                        
+                            </div>
+                        </div>                      
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 id="detailInboundSubject" style="color: #29AAE3"></h4>
+                        </div>
+                    </div>
+                    <div class="view-mail">
+                        <p id="detailInboundContent"></p>                      
+                    </div><br />
+                    <div class="attachment-mail">
+                        <p>
+                            <span><i class="fa fa-paperclip"></i> 0 attachment(s) — </span>
+                            <a href="#">Download all</a>
+                        </p>
+                        @*<ul>
+                            <li>
+                                <a class="atch-thumb" href="#">
+                                    <img src="assets/img/instagram.jpg">
+                                </a>
+                                <a class="name" href="#">
+                                    IMG_001.jpg
+                                    <span>20KB</span>
+                                </a>
+                                <div class="links">
+                                    <a href="#">View</a> -
+                                    <a href="#">Download</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="atch-thumb" href="#">
+                                    <img src="assets/img/weather.jpg">
+                                </a>
+                                <a class="name" href="#">
+                                    IMG_001.jpg
+                                    <span>20KB</span>
+                                </a>
+                                <div class="links">
+                                    <a href="#">View</a> -
+                                    <a href="#">Download</a>
+                                </div>
+                            </li>
+                        </ul>*@
+                    </div>
+                </div>
+            </section>
+        </div>
     </section>
 </div>
 
@@ -679,6 +756,7 @@
                 $('#inbox-table').addClass("hidden");
                 $('#draft-table').addClass("hidden");
                 $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
             });
             $("#drafts").click(function () {
                 $('#drafts').addClass("active");
@@ -690,6 +768,7 @@
                 $('#inbox-table').addClass("hidden");
                 $('#outbox-table').addClass("hidden");
                 $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
             });
             $("#trash").click(function () {
                 $('#trash').addClass("active");
@@ -701,6 +780,7 @@
                 $('#inbox-table').addClass("hidden");
                 $('#draft-table').addClass("hidden");
                 $('#outbox-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
             });
             $("#inbox").click(function () {
                 $('#inbox').addClass("active");
@@ -712,6 +792,7 @@
                 $('#outbox-table').addClass("hidden");
                 $('#draft-table').addClass("hidden");
                 $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
             });
         });
     </script>
@@ -758,27 +839,58 @@
                 var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
                 var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
                 var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
-                var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
-                
+                var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');           
+
                 $('#draftModalId').val(id);
                 $('#draftModalImg').attr('src', profile);
                 $('#draftModalSubject').val(subject);
                 $('#draftModalContent').text(content);
                 $('#DraftModalLabel').text("Finish New Message for " + name);
 
-                if (isUrgent == "true")
-                {
+                if (isUrgent == "true") {
                     $('#draftModalUrgent').attr('checked', 'checked');
                     var div = $('#draftModalUrgent').closest('div');
                     div.removeClass('switch-off').addClass('switch-on');
                 }
-                else
-                {
+                else {
                     $('#draftModalUrgent').removeAttr('checked');
                     var div = $('#draftModalUrgent').closest('div');
                     div.removeClass('switch-on').addClass('switch-off');
                 }
             });
         });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.inbound .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+
+                    $('#detailInboundId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("From: " + name);
+                    $('#detailInboundSent').text(sent);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+                });
+            });
     </script>
 }

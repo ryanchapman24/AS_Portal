@@ -31,38 +31,6 @@ namespace AS_TestProject.Controllers
             return View();
         }
 
-        // GET: Messages/Details/5
-        [Authorize]
-        public ActionResult OutboundDetails(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            OutboundMessage outboundMsg = db.OutboundMessages.Find(id);
-            if (outboundMsg == null)
-            {
-                return HttpNotFound();
-            }
-            return View(outboundMsg);
-        }
-
-        // GET: Messages/Details/5
-        [Authorize]
-        public ActionResult InboundDetails(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            InboundMessage inboundMsg = db.InboundMessages.Find(id);
-            if (inboundMsg == null)
-            {
-                return HttpNotFound();
-            }
-            return View(inboundMsg);
-        }
-
         // POST: Messages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
