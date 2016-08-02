@@ -196,7 +196,7 @@
                             @foreach (var newMsg in ViewBag.Messages)
                             {
                                 <li>
-                                    <a href="">
+                                    <a>
                                         <span class="photo"><img alt="avatar" src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",newMsg.Author.ProfilePic)" style="height: 40px; width: 40px"></span>
                                         <span class="subject">
                                             <span class="from" style="overflow: hidden; word-wrap: break-word">@newMsg.Author.FirstName</span>
