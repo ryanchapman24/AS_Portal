@@ -697,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>08/01/2016 17:29:05</publishTime>
+      <publishTime>08/02/2016 14:56:39</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1456,7 +1456,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 09:52:54</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
-      <publishTime>08/01/2016 12:09:32</publishTime>
+      <publishTime>08/02/2016 14:44:40</publishTime>
     </File>
     <File Include="Views/Home/Slack.cshtml">
       <publishTime>07/14/2016 15:04:24</publishTime>
@@ -1471,10 +1471,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 09:51:25</publishTime>
     </File>
     <File Include="Views/Manage/ChangePassword.cshtml">
-      <publishTime>07/14/2016 09:51:16</publishTime>
+      <publishTime>08/02/2016 15:16:54</publishTime>
     </File>
     <File Include="Views/Manage/Index.cshtml">
-      <publishTime>07/14/2016 09:51:02</publishTime>
+      <publishTime>08/02/2016 15:02:51</publishTime>
     </File>
     <File Include="Views/Manage/ManageLogins.cshtml">
       <publishTime>07/14/2016 09:50:48</publishTime>
@@ -1483,7 +1483,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 09:50:34</publishTime>
     </File>
     <File Include="Views/Manage/UpdateInformation.cshtml">
-      <publishTime>07/14/2016 09:50:19</publishTime>
+      <publishTime>08/02/2016 15:18:19</publishTime>
     </File>
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>07/14/2016 09:50:03</publishTime>
@@ -1498,7 +1498,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2016 10:09:08</publishTime>
     </File>
     <File Include="Views/Messages/Index.cshtml">
-      <publishTime>08/01/2016 17:21:16</publishTime>
+      <publishTime>08/02/2016 13:30:45</publishTime>
     </File>
     <File Include="Views/Payroll/Create.cshtml">
       <publishTime>07/12/2016 12:48:24</publishTime>
