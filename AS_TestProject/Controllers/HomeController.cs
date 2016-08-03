@@ -138,7 +138,7 @@ namespace AS_TestProject.Controllers
                     }
                     else if (years > 0 && months > 0 && days == 0)
                     {
-                        ViewBag.TimeWithCompany = years.ToString() + y + months.ToString() + m;
+                        ViewBag.TimeWithCompany = years.ToString() + y + months.ToString() + m.Substring(0, m.Length - 2);
                     }
                     else if (years == 0 && months == 0 && days > 0)
                     {
@@ -146,11 +146,11 @@ namespace AS_TestProject.Controllers
                     }
                     else if (years == 0 && months > 0 && days == 0)
                     {
-                        ViewBag.TimeWithCompany = months.ToString() + m;
+                        ViewBag.TimeWithCompany = months.ToString() + m.Substring(0, m.Length - 2);
                     }
                     else if (years > 0 && months == 0 && days == 0)
                     {
-                        ViewBag.TimeWithCompany = years.ToString() + y;
+                        ViewBag.TimeWithCompany = years.ToString() + y.Substring(0, y.Length - 2);
                     }
                     else
                     {
@@ -242,7 +242,7 @@ namespace AS_TestProject.Controllers
             }
             else if (selfYears > 0 && selfMonths > 0 && selfDays == 0)
             {
-                ViewBag.TimeWithCompany = selfYears.ToString() + selfY + selfMonths.ToString() + selfM;
+                ViewBag.TimeWithCompany = selfYears.ToString() + selfY + selfMonths.ToString() + selfM.Substring(0, selfM.Length - 2);
             }
             else if (selfYears == 0 && selfMonths == 0 && selfDays > 0)
             {
@@ -250,11 +250,11 @@ namespace AS_TestProject.Controllers
             }
             else if (selfYears == 0 && selfMonths > 0 && selfDays == 0)
             {
-                ViewBag.TimeWithCompany = selfMonths.ToString() + selfM;
+                ViewBag.TimeWithCompany = selfMonths.ToString() + selfM.Substring(0, selfM.Length - 2);
             }
             else if (selfYears > 0 && selfMonths == 0 && selfDays == 0)
             {
-                ViewBag.TimeWithCompany = selfYears.ToString() + selfY;
+                ViewBag.TimeWithCompany = selfYears.ToString() + selfY.Substring(0, selfY.Length - 2);
             }
             else
             {
