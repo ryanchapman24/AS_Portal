@@ -40,7 +40,7 @@
                                                 Subject
                                             </div>
                                             <div class="col-md-9" style="margin-top: -5px">
-                                                <input class="form-control capitalize" name="Subject" type="text" required />
+                                                <input class="form-control capitalize" name="Subject" type="text" maxlength="40" required />
                                             </div><br /><br /><br />
 
                                             <div class="col-md-3 control-label">
@@ -117,7 +117,7 @@
                                                     Subject
                                                 </div>
                                                 <div class="col-md-9" style="margin-top: -5px">
-                                                    <input class="form-control capitalize" name="Subject" type="text" required />
+                                                    <input class="form-control capitalize" name="Subject" type="text" maxlength="40" required />
                                                 </div><br /><br /><br />
 
                                                 <div class="col-md-3 control-label">
@@ -205,7 +205,7 @@
                                         </td>
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i><strong style="color: #031B25"><em>@message.Subject</em></strong>
                                             </td>
                                         }
@@ -213,7 +213,16 @@
                                         {
                                             <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false"><strong style="color: #031B25"><em>@message.Subject</em></strong></td>
                                         }
-                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content"><strong style="color: #031B25"><em>@message.Content</em></strong></td>
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            <strong style="color: #031B25">
+                                                <em>
+                                                    @if (message.Content.Length > 150)
+                                                    { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                                    else
+                                                    { @Html.Raw(message.Content) }
+                                                </em>
+                                            </strong>
+                                        </td>
                                         <!--File Row-->
                                         <td class="message-rows" data-id="@message.Id"></td>
 
@@ -244,7 +253,7 @@
                                         </td>
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
                                             </td>
                                         }
@@ -252,7 +261,12 @@
                                         {
                                             <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
                                         }
-                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content">@message.Content</td>
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
                                         <!--File Row-->
                                         <td class="message-rows" data-id="@message.Id"></td>
                                         
@@ -307,7 +321,7 @@
                                         </td>
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
                                             </td>
                                         }
@@ -315,7 +329,12 @@
                                         {
                                             <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
                                         }
-                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content">@message.Content</td>
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
                                         <!--File Row-->
                                         <td class="message-rows"></td>
 
@@ -379,7 +398,7 @@
                                         
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true" data-toggle="modal" data-target="#DraftModal">
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true" data-toggle="modal" data-target="#DraftModal">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
                                             </td>
                                         }
@@ -387,7 +406,12 @@
                                         {
                                             <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false" data-toggle="modal" data-target="#DraftModal">@message.Subject</td>
                                         }
-                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" data-toggle="modal" data-target="#DraftModal">@message.Content</td>
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" data-toggle="modal" data-target="#DraftModal" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
                                         <!--File Row-->
                                         <td class="message-rows" data-id="@message.Id" data-toggle="modal" data-target="#DraftModal"></td>
 
@@ -434,7 +458,7 @@
                                                 Subject
                                             </div>
                                             <div class="col-md-9" style="margin-top: -5px">
-                                                <input id="draftModalSubject" class="form-control capitalize" name="Subject" type="text" value="" required />
+                                                <input id="draftModalSubject" class="form-control capitalize" name="Subject" type="text" value="" maxlength="40" required />
                                             </div><br /><br /><br />
 
                                             <div class="col-md-3 control-label">
@@ -504,33 +528,41 @@
                             <tbody>
                                 @foreach (var message in ViewBag.TrashIn)
                                 {
-                                    <tr>
-                                        <td class="message-rows text-nowrap"><strong style="color: #29AAE3">@message.Author.DisplayName</strong></td>
+                                    <tr class="trashIn">
+                                        <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><strong style="color: #29AAE3">@message.Author.DisplayName</strong>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Author.ProfilePic)" />
+                                            <input type="hidden" class="data-receiver" data-id="@message.Id" value="@message.AuthorId" />
+                                        </td>
                                         @if (message.Urgent == true)
                                         {
-                                            <td class="message-rows">
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
                                                 <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
                                             </td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows">@message.Subject</td>
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
                                         }
-                                        <td class="message-rows">@message.Content</td>
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
                                         <!--File Row-->
                                         <td class="message-rows"></td>
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap">@message.Sent.ToString("t")</td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap">@message.Sent.ToString("M/d/yyyy")</td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap">@message.Sent.ToString("m")</td>
+                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
                                         }
                                         <td>
                                             <input class="intrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
@@ -573,33 +605,40 @@
                                 <tbody>
                                     @foreach (var message in ViewBag.TrashOut)
                                     {
-                                        <tr>
-                                            <td class="message-rows text-nowrap"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong></td>
+                                        <tr class="trashOut">
+                                            <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Receiver.DisplayName"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
+                                                <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Receiver.ProfilePic)" />
+                                            </td>
                                             @if (message.Urgent == true)
                                             {
-                                                <td class="message-rows">
+                                                <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
                                                     <i class="fa fa-warning" style="color: #ff5050; margin-right: 3px"></i>@message.Subject
                                                 </td>
                                             }
                                             else
                                             {
-                                                <td class="message-rows">@message.Subject</td>
+                                                <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
                                             }
-                                            <td class="message-rows">@message.Content</td>
+                                            <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                                @if (message.Content.Length > 150)
+                                                { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                                else
+                                                { @Html.Raw(message.Content) }
+                                            </td>
                                             <!--File Row-->
                                             <td class="message-rows"></td>
 
                                             @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                             {
-                                                <td class="message-rows text-nowrap">@message.Sent.ToString("t")</td>
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
                                             }
                                             else if (message.Sent.Year != todayYear)
                                             {
-                                                <td class="message-rows text-nowrap">@message.Sent.ToString("M/d/yyyy")</td>
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
                                             }
                                             else
                                             {
-                                                <td class="message-rows text-nowrap">@message.Sent.ToString("m")</td>
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
                                             }
                                             <td>
                                                 <input class="outtrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
@@ -643,13 +682,14 @@
                                                 <div class="" style="">
                                                     <div style="text-align: center; margin-bottom: 40px">
                                                         <img id="ReplyModalImg" src="" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
+                                                        <p style="margin-top: 15px"><em>"</em><em id="OriginalMsg"></em><em>"</em></p>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-md-3 control-label">
                                                             Subject
                                                         </div>
                                                         <div class="col-md-9" style="margin-top: -5px">
-                                                            <input class="form-control capitalize" name="Subject" type="text" required />
+                                                            <input class="form-control capitalize" name="Subject" type="text" maxlength="40" required />
                                                         </div><br /><br /><br />
 
                                                         <div class="col-md-3 control-label">
@@ -697,7 +737,17 @@
                             {
                                 <input id="detailOutboundId" type="hidden" name="trash" value="" />
                                 <button id="outbox-trash-btn" type="submit" class="btn btn-sm tooltips" data-original-title="Trash" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
-                            }                       
+                            }
+                            @using (Html.BeginForm("UpdateInTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data", style = "display: inline" }))
+                            {
+                                <input id="detailInTrashId" type="hidden" name="delete" value="" />
+                                <button id="inbox-delete-btn" type="submit" class="btn btn-sm tooltips" data-original-title="Delete" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                            }
+                            @using (Html.BeginForm("UpdateOutTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data", style = "display: inline" }))
+                            {
+                                <input id="detailOutTrashId" type="hidden" name="delete" value="" />
+                                <button id="outbox-delete-btn" type="submit" class="btn btn-sm tooltips" data-original-title="Delete" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                            }
                         </div>
                     </div>
                 </div>
@@ -715,7 +765,7 @@
                     </div>
                 </div>
                 <div class="view-mail">
-                    <p id="detailInboundContent"></p>                      
+                    <p id="detailInboundContent" style="word-break: break-word"></p>                      
                 </div><br />
                 <div class="attachment-mail">
                     <p>
@@ -812,6 +862,26 @@
                     "infoEmpty": ""
                 }                
             });          
+        });
+    </script>
+    <script>
+        $(function () {
+            $('.inbound .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.outbound .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.trashIn .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.trashOut .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
         });
     </script>
     <script>
@@ -939,9 +1009,11 @@
                     $('#draft-table').addClass("hidden");
                     $('#trash-table').addClass("hidden");
 
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
                     $('#reply-btn').removeClass("hidden");
                     $('#inbox-trash-btn').removeClass("hidden");
-                    $('#outbox-trash-btn').addClass("hidden");
 
                     var id = $(this).attr('data-id');
                     var profile = $('.data-profile[data-id="' + id + '"]').val();
@@ -969,6 +1041,7 @@
                     $('#ReplyModalImg').attr('src', profile);
                     $('#ReplyModalLabel').text("Reply to " + name);
                     $('#ReplyModalReceiver').val(receiver);
+                    $('#OriginalMsg').text(content);
                 });
             });
     </script>
@@ -982,8 +1055,10 @@
                     $('#trash-table').addClass("hidden");
 
                     $('#reply-btn').addClass("hidden");
-                    $('#outbox-trash-btn').removeClass("hidden");
                     $('#inbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#outbox-trash-btn').removeClass("hidden");
 
                     var id = $(this).attr('data-id');
                     var profile = $('.data-profile[data-id="' + id + '"]').val();
@@ -994,6 +1069,90 @@
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
 
                     $('#detailOutboundId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("To: " + name);
+                    $('#detailInboundSent').text(sent);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.trashIn .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var receiver = $('.data-receiver[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+
+                    $('#detailInTrashId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("From: " + name);
+                    $('#detailInboundSent').text(sent);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    $('#ReplyModalImg').attr('src', profile);
+                    $('#ReplyModalLabel').text("Reply to " + name);
+                    $('#ReplyModalReceiver').val(receiver);
+                    $('#OriginalMsg').text(content);
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.trashOut .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#outbox-delete-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+
+                    $('#detailOutTrashId').val(id);
                     $('#detailInboundImg').attr('src', profile);
                     $('#detailInboundSubject').text(subject);
                     $('#detailInboundContent').text(content);
