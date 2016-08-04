@@ -550,7 +550,7 @@
                                             { @Html.Raw(message.Content) }
                                         </td>
                                         <!--File Row-->
-                                        <td class="message-rows"></td>
+                                        <td class="message-rows" data-id="@message.Id"></td>
 
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
@@ -626,7 +626,7 @@
                                                 { @Html.Raw(message.Content) }
                                             </td>
                                             <!--File Row-->
-                                            <td class="message-rows"></td>
+                                            <td class="message-rows" data-id="@message.Id"></td>
 
                                             @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                             {
