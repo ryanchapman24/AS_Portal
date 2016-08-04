@@ -22,7 +22,7 @@
                                     @foreach (var document in ViewBag.Documents)
                                     {
                                         <tr>
-                                            <td style="display: inline-block; word-break: break-word">
+                                            <td style="display: block; word-break: break-word">
                                                 <strong><a href="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",document.File)" target="_blank">@document.File.Substring(14)</a></strong><br />
                                                 <em><small>uploaded by <strong style="color: #FE5607">@document.Author.DisplayName</strong></small></em>
                                             </td>
