@@ -121,7 +121,14 @@
                                     <td>@Html.DisplayFor(modelItem => item.DomainMaster.FileMask) - @Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
                                     <td>@Html.DisplayFor(modelItem => item.RegularHours)</td>
                                     <td>@Html.DisplayFor(modelItem => item.OverTimeHours)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.AgentTimeAdjustmentReason.Reason)</td>
+                                    @if (item.AgentTimeAdjustmentReasonID != null)
+                                    {
+                                        <td>@Html.DisplayFor(modelItem => item.AgentTimeAdjustmentReason.Reason)<i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee1.FirstName @item.Employee1.LastName <br> @item.EditTimeStamp.Value.ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
                                     <td><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
                                 </tr>
                             }
