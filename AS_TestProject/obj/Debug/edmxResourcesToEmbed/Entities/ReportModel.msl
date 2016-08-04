@@ -244,6 +244,8 @@
     <EntitySetMapping Name="AgentDailyHours">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
         <MappingFragment StoreEntitySet="AgentDailyHours">
+          <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
+          <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
           <ScalarProperty Name="OverTimeHours" ColumnName="OverTimeHours" />
           <ScalarProperty Name="RegularHours" ColumnName="RegularHours" />
           <ScalarProperty Name="PayPeriodID" ColumnName="PayPeriodID" />
@@ -281,6 +283,7 @@
     <EntitySetMapping Name="PayPeriods">
       <EntityTypeMapping TypeName="ReportModel.PayPeriod">
         <MappingFragment StoreEntitySet="PayPeriod">
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
           <ScalarProperty Name="PayDate" ColumnName="PayDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="MidDate" ColumnName="MidDate" />
@@ -792,5 +795,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation1" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
   </EntityContainerMapping>
 </Mapping>

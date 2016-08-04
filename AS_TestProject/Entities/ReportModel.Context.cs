@@ -231,5 +231,10 @@ namespace AS_TestProject.Entities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspHoursCalculation", employeeIDParameter, payPeriodIDParameter);
         }
+    
+        public virtual int uspOverTimeHoursCalculation1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspOverTimeHoursCalculation1");
+        }
     }
 }

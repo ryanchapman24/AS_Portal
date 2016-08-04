@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using AS_TestProject.Entities;
 using AS_TestProject.Models;
+using Microsoft.AspNet.Identity;
 
 namespace AS_TestProject.Controllers
 {
@@ -64,12 +65,16 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Payroll")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID")] AgentDailyHour agentDailyHour, int empId, short ppId)
+        public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID,EditByEmployeeID,EditTimeStamp")] AgentDailyHour agentDailyHour, int empId, short ppId)
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.Find(User.Identity.GetUserId());
+
                 agentDailyHour.PayPeriodID = ppId;
                 agentDailyHour.EmployeeID = empId;
+                agentDailyHour.EditByEmployeeID = user.EmployeeID;
+                agentDailyHour.EditTimeStamp = System.DateTime.Now;
                 mb.AgentDailyHours.Add(agentDailyHour);
                 mb.SaveChanges();
 
@@ -129,7 +134,11 @@ namespace AS_TestProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.Find(User.Identity.GetUserId());
+
                 mb.AgentDailyHours.Attach(agentDailyHour);
+                agentDailyHour.EditByEmployeeID = user.EmployeeID;
+                agentDailyHour.EditTimeStamp = System.DateTime.Now;
                 mb.Entry(agentDailyHour).Property("LoginTimeStamp").IsModified = true;
                 mb.Entry(agentDailyHour).Property("LogoutTimeStamp").IsModified = true;
                 mb.Entry(agentDailyHour).Property("LoginDuration").IsModified = true;

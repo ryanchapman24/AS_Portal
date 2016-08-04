@@ -24,10 +24,13 @@ namespace AS_TestProject.Entities
         public Nullable<short> PayPeriodID { get; set; }
         public Nullable<decimal> RegularHours { get; set; }
         public Nullable<decimal> OverTimeHours { get; set; }
+        public Nullable<int> EditByEmployeeID { get; set; }
+        public Nullable<System.DateTime> EditTimeStamp { get; set; }
     
         public virtual DomainMaster DomainMaster { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual AgentTimeAdjustmentReason AgentTimeAdjustmentReason { get; set; }
         public virtual PayPeriod PayPeriod { get; set; }
+        public virtual Employee Employee1 { get; set; }
     }
 }

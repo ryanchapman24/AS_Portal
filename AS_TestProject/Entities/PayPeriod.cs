@@ -26,6 +26,7 @@ namespace AS_TestProject.Entities
         public System.DateTime MidDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public System.DateTime PayDate { get; set; }
+        public bool IsComplete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AgentDailyHour> AgentDailyHours { get; set; }

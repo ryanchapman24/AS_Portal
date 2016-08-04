@@ -23,6 +23,7 @@ namespace AS_TestProject.Entities
             this.EmployeeNoteTypes = new HashSet<EmployeeNoteType>();
             this.AgentDailyHours = new HashSet<AgentDailyHour>();
             this.EmployeeHoursTotals = new HashSet<EmployeeHoursTotal>();
+            this.AgentDailyHours1 = new HashSet<AgentDailyHour>();
         }
     
         public int EmployeeID { get; set; }
@@ -63,5 +64,7 @@ namespace AS_TestProject.Entities
         public virtual ICollection<AgentDailyHour> AgentDailyHours { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeHoursTotal> EmployeeHoursTotals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgentDailyHour> AgentDailyHours1 { get; set; }
     }
 }
