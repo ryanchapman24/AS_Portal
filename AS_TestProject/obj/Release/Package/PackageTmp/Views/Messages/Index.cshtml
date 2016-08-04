@@ -673,7 +673,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header" style="margin-bottom: 15px">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="ReplyModalLabel"></h4>
+                                            <h4 class="modal-title" id="ReplyModalLabel" style="margin-left: 10px"></h4>
                                         </div>
                                         @using (Html.BeginForm("Create", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                                         {
@@ -682,7 +682,7 @@
                                                 <div class="" style="">
                                                     <div style="text-align: center; margin-bottom: 40px">
                                                         <img id="ReplyModalImg" src="" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
-                                                        <p style="margin-top: 15px"><em>"</em><em id="OriginalMsg"></em><em>"</em></p>
+                                                        <p style="margin-top: 15px"><em>"</em><em id="OriginalMsg" style="word-break: break-word; white-space: pre-wrap"></em><em>"</em></p>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-md-3 control-label">
@@ -765,7 +765,7 @@
                     </div>
                 </div>
                 <div class="view-mail">
-                    <p id="detailInboundContent" style="word-break: break-word"></p>                      
+                    <p id="detailInboundContent" style="word-break: break-word; white-space: pre-wrap"></p>
                 </div><br />
                 <div class="attachment-mail">
                     <p>
