@@ -27,20 +27,28 @@ namespace AS_TestProject.Controllers
         [Authorize(Roles = "Payroll")]
         public ActionResult Index(int id)
         {
-            var now = System.DateTime.Now;
+            var now = System.DateTime.Now;;
             var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
             var payPeriodId = payPeriod.PayPeriodID;
+            var prevPayPeriodId = payPeriodId - 1;
+            var prevPayPeriod = mb.PayPeriods.First(p => p.PayPeriodID == prevPayPeriodId);
 
             var agent = mb.Employees.Find(id);
 
             var agentDailyHours = mb.AgentDailyHours.Where(a => a.EmployeeID == id && a.PayPeriodID == payPeriodId).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
+            ViewBag.PrevAgentDailyHours = mb.AgentDailyHours.Where(a => a.EmployeeID == id && a.PayPeriodID == prevPayPeriodId).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
+
             ViewBag.AgentName = agent.FirstName + ' ' + agent.LastName;
             ViewBag.PayPeriodStart = payPeriod.StartDate;
             ViewBag.PayPeriodEnd = payPeriod.EndDate;
+            ViewBag.PrevPayPeriodStart = prevPayPeriod.StartDate;
+            ViewBag.PrevPayPeriodEnd = prevPayPeriod.EndDate;
 
             ViewBag.Date = now.ToShortDateString();
+            ViewBag.PrevDate = prevPayPeriod.MidDate.ToShortDateString();
             ViewBag.EmployeeID = id;
             ViewBag.PayPeriodID = payPeriodId;
+            ViewBag.PrevPayPeriodID = prevPayPeriodId;
 
             var domains = new List<Domain>();
             foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
