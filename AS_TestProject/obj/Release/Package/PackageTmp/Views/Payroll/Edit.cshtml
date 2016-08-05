@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="input-group bootstrap-timepicker">
-                            <input id="time3" class="form-control timepicker-default" type="text" value="@Model.LoginTimeStamp.ToString("hh:mm:ss tt")" required />
+                            <input id="time5" class="form-control timepicker-default" type="text" value="@Model.LoginTimeStamp.ToString("hh:mm:ss tt")" required />
                             <span class="input-group-btn">
                                 <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
                             </span>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="input-group bootstrap-timepicker">
-                            <input id="time4" class="form-control timepicker-default" type="text" value="@Model.LogoutTimeStamp.ToString("hh:mm:ss tt")" required />
+                            <input id="time6" class="form-control timepicker-default" type="text" value="@Model.LogoutTimeStamp.ToString("hh:mm:ss tt")" required />
                             <span class="input-group-btn">
                                 <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
                             </span>
@@ -127,14 +127,14 @@
     </script>
     <script>
         $(document).ready(function () {
-            var $time3 = $("#time3");
-            var $time4 = $("#time4");
+            var $time5 = $("#time5");
+            var $time6 = $("#time6");
             var $diff = $("#totalTime");
 
             function updateHours() {
 
-                var dtStart = new Date("7/8/2016 " + $time3.val());
-                var dtEnd = new Date("7/8/2016 " + $time4.val());
+                var dtStart = new Date("7/8/2016 " + $time5.val());
+                var dtEnd = new Date("7/8/2016 " + $time6.val());
 
                 var diff = dtEnd - dtStart;
                 var totalSec = diff / 1000;
@@ -164,8 +164,8 @@
                 var outStr = $logout.val().toString();
                 var outSub = outStr.substring(0, outStr.indexOf(' '));
 
-                var time1Str = $time3.val().toString();
-                var time2Str = $time4.val().toString();
+                var time1Str = $time5.val().toString();
+                var time2Str = $time6.val().toString();
 
                 if (time1Str.match("^0")) {
                     var time1Sub = time1Str.substring(1, time1Str.length);
@@ -188,8 +188,8 @@
                 $logout.val(logout);
             }
 
-            $time3.add($time4).change(function () {
-                if ($time3.val() && $time4.val()) {
+            $time5.add($time6).change(function () {
+                if ($time5.val() && $time6.val()) {
                     updateHours();
                     updateTime()
                 }
@@ -200,8 +200,8 @@
         $(document).ready(function () {
             var $login = $("#login");
             var $logout = $("#logout");
-            var $time3 = $("#time3");
-            var $time4 = $("#time4");
+            var $time5 = $("#time5");
+            var $time6 = $("#time6");
 
             var inStr = $login.val().toString();
             var inSub = inStr.substring(0, inStr.indexOf(' '));
@@ -209,8 +209,8 @@
             var outStr = $logout.val().toString();
             var outSub = outStr.substring(0, outStr.indexOf(' '));
 
-            var time1Str = $time3.val().toString();
-            var time2Str = $time4.val().toString();
+            var time1Str = $time5.val().toString();
+            var time2Str = $time6.val().toString();
 
             if (time1Str.match("^0")) {
                 var time1Sub = time1Str.substring(1, time1Str.length);
