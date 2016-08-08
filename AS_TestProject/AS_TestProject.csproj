@@ -382,8 +382,10 @@
     <Content Include="assets\audio\Camera case pull camera out digital olympus camedia c720_BLASTWAVEFX_09058.mp3" />
     <Content Include="assets\audio\clock winding the spring 2.mp3" />
     <Content Include="assets\audio\Error tone chime_BLASTWAVEFX_16379.mp3" />
+    <Content Include="assets\audio\Mac OS X - Mail application - email sent sound.mp3" />
     <Content Include="assets\audio\Sound design digital accent descending 01_SFXBible_ss05706.mp3" />
     <Content Include="assets\audio\Sound design multimedia accent button digital 02_SFXBible_ss02551.mp3" />
+    <Content Include="assets\audio\Whoosh_Swoosh_Swing_Fishing_Pole_CloseFull_Fienup_001.mp3" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\datatables.css" />
     <Content Include="assets\css\style-responsive.css" />

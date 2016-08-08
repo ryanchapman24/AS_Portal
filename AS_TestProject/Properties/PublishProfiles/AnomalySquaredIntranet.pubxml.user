@@ -42,11 +42,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/audio/Error tone chime_BLASTWAVEFX_16379.mp3">
       <publishTime>07/16/2016 04:43:08</publishTime>
     </File>
+    <File Include="assets/audio/Mac OS X - Mail application - email sent sound.mp3">
+      <publishTime>08/08/2016 10:09:07</publishTime>
+    </File>
     <File Include="assets/audio/Sound design digital accent descending 01_SFXBible_ss05706.mp3">
       <publishTime>07/18/2016 15:09:23</publishTime>
     </File>
     <File Include="assets/audio/Sound design multimedia accent button digital 02_SFXBible_ss02551.mp3">
       <publishTime>07/18/2016 15:17:53</publishTime>
+    </File>
+    <File Include="assets/audio/Whoosh_Swoosh_Swing_Fishing_Pole_CloseFull_Fienup_001.mp3">
+      <publishTime>08/05/2016 16:32:50</publishTime>
     </File>
     <File Include="assets/css/.DS_Store">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -697,7 +703,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>08/05/2016 16:05:10</publishTime>
+      <publishTime>08/08/2016 10:12:42</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1456,7 +1462,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2016 09:52:54</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
-      <publishTime>08/03/2016 11:41:53</publishTime>
+      <publishTime>08/05/2016 16:53:33</publishTime>
     </File>
     <File Include="Views/Home/Slack.cshtml">
       <publishTime>07/14/2016 15:04:24</publishTime>
@@ -1498,7 +1504,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2016 10:09:08</publishTime>
     </File>
     <File Include="Views/Messages/Index.cshtml">
-      <publishTime>08/04/2016 16:46:13</publishTime>
+      <publishTime>08/08/2016 10:09:35</publishTime>
     </File>
     <File Include="Views/Payroll/Create.cshtml">
       <publishTime>07/12/2016 12:48:24</publishTime>

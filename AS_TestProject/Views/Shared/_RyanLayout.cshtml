@@ -854,6 +854,24 @@
             });
       </script>
       <script>
+            $(document).ready(function() {
+                var audioElement = document.createElement('audio');
+                audioElement.setAttribute('src', '/ASPortal/assets/audio/Mac%20OS%20X%20-%20Mail%20application%20-%20email%20sent%20sound.mp3');
+                //audioElement.setAttribute('autoplay', 'autoplay');
+                //audioElement.load()
+
+                $.get();
+
+                //audioElement.addEventListener("load", function() {
+                //    audioElement.play();
+                //}, true);
+
+                $('.sendMsg-btn').click(function() {
+                    audioElement.play();
+                });
+            });
+      </script>
+      <script>
         function getTime()
         {
             var today=new Date();
