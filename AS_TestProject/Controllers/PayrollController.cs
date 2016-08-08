@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace AS_TestProject.Controllers
 {
-    [Authorize(Roles = "Payroll")]
+    [Authorize]
     public class PayrollController : UserNames
     {
         private ReportEntities mb = new ReportEntities();
