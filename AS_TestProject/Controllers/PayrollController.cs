@@ -24,9 +24,16 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Payroll
-        [Authorize(Roles = "Payroll")]
+        [Authorize]
         public ActionResult Index(int id)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            if (id != user.EmployeeID  && !(User.IsInRole("Payroll")))
+            {
+                return RedirectToAction("Directory", "Home");
+            }
+
             var now = System.DateTime.Now;;
             var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
             var payPeriodId = payPeriod.PayPeriodID;

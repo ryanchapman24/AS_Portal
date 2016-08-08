@@ -49,6 +49,9 @@ namespace AS_TestProject.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             var mb = new ReportEntities();
+            var now = System.DateTime.Now;
+            var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
+
 
             if (!string.IsNullOrWhiteSpace(id))
             {
@@ -63,6 +66,30 @@ namespace AS_TestProject.Controllers
                     ViewBag.Medium = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 2).OrderBy(t => t.Id).ToList();
                     ViewBag.Low = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
                     ViewBag.TaskCounter = userCheck.TaskTally;
+
+                    var entriesThisPayPeriod = mb.AgentDailyHours.Where(h => h.PayPeriodID == payPeriod.PayPeriodID && h.EmployeeID == userCheck.EmployeeID).OrderByDescending(h => h.LoginTimeStamp).ToList();                
+                    if (entriesThisPayPeriod.Count > 0)
+                    {
+                        decimal firstWeekHours = 0;
+                        decimal secondWeekHours = 0;
+                        var firstWeekEntries = entriesThisPayPeriod.Where(h => h.LoginTimeStamp >= payPeriod.StartDate && h.LoginTimeStamp < payPeriod.MidDate).OrderByDescending(h => h.LoginTimeStamp).ToList();
+                        var secondWeekEntries = entriesThisPayPeriod.Where(h => h.LoginTimeStamp >= payPeriod.MidDate && h.LoginTimeStamp < payPeriod.EndDate).OrderByDescending(h => h.LoginTimeStamp).ToList();
+                        if (firstWeekEntries.Count > 0)
+                        {
+                            firstWeekHours = firstWeekEntries.First().RegularHours.Value + firstWeekEntries.First().OverTimeHours.Value;
+                        }
+                        if (secondWeekEntries.Count > 0)
+                        {
+                            secondWeekHours = secondWeekEntries.First().RegularHours.Value + secondWeekEntries.First().OverTimeHours.Value;
+                        }
+                        ViewBag.Hours = firstWeekHours + secondWeekHours;
+                    }
+                    else
+                    {
+                        ViewBag.Hours = 0;
+                    }
+                    ViewBag.EmployeeID = userCheck.EmployeeID;
+                    
 
                     // Computing Time With Company
                     var userFromEmpTable = mb.Employees.First(e => e.EmployeeID == userCheck.EmployeeID);
@@ -166,6 +193,29 @@ namespace AS_TestProject.Controllers
             ViewBag.Medium = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 2).OrderBy(t => t.Id).ToList();
             ViewBag.Low = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
             ViewBag.TaskCounter = user.TaskTally;
+
+            var selfEntriesThisPayPeriod = mb.AgentDailyHours.Where(h => h.PayPeriodID == payPeriod.PayPeriodID && h.EmployeeID == user.EmployeeID).OrderByDescending(h => h.LoginTimeStamp).ToList();
+            if (selfEntriesThisPayPeriod.Count > 0)
+            {
+                decimal selfFirstWeekHours = 0;
+                decimal selfSecondWeekHours = 0;
+                var selfFirstWeekEntries = selfEntriesThisPayPeriod.Where(h => h.LoginTimeStamp >= payPeriod.StartDate && h.LoginTimeStamp < payPeriod.MidDate).OrderByDescending(h => h.LoginTimeStamp).ToList();
+                var selfSecondWeekEntries = selfEntriesThisPayPeriod.Where(h => h.LoginTimeStamp >= payPeriod.MidDate && h.LoginTimeStamp < payPeriod.EndDate).OrderByDescending(h => h.LoginTimeStamp).ToList();
+                if (selfFirstWeekEntries.Count > 0)
+                {
+                    selfFirstWeekHours = selfFirstWeekEntries.First().RegularHours.Value + selfFirstWeekEntries.First().OverTimeHours.Value;
+                }
+                if (selfSecondWeekEntries.Count > 0)
+                {
+                    selfSecondWeekHours = selfSecondWeekEntries.First().RegularHours.Value + selfSecondWeekEntries.First().OverTimeHours.Value;
+                }
+                ViewBag.Hours = selfFirstWeekHours + selfSecondWeekHours;
+            }
+            else
+            {
+                ViewBag.Hours = 0;
+            }
+            ViewBag.EmployeeID = user.EmployeeID;
 
             // Computing MY Time With Company
             var selfUserFromEmpTable = mb.Employees.First(e => e.EmployeeID == user.EmployeeID);
