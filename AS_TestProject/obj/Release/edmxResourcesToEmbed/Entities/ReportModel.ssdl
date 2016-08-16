@@ -408,6 +408,25 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="LeadSource" Type="varchar" MaxLength="25" />
     <Property Name="CallID" Type="varchar" MaxLength="25" />
   </EntityType>
+  <EntityType Name="CallLogRealTime">
+    <Key>
+      <PropertyRef Name="CallLogRealTimeID" />
+    </Key>
+    <Property Name="CallLogRealTimeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
+    <Property Name="AgentID" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="LeadID" Type="varchar" MaxLength="125" />
+    <Property Name="Disposition" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="CallHourOfDay" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="CampaignName" Type="varchar" MaxLength="225" Nullable="false" />
+    <Property Name="CallType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Skill" Type="varchar" MaxLength="125" />
+    <Property Name="ListName" Type="varchar" MaxLength="225" />
+    <Property Name="CustomerCity" Type="varchar" MaxLength="125" />
+    <Property Name="CustomerState" Type="char" MaxLength="2" />
+    <Property Name="CustomerZipCode" Type="varchar" MaxLength="9" />
+  </EntityType>
   <EntityType Name="EverquoteHourlyCampaignMetrics">
     <Key>
       <PropertyRef Name="HourlyCampaignID" />
@@ -1000,7 +1019,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <Parameter Name="ExceptionState" Type="int" Mode="In" />
   </Function>
   <Function Name="uspDailyPortfolioInventoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FREEDOM" />
-  <Function Name="AddEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspAgentDailyHours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspAssignPayPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
   <Function Name="uspEmployeeHoursCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAYROLL" />
@@ -1014,6 +1032,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
   <Function Name="uspInsertEverquoteHourlyCallMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
   <Function Name="uspInsertPreciseLeadsHourlyCallLogMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REPORT" />
   <Function Name="uspInsertClientLeads" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="STAGE">
+    <Parameter Name="RecordType" Type="char" Mode="In" />
     <Parameter Name="LeadID" Type="varchar" Mode="In" />
     <Parameter Name="ClientName" Type="varchar" Mode="In" />
     <Parameter Name="ArrivalTimestamp" Type="datetime" Mode="In" />
@@ -1030,6 +1049,15 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
     <Parameter Name="LeadType" Type="varchar" Mode="In" />
     <Parameter Name="CampaignName" Type="varchar" Mode="In" />
+    <Parameter Name="Disposition" Type="varchar" Mode="In" />
+    <Parameter Name="CallType" Type="varchar" Mode="In" />
+    <Parameter Name="AgentID" Type="varchar" Mode="In" />
+    <Parameter Name="CallHourOfDay" Type="char" Mode="In" />
+    <Parameter Name="Skill" Type="varchar" Mode="In" />
+    <Parameter Name="ListName" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerCity" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerState" Type="char" Mode="In" />
+    <Parameter Name="CustomerZipCode" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="ReportModelStoreContainer">
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="CLIENT" store:Type="Tables" />
@@ -1051,6 +1079,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <EntitySet Name="EmployeeHoursTotal" EntityType="Self.EmployeeHoursTotal" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="PayPeriod" EntityType="Self.PayPeriod" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
+    <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="EverquoteHourlyCampaignMetrics" EntityType="Self.EverquoteHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="EverquoteRollingCampaignMetrics" EntityType="Self.EverquoteRollingCampaignMetrics" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="Self.PreciseLeadsHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />

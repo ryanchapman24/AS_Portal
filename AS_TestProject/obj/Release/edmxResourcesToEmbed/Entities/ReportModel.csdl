@@ -19,6 +19,7 @@
     <FunctionImport Name="uspInsertPreciseLeadsHourlyCallLogMetrics" />
     <FunctionImport Name="uspDailyPortfolioInventoryReport" />
     <FunctionImport Name="uspInsertClientLeads" ReturnType="Collection(ReportModel.uspInsertClientLeads_Result)">
+      <Parameter Name="RecordType" Mode="In" Type="String" />
       <Parameter Name="LeadID" Mode="In" Type="String" />
       <Parameter Name="ClientName" Mode="In" Type="String" />
       <Parameter Name="ArrivalTimestamp" Mode="In" Type="DateTime" />
@@ -35,6 +36,15 @@
       <Parameter Name="EmailAddress" Mode="In" Type="String" />
       <Parameter Name="LeadType" Mode="In" Type="String" />
       <Parameter Name="CampaignName" Mode="In" Type="String" />
+      <Parameter Name="Disposition" Mode="In" Type="String" />
+      <Parameter Name="CallType" Mode="In" Type="String" />
+      <Parameter Name="AgentID" Mode="In" Type="String" />
+      <Parameter Name="CallHourOfDay" Mode="In" Type="String" />
+      <Parameter Name="Skill" Mode="In" Type="String" />
+      <Parameter Name="ListName" Mode="In" Type="String" />
+      <Parameter Name="CustomerCity" Mode="In" Type="String" />
+      <Parameter Name="CustomerState" Mode="In" Type="String" />
+      <Parameter Name="CustomerZipCode" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="AddEmployee" />
     <FunctionImport Name="FileNumber" />
@@ -147,6 +157,7 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
     </AssociationSet>
+    <EntitySet Name="CallLogRealTimes" EntityType="ReportModel.CallLogRealTime" />
   </EntityContainer>
   <ComplexType Name="uspInsertProblemMaster_Result">
     <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -1183,4 +1194,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="CallLogRealTime">
+    <Key>
+      <PropertyRef Name="CallLogRealTimeID" />
+    </Key>
+    <Property Name="CallLogRealTimeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+    <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="LeadID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Disposition" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="CallType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Skill" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="ListName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="CustomerZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
