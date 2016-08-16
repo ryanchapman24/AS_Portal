@@ -2,7 +2,15 @@
         var today = System.DateTime.Now;
     }  
 
-        @*<div id="showtime" style="margin-top: 30px; color: #29AAE3"></div>*@
+        <p>
+            @*@ViewBag.OurTransfersToday<br />
+            @ViewBag.TheirTransfersToday<br />
+            @ViewBag.AllTimeCTT<br />
+            @ViewBag.YearlyCTT<br />
+            @ViewBag.MonthlyCTT<br />
+            @ViewBag.DailyCTT<br />*@
+        </p>
+
         @if (ViewBag.birthdayList.Count > 0)
         { 
             <div style="margin-top: 30px">
@@ -195,29 +203,42 @@
             <div class="col-md-4 mb">
                 <div class="darkblue-panel pn">
                     <div class="darkblue-header">
-                        <h5>COMPANY COMPETITION</h5>
+                        <h5>TODAY'S TRANSFERS</h5>
                     </div>
                     <canvas id="serverstatus02" height="120" width="120"></canvas>
                     <script>
-                        var doughnutData = [
-                                {
-                                    value: 60,
-                                    color: "#29AAE3"
-                                },
-                                {
-                                    value: 40,
-                                    color: "#444c57"
-                                }
+                        @*var doughnutData = [
+                            {
+                                value: @ViewBag.OurTransfersToday,
+                                color: "#29AAE3"
+                            },
+                            {
+                                value: @ViewBag.TheirTransfersToday,
+                                color: "#444c57"
+                            }
+                        ];*@
+                        var pieData = [
+                            {
+                                value: @ViewBag.OurTransfersToday,
+                                color:"#29AAE3"
+                            },
+                            {
+                                value : @ViewBag.TheirTransfersToday,
+                                color : "#031B25"
+                            },
                         ];
                         var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                        new Chart(document.getElementById("serverstatus02").getContext("2d")).Pie(pieData);
                     </script>
-                    <p style="color: white">@today.ToString("D")</p>
+                    <p style="color: white; margin-bottom: 0px">@today.ToString("D")</p>
                     <footer>
                         <div class="pull-left">
-                            <h5><i class="fa fa-arrow-circle-left"></i> Wichita</h5>
+                            <h4 style="margin-top: 0px; color: #29AAE3"><strong>@ViewBag.TheirTransfersToday</strong></h4>
+                            <h5><i class="fa fa-arrow-circle-left"></i> @ViewBag.OtherSite</h5>
                         </div>
                         <div class="pull-right">
-                            <h5>Greensboro <i class="fa fa-arrow-circle-right"></i></h5>
+                            <h4 style="margin-top: 0px; color: #29AAE3"><strong>@ViewBag.OurTransfersToday</strong></h4>
+                            <h5>@ViewBag.UserSite <i class="fa fa-arrow-circle-right"></i></h5>
                         </div>
                     </footer>
                 </div><! -- /darkblue panel -->

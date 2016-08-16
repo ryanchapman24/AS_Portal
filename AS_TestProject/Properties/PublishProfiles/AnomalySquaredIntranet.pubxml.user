@@ -985,16 +985,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/13/2016 11:59:17</publishTime>
     </File>
     <File Include="Entities/AgentDailyHour.cs">
-      <publishTime>07/11/2016 13:56:22</publishTime>
+      <publishTime>08/04/2016 15:17:20</publishTime>
     </File>
     <File Include="Entities/AgentDailyHours1.cs">
-      <publishTime>07/05/2016 16:51:15</publishTime>
+      <publishTime>07/27/2016 15:21:52</publishTime>
     </File>
     <File Include="Entities/AgentTimeAdjustmentReason.cs">
       <publishTime>07/08/2016 00:54:54</publishTime>
     </File>
     <File Include="Entities/CallLogMaster.cs">
       <publishTime>07/05/2016 16:51:15</publishTime>
+    </File>
+    <File Include="Entities/CallLogRealTime.cs">
+      <publishTime>08/10/2016 16:41:35</publishTime>
     </File>
     <File Include="Entities/CampaignGroup.cs">
       <publishTime>06/27/2016 09:57:41</publishTime>
@@ -1018,7 +1021,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2016 09:57:41</publishTime>
     </File>
     <File Include="Entities/Employee.cs">
-      <publishTime>07/08/2016 10:38:47</publishTime>
+      <publishTime>08/04/2016 15:17:20</publishTime>
     </File>
     <File Include="Entities/EmployeeFive9Agent.cs">
       <publishTime>06/27/2016 09:57:41</publishTime>
@@ -1036,10 +1039,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/05/2016 16:51:15</publishTime>
     </File>
     <File Include="Entities/EverquoteHourlyCampaignMetric.cs">
-      <publishTime>07/11/2016 13:59:31</publishTime>
+      <publishTime>08/01/2016 15:07:17</publishTime>
     </File>
     <File Include="Entities/EverquoteRollingCampaignMetric.cs">
-      <publishTime>07/11/2016 13:59:31</publishTime>
+      <publishTime>08/01/2016 15:07:12</publishTime>
     </File>
     <File Include="Entities/FreedomDailyPortfolioInventory.cs">
       <publishTime>06/27/2016 09:57:41</publishTime>
@@ -1050,8 +1053,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Entities/FreedomHourlyCallMetrics1.cs">
       <publishTime>06/27/2016 09:57:41</publishTime>
     </File>
+    <File Include="Entities/NewEmployeeData.cs">
+      <publishTime>08/01/2016 15:22:40</publishTime>
+    </File>
     <File Include="Entities/PayPeriod.cs">
-      <publishTime>07/08/2016 10:44:22</publishTime>
+      <publishTime>08/04/2016 14:38:41</publishTime>
     </File>
     <File Include="Entities/Position.cs">
       <publishTime>06/27/2016 09:57:41</publishTime>
@@ -1060,31 +1066,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2016 09:57:41</publishTime>
     </File>
     <File Include="Entities/PreciseLeadsHourlyCampaignMetric.cs">
-      <publishTime>06/27/2016 09:57:41</publishTime>
+      <publishTime>08/01/2016 15:36:50</publishTime>
     </File>
     <File Include="Entities/PreciseLeadsRollingCampaignMetric.cs">
-      <publishTime>06/27/2016 09:57:41</publishTime>
+      <publishTime>08/01/2016 15:07:01</publishTime>
     </File>
     <File Include="Entities/ProblemMaster.cs">
       <publishTime>06/27/2016 09:57:41</publishTime>
     </File>
     <File Include="Entities/ReportModel.Context.cs">
-      <publishTime>07/11/2016 15:26:07</publishTime>
+      <publishTime>08/10/2016 16:41:30</publishTime>
     </File>
     <File Include="Entities/ReportModel.Context.tt">
       <publishTime>06/27/2016 09:57:18</publishTime>
     </File>
     <File Include="Entities/ReportModel.cs">
-      <publishTime>07/11/2016 15:26:11</publishTime>
+      <publishTime>08/10/2016 16:41:35</publishTime>
     </File>
     <File Include="Entities/ReportModel.Designer.cs">
-      <publishTime>07/11/2016 15:26:11</publishTime>
+      <publishTime>08/10/2016 16:41:35</publishTime>
     </File>
     <File Include="Entities/ReportModel.edmx">
-      <publishTime>07/11/2016 15:26:02</publishTime>
+      <publishTime>08/10/2016 16:41:24</publishTime>
     </File>
     <File Include="Entities/ReportModel.edmx.diagram">
-      <publishTime>08/04/2016 15:17:11</publishTime>
+      <publishTime>08/10/2016 16:41:24</publishTime>
     </File>
     <File Include="Entities/ReportModel.tt">
       <publishTime>06/27/2016 10:49:54</publishTime>

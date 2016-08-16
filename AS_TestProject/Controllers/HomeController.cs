@@ -26,6 +26,147 @@ namespace AS_TestProject.Controllers
             ViewBag.MonthlyTasks = user.Tasks.Where(t => t.Complete == true && t.Completed.Value.Month == todayMonth && t.Completed.Value.Year == todayYear).ToList();
             ViewBag.DailyMessages = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Out == true && m.Sent.Year == todayYear && m.Sent.Month == todayMonth && m.Sent.Day == todayDay).ToList();
 
+            var siteId = user.SiteID;
+            var ourEmployees = new List<Employee>();
+            var theirEmployees = new List<Employee>();
+            foreach (var employee in mb.Employees)
+            {
+                if (employee.SiteID == siteId)
+                {
+                    ourEmployees.Add(employee);
+                }
+                if (employee.SiteID != siteId)
+                {
+                    theirEmployees.Add(employee);
+                }
+            }
+
+            var ourAgentIds = new List<EmployeeFive9Agent>();
+            var theirAgentIds = new List<EmployeeFive9Agent>();
+            foreach (var employee in ourEmployees)
+            {
+                foreach (var agent in mb.EmployeeFive9Agent)
+                {
+                    if (agent.EmployeeID == employee.EmployeeID)
+                    {
+                        ourAgentIds.Add(agent);
+                    }
+                }
+
+            }
+            foreach (var employee in theirEmployees)
+            {
+                foreach (var agent in mb.EmployeeFive9Agent)
+                {
+                    if (agent.EmployeeID == employee.EmployeeID)
+                    {
+                        theirAgentIds.Add(agent);
+                    }
+                }
+            }
+
+            var ourTransfers = new List<CallLogRealTime>();
+            var theirTransfers = new List<CallLogRealTime>();
+
+            foreach (var call in mb.CallLogRealTimes)
+            {
+                foreach (var agent in ourAgentIds)
+                {
+                    if (call.AgentID == agent.AgentID && call.Disposition.Contains("Transfer") && !(call.Disposition.Contains("Not Int")) && call.RecordDate.Year == todayYear && call.RecordDate.Month == todayMonth && call.RecordDate.Day == todayDay)
+                    {
+                        ourTransfers.Add(call);
+                    }
+                }
+                foreach (var agent in theirAgentIds)
+                {
+                    if (call.AgentID == agent.AgentID && call.Disposition.Contains("Transfer") && !(call.Disposition.Contains("Not Int")) && call.RecordDate.Year == todayYear && call.RecordDate.Month == todayMonth && call.RecordDate.Day == todayDay)
+                    {
+                        theirTransfers.Add(call);
+                    }
+                }
+            }
+            ViewBag.OurTransfersToday = ourTransfers.Count();
+            ViewBag.TheirTransfersToday = theirTransfers.Count();
+            var userSite = mb.Sites.First(s => s.SiteID == user.SiteID);
+            var otherSite = mb.Sites.First(s => s.SiteID != user.SiteID);
+            ViewBag.UserSite = userSite.SiteName;
+            ViewBag.OtherSite = otherSite.SiteName;
+
+            //var empId = user.EmployeeID;
+            //var agents = mb.EmployeeFive9Agent.Where(a => a.EmployeeID == empId).ToList();
+            //var totalCalls = new List<CallLogRealTime>();
+            //foreach(var log in mb.CallLogRealTimes)
+            //{
+            //    foreach(var agent in agents)
+            //    {
+            //        if(log.AgentID == agent.AgentID)
+            //        {
+            //            totalCalls.Add(log);
+            //        }
+            //    }
+            //}
+
+            //var allContacts = totalCalls.Where(c => c.Disposition != "" && c.Disposition != "" && c.Disposition != "" && c.Disposition != "" && c.Disposition != "");
+            //var allTransfers = totalCalls.Where(c => c.Disposition.Contains("Transfer") && !(c.Disposition.Contains("Not Int")));
+            //decimal allTimeCallCount = allContacts.Count();
+            //decimal allTimeTransferCount = allTransfers.Count();
+            //decimal yearlyCallCount = allContacts.Where(c => c.RecordDate.Year == todayYear).Count();
+            //decimal yearlyTransferCount = allTransfers.Where(c => c.RecordDate.Year == todayYear).Count();
+            //decimal monthlyCallCount = allContacts.Where(c => c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth).Count();
+            //decimal monthlyTransferCount = allTransfers.Where(c => c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth).Count();
+            //decimal dailyCallCount = allContacts.Where(c => c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay).Count();
+            //decimal dailyTransferCount = allTransfers.Where(c => c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay).Count();
+            //var allTimeContactToTransfer = "";
+            //var yearlyContactToTransfer = "";
+            //var monthlyContactToTransfer = "";
+            //var dailyContactToTransfer = "";
+
+            //if (allTimeCallCount == 0)
+            //{
+            //   allTimeContactToTransfer = "N/A";
+            //}
+            //else
+            //{
+            //    var ratio = allTimeTransferCount/allTimeCallCount;
+            //    var percentage = ratio * 100;
+            //    allTimeContactToTransfer = percentage.ToString("0.00") + "%";
+            //}
+            //if (yearlyCallCount == 0)
+            //{
+            //    yearlyContactToTransfer = "N/A";
+            //}
+            //else
+            //{
+            //    var ratio = yearlyTransferCount/yearlyCallCount;
+            //    var percentage = ratio * 100;
+            //    yearlyContactToTransfer = percentage.ToString("0.00") + "%";
+            //}
+            //if (monthlyCallCount == 0)
+            //{
+            //    monthlyContactToTransfer = "N/A";
+            //}
+            //else
+            //{
+            //    var ratio = monthlyTransferCount/monthlyCallCount;
+            //    var percentage = ratio * 100;
+            //    monthlyContactToTransfer = percentage.ToString("0.00") + "%";
+            //}
+            //if (dailyCallCount == 0)
+            //{
+            //    dailyContactToTransfer = "N/A";
+            //}
+            //else
+            //{
+            //    var ratio = dailyTransferCount/dailyCallCount;
+            //    var percentage = ratio * 100;
+            //    dailyContactToTransfer = percentage.ToString("0.00") + "%";
+            //}
+
+            //ViewBag.AllTimeCTT = allTimeContactToTransfer;
+            //ViewBag.YearlyCTT = yearlyContactToTransfer;
+            //ViewBag.MonthlyCTT = monthlyContactToTransfer;
+            //ViewBag.DailyCTT = dailyContactToTransfer;
+
             return View();
         }
 

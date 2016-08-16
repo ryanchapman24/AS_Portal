@@ -53,6 +53,7 @@
         <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" />
         <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" />
         <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" />
+        <EntityTypeShape EntityType="ReportModel.CallLogRealTime" Width="1.5" PointX="0.75" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

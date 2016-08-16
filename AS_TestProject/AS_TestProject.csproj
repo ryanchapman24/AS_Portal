@@ -250,6 +250,9 @@
     <Compile Include="Entities\CallLogMaster.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\CallLogRealTime.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\CampaignGroup.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>

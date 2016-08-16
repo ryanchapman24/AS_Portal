@@ -27,7 +27,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="ReportModel.Store.AddEmployee" />
     <FunctionImportMapping FunctionImportName="uspImportedEmployees" FunctionName="ReportModel.Store.uspImportedEmployees" />
     <FunctionImportMapping FunctionImportName="uspNewEmployeeData" FunctionName="ReportModel.Store.uspNewEmployeeData" />
     <FunctionImportMapping FunctionImportName="uspHoursCalculation" FunctionName="ReportModel.Store.uspHoursCalculation" />
@@ -796,5 +795,25 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation1" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
+    <EntitySetMapping Name="CallLogRealTimes">
+      <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
+        <MappingFragment StoreEntitySet="CallLogRealTime">
+          <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
+          <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
+          <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+          <ScalarProperty Name="ListName" ColumnName="ListName" />
+          <ScalarProperty Name="Skill" ColumnName="Skill" />
+          <ScalarProperty Name="CallType" ColumnName="CallType" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
+          <ScalarProperty Name="Disposition" ColumnName="Disposition" />
+          <ScalarProperty Name="LeadID" ColumnName="LeadID" />
+          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
