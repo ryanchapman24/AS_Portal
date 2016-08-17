@@ -180,7 +180,7 @@ namespace AS_TestProject.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             var mb = new ReportEntities();
-            if (user.EmployeeID == 1000250)
+            if (user.EmployeeID == 1000250 || user.EmployeeID == 1000252)
             {
                 ViewBag.Directory = mb.Employees.OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
             }
