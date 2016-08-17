@@ -87,6 +87,7 @@ namespace AS_TestProject.Controllers
             }
             ViewBag.OurTransfersToday = ourTransfers.Count();
             ViewBag.TheirTransfersToday = theirTransfers.Count();
+            ViewBag.AnomalyTransfersToday = ourTransfers.Count() + theirTransfers.Count();
             var userSite = mb.Sites.First(s => s.SiteID == user.SiteID);
             var otherSite = mb.Sites.First(s => s.SiteID != user.SiteID);
             ViewBag.UserSite = userSite.SiteName;
@@ -178,8 +179,16 @@ namespace AS_TestProject.Controllers
         public ActionResult Directory()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
-            var mb = new ReportEntities();                       
-            ViewBag.Directory = mb.Employees.Where(d => d.SiteID == user.SiteID).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
+            var mb = new ReportEntities();
+            if (user.EmployeeID == 1000250)
+            {
+                ViewBag.Directory = mb.Employees.OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
+            }
+            else
+            {
+                ViewBag.Directory = mb.Employees.Where(d => d.SiteID == user.SiteID).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
+            } 
+
             ViewBag.PositionID = new SelectList(mb.Positions, "PositionID", "PositionName");
             ViewBag.SiteID = new SelectList(mb.Sites, "SiteID", "SiteName");
 

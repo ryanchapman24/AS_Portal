@@ -106,9 +106,21 @@
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="fa fa-volume-control-phone" style="padding-bottom: 20px; color: #29AAE3"></span>
-                    <h3>+430</h3>
+                    <h3>+@ViewBag.AnomalyTransfersToday</h3>
                 </div>
-                <p><strong>Anomaly Squared has generated 430 new leads today!</strong></p>
+                @if (ViewBag.AnomalyTransfersToday == 0)
+                {
+                    <p><strong>Anomaly Squared does not have any new transfers today.</strong></p>
+                }
+                @if (ViewBag.AnomalyTransfersToday == 1)
+                {
+                    <p><strong>Anomaly Squared has @ViewBag.AnomalyTransfersToday new transfer today.</strong></p>
+                }
+                else
+                {
+                    <p><strong>Anomaly Squared has @ViewBag.AnomalyTransfersToday new transfers today!</strong></p>
+                }
+                
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
