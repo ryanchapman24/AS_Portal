@@ -68,7 +68,7 @@ namespace AS_TestProject.Controllers
             var ourTransfers = new List<CallLogRealTime>();
             var theirTransfers = new List<CallLogRealTime>();
 
-            foreach (var call in mb.CallLogRealTimes)
+            foreach (var call in mb.CallLogRealTimes.Where(c => c.AgentID != ""))
             {
                 foreach (var agent in ourAgentIds)
                 {
