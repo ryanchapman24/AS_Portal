@@ -58,5 +58,6 @@ namespace AS_TestProject.Models
         public DbSet<Document> Documents { get; set; }
         public DbSet<OutboundMessage> OutboundMessages { get; set; }
         public DbSet<InboundMessage> InboundMessages { get; set; }
+        public DbSet<Event> Events { get; set; }
     }
 }

@@ -531,7 +531,26 @@ namespace AS_TestProject.Controllers
 
         public ActionResult Calendar()
         {
+            var now = System.DateTime.Now;
+            ViewBag.Date = now.ToShortDateString();
             return View();
+        }
+
+        public JsonResult GetEvents()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var dbEvents = db.Events.Where(e => e.AuthorId == user.Id);
+            var eventList = from e in dbEvents
+                            select new
+                            {
+                                id = e.Id,
+                                title = e.Title,
+                                start = e.StartDate,
+                                end = e.EndDate,
+                                allDay = e.AllDay
+                            };
+            var events = eventList.ToArray();
+            return Json(events, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Gallery()

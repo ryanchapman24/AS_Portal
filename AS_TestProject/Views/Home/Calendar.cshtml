@@ -1,5 +1,104 @@
 ﻿
-<h3><i class="fa fa-calendar"></i> Calendar</h3>
+@{
+    var noonToday = DateTime.Today.AddHours(12);
+}
+
+<h3><i class="fa fa-calendar"></i> Calendar <button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="">+ New Event</button></h3>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="margin-bottom: 15px">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Create New Calendar Event</h4>
+            </div>
+            @using (Html.BeginForm("Create", "Event", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="" style="">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1" checked> One Day
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option1"> Multiple Days
+                        </label><br /><br />
+                        <input id="start" type="hidden" name="StartDate" readonly="readonly" />
+                        <input id="end" type="hidden" name="EndDate" readonly="readonly" />
+                        <div id="oneDay" class="form-group">
+                            <div class="col-md-3 control-label">
+                                Title
+                            </div>
+                            <div class="col-md-9" style="margin-top: -5px">
+                                <div class="input-group">
+                                    <input id="oneTitle" class="form-control" name="title" type="text" required>
+                                </div>
+                            </div><br /><br /><br>
+                            <div class="col-md-3 control-label">
+                                Date
+                            </div>
+                            <div class="col-md-9" style="margin-top: -5px">
+                                <div class="input-group">
+                                    <input id="oneStart" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div><br /><br /><br>                         
+                            <div class="col-md-3 control-label">
+                                Time
+                            </div>
+                            <div class="col-md-9" style="margin-top: -5px">
+                                <div class="input-group bootstrap-timepicker">
+                                    <input id="oneTime" class="form-control timepicker-default" type="text" value="@noonToday.ToString("hh:mm:ss tt")" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                    </span>
+                                </div>
+                            </div><br />                          
+                        </div>
+                        <div id="multiDay" class="form-group hidden">
+                            <div class="col-md-3 control-label">
+                                Title
+                            </div>
+                            <div class="col-md-9" style="margin-top: -5px">
+                                <input id="multiTitle" class="form-control" name="Title" type="text" required>
+                            </div><br /><br /><br>
+                            <div class="col-md-3 control-label">
+                                Start Date
+                            </div>
+                            <div class="col-md-9" style="margin-top: -5px">
+                                <div class="input-group">
+                                    <input id="multiStart" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div><br /><br /><br>
+                            <div class="col-md-3 control-label">
+                                End Date
+                            </div>
+                            <div class="col-md-9" style="margin-top: -5px">
+                                <div class="input-group">
+                                    <input id="multiEnd" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div><br />                       
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top: 20px">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="oneDayBtn" type="submit" class="btn btn-theme">Confirm</button>
+                    <button id="multiDayBtn" type="submit" class="btn btn-theme hidden">Confirm</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
 <!-- page start-->
 <div class="row mt">
     <aside class="col-lg-3 mt">
@@ -35,6 +134,95 @@
     <script>
         $(document).ready(function () {
             $('#calend').addClass("active");
+
+            $("#inlineCheckbox1").click(function () {
+                $('#inlineCheckbox2').removeAttr("checked");
+                $('#oneDay').removeClass("hidden")
+                $('#oneDayBtn').removeClass("hidden")
+                $('#multiDay').addClass("hidden")
+                $('#multiDayBtn').addClass("hidden")
+            });
+
+            $("#inlineCheckbox2").click(function () {
+                $('#inlineCheckbox1').removeAttr("checked");
+                $('#multiDay').removeClass("hidden")
+                $('#multiDayBtn').removeClass("hidden")
+                $('#oneDay').addClass("hidden")
+                $('#oneDayBtn').addClass("hidden")
+            });
         });
+    </script>
+    <script>
+        var Script = function () {
+
+
+            /* initialize the external events
+             -----------------------------------------------------------------*/
+
+            $('#external-events div.external-event').each(function () {
+
+                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                // it doesn't need to have a start or end
+                var eventObject = {
+                    title: $.trim($(this).text()) // use the element's text as the event title
+                };
+
+                // store the Event Object in the DOM element so we can get to it later
+                $(this).data('eventObject', eventObject);
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true,      // will cause the event to go back to its
+                    revertDuration: 0  //  original position after the drag
+                });
+
+            });
+
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
+
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+
+            $('#full-calendar').fullCalendar({
+                header: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar !!!
+                drop: function (date, allDay) { // this function is called when something is dropped
+
+                    // retrieve the dropped element's stored Event Object
+                    var originalEventObject = $(this).data('eventObject');
+
+                    // we need to copy it, so that multiple events don't have a reference to the same object
+                    var copiedEventObject = $.extend({}, originalEventObject);
+
+                    // assign it the date that was reported
+                    copiedEventObject.start = date;
+                    copiedEventObject.allDay = allDay;
+
+                    // render the event on the calendar
+                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                    $('#full-calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+                    // is the "remove after drop" checkbox checked?
+                    if ($('#drop-remove').is(':checked')) {
+                        // if so, remove the element from the "Draggable Events" list
+                        $(this).remove();
+                    }
+
+                },
+                events: 'Home/GetEvents/'
+            });
+
+
+        }();
     </script>
 }

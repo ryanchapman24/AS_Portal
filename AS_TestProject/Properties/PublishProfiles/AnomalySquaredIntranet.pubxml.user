@@ -481,7 +481,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/calendar-conf-events.js">
-      <publishTime>07/12/2016 15:29:58</publishTime>
+      <publishTime>08/22/2016 12:25:27</publishTime>
     </File>
     <File Include="assets/js/chart-master/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>

@@ -360,6 +360,7 @@
     <Compile Include="Models\AdminUserListModels.cs" />
     <Compile Include="Models\AdminUserViewModels.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\GalleryPhoto.cs" />
     <Compile Include="Models\Helpers\UserRolesHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
