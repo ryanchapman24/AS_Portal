@@ -70,7 +70,7 @@
                                 <div class="right-divider hidden-sm hidden-xs">
                                     <h4 style="color: #29AAE3">14</h4>
                                     <h6>DAYS OF PTO LEFT</h6>
-                                    <h4 style="color: #29AAE3">@ViewBag.Hours<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })"><i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a></h4>
+                                    <h4 style="color: #29AAE3">@ViewBag.Hours@if (Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || User.IsInRole("Payroll")){<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })"><i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a>}</h4>
                                     <h6>HOURS THIS PAY PERIOD</h6>
                                     <h4 style="color: #29AAE3">@ViewBag.TimeWithCompany</h4>
                                     <h6>TIME WITH ANOMALY SQUARED</h6>
