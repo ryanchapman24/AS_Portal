@@ -703,7 +703,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>08/22/2016 15:12:22</publishTime>
+      <publishTime>08/23/2016 11:56:54</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1176,6 +1176,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Models/Document.cs">
       <publishTime>07/21/2016 12:19:02</publishTime>
     </File>
+    <File Include="Models/Event.cs">
+      <publishTime>08/22/2016 13:48:46</publishTime>
+    </File>
     <File Include="Models/GalleryPhoto.cs">
       <publishTime>06/27/2016 15:12:18</publishTime>
     </File>
@@ -1447,7 +1450,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Views/Home/Calendar.cshtml">
-      <publishTime>08/22/2016 15:56:34</publishTime>
+      <publishTime>08/22/2016 16:04:54</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>06/20/2016 16:48:04</publishTime>
@@ -1546,7 +1549,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2016 11:08:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/01/2016 17:29:07</publishTime>
+      <publishTime>08/23/2016 11:56:55</publishTime>
     </File>
   </ItemGroup>
 </Project>
