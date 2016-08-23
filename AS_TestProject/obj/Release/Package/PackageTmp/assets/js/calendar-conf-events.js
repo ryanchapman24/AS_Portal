@@ -35,7 +35,7 @@ var Script = function () {
 
     $('#full-calendar').fullCalendar({
         header: {
-            left: 'prev,next today',
+            left: 'prev,next',
             center: 'title',
             right: 'month,basicWeek,basicDay'
         },

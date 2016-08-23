@@ -17,12 +17,14 @@
                 @Html.AntiForgeryToken()
                 <div class="modal-body">
                     <div class="" style="">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1" value="option1" checked> One Day
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2" value="option1"> Multiple Days
-                        </label><br /><br />
+                        <div style="text-align: center">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox1" style="margin-top: 2px" checked> One Day
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox2" style="margin-top: 2px"> Multiple Days
+                            </label>
+                        </div><br /><br /><br />
                         <input id="start" type="hidden" name="StartDate" readonly="readonly" />
                         <input id="end" type="hidden" name="EndDate" readonly="readonly" />
                         <div id="oneDay" class="form-group">
@@ -30,9 +32,7 @@
                                 Title
                             </div>
                             <div class="col-md-9" style="margin-top: -5px">
-                                <div class="input-group">
-                                    <input id="oneTitle" class="form-control" name="title" type="text" required>
-                                </div>
+                                <input id="oneTitle" class="form-control capitalize" name="Title" type="text" required>
                             </div><br /><br /><br>
                             <div class="col-md-3 control-label">
                                 Date
@@ -48,7 +48,7 @@
                             <div class="col-md-3 control-label">
                                 Time
                             </div>
-                            <div class="col-md-9" style="margin-top: -5px">
+                            <div class="col-md-9" style="margin-top: -4px">
                                 <div class="input-group bootstrap-timepicker">
                                     <input id="oneTime" class="form-control timepicker-default" type="text" value="@noonToday.ToString("hh:mm:ss tt")" />
                                     <span class="input-group-btn">
@@ -62,7 +62,7 @@
                                 Title
                             </div>
                             <div class="col-md-9" style="margin-top: -5px">
-                                <input id="multiTitle" class="form-control" name="Title" type="text" required>
+                                <input id="multiTitle" class="form-control capitalize" name="Title" type="text" required>
                             </div><br /><br /><br>
                             <div class="col-md-3 control-label">
                                 Start Date
@@ -150,6 +150,12 @@
                 $('#oneDay').addClass("hidden")
                 $('#oneDayBtn').addClass("hidden")
             });
+
+            $.ajax({
+                type: 'POST',
+                url: "GetEvents/",
+                dataType: "json"
+            });
         });
     </script>
     <script>
@@ -219,10 +225,8 @@
                     }
 
                 },
-                events: 'Home/GetEvents/'
+                events: 'GetEvents/'
             });
-
-
         }();
     </script>
 }

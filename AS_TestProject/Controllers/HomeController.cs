@@ -533,6 +533,7 @@ namespace AS_TestProject.Controllers
         {
             var now = System.DateTime.Now;
             ViewBag.Date = now.ToShortDateString();
+
             return View();
         }
 
