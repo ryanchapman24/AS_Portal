@@ -36,6 +36,8 @@ namespace AS_TestProject.Models
                 ViewBag.LowTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
 
                 ViewBag.Messages = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == false && m.Out == true && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
+                ViewBag.Team = db.Users.Where(t => t.SiteID == user.SiteID && t.Id != user.Id).OrderBy(t => t.FirstName);
+
                 base.OnActionExecuting(filterContext);
             }
         }

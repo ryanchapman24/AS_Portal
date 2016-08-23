@@ -543,67 +543,24 @@
 
                       <!-- USERS ONLINE SECTION -->
                       <h3>TEAM MEMBERS</h3>
-                      <!-- First Member -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <img class="img-circle" src="~/assets/img/ui-divya.jpg" style="width: 35px; height: 35px">
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <a href="#">DIVYA MANIAN</a><br />
-                                  <muted>Available</muted>
-                              </p>
-                          </div>
-                      </div>
-                      <!-- Second Member -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <img class="img-circle" src="~/assets/img/ui-sherman.jpg" style="width: 35px; height: 35px">
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <a href="#">DJ SHERMAN</a><br />
-                                  <muted>I am Busy</muted>
-                              </p>
-                          </div>
-                      </div>
-                      <!-- Third Member -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <img class="img-circle" src="~/assets/img/ui-danro.jpg" style="width: 35px; height: 35px">
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <a href="#">DAN ROGERS</a><br />
-                                  <muted>Available</muted>
-                              </p>
-                          </div>
-                      </div>
-                      <!-- Fourth Member -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <img class="img-circle" src="~/assets/img/ui-zac.jpg" style="width: 35px; height: 35px">
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <a href="#">Zac Sniders</a><br />
-                                  <muted>Available</muted>
-                              </p>
-                          </div>
-                      </div>
-                      <!-- Fifth Member -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <img class="img-circle" src="~/assets/img/ui-sam.jpg" style="width: 35px; height: 35px">
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <a href="#">Marcel Newman</a><br />
-                                  <muted>Available</muted>
-                              </p>
-                          </div>
-                      </div>
-
+                      <div style="max-height: 600px; overflow-y: auto; overflow-x: hidden">
+                          @foreach (var member in ViewBag.Team)
+                          {
+                            <a href="@Url.Action("ProfilePage", "Home", new { id = member.Id })">
+                                <div class="desc">
+                                    <div class="thumb">
+                                        <img class="img-circle" src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",member.ProfilePic)" style="width: 35px; height: 35px">
+                                    </div>
+                                    <div class="details">
+                                        <p>
+                                            <span><strong>@member.DisplayName</strong></span><br />
+                                            <muted>@member.Position.PositionName</muted>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                          }
+                      </div>                    
                       <!-- CALENDAR-->
                       <div id="calendar" class="mb">
                           <div class="panel green-panel no-margin">
