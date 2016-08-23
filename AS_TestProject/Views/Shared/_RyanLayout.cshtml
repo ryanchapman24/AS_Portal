@@ -841,7 +841,58 @@
                 });
             });
       </script>
-      @if (user.SiteID == 1)
+      <script>
+            function getTime()
+            {
+                var today=new Date();
+                var h = today.getHours();
+                if (h > 12) {
+                    var hr = h - 12;
+                    var mer = " PM"
+                }
+                else if (h == 12) {
+                    var hr = h;
+                    var mer = " PM"
+                }
+                else if (h == 0) {
+                    var hr = h + 12;
+                    var mer = " AM"
+                }
+                else {
+                    var hr = h;
+                    var mer = " AM"
+                }
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                var ms = today.getMilliseconds();
+
+                // add a zero in front of numbers<10
+                m=checkTime(m);
+                s=checkTime(s);
+                document.getElementById('showtime').innerHTML = hr + ":" + m + mer;
+                $('#addTime').val(h + ":" + m + ":" + s + "." + ms + "0000");
+                t = setTimeout(function () { getTime() }, 500);
+
+                if (h >= 20 || (h >= 0 && h < 6)) {
+                    $('#moonIcon').removeClass('hidden');
+                    $('#sunIcon').addClass('hidden');
+                }
+                else if (h >= 6 && h < 20) {
+                    $('#sunIcon').removeClass('hidden');
+                    $('#moonIcon').addClass('hidden');
+                }
+            }
+
+            function checkTime(i)
+            {
+                if (i<10)
+                {
+                    i="0" + i;
+                }
+                return i;
+            }
+      </script>
+      @*@if (user.SiteID == 1)
       {
         <script>
             function getTime()
@@ -948,6 +999,6 @@
                 return i;
             }
         </script>
-      }
+      }*@
   </body>
 </html>
