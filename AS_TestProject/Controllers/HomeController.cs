@@ -68,18 +68,18 @@ namespace AS_TestProject.Controllers
             var ourTransfers = new List<CallLogRealTime>();
             var theirTransfers = new List<CallLogRealTime>();
 
-            foreach (var call in mb.CallLogRealTimes.Where(c => c.AgentID != ""))
+            foreach (var call in mb.CallLogRealTimes.Where(c => c.AgentID != "" && c.Disposition.Contains("Transfer") && !(c.Disposition.Contains("Not Int")) && c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay))
             {
                 foreach (var agent in ourAgentIds)
                 {
-                    if (call.AgentID == agent.AgentID && call.Disposition.Contains("Transfer") && !(call.Disposition.Contains("Not Int")) && call.RecordDate.Year == todayYear && call.RecordDate.Month == todayMonth && call.RecordDate.Day == todayDay)
+                    if (call.AgentID == agent.AgentID)
                     {
                         ourTransfers.Add(call);
                     }
                 }
                 foreach (var agent in theirAgentIds)
                 {
-                    if (call.AgentID == agent.AgentID && call.Disposition.Contains("Transfer") && !(call.Disposition.Contains("Not Int")) && call.RecordDate.Year == todayYear && call.RecordDate.Month == todayMonth && call.RecordDate.Day == todayDay)
+                    if (call.AgentID == agent.AgentID)
                     {
                         theirTransfers.Add(call);
                     }
