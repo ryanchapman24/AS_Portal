@@ -703,7 +703,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>08/24/2016 14:24:52</publishTime>
+      <publishTime>08/25/2016 11:21:13</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1440,6 +1440,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Employees/Create.cshtml">
       <publishTime>07/19/2016 10:18:45</publishTime>
     </File>
+    <File Include="Views/Employees/Details.cshtml">
+      <publishTime>08/25/2016 11:14:31</publishTime>
+    </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>07/27/2016 13:46:53</publishTime>
     </File>
@@ -1456,7 +1459,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>07/27/2016 15:02:29</publishTime>
+      <publishTime>08/25/2016 10:45:03</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
       <publishTime>07/19/2016 16:49:25</publishTime>
