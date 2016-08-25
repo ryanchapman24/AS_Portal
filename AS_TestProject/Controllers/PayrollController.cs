@@ -78,7 +78,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Payroll")]
+        [Authorize(Roles = "Admin, Payroll")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID,EditByEmployeeID,EditTimeStamp")] AgentDailyHour agentDailyHour, int empId, short ppId)
         {
@@ -118,7 +118,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Payroll/Edit/5
-        [Authorize(Roles = "Payroll")]
+        [Authorize(Roles = "Admin, Payroll")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -143,7 +143,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Payroll")]
+        [Authorize(Roles = "Admin, Payroll")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID")] AgentDailyHour agentDailyHour)
         {

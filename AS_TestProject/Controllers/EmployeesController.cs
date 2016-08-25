@@ -120,6 +120,28 @@ namespace AS_TestProject.Controllers
             return View(employee);
         }
 
+        // GET: Customers/Details/5
+        [Authorize(Roles = "Admin, HR")]
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee= mb.Employees.Find(id);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+
+            Employee manager = mb.Employees.Find(employee.ManagerEmployeeID);
+            Employee creator = mb.Employees.Find(employee.AddByEmployeeID);
+            ViewBag.Manager = manager.FirstName + " " + manager.LastName;
+            ViewBag.Creator = creator.FirstName + " " + creator.LastName;
+
+            return View(employee);
+        }
+
         //// GET: Employees/Delete/5
         //public ActionResult Delete(int? id)
         //{

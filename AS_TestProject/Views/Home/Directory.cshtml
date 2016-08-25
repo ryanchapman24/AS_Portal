@@ -219,13 +219,14 @@
                                         <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
                                         }
                                     <td class="text-nowrap">
-                                        @if (User.IsInRole("Payroll"))
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
                                         {
                                             <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
                                         }
                                         @if (User.IsInRole("Admin") || User.IsInRole("HR"))
                                         {
-                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a>
+                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
                                         }
                                     </td>
                                 </tr>
