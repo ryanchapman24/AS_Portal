@@ -12,89 +12,117 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Create New Calendar Event</h4>
             </div>
-            @using (Html.BeginForm("Create", "Event", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="modal-body">
-                    <div class="" style="">
-                        <div style="text-align: center">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox1" style="margin-top: 2px" checked> One Day
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox2" style="margin-top: 2px"> Multiple Days
-                            </label>
-                        </div><br /><br /><br />
-                        <input id="start" type="hidden" name="StartDate" readonly="readonly" />
-                        <input id="end" type="hidden" name="EndDate" readonly="readonly" />
-                        <div id="oneDay" class="form-group">
-                            <div class="col-md-3 control-label">
-                                Title
-                            </div>
-                            <div class="col-md-9" style="margin-top: -5px">
-                                <input id="oneTitle" class="form-control capitalize" name="Title" type="text" required>
-                            </div><br /><br /><br>
-                            <div class="col-md-3 control-label">
-                                Date
-                            </div>
-                            <div class="col-md-9" style="margin-top: -5px">
-                                <div class="input-group">
-                                    <input id="oneStart" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
-                                    </span>
+            <div style="text-align: center">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" style="margin-top: 2px" checked> One Day
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" style="margin-top: 2px"> Multiple Days
+                </label>
+            </div><br /><br />
+            <div id="oneDay">
+                @using (Html.BeginForm("CreateEvent", "Home", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <div class="" style="">
+                            <input id="oneRealStart" type="hidden" name="StartDate" readonly="readonly" />
+                            <input id="oneRealEnd" type="hidden" name="EndDate" readonly="readonly" />
+                            <div class="form-group">
+                                <div class="col-md-3 control-label">
+                                    Title
                                 </div>
-                            </div><br /><br /><br>                         
-                            <div class="col-md-3 control-label">
-                                Time
-                            </div>
-                            <div class="col-md-9" style="margin-top: -4px">
-                                <div class="input-group bootstrap-timepicker">
-                                    <input id="oneTime" class="form-control timepicker-default" type="text" value="@noonToday.ToString("hh:mm:ss tt")" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
-                                    </span>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <input id="oneTitle" class="form-control capitalize" name="Title" type="text" required>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    Date
                                 </div>
-                            </div><br />                          
-                        </div>
-                        <div id="multiDay" class="form-group hidden">
-                            <div class="col-md-3 control-label">
-                                Title
-                            </div>
-                            <div class="col-md-9" style="margin-top: -5px">
-                                <input id="multiTitle" class="form-control capitalize" name="Title" type="text" required>
-                            </div><br /><br /><br>
-                            <div class="col-md-3 control-label">
-                                Start Date
-                            </div>
-                            <div class="col-md-9" style="margin-top: -5px">
-                                <div class="input-group">
-                                    <input id="multiStart" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
-                                    </span>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <div class="input-group">
+                                        <input id="oneStart" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    All Day?
                                 </div>
-                            </div><br /><br /><br>
-                            <div class="col-md-3 control-label">
-                                End Date
+                                <div class="col-md-9" style="margin-top: -4px">
+                                    <div class="input-group bootstrap-timepicker">
+                                        <input id="oneAllDay" type="checkbox" name="AllDay" value="true" style="margin-top: 6px" checked/>
+                                    </div>
+                                </div><br /><br /><br />
+                                <div id="oneTimeDiv" style="margin-top: -5px">
+                                    <div class="col-md-3 control-label">
+                                        Time
+                                    </div>
+                                    <div class="col-md-9" style="margin-top: -4px">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input id="oneTime" class="form-control timepicker-calendar" type="text" value="@noonToday.ToString("hh:mm tt")" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><br />
                             </div>
-                            <div class="col-md-9" style="margin-top: -5px">
-                                <div class="input-group">
-                                    <input id="multiEnd" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
-                                    </span>
-                                </div>
-                            </div><br />                       
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer" style="margin-top: 20px">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="oneDayBtn" type="submit" class="btn btn-theme">Confirm</button>
-                    <button id="multiDayBtn" type="submit" class="btn btn-theme hidden">Confirm</button>
-                </div>
-            }
+                    <div class="modal-footer" style="margin-top: 20px">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-theme">Confirm</button>
+                    </div>
+                }
+            </div>
+            <div id="multiDay" class="hidden">
+                @using (Html.BeginForm("CreateEvent", "Home", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <div class="" style="">
+                            <input id="multiRealStart" type="hidden" name="StartDate" readonly="readonly" />
+                            <input id="multiRealEnd" type="hidden" name="EndDate" readonly="readonly" />
+                            <input type="checkbox" class="hidden" name="AllDay" value="true" checked />                        
+                            <div class="form-group">
+                                <div class="col-md-3 control-label">
+                                    Title
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <input id="multiTitle" class="form-control capitalize" name="Title" type="text" required>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    Start Date
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <div class="input-group">
+                                        <input id="multiStart" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    End Date
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <div class="input-group">
+                                        <input id="multiEnd" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div><br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 20px">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-theme">Confirm</button>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>
@@ -135,27 +163,30 @@
         $(document).ready(function () {
             $('#calend').addClass("active");
 
+            var div = $('#oneTimeDiv').closest('.modal-body');
+
             $("#inlineCheckbox1").click(function () {
                 $('#inlineCheckbox2').removeAttr("checked");
                 $('#oneDay').removeClass("hidden")
-                $('#oneDayBtn').removeClass("hidden")
                 $('#multiDay').addClass("hidden")
-                $('#multiDayBtn').addClass("hidden")
             });
 
             $("#inlineCheckbox2").click(function () {
                 $('#inlineCheckbox1').removeAttr("checked");
                 $('#multiDay').removeClass("hidden")
-                $('#multiDayBtn').removeClass("hidden")
                 $('#oneDay').addClass("hidden")
-                $('#oneDayBtn').addClass("hidden")
             });
+            
+            $('#oneAllDay').change(function () {                         
+                $('#oneTimeDiv').toggle(!this.checked);
 
-            $.ajax({
-                type: 'POST',
-                url: "GetEvents/",
-                dataType: "json"
-            });
+                if ($("#oneTimeDiv").css('display') == 'none') {
+                    div.css({ height: "171px" });
+                };
+                if ($("#oneTimeDiv").css('display') != 'none') {
+                    div.css({ height: "auto" });
+                };
+            }).change(); //ensure visible state matches initially
         });
     </script>
     <script>
@@ -225,7 +256,7 @@
                     }
 
                 },
-                events: 'GetEvents/'
+                events: '@Url.Action("GetEvents", "Home")'
             });
         }();
     </script>
