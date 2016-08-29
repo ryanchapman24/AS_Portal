@@ -162,7 +162,6 @@
     <script>
         $(document).ready(function () {
             $('#calend').addClass("active");
-
             var div = $('#oneTimeDiv').closest('.modal-body');
 
             $("#inlineCheckbox1").click(function () {
@@ -170,16 +169,13 @@
                 $('#oneDay').removeClass("hidden")
                 $('#multiDay').addClass("hidden")
             });
-
             $("#inlineCheckbox2").click(function () {
                 $('#inlineCheckbox1').removeAttr("checked");
                 $('#multiDay').removeClass("hidden")
                 $('#oneDay').addClass("hidden")
-            });
-            
+            });         
             $('#oneAllDay').change(function () {                         
                 $('#oneTimeDiv').toggle(!this.checked);
-
                 if ($("#oneTimeDiv").css('display') == 'none') {
                     div.css({ height: "171px" });
                 };
@@ -191,19 +187,15 @@
     </script>
     <script>
         var Script = function () {
-
-
             /* initialize the external events
              -----------------------------------------------------------------*/
 
             $('#external-events div.external-event').each(function () {
-
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                 // it doesn't need to have a start or end
                 var eventObject = {
                     title: $.trim($(this).text()) // use the element's text as the event title
                 };
-
                 // store the Event Object in the DOM element so we can get to it later
                 $(this).data('eventObject', eventObject);
 
@@ -213,13 +205,10 @@
                     revert: true,      // will cause the event to go back to its
                     revertDuration: 0  //  original position after the drag
                 });
-
             });
-
 
             /* initialize the calendar
              -----------------------------------------------------------------*/
-
             var date = new Date();
             var d = date.getDate();
             var m = date.getMonth();
@@ -254,7 +243,6 @@
                         // if so, remove the element from the "Draggable Events" list
                         $(this).remove();
                     }
-
                 },
                 events: '@Url.Action("GetEvents", "Home")'
             });
