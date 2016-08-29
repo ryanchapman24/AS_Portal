@@ -8,6 +8,7 @@ using AS_TestProject.Entities;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 
 namespace AS_TestProject.Controllers
 {
@@ -537,21 +538,27 @@ namespace AS_TestProject.Controllers
             return View();
         }
 
-        public JsonResult GetEvents()
+        public ActionResult GetEvents()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
-            var dbEvents = db.Events.Where(e => e.AuthorId == user.Id);
-            var eventList = from e in dbEvents
-                            select new
-                            {
-                                id = e.Id,
-                                title = e.Title,
-                                start = e.StartDate,
-                                end = e.EndDate,
-                                allDay = e.AllDay
-                            };
-            var events = eventList.ToArray();
-            return Json(events, JsonRequestBehavior.AllowGet);
+            var allEvents = db.Events.Where(e => e.AuthorId == user.Id).ToList();
+            var eventlist = new List<object>();
+            foreach (var x in allEvents)
+            {
+                eventlist.Add(new { title = x.Title, start = x.StartDate, end = x.EndDate });
+            }
+            return Content(JsonConvert.SerializeObject(eventlist), "application/json");
+        }
+
+        public ActionResult CreateEvent(Event calEvent)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            calEvent.AuthorId = user.Id;
+            db.Events.Add(calEvent);
+            db.SaveChanges();
+
+            return RedirectToAction("Calendar");
         }
 
         public ActionResult Gallery()
