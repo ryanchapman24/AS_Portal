@@ -545,7 +545,7 @@ namespace AS_TestProject.Controllers
             var eventlist = new List<object>();
             foreach (var x in allEvents)
             {
-                eventlist.Add(new { title = x.Title, start = x.StartDate, end = x.EndDate });
+                eventlist.Add(new { title = x.Title, start = x.StartDate, end = x.EndDate, allDay = x.AllDay });
             }
             return Content(JsonConvert.SerializeObject(eventlist), "application/json");
         }
