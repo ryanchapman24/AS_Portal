@@ -783,6 +783,18 @@
                   $('#prevDate').datepicker('hide').blur();
               });
 
+              $('#oneDate').on('changeDate', function (ev) {
+                  $('#oneDate').datepicker('hide').blur();
+              });
+
+              $('#multiStartDate').on('changeDate', function (ev) {
+                  $('#multiStartDate').datepicker('hide').blur();
+              });
+
+              $('#multiEndDate').on('changeDate', function (ev) {
+                  $('#multiEndDate').datepicker('hide').blur();
+              });
+
               $('.timepicker-default').timepicker({
                   autoclose: true,
                   minuteStep: 1,
@@ -804,7 +816,6 @@
                   showMeridian: false
               });
           });
-      
       </script>
       @*<script>
           $(document).ready( function () {
