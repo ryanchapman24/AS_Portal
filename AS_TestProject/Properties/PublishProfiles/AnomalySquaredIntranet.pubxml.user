@@ -1393,7 +1393,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/17/2016 15:07:37</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>07/18/2016 15:22:02</publishTime>
+      <publishTime>09/06/2016 14:24:51</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>07/20/2016 12:36:15</publishTime>
@@ -1543,7 +1543,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>09/02/2016 12:50:09</publishTime>
+      <publishTime>09/06/2016 13:13:05</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2016 16:31:23</publishTime>

@@ -313,7 +313,7 @@
 
                   <li>
                       <a id="profile" href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
-                          <i class="fa fa-user"></i>
+                          <i class="fa fa-user-plus"></i>
                           <span>Profile</span>
                       </a>
                   </li>
@@ -584,7 +584,7 @@
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              @DateTime.Now.Year - Anomaly Squared
+              <strong>&copy; Anomaly Squared | @DateTime.Now.Year</strong>
               <a href="#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
@@ -594,8 +594,6 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-      @*@Scripts.Render("~/bundles/jquery")
-      @Scripts.Render("~/bundles/bootstrap")*@
     <script src="~/assets/js/jquery.js"></script>
     <script src="~/assets/js/jquery-1.8.3.min.js"></script>
     <script src="~/assets/js/jquery-ui-1.9.2.custom.min.js"></script>

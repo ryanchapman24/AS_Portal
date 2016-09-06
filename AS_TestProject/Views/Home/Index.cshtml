@@ -116,7 +116,7 @@
                 {
                     <p><strong>Anomaly Squared has @ViewBag.AnomalyTransfersToday new transfer today.</strong></p>
                 }
-                else
+                @if (ViewBag.AnomalyTransfersToday > 1)
                 {
                     <p><strong>Anomaly Squared has @ViewBag.AnomalyTransfersToday new transfers today!</strong></p>
                 }
