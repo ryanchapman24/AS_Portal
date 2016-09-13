@@ -58,6 +58,7 @@ namespace AS_TestProject.Entities
         public virtual DbSet<FreedomHourlyCallMetrics1> FreedomHourlyCallMetrics1 { get; set; }
         public virtual DbSet<PreciseLeadsHourlyCallLogMaster> PreciseLeadsHourlyCallLogMasters { get; set; }
         public virtual DbSet<CallLogRealTime> CallLogRealTimes { get; set; }
+        public virtual DbSet<DisciplinaryAction> DisciplinaryActions { get; set; }
     
         public virtual ObjectResult<uspInsertProblemMaster_Result> uspInsertProblemMaster(string userID, string processName, Nullable<int> errorNumber, Nullable<int> lineNumber, string exceptionMessage, string exceptionSource, Nullable<int> exceptionSeverity, Nullable<int> exceptionState)
         {
@@ -131,7 +132,7 @@ namespace AS_TestProject.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspDailyPortfolioInventoryReport");
         }
     
-        public virtual ObjectResult<uspInsertClientLeads_Result> uspInsertClientLeads(string recordType, string leadID, string clientName, Nullable<System.DateTime> arrivalTimestamp, Nullable<System.DateTime> preserviceTimestamp, Nullable<System.DateTime> postserviceTimestamp, string phoneNumber, string firstName, string lastName, string addressLine1, string addressLine2, string zipCode, string city, string state, string emailAddress, string leadType, string campaignName, string disposition, string callType, string agentID, string callHourOfDay, string skill, string listName, string customerCity, string customerState, string customerZipCode)
+        public virtual ObjectResult<uspInsertClientLeads_Result> uspInsertClientLeads(string recordType, string leadID, string clientName, Nullable<System.DateTime> arrivalTimestamp, Nullable<System.DateTime> preserviceTimestamp, Nullable<System.DateTime> postserviceTimestamp, string phoneNumber, string firstName, string lastName, string addressLine1, string addressLine2, string zipCode, string city, string state, string emailAddress, string leadType, string campaignName, string disposition, string callType, string agentID, string callHourOfDay, string skill, string listName, string customerCity, string customerState, string customerZipCode, string callID, string projectID, string patientID)
         {
             var recordTypeParameter = recordType != null ?
                 new ObjectParameter("RecordType", recordType) :
@@ -237,7 +238,19 @@ namespace AS_TestProject.Entities
                 new ObjectParameter("CustomerZipCode", customerZipCode) :
                 new ObjectParameter("CustomerZipCode", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspInsertClientLeads_Result>("uspInsertClientLeads", recordTypeParameter, leadIDParameter, clientNameParameter, arrivalTimestampParameter, preserviceTimestampParameter, postserviceTimestampParameter, phoneNumberParameter, firstNameParameter, lastNameParameter, addressLine1Parameter, addressLine2Parameter, zipCodeParameter, cityParameter, stateParameter, emailAddressParameter, leadTypeParameter, campaignNameParameter, dispositionParameter, callTypeParameter, agentIDParameter, callHourOfDayParameter, skillParameter, listNameParameter, customerCityParameter, customerStateParameter, customerZipCodeParameter);
+            var callIDParameter = callID != null ?
+                new ObjectParameter("CallID", callID) :
+                new ObjectParameter("CallID", typeof(string));
+    
+            var projectIDParameter = projectID != null ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(string));
+    
+            var patientIDParameter = patientID != null ?
+                new ObjectParameter("PatientID", patientID) :
+                new ObjectParameter("PatientID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspInsertClientLeads_Result>("uspInsertClientLeads", recordTypeParameter, leadIDParameter, clientNameParameter, arrivalTimestampParameter, preserviceTimestampParameter, postserviceTimestampParameter, phoneNumberParameter, firstNameParameter, lastNameParameter, addressLine1Parameter, addressLine2Parameter, zipCodeParameter, cityParameter, stateParameter, emailAddressParameter, leadTypeParameter, campaignNameParameter, dispositionParameter, callTypeParameter, agentIDParameter, callHourOfDayParameter, skillParameter, listNameParameter, customerCityParameter, customerStateParameter, customerZipCodeParameter, callIDParameter, projectIDParameter, patientIDParameter);
         }
     
         public virtual int AddEmployee()

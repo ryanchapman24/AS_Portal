@@ -28,5 +28,9 @@ namespace AS_TestProject.Entities
         public string CustomerCity { get; set; }
         public string CustomerState { get; set; }
         public string CustomerZipCode { get; set; }
+        public string CallID { get; set; }
+        public string ProjectID { get; set; }
+        public string PatientID { get; set; }
+        public System.TimeSpan RecordTime { get; set; }
     }
 }

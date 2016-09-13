@@ -45,6 +45,9 @@
       <Parameter Name="CustomerCity" Mode="In" Type="String" />
       <Parameter Name="CustomerState" Mode="In" Type="String" />
       <Parameter Name="CustomerZipCode" Mode="In" Type="String" />
+      <Parameter Name="CallID" Mode="In" Type="String" />
+      <Parameter Name="ProjectID" Mode="In" Type="String" />
+      <Parameter Name="PatientID" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="AddEmployee" />
     <FunctionImport Name="FileNumber" />
@@ -158,6 +161,15 @@
       <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
     </AssociationSet>
     <EntitySet Name="CallLogRealTimes" EntityType="ReportModel.CallLogRealTime" />
+    <EntitySet Name="DisciplinaryActions" EntityType="ReportModel.DisciplinaryAction" />
+    <AssociationSet Name="FK_REPORT_DisciplinaryAction_EditByEmployeeID" Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPORT_DisciplinaryAction_EmployeeID" Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="uspInsertProblemMaster_Result">
     <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -278,6 +290,8 @@
     <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="Employee" ToRole="AgentDailyHour" />
     <NavigationProperty Name="EmployeeHoursTotals" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID" FromRole="Employee" ToRole="EmployeeHoursTotal" />
     <NavigationProperty Name="AgentDailyHours1" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" FromRole="Employee" ToRole="AgentDailyHour" />
+    <NavigationProperty Name="DisciplinaryActions" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
+    <NavigationProperty Name="DisciplinaryActions1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
   </EntityType>
   <EntityType Name="EmployeeFive9Agent">
     <Key>
@@ -352,6 +366,7 @@
     <Property Name="JobTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="TerminationDate" Type="DateTime" Precision="0" />
     <Property Name="EmployeeStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FileNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ProblemMaster">
     <Key>
@@ -1197,6 +1212,7 @@
   <EntityType Name="CallLogRealTime">
     <Key>
       <PropertyRef Name="CallLogRealTimeID" />
+      <PropertyRef Name="RecordTime" />
     </Key>
     <Property Name="CallLogRealTimeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
@@ -1204,13 +1220,57 @@
     <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="LeadID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="Disposition" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="false" />
-    <Property Name="CallType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Skill" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="CallType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Skill" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
     <Property Name="ListName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
     <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-    <Property Name="CustomerZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerZipCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CallID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="PatientID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="RecordTime" Type="Time" Nullable="false" Precision="7" />
   </EntityType>
+  <EntityType Name="DisciplinaryAction">
+    <Key>
+      <PropertyRef Name="DisciplinaryActionID" />
+    </Key>
+    <Property Name="DisciplinaryActionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Reason" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Explanation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EditByEmployeeID" Type="Int32" />
+    <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" FromRole="DisciplinaryAction" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="DisciplinaryAction" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK_REPORT_DisciplinaryAction_EditByEmployeeID">
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="ReportModel.DisciplinaryAction" Role="DisciplinaryAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DisciplinaryAction">
+        <PropertyRef Name="EditByEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REPORT_DisciplinaryAction_EmployeeID">
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.DisciplinaryAction" Role="DisciplinaryAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DisciplinaryAction">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

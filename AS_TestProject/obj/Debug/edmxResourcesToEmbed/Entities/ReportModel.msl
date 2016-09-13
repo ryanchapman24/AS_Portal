@@ -187,6 +187,7 @@
     <EntitySetMapping Name="NewEmployeeDatas">
       <EntityTypeMapping TypeName="ReportModel.NewEmployeeData">
         <MappingFragment StoreEntitySet="NewEmployeeData">
+          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
           <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
           <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
           <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
@@ -798,6 +799,10 @@
     <EntitySetMapping Name="CallLogRealTimes">
       <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
         <MappingFragment StoreEntitySet="CallLogRealTime">
+          <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="CallID" ColumnName="CallID" />
           <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
           <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
           <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
@@ -812,6 +817,21 @@
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
           <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DisciplinaryActions">
+      <EntityTypeMapping TypeName="ReportModel.DisciplinaryAction">
+        <MappingFragment StoreEntitySet="DisciplinaryAction">
+          <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
+          <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
+          <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="DisciplinaryActionID" ColumnName="DisciplinaryActionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

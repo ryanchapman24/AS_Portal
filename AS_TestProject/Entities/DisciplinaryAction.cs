@@ -12,17 +12,19 @@ namespace AS_TestProject.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class NewEmployeeData
+    public partial class DisciplinaryAction
     {
-        public int Id { get; set; }
+        public long DisciplinaryActionID { get; set; }
         public int EmployeeID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public System.DateTime HireDate { get; set; }
-        public string Location { get; set; }
-        public string JobTitle { get; set; }
-        public Nullable<System.DateTime> TerminationDate { get; set; }
-        public string EmployeeStatus { get; set; }
-        public string FileNumber { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string Reason { get; set; }
+        public string Explanation { get; set; }
+        public Nullable<int> EditByEmployeeID { get; set; }
+        public Nullable<System.DateTime> EditTimeStamp { get; set; }
+    
+        public virtual Employee Employee { get; set; }
+        public virtual Employee Employee1 { get; set; }
     }
 }
