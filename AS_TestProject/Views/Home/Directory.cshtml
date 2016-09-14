@@ -5,251 +5,497 @@
 }
     <div class="col-lg-12 mt">
         <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
-            <div class="widget widget-table">
-                <div class="widget-header">
-                    <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Directory @if (User.IsInRole("Admin") || User.IsInRole ("HR")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="margin-top: -10px">+ New Employee</button>}</h3>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header" style="margin-bottom: 15px">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">Add New Employee</h4>
-                            </div>
-                            @using (Html.BeginForm("Create", "Employees", new {  }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                            {
-                                @Html.AntiForgeryToken()
-                                <div class="modal-body">
-                                    <div class="" style="">
-                                       @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                        <input type="hidden" name="AddDate" value="@today"/>
-                                        <input type="hidden" name="TerminationDate" value="12/31/9999"/>
-                                        <div class="form-group">
-                                            <div class="col-md-3 control-label">
-                                                First Name
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
-                                                @*@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                              
-                                            <div class="col-md-3 control-label">
-                                                Last Name
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
-                                                @*@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                Address Line 1
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control", required = "true" } })
-                                                @*@Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                Address Line 2
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
-                                                @*@Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                City
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", required = "true" } })
-                                                @*@Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                State
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", required = "true", maxlength = "2" } })
-                                                @*@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                               
-                                            <div class="col-md-3 control-label">
-                                                Zip Code
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "5" } })
-                                                @*@Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                               
-                                            <div class="col-md-3 control-label">
-                                                Email
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control"} })
-                                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
-                                            </div><br /><br /><br />
-                                                                               
-                                            <div class="col-md-3 control-label">
-                                                Home Phone
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
-                                                @*@Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                             
-                                            <div class="col-md-3 control-label">
-                                                Cell Phone
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
-                                                @*@Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                Birth Date
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control", required = "true" } })
-                                                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                Hire Date
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control", required = "true" } })
-                                                @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                Is this Employee a Manager?
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="switch switch-square"
-                                                     data-on-label="<i class=' fa fa-check'></i>"
-                                                     data-off-label="<i class='fa fa-times'></i>">
-                                                    @Html.EditorFor(model => model.IsManager)
-                                                </div>
-                                            </div><br /><br /><br />
-                                                                               
-                                            <div class="col-md-3 control-label">
-                                                Manager Employee ID
-                                            </div>
-                                            <div class="col-md-9">
-                                                @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control onlyNum", type = "text", required = "true", maxlength = "7" } })
-                                                @*@Html.ValidationMessageFor(model => model.ManagerEmployeeID, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                Position
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.DropDownList("PositionID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
-                                                @*@Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                Site
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.DropDownList("SiteID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
-                                                @*@Html.ValidationMessageFor(model => model.SiteID, "", new { @class = "text-danger" })*@
-                                            </div><br /><br /><br />
-                                                                                
-                                            <div class="col-md-3 control-label">
-                                                File Number
-                                            </div>
-                                            <div class="col-md-9" style="margin-top: -5px">
-                                                @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "6" } })
-                                                @*@Html.ValidationMessageFor(model => model.FileNumber, "", new { @class = "text-danger" })*@
-                                            </div><br />
+            <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Directory @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+            {<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="margin-top: -10px">+ New Employee</button>}</h3>
+            <div class="panel-heading">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active">
+                        <a data-toggle="tab" href="#activeEmps">Active Employees</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#inactiveEmps" class="contact-map">Inactive Employees</a>
+                    </li>
+                </ul>
+            </div><!-- --/panel-heading ---->
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div id="activeEmps" class="tab-pane active">
+                        <div class="widget widget-table">
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="margin-bottom: 15px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Add New Employee</h4>
                                         </div>
+                                        @using (Html.BeginForm("Create", "Employees", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="modal-body">
+                                                <div class="" style="">
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    <input type="hidden" name="AddDate" value="@today" />
+                                                    <input type="hidden" name="TerminationDate" value="12/31/9999" />
+                                                    <div class="form-group">
+                                                        <div class="col-md-3 control-label">
+                                                            First Name
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Last Name
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Address Line 1
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Address Line 2
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @*@Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            City
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            State
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", required = "true", maxlength = "2" } })
+                                                            @*@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Zip Code
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "5" } })
+                                                            @*@Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Email
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Home Phone
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                                                            @*@Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Cell Phone
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                                                            @*@Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Birth Date
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Hire Date
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Is this Employee a Manager?
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="switch switch-square"
+                                                                 data-on-label="<i class=' fa fa-check'></i>"
+                                                                 data-off-label="<i class='fa fa-times'></i>">
+                                                                @Html.EditorFor(model => model.IsManager)
+                                                            </div>
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Manager Employee ID
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control onlyNum", type = "text", required = "true", maxlength = "7" } })
+                                                            @*@Html.ValidationMessageFor(model => model.ManagerEmployeeID, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Position
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("PositionID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Site
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("SiteID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.SiteID, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            File Number
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "6" } })
+                                                            @*@Html.ValidationMessageFor(model => model.FileNumber, "", new { @class = "text-danger" })*@
+                                                        </div><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer" style="margin-top: 20px">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button id="" type="submit" class="btn btn-theme play">Confirm</button>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
-                                <div class="modal-footer" style="margin-top: 20px">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button id="" type="submit" class="btn btn-theme play">Confirm</button>
+                            </div>
+                            <div class="widget-content">
+                                <div class="table-responsive">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-nowrap" style="width: 5%">Employee ID</th>
+                                                <th>Last</th>
+                                                <th>First</th>
+                                                <th style="width: 10%">Title</th>
+                                                <th>Site</th>
+                                                <th style="width: 15%">Address</th>
+                                                <th style="width: 10%">Email</th>
+                                                <th>Phone</th>
+                                                @*<th style="width: 5%">Active</th>*@
+                                                <th style="width: 60px">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var employee in ViewBag.ActiveEmps)
+                                            {
+                                                <tr>
+                                                    <td>@employee.EmployeeID</td>
+                                                    <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
+                                                    <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
+                                                    <td>@employee.Position.PositionName</td>
+                                                    <td>@employee.Site.SiteName</td>
+                                                    <td class="text-nowrap">
+                                                        @employee.AddressLine1 @employee.AddressLine2<br />
+                                                        @employee.City, @employee.State @employee.ZipCode
+                                                    </td>
+                                                    <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
+                                                    <td class="text-nowrap" style="font-size: 11px">
+                                                        <i class="fa fa-phone"></i> @employee.HomePhone<br />
+                                                        <i class="fa fa-mobile"></i> @employee.CellPhone
+                                                    </td>
+                                                    @*@if (employee.IsActive == true)
+                                                    {
+                                                        <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
+                                                    }*@
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+                                                        {
+                                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                        {
+                                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
                                 </div>
-                            }
+                            </div>
+                        </div>
+                    </div>
+                    <div id="inactiveEmps" class="tab-pane">
+                        <div class="widget widget-table">
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="margin-bottom: 15px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Add New Employee</h4>
+                                        </div>
+                                        @using (Html.BeginForm("Create", "Employees", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="modal-body">
+                                                <div class="" style="">
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    <input type="hidden" name="AddDate" value="@today" />
+                                                    <input type="hidden" name="TerminationDate" value="12/31/9999" />
+                                                    <div class="form-group">
+                                                        <div class="col-md-3 control-label">
+                                                            First Name
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Last Name
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Address Line 1
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Address Line 2
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @*@Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            City
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @*@Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            State
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", required = "true", maxlength = "2" } })
+                                                            @*@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Zip Code
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "5" } })
+                                                            @*@Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Email
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Home Phone
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                                                            @*@Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Cell Phone
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                                                            @*@Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Birth Date
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Hire Date
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Is this Employee a Manager?
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="switch switch-square"
+                                                                 data-on-label="<i class=' fa fa-check'></i>"
+                                                                 data-off-label="<i class='fa fa-times'></i>">
+                                                                @Html.EditorFor(model => model.IsManager)
+                                                            </div>
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Manager Employee ID
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control onlyNum", type = "text", required = "true", maxlength = "7" } })
+                                                            @*@Html.ValidationMessageFor(model => model.ManagerEmployeeID, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Position
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("PositionID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Site
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("SiteID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.SiteID, "", new { @class = "text-danger" })*@
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            File Number
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "6" } })
+                                                            @*@Html.ValidationMessageFor(model => model.FileNumber, "", new { @class = "text-danger" })*@
+                                                        </div><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer" style="margin-top: 20px">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button id="" type="submit" class="btn btn-theme play">Confirm</button>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="table-responsive">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-nowrap" style="width: 5%">Employee ID</th>
+                                                <th>Last</th>
+                                                <th>First</th>
+                                                <th style="width: 10%">Title</th>
+                                                <th>Site</th>
+                                                <th style="width: 15%">Address</th>
+                                                <th style="width: 10%">Email</th>
+                                                <th>Phone</th>
+                                                @*<th style="width: 5%">Active</th>*@
+                                                <th style="width: 60px">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var employee in ViewBag.InactiveEmps)
+                                            {
+                                                <tr>
+                                                    <td>@employee.EmployeeID</td>
+                                                    <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
+                                                    <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
+                                                    <td>@employee.Position.PositionName</td>
+                                                    <td>@employee.Site.SiteName</td>
+                                                    <td class="text-nowrap">
+                                                        @employee.AddressLine1 @employee.AddressLine2<br />
+                                                        @employee.City, @employee.State @employee.ZipCode
+                                                    </td>
+                                                    <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
+                                                    <td class="text-nowrap" style="font-size: 11px">
+                                                        <i class="fa fa-phone"></i> @employee.HomePhone<br />
+                                                        <i class="fa fa-mobile"></i> @employee.CellPhone
+                                                    </td>
+                                                    @*@if (employee.IsActive == true)
+                                                    {
+                                                        <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
+                                                    }*@
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+                                                        {
+                                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                        {
+                                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="widget-content">
-                    <div class="table-responsive">
-                        <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
-                            <thead>
-                                <tr>
-                                    <th class="text-nowrap" style="width: 5%">Employee ID</th>
-                                    <th>Last</th>
-                                    <th>First</th>
-                                    <th style="width: 10%">Title</th>
-                                    <th>Site</th>
-                                    <th style="width: 15%">Address</th>
-                                    <th style="width: 10%">Email</th>
-                                    <th>Phone</th>
-                                    <th style="width: 5%">Active</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var employee in ViewBag.Directory)
-                                {
-                                <tr>
-                                    <td>@employee.EmployeeID</td>
-                                    <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
-                                    <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
-                                    <td>@employee.Position.PositionName</td>
-                                    <td>@employee.Site.SiteName</td>
-                                    <td class="text-nowrap">
-                                        @employee.AddressLine1 @employee.AddressLine2<br />
-                                        @employee.City, @employee.State @employee.ZipCode
-                                    </td>
-                                    <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
-                                    <td class="text-nowrap" style="font-size: 11px">
-                                        <i class="fa fa-phone"></i> @employee.HomePhone<br />
-                                        <i class="fa fa-mobile"></i> @employee.CellPhone
-                                    </td>
-                                    @if (employee.IsActive == true)
-                                        {
-                                        <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
-                                        }
-                                        else
-                                        {
-                                        <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
-                                        }
-                                    <td class="text-nowrap">
-                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
-                                        {
-                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
-                                        }
-                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
-                                        {
-                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
-                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
-                                        }
-                                    </td>
-                                </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+                
                 </div>
             </div>
-        </div>
-    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            $('#direct').addClass("active");
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                <script>
+                    $(document).ready(function () {
+                        $('#direct').addClass("active");
 
-            $('.directable').DataTable({
-                "iDisplayLength": 50,
-                "aaSorting": [],
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
-            });
-        });
-    </script>
-}
+                        $('.directable').DataTable({
+                            "iDisplayLength": 50,
+                            "aaSorting": [],
+                            "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+                        });
+                    });
+                </script>
+            }

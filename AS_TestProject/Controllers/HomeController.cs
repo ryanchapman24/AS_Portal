@@ -183,12 +183,15 @@ namespace AS_TestProject.Controllers
             var mb = new ReportEntities();
             if (user.EmployeeID == 1000250 || user.EmployeeID == 1000252 || user.EmployeeID == 1000070 || user.EmployeeID == 1000082 || user.EmployeeID == 1000098 || user.EmployeeID == 1000135 || user.EmployeeID == 1000229)
             {
-                ViewBag.Directory = mb.Employees.OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
+                ViewBag.ActiveEmps = mb.Employees.Where(d => d.IsActive == true).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
+                ViewBag.InactiveEmps = mb.Employees.Where(d => d.IsActive == false).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
             }
             else
             {
-                ViewBag.Directory = mb.Employees.Where(d => d.SiteID == user.SiteID).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
-            } 
+                ViewBag.ActiveEmps = mb.Employees.Where(d => d.SiteID == user.SiteID && d.IsActive == true).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
+                ViewBag.InactiveEmps = mb.Employees.Where(d => d.SiteID == user.SiteID && d.IsActive == false).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
+
+            }
 
             ViewBag.PositionID = new SelectList(mb.Positions, "PositionID", "PositionName");
             ViewBag.SiteID = new SelectList(mb.Sites, "SiteID", "SiteName");
