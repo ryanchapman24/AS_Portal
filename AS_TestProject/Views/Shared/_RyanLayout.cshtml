@@ -777,6 +777,10 @@
                   $('#date').datepicker('hide').blur();
               });
 
+              $('#DAdate').on('changeDate', function (ev) {
+                  $('#DAdate').datepicker('hide').blur();
+              });
+
               $('#prevDate').on('changeDate', function (ev) {
                   $('#prevDate').datepicker('hide').blur();
               });

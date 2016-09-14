@@ -255,6 +255,18 @@
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })                                           
                                             <div class="form-group">
                                                 <div class="col-md-3 control-label">
+                                                    Date
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <div class="input-group">
+                                                        <input id="DAdate" class="form-control datepicker" name="Date" size="16" type="text" value="@ViewBag.Date" required>
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                                        </span>
+                                                    </div>                                       
+                                                </div><br /><br /><br />
+                                                
+                                                <div class="col-md-3 control-label">
                                                     Reason
                                                 </div>
                                                 <div class="col-md-9" style="margin-top: -5px">
@@ -284,8 +296,9 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 90%">Date</th>                                   
-                                        <th style="width: 130%">Reason</th>
+                                        <th style="width: 200%">Reason</th>
                                         <th>Explanation</th>
+                                        <th style="width: 80px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -293,15 +306,22 @@
                                     {
                                         <tr>
                                             <td class="text-nowrap">@item.Date.ToString("d")</td>
-                                            <td style="color: #29AAE3"><strong>@item.Reason</strong></td>
+                                            <td class="text-nowrap" style="color: #29AAE3"><strong>@item.Reason</strong></td>
                                             @if (item.EditByEmployeeID != null)
                                             {
-                                                <td>@item.Explanation <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee1.FirstName @item.Employee1.LastName <br> @item.EditTimeStamp.Value.ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                <td>@item.Explanation <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee1.FirstName @item.Employee1.LastName <br> @item.EditTimeStamp.ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
                                             }
                                             else
                                             {
                                                 <td>@item.Explanation</td>
-                                            }                                                                              
+                                            }
+                                            <td>                                     
+                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                {
+                                                    <a href="@Url.Action("EditDA","Employees", new { id = item.DisciplinaryActionID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                    <a href="@Url.Action("DeleteDA","Employees", new { id = item.DisciplinaryActionID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
+                                                }
+                                            </td>                                                                        
                                         </tr>
                                     }
                                 </tbody>
@@ -332,7 +352,7 @@
             $('.DAtable').DataTable({
                 "iDisplayLength": 10,
                 "bSort": false,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
             });
         });
     </script>

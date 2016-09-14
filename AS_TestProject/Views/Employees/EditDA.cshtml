@@ -1,0 +1,75 @@
+﻿@model AS_TestProject.Entities.DisciplinaryAction
+
+@{
+    ViewBag.Title = "EditDA";
+}
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h2>Edit Disciplinary Action for <span style="color: #29AAE3">@Model.FirstName @Model.LastName</span></h2>
+
+        @using (Html.BeginForm("EditDA", "Employees", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        { 
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.DisciplinaryActionID)
+                @Html.HiddenFor(model => model.EmployeeID)
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Date
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input id="DAdate" class="form-control datepicker" name="Date" size="16" type="text" value="@Model.Date.Value.ToShortDateString()" required>
+                            <span class="input-group-btn">
+                                <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div> 
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Reason
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                        @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Explanation
+                    </div>
+                    <div class="col-md-4">
+                        <textarea class="form-control capitalize" name="Explanation" rows="3" required>@Model.Explanation</textarea>
+                        @Html.ValidationMessageFor(model => model.Explanation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-4">
+                        <input type="submit" value="Save" class="btn btn-theme pull-right" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div style="padding-bottom: 5px">
+            @Html.ActionLink("Back to Details", "Details", new { id = Model.EmployeeID })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#direct').addClass("active");
+        });
+    </script>
+}

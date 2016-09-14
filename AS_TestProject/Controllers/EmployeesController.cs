@@ -138,6 +138,7 @@ namespace AS_TestProject.Controllers
             Employee creator = mb.Employees.Find(employee.AddByEmployeeID);
             ViewBag.Manager = manager.FirstName + " " + manager.LastName;
             ViewBag.Creator = creator.FirstName + " " + creator.LastName;
+            ViewBag.Date = System.DateTime.Now.ToShortDateString();
 
             ViewBag.DisciplinaryActions = mb.DisciplinaryActions.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(d => d.Date).ToList();
 
@@ -190,46 +191,72 @@ namespace AS_TestProject.Controllers
             return RedirectToAction("Details", "Employees", new { id = DiscAct.EmployeeID });
         }
 
-        //// GET: Positions/Edit/5
-        //[Authorize(Roles = "Admin, HR")]
-        //public ActionResult EditDA(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Entities.Position position = mb.Positions.Find(id);
-        //    if (position == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(position);
-        //}
+        // GET: Employees/EditDA/5
+        [Authorize(Roles = "Admin, HR")]
+        public ActionResult EditDA(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DisciplinaryAction DiscAct = mb.DisciplinaryActions.Find(id);
+            if (DiscAct == null)
+            {
+                return HttpNotFound();
+            }
+            return View(DiscAct);
+        }
 
-        //// POST: Positions/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[Authorize(Roles = "Admin, HR")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult EditDA([Bind(Include = "PositionID,PositionName,PositionDescription")] Entities.Position position)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        mb.Positions.Attach(position);
-        //        mb.Entry(position).Property("PositionName").IsModified = true;
-        //        mb.Entry(position).Property("PositionDescription").IsModified = true;
-        //        mb.SaveChanges();
+        // POST: Employees/EditDA/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin, HR")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditDA([Bind(Include = "DisciplinaryActionID,EmployeeID,FirstName,LastName,Date,Reason,Explanation,EditByEmployeeID,EditTimeStamp")] DisciplinaryAction DiscAct)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
 
-        //        var myPosition = db.Positions.Find(position.PositionID);
-        //        myPosition.PositionName = position.PositionName;
-        //        myPosition.PositionDescription = position.PositionDescription;
-        //        db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                mb.DisciplinaryActions.Attach(DiscAct);
+                mb.Entry(DiscAct).Property("Date").IsModified = true;
+                mb.Entry(DiscAct).Property("Reason").IsModified = true;
+                mb.Entry(DiscAct).Property("Explanation").IsModified = true;
+                DiscAct.EditByEmployeeID = user.EmployeeID;
+                DiscAct.EditTimeStamp = System.DateTime.Now;
+                mb.SaveChanges();
 
-        //        return RedirectToAction("Index", "Admin");
-        //    }
-        //    return View(position);
-        //}
+                return RedirectToAction("Details", "Employees", new { id = DiscAct.EmployeeID });
+            }
+            return View(DiscAct);
+        }
+
+        // GET: Employees/DeleteDA/5
+        public ActionResult DeleteDA(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DisciplinaryAction DiscAct= mb.DisciplinaryActions.Find(id);
+            if (DiscAct == null)
+            {
+                return HttpNotFound();
+            }
+            return View(DiscAct);
+        }
+
+        // POST: Employees/DeleteDA/5
+        [HttpPost, ActionName("DeleteDA")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDAConfirmed(int id)
+        {
+            DisciplinaryAction DiscAct = mb.DisciplinaryActions.Find(id);
+            mb.DisciplinaryActions.Remove(DiscAct);
+            mb.SaveChanges();
+            return RedirectToAction("Details", "Employees", new { id = DiscAct.EmployeeID });
+        }
 
         protected override void Dispose(bool disposing)
         {

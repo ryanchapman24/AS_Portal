@@ -737,6 +737,8 @@
     <Content Include="Views\Admin\EditPosition.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\EditDA.cshtml" />
+    <Content Include="Views\Employees\DeleteDA.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
