@@ -86,16 +86,19 @@ namespace AS_TestProject.Controllers
             {
                 var user = db.Users.Find(User.Identity.GetUserId());
 
-                agentDailyHour.PayPeriodID = ppId;
-                agentDailyHour.EmployeeID = empId;
-                agentDailyHour.EditByEmployeeID = user.EmployeeID;
-                agentDailyHour.EditTimeStamp = System.DateTime.Now;
-                mb.AgentDailyHours.Add(agentDailyHour);
-                mb.SaveChanges();
+                if (agentDailyHour.LoginTimeStamp != agentDailyHour.LogoutTimeStamp)
+                {
+                    agentDailyHour.PayPeriodID = ppId;
+                    agentDailyHour.EmployeeID = empId;
+                    agentDailyHour.EditByEmployeeID = user.EmployeeID;
+                    agentDailyHour.EditTimeStamp = System.DateTime.Now;
+                    mb.AgentDailyHours.Add(agentDailyHour);
+                    mb.SaveChanges();
 
-                // STORED PROCEDURES
-                mb.uspHoursCalculation(empId, ppId);
-                mb.SaveChanges();
+                    // STORED PROCEDURES
+                    mb.uspHoursCalculation(empId, ppId);
+                    mb.SaveChanges();
+                }
 
                 return RedirectToAction("Index", new { id = empId });
             }
@@ -151,19 +154,28 @@ namespace AS_TestProject.Controllers
             {
                 var user = db.Users.Find(User.Identity.GetUserId());
 
-                mb.AgentDailyHours.Attach(agentDailyHour);
-                agentDailyHour.EditByEmployeeID = user.EmployeeID;
-                agentDailyHour.EditTimeStamp = System.DateTime.Now;
-                mb.Entry(agentDailyHour).Property("LoginTimeStamp").IsModified = true;
-                mb.Entry(agentDailyHour).Property("LogoutTimeStamp").IsModified = true;
-                mb.Entry(agentDailyHour).Property("LoginDuration").IsModified = true;
-                mb.Entry(agentDailyHour).Property("AgentTimeAdjustmentReasonID").IsModified = true;
-                mb.SaveChanges();
+                if (agentDailyHour.LoginTimeStamp == agentDailyHour.LogoutTimeStamp)
+                {
+                    mb.AgentDailyHours.Attach(agentDailyHour);
+                    mb.AgentDailyHours.Remove(agentDailyHour);
+                    mb.SaveChanges();
+                }
+                else
+                {
+                    mb.AgentDailyHours.Attach(agentDailyHour);
+                    agentDailyHour.EditByEmployeeID = user.EmployeeID;
+                    agentDailyHour.EditTimeStamp = System.DateTime.Now;
+                    mb.Entry(agentDailyHour).Property("LoginTimeStamp").IsModified = true;
+                    mb.Entry(agentDailyHour).Property("LogoutTimeStamp").IsModified = true;
+                    mb.Entry(agentDailyHour).Property("LoginDuration").IsModified = true;
+                    mb.Entry(agentDailyHour).Property("AgentTimeAdjustmentReasonID").IsModified = true;
+                    mb.SaveChanges();
 
-                // STORED PROCEDURES
-                mb.uspHoursCalculation(agentDailyHour.EmployeeID, agentDailyHour.PayPeriodID);
-                mb.SaveChanges();
-
+                    // STORED PROCEDURES
+                    mb.uspHoursCalculation(agentDailyHour.EmployeeID, agentDailyHour.PayPeriodID);
+                    mb.SaveChanges();
+                }
+               
                 return RedirectToAction("Index", new { id = agentDailyHour.EmployeeID });
             }
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
