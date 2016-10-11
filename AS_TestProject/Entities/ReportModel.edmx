@@ -418,7 +418,6 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
 warning 6002: The table/view 'Report.REPORT.CallLogRealTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CallLogRealTime">
           <Key>
-            <PropertyRef Name="CallLogRealTimeID" />
             
             
             
@@ -427,8 +426,8 @@ warning 6002: The table/view 'Report.REPORT.CallLogRealTime' does not have a pri
             
             
             <PropertyRef Name="RecordTime" />
+            <PropertyRef Name="CallLogRealTimeID" />
           </Key>
-          <Property Name="CallLogRealTimeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RecordDate" Type="date" Nullable="false" />
           <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
           <Property Name="AgentID" Type="varchar" MaxLength="125" Nullable="false" />
@@ -446,6 +445,7 @@ warning 6002: The table/view 'Report.REPORT.CallLogRealTime' does not have a pri
           <Property Name="ProjectID" Type="varchar" MaxLength="40" />
           <Property Name="PatientID" Type="varchar" MaxLength="40" />
           <Property Name="RecordTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CallLogRealTimeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="DisciplinaryAction">
           <Key>
@@ -573,7 +573,7 @@ warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a prim
           <Property Name="FirstName" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="LoginTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
+          <Property Name="LoginDuration" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="EmployeeID" Type="nvarchar" MaxLength="320" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -1160,7 +1160,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           </EntitySet>
           <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" store:Type="Tables" store:Schema="REPORT">
             <DefiningQuery>SELECT 
-    [CallLogRealTime].[CallLogRealTimeID] AS [CallLogRealTimeID], 
     [CallLogRealTime].[RecordDate] AS [RecordDate], 
     [CallLogRealTime].[DomainMasterID] AS [DomainMasterID], 
     [CallLogRealTime].[AgentID] AS [AgentID], 
@@ -1177,7 +1176,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [CallLogRealTime].[CallID] AS [CallID], 
     [CallLogRealTime].[ProjectID] AS [ProjectID], 
     [CallLogRealTime].[PatientID] AS [PatientID], 
-    [CallLogRealTime].[RecordTime] AS [RecordTime]
+    [CallLogRealTime].[RecordTime] AS [RecordTime], 
+    [CallLogRealTime].[CallLogRealTimeID] AS [CallLogRealTimeID]
     FROM [REPORT].[CallLogRealTime] AS [CallLogRealTime]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="AgentDailyHours1" EntityType="Self.AgentDailyHours1" store:Type="Tables" store:Schema="STAGE" store:Name="AgentDailyHours">
@@ -2236,7 +2236,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="LoginDuration" Type="Time" Nullable="false" />
           <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ClientLead">
