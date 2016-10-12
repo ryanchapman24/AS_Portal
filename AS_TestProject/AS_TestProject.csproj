@@ -417,7 +417,9 @@
     <Content Include="assets\img\BonusPayment.png" />
     <Content Include="assets\img\checkbox-gray.png" />
     <Content Include="assets\img\EmployeeHandbook.png" />
+    <Content Include="assets\img\EmployeeLoan.png" />
     <Content Include="assets\img\ExpenseReimbursement.png" />
+    <Content Include="assets\img\ExpenseReport.png" />
     <Content Include="assets\img\floor.jpg" />
     <Content Include="assets\img\friends\fr-01.jpg" />
     <Content Include="assets\img\friends\fr-02.jpg" />
@@ -461,6 +463,7 @@
     <Content Include="assets\img\gallery\o.jpg" />
     <Content Include="assets\img\handwaving.png" />
     <Content Include="assets\img\Headshot_Square.png" />
+    <Content Include="assets\img\IncidentReport.png" />
     <Content Include="assets\img\InsertionOrder.png" />
     <Content Include="assets\img\instagram.jpg" />
     <Content Include="assets\img\login-bg.jpg" />
@@ -471,6 +474,7 @@
     <Content Include="assets\img\orange_priority.png" />
     <Content Include="assets\img\palmtree.png" />
     <Content Include="assets\img\PayrollDeduction.png" />
+    <Content Include="assets\img\PettyCash.png" />
     <Content Include="assets\img\portfolio\port01.jpg" />
     <Content Include="assets\img\portfolio\port02.jpg" />
     <Content Include="assets\img\portfolio\port03.jpg" />
