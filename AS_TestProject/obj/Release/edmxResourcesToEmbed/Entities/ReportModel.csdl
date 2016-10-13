@@ -738,7 +738,7 @@
     <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="LoginDuration" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="LoginDuration" Type="Time" Nullable="false" />
     <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ClientLead">

@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\D09\wwwroot\ASPortal</_PublishTargetUrl>
+    <_PublishTargetUrl>\\D05\ASPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:05</publishTime>
     </File>
     <File Include="App_Start/IdentityConfig.cs">
-      <publishTime>06/20/2016 11:14:31</publishTime>
+      <publishTime>07/02/2016 23:49:11</publishTime>
     </File>
     <File Include="App_Start/RouteConfig.cs">
       <publishTime>06/20/2016 11:14:05</publishTime>
@@ -715,7 +715,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>10/07/2016 14:38:45</publishTime>
+      <publishTime>10/13/2016 17:01:15</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -973,28 +973,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Controllers/AccountController.cs">
-      <publishTime>07/13/2016 12:56:06</publishTime>
+      <publishTime>07/25/2016 15:45:01</publishTime>
     </File>
     <File Include="Controllers/AdminController.cs">
-      <publishTime>06/30/2016 16:55:56</publishTime>
+      <publishTime>10/12/2016 12:08:07</publishTime>
     </File>
     <File Include="Controllers/EmployeesController.cs">
-      <publishTime>07/20/2016 15:57:40</publishTime>
+      <publishTime>09/14/2016 16:21:25</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
       <publishTime>09/16/2016 11:20:27</publishTime>
     </File>
     <File Include="Controllers/ITController.cs">
-      <publishTime>07/21/2016 16:03:24</publishTime>
+      <publishTime>07/25/2016 15:45:05</publishTime>
     </File>
     <File Include="Controllers/ManageController.cs">
-      <publishTime>07/13/2016 13:43:15</publishTime>
+      <publishTime>07/25/2016 15:45:06</publishTime>
     </File>
     <File Include="Controllers/MessagesController.cs">
-      <publishTime>07/28/2016 16:48:24</publishTime>
+      <publishTime>08/02/2016 18:46:37</publishTime>
     </File>
     <File Include="Controllers/PayrollController.cs">
-      <publishTime>07/13/2016 11:59:17</publishTime>
+      <publishTime>09/22/2016 11:41:29</publishTime>
     </File>
     <File Include="Entities/AgentDailyHour.cs">
       <publishTime>10/07/2016 14:36:44</publishTime>
@@ -1177,10 +1177,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2016 11:21:13</publishTime>
     </File>
     <File Include="Migrations/Configuration.cs">
-      <publishTime>06/21/2016 21:32:11</publishTime>
+      <publishTime>08/17/2016 12:26:22</publishTime>
     </File>
     <File Include="Models/AccountViewModels.cs">
-      <publishTime>06/21/2016 21:27:26</publishTime>
+      <publishTime>07/20/2016 12:26:02</publishTime>
     </File>
     <File Include="Models/AdminUserListModels.cs">
       <publishTime>06/30/2016 09:28:58</publishTime>
@@ -1201,19 +1201,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/30/2016 09:23:01</publishTime>
     </File>
     <File Include="Models/IdentityModels.cs">
-      <publishTime>06/21/2016 21:24:40</publishTime>
+      <publishTime>08/22/2016 13:46:27</publishTime>
     </File>
     <File Include="Models/ImageUploadValidator.cs">
       <publishTime>06/27/2016 14:20:10</publishTime>
     </File>
     <File Include="Models/InboundMessage.cs">
-      <publishTime>07/28/2016 13:16:44</publishTime>
+      <publishTime>07/29/2016 18:28:59</publishTime>
     </File>
     <File Include="Models/ManageViewModels.cs">
-      <publishTime>06/20/2016 11:14:31</publishTime>
+      <publishTime>07/13/2016 13:52:58</publishTime>
     </File>
     <File Include="Models/OutboundMessage.cs">
-      <publishTime>07/28/2016 13:17:02</publishTime>
+      <publishTime>07/29/2016 18:29:21</publishTime>
     </File>
     <File Include="Models/PhotoJudgment.cs">
       <publishTime>06/28/2016 12:16:16</publishTime>
@@ -1228,7 +1228,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/06/2016 10:23:07</publishTime>
     </File>
     <File Include="Models/UserNames.cs">
-      <publishTime>06/21/2016 21:43:29</publishTime>
+      <publishTime>08/23/2016 11:15:12</publishTime>
     </File>
     <File Include="Models/WorkTask.cs">
       <publishTime>07/06/2016 12:35:47</publishTime>
@@ -1326,6 +1326,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-2.2.4.min.map">
       <publishTime>06/20/2016 11:27:05</publishTime>
     </File>
+    <File Include="Scripts/jquery-3.1.0.intellisense.js">
+      <publishTime>08/01/2016 17:16:47</publishTime>
+    </File>
     <File Include="Scripts/jquery-3.1.0.js">
       <publishTime>08/01/2016 17:16:47</publishTime>
     </File>
@@ -1345,7 +1348,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/01/2016 17:16:46</publishTime>
     </File>
     <File Include="Scripts/jquery.validate-vsdoc.js">
-      <publishTime>06/20/2016 11:22:53</publishTime>
+      <publishTime>08/01/2016 17:16:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>08/01/2016 17:29:07</publishTime>
@@ -1450,7 +1453,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 20:50:18</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>07/27/2016 15:01:19</publishTime>
+      <publishTime>10/12/2016 12:06:53</publishTime>
     </File>
     <File Include="Views/Employees/Create.cshtml">
       <publishTime>07/19/2016 10:18:45</publishTime>
@@ -1492,7 +1495,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 14:06:09</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/14/2016 09:52:54</publishTime>
+      <publishTime>09/09/2016 12:12:51</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
       <publishTime>08/23/2016 12:20:25</publishTime>
@@ -1558,13 +1561,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:00:40</publishTime>
     </File>
     <File Include="Views/Shared/_LoginLayout.cshtml">
-      <publishTime>06/21/2016 22:08:44</publishTime>
+      <publishTime>07/02/2016 03:49:17</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>09/19/2016 12:29:46</publishTime>
+      <publishTime>10/07/2016 14:38:28</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2016 16:31:23</publishTime>
