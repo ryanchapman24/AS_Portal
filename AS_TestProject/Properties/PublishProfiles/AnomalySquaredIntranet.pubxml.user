@@ -715,7 +715,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>10/13/2016 17:01:15</publishTime>
+      <publishTime>10/14/2016 14:23:39</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -983,6 +983,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Controllers/HomeController.cs">
       <publishTime>09/16/2016 11:20:27</publishTime>
+    </File>
+    <File Include="Controllers/HRController.cs">
+      <publishTime>10/14/2016 14:11:52</publishTime>
     </File>
     <File Include="Controllers/ITController.cs">
       <publishTime>07/25/2016 15:45:05</publishTime>
@@ -1505,6 +1508,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Home/Tools.cshtml">
       <publishTime>07/26/2016 15:20:59</publishTime>
+    </File>
+    <File Include="Views/HR/Index.cshtml">
+      <publishTime>10/14/2016 14:18:06</publishTime>
     </File>
     <File Include="Views/IT/Index.cshtml">
       <publishTime>08/04/2016 17:37:29</publishTime>

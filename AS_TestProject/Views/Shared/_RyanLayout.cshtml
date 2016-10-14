@@ -311,6 +311,16 @@
                   </li>
                   }
 
+                  @if (User.IsInRole("HR"))
+                  {
+                      <li>
+                          <a id="hr" href="@Url.Action("Index", "HR")">
+                              <i class="fa fa-users"></i>
+                              <span>HR</span>
+                          </a>
+                      </li>
+                  }
+
                   <li>
                       <a id="profile" href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
                           <i class="fa fa-user-plus"></i>
