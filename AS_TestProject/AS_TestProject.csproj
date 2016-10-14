@@ -234,6 +234,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\ITController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -743,6 +744,7 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\EditDA.cshtml" />
     <Content Include="Views\Employees\DeleteDA.cshtml" />
+    <Content Include="Views\HR\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
@@ -783,6 +785,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Documents\HR\" />
     <Folder Include="Documents\IT\" />
     <Folder Include="GalleryPhotos\" />
     <Folder Include="ProfilePics\" />
