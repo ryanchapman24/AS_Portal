@@ -1579,7 +1579,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" />
           <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" />
           <EntitySet Name="FreedomHourlyCallMetrics" EntityType="ReportModel.FreedomHourlyCallMetric" />
-          <EntitySet Name="AgentDailyHours1" EntityType="ReportModel.AgentDailyHours1" />
           <EntitySet Name="ClientLeads" EntityType="ReportModel.ClientLead" />
           <EntitySet Name="EverQuoteHourlyCallLogMasters" EntityType="ReportModel.EverQuoteHourlyCallLogMaster" />
           <EntitySet Name="FreedomDailyPortfolioInventories" EntityType="ReportModel.FreedomDailyPortfolioInventory" />
@@ -1668,6 +1667,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="Employee" EntitySet="Employees" />
             <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
           </AssociationSet>
+          <EntitySet Name="AgentDailyHours1" EntityType="ReportModel.AgentDailyHours1" />
         </EntityContainer>
         <ComplexType Name="uspInsertProblemMaster_Result">
           <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -2220,25 +2220,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="HourOfDay" Type="Byte" Nullable="false" />
           <Property Name="CallState" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="AgentDailyHours1">
-          <Key>
-            <PropertyRef Name="AgentID" />
-            <PropertyRef Name="DomainName" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="LoginTimestamp" />
-            <PropertyRef Name="LogoutTimestamp" />
-            <PropertyRef Name="LoginDuration" />
-          </Key>
-          <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
-          <Property Name="DomainName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="LoginDuration" Type="Time" Nullable="false" />
-          <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="ClientLead">
           <Key>
             <PropertyRef Name="LeadID" />
@@ -2771,6 +2752,25 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AgentDailyHours1">
+          <Key>
+            <PropertyRef Name="AgentID" />
+            <PropertyRef Name="DomainName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LoginTimestamp" />
+            <PropertyRef Name="LogoutTimestamp" />
+            <PropertyRef Name="LoginDuration" />
+          </Key>
+          <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="DomainName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LoginDuration" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3322,20 +3322,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AgentDailyHours1">
-            <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
-              <MappingFragment StoreEntitySet="AgentDailyHours1">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
-                <ScalarProperty Name="LogoutTimestamp" ColumnName="LogoutTimestamp" />
-                <ScalarProperty Name="LoginTimestamp" ColumnName="LoginTimestamp" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
-                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ClientLeads">
             <EntityTypeMapping TypeName="ReportModel.ClientLead">
               <MappingFragment StoreEntitySet="ClientLeads">
@@ -3608,6 +3594,20 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="DisciplinaryActionID" ColumnName="DisciplinaryActionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentDailyHours1">
+            <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
+              <MappingFragment StoreEntitySet="AgentDailyHours1">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
+                <ScalarProperty Name="LogoutTimestamp" ColumnName="LogoutTimestamp" />
+                <ScalarProperty Name="LoginTimestamp" ColumnName="LoginTimestamp" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

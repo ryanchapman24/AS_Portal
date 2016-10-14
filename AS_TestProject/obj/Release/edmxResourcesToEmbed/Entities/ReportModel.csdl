@@ -81,7 +81,6 @@
     <EntitySet Name="PreciseLeadsHourlyCampaignMetrics" EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" />
     <EntitySet Name="PreciseLeadsRollingCampaignMetrics" EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" />
     <EntitySet Name="FreedomHourlyCallMetrics" EntityType="ReportModel.FreedomHourlyCallMetric" />
-    <EntitySet Name="AgentDailyHours1" EntityType="ReportModel.AgentDailyHours1" />
     <EntitySet Name="ClientLeads" EntityType="ReportModel.ClientLead" />
     <EntitySet Name="EverQuoteHourlyCallLogMasters" EntityType="ReportModel.EverQuoteHourlyCallLogMaster" />
     <EntitySet Name="FreedomDailyPortfolioInventories" EntityType="ReportModel.FreedomDailyPortfolioInventory" />
@@ -170,6 +169,7 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
     </AssociationSet>
+    <EntitySet Name="AgentDailyHours1" EntityType="ReportModel.AgentDailyHours1" />
   </EntityContainer>
   <ComplexType Name="uspInsertProblemMaster_Result">
     <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -722,25 +722,6 @@
     <Property Name="HourOfDay" Type="Byte" Nullable="false" />
     <Property Name="CallState" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="AgentDailyHours1">
-    <Key>
-      <PropertyRef Name="AgentID" />
-      <PropertyRef Name="DomainName" />
-      <PropertyRef Name="LastName" />
-      <PropertyRef Name="FirstName" />
-      <PropertyRef Name="LoginTimestamp" />
-      <PropertyRef Name="LogoutTimestamp" />
-      <PropertyRef Name="LoginDuration" />
-    </Key>
-    <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="DomainName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="LoginDuration" Type="Time" Nullable="false" />
-    <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="ClientLead">
     <Key>
       <PropertyRef Name="LeadID" />
@@ -1273,4 +1254,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="AgentDailyHours1">
+    <Key>
+      <PropertyRef Name="AgentID" />
+      <PropertyRef Name="DomainName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LoginTimestamp" />
+      <PropertyRef Name="LogoutTimestamp" />
+      <PropertyRef Name="LoginDuration" />
+    </Key>
+    <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="DomainName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LoginTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LoginDuration" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

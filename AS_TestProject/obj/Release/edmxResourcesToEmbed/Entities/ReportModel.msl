@@ -546,20 +546,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AgentDailyHours1">
-      <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
-        <MappingFragment StoreEntitySet="AgentDailyHours1">
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
-          <ScalarProperty Name="LogoutTimestamp" ColumnName="LogoutTimestamp" />
-          <ScalarProperty Name="LoginTimestamp" ColumnName="LoginTimestamp" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="DomainName" ColumnName="DomainName" />
-          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ClientLeads">
       <EntityTypeMapping TypeName="ReportModel.ClientLead">
         <MappingFragment StoreEntitySet="ClientLeads">
@@ -832,6 +818,20 @@
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="DisciplinaryActionID" ColumnName="DisciplinaryActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentDailyHours1">
+      <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
+        <MappingFragment StoreEntitySet="AgentDailyHours1">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
+          <ScalarProperty Name="LogoutTimestamp" ColumnName="LogoutTimestamp" />
+          <ScalarProperty Name="LoginTimestamp" ColumnName="LoginTimestamp" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

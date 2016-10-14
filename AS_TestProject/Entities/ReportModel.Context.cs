@@ -51,7 +51,6 @@ namespace AS_TestProject.Entities
         public virtual DbSet<PreciseLeadsHourlyCampaignMetric> PreciseLeadsHourlyCampaignMetrics { get; set; }
         public virtual DbSet<PreciseLeadsRollingCampaignMetric> PreciseLeadsRollingCampaignMetrics { get; set; }
         public virtual DbSet<FreedomHourlyCallMetric> FreedomHourlyCallMetrics { get; set; }
-        public virtual DbSet<AgentDailyHours1> AgentDailyHours1 { get; set; }
         public virtual DbSet<ClientLead> ClientLeads { get; set; }
         public virtual DbSet<EverQuoteHourlyCallLogMaster> EverQuoteHourlyCallLogMasters { get; set; }
         public virtual DbSet<FreedomDailyPortfolioInventory> FreedomDailyPortfolioInventories { get; set; }
@@ -59,6 +58,7 @@ namespace AS_TestProject.Entities
         public virtual DbSet<PreciseLeadsHourlyCallLogMaster> PreciseLeadsHourlyCallLogMasters { get; set; }
         public virtual DbSet<CallLogRealTime> CallLogRealTimes { get; set; }
         public virtual DbSet<DisciplinaryAction> DisciplinaryActions { get; set; }
+        public virtual DbSet<AgentDailyHours1> AgentDailyHours1 { get; set; }
     
         public virtual ObjectResult<uspInsertProblemMaster_Result> uspInsertProblemMaster(string userID, string processName, Nullable<int> errorNumber, Nullable<int> lineNumber, string exceptionMessage, string exceptionSource, Nullable<int> exceptionSeverity, Nullable<int> exceptionState)
         {
