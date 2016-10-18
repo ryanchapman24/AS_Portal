@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\D09\wwwroot\ASPortal</_PublishTargetUrl>
+    <_PublishTargetUrl>\\D05\ASPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -724,7 +724,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>10/17/2016 11:02:20</publishTime>
+      <publishTime>10/18/2016 10:29:01</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1012,7 +1012,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2016 14:36:44</publishTime>
     </File>
     <File Include="Entities/AgentDailyHours1.cs">
-      <publishTime>10/07/2016 15:12:57</publishTime>
+      <publishTime>10/14/2016 14:59:30</publishTime>
     </File>
     <File Include="Entities/AgentTimeAdjustmentReason.cs">
       <publishTime>10/07/2016 14:36:44</publishTime>
@@ -1102,19 +1102,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2016 09:57:41</publishTime>
     </File>
     <File Include="Entities/ReportModel.Context.cs">
-      <publishTime>10/07/2016 15:46:47</publishTime>
+      <publishTime>10/14/2016 14:59:24</publishTime>
     </File>
     <File Include="Entities/ReportModel.Context.tt">
       <publishTime>06/27/2016 09:57:18</publishTime>
     </File>
     <File Include="Entities/ReportModel.cs">
-      <publishTime>10/07/2016 15:46:53</publishTime>
+      <publishTime>10/14/2016 14:59:30</publishTime>
     </File>
     <File Include="Entities/ReportModel.Designer.cs">
-      <publishTime>10/07/2016 15:46:53</publishTime>
+      <publishTime>10/17/2016 10:40:46</publishTime>
     </File>
     <File Include="Entities/ReportModel.edmx">
-      <publishTime>10/07/2016 15:46:42</publishTime>
+      <publishTime>10/14/2016 14:59:18</publishTime>
     </File>
     <File Include="Entities/ReportModel.edmx.diagram">
       <publishTime>10/14/2016 14:59:18</publishTime>
@@ -1310,6 +1310,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="private.config">
       <publishTime>07/03/2016 00:19:38</publishTime>
+    </File>
+    <File Include="Project_Readme.html">
+      <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="responsive_table.html">
       <publishTime>06/20/2016 16:14:36</publishTime>
@@ -1585,13 +1588,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/14/2016 14:29:10</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>06/20/2016 11:14:03</publishTime>
+      <publishTime>06/21/2016 16:31:23</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>06/21/2016 11:08:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/17/2016 11:31:48</publishTime>
+      <publishTime>10/17/2016 11:31:06</publishTime>
     </File>
   </ItemGroup>
 </Project>
