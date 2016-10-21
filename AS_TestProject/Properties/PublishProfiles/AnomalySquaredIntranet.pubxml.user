@@ -1522,10 +1522,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 15:20:59</publishTime>
     </File>
     <File Include="Views/HR/Index.cshtml">
-      <publishTime>10/14/2016 15:02:44</publishTime>
+      <publishTime>10/21/2016 15:11:37</publishTime>
     </File>
     <File Include="Views/IT/Index.cshtml">
-      <publishTime>08/04/2016 17:37:29</publishTime>
+      <publishTime>10/21/2016 15:11:31</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>07/14/2016 09:51:25</publishTime>
