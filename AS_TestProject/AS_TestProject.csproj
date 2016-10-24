@@ -250,6 +250,9 @@
     <Compile Include="Entities\AgentTimeAdjustmentReason.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\AnswerKey.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\CallLogMaster.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
@@ -257,6 +260,18 @@
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\CampaignGroup.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CFRInsurance.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CFRMortgage.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CFRPatientRecruitment.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CFRPerformanceAnalysi.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ClientLead.cs">
@@ -311,9 +326,6 @@
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\FreedomHourlyCallMetrics1.cs">
-      <DependentUpon>ReportModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\NewEmployeeData.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\PayPeriod.cs">

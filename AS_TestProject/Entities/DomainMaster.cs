@@ -20,6 +20,9 @@ namespace AS_TestProject.Entities
             this.AgentDailyHours = new HashSet<AgentDailyHour>();
             this.CallLogMasters = new HashSet<CallLogMaster>();
             this.EmployeeHoursTotals = new HashSet<EmployeeHoursTotal>();
+            this.CFRInsurances = new HashSet<CFRInsurance>();
+            this.CFRMortgages = new HashSet<CFRMortgage>();
+            this.CFRPatientRecruitments = new HashSet<CFRPatientRecruitment>();
         }
     
         public byte DomainMasterID { get; set; }
@@ -42,5 +45,11 @@ namespace AS_TestProject.Entities
         public virtual ICollection<CallLogMaster> CallLogMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeHoursTotal> EmployeeHoursTotals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRInsurance> CFRInsurances { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRMortgage> CFRMortgages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRPatientRecruitment> CFRPatientRecruitments { get; set; }
     }
 }

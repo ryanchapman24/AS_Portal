@@ -184,22 +184,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NewEmployeeDatas">
-      <EntityTypeMapping TypeName="ReportModel.NewEmployeeData">
-        <MappingFragment StoreEntitySet="NewEmployeeData">
-          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
-          <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
-          <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
-          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-          <ScalarProperty Name="Location" ColumnName="Location" />
-          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ProblemMasters">
       <EntityTypeMapping TypeName="ReportModel.ProblemMaster">
         <MappingFragment StoreEntitySet="ProblemMaster">
@@ -832,6 +816,144 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="DomainName" ColumnName="DomainName" />
           <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnswerKeys">
+      <EntityTypeMapping TypeName="ReportModel.AnswerKey">
+        <MappingFragment StoreEntitySet="AnswerKey">
+          <ScalarProperty Name="AnswerOption" ColumnName="AnswerOption" />
+          <ScalarProperty Name="AnswerKeyID" ColumnName="AnswerKeyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CFRInsurances">
+      <EntityTypeMapping TypeName="ReportModel.CFRInsurance">
+        <MappingFragment StoreEntitySet="CFRInsurance">
+          <ScalarProperty Name="DateOfFeedback" ColumnName="DateOfFeedback" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="ActionPlan" ColumnName="ActionPlan" />
+          <ScalarProperty Name="Strengths" ColumnName="Strengths" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="WeekToDate" ColumnName="WeekToDate" />
+          <ScalarProperty Name="ConversionRateToday" ColumnName="ConversionRateToday" />
+          <ScalarProperty Name="AccuracyOfInformationRating" ColumnName="AccuracyOfInformationRating" />
+          <ScalarProperty Name="AdheranceRating" ColumnName="AdheranceRating" />
+          <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
+          <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
+          <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
+          <ScalarProperty Name="AOIQ5" ColumnName="AOIQ5" />
+          <ScalarProperty Name="AOIQ4" ColumnName="AOIQ4" />
+          <ScalarProperty Name="AOIQ3" ColumnName="AOIQ3" />
+          <ScalarProperty Name="AOIQ2" ColumnName="AOIQ2" />
+          <ScalarProperty Name="AOIQ1" ColumnName="AOIQ1" />
+          <ScalarProperty Name="AQ5" ColumnName="AQ5" />
+          <ScalarProperty Name="AQ4" ColumnName="AQ4" />
+          <ScalarProperty Name="AQ3" ColumnName="AQ3" />
+          <ScalarProperty Name="AQ2" ColumnName="AQ2" />
+          <ScalarProperty Name="AQ1" ColumnName="AQ1" />
+          <ScalarProperty Name="CQ3" ColumnName="CQ3" />
+          <ScalarProperty Name="CQ2" ColumnName="CQ2" />
+          <ScalarProperty Name="CQ1" ColumnName="CQ1" />
+          <ScalarProperty Name="PQ2" ColumnName="PQ2" />
+          <ScalarProperty Name="PQ1" ColumnName="PQ1" />
+          <ScalarProperty Name="TEQ5" ColumnName="TEQ5" />
+          <ScalarProperty Name="TEQ4" ColumnName="TEQ4" />
+          <ScalarProperty Name="TEQ3" ColumnName="TEQ3" />
+          <ScalarProperty Name="TEQ2" ColumnName="TEQ2" />
+          <ScalarProperty Name="TEQ1" ColumnName="TEQ1" />
+          <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CFRInsurance1" ColumnName="CFRInsurance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CFRMortgages">
+      <EntityTypeMapping TypeName="ReportModel.CFRMortgage">
+        <MappingFragment StoreEntitySet="CFRMortgage">
+          <ScalarProperty Name="DateOfFeedback" ColumnName="DateOfFeedback" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="ActionPlan" ColumnName="ActionPlan" />
+          <ScalarProperty Name="Strengths" ColumnName="Strengths" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="WeekToDate" ColumnName="WeekToDate" />
+          <ScalarProperty Name="ConversionRateToday" ColumnName="ConversionRateToday" />
+          <ScalarProperty Name="AccuracyOfInformationRating" ColumnName="AccuracyOfInformationRating" />
+          <ScalarProperty Name="AdheranceRating" ColumnName="AdheranceRating" />
+          <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
+          <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
+          <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
+          <ScalarProperty Name="AOIQ4" ColumnName="AOIQ4" />
+          <ScalarProperty Name="AOIQ3" ColumnName="AOIQ3" />
+          <ScalarProperty Name="AOIQ2" ColumnName="AOIQ2" />
+          <ScalarProperty Name="AOIQ1" ColumnName="AOIQ1" />
+          <ScalarProperty Name="AQ5" ColumnName="AQ5" />
+          <ScalarProperty Name="AQ4" ColumnName="AQ4" />
+          <ScalarProperty Name="AQ3" ColumnName="AQ3" />
+          <ScalarProperty Name="AQ2" ColumnName="AQ2" />
+          <ScalarProperty Name="AQ1" ColumnName="AQ1" />
+          <ScalarProperty Name="CQ3" ColumnName="CQ3" />
+          <ScalarProperty Name="CQ2" ColumnName="CQ2" />
+          <ScalarProperty Name="CQ1" ColumnName="CQ1" />
+          <ScalarProperty Name="PQ2" ColumnName="PQ2" />
+          <ScalarProperty Name="PQ1" ColumnName="PQ1" />
+          <ScalarProperty Name="TEQ5" ColumnName="TEQ5" />
+          <ScalarProperty Name="TEQ4" ColumnName="TEQ4" />
+          <ScalarProperty Name="TEQ3" ColumnName="TEQ3" />
+          <ScalarProperty Name="TEQ2" ColumnName="TEQ2" />
+          <ScalarProperty Name="TEQ1" ColumnName="TEQ1" />
+          <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CFRMortgaeID" ColumnName="CFRMortgaeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CFRPatientRecruitments">
+      <EntityTypeMapping TypeName="ReportModel.CFRPatientRecruitment">
+        <MappingFragment StoreEntitySet="CFRPatientRecruitment">
+          <ScalarProperty Name="DateOfFeedback" ColumnName="DateOfFeedback" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="ActionPlan" ColumnName="ActionPlan" />
+          <ScalarProperty Name="Strengths" ColumnName="Strengths" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="WeekToDate" ColumnName="WeekToDate" />
+          <ScalarProperty Name="ConversionRateToday" ColumnName="ConversionRateToday" />
+          <ScalarProperty Name="AccuracyOfInformationRating" ColumnName="AccuracyOfInformationRating" />
+          <ScalarProperty Name="AdheranceRating" ColumnName="AdheranceRating" />
+          <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
+          <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
+          <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
+          <ScalarProperty Name="AOIQ2" ColumnName="AOIQ2" />
+          <ScalarProperty Name="AOIQ1" ColumnName="AOIQ1" />
+          <ScalarProperty Name="AQ5" ColumnName="AQ5" />
+          <ScalarProperty Name="AQ4" ColumnName="AQ4" />
+          <ScalarProperty Name="AQ3" ColumnName="AQ3" />
+          <ScalarProperty Name="AQ2" ColumnName="AQ2" />
+          <ScalarProperty Name="AQ1" ColumnName="AQ1" />
+          <ScalarProperty Name="CQ5" ColumnName="CQ5" />
+          <ScalarProperty Name="CQ4" ColumnName="CQ4" />
+          <ScalarProperty Name="CQ3" ColumnName="CQ3" />
+          <ScalarProperty Name="CQ2" ColumnName="CQ2" />
+          <ScalarProperty Name="CQ1" ColumnName="CQ1" />
+          <ScalarProperty Name="PQ2" ColumnName="PQ2" />
+          <ScalarProperty Name="PQ1" ColumnName="PQ1" />
+          <ScalarProperty Name="TEQ3" ColumnName="TEQ3" />
+          <ScalarProperty Name="TEQ2" ColumnName="TEQ2" />
+          <ScalarProperty Name="TEQ1" ColumnName="TEQ1" />
+          <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CFRPatientRecruitment1" ColumnName="CFRPatientRecruitment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CFRPerformanceAnalysis">
+      <EntityTypeMapping TypeName="ReportModel.CFRPerformanceAnalysi">
+        <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
+          <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
+          <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

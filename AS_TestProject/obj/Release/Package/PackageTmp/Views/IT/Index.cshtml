@@ -23,10 +23,10 @@
                                     {
                                         <tr>
                                             <td style="display: block; word-break: break-word">
-                                                <strong><a href="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",document.File)" target="_blank">@document.File.Substring(14)</a></strong><br />
+                                                <strong><a href="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",document.File)" target="_blank">@document.File.Substring(14)</a></strong><br />
                                                 <em><small>uploaded by <strong style="color: #FE5607">@document.Author.DisplayName</strong></small></em>
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 @document.Created.ToString("G")
                                             </td>
                                             <td>
