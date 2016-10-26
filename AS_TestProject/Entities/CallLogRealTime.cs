@@ -14,7 +14,6 @@ namespace AS_TestProject.Entities
     
     public partial class CallLogRealTime
     {
-        public long CallLogRealTimeID { get; set; }
         public System.DateTime RecordDate { get; set; }
         public byte DomainMasterID { get; set; }
         public string AgentID { get; set; }
@@ -32,5 +31,6 @@ namespace AS_TestProject.Entities
         public string ProjectID { get; set; }
         public string PatientID { get; set; }
         public System.TimeSpan RecordTime { get; set; }
+        public long CallLogRealTimeID { get; set; }
     }
 }

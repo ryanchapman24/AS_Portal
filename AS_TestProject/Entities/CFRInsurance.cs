@@ -14,7 +14,7 @@ namespace AS_TestProject.Entities
     
     public partial class CFRInsurance
     {
-        public int CFRInsurance1 { get; set; }
+        public int CFRInsuranceID { get; set; }
         public int EmployeeID { get; set; }
         public Nullable<byte> DomainMasterID { get; set; }
         public short C_Calls { get; set; }

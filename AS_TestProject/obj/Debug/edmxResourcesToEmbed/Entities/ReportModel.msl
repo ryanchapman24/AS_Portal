@@ -766,30 +766,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation1" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
-    <EntitySetMapping Name="CallLogRealTimes">
-      <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
-        <MappingFragment StoreEntitySet="CallLogRealTime">
-          <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
-          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-          <ScalarProperty Name="CallID" ColumnName="CallID" />
-          <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
-          <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
-          <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
-          <ScalarProperty Name="ListName" ColumnName="ListName" />
-          <ScalarProperty Name="Skill" ColumnName="Skill" />
-          <ScalarProperty Name="CallType" ColumnName="CallType" />
-          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
-          <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
-          <ScalarProperty Name="Disposition" ColumnName="Disposition" />
-          <ScalarProperty Name="LeadID" ColumnName="LeadID" />
-          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
-          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
-          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
-          <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DisciplinaryActions">
       <EntityTypeMapping TypeName="ReportModel.DisciplinaryAction">
         <MappingFragment StoreEntitySet="DisciplinaryAction">
@@ -824,6 +800,14 @@
         <MappingFragment StoreEntitySet="AnswerKey">
           <ScalarProperty Name="AnswerOption" ColumnName="AnswerOption" />
           <ScalarProperty Name="AnswerKeyID" ColumnName="AnswerKeyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CFRPerformanceAnalysis">
+      <EntityTypeMapping TypeName="ReportModel.CFRPerformanceAnalysi">
+        <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
+          <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
+          <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -865,7 +849,7 @@
           <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="CFRInsurance1" ColumnName="CFRInsurance" />
+          <ScalarProperty Name="CFRInsuranceID" ColumnName="CFRInsuranceID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -906,7 +890,7 @@
           <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="CFRMortgaeID" ColumnName="CFRMortgaeID" />
+          <ScalarProperty Name="CFRMortgageID" ColumnName="CFRMortgageID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -945,15 +929,31 @@
           <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="CFRPatientRecruitment1" ColumnName="CFRPatientRecruitment" />
+          <ScalarProperty Name="CFRPatientRecruitmentID" ColumnName="CFRPatientRecruitmentID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CFRPerformanceAnalysis">
-      <EntityTypeMapping TypeName="ReportModel.CFRPerformanceAnalysi">
-        <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
-          <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
-          <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
+    <EntitySetMapping Name="CallLogRealTimes">
+      <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
+        <MappingFragment StoreEntitySet="CallLogRealTime">
+          <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
+          <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="CallID" ColumnName="CallID" />
+          <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
+          <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
+          <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+          <ScalarProperty Name="ListName" ColumnName="ListName" />
+          <ScalarProperty Name="Skill" ColumnName="Skill" />
+          <ScalarProperty Name="CallType" ColumnName="CallType" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
+          <ScalarProperty Name="Disposition" ColumnName="Disposition" />
+          <ScalarProperty Name="LeadID" ColumnName="LeadID" />
+          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

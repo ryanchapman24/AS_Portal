@@ -263,9 +263,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
   </EntityType>
   <EntityType Name="CFRInsurance">
     <Key>
-      <PropertyRef Name="CFRInsurance" />
+      <PropertyRef Name="CFRInsuranceID" />
     </Key>
-    <Property Name="CFRInsurance" Type="int" Nullable="false" />
+    <Property Name="CFRInsuranceID" Type="int" Nullable="false" />
     <Property Name="EmployeeID" Type="int" Nullable="false" />
     <Property Name="DomainMasterID" Type="tinyint" />
     <Property Name="#Calls" Type="smallint" Nullable="false" />
@@ -304,9 +304,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
   </EntityType>
   <EntityType Name="CFRMortgage">
     <Key>
-      <PropertyRef Name="CFRMortgaeID" />
+      <PropertyRef Name="CFRMortgageID" />
     </Key>
-    <Property Name="CFRMortgaeID" Type="int" Nullable="false" />
+    <Property Name="CFRMortgageID" Type="int" Nullable="false" />
     <Property Name="EmployeeID" Type="int" Nullable="false" />
     <Property Name="DomainMasterID" Type="tinyint" />
     <Property Name="#Calls" Type="smallint" Nullable="false" />
@@ -344,9 +344,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
   </EntityType>
   <EntityType Name="CFRPatientRecruitment">
     <Key>
-      <PropertyRef Name="CFRPatientRecruitment" />
+      <PropertyRef Name="CFRPatientRecruitmentID" />
     </Key>
-    <Property Name="CFRPatientRecruitment" Type="int" Nullable="false" />
+    <Property Name="CFRPatientRecruitmentID" Type="int" Nullable="false" />
     <Property Name="EmployeeID" Type="int" Nullable="false" />
     <Property Name="DomainMasterID" Type="tinyint" />
     <Property Name="#Calls" Type="smallint" Nullable="false" />
@@ -527,11 +527,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="LeadSource" Type="varchar" MaxLength="25" />
     <Property Name="CallID" Type="varchar" MaxLength="25" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'Report.REPORT.CallLogRealTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CallLogRealTime">
     <Key>
-      <PropertyRef Name="RecordTime" />
+      <PropertyRef Name="DomainMasterID" />
       <PropertyRef Name="CallLogRealTimeID" />
     </Key>
     <Property Name="RecordDate" Type="date" Nullable="false" />
@@ -2222,6 +2220,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <EntitySet Name="CFRPatientRecruitment" EntityType="Self.CFRPatientRecruitment" Schema="QUALITY" store:Type="Tables" />
     <EntitySet Name="CFRPerformanceAnalysis" EntityType="Self.CFRPerformanceAnalysis" Schema="QUALITY" store:Type="Tables" />
     <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
+    <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="DisciplinaryAction" EntityType="Self.DisciplinaryAction" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="EverquoteHourlyCampaignMetrics" EntityType="Self.EverquoteHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="EverquoteRollingCampaignMetrics" EntityType="Self.EverquoteRollingCampaignMetrics" Schema="REPORT" store:Type="Tables" />
@@ -2239,28 +2238,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [FreedomHourlyCallMetrics].[HourOfDay] AS [HourOfDay], 
     [FreedomHourlyCallMetrics].[CallState] AS [CallState]
     FROM [FREEDOM].[FreedomHourlyCallMetrics] AS [FreedomHourlyCallMetrics]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" store:Type="Tables" store:Schema="REPORT">
-      <DefiningQuery>SELECT 
-    [CallLogRealTime].[RecordDate] AS [RecordDate], 
-    [CallLogRealTime].[DomainMasterID] AS [DomainMasterID], 
-    [CallLogRealTime].[AgentID] AS [AgentID], 
-    [CallLogRealTime].[LeadID] AS [LeadID], 
-    [CallLogRealTime].[Disposition] AS [Disposition], 
-    [CallLogRealTime].[CallHourOfDay] AS [CallHourOfDay], 
-    [CallLogRealTime].[CampaignName] AS [CampaignName], 
-    [CallLogRealTime].[CallType] AS [CallType], 
-    [CallLogRealTime].[Skill] AS [Skill], 
-    [CallLogRealTime].[ListName] AS [ListName], 
-    [CallLogRealTime].[CustomerCity] AS [CustomerCity], 
-    [CallLogRealTime].[CustomerState] AS [CustomerState], 
-    [CallLogRealTime].[CustomerZipCode] AS [CustomerZipCode], 
-    [CallLogRealTime].[CallID] AS [CallID], 
-    [CallLogRealTime].[ProjectID] AS [ProjectID], 
-    [CallLogRealTime].[PatientID] AS [PatientID], 
-    [CallLogRealTime].[RecordTime] AS [RecordTime], 
-    [CallLogRealTime].[CallLogRealTimeID] AS [CallLogRealTimeID]
-    FROM [REPORT].[CallLogRealTime] AS [CallLogRealTime]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="AgentDailyHours1" EntityType="Self.AgentDailyHours1" store:Type="Tables" store:Schema="STAGE" store:Name="AgentDailyHours">
       <DefiningQuery>SELECT 

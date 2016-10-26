@@ -55,14 +55,14 @@ namespace AS_TestProject.Entities
         public virtual DbSet<FreedomDailyPortfolioInventory> FreedomDailyPortfolioInventories { get; set; }
         public virtual DbSet<FreedomHourlyCallMetrics1> FreedomHourlyCallMetrics1 { get; set; }
         public virtual DbSet<PreciseLeadsHourlyCallLogMaster> PreciseLeadsHourlyCallLogMasters { get; set; }
-        public virtual DbSet<CallLogRealTime> CallLogRealTimes { get; set; }
         public virtual DbSet<DisciplinaryAction> DisciplinaryActions { get; set; }
         public virtual DbSet<AgentDailyHours1> AgentDailyHours1 { get; set; }
         public virtual DbSet<AnswerKey> AnswerKeys { get; set; }
+        public virtual DbSet<CFRPerformanceAnalysi> CFRPerformanceAnalysis { get; set; }
         public virtual DbSet<CFRInsurance> CFRInsurances { get; set; }
         public virtual DbSet<CFRMortgage> CFRMortgages { get; set; }
         public virtual DbSet<CFRPatientRecruitment> CFRPatientRecruitments { get; set; }
-        public virtual DbSet<CFRPerformanceAnalysi> CFRPerformanceAnalysis { get; set; }
+        public virtual DbSet<CallLogRealTime> CallLogRealTimes { get; set; }
     
         public virtual ObjectResult<uspInsertProblemMaster_Result> uspInsertProblemMaster(string userID, string processName, Nullable<int> errorNumber, Nullable<int> lineNumber, string exceptionMessage, string exceptionSource, Nullable<int> exceptionSeverity, Nullable<int> exceptionState)
         {

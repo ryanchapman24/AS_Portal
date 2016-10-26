@@ -268,9 +268,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
         </EntityType>
         <EntityType Name="CFRInsurance">
           <Key>
-            <PropertyRef Name="CFRInsurance" />
+            <PropertyRef Name="CFRInsuranceID" />
           </Key>
-          <Property Name="CFRInsurance" Type="int" Nullable="false" />
+          <Property Name="CFRInsuranceID" Type="int" Nullable="false" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="DomainMasterID" Type="tinyint" />
           <Property Name="#Calls" Type="smallint" Nullable="false" />
@@ -309,9 +309,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
         </EntityType>
         <EntityType Name="CFRMortgage">
           <Key>
-            <PropertyRef Name="CFRMortgaeID" />
+            <PropertyRef Name="CFRMortgageID" />
           </Key>
-          <Property Name="CFRMortgaeID" Type="int" Nullable="false" />
+          <Property Name="CFRMortgageID" Type="int" Nullable="false" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="DomainMasterID" Type="tinyint" />
           <Property Name="#Calls" Type="smallint" Nullable="false" />
@@ -349,9 +349,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
         </EntityType>
         <EntityType Name="CFRPatientRecruitment">
           <Key>
-            <PropertyRef Name="CFRPatientRecruitment" />
+            <PropertyRef Name="CFRPatientRecruitmentID" />
           </Key>
-          <Property Name="CFRPatientRecruitment" Type="int" Nullable="false" />
+          <Property Name="CFRPatientRecruitmentID" Type="int" Nullable="false" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="DomainMasterID" Type="tinyint" />
           <Property Name="#Calls" Type="smallint" Nullable="false" />
@@ -532,18 +532,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="LeadSource" Type="varchar" MaxLength="25" />
           <Property Name="CallID" Type="varchar" MaxLength="25" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Report.REPORT.CallLogRealTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CallLogRealTime">
           <Key>
-            
-            
-            
-            
-            
-            
-            
-            <PropertyRef Name="RecordTime" />
+            <PropertyRef Name="DomainMasterID" />
             <PropertyRef Name="CallLogRealTimeID" />
           </Key>
           <Property Name="RecordDate" Type="date" Nullable="false" />
@@ -2234,6 +2225,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="CFRPatientRecruitment" EntityType="Self.CFRPatientRecruitment" Schema="QUALITY" store:Type="Tables" />
           <EntitySet Name="CFRPerformanceAnalysis" EntityType="Self.CFRPerformanceAnalysis" Schema="QUALITY" store:Type="Tables" />
           <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
+          <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="DisciplinaryAction" EntityType="Self.DisciplinaryAction" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="EverquoteHourlyCampaignMetrics" EntityType="Self.EverquoteHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="EverquoteRollingCampaignMetrics" EntityType="Self.EverquoteRollingCampaignMetrics" Schema="REPORT" store:Type="Tables" />
@@ -2251,28 +2243,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [FreedomHourlyCallMetrics].[HourOfDay] AS [HourOfDay], 
     [FreedomHourlyCallMetrics].[CallState] AS [CallState]
     FROM [FREEDOM].[FreedomHourlyCallMetrics] AS [FreedomHourlyCallMetrics]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" store:Type="Tables" store:Schema="REPORT">
-            <DefiningQuery>SELECT 
-    [CallLogRealTime].[RecordDate] AS [RecordDate], 
-    [CallLogRealTime].[DomainMasterID] AS [DomainMasterID], 
-    [CallLogRealTime].[AgentID] AS [AgentID], 
-    [CallLogRealTime].[LeadID] AS [LeadID], 
-    [CallLogRealTime].[Disposition] AS [Disposition], 
-    [CallLogRealTime].[CallHourOfDay] AS [CallHourOfDay], 
-    [CallLogRealTime].[CampaignName] AS [CampaignName], 
-    [CallLogRealTime].[CallType] AS [CallType], 
-    [CallLogRealTime].[Skill] AS [Skill], 
-    [CallLogRealTime].[ListName] AS [ListName], 
-    [CallLogRealTime].[CustomerCity] AS [CustomerCity], 
-    [CallLogRealTime].[CustomerState] AS [CustomerState], 
-    [CallLogRealTime].[CustomerZipCode] AS [CustomerZipCode], 
-    [CallLogRealTime].[CallID] AS [CallID], 
-    [CallLogRealTime].[ProjectID] AS [ProjectID], 
-    [CallLogRealTime].[PatientID] AS [PatientID], 
-    [CallLogRealTime].[RecordTime] AS [RecordTime], 
-    [CallLogRealTime].[CallLogRealTimeID] AS [CallLogRealTimeID]
-    FROM [REPORT].[CallLogRealTime] AS [CallLogRealTime]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="AgentDailyHours1" EntityType="Self.AgentDailyHours1" store:Type="Tables" store:Schema="STAGE" store:Name="AgentDailyHours">
             <DefiningQuery>SELECT 
@@ -3074,7 +3044,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="Employee" EntitySet="Employees" />
             <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
           </AssociationSet>
-          <EntitySet Name="CallLogRealTimes" EntityType="ReportModel.CallLogRealTime" />
           <EntitySet Name="DisciplinaryActions" EntityType="ReportModel.DisciplinaryAction" />
           <AssociationSet Name="FK_REPORT_DisciplinaryAction_EditByEmployeeID" Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID">
             <End Role="Employee" EntitySet="Employees" />
@@ -3086,10 +3055,10 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           </AssociationSet>
           <EntitySet Name="AgentDailyHours1" EntityType="ReportModel.AgentDailyHours1" />
           <EntitySet Name="AnswerKeys" EntityType="ReportModel.AnswerKey" />
+          <EntitySet Name="CFRPerformanceAnalysis" EntityType="ReportModel.CFRPerformanceAnalysi" />
           <EntitySet Name="CFRInsurances" EntityType="ReportModel.CFRInsurance" />
           <EntitySet Name="CFRMortgages" EntityType="ReportModel.CFRMortgage" />
           <EntitySet Name="CFRPatientRecruitments" EntityType="ReportModel.CFRPatientRecruitment" />
-          <EntitySet Name="CFRPerformanceAnalysis" EntityType="ReportModel.CFRPerformanceAnalysi" />
           <AssociationSet Name="FK__CFRInsura__Domai__2D9297B4" Association="ReportModel.FK__CFRInsura__Domai__2D9297B4">
             <End Role="DomainMaster" EntitySet="DomainMasters" />
             <End Role="CFRInsurance" EntitySet="CFRInsurances" />
@@ -3414,7 +3383,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
             <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitments" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="CallLogRealTimes" EntityType="ReportModel.CallLogRealTime" />
+          </EntityContainer>
         <ComplexType Name="uspInsertProblemMaster_Result">
           <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
           <Property Type="Int32" Name="ErrorState" Nullable="true" />
@@ -3546,7 +3516,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="CFRMortgages1" Relationship="ReportModel.FK__CFRMortga__Manag__343F9543" FromRole="Employee" ToRole="CFRMortgage" />
           <NavigationProperty Name="CFRPatientRecruitments" Relationship="ReportModel.FK__CFRPatien__Emplo__2F7AE026" FromRole="Employee" ToRole="CFRPatientRecruitment" />
           <NavigationProperty Name="CFRPatientRecruitments1" Relationship="ReportModel.FK__CFRPatien__Manag__31632898" FromRole="Employee" ToRole="CFRPatientRecruitment" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="EmployeeFive9Agent">
           <Key>
             <PropertyRef Name="EmployeeFive9AgentID" />
@@ -4429,30 +4399,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="CallLogRealTime">
-          <Key>
-            <PropertyRef Name="CallLogRealTimeID" />
-            <PropertyRef Name="RecordTime" />
-          </Key>
-          <Property Name="CallLogRealTimeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
-          <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
-          <Property Name="LeadID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-          <Property Name="Disposition" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
-          <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="false" />
-          <Property Name="CallType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Skill" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
-          <Property Name="ListName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerZipCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="CallID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="ProjectID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="PatientID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="RecordTime" Type="Time" Nullable="false" Precision="7" />
-        </EntityType>
         <EntityType Name="DisciplinaryAction">
           <Key>
             <PropertyRef Name="DisciplinaryActionID" />
@@ -4574,12 +4520,34 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="CFRPatientRecruitments14" Relationship="ReportModel.FK__CFRPatientR__CQ5__04908221" FromRole="AnswerKey" ToRole="CFRPatientRecruitment" />
           <NavigationProperty Name="CFRPatientRecruitments15" Relationship="ReportModel.FK__CFRPatientR__PQ1__7ED7A8CB" FromRole="AnswerKey" ToRole="CFRPatientRecruitment" />
           <NavigationProperty Name="CFRPatientRecruitments16" Relationship="ReportModel.FK__CFRPatientR__PQ2__7FCBCD04" FromRole="AnswerKey" ToRole="CFRPatientRecruitment" />
+          </EntityType>
+        <EntityType Name="CFRPerformanceAnalysi">
+          <Key>
+            <PropertyRef Name="CFRPerformanceAnalysisID" />
+          </Key>
+          <Property Name="CFRPerformanceAnalysisID" Type="Int32" Nullable="false" />
+          <Property Name="PerformanceRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CFRInsurances" Relationship="ReportModel.FK__CFRInsura__Accur__29C206D0" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
+          <NavigationProperty Name="CFRInsurances1" Relationship="ReportModel.FK__CFRInsura__Adher__28CDE297" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
+          <NavigationProperty Name="CFRInsurances2" Relationship="ReportModel.FK__CFRInsura__Compl__27D9BE5E" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
+          <NavigationProperty Name="CFRInsurances3" Relationship="ReportModel.FK__CFRInsura__Profe__26E59A25" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
+          <NavigationProperty Name="CFRInsurances4" Relationship="ReportModel.FK__CFRInsura__Telep__25F175EC" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
+          <NavigationProperty Name="CFRMortgages" Relationship="ReportModel.FK__CFRMortga__Accur__791ECF75" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
+          <NavigationProperty Name="CFRMortgages1" Relationship="ReportModel.FK__CFRMortga__Adher__782AAB3C" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
+          <NavigationProperty Name="CFRMortgages2" Relationship="ReportModel.FK__CFRMortga__Compl__77368703" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
+          <NavigationProperty Name="CFRMortgages3" Relationship="ReportModel.FK__CFRMortga__Profe__764262CA" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
+          <NavigationProperty Name="CFRMortgages4" Relationship="ReportModel.FK__CFRMortga__Telep__754E3E91" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
+          <NavigationProperty Name="CFRPatientRecruitments" Relationship="ReportModel.FK__CFRPatien__Accur__100234CD" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
+          <NavigationProperty Name="CFRPatientRecruitments1" Relationship="ReportModel.FK__CFRPatien__Adher__0F0E1094" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
+          <NavigationProperty Name="CFRPatientRecruitments2" Relationship="ReportModel.FK__CFRPatien__Compl__0E19EC5B" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
+          <NavigationProperty Name="CFRPatientRecruitments3" Relationship="ReportModel.FK__CFRPatien__Profe__0D25C822" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
+          <NavigationProperty Name="CFRPatientRecruitments4" Relationship="ReportModel.FK__CFRPatien__Telep__0C31A3E9" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
         </EntityType>
         <EntityType Name="CFRInsurance">
           <Key>
-            <PropertyRef Name="CFRInsurance1" />
+            <PropertyRef Name="CFRInsuranceID" />
           </Key>
-          <Property Name="CFRInsurance1" Type="Int32" Nullable="false" />
+          <Property Name="CFRInsuranceID" Type="Int32" Nullable="false" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="DomainMasterID" Type="Byte" />
           <Property Name="C_Calls" Type="Int16" Nullable="false" />
@@ -4647,9 +4615,9 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
         </EntityType>
         <EntityType Name="CFRMortgage">
           <Key>
-            <PropertyRef Name="CFRMortgaeID" />
+            <PropertyRef Name="CFRMortgageID" />
           </Key>
-          <Property Name="CFRMortgaeID" Type="Int32" Nullable="false" />
+          <Property Name="CFRMortgageID" Type="Int32" Nullable="false" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="DomainMasterID" Type="Byte" />
           <Property Name="C_Calls" Type="Int16" Nullable="false" />
@@ -4714,9 +4682,9 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
         </EntityType>
         <EntityType Name="CFRPatientRecruitment">
           <Key>
-            <PropertyRef Name="CFRPatientRecruitment1" />
+            <PropertyRef Name="CFRPatientRecruitmentID" />
           </Key>
-          <Property Name="CFRPatientRecruitment1" Type="Int32" Nullable="false" />
+          <Property Name="CFRPatientRecruitmentID" Type="Int32" Nullable="false" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="DomainMasterID" Type="Byte" />
           <Property Name="C_Calls" Type="Int16" Nullable="false" />
@@ -4774,28 +4742,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="CFRPerformanceAnalysi2" Relationship="ReportModel.FK__CFRPatien__Compl__0E19EC5B" FromRole="CFRPatientRecruitment" ToRole="CFRPerformanceAnalysi" />
           <NavigationProperty Name="CFRPerformanceAnalysi3" Relationship="ReportModel.FK__CFRPatien__Profe__0D25C822" FromRole="CFRPatientRecruitment" ToRole="CFRPerformanceAnalysi" />
           <NavigationProperty Name="CFRPerformanceAnalysi4" Relationship="ReportModel.FK__CFRPatien__Telep__0C31A3E9" FromRole="CFRPatientRecruitment" ToRole="CFRPerformanceAnalysi" />
-        </EntityType>
-        <EntityType Name="CFRPerformanceAnalysi">
-          <Key>
-            <PropertyRef Name="CFRPerformanceAnalysisID" />
-          </Key>
-          <Property Name="CFRPerformanceAnalysisID" Type="Int32" Nullable="false" />
-          <Property Name="PerformanceRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CFRInsurances" Relationship="ReportModel.FK__CFRInsura__Accur__29C206D0" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
-          <NavigationProperty Name="CFRInsurances1" Relationship="ReportModel.FK__CFRInsura__Adher__28CDE297" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
-          <NavigationProperty Name="CFRInsurances2" Relationship="ReportModel.FK__CFRInsura__Compl__27D9BE5E" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
-          <NavigationProperty Name="CFRInsurances3" Relationship="ReportModel.FK__CFRInsura__Profe__26E59A25" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
-          <NavigationProperty Name="CFRInsurances4" Relationship="ReportModel.FK__CFRInsura__Telep__25F175EC" FromRole="CFRPerformanceAnalysi" ToRole="CFRInsurance" />
-          <NavigationProperty Name="CFRMortgages" Relationship="ReportModel.FK__CFRMortga__Accur__791ECF75" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
-          <NavigationProperty Name="CFRMortgages1" Relationship="ReportModel.FK__CFRMortga__Adher__782AAB3C" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
-          <NavigationProperty Name="CFRMortgages2" Relationship="ReportModel.FK__CFRMortga__Compl__77368703" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
-          <NavigationProperty Name="CFRMortgages3" Relationship="ReportModel.FK__CFRMortga__Profe__764262CA" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
-          <NavigationProperty Name="CFRMortgages4" Relationship="ReportModel.FK__CFRMortga__Telep__754E3E91" FromRole="CFRPerformanceAnalysi" ToRole="CFRMortgage" />
-          <NavigationProperty Name="CFRPatientRecruitments" Relationship="ReportModel.FK__CFRPatien__Accur__100234CD" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
-          <NavigationProperty Name="CFRPatientRecruitments1" Relationship="ReportModel.FK__CFRPatien__Adher__0F0E1094" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
-          <NavigationProperty Name="CFRPatientRecruitments2" Relationship="ReportModel.FK__CFRPatien__Compl__0E19EC5B" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
-          <NavigationProperty Name="CFRPatientRecruitments3" Relationship="ReportModel.FK__CFRPatien__Profe__0D25C822" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
-          <NavigationProperty Name="CFRPatientRecruitments4" Relationship="ReportModel.FK__CFRPatien__Telep__0C31A3E9" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
         </EntityType>
         <Association Name="FK__CFRInsura__Domai__2D9297B4">
           <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="0..1" />
@@ -5769,6 +5715,30 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CallLogRealTime">
+          <Key>
+            <PropertyRef Name="DomainMasterID" />
+            <PropertyRef Name="CallLogRealTimeID" />
+          </Key>
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+          <Property Name="AgentID" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="LeadID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="Disposition" Type="String" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="CallType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Skill" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="ListName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCity" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerState" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerZipCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CallID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PatientID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="RecordTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CallLogRealTimeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6540,30 +6510,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation1" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
-          <EntitySetMapping Name="CallLogRealTimes">
-            <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
-              <MappingFragment StoreEntitySet="CallLogRealTime">
-                <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-                <ScalarProperty Name="CallID" ColumnName="CallID" />
-                <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
-                <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
-                <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
-                <ScalarProperty Name="ListName" ColumnName="ListName" />
-                <ScalarProperty Name="Skill" ColumnName="Skill" />
-                <ScalarProperty Name="CallType" ColumnName="CallType" />
-                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
-                <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
-                <ScalarProperty Name="Disposition" ColumnName="Disposition" />
-                <ScalarProperty Name="LeadID" ColumnName="LeadID" />
-                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
-                <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
-                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
-                <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DisciplinaryActions">
             <EntityTypeMapping TypeName="ReportModel.DisciplinaryAction">
               <MappingFragment StoreEntitySet="DisciplinaryAction">
@@ -6598,6 +6544,14 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
               <MappingFragment StoreEntitySet="AnswerKey">
                 <ScalarProperty Name="AnswerOption" ColumnName="AnswerOption" />
                 <ScalarProperty Name="AnswerKeyID" ColumnName="AnswerKeyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CFRPerformanceAnalysis">
+            <EntityTypeMapping TypeName="ReportModel.CFRPerformanceAnalysi">
+              <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
+                <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
+                <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6639,7 +6593,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
                 <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="CFRInsurance1" ColumnName="CFRInsurance" />
+                <ScalarProperty Name="CFRInsuranceID" ColumnName="CFRInsuranceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6680,7 +6634,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
                 <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="CFRMortgaeID" ColumnName="CFRMortgaeID" />
+                <ScalarProperty Name="CFRMortgageID" ColumnName="CFRMortgageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6719,15 +6673,31 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
                 <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="CFRPatientRecruitment1" ColumnName="CFRPatientRecruitment" />
+                <ScalarProperty Name="CFRPatientRecruitmentID" ColumnName="CFRPatientRecruitmentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CFRPerformanceAnalysis">
-            <EntityTypeMapping TypeName="ReportModel.CFRPerformanceAnalysi">
-              <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
-                <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
-                <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
+          <EntitySetMapping Name="CallLogRealTimes">
+            <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
+              <MappingFragment StoreEntitySet="CallLogRealTime">
+                <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
+                <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="CallID" ColumnName="CallID" />
+                <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
+                <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
+                <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+                <ScalarProperty Name="ListName" ColumnName="ListName" />
+                <ScalarProperty Name="Skill" ColumnName="Skill" />
+                <ScalarProperty Name="CallType" ColumnName="CallType" />
+                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+                <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
+                <ScalarProperty Name="Disposition" ColumnName="Disposition" />
+                <ScalarProperty Name="LeadID" ColumnName="LeadID" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

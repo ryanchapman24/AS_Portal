@@ -457,9 +457,9 @@
                                             <td>
                                                 @if (User.IsInRole("Admin") || User.IsInRole("HR"))
                                                 {
-                                                    <a href="@Url.Action("MortgageCFR_Details","Employees", new { id = item.CFRMortgaeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
-                                                    <a href="@Url.Action("MortgageCFR_Edit","Employees", new { id = item.CFRMortgaeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
-                                                    <a href="@Url.Action("MortgageCFR_Delete","Employees", new { id = item.CFRMortgaeID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
+                                                    <a href="@Url.Action("MortgageCFR_Details","Employees", new { id = item.CFRMortgageID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                                    <a href="@Url.Action("MortgageCFR_Edit","Employees", new { id = item.CFRMortgageID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                    <a href="@Url.Action("MortgageCFR_Delete","Employees", new { id = item.CFRMortgageID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
                                                 }
                                             </td>
                                         </tr>

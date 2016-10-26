@@ -14,7 +14,7 @@ namespace AS_TestProject.Entities
     
     public partial class CFRMortgage
     {
-        public int CFRMortgaeID { get; set; }
+        public int CFRMortgageID { get; set; }
         public int EmployeeID { get; set; }
         public Nullable<byte> DomainMasterID { get; set; }
         public short C_Calls { get; set; }
