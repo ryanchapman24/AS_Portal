@@ -16,6 +16,12 @@ namespace AS_TestProject.Controllers
     {
         private ReportEntities mb = new ReportEntities();
 
+        public class Domain
+        {
+            public byte Id { get; set; }
+            public string FileMaskPlusName { get; set; }
+        }
+
         // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -134,6 +140,36 @@ namespace AS_TestProject.Controllers
                 return HttpNotFound();
             }
 
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
+            ViewBag.AOIQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AOIQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AOIQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AOIQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.TEQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.TEQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.TEQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.TEQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.TEQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.AQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.CQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.CQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.CQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.PQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.PQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+
             Employee manager = mb.Employees.Find(employee.ManagerEmployeeID);
             Employee creator = mb.Employees.Find(employee.AddByEmployeeID);
             ViewBag.Manager = manager.FirstName + " " + manager.LastName;
@@ -141,7 +177,7 @@ namespace AS_TestProject.Controllers
             ViewBag.Date = System.DateTime.Now.ToShortDateString();
 
             ViewBag.DisciplinaryActions = mb.DisciplinaryActions.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(d => d.Date).ToList();
-
+            ViewBag.CFRs = mb.CFRMortgages.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(d => d.DateOfFeedback).ToList();
             return View(employee);
         }
 
@@ -256,6 +292,352 @@ namespace AS_TestProject.Controllers
             mb.DisciplinaryActions.Remove(DiscAct);
             mb.SaveChanges();
             return RedirectToAction("Details", "Employees", new { id = DiscAct.EmployeeID });
+        }
+
+        // GET: CFRMortgages/Details/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult MortgageCFR_Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRMortgage cFRMortgage = mb.CFRMortgages.Find(id);
+            if (cFRMortgage == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cFRMortgage);
+        }
+
+        // POST: CFRMortgages/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult MortgageCFR_Create([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,TEQ1,TEQ2,TEQ3,TEQ4,TEQ5,PQ1,PQ2,CQ1,CQ2,CQ3,AQ1,AQ2,AQ3,AQ4,AQ5,AOIQ1,AOIQ2,AOIQ3,AOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (ModelState.IsValid)
+            {
+                cFRMortgage.ManagerID = user.EmployeeID;
+                cFRMortgage.DateOfFeedback = System.DateTime.Now;
+
+                // Telephone Etiquette Rating Calculation (MORTGAGE)
+                int mTER = 0;
+                if (cFRMortgage.TEQ1 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.TEQ2 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.TEQ3 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.TEQ4 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.TEQ5 == 2)
+                {
+                    mTER++;
+                }
+                if (mTER == 0)
+                {
+                    cFRMortgage.TelephoneEtiquetteRating = 1;
+                }
+                if (mTER > 0 && mTER < 3)
+                {
+                    cFRMortgage.TelephoneEtiquetteRating = 2;
+                }
+                if (mTER >= 3)
+                {
+                    cFRMortgage.TelephoneEtiquetteRating = 3;
+                }
+
+                // Professionalism Rating Calculation (MORTGAGE)
+                int mPR = 0;
+                if (cFRMortgage.PQ1 == 2)
+                {
+                    mPR++;
+                }
+                if (cFRMortgage.PQ2 == 2)
+                {
+                    mPR++;
+                }     
+                if (mPR == 0)
+                {
+                    cFRMortgage.ProfessionalismRating = 1;
+                }
+                if (mPR == 1)
+                {
+                    cFRMortgage.ProfessionalismRating = 2;
+                }
+                if (mPR == 3)
+                {
+                    cFRMortgage.ProfessionalismRating = 3;
+                }
+
+                // Compliance Rating Calculation (MORTGAGE)
+                int mCR = 0;
+                if (cFRMortgage.CQ1 == 2)
+                {
+                    mCR++;
+                }
+                if (cFRMortgage.CQ2 == 2)
+                {
+                    mCR++;
+                }
+                if (cFRMortgage.CQ3 == 2)
+                {
+                    mCR++;
+                }
+                if (mCR == 0)
+                {
+                    cFRMortgage.ComplianceRating = 1;
+                }
+                if (mCR >= 1)
+                {
+                    cFRMortgage.ComplianceRating = 3;
+                }
+
+                // Adherance Rating Calculation (MORTGAGE)
+                int mAR = 0;
+                if (cFRMortgage.AQ1 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.AQ2 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.AQ3 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.AQ4 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.AQ5 == 2)
+                {
+                    mAR++;
+                }
+                if (mAR == 0)
+                {
+                    cFRMortgage.AdheranceRating = 1;
+                }
+                if (mAR > 0 && mAR < 3)
+                {
+                    cFRMortgage.AdheranceRating = 2;
+                }
+                if (mAR >= 3)
+                {
+                    cFRMortgage.AdheranceRating = 3;
+                }
+
+                // Accuracy of Information Rating Calculation (MORTGAGE)
+                int mAOIR = 0;
+                if (cFRMortgage.AOIQ1 == 2)
+                {
+                    mAOIR++;
+                }
+                if (cFRMortgage.AOIQ2 == 2)
+                {
+                    mAOIR++;
+                }
+                if (cFRMortgage.AOIQ3 == 2)
+                {
+                    mAOIR++;
+                }
+                if (cFRMortgage.AOIQ4 == 2)
+                {
+                    mAOIR++;
+                }
+                if (mAOIR == 0)
+                {
+                    cFRMortgage.AccuracyOfInformationRating = 1;
+                }
+                if (mAOIR >= 1)
+                {
+                    cFRMortgage.AccuracyOfInformationRating = 3;
+                }
+
+                mb.CFRMortgages.Add(cFRMortgage);
+                mb.SaveChanges();
+                return RedirectToAction("Details", "Employees", new { id = cFRMortgage.EmployeeID });
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
+            ViewBag.AOIQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ1);
+            ViewBag.AOIQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ2);
+            ViewBag.AOIQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ3);
+            ViewBag.AOIQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ4);
+            ViewBag.TEQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ1);
+            ViewBag.TEQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ2);
+            ViewBag.TEQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ3);
+            ViewBag.TEQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ4);
+            ViewBag.TEQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ5);
+            ViewBag.AQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ1);
+            ViewBag.AQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ2);
+            ViewBag.AQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ3);
+            ViewBag.AQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ4);
+            ViewBag.AQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ5);
+            ViewBag.CQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ1);
+            ViewBag.CQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ2);
+            ViewBag.CQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ3);
+            ViewBag.PQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ1);
+            ViewBag.PQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ2);
+            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
+            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
+            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
+            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ProfessionalismRating);
+            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.TelephoneEtiquetteRating);
+            return View(cFRMortgage);
+        }
+
+        // GET: CFRMortgages/Edit/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult MortgageCFR_Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRMortgage cFRMortgage = mb.CFRMortgages.Find(id);
+            if (cFRMortgage == null)
+            {
+                return HttpNotFound();
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
+            ViewBag.AOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ1);
+            ViewBag.AOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ2);
+            ViewBag.AOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ3);
+            ViewBag.AOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ4);
+            ViewBag.TEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ1);
+            ViewBag.TEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ2);
+            ViewBag.TEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ3);
+            ViewBag.TEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ4);
+            ViewBag.TEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ5);
+            ViewBag.AQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ1);
+            ViewBag.AQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ2);
+            ViewBag.AQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ3);
+            ViewBag.AQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ4);
+            ViewBag.AQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ5);
+            ViewBag.CQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ1);
+            ViewBag.CQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ2);
+            ViewBag.CQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ3);
+            ViewBag.PQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ1);
+            ViewBag.PQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ2);
+            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
+            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
+            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
+            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ProfessionalismRating);
+            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.TelephoneEtiquetteRating);
+            return View(cFRMortgage);
+        }
+
+        // POST: CFRMortgages/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult MortgageCFR_Edit([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,TEQ1,TEQ2,TEQ3,TEQ4,TEQ5,PQ1,PQ2,CQ1,CQ2,CQ3,AQ1,AQ2,AQ3,AQ4,AQ5,AOIQ1,AOIQ2,AOIQ3,AOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
+        {
+            if (ModelState.IsValid)
+            {
+                mb.Entry(cFRMortgage).State = EntityState.Modified;
+                mb.SaveChanges();
+                return RedirectToAction("Details", "Employees", new { id = cFRMortgage.EmployeeID });
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
+            ViewBag.AOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ1);
+            ViewBag.AOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ2);
+            ViewBag.AOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ3);
+            ViewBag.AOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ4);
+            ViewBag.TEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ1);
+            ViewBag.TEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ2);
+            ViewBag.TEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ3);
+            ViewBag.TEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ4);
+            ViewBag.TEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ5);
+            ViewBag.AQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ1);
+            ViewBag.AQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ2);
+            ViewBag.AQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ3);
+            ViewBag.AQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ4);
+            ViewBag.AQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ5);
+            ViewBag.CQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ1);
+            ViewBag.CQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ2);
+            ViewBag.CQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ3);
+            ViewBag.PQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ1);
+            ViewBag.PQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ2);
+            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
+            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
+            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
+            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ProfessionalismRating);
+            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.TelephoneEtiquetteRating);
+            return View(cFRMortgage);
+        }
+
+        // GET: CFRMortgages/Delete/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult MortgageCFR_Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRMortgage cFRMortgage = mb.CFRMortgages.Find(id);
+            if (cFRMortgage == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cFRMortgage);
+        }
+
+        // POST: CFRMortgages/Delete/5
+        [HttpPost, ActionName("MortgageCFR_Delete")]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult MortgageCFR_DeleteConfirmed(int id)
+        {
+            CFRMortgage cFRMortgage = mb.CFRMortgages.Find(id);
+            mb.CFRMortgages.Remove(cFRMortgage);
+            mb.SaveChanges();
+            return RedirectToAction("Details", "Employees", new { id = cFRMortgage.EmployeeID });
         }
 
         protected override void Dispose(bool disposing)

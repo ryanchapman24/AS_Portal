@@ -144,21 +144,6 @@
     <Property Name="MainPhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="AddDate" Type="date" Nullable="false" />
   </EntityType>
-  <EntityType Name="NewEmployeeData">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EmployeeID" Type="int" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="HireDate" Type="date" Nullable="false" />
-    <Property Name="Location" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="JobTitle" Type="varchar" MaxLength="255" />
-    <Property Name="TerminationDate" Type="date" />
-    <Property Name="EmployeeStatus" Type="varchar" MaxLength="255" />
-    <Property Name="FileNumber" Type="varchar" MaxLength="15" />
-  </EntityType>
   <EntityType Name="ProblemMaster">
     <Key>
       <PropertyRef Name="ProblemID" />
@@ -268,6 +253,139 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="EndDate" Type="date" Nullable="false" />
     <Property Name="PayDate" Type="date" Nullable="false" />
     <Property Name="IsComplete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnswerKey">
+    <Key>
+      <PropertyRef Name="AnswerKeyID" />
+    </Key>
+    <Property Name="AnswerKeyID" Type="int" Nullable="false" />
+    <Property Name="AnswerOption" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="CFRInsurance">
+    <Key>
+      <PropertyRef Name="CFRInsurance" />
+    </Key>
+    <Property Name="CFRInsurance" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="DomainMasterID" Type="tinyint" />
+    <Property Name="#Calls" Type="smallint" Nullable="false" />
+    <Property Name="TEQ1" Type="int" />
+    <Property Name="TEQ2" Type="int" />
+    <Property Name="TEQ3" Type="int" />
+    <Property Name="TEQ4" Type="int" />
+    <Property Name="TEQ5" Type="int" />
+    <Property Name="PQ1" Type="int" />
+    <Property Name="PQ2" Type="int" />
+    <Property Name="CQ1" Type="int" />
+    <Property Name="CQ2" Type="int" />
+    <Property Name="CQ3" Type="int" />
+    <Property Name="AQ1" Type="int" />
+    <Property Name="AQ2" Type="int" />
+    <Property Name="AQ3" Type="int" />
+    <Property Name="AQ4" Type="int" />
+    <Property Name="AQ5" Type="int" />
+    <Property Name="AOIQ1" Type="int" />
+    <Property Name="AOIQ2" Type="int" />
+    <Property Name="AOIQ3" Type="int" />
+    <Property Name="AOIQ4" Type="int" />
+    <Property Name="AOIQ5" Type="int" />
+    <Property Name="TelephoneEtiquetteRating" Type="int" />
+    <Property Name="ProfessionalismRating" Type="int" />
+    <Property Name="ComplianceRating" Type="int" />
+    <Property Name="AdheranceRating" Type="int" />
+    <Property Name="AccuracyOfInformationRating" Type="int" />
+    <Property Name="ConversionRateToday" Type="varchar" MaxLength="1" />
+    <Property Name="WeekToDate" Type="varchar" MaxLength="1" />
+    <Property Name="Comments" Type="varchar(max)" />
+    <Property Name="Strengths" Type="varchar(max)" />
+    <Property Name="ActionPlan" Type="varchar(max)" />
+    <Property Name="ManagerID" Type="int" />
+    <Property Name="DateOfFeedback" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CFRMortgage">
+    <Key>
+      <PropertyRef Name="CFRMortgaeID" />
+    </Key>
+    <Property Name="CFRMortgaeID" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="DomainMasterID" Type="tinyint" />
+    <Property Name="#Calls" Type="smallint" Nullable="false" />
+    <Property Name="TEQ1" Type="int" />
+    <Property Name="TEQ2" Type="int" />
+    <Property Name="TEQ3" Type="int" />
+    <Property Name="TEQ4" Type="int" />
+    <Property Name="TEQ5" Type="int" />
+    <Property Name="PQ1" Type="int" />
+    <Property Name="PQ2" Type="int" />
+    <Property Name="CQ1" Type="int" />
+    <Property Name="CQ2" Type="int" />
+    <Property Name="CQ3" Type="int" />
+    <Property Name="AQ1" Type="int" />
+    <Property Name="AQ2" Type="int" />
+    <Property Name="AQ3" Type="int" />
+    <Property Name="AQ4" Type="int" />
+    <Property Name="AQ5" Type="int" />
+    <Property Name="AOIQ1" Type="int" />
+    <Property Name="AOIQ2" Type="int" />
+    <Property Name="AOIQ3" Type="int" />
+    <Property Name="AOIQ4" Type="int" />
+    <Property Name="TelephoneEtiquetteRating" Type="int" />
+    <Property Name="ProfessionalismRating" Type="int" />
+    <Property Name="ComplianceRating" Type="int" />
+    <Property Name="AdheranceRating" Type="int" />
+    <Property Name="AccuracyOfInformationRating" Type="int" />
+    <Property Name="ConversionRateToday" Type="varchar" MaxLength="1" />
+    <Property Name="WeekToDate" Type="varchar" MaxLength="1" />
+    <Property Name="Comments" Type="varchar(max)" />
+    <Property Name="Strengths" Type="varchar(max)" />
+    <Property Name="ActionPlan" Type="varchar(max)" />
+    <Property Name="ManagerID" Type="int" />
+    <Property Name="DateOfFeedback" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CFRPatientRecruitment">
+    <Key>
+      <PropertyRef Name="CFRPatientRecruitment" />
+    </Key>
+    <Property Name="CFRPatientRecruitment" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="DomainMasterID" Type="tinyint" />
+    <Property Name="#Calls" Type="smallint" Nullable="false" />
+    <Property Name="TEQ1" Type="int" />
+    <Property Name="TEQ2" Type="int" />
+    <Property Name="TEQ3" Type="int" />
+    <Property Name="PQ1" Type="int" />
+    <Property Name="PQ2" Type="int" />
+    <Property Name="CQ1" Type="int" />
+    <Property Name="CQ2" Type="int" />
+    <Property Name="CQ3" Type="int" />
+    <Property Name="CQ4" Type="int" />
+    <Property Name="CQ5" Type="int" />
+    <Property Name="AQ1" Type="int" />
+    <Property Name="AQ2" Type="int" />
+    <Property Name="AQ3" Type="int" />
+    <Property Name="AQ4" Type="int" />
+    <Property Name="AQ5" Type="int" />
+    <Property Name="AOIQ1" Type="int" />
+    <Property Name="AOIQ2" Type="int" />
+    <Property Name="TelephoneEtiquetteRating" Type="int" />
+    <Property Name="ProfessionalismRating" Type="int" />
+    <Property Name="ComplianceRating" Type="int" />
+    <Property Name="AdheranceRating" Type="int" />
+    <Property Name="AccuracyOfInformationRating" Type="int" />
+    <Property Name="ConversionRateToday" Type="varchar" MaxLength="1" />
+    <Property Name="WeekToDate" Type="varchar" MaxLength="1" />
+    <Property Name="Comments" Type="varchar(max)" />
+    <Property Name="Strengths" Type="varchar(max)" />
+    <Property Name="ActionPlan" Type="varchar(max)" />
+    <Property Name="ManagerID" Type="int" />
+    <Property Name="DateOfFeedback" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CFRPerformanceAnalysis">
+    <Key>
+      <PropertyRef Name="CFRPerformanceAnalysisID" />
+    </Key>
+    <Property Name="CFRPerformanceAnalysisID" Type="int" Nullable="false" />
+    <Property Name="PerformanceRating" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="CallLogMaster">
     <Key>
@@ -413,10 +531,9 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
 warning 6002: The table/view 'Report.REPORT.CallLogRealTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CallLogRealTime">
     <Key>
-      <PropertyRef Name="CallLogRealTimeID" />
       <PropertyRef Name="RecordTime" />
+      <PropertyRef Name="CallLogRealTimeID" />
     </Key>
-    <Property Name="CallLogRealTimeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RecordDate" Type="date" Nullable="false" />
     <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
     <Property Name="AgentID" Type="varchar" MaxLength="125" Nullable="false" />
@@ -434,6 +551,7 @@ warning 6002: The table/view 'Report.REPORT.CallLogRealTime' does not have a pri
     <Property Name="ProjectID" Type="varchar" MaxLength="40" />
     <Property Name="PatientID" Type="varchar" MaxLength="40" />
     <Property Name="RecordTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="CallLogRealTimeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="DisciplinaryAction">
     <Key>
@@ -561,7 +679,7 @@ warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a prim
     <Property Name="FirstName" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="LoginTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="LoginDuration" Type="time" Precision="7" Nullable="false" />
+    <Property Name="LoginDuration" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="EmployeeID" Type="nvarchar" MaxLength="320" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -826,6 +944,978 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <Property Name="InputWebsite" Type="varchar" MaxLength="255" />
     <Property Name="SourceID" Type="varchar" MaxLength="25" />
   </EntityType>
+  <Association Name="FK__CFRInsura__Accur__29C206D0">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AccuracyOfInformationRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Adher__28CDE297">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AdheranceRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__AOIQ1__212CC0CF">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AOIQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__AOIQ2__2220E508">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AOIQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__AOIQ3__23150941">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AOIQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__AOIQ4__24092D7A">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AOIQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__AOIQ5__24FD51B3">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AOIQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Compl__27D9BE5E">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="ComplianceRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Domai__2D9297B4">
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="DomainMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Emplo__2AB62B09">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Emplo__2C9E737B">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Manag__2E86BBED">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Profe__26E59A25">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="ProfessionalismRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsura__Telep__25F175EC">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="TelephoneEtiquetteRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuran__TEQ1__12DEA178">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="TEQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuran__TEQ2__13D2C5B1">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="TEQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuran__TEQ3__14C6E9EA">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="TEQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuran__TEQ4__15BB0E23">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="TEQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuran__TEQ5__16AF325C">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="TEQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__AQ1__1C680BB2">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__AQ2__1D5C2FEB">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__AQ3__1E505424">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__AQ4__1F44785D">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__AQ5__20389C96">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="AQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__CQ1__198B9F07">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="CQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__CQ2__1A7FC340">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="CQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__CQ3__1B73E779">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="CQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__PQ1__17A35695">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="PQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRInsuranc__PQ2__18977ACE">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRInsurance">
+        <PropertyRef Name="PQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Accur__791ECF75">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AccuracyOfInformationRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Adher__782AAB3C">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AdheranceRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__AOIQ1__717DADAD">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AOIQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__AOIQ2__7271D1E6">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AOIQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__AOIQ3__7365F61F">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AOIQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__AOIQ4__745A1A58">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AOIQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Compl__77368703">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="ComplianceRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Domai__334B710A">
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="DomainMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Emplo__32574CD1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Manag__343F9543">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Profe__764262CA">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="ProfessionalismRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortga__Telep__754E3E91">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="TelephoneEtiquetteRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgag__TEQ1__632F8E56">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="TEQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgag__TEQ2__6423B28F">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="TEQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgag__TEQ3__6517D6C8">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="TEQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgag__TEQ4__660BFB01">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="TEQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgag__TEQ5__67001F3A">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="TEQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__AQ1__6CB8F890">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__AQ2__6DAD1CC9">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__AQ3__6EA14102">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__AQ4__6F95653B">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__AQ5__70898974">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="AQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__CQ1__69DC8BE5">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="CQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__CQ2__6AD0B01E">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="CQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__CQ3__6BC4D457">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="CQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__PQ1__67F44373">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="PQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRMortgage__PQ2__68E867AC">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRMortgage" Type="Self.CFRMortgage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRMortgage">
+        <PropertyRef Name="PQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Accur__100234CD">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AccuracyOfInformationRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Adher__0F0E1094">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AdheranceRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__AOIQ1__0A495B77">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AOIQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__AOIQ2__0B3D7FB0">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AOIQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Compl__0E19EC5B">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="ComplianceRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Domai__306F045F">
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="DomainMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Emplo__2F7AE026">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Manag__31632898">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Profe__0D25C822">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="ProfessionalismRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatien__Telep__0C31A3E9">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="TelephoneEtiquetteRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatient__TEQ1__7BFB3C20">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="TEQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatient__TEQ2__7CEF6059">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="TEQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatient__TEQ3__7DE38492">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="TEQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__AQ1__0584A65A">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__AQ2__0678CA93">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__AQ3__076CEECC">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__AQ4__08611305">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__AQ5__0955373E">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="AQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__CQ1__00BFF13D">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="CQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__CQ2__01B41576">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="CQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__CQ3__02A839AF">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="CQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__CQ4__039C5DE8">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="CQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__CQ5__04908221">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="CQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__PQ1__7ED7A8CB">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="PQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRPatientR__PQ2__7FCBCD04">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRPatientRecruitment">
+        <PropertyRef Name="PQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CLIENT_Customer_AddByEmployeeID">
     <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
@@ -1119,7 +2209,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <EntitySet Name="EmployeeNoteType" EntityType="Self.EmployeeNoteType" Schema="COMPANY" store:Type="Tables" />
     <EntitySet Name="Position" EntityType="Self.Position" Schema="COMPANY" store:Type="Tables" />
     <EntitySet Name="Site" EntityType="Self.Site" Schema="COMPANY" store:Type="Tables" />
-    <EntitySet Name="NewEmployeeData" EntityType="Self.NewEmployeeData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProblemMaster" EntityType="Self.ProblemMaster" Schema="EXCEPTION" store:Type="Tables" />
     <EntitySet Name="CampaignGroup" EntityType="Self.CampaignGroup" Schema="FREEDOM" store:Type="Tables" />
     <EntitySet Name="DailyPortfolioInventory" EntityType="Self.DailyPortfolioInventory" Schema="FREEDOM" store:Type="Tables" />
@@ -1127,6 +2216,11 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <EntitySet Name="AgentTimeAdjustmentReason" EntityType="Self.AgentTimeAdjustmentReason" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="EmployeeHoursTotal" EntityType="Self.EmployeeHoursTotal" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="PayPeriod" EntityType="Self.PayPeriod" Schema="PAYROLL" store:Type="Tables" />
+    <EntitySet Name="AnswerKey" EntityType="Self.AnswerKey" Schema="QUALITY" store:Type="Tables" />
+    <EntitySet Name="CFRInsurance" EntityType="Self.CFRInsurance" Schema="QUALITY" store:Type="Tables" />
+    <EntitySet Name="CFRMortgage" EntityType="Self.CFRMortgage" Schema="QUALITY" store:Type="Tables" />
+    <EntitySet Name="CFRPatientRecruitment" EntityType="Self.CFRPatientRecruitment" Schema="QUALITY" store:Type="Tables" />
+    <EntitySet Name="CFRPerformanceAnalysis" EntityType="Self.CFRPerformanceAnalysis" Schema="QUALITY" store:Type="Tables" />
     <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="DisciplinaryAction" EntityType="Self.DisciplinaryAction" Schema="REPORT" store:Type="Tables" />
     <EntitySet Name="EverquoteHourlyCampaignMetrics" EntityType="Self.EverquoteHourlyCampaignMetrics" Schema="REPORT" store:Type="Tables" />
@@ -1148,7 +2242,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     </EntitySet>
     <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" store:Type="Tables" store:Schema="REPORT">
       <DefiningQuery>SELECT 
-    [CallLogRealTime].[CallLogRealTimeID] AS [CallLogRealTimeID], 
     [CallLogRealTime].[RecordDate] AS [RecordDate], 
     [CallLogRealTime].[DomainMasterID] AS [DomainMasterID], 
     [CallLogRealTime].[AgentID] AS [AgentID], 
@@ -1165,7 +2258,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [CallLogRealTime].[CallID] AS [CallID], 
     [CallLogRealTime].[ProjectID] AS [ProjectID], 
     [CallLogRealTime].[PatientID] AS [PatientID], 
-    [CallLogRealTime].[RecordTime] AS [RecordTime]
+    [CallLogRealTime].[RecordTime] AS [RecordTime], 
+    [CallLogRealTime].[CallLogRealTimeID] AS [CallLogRealTimeID]
     FROM [REPORT].[CallLogRealTime] AS [CallLogRealTime]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="AgentDailyHours1" EntityType="Self.AgentDailyHours1" store:Type="Tables" store:Schema="STAGE" store:Name="AgentDailyHours">
@@ -1405,6 +2499,330 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [PreciseLeadsHourlyCallLogMaster].[SourceID] AS [SourceID]
     FROM [STAGE].[PreciseLeadsHourlyCallLogMaster] AS [PreciseLeadsHourlyCallLogMaster]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK__CFRInsura__Accur__29C206D0" Association="Self.FK__CFRInsura__Accur__29C206D0">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Adher__28CDE297" Association="Self.FK__CFRInsura__Adher__28CDE297">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__AOIQ1__212CC0CF" Association="Self.FK__CFRInsura__AOIQ1__212CC0CF">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__AOIQ2__2220E508" Association="Self.FK__CFRInsura__AOIQ2__2220E508">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__AOIQ3__23150941" Association="Self.FK__CFRInsura__AOIQ3__23150941">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__AOIQ4__24092D7A" Association="Self.FK__CFRInsura__AOIQ4__24092D7A">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__AOIQ5__24FD51B3" Association="Self.FK__CFRInsura__AOIQ5__24FD51B3">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Compl__27D9BE5E" Association="Self.FK__CFRInsura__Compl__27D9BE5E">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Domai__2D9297B4" Association="Self.FK__CFRInsura__Domai__2D9297B4">
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Emplo__2AB62B09" Association="Self.FK__CFRInsura__Emplo__2AB62B09">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Emplo__2C9E737B" Association="Self.FK__CFRInsura__Emplo__2C9E737B">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Manag__2E86BBED" Association="Self.FK__CFRInsura__Manag__2E86BBED">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Profe__26E59A25" Association="Self.FK__CFRInsura__Profe__26E59A25">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsura__Telep__25F175EC" Association="Self.FK__CFRInsura__Telep__25F175EC">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuran__TEQ1__12DEA178" Association="Self.FK__CFRInsuran__TEQ1__12DEA178">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuran__TEQ2__13D2C5B1" Association="Self.FK__CFRInsuran__TEQ2__13D2C5B1">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuran__TEQ3__14C6E9EA" Association="Self.FK__CFRInsuran__TEQ3__14C6E9EA">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuran__TEQ4__15BB0E23" Association="Self.FK__CFRInsuran__TEQ4__15BB0E23">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuran__TEQ5__16AF325C" Association="Self.FK__CFRInsuran__TEQ5__16AF325C">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__AQ1__1C680BB2" Association="Self.FK__CFRInsuranc__AQ1__1C680BB2">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__AQ2__1D5C2FEB" Association="Self.FK__CFRInsuranc__AQ2__1D5C2FEB">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__AQ3__1E505424" Association="Self.FK__CFRInsuranc__AQ3__1E505424">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__AQ4__1F44785D" Association="Self.FK__CFRInsuranc__AQ4__1F44785D">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__AQ5__20389C96" Association="Self.FK__CFRInsuranc__AQ5__20389C96">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__CQ1__198B9F07" Association="Self.FK__CFRInsuranc__CQ1__198B9F07">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__CQ2__1A7FC340" Association="Self.FK__CFRInsuranc__CQ2__1A7FC340">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__CQ3__1B73E779" Association="Self.FK__CFRInsuranc__CQ3__1B73E779">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__PQ1__17A35695" Association="Self.FK__CFRInsuranc__PQ1__17A35695">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRInsuranc__PQ2__18977ACE" Association="Self.FK__CFRInsuranc__PQ2__18977ACE">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRInsurance" EntitySet="CFRInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Accur__791ECF75" Association="Self.FK__CFRMortga__Accur__791ECF75">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Adher__782AAB3C" Association="Self.FK__CFRMortga__Adher__782AAB3C">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__AOIQ1__717DADAD" Association="Self.FK__CFRMortga__AOIQ1__717DADAD">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__AOIQ2__7271D1E6" Association="Self.FK__CFRMortga__AOIQ2__7271D1E6">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__AOIQ3__7365F61F" Association="Self.FK__CFRMortga__AOIQ3__7365F61F">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__AOIQ4__745A1A58" Association="Self.FK__CFRMortga__AOIQ4__745A1A58">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Compl__77368703" Association="Self.FK__CFRMortga__Compl__77368703">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Domai__334B710A" Association="Self.FK__CFRMortga__Domai__334B710A">
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Emplo__32574CD1" Association="Self.FK__CFRMortga__Emplo__32574CD1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Manag__343F9543" Association="Self.FK__CFRMortga__Manag__343F9543">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Profe__764262CA" Association="Self.FK__CFRMortga__Profe__764262CA">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortga__Telep__754E3E91" Association="Self.FK__CFRMortga__Telep__754E3E91">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgag__TEQ1__632F8E56" Association="Self.FK__CFRMortgag__TEQ1__632F8E56">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgag__TEQ2__6423B28F" Association="Self.FK__CFRMortgag__TEQ2__6423B28F">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgag__TEQ3__6517D6C8" Association="Self.FK__CFRMortgag__TEQ3__6517D6C8">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgag__TEQ4__660BFB01" Association="Self.FK__CFRMortgag__TEQ4__660BFB01">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgag__TEQ5__67001F3A" Association="Self.FK__CFRMortgag__TEQ5__67001F3A">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__AQ1__6CB8F890" Association="Self.FK__CFRMortgage__AQ1__6CB8F890">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__AQ2__6DAD1CC9" Association="Self.FK__CFRMortgage__AQ2__6DAD1CC9">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__AQ3__6EA14102" Association="Self.FK__CFRMortgage__AQ3__6EA14102">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__AQ4__6F95653B" Association="Self.FK__CFRMortgage__AQ4__6F95653B">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__AQ5__70898974" Association="Self.FK__CFRMortgage__AQ5__70898974">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__CQ1__69DC8BE5" Association="Self.FK__CFRMortgage__CQ1__69DC8BE5">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__CQ2__6AD0B01E" Association="Self.FK__CFRMortgage__CQ2__6AD0B01E">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__CQ3__6BC4D457" Association="Self.FK__CFRMortgage__CQ3__6BC4D457">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__PQ1__67F44373" Association="Self.FK__CFRMortgage__PQ1__67F44373">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRMortgage__PQ2__68E867AC" Association="Self.FK__CFRMortgage__PQ2__68E867AC">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Accur__100234CD" Association="Self.FK__CFRPatien__Accur__100234CD">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Adher__0F0E1094" Association="Self.FK__CFRPatien__Adher__0F0E1094">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__AOIQ1__0A495B77" Association="Self.FK__CFRPatien__AOIQ1__0A495B77">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__AOIQ2__0B3D7FB0" Association="Self.FK__CFRPatien__AOIQ2__0B3D7FB0">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Compl__0E19EC5B" Association="Self.FK__CFRPatien__Compl__0E19EC5B">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Domai__306F045F" Association="Self.FK__CFRPatien__Domai__306F045F">
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Emplo__2F7AE026" Association="Self.FK__CFRPatien__Emplo__2F7AE026">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Manag__31632898" Association="Self.FK__CFRPatien__Manag__31632898">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Profe__0D25C822" Association="Self.FK__CFRPatien__Profe__0D25C822">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatien__Telep__0C31A3E9" Association="Self.FK__CFRPatien__Telep__0C31A3E9">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatient__TEQ1__7BFB3C20" Association="Self.FK__CFRPatient__TEQ1__7BFB3C20">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatient__TEQ2__7CEF6059" Association="Self.FK__CFRPatient__TEQ2__7CEF6059">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatient__TEQ3__7DE38492" Association="Self.FK__CFRPatient__TEQ3__7DE38492">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__AQ1__0584A65A" Association="Self.FK__CFRPatientR__AQ1__0584A65A">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__AQ2__0678CA93" Association="Self.FK__CFRPatientR__AQ2__0678CA93">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__AQ3__076CEECC" Association="Self.FK__CFRPatientR__AQ3__076CEECC">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__AQ4__08611305" Association="Self.FK__CFRPatientR__AQ4__08611305">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__AQ5__0955373E" Association="Self.FK__CFRPatientR__AQ5__0955373E">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__CQ1__00BFF13D" Association="Self.FK__CFRPatientR__CQ1__00BFF13D">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__CQ2__01B41576" Association="Self.FK__CFRPatientR__CQ2__01B41576">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__CQ3__02A839AF" Association="Self.FK__CFRPatientR__CQ3__02A839AF">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__CQ4__039C5DE8" Association="Self.FK__CFRPatientR__CQ4__039C5DE8">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__CQ5__04908221" Association="Self.FK__CFRPatientR__CQ5__04908221">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__PQ1__7ED7A8CB" Association="Self.FK__CFRPatientR__PQ1__7ED7A8CB">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRPatientR__PQ2__7FCBCD04" Association="Self.FK__CFRPatientR__PQ2__7FCBCD04">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
+    </AssociationSet>
     <AssociationSet Name="FK_CLIENT_Customer_AddByEmployeeID" Association="Self.FK_CLIENT_Customer_AddByEmployeeID">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Customer" EntitySet="Customer" />

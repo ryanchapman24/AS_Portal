@@ -10,10 +10,10 @@
                     <a data-toggle="tab" href="#information">Information</a>
                 </li>
                 <li>
-                    <a data-toggle="tab" href="#certifications" class="contact-map">Certifications</a>
+                    <a data-toggle="tab" href="#cfrs" class="contact-map">Constructive Feedback Review</a>
                 </li>
                 <li>
-                    <a data-toggle="tab" href="#awards" class="contact-map">Awards</a>
+                    <a data-toggle="tab" href="#awards" class="contact-map">Certifications & Awards</a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#disciplinaryaction" class="contact-map">Disciplinary Action</a>
@@ -222,7 +222,252 @@
                 </div>
 
 
-                <div id="certifications" class="tab-pane">
+                <div id="cfrs" class="tab-pane">
+                    <div class="widget-header">
+                        <h3 style="color: #29AAE3"><i class="fa fa-line-chart"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("HR")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal" style="margin-top: -10px">+ New Mortgage CFR</button>}</h3>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="MortgageCFRModal" tabindex="-1" role="dialog" aria-labelledby="MortgageCFRModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="margin-bottom: 15px">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="MortgageCFRModalLabel">Add New Mortgage CFR for @Model.FirstName @Model.LastName</h4>
+                                </div>
+                                @using (Html.BeginForm("MortgageCFR_Create", "Employees", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="EmployeeID" value="@Model.EmployeeID" readonly="readonly" />
+                                    <div class="modal-body">
+                                        <div class="" style="">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group">
+
+                                                <div class="col-md-6 control-label">
+                                                    Domain
+                                                </div>
+                                                <div class="col-md-6" style="margin-top: -5px">
+                                                    @Html.DropDownList("DomainMasterID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    # Calls
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    <input class="form-control onlyNum" name="C_Calls" type="text" maxlength="2" required />
+                                                </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong></h5><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR state "Hello" and pause to identify gender?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("TEQ1_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "TEQ1" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR state the contact name assumptively without asking a question?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("TEQ2_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "TEQ2" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR state the website of inquiry (if applicable)?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("TEQ3_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "TEQ3" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR transition into the script without hesitation?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("TEQ4_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "TEQ4" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR display confidence and clarity throughout the call?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("TEQ5_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "TEQ5" })
+                                                    </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Professionalism</strong></h5><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR speak with a delivery rate that is clearly understood?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("PQ1_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "PQ1" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR convey a sense of empathy and have a professional tone?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("PQ2_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "PQ2" })
+                                                    </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Compliance</strong></h5><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR identify him/herself with confidence using first and last name?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("CQ1_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "CQ1" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR state that he/she is calling on a recorded line?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("CQ2_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "CQ2" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR avoid prohibited references to rates and closing costs?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("CQ3_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "CQ3" })
+                                                    </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Adherance</strong></h5><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR ask the questions listed using the word for word script?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AQ1_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AQ1" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR listen carefully to the answers provided by the contact?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AQ2_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AQ2" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Dos the CSR ask the verifying questions to determine transfer eligibility?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AQ3_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AQ3" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR use all 3 steps of the rebuttal process? (T.Phrase, Rebuttal, Close)
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AQ4_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AQ4" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR exercise good judgement based on the answers to ensure excellent quality?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AQ5_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AQ5" })
+                                                    </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong></h5><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR input the LO's NMLS/ITT ID number correctly?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AOIQ1_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AOIQ1" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR warm transfer properly to the LO in a professional tone?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AOIQ2_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AOIQ2" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR update Browser/Five9 to reflect the proper disposition needed?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AOIQ3_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AOIQ3" })
+                                                    </div><br /><br /><br />
+
+                                                    <div class="col-md-9 control-label">
+                                                        Does the CSR connect to the correct department?
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: -5px">
+                                                        @Html.DropDownList("AOIQ4_Mortgage", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AOIQ4" })
+                                                    </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Additional Feedback</strong></h5><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Comments
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <textarea rows="3" class="form-control capitalize" name="Comments" placeholder="if you know the call IDs pertaining to this review, list them here..." required></textarea>
+                                                </div><br /><br /><br /><br /><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Strengths
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <textarea rows="3" class="form-control capitalize" name="Strengths" required></textarea>
+                                                </div><br /><br /><br /><br /><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Action Plan
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <textarea rows="5" class="form-control capitalize" name="ActionPlan" required></textarea>
+                                                </div><br /><br /><br /><br /><br />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="margin-top: 20px">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button id="" type="submit" class="btn btn-theme play">Confirm</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-hover datatable DAtable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 90%">Date</th>
+                                        <th>Domain</th>
+                                        <th># Calls</th>
+                                        <th>Submitted By</th>
+                                        <th style="width: 80px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.CFRs)
+                                    {
+                                        <tr>
+                                            <td class="text-nowrap">@item.DateOfFeedback.ToString("d")</td>
+                                            <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
+                                            <td>@item.C_Calls</td>
+                                            <td class="text-nowrap">@item.Employee1.FirstName @item.Employee1.LastName</td>
+                                            <td>
+                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                {
+                                                    <a href="@Url.Action("MortgageCFR_Details","Employees", new { id = item.CFRMortgaeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                                    <a href="@Url.Action("MortgageCFR_Edit","Employees", new { id = item.CFRMortgaeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                    <a href="@Url.Action("MortgageCFR_Delete","Employees", new { id = item.CFRMortgaeID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                 </div>
 

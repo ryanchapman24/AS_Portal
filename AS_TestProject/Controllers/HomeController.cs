@@ -181,7 +181,7 @@ namespace AS_TestProject.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             var mb = new ReportEntities();
-            if (user.EmployeeID == 1000250 || user.EmployeeID == 1000252 || user.EmployeeID == 1000070 || user.EmployeeID == 1000082 || user.EmployeeID == 1000098 || user.EmployeeID == 1000135 || user.EmployeeID == 1000229 || user.EmployeeID == 1000184)
+            if (user.EmployeeID == 1000250 || user.EmployeeID == 1001811 || user.EmployeeID == 1000070 || user.EmployeeID == 1000082 || user.EmployeeID == 1000098 || user.EmployeeID == 1000135 || user.EmployeeID == 1000229 || user.EmployeeID == 1000184)
             {
                 ViewBag.ActiveEmps = mb.Employees.Where(d => d.IsActive == true).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
                 ViewBag.InactiveEmps = mb.Employees.Where(d => d.IsActive == false).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();

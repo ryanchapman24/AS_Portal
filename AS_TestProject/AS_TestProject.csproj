@@ -761,6 +761,9 @@
     <Content Include="Views\Employees\EditDA.cshtml" />
     <Content Include="Views\Employees\DeleteDA.cshtml" />
     <Content Include="Views\HR\Index.cshtml" />
+    <Content Include="Views\Employees\MortgageCFR_Delete.cshtml" />
+    <Content Include="Views\Employees\MortgageCFR_Details.cshtml" />
+    <Content Include="Views\Employees\MortgageCFR_Edit.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
