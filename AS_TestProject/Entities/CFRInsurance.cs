@@ -18,26 +18,26 @@ namespace AS_TestProject.Entities
         public int EmployeeID { get; set; }
         public Nullable<byte> DomainMasterID { get; set; }
         public short C_Calls { get; set; }
-        public Nullable<int> TEQ1 { get; set; }
-        public Nullable<int> TEQ2 { get; set; }
-        public Nullable<int> TEQ3 { get; set; }
-        public Nullable<int> TEQ4 { get; set; }
-        public Nullable<int> TEQ5 { get; set; }
-        public Nullable<int> PQ1 { get; set; }
-        public Nullable<int> PQ2 { get; set; }
-        public Nullable<int> CQ1 { get; set; }
-        public Nullable<int> CQ2 { get; set; }
-        public Nullable<int> CQ3 { get; set; }
-        public Nullable<int> AQ1 { get; set; }
-        public Nullable<int> AQ2 { get; set; }
-        public Nullable<int> AQ3 { get; set; }
-        public Nullable<int> AQ4 { get; set; }
-        public Nullable<int> AQ5 { get; set; }
-        public Nullable<int> AOIQ1 { get; set; }
-        public Nullable<int> AOIQ2 { get; set; }
-        public Nullable<int> AOIQ3 { get; set; }
-        public Nullable<int> AOIQ4 { get; set; }
-        public Nullable<int> AOIQ5 { get; set; }
+        public Nullable<int> iTEQ1 { get; set; }
+        public Nullable<int> iTEQ2 { get; set; }
+        public Nullable<int> iTEQ3 { get; set; }
+        public Nullable<int> iTEQ4 { get; set; }
+        public Nullable<int> iTEQ5 { get; set; }
+        public Nullable<int> iPQ1 { get; set; }
+        public Nullable<int> iPQ2 { get; set; }
+        public Nullable<int> iCQ1 { get; set; }
+        public Nullable<int> iCQ2 { get; set; }
+        public Nullable<int> iCQ3 { get; set; }
+        public Nullable<int> iAQ1 { get; set; }
+        public Nullable<int> iAQ2 { get; set; }
+        public Nullable<int> iAQ3 { get; set; }
+        public Nullable<int> iAQ4 { get; set; }
+        public Nullable<int> iAQ5 { get; set; }
+        public Nullable<int> iAOIQ1 { get; set; }
+        public Nullable<int> iAOIQ2 { get; set; }
+        public Nullable<int> iAOIQ3 { get; set; }
+        public Nullable<int> iAOIQ4 { get; set; }
+        public Nullable<int> iAOIQ5 { get; set; }
         public Nullable<int> TelephoneEtiquetteRating { get; set; }
         public Nullable<int> ProfessionalismRating { get; set; }
         public Nullable<int> ComplianceRating { get; set; }

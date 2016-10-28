@@ -18,23 +18,23 @@ namespace AS_TestProject.Entities
         public int EmployeeID { get; set; }
         public Nullable<byte> DomainMasterID { get; set; }
         public short C_Calls { get; set; }
-        public Nullable<int> TEQ1 { get; set; }
-        public Nullable<int> TEQ2 { get; set; }
-        public Nullable<int> TEQ3 { get; set; }
-        public Nullable<int> PQ1 { get; set; }
-        public Nullable<int> PQ2 { get; set; }
-        public Nullable<int> CQ1 { get; set; }
-        public Nullable<int> CQ2 { get; set; }
-        public Nullable<int> CQ3 { get; set; }
-        public Nullable<int> CQ4 { get; set; }
-        public Nullable<int> CQ5 { get; set; }
-        public Nullable<int> AQ1 { get; set; }
-        public Nullable<int> AQ2 { get; set; }
-        public Nullable<int> AQ3 { get; set; }
-        public Nullable<int> AQ4 { get; set; }
-        public Nullable<int> AQ5 { get; set; }
-        public Nullable<int> AOIQ1 { get; set; }
-        public Nullable<int> AOIQ2 { get; set; }
+        public Nullable<int> pTEQ1 { get; set; }
+        public Nullable<int> pTEQ2 { get; set; }
+        public Nullable<int> pTEQ3 { get; set; }
+        public Nullable<int> pPQ1 { get; set; }
+        public Nullable<int> pPQ2 { get; set; }
+        public Nullable<int> pCQ1 { get; set; }
+        public Nullable<int> pCQ2 { get; set; }
+        public Nullable<int> pCQ3 { get; set; }
+        public Nullable<int> pCQ4 { get; set; }
+        public Nullable<int> pCQ5 { get; set; }
+        public Nullable<int> pAQ1 { get; set; }
+        public Nullable<int> pAQ2 { get; set; }
+        public Nullable<int> pAQ3 { get; set; }
+        public Nullable<int> pAQ4 { get; set; }
+        public Nullable<int> pAQ5 { get; set; }
+        public Nullable<int> pAOIQ1 { get; set; }
+        public Nullable<int> pAOIQ2 { get; set; }
         public Nullable<int> TelephoneEtiquetteRating { get; set; }
         public Nullable<int> ProfessionalismRating { get; set; }
         public Nullable<int> ComplianceRating { get; set; }

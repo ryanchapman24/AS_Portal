@@ -18,25 +18,25 @@ namespace AS_TestProject.Entities
         public int EmployeeID { get; set; }
         public Nullable<byte> DomainMasterID { get; set; }
         public short C_Calls { get; set; }
-        public Nullable<int> TEQ1 { get; set; }
-        public Nullable<int> TEQ2 { get; set; }
-        public Nullable<int> TEQ3 { get; set; }
-        public Nullable<int> TEQ4 { get; set; }
-        public Nullable<int> TEQ5 { get; set; }
-        public Nullable<int> PQ1 { get; set; }
-        public Nullable<int> PQ2 { get; set; }
-        public Nullable<int> CQ1 { get; set; }
-        public Nullable<int> CQ2 { get; set; }
-        public Nullable<int> CQ3 { get; set; }
-        public Nullable<int> AQ1 { get; set; }
-        public Nullable<int> AQ2 { get; set; }
-        public Nullable<int> AQ3 { get; set; }
-        public Nullable<int> AQ4 { get; set; }
-        public Nullable<int> AQ5 { get; set; }
-        public Nullable<int> AOIQ1 { get; set; }
-        public Nullable<int> AOIQ2 { get; set; }
-        public Nullable<int> AOIQ3 { get; set; }
-        public Nullable<int> AOIQ4 { get; set; }
+        public Nullable<int> mTEQ1 { get; set; }
+        public Nullable<int> mTEQ2 { get; set; }
+        public Nullable<int> mTEQ3 { get; set; }
+        public Nullable<int> mTEQ4 { get; set; }
+        public Nullable<int> mTEQ5 { get; set; }
+        public Nullable<int> mPQ1 { get; set; }
+        public Nullable<int> mPQ2 { get; set; }
+        public Nullable<int> mCQ1 { get; set; }
+        public Nullable<int> mCQ2 { get; set; }
+        public Nullable<int> mCQ3 { get; set; }
+        public Nullable<int> mAQ1 { get; set; }
+        public Nullable<int> mAQ2 { get; set; }
+        public Nullable<int> mAQ3 { get; set; }
+        public Nullable<int> mAQ4 { get; set; }
+        public Nullable<int> mAQ5 { get; set; }
+        public Nullable<int> mAOIQ1 { get; set; }
+        public Nullable<int> mAOIQ2 { get; set; }
+        public Nullable<int> mAOIQ3 { get; set; }
+        public Nullable<int> mAOIQ4 { get; set; }
         public Nullable<int> TelephoneEtiquetteRating { get; set; }
         public Nullable<int> ProfessionalismRating { get; set; }
         public Nullable<int> ComplianceRating { get; set; }

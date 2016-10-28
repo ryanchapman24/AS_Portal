@@ -150,25 +150,25 @@ namespace AS_TestProject.Controllers
                 domains.Add(selection);
             }
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
-            ViewBag.AOIQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AOIQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AOIQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AOIQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.TEQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.TEQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.TEQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.TEQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.TEQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.AQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.CQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.CQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.CQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.PQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
-            ViewBag.PQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mTEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
 
             Employee manager = mb.Employees.Find(employee.ManagerEmployeeID);
             Employee creator = mb.Employees.Find(employee.AddByEmployeeID);
@@ -316,7 +316,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult MortgageCFR_Create([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,TEQ1,TEQ2,TEQ3,TEQ4,TEQ5,PQ1,PQ2,CQ1,CQ2,CQ3,AQ1,AQ2,AQ3,AQ4,AQ5,AOIQ1,AOIQ2,AOIQ3,AOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
+        public ActionResult MortgageCFR_Create([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,mTEQ1,mTEQ2,mTEQ3,mTEQ4,mTEQ5,mPQ1,mPQ2,mCQ1,mCQ2,mCQ3,mAQ1,mAQ2,mAQ3,mAQ4,mAQ5,mAOIQ1,mAOIQ2,mAOIQ3,mAOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             if (ModelState.IsValid)
@@ -326,23 +326,23 @@ namespace AS_TestProject.Controllers
 
                 // Telephone Etiquette Rating Calculation (MORTGAGE)
                 int mTER = 0;
-                if (cFRMortgage.TEQ1 == 2)
+                if (cFRMortgage.mTEQ1 == 2)
                 {
                     mTER++;
                 }
-                if (cFRMortgage.TEQ2 == 2)
+                if (cFRMortgage.mTEQ2 == 2)
                 {
                     mTER++;
                 }
-                if (cFRMortgage.TEQ3 == 2)
+                if (cFRMortgage.mTEQ3 == 2)
                 {
                     mTER++;
                 }
-                if (cFRMortgage.TEQ4 == 2)
+                if (cFRMortgage.mTEQ4 == 2)
                 {
                     mTER++;
                 }
-                if (cFRMortgage.TEQ5 == 2)
+                if (cFRMortgage.mTEQ5 == 2)
                 {
                     mTER++;
                 }
@@ -361,11 +361,11 @@ namespace AS_TestProject.Controllers
 
                 // Professionalism Rating Calculation (MORTGAGE)
                 int mPR = 0;
-                if (cFRMortgage.PQ1 == 2)
+                if (cFRMortgage.mPQ1 == 2)
                 {
                     mPR++;
                 }
-                if (cFRMortgage.PQ2 == 2)
+                if (cFRMortgage.mPQ2 == 2)
                 {
                     mPR++;
                 }     
@@ -384,15 +384,15 @@ namespace AS_TestProject.Controllers
 
                 // Compliance Rating Calculation (MORTGAGE)
                 int mCR = 0;
-                if (cFRMortgage.CQ1 == 2)
+                if (cFRMortgage.mCQ1 == 2)
                 {
                     mCR++;
                 }
-                if (cFRMortgage.CQ2 == 2)
+                if (cFRMortgage.mCQ2 == 2)
                 {
                     mCR++;
                 }
-                if (cFRMortgage.CQ3 == 2)
+                if (cFRMortgage.mCQ3 == 2)
                 {
                     mCR++;
                 }
@@ -407,23 +407,23 @@ namespace AS_TestProject.Controllers
 
                 // Adherance Rating Calculation (MORTGAGE)
                 int mAR = 0;
-                if (cFRMortgage.AQ1 == 2)
+                if (cFRMortgage.mAQ1 == 2)
                 {
                     mAR++;
                 }
-                if (cFRMortgage.AQ2 == 2)
+                if (cFRMortgage.mAQ2 == 2)
                 {
                     mAR++;
                 }
-                if (cFRMortgage.AQ3 == 2)
+                if (cFRMortgage.mAQ3 == 2)
                 {
                     mAR++;
                 }
-                if (cFRMortgage.AQ4 == 2)
+                if (cFRMortgage.mAQ4 == 2)
                 {
                     mAR++;
                 }
-                if (cFRMortgage.AQ5 == 2)
+                if (cFRMortgage.mAQ5 == 2)
                 {
                     mAR++;
                 }
@@ -442,19 +442,19 @@ namespace AS_TestProject.Controllers
 
                 // Accuracy of Information Rating Calculation (MORTGAGE)
                 int mAOIR = 0;
-                if (cFRMortgage.AOIQ1 == 2)
+                if (cFRMortgage.mAOIQ1 == 2)
                 {
                     mAOIR++;
                 }
-                if (cFRMortgage.AOIQ2 == 2)
+                if (cFRMortgage.mAOIQ2 == 2)
                 {
                     mAOIR++;
                 }
-                if (cFRMortgage.AOIQ3 == 2)
+                if (cFRMortgage.mAOIQ3 == 2)
                 {
                     mAOIR++;
                 }
-                if (cFRMortgage.AOIQ4 == 2)
+                if (cFRMortgage.mAOIQ4 == 2)
                 {
                     mAOIR++;
                 }
@@ -482,25 +482,25 @@ namespace AS_TestProject.Controllers
                 domains.Add(selection);
             }
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
-            ViewBag.AOIQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ1);
-            ViewBag.AOIQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ2);
-            ViewBag.AOIQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ3);
-            ViewBag.AOIQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ4);
-            ViewBag.TEQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ1);
-            ViewBag.TEQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ2);
-            ViewBag.TEQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ3);
-            ViewBag.TEQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ4);
-            ViewBag.TEQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ5);
-            ViewBag.AQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ1);
-            ViewBag.AQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ2);
-            ViewBag.AQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ3);
-            ViewBag.AQ4_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ4);
-            ViewBag.AQ5_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ5);
-            ViewBag.CQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ1);
-            ViewBag.CQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ2);
-            ViewBag.CQ3_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ3);
-            ViewBag.PQ1_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ1);
-            ViewBag.PQ2_Mortgage = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ2);
+            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ1);
+            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
+            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
+            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
+            ViewBag.mTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ1);
+            ViewBag.mTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ2);
+            ViewBag.mTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ3);
+            ViewBag.mTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ4);
+            ViewBag.mTEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ5);
+            ViewBag.mAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ1);
+            ViewBag.mAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ2);
+            ViewBag.mAQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ3);
+            ViewBag.mAQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ4);
+            ViewBag.mAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ5);
+            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ1);
+            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ2);
+            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ3);
+            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ1);
+            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ2);
             //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
             //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
             //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
@@ -533,25 +533,25 @@ namespace AS_TestProject.Controllers
                 domains.Add(selection);
             }
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
-            ViewBag.AOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ1);
-            ViewBag.AOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ2);
-            ViewBag.AOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ3);
-            ViewBag.AOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ4);
-            ViewBag.TEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ1);
-            ViewBag.TEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ2);
-            ViewBag.TEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ3);
-            ViewBag.TEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ4);
-            ViewBag.TEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ5);
-            ViewBag.AQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ1);
-            ViewBag.AQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ2);
-            ViewBag.AQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ3);
-            ViewBag.AQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ4);
-            ViewBag.AQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ5);
-            ViewBag.CQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ1);
-            ViewBag.CQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ2);
-            ViewBag.CQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ3);
-            ViewBag.PQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ1);
-            ViewBag.PQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ2);
+            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ1);
+            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
+            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
+            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
+            ViewBag.mTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ1);
+            ViewBag.mTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ2);
+            ViewBag.mTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ3);
+            ViewBag.mTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ4);
+            ViewBag.mTEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ5);
+            ViewBag.mAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ1);
+            ViewBag.mAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ2);
+            ViewBag.mAQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ3);
+            ViewBag.mAQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ4);
+            ViewBag.mAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ5);
+            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ1);
+            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ2);
+            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ3);
+            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ1);
+            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ2);
             //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
             //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
             //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
@@ -566,7 +566,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult MortgageCFR_Edit([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,TEQ1,TEQ2,TEQ3,TEQ4,TEQ5,PQ1,PQ2,CQ1,CQ2,CQ3,AQ1,AQ2,AQ3,AQ4,AQ5,AOIQ1,AOIQ2,AOIQ3,AOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
+        public ActionResult MortgageCFR_Edit([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,mTEQ1,mTEQ2,mTEQ3,mTEQ4,mTEQ5,mPQ1,mPQ2,mCQ1,mCQ2,mCQ3,mAQ1,mAQ2,mAQ3,mAQ4,mAQ5,mAOIQ1,mAOIQ2,mAOIQ3,mAOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
         {
             if (ModelState.IsValid)
             {
@@ -585,25 +585,25 @@ namespace AS_TestProject.Controllers
                 domains.Add(selection);
             }
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
-            ViewBag.AOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ1);
-            ViewBag.AOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ2);
-            ViewBag.AOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ3);
-            ViewBag.AOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AOIQ4);
-            ViewBag.TEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ1);
-            ViewBag.TEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ2);
-            ViewBag.TEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ3);
-            ViewBag.TEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ4);
-            ViewBag.TEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.TEQ5);
-            ViewBag.AQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ1);
-            ViewBag.AQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ2);
-            ViewBag.AQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ3);
-            ViewBag.AQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ4);
-            ViewBag.AQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.AQ5);
-            ViewBag.CQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ1);
-            ViewBag.CQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ2);
-            ViewBag.CQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.CQ3);
-            ViewBag.PQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ1);
-            ViewBag.PQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.PQ2);
+            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ1);
+            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
+            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
+            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
+            ViewBag.mTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ1);
+            ViewBag.mTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ2);
+            ViewBag.mTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ3);
+            ViewBag.mTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ4);
+            ViewBag.mTEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ5);
+            ViewBag.mAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ1);
+            ViewBag.mAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ2);
+            ViewBag.mAQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ3);
+            ViewBag.mAQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ4);
+            ViewBag.mAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ5);
+            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ1);
+            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ2);
+            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ3);
+            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ1);
+            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ2);
             //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
             //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
             //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
