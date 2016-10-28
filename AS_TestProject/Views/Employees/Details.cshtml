@@ -224,7 +224,8 @@
 
                 <div id="cfrs" class="tab-pane">
                     <div class="widget-header">
-                        <h3 style="color: #29AAE3"><i class="fa fa-line-chart"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("HR")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal" style="margin-top: -10px">+ New Mortgage CFR</button>}</h3>
+                        @if (User.IsInRole("Admin") || User.IsInRole("HR")){<h3 style="margin: 0px"><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal">+ New Mortgage CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#InsuranceCFRModal" style="margin-top: -8px">+ New Insurance CFR</button><br /></h3>}
+                        <h3 style="color: #29AAE3"><i class="fa fa-line-chart"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("HR")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#PatientRecruitmentCFRModal" style="margin-top: -10px">+ New Patient Recruitment CFR</button>}</h3>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="MortgageCFRModal" tabindex="-1" role="dialog" aria-labelledby="MortgageCFRModalLabel" aria-hidden="true">
@@ -346,7 +347,7 @@
                                                         Does the CSR listen carefully to the answers provided by the contact?
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
-                                                        @Html.DropDownList("AQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AQ2" })
+                                                        @Html.DropDownList("mAQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true", name = "AQ2" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
@@ -441,8 +442,13 @@
                                     <tr>
                                         <th style="width: 90%">Date</th>
                                         <th>Domain</th>
-                                        <th># Calls</th>
-                                        <th>Submitted By</th>
+                                        <th>#Calls</th>
+                                        <th>Etiquette</th>
+                                        <th>Professionalism</th>
+                                        <th>Compliance</th>
+                                        <th>Adherance</th>
+                                        <th>Accuracy</th>
+                                        <th>Submitter</th>
                                         <th style="width: 80px">Action</th>
                                     </tr>
                                 </thead>
@@ -453,8 +459,13 @@
                                             <td class="text-nowrap">@item.DateOfFeedback.ToString("d")</td>
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
                                             <td>@item.C_Calls</td>
+                                            <td>@item.CFRPerformanceAnalysi4.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi3.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi2.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi1.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
                                             <td class="text-nowrap">@item.Employee1.FirstName @item.Employee1.LastName</td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 @if (User.IsInRole("Admin") || User.IsInRole("HR"))
                                                 {
                                                     <a href="@Url.Action("MortgageCFR_Details","Employees", new { id = item.CFRMortgageID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />

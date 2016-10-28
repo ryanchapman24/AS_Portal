@@ -795,19 +795,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CallLogRealTimes">
+      <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
+        <MappingFragment StoreEntitySet="CallLogRealTime">
+          <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
+          <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="CallID" ColumnName="CallID" />
+          <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
+          <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
+          <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+          <ScalarProperty Name="ListName" ColumnName="ListName" />
+          <ScalarProperty Name="Skill" ColumnName="Skill" />
+          <ScalarProperty Name="CallType" ColumnName="CallType" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
+          <ScalarProperty Name="Disposition" ColumnName="Disposition" />
+          <ScalarProperty Name="LeadID" ColumnName="LeadID" />
+          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="AnswerKeys">
       <EntityTypeMapping TypeName="ReportModel.AnswerKey">
         <MappingFragment StoreEntitySet="AnswerKey">
           <ScalarProperty Name="AnswerOption" ColumnName="AnswerOption" />
           <ScalarProperty Name="AnswerKeyID" ColumnName="AnswerKeyID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CFRPerformanceAnalysis">
-      <EntityTypeMapping TypeName="ReportModel.CFRPerformanceAnalysi">
-        <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
-          <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
-          <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -826,26 +842,26 @@
           <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
           <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
           <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
-          <ScalarProperty Name="AOIQ5" ColumnName="AOIQ5" />
-          <ScalarProperty Name="AOIQ4" ColumnName="AOIQ4" />
-          <ScalarProperty Name="AOIQ3" ColumnName="AOIQ3" />
-          <ScalarProperty Name="AOIQ2" ColumnName="AOIQ2" />
-          <ScalarProperty Name="AOIQ1" ColumnName="AOIQ1" />
-          <ScalarProperty Name="AQ5" ColumnName="AQ5" />
-          <ScalarProperty Name="AQ4" ColumnName="AQ4" />
-          <ScalarProperty Name="AQ3" ColumnName="AQ3" />
-          <ScalarProperty Name="AQ2" ColumnName="AQ2" />
-          <ScalarProperty Name="AQ1" ColumnName="AQ1" />
-          <ScalarProperty Name="CQ3" ColumnName="CQ3" />
-          <ScalarProperty Name="CQ2" ColumnName="CQ2" />
-          <ScalarProperty Name="CQ1" ColumnName="CQ1" />
-          <ScalarProperty Name="PQ2" ColumnName="PQ2" />
-          <ScalarProperty Name="PQ1" ColumnName="PQ1" />
-          <ScalarProperty Name="TEQ5" ColumnName="TEQ5" />
-          <ScalarProperty Name="TEQ4" ColumnName="TEQ4" />
-          <ScalarProperty Name="TEQ3" ColumnName="TEQ3" />
-          <ScalarProperty Name="TEQ2" ColumnName="TEQ2" />
-          <ScalarProperty Name="TEQ1" ColumnName="TEQ1" />
+          <ScalarProperty Name="iAOIQ5" ColumnName="iAOIQ5" />
+          <ScalarProperty Name="iAOIQ4" ColumnName="iAOIQ4" />
+          <ScalarProperty Name="iAOIQ3" ColumnName="iAOIQ3" />
+          <ScalarProperty Name="iAOIQ2" ColumnName="iAOIQ2" />
+          <ScalarProperty Name="iAOIQ1" ColumnName="iAOIQ1" />
+          <ScalarProperty Name="iAQ5" ColumnName="iAQ5" />
+          <ScalarProperty Name="iAQ4" ColumnName="iAQ4" />
+          <ScalarProperty Name="iAQ3" ColumnName="iAQ3" />
+          <ScalarProperty Name="iAQ2" ColumnName="iAQ2" />
+          <ScalarProperty Name="iAQ1" ColumnName="iAQ1" />
+          <ScalarProperty Name="iCQ3" ColumnName="iCQ3" />
+          <ScalarProperty Name="iCQ2" ColumnName="iCQ2" />
+          <ScalarProperty Name="iCQ1" ColumnName="iCQ1" />
+          <ScalarProperty Name="iPQ2" ColumnName="iPQ2" />
+          <ScalarProperty Name="iPQ1" ColumnName="iPQ1" />
+          <ScalarProperty Name="iTEQ5" ColumnName="iTEQ5" />
+          <ScalarProperty Name="iTEQ4" ColumnName="iTEQ4" />
+          <ScalarProperty Name="iTEQ3" ColumnName="iTEQ3" />
+          <ScalarProperty Name="iTEQ2" ColumnName="iTEQ2" />
+          <ScalarProperty Name="iTEQ1" ColumnName="iTEQ1" />
           <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
@@ -868,25 +884,25 @@
           <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
           <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
           <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
-          <ScalarProperty Name="AOIQ4" ColumnName="AOIQ4" />
-          <ScalarProperty Name="AOIQ3" ColumnName="AOIQ3" />
-          <ScalarProperty Name="AOIQ2" ColumnName="AOIQ2" />
-          <ScalarProperty Name="AOIQ1" ColumnName="AOIQ1" />
-          <ScalarProperty Name="AQ5" ColumnName="AQ5" />
-          <ScalarProperty Name="AQ4" ColumnName="AQ4" />
-          <ScalarProperty Name="AQ3" ColumnName="AQ3" />
-          <ScalarProperty Name="AQ2" ColumnName="AQ2" />
-          <ScalarProperty Name="AQ1" ColumnName="AQ1" />
-          <ScalarProperty Name="CQ3" ColumnName="CQ3" />
-          <ScalarProperty Name="CQ2" ColumnName="CQ2" />
-          <ScalarProperty Name="CQ1" ColumnName="CQ1" />
-          <ScalarProperty Name="PQ2" ColumnName="PQ2" />
-          <ScalarProperty Name="PQ1" ColumnName="PQ1" />
-          <ScalarProperty Name="TEQ5" ColumnName="TEQ5" />
-          <ScalarProperty Name="TEQ4" ColumnName="TEQ4" />
-          <ScalarProperty Name="TEQ3" ColumnName="TEQ3" />
-          <ScalarProperty Name="TEQ2" ColumnName="TEQ2" />
-          <ScalarProperty Name="TEQ1" ColumnName="TEQ1" />
+          <ScalarProperty Name="mAOIQ4" ColumnName="mAOIQ4" />
+          <ScalarProperty Name="mAOIQ3" ColumnName="mAOIQ3" />
+          <ScalarProperty Name="mAOIQ2" ColumnName="mAOIQ2" />
+          <ScalarProperty Name="mAOIQ1" ColumnName="mAOIQ1" />
+          <ScalarProperty Name="mAQ5" ColumnName="mAQ5" />
+          <ScalarProperty Name="mAQ4" ColumnName="mAQ4" />
+          <ScalarProperty Name="mAQ3" ColumnName="mAQ3" />
+          <ScalarProperty Name="mAQ2" ColumnName="mAQ2" />
+          <ScalarProperty Name="mAQ1" ColumnName="mAQ1" />
+          <ScalarProperty Name="mCQ3" ColumnName="mCQ3" />
+          <ScalarProperty Name="mCQ2" ColumnName="mCQ2" />
+          <ScalarProperty Name="mCQ1" ColumnName="mCQ1" />
+          <ScalarProperty Name="mPQ2" ColumnName="mPQ2" />
+          <ScalarProperty Name="mPQ1" ColumnName="mPQ1" />
+          <ScalarProperty Name="mTEQ5" ColumnName="mTEQ5" />
+          <ScalarProperty Name="mTEQ4" ColumnName="mTEQ4" />
+          <ScalarProperty Name="mTEQ3" ColumnName="mTEQ3" />
+          <ScalarProperty Name="mTEQ2" ColumnName="mTEQ2" />
+          <ScalarProperty Name="mTEQ1" ColumnName="mTEQ1" />
           <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
@@ -909,23 +925,23 @@
           <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
           <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
           <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
-          <ScalarProperty Name="AOIQ2" ColumnName="AOIQ2" />
-          <ScalarProperty Name="AOIQ1" ColumnName="AOIQ1" />
-          <ScalarProperty Name="AQ5" ColumnName="AQ5" />
-          <ScalarProperty Name="AQ4" ColumnName="AQ4" />
-          <ScalarProperty Name="AQ3" ColumnName="AQ3" />
-          <ScalarProperty Name="AQ2" ColumnName="AQ2" />
-          <ScalarProperty Name="AQ1" ColumnName="AQ1" />
-          <ScalarProperty Name="CQ5" ColumnName="CQ5" />
-          <ScalarProperty Name="CQ4" ColumnName="CQ4" />
-          <ScalarProperty Name="CQ3" ColumnName="CQ3" />
-          <ScalarProperty Name="CQ2" ColumnName="CQ2" />
-          <ScalarProperty Name="CQ1" ColumnName="CQ1" />
-          <ScalarProperty Name="PQ2" ColumnName="PQ2" />
-          <ScalarProperty Name="PQ1" ColumnName="PQ1" />
-          <ScalarProperty Name="TEQ3" ColumnName="TEQ3" />
-          <ScalarProperty Name="TEQ2" ColumnName="TEQ2" />
-          <ScalarProperty Name="TEQ1" ColumnName="TEQ1" />
+          <ScalarProperty Name="pAOIQ2" ColumnName="pAOIQ2" />
+          <ScalarProperty Name="pAOIQ1" ColumnName="pAOIQ1" />
+          <ScalarProperty Name="pAQ5" ColumnName="pAQ5" />
+          <ScalarProperty Name="pAQ4" ColumnName="pAQ4" />
+          <ScalarProperty Name="pAQ3" ColumnName="pAQ3" />
+          <ScalarProperty Name="pAQ2" ColumnName="pAQ2" />
+          <ScalarProperty Name="pAQ1" ColumnName="pAQ1" />
+          <ScalarProperty Name="pCQ5" ColumnName="pCQ5" />
+          <ScalarProperty Name="pCQ4" ColumnName="pCQ4" />
+          <ScalarProperty Name="pCQ3" ColumnName="pCQ3" />
+          <ScalarProperty Name="pCQ2" ColumnName="pCQ2" />
+          <ScalarProperty Name="pCQ1" ColumnName="pCQ1" />
+          <ScalarProperty Name="pPQ2" ColumnName="pPQ2" />
+          <ScalarProperty Name="pPQ1" ColumnName="pPQ1" />
+          <ScalarProperty Name="pTEQ3" ColumnName="pTEQ3" />
+          <ScalarProperty Name="pTEQ2" ColumnName="pTEQ2" />
+          <ScalarProperty Name="pTEQ1" ColumnName="pTEQ1" />
           <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
@@ -933,27 +949,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CallLogRealTimes">
-      <EntityTypeMapping TypeName="ReportModel.CallLogRealTime">
-        <MappingFragment StoreEntitySet="CallLogRealTime">
-          <ScalarProperty Name="CallLogRealTimeID" ColumnName="CallLogRealTimeID" />
-          <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
-          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-          <ScalarProperty Name="CallID" ColumnName="CallID" />
-          <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
-          <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
-          <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
-          <ScalarProperty Name="ListName" ColumnName="ListName" />
-          <ScalarProperty Name="Skill" ColumnName="Skill" />
-          <ScalarProperty Name="CallType" ColumnName="CallType" />
-          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
-          <ScalarProperty Name="CallHourOfDay" ColumnName="CallHourOfDay" />
-          <ScalarProperty Name="Disposition" ColumnName="Disposition" />
-          <ScalarProperty Name="LeadID" ColumnName="LeadID" />
-          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
-          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
-          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+    <EntitySetMapping Name="CFRPerformanceAnalysis">
+      <EntityTypeMapping TypeName="ReportModel.CFRPerformanceAnalysi">
+        <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
+          <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
+          <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
