@@ -764,6 +764,9 @@
     <Content Include="Views\Employees\MortgageCFR_Delete.cshtml" />
     <Content Include="Views\Employees\MortgageCFR_Details.cshtml" />
     <Content Include="Views\Employees\MortgageCFR_Edit.cshtml" />
+    <Content Include="Views\Employees\InsuranceCFR_Edit.cshtml" />
+    <Content Include="Views\Employees\InsuranceCFR_Details.cshtml" />
+    <Content Include="Views\Employees\InsuranceCFR_Delete.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
