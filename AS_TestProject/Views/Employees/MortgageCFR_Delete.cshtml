@@ -4,293 +4,561 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>CFRMortgage</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.C_Calls)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.C_Calls)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ConversionRateToday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ConversionRateToday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WeekToDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WeekToDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Comments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Strengths)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Strengths)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ActionPlan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ActionPlan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfFeedback)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfFeedback)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DomainMaster.DomainName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DomainMaster.DomainName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Employee.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Employee.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Employee1.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Employee1.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey1.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey1.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey2.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey2.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey3.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey3.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey4.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey4.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey5.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey5.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey6.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey6.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey7.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey7.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey8.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey8.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey9.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey9.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey10.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey10.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey11.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey11.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey12.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey12.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey13.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey13.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey14.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey14.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey15.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey15.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey16.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey16.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey17.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey17.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerKey18.AnswerOption)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnswerKey18.AnswerOption)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CFRPerformanceAnalysi.PerformanceRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CFRPerformanceAnalysi.PerformanceRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CFRPerformanceAnalysi1.PerformanceRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CFRPerformanceAnalysi1.PerformanceRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CFRPerformanceAnalysi2.PerformanceRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CFRPerformanceAnalysi2.PerformanceRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CFRPerformanceAnalysi3.PerformanceRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CFRPerformanceAnalysi3.PerformanceRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CFRPerformanceAnalysi4.PerformanceRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CFRPerformanceAnalysi4.PerformanceRating)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h2>Are you sure you want to delete this Mortgage CFR for <span style="color: #29AAE3">@Model.Employee.FirstName @Model.Employee.LastName</span>?</h2>
+        <hr />
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    Date
+                </dt>
+
+                <dd>
+                    @Model.DateOfFeedback.ToString("d")
+                </dd>
+
+                <dt>
+                    Submitted By
+                </dt>
+
+                <dd>
+                    @Model.Employee1.FirstName @Model.Employee1.LastName
+                </dd>
+
+                <dt>
+                    Domain
+                </dt>
+
+                <dd>
+                    @Model.DomainMaster.FileMask - @Model.DomainMaster.DomainName
+                </dd>
+
+                <dt>
+                    #Calls
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.C_Calls)
+                </dd>
+
+                @*<dt>
+                        Today's Conversion Rate
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ConversionRateToday)
+                    </dd>
+
+                    <dt>
+                        Week To Date Conversion Rate
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.WeekToDate)
+                    </dd>*@
+
+                <dt><strong>Telephone Etiquette Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi4.PerformanceRating)</strong></dt>
+                <dd></dd>
+
+                <dt>
+                    Does the CSR state "Hello" and pause to identify gender?
+                </dt>
+
+                @if (Model.mTEQ1 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mTEQ1 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mTEQ1 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR state the contact name assumptively without asking a question?
+                </dt>
+
+                @if (Model.mTEQ2 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mTEQ2 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mTEQ2 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR state the website of inquiry (if applicable)?
+                </dt>
+
+                @if (Model.mTEQ3 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mTEQ3 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mTEQ3 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR transition into the script without hesitation?
+                </dt>
+
+                @if (Model.mTEQ4 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mTEQ4 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mTEQ4 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR display confidence and clarity throughout the call?
+                </dt>
+
+                @if (Model.mTEQ5 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mTEQ5 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mTEQ5 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt><strong>Professionalism Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi3.PerformanceRating)</strong></dt>
+                <dd></dd>
+
+                <dt>
+                    Does the CSR speak with a delivery rate that is clearly understood?
+                </dt>
+
+                @if (Model.mPQ1 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mPQ1 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mPQ1 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR convey a sense of empathy and have a professional tone?
+                </dt>
+
+                @if (Model.mPQ2 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mPQ2 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mPQ2 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt><strong>Compliance Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi2.PerformanceRating)</strong></dt>
+                <dd></dd>
+
+                <dt>
+                    Does the CSR identify him/herself with confidence using first and last name?
+                </dt>
+
+                @if (Model.mCQ1 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mCQ1 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mCQ1 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR state that he/she is calling on a recorded line?
+                </dt>
+
+                @if (Model.mCQ2 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mCQ2 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mCQ2 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR avoid prohibited references to rates and closing costs?
+                </dt>
+
+                @if (Model.mCQ3 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mCQ3 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mCQ3 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt><strong>Adherence Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi1.PerformanceRating)</strong></dt>
+                <dd></dd>
+
+                <dt>
+                    Does the CSR ask the questions listed using the word for word script?
+                </dt>
+
+                @if (Model.mAQ1 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAQ1 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAQ1 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR listen carefully to the answers provided by the contact?
+                </dt>
+
+                @if (Model.mAQ2 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAQ2 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAQ2 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR ask the verifying questions to determine transfer eligibility?
+                </dt>
+
+                @if (Model.mAQ3 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAQ3 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAQ4 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR use all 3 steps of the rebuttal process? (T.Phrase, Rebuttal, Close)
+                </dt>
+
+                @if (Model.mAQ4 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAQ4 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAQ4 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR exercise good judgement based on the answers to ensure excellent quality?
+                </dt>
+
+                @if (Model.mAQ5 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAQ5 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAQ5 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt><strong>Accuracy of Information Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi.PerformanceRating)</strong></dt>
+                <dd></dd>
+
+                <dt>
+                    Does the CSR input the LO's NMLS/ITT ID number correctly?
+                </dt>
+
+                @if (Model.mAOIQ1 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAOIQ1 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAOIQ1 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR warm transfer properly to the LO in a professional tone?
+                </dt>
+
+                @if (Model.mAOIQ2 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAOIQ2 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAOIQ2 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR update Browser/Five9 to reflect the proper disposition needed?
+                </dt>
+
+                @if (Model.mAOIQ3 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAOIQ3 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAOIQ3 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR connect to the correct department?
+                </dt>
+
+                @if (Model.mAOIQ4 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAOIQ4 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAOIQ4 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt><strong>Additional Information</strong></dt>
+                <dd></dd>
+
+                <dt>
+                    Comments
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Comments)
+                </dd>
+
+                <dt>
+                    Strengths
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Strengths)
+                </dd>
+
+                <dt>
+                    Action Plan
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ActionPlan)
+                </dd>
+                <br />
+                <dd>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.CFRMortgageID)
+                        <input type="submit" value="Delete" class="btn btn-theme" />
+                    }
+                </dd>
+            </dl>
+            <div class="form-actions no-color" style="padding-bottom: 5px">
+                @Html.ActionLink("Edit", "MortgageCFR_Edit", new { id = Model.CFRMortgageID }) |
+                @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
+            </div>
         </div>
-    }
+    </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#direct').addClass("active");
+        });
+    </script>
+}

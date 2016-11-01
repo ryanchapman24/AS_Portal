@@ -224,8 +224,8 @@
 
                 <div id="cfrs" class="tab-pane">
                     <div class="widget-header">
-                        @if (User.IsInRole("Admin") || User.IsInRole("HR")){<h3 style="margin: 0px"><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal">+ New Mortgage CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#InsuranceCFRModal" style="margin-top: -8px">+ New Insurance CFR</button><br /></h3>}
-                        <h3 style="color: #29AAE3"><i class="fa fa-line-chart"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("HR")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#PatientRecruitmentCFRModal" style="margin-top: -10px">+ New Patient Recruitment CFR</button>}</h3>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<h3 style="margin: 0px"><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal">+ New Mortgage CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#InsuranceCFRModal" style="margin-top: -8px">+ New Insurance CFR</button><br /></h3>}
+                        <h3 style="color: #29AAE3"><i class="fa fa-line-chart"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#PatientRecruitmentCFRModal" style="margin-top: -10px">+ New Patient Recruitment CFR</button>}</h3>
                     </div>
                     <!-- Mortgage Modal -->
                     <div class="modal fade" id="MortgageCFRModal" tabindex="-1" role="dialog" aria-labelledby="MortgageCFRModalLabel" aria-hidden="true">
@@ -334,7 +334,7 @@
                                                         @Html.DropDownList("mCQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
-                                                <h5 style="color: #29AAE3"><strong>Adherance</strong></h5><br />
+                                                <h5 style="color: #29AAE3"><strong>Adherence</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
                                                         Does the CSR ask the questions listed using the word for word script?
@@ -351,7 +351,7 @@
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Dos the CSR ask the verifying questions to determine transfer eligibility?
+                                                        Does the CSR ask the verifying questions to determine transfer eligibility?
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -542,7 +542,7 @@
                                                         @Html.DropDownList("iCQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
-                                                <h5 style="color: #29AAE3"><strong>Adherance</strong></h5><br />
+                                                <h5 style="color: #29AAE3"><strong>Adherence</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
                                                         Does the CSR state the name of the insurance agency?
@@ -757,7 +757,7 @@
                                                         @Html.DropDownList("pCQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
-                                                <h5 style="color: #29AAE3"><strong>Adherance</strong></h5><br />
+                                                <h5 style="color: #29AAE3"><strong>Adherence</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
                                                         Does the CSR ask the questions listed using the word for word script?
@@ -774,7 +774,7 @@
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Dos the CSR use proper pronunciation of the medical terms and conditions?
+                                                        Does the CSR use proper pronunciation of the medical terms and conditions?
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
@@ -859,7 +859,7 @@
                                         <th>Etiquette</th>
                                         <th>Professionalism</th>
                                         <th>Compliance</th>
-                                        <th>Adherance</th>
+                                        <th>Adherence</th>
                                         <th>Accuracy</th>
                                         <th>Submitter</th>
                                         <th style="width: 80px">Action</th>
@@ -879,7 +879,7 @@
                                             <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
                                             <td class="text-nowrap">@item.Employee1.FirstName @item.Employee1.LastName</td>
                                             <td class="text-nowrap">
-                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
                                                 {
                                                     <a href="@Url.Action("MortgageCFR_Details","Employees", new { id = item.CFRMortgageID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
                                                     <a href="@Url.Action("MortgageCFR_Edit","Employees", new { id = item.CFRMortgageID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
@@ -927,7 +927,7 @@
                                             <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
                                             <td class="text-nowrap">@item.Employee1.FirstName @item.Employee1.LastName</td>
                                             <td class="text-nowrap">
-                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
                                                 {
                                                     <a href="@Url.Action("InsuranceCFR_Details","Employees", new { id = item.CFRInsuranceID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
                                                     <a href="@Url.Action("InsuranceCFR_Edit","Employees", new { id = item.CFRInsuranceID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
@@ -975,7 +975,7 @@
                                             <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
                                             <td class="text-nowrap">@item.Employee1.FirstName @item.Employee1.LastName</td>
                                             <td class="text-nowrap">
-                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
                                                 {
                                                     <a href="@Url.Action("PatientRecruitmentCFR_Details","Employees", new { id = item.CFRPatientRecruitmentID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
                                                     <a href="@Url.Action("PatientRecruitmentCFR_Edit","Employees", new { id = item.CFRPatientRecruitmentID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />

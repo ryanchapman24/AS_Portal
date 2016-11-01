@@ -323,6 +323,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Employees/DeleteDA/5
+        [Authorize(Roles = "Admin, HR")]
         public ActionResult DeleteDA(int? id)
         {
             if (id == null)
@@ -339,6 +340,7 @@ namespace AS_TestProject.Controllers
 
         // POST: Employees/DeleteDA/5
         [HttpPost, ActionName("DeleteDA")]
+        [Authorize(Roles = "Admin, HR")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteDAConfirmed(int id)
         {
@@ -349,7 +351,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRMortgages/Details/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult MortgageCFR_Details(int? id)
         {
             if (id == null)
@@ -368,7 +370,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult MortgageCFR_Create([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,mTEQ1,mTEQ2,mTEQ3,mTEQ4,mTEQ5,mPQ1,mPQ2,mCQ1,mCQ2,mCQ3,mAQ1,mAQ2,mAQ3,mAQ4,mAQ5,mAOIQ1,mAOIQ2,mAOIQ3,mAOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
         {
@@ -564,7 +566,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRMortgages/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult MortgageCFR_Edit(int? id)
         {
             if (id == null)
@@ -618,7 +620,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult MortgageCFR_Edit([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,mTEQ1,mTEQ2,mTEQ3,mTEQ4,mTEQ5,mPQ1,mPQ2,mCQ1,mCQ2,mCQ3,mAQ1,mAQ2,mAQ3,mAQ4,mAQ5,mAOIQ1,mAOIQ2,mAOIQ3,mAOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
         {
@@ -667,7 +669,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRMortgages/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult MortgageCFR_Delete(int? id)
         {
             if (id == null)
@@ -684,7 +686,7 @@ namespace AS_TestProject.Controllers
 
         // POST: CFRMortgages/Delete/5
         [HttpPost, ActionName("MortgageCFR_Delete")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult MortgageCFR_DeleteConfirmed(int id)
         {
@@ -695,7 +697,7 @@ namespace AS_TestProject.Controllers
         }
 
             // GET: CFRInsurances/Details/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult InsuranceCFR_Details(int? id)
         {
             if (id == null)
@@ -714,7 +716,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult InsuranceCFR_Create([Bind(Include = "CFRInsuranceID,EmployeeID,DomainMasterID,C_Calls,iTEQ1,iTEQ2,iTEQ3,iTEQ4,iTEQ5,iPQ1,iPQ2,iCQ1,iCQ2,iCQ3,iAQ1,iAQ2,iAQ3,iAQ4,iAQ5,iAOIQ1,iAOIQ2,iAOIQ3,iAOIQ4,iAOIQ5,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRInsurance cFRInsurance)
         {
@@ -915,7 +917,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRInsurances/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult InsuranceCFR_Edit(int? id)
         {
             if (id == null)
@@ -970,7 +972,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult InsuranceCFR_Edit([Bind(Include = "CFRInsuranceID,EmployeeID,DomainMasterID,C_Calls,iTEQ1,iTEQ2,iTEQ3,iTEQ4,iTEQ5,iPQ1,iPQ2,iCQ1,iCQ2,iCQ3,iAQ1,iAQ2,iAQ3,iAQ4,iAQ5,iAOIQ1,iAOIQ2,iAOIQ3,iAOIQ4,iAOIQ5,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRInsurance cFRInsurance)
         {
@@ -1020,7 +1022,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRInsurances/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult InsuranceCFR_Delete(int? id)
         {
             if (id == null)
@@ -1037,7 +1039,7 @@ namespace AS_TestProject.Controllers
 
         // POST: CFRInsurances/Delete/5
         [HttpPost, ActionName("InsuranceCFR_Delete")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult InsuranceCFR_DeleteConfirmed(int id)
         {
@@ -1048,7 +1050,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRPatientRecruitments/Details/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult PatientRecruitmentCFR_Details(int? id)
         {
             if (id == null)
@@ -1067,7 +1069,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult PatientRecruitmentCFR_Create([Bind(Include = "CFRPatientRecruitmentID,EmployeeID,DomainMasterID,C_Calls,pTEQ1,pTEQ2,pTEQ3,pPQ1,pPQ2,pCQ1,pCQ2,pCQ3,pCQ4,pCQ5,pAQ1,pAQ2,pAQ3,pAQ4,pAQ5,pAOIQ1,pAOIQ2,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRPatientRecruitment cFRPatientRecruitment)
         {
@@ -1249,7 +1251,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRPatientRecruitments/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult PatientRecruitmentCFR_Edit(int? id)
         {
             if (id == null)
@@ -1301,7 +1303,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult PatientRecruitmentCFR_Edit([Bind(Include = "CFRPatientRecruitmentID,EmployeeID,DomainMasterID,C_Calls,pTEQ1,pTEQ2,pTEQ3,pPQ1,pPQ2,pCQ1,pCQ2,pCQ3,pCQ4,pCQ5,pAQ1,pAQ2,pAQ3,pAQ4,pAQ5,pAOIQ1,pAOIQ2,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRPatientRecruitment cFRPatientRecruitment)
         {
@@ -1348,7 +1350,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: CFRPatientRecruitments/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult PatientRecruitmentCFR_Delete(int? id)
         {
             if (id == null)
@@ -1365,7 +1367,7 @@ namespace AS_TestProject.Controllers
 
         // POST: CFRPatientRecruitments/Delete/5
         [HttpPost, ActionName("MortgageCFR_Delete")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult PatientRecruitmentCFR_DeleteConfirmed(int id)
         {
