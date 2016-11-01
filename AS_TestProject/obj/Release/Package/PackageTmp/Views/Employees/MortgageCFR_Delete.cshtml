@@ -1,12 +1,12 @@
-﻿@model AS_TestProject.Entities.CFRPatientRecruitment
+﻿@model AS_TestProject.Entities.CFRMortgage
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
 }
 
 <div class="col-lg-12 mt">
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
-        <h2>Patient Recruitment CFR Details for <span style="color: #29AAE3">@Model.Employee.FirstName @Model.Employee.LastName</span></h2>
+        <h2>Are you sure you want to delete this Mortgage CFR for <span style="color: #29AAE3">@Model.Employee.FirstName @Model.Employee.LastName</span>?</h2>
         <hr />
         <div>
             <dl class="dl-horizontal">
@@ -15,7 +15,7 @@
                 </dt>
 
                 <dd>
-                    @Model.DateOfFeedback.ToString("g")
+                    @Model.DateOfFeedback.ToString("d")
                 </dd>
 
                 <dt>
@@ -62,22 +62,68 @@
                 <dd></dd>
 
                 <dt>
-                    Does the CSR ask if the contact name is available with clarity?
+                    Does the CSR state "Hello" and pause to identify gender?
                 </dt>
 
-                @if (Model.pTEQ1 == 1)
+                @if (Model.mTEQ1 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pTEQ1 == 2)
+                else if (Model.mTEQ1 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pTEQ1 == 3)
+                else if (Model.mTEQ1 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR state the contact name assumptively without asking a question?
+                </dt>
+
+                @if (Model.mTEQ2 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mTEQ2 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mTEQ2 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR state the website of inquiry (if applicable)?
+                </dt>
+
+                @if (Model.mTEQ3 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mTEQ3 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mTEQ3 == 3)
                 {
                     <dd>
                         N/A
@@ -88,19 +134,19 @@
                     Does the CSR transition into the script without hesitation?
                 </dt>
 
-                @if (Model.pTEQ2 == 1)
+                @if (Model.mTEQ4 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pTEQ2 == 2)
+                else if (Model.mTEQ4 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pTEQ2 == 3)
+                else if (Model.mTEQ4 == 3)
                 {
                     <dd>
                         N/A
@@ -111,19 +157,19 @@
                     Does the CSR display confidence and clarity throughout the call?
                 </dt>
 
-                @if (Model.pTEQ3 == 1)
+                @if (Model.mTEQ5 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pTEQ3 == 2)
+                else if (Model.mTEQ5 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pTEQ3 == 3)
+                else if (Model.mTEQ5 == 3)
                 {
                     <dd>
                         N/A
@@ -137,19 +183,19 @@
                     Does the CSR speak with a delivery rate that is clearly understood?
                 </dt>
 
-                @if (Model.pPQ1 == 1)
+                @if (Model.mPQ1 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pPQ1 == 2)
+                else if (Model.mPQ1 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pPQ1 == 3)
+                else if (Model.mPQ1 == 3)
                 {
                     <dd>
                         N/A
@@ -160,19 +206,19 @@
                     Does the CSR convey a sense of empathy and have a professional tone?
                 </dt>
 
-                @if (Model.pPQ2 == 1)
+                @if (Model.mPQ2 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pPQ2 == 2)
+                else if (Model.mPQ2 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pPQ2 == 3)
+                else if (Model.mPQ2 == 3)
                 {
                     <dd>
                         N/A
@@ -186,19 +232,19 @@
                     Does the CSR identify him/herself with confidence using first and last name?
                 </dt>
 
-                @if (Model.pCQ1 == 1)
+                @if (Model.mCQ1 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pCQ1 == 2)
+                else if (Model.mCQ1 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pCQ1 == 3)
+                else if (Model.mCQ1 == 3)
                 {
                     <dd>
                         N/A
@@ -209,19 +255,19 @@
                     Does the CSR state that he/she is calling on a recorded line?
                 </dt>
 
-                @if (Model.pCQ2 == 1)
+                @if (Model.mCQ2 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pCQ2 == 2)
+                else if (Model.mCQ2 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pCQ2 == 3)
+                else if (Model.mCQ2 == 3)
                 {
                     <dd>
                         N/A
@@ -229,68 +275,22 @@
                 }
 
                 <dt>
-                    Does the CSR follow HIPAA compliance procedures and state the full privacy policy?
+                    Does the CSR avoid prohibited references to rates and closing costs?
                 </dt>
 
-                @if (Model.pCQ3 == 1)
+                @if (Model.mCQ3 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pCQ3 == 2)
+                else if (Model.mCQ3 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pCQ3 == 3)
-                {
-                    <dd>
-                        N/A
-                    </dd>
-                }
-
-                <dt>
-                    Does the CSR refer to the FAQ's link and training binder correctly?
-                </dt>
-
-                @if (Model.pCQ4 == 1)
-                {
-                    <dd>
-                        YES
-                    </dd>
-                }
-                else if (Model.pCQ4 == 2)
-                {
-                    <dd>
-                        NO
-                    </dd>
-                }
-                else if (Model.pCQ4 == 3)
-                {
-                    <dd>
-                        N/A
-                    </dd>
-                }
-
-                <dt>
-                    Does the CSR avoid prohibited statements about trail status (if vs when) and diagnosis?
-                </dt>
-
-                @if (Model.pCQ5 == 1)
-                {
-                    <dd>
-                        YES
-                    </dd>
-                }
-                else if (Model.pCQ5 == 2)
-                {
-                    <dd>
-                        NO
-                    </dd>
-                }
-                else if (Model.pCQ5 == 3)
+                else if (Model.mCQ3 == 3)
                 {
                     <dd>
                         N/A
@@ -304,19 +304,19 @@
                     Does the CSR ask the questions listed using the word for word script?
                 </dt>
 
-                @if (Model.pAQ1 == 1)
+                @if (Model.mAQ1 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pAQ1 == 2)
+                else if (Model.mAQ1 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pAQ1 == 3)
+                else if (Model.mAQ1 == 3)
                 {
                     <dd>
                         N/A
@@ -327,19 +327,19 @@
                     Does the CSR listen carefully to the answers provided by the contact?
                 </dt>
 
-                @if (Model.pAQ2 == 1)
+                @if (Model.mAQ2 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pAQ2 == 2)
+                else if (Model.mAQ2 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pAQ2 == 3)
+                else if (Model.mAQ2 == 3)
                 {
                     <dd>
                         N/A
@@ -347,22 +347,22 @@
                 }
 
                 <dt>
-                    Does the CSR use proper pronunciation of the medical terms and conditions?
+                    Does the CSR ask the verifying questions to determine transfer eligibility?
                 </dt>
 
-                @if (Model.pAQ3 == 1)
+                @if (Model.mAQ3 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pAQ3 == 2)
+                else if (Model.mAQ3 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pAQ4 == 3)
+                else if (Model.mAQ4 == 3)
                 {
                     <dd>
                         N/A
@@ -370,22 +370,22 @@
                 }
 
                 <dt>
-                    Does the CSR select the correct answers before proceeding?
+                    Does the CSR use all 3 steps of the rebuttal process? (T.Phrase, Rebuttal, Close)
                 </dt>
 
-                @if (Model.pAQ4 == 1)
+                @if (Model.mAQ4 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pAQ4 == 2)
+                else if (Model.mAQ4 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pAQ4 == 3)
+                else if (Model.mAQ4 == 3)
                 {
                     <dd>
                         N/A
@@ -396,19 +396,19 @@
                     Does the CSR exercise good judgement based on the answers to ensure excellent quality?
                 </dt>
 
-                @if (Model.pAQ5 == 1)
+                @if (Model.mAQ5 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pAQ5 == 2)
+                else if (Model.mAQ5 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pAQ5 == 3)
+                else if (Model.mAQ5 == 3)
                 {
                     <dd>
                         N/A
@@ -419,22 +419,22 @@
                 <dd></dd>
 
                 <dt>
-                    Does the CSR update Browser/Five9 to reflect the proper disposition as needed?
+                    Does the CSR input the LO's NMLS/ITT ID number correctly?
                 </dt>
 
-                @if (Model.pAOIQ1 == 1)
+                @if (Model.mAOIQ1 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pAOIQ1 == 2)
+                else if (Model.mAOIQ1 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pAOIQ1 == 3)
+                else if (Model.mAOIQ1 == 3)
                 {
                     <dd>
                         N/A
@@ -442,22 +442,68 @@
                 }
 
                 <dt>
-                    Does the CSR connect to the correct department and select the correct disposition?
+                    Does the CSR warm transfer properly to the LO in a professional tone?
                 </dt>
 
-                @if (Model.pAOIQ2 == 1)
+                @if (Model.mAOIQ2 == 1)
                 {
                     <dd>
                         YES
                     </dd>
                 }
-                else if (Model.pAOIQ2 == 2)
+                else if (Model.mAOIQ2 == 2)
                 {
                     <dd>
                         NO
                     </dd>
                 }
-                else if (Model.pAOIQ2 == 3)
+                else if (Model.mAOIQ2 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR update Browser/Five9 to reflect the proper disposition needed?
+                </dt>
+
+                @if (Model.mAOIQ3 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAOIQ3 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAOIQ3 == 3)
+                {
+                    <dd>
+                        N/A
+                    </dd>
+                }
+
+                <dt>
+                    Does the CSR connect to the correct department?
+                </dt>
+
+                @if (Model.mAOIQ4 == 1)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else if (Model.mAOIQ4 == 2)
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+                else if (Model.mAOIQ4 == 3)
                 {
                     <dd>
                         N/A
@@ -490,12 +536,21 @@
                 <dd>
                     @Html.DisplayFor(model => model.ActionPlan)
                 </dd>
+                <br />
+                <dd>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.CFRMortgageID)
+                        <input type="submit" value="Delete" class="btn btn-theme" />
+                    }
+                </dd>
             </dl>
+            <div class="form-actions no-color" style="padding-bottom: 5px">
+                @Html.ActionLink("Edit", "MortgageCFR_Edit", new { id = Model.CFRMortgageID }) |
+                @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
+            </div>
         </div>
-        <p>
-            @Html.ActionLink("Edit", "PatientRecruitmentCFR_Edit", new { id = Model.CFRPatientRecruitmentID }) |
-            @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
-        </p>
     </div>
 </div>
 
