@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\D09\wwwroot\ASPortal</_PublishTargetUrl>
+    <_PublishTargetUrl>\\D05\ASPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -1540,7 +1540,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>09/14/2016 17:13:38</publishTime>
+      <publishTime>11/01/2016 16:25:49</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
       <publishTime>10/17/2016 17:18:20</publishTime>

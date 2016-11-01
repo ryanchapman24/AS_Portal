@@ -127,7 +127,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Customers/Details/5
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Quality")]
         public ActionResult Details(int? id)
         {
             if (id == null)
