@@ -321,6 +321,16 @@
                       </li>
                   }
 
+                  @if (User.IsInRole("Quality"))
+                  {
+                      <li>
+                          <a id="quality" href="@Url.Action("Index", "Quality")">
+                              <i class="fa fa-line-chart"></i>
+                              <span>Quality</span>
+                          </a>
+                      </li>
+                  }
+
                   <li>
                       <a id="profile" href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
                           <i class="fa fa-user-plus"></i>
