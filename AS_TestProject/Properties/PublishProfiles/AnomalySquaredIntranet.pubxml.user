@@ -724,7 +724,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>11/02/2016 16:49:45</publishTime>
+      <publishTime>11/03/2016 10:11:52</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1483,7 +1483,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 20:50:18</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>10/12/2016 12:06:53</publishTime>
+      <publishTime>11/03/2016 10:57:07</publishTime>
     </File>
     <File Include="Views/Employees/Create.cshtml">
       <publishTime>07/19/2016 10:18:45</publishTime>
@@ -1492,7 +1492,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2016 14:09:26</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>11/01/2016 14:52:14</publishTime>
+      <publishTime>11/03/2016 10:45:33</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>07/27/2016 13:46:53</publishTime>
@@ -1501,28 +1501,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2016 14:09:44</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Delete.cshtml">
-      <publishTime>11/01/2016 14:54:53</publishTime>
+      <publishTime>11/03/2016 10:41:29</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Details.cshtml">
-      <publishTime>11/01/2016 14:50:38</publishTime>
+      <publishTime>11/03/2016 10:43:55</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Edit.cshtml">
       <publishTime>11/01/2016 14:03:52</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Delete.cshtml">
-      <publishTime>11/01/2016 14:54:48</publishTime>
+      <publishTime>11/03/2016 10:41:16</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Details.cshtml">
-      <publishTime>11/01/2016 14:50:33</publishTime>
+      <publishTime>11/03/2016 10:44:07</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Edit.cshtml">
       <publishTime>11/01/2016 14:04:27</publishTime>
     </File>
     <File Include="Views/Employees/PatientRecruitmentCFR_Delete.cshtml">
-      <publishTime>11/01/2016 14:54:42</publishTime>
+      <publishTime>11/03/2016 10:41:02</publishTime>
     </File>
     <File Include="Views/Employees/PatientRecruitmentCFR_Details.cshtml">
-      <publishTime>11/01/2016 14:50:27</publishTime>
+      <publishTime>11/03/2016 10:44:23</publishTime>
     </File>
     <File Include="Views/Employees/PatientRecruitmentCFR_Edit.cshtml">
       <publishTime>11/01/2016 14:04:57</publishTime>
@@ -1611,6 +1611,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Payroll/Index.cshtml">
       <publishTime>08/08/2016 15:00:22</publishTime>
     </File>
+    <File Include="Views/Quality/Details.cshtml">
+      <publishTime>11/03/2016 13:27:42</publishTime>
+    </File>
+    <File Include="Views/Quality/Index.cshtml">
+      <publishTime>11/03/2016 03:15:46</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
     </File>
@@ -1621,13 +1627,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:00:40</publishTime>
     </File>
     <File Include="Views/Shared/_LoginLayout.cshtml">
-      <publishTime>07/02/2016 03:49:17</publishTime>
+      <publishTime>11/02/2016 15:02:15</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>10/14/2016 14:29:10</publishTime>
+      <publishTime>11/03/2016 03:17:11</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2016 16:31:23</publishTime>

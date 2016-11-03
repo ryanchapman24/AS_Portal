@@ -1,0 +1,78 @@
+﻿
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h3 style="color: #29AAE3">
+            <i class="fa fa-line-chart"></i> Quality: <span style="color: #29AAE3">@ViewBag.Domain</span></h3>
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#cfr">CFR Data</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#other" class="contact-map">Other</a>
+                </li>
+            </ul>
+        </div><!-- --/panel-heading ---->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="cfr" class="tab-pane active">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-2" style="text-align: center">
+                            <h4 style="color: #29AAE3">Etiquette</h4>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentTE1</strong> % EXCELLENT</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentTE2</strong> % OPPORTUNITY</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentTE3</strong> % POOR</p>
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #29AAE3">Professionalism</h4>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentP1</strong> % EXCELLENT</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentP2</strong> % OPPORTUNITY</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentP3</strong> % POOR</p>
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #29AAE3">Compliance</h4>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentC1</strong> % EXCELLENT</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentC2</strong> % OPPORTUNITY</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentC3</strong> % POOR</p>
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #29AAE3">Adherence</h4>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentA1</strong> % EXCELLENT</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentA2</strong> % OPPORTUNITY</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentA3</strong> % POOR</p>
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #29AAE3">Accuracy</h4>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentAOI1</strong> % EXCELLENT</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentAOI2</strong> % OPPORTUNITY</p>
+                            <p><strong style="color: #FE5607">@ViewBag.PercentAOI3</strong> % POOR</p>
+                        </div>            
+                    </div>
+                </div>
+                <div id="other" class="tab-pane">
+                    <em>Placeholder for data we want to implement later...</em>
+                </div>
+            </div>
+        </div>
+        <p style="padding-bottom: 5px">
+            @Html.ActionLink("Back to Quality Hub", "Index", "Quality")
+        </p>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#quality').addClass("active");
+
+            $('.hr-table').DataTable({
+                "iDisplayLength": 5,
+                "aaSorting": [],
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
+        });
+    </script>
+}
