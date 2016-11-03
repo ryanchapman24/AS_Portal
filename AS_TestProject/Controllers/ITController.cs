@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace AS_TestProject.Controllers
 {
-    [Authorize (Roles = "IT")]
+    [Authorize (Roles = "Admin, IT")]
     public class ITController : UserNames
     {
         // GET: IT
-        [Authorize(Roles = "IT")]
+        [Authorize(Roles = "Admin, IT")]
         public ActionResult Index()
         {
             ViewBag.Documents = db.Documents.Where(d => d.Department == "IT").OrderByDescending(d => d.Id).ToList();
@@ -22,7 +22,7 @@ namespace AS_TestProject.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "IT")]
+        [Authorize(Roles = "Admin, IT")]
         [ValidateAntiForgeryToken]
         public ActionResult UploadDocument(IEnumerable<HttpPostedFileBase> file, Document document)
         {
@@ -60,7 +60,7 @@ namespace AS_TestProject.Controllers
             return RedirectToAction("Index", "IT");
         }
 
-        [Authorize(Roles = "IT")]
+        [Authorize(Roles = "Admin, IT")]
         public ActionResult DeleteDocument(int id)
         {
             var document = db.Documents.Find(id);

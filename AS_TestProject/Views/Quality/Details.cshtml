@@ -16,37 +16,133 @@
         <div class="panel-body">
             <div class="tab-content">
                 <div id="cfr" class="tab-pane active">
+                    <h3 style="color: #29AAE3; margin-left: 0px; margin-bottom: 60px; text-align: center"><i class="fa fa-volume-control-phone" style="margin-right: 8px"></i><strong style="color: #FE5607">@ViewBag.TotalCalls</strong> Calls Monitored</h3>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-2" style="text-align: center">
-                            <h4 style="color: #29AAE3">Etiquette</h4>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentTE1</strong> % EXCELLENT</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentTE2</strong> % OPPORTUNITY</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentTE3</strong> % POOR</p>
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Etiquette</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentTE1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentTE2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentTE3</strong>% POOR</p>
+                            <canvas id="serverstatus02" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentTE1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentTE2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentTE3,
+                                        color : "#FE5607"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                            </script>
                         </div>
                         <div class="col-md-2" style="text-align: center">
-                            <h4 style="color: #29AAE3">Professionalism</h4>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentP1</strong> % EXCELLENT</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentP2</strong> % OPPORTUNITY</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentP3</strong> % POOR</p>
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Professionalism</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentP1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentP2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentP3</strong>% POOR</p>
+                            <canvas id="serverstatus03" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentP1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentP2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentP3,
+                                        color : "#FE5607"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus03").getContext("2d")).Doughnut(doughnutData);
+                            </script>                         
                         </div>
                         <div class="col-md-2" style="text-align: center">
-                            <h4 style="color: #29AAE3">Compliance</h4>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentC1</strong> % EXCELLENT</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentC2</strong> % OPPORTUNITY</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentC3</strong> % POOR</p>
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Compliance</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentC1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentC2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentC3</strong>% POOR</p>
+                            <canvas id="serverstatus04" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentC1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentC2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentC3,
+                                        color : "#FE5607"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus04").getContext("2d")).Doughnut(doughnutData);
+                            </script>
                         </div>
                         <div class="col-md-2" style="text-align: center">
-                            <h4 style="color: #29AAE3">Adherence</h4>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentA1</strong> % EXCELLENT</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentA2</strong> % OPPORTUNITY</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentA3</strong> % POOR</p>
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Adherance</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentA1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentA2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentA3</strong>% POOR</p>
+                            <canvas id="serverstatus05" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentA1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentA2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentA3,
+                                        color : "#FE5607"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus05").getContext("2d")).Doughnut(doughnutData);
+                            </script>
                         </div>
                         <div class="col-md-2" style="text-align: center">
-                            <h4 style="color: #29AAE3">Accuracy</h4>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentAOI1</strong> % EXCELLENT</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentAOI2</strong> % OPPORTUNITY</p>
-                            <p><strong style="color: #FE5607">@ViewBag.PercentAOI3</strong> % POOR</p>
-                        </div>            
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Accuracy</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentAOI1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentAOI2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentAOI3</strong>% POOR</p>
+                            <canvas id="serverstatus06" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentAOI1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentAOI2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentAOI3,
+                                        color : "#FE5607"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus06").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                        </div>
+                        <div class="col-md-offset-5 col-md-2" style="text-align: left; margin-top: 40px">
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #29AAE3; margin-right: 5px"></i>Excellent</p>
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #031B25; margin-right: 5px"></i>Opportunity</p>
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #FE5607; margin-right: 5px"></i>Poor</p>
+                        </div>
                     </div>
                 </div>
                 <div id="other" class="tab-pane">

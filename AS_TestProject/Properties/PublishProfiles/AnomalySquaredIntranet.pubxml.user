@@ -991,13 +991,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2016 16:26:52</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
-      <publishTime>10/25/2016 10:12:54</publishTime>
+      <publishTime>11/02/2016 16:31:10</publishTime>
     </File>
     <File Include="Controllers/HRController.cs">
-      <publishTime>10/14/2016 14:11:52</publishTime>
+      <publishTime>11/03/2016 13:42:18</publishTime>
     </File>
     <File Include="Controllers/ITController.cs">
-      <publishTime>07/25/2016 15:45:05</publishTime>
+      <publishTime>11/03/2016 13:42:36</publishTime>
     </File>
     <File Include="Controllers/ManageController.cs">
       <publishTime>07/25/2016 15:45:06</publishTime>
@@ -1007,6 +1007,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Controllers/PayrollController.cs">
       <publishTime>09/22/2016 11:41:29</publishTime>
+    </File>
+    <File Include="Controllers/QualityController.cs">
+      <publishTime>11/03/2016 15:23:08</publishTime>
     </File>
     <File Include="Entities/AgentDailyHour.cs">
       <publishTime>10/07/2016 14:36:44</publishTime>
@@ -1492,7 +1495,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2016 14:09:26</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>11/03/2016 10:45:33</publishTime>
+      <publishTime>11/03/2016 14:06:33</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>07/27/2016 13:46:53</publishTime>
@@ -1540,7 +1543,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>11/01/2016 16:25:49</publishTime>
+      <publishTime>11/03/2016 13:44:03</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
       <publishTime>10/17/2016 17:18:20</publishTime>
@@ -1552,7 +1555,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 14:06:09</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/09/2016 12:12:51</publishTime>
+      <publishTime>11/03/2016 14:49:29</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
       <publishTime>08/23/2016 12:20:25</publishTime>
@@ -1612,7 +1615,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2016 15:00:22</publishTime>
     </File>
     <File Include="Views/Quality/Details.cshtml">
-      <publishTime>11/03/2016 13:27:42</publishTime>
+      <publishTime>11/03/2016 15:32:50</publishTime>
     </File>
     <File Include="Views/Quality/Index.cshtml">
       <publishTime>11/03/2016 03:15:46</publishTime>

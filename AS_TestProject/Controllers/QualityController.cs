@@ -13,7 +13,7 @@ using System.Net;
 
 namespace AS_TestProject.Controllers
 {
-    [Authorize(Roles = "Quality")]
+    [Authorize(Roles = "Admin, Quality")]
     public class QualityController : UserNames
     {
         private ReportEntities mb = new ReportEntities();
@@ -40,11 +40,36 @@ namespace AS_TestProject.Controllers
             }
 
             ViewBag.Domain = domain.FileMask + " - " + domain.DomainName;
-
+         
             var mtgCFR = domain.CFRMortgages.Count;
             var insCFR = domain.CFRInsurances.Count;
             var prCFR = domain.CFRPatientRecruitments.Count;
             decimal totCFR = mtgCFR + insCFR + prCFR;
+            var totCalls = 0;
+
+            if (totCFR > 0)
+            {
+                var mtgCFRs = domain.CFRMortgages;
+                var insCFRs = domain.CFRInsurances;
+                var prCFRs = domain.CFRPatientRecruitments;
+                
+                foreach (var call in mtgCFRs)
+                {
+                    totCalls = totCalls + call.C_Calls;
+                }
+
+                foreach (var call in insCFRs)
+                {
+                    totCalls = totCalls + call.C_Calls;
+                }
+
+                foreach (var call in prCFRs)
+                {
+                    totCalls = totCalls + call.C_Calls;
+                }
+            }
+
+            ViewBag.TotalCalls = totCalls;
 
             //Telephone Etiquette % calculation
             var mtgTE1 = domain.CFRMortgages.Where(d => d.TelephoneEtiquetteRating == 1).Count();
@@ -63,10 +88,17 @@ namespace AS_TestProject.Controllers
             decimal totalTE2 = mtgTE2 + insTE2 + prTE2;
             decimal totalTE3 = mtgTE3 + insTE3 + prTE3;
 
-            decimal percentTE1 = Math.Round((totalTE1 * 10000) / totCFR) / 100;
-            decimal percentTE2 = Math.Round((totalTE2 * 10000) / totCFR) / 100;
-            decimal percentTE3 = Math.Round((totalTE3 * 10000) / totCFR) / 100;
+            decimal percentTE1 = 0;
+            decimal percentTE2 = 0;
+            decimal percentTE3 = 0;
 
+            if (totCFR > 0)
+            {
+                percentTE1 = Math.Round((totalTE1 * 10000) / totCFR) / 100;
+                percentTE2 = Math.Round((totalTE2 * 10000) / totCFR) / 100;
+                percentTE3 = Math.Round((totalTE3 * 10000) / totCFR) / 100;
+            }
+            
             ViewBag.PercentTE1 = percentTE1;
             ViewBag.PercentTE2 = percentTE2;
             ViewBag.PercentTE3 = percentTE3;
@@ -88,10 +120,17 @@ namespace AS_TestProject.Controllers
             decimal totalP2 = mtgP2 + insP2 + prP2;
             decimal totalP3 = mtgP3 + insP3 + prP3;
 
-            decimal percentP1 = Math.Round((totalP1 * 10000) / totCFR) / 100;
-            decimal percentP2 = Math.Round((totalP2 * 10000) / totCFR) / 100;
-            decimal percentP3 = Math.Round((totalP3 * 10000) / totCFR) / 100;
+            decimal percentP1 = 0;
+            decimal percentP2 = 0;
+            decimal percentP3 = 0;
 
+            if (totCFR > 0)
+            {
+                percentP1 = Math.Round((totalP1 * 10000) / totCFR) / 100;
+                percentP2 = Math.Round((totalP2 * 10000) / totCFR) / 100;
+                percentP3 = Math.Round((totalP3 * 10000) / totCFR) / 100;
+            }
+            
             ViewBag.PercentP1 = percentP1;
             ViewBag.PercentP2 = percentP2;
             ViewBag.PercentP3 = percentP3;
@@ -113,10 +152,17 @@ namespace AS_TestProject.Controllers
             decimal totalC2 = mtgC2 + insC2 + prC2;
             decimal totalC3 = mtgC3 + insC3 + prC3;
 
-            decimal percentC1 = Math.Round((totalC1 * 10000) / totCFR) / 100;
-            decimal percentC2 = Math.Round((totalC2 * 10000) / totCFR) / 100;
-            decimal percentC3 = Math.Round((totalC3 * 10000) / totCFR) / 100;
+            decimal percentC1 = 0;
+            decimal percentC2 = 0;
+            decimal percentC3 = 0;
 
+            if (totCFR > 0)
+            {
+                percentC1 = Math.Round((totalC1 * 10000) / totCFR) / 100;
+                percentC2 = Math.Round((totalC2 * 10000) / totCFR) / 100;
+                percentC3 = Math.Round((totalC3 * 10000) / totCFR) / 100;
+            }
+            
             ViewBag.PercentC1 = percentC1;
             ViewBag.PercentC2 = percentC2;
             ViewBag.PercentC3 = percentC3;
@@ -138,9 +184,16 @@ namespace AS_TestProject.Controllers
             decimal totalA2 = mtgA2 + insA2 + prA2;
             decimal totalA3 = mtgA3 + insA3 + prA3;
 
-            decimal percentA1 = Math.Round((totalA1 * 10000) / totCFR) / 100;
-            decimal percentA2 = Math.Round((totalA2 * 10000) / totCFR) / 100;
-            decimal percentA3 = Math.Round((totalA3 * 10000) / totCFR) / 100;
+            decimal percentA1 = 0;
+            decimal percentA2 = 0;
+            decimal percentA3 = 0;
+
+            if (totCFR > 0)
+            {
+                percentA1 = Math.Round((totalA1 * 10000) / totCFR) / 100;
+                percentA2 = Math.Round((totalA2 * 10000) / totCFR) / 100;
+                percentA3 = Math.Round((totalA3 * 10000) / totCFR) / 100;
+            }
 
             ViewBag.PercentA1 = percentA1;
             ViewBag.PercentA2 = percentA2;
@@ -163,10 +216,17 @@ namespace AS_TestProject.Controllers
             decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2;
             decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3;
 
-            decimal percentAOI1 = Math.Round((totalAOI1 * 10000) / totCFR) / 100;
-            decimal percentAOI2 = Math.Round((totalAOI2 * 10000) / totCFR) / 100;
-            decimal percentAOI3 = Math.Round((totalAOI3 * 10000) / totCFR) / 100;
+            decimal percentAOI1 = 0;
+            decimal percentAOI2 = 0;
+            decimal percentAOI3 = 0;
 
+            if (totCFR > 0)
+            {
+                percentAOI1 = Math.Round((totalAOI1 * 10000) / totCFR) / 100;
+                percentAOI2 = Math.Round((totalAOI2 * 10000) / totCFR) / 100;
+                percentAOI3 = Math.Round((totalAOI3 * 10000) / totCFR) / 100;
+            }
+            
             ViewBag.PercentAOI1 = percentAOI1;
             ViewBag.PercentAOI2 = percentAOI2;
             ViewBag.PercentAOI3 = percentAOI3;

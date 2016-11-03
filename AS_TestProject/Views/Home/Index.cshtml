@@ -219,27 +219,16 @@
                     </div>
                     <canvas id="serverstatus02" height="120" width="120"></canvas>
                     <script>
-                        @*var doughnutData = [
-                            {
-                                value: @ViewBag.OurTransfersToday,
-                                color: "#29AAE3"
-                            },
-                            {
-                                value: @ViewBag.TheirTransfersToday,
-                                color: "#444c57"
-                            }
-                        ];*@
                         var pieData = [
                             {
-                                value: @ViewBag.OurTransfersToday,
-                                color:"#29AAE3"
+                                value : @ViewBag.OurTransfersToday,
+                                color :"#29AAE3"
                             },
                             {
                                 value : @ViewBag.TheirTransfersToday,
                                 color : "#031B25"
                             },
                         ];
-                        var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
                         new Chart(document.getElementById("serverstatus02").getContext("2d")).Pie(pieData);
                     </script>
                     <p style="color: white; margin-bottom: 0px">@today.ToString("D")</p>
@@ -253,7 +242,7 @@
                             <h5>@ViewBag.UserSite <i class="fa fa-arrow-circle-right"></i></h5>
                         </div>
                     </footer>
-                </div><! -- /darkblue panel -->
+                </div><!-- /darkblue panel -->
             </div><!-- /col-md-4 -->
 
 
