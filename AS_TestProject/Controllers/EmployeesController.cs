@@ -1366,7 +1366,7 @@ namespace AS_TestProject.Controllers
         }
 
         // POST: CFRPatientRecruitments/Delete/5
-        [HttpPost, ActionName("MortgageCFR_Delete")]
+        [HttpPost, ActionName("PatientRecruitmentCFR_Delete")]
         [Authorize(Roles = "Admin, Quality")]
         [ValidateAntiForgeryToken]
         public ActionResult PatientRecruitmentCFR_DeleteConfirmed(int id)

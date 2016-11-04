@@ -19,6 +19,7 @@ namespace AS_TestProject.Controllers
         private ReportEntities mb = new ReportEntities();
 
         // GET: Quality/Index
+
         public ActionResult Index()
         {
             ViewBag.Domains = mb.DomainMasters.Where(d => d.IsActive == true).ToList();
@@ -230,6 +231,54 @@ namespace AS_TestProject.Controllers
             ViewBag.PercentAOI1 = percentAOI1;
             ViewBag.PercentAOI2 = percentAOI2;
             ViewBag.PercentAOI3 = percentAOI3;
+
+            return View();
+        }
+
+        // GET: Quality/Index
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult CFRStats()
+        {
+            var mtgCFR = mb.CFRMortgages.Count();
+            var insCFR = mb.CFRInsurances.Count();
+            var prCFR = mb.CFRPatientRecruitments.Count();
+
+            var mTE1yes = mb.CFRMortgages.Where(c => c.mTEQ1 == 1).Count();
+            var mTE1no = mb.CFRMortgages.Where(c => c.mTEQ1 == 2).Count();
+            var mTE1na = mb.CFRMortgages.Where(c => c.mTEQ1 == 3).Count();
+
+            var mTE2yes = mb.CFRMortgages.Where(c => c.mTEQ2 == 1).Count();
+            var mTE2no = mb.CFRMortgages.Where(c => c.mTEQ2 == 2).Count();
+            var mTE2na = mb.CFRMortgages.Where(c => c.mTEQ2 == 3).Count();
+
+            var mTE3yes = mb.CFRMortgages.Where(c => c.mTEQ3 == 1).Count();
+            var mTE3no = mb.CFRMortgages.Where(c => c.mTEQ3 == 2).Count();
+            var mTE3na = mb.CFRMortgages.Where(c => c.mTEQ3 == 3).Count();
+
+            var mTE4yes = mb.CFRMortgages.Where(c => c.mTEQ4 == 1).Count();
+            var mTE4no = mb.CFRMortgages.Where(c => c.mTEQ4 == 2).Count();
+            var mTE4na = mb.CFRMortgages.Where(c => c.mTEQ4 == 3).Count();
+
+            var mTE5yes = mb.CFRMortgages.Where(c => c.mTEQ5 == 1).Count();
+            var mTE5no = mb.CFRMortgages.Where(c => c.mTEQ5 == 2).Count();
+            var mTE5na = mb.CFRMortgages.Where(c => c.mTEQ5 == 3).Count();
+
+            var mP1yes = mb.CFRMortgages.Where(c => c.mPQ1 == 1).Count();
+            var mP1no = mb.CFRMortgages.Where(c => c.mPQ1 == 2).Count();
+            var mP1na = mb.CFRMortgages.Where(c => c.mPQ1 == 3).Count();
+
+            var mP2yes = mb.CFRMortgages.Where(c => c.mPQ2 == 1).Count();
+            var mP2no = mb.CFRMortgages.Where(c => c.mPQ2 == 2).Count();
+            var mP2na = mb.CFRMortgages.Where(c => c.mPQ2 == 3).Count();
+
+            var mC1yes = mb.CFRMortgages.Where(c => c.mCQ1 == 1).Count();
+            var mC1no = mb.CFRMortgages.Where(c => c.mCQ1 == 2).Count();
+            var mC1na = mb.CFRMortgages.Where(c => c.mCQ1 == 3).Count();
+
+            var mC2yes = mb.CFRMortgages.Where(c => c.mCQ2 == 1).Count();
+            var mC2no = mb.CFRMortgages.Where(c => c.mCQ2 == 2).Count();
+            var mC2na = mb.CFRMortgages.Where(c => c.mCQ2 == 3).Count();
+
 
             return View();
         }
