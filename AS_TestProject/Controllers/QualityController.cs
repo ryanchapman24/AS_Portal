@@ -243,6 +243,10 @@ namespace AS_TestProject.Controllers
             decimal insCFR = mb.CFRInsurances.Count();
             decimal prCFR = mb.CFRPatientRecruitments.Count();
 
+            ViewBag.mtgCFR = mtgCFR;
+            ViewBag.insCFR = insCFR;
+            ViewBag.prCFR = prCFR;
+
             ////////////////////// MORTGAGE //////////////////////////////////////////////////////////
             decimal mTE1yes = mb.CFRMortgages.Where(c => c.mTEQ1 == 1).Count();
             decimal mTE1no = mb.CFRMortgages.Where(c => c.mTEQ1 == 2).Count();

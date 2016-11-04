@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\D09\wwwroot\ASPortal</_PublishTargetUrl>
+    <_PublishTargetUrl>\\D05\ASPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -724,7 +724,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>11/04/2016 12:33:45</publishTime>
+      <publishTime>11/04/2016 15:11:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -988,10 +988,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/12/2016 12:08:07</publishTime>
     </File>
     <File Include="Controllers/EmployeesController.cs">
-      <publishTime>11/04/2016 12:31:41</publishTime>
+      <publishTime>11/04/2016 12:46:26</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
-      <publishTime>11/02/2016 16:31:10</publishTime>
+      <publishTime>11/04/2016 15:10:33</publishTime>
     </File>
     <File Include="Controllers/HRController.cs">
       <publishTime>11/03/2016 13:42:18</publishTime>
@@ -1009,7 +1009,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/22/2016 11:41:29</publishTime>
     </File>
     <File Include="Controllers/QualityController.cs">
-      <publishTime>11/04/2016 12:30:22</publishTime>
+      <publishTime>11/04/2016 14:00:49</publishTime>
     </File>
     <File Include="Entities/AgentDailyHour.cs">
       <publishTime>10/07/2016 14:36:44</publishTime>
@@ -1613,6 +1613,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Payroll/Index.cshtml">
       <publishTime>08/08/2016 15:00:22</publishTime>
+    </File>
+    <File Include="Views/Quality/CFRStats.cshtml">
+      <publishTime>11/04/2016 15:09:26</publishTime>
     </File>
     <File Include="Views/Quality/Details.cshtml">
       <publishTime>11/03/2016 15:51:06</publishTime>
