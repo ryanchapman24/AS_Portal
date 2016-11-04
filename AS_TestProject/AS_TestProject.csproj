@@ -773,6 +773,7 @@
     <Content Include="Views\Employees\PatientRecruitmentCFR_Edit.cshtml" />
     <Content Include="Views\Quality\Index.cshtml" />
     <Content Include="Views\Quality\Details.cshtml" />
+    <Content Include="Views\Quality\CFRStats.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
