@@ -724,7 +724,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>11/04/2016 18:12:03</publishTime>
+      <publishTime>11/14/2016 16:24:11</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1258,7 +1258,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/06/2016 10:23:07</publishTime>
     </File>
     <File Include="Models/UserNames.cs">
-      <publishTime>08/23/2016 11:15:12</publishTime>
+      <publishTime>11/05/2016 15:47:39</publishTime>
     </File>
     <File Include="Models/WorkTask.cs">
       <publishTime>07/06/2016 12:35:47</publishTime>
@@ -1495,7 +1495,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2016 14:09:26</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>11/03/2016 14:06:33</publishTime>
+      <publishTime>11/14/2016 15:46:23</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>07/27/2016 13:46:53</publishTime>
@@ -1504,19 +1504,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2016 14:09:44</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Delete.cshtml">
-      <publishTime>11/03/2016 10:41:29</publishTime>
+      <publishTime>11/14/2016 15:47:52</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Details.cshtml">
-      <publishTime>11/03/2016 10:43:55</publishTime>
+      <publishTime>11/14/2016 15:47:39</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Edit.cshtml">
       <publishTime>11/01/2016 14:03:52</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Delete.cshtml">
-      <publishTime>11/03/2016 10:41:16</publishTime>
+      <publishTime>11/14/2016 15:50:38</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Details.cshtml">
-      <publishTime>11/03/2016 10:44:07</publishTime>
+      <publishTime>11/14/2016 15:50:18</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Edit.cshtml">
       <publishTime>11/01/2016 14:04:27</publishTime>
@@ -1615,7 +1615,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2016 15:00:22</publishTime>
     </File>
     <File Include="Views/Quality/CFRStats.cshtml">
-      <publishTime>11/04/2016 18:00:45</publishTime>
+      <publishTime>11/14/2016 15:25:45</publishTime>
     </File>
     <File Include="Views/Quality/Details.cshtml">
       <publishTime>11/03/2016 15:51:06</publishTime>
