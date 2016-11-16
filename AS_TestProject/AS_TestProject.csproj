@@ -433,6 +433,7 @@
     <Content Include="assets\img\BonusPayment.jpg" />
     <Content Include="assets\img\BonusPayment.png" />
     <Content Include="assets\img\checkbox-gray.png" />
+    <Content Include="assets\img\DisciplinaryAction.png" />
     <Content Include="assets\img\EmployeeHandbook.png" />
     <Content Include="assets\img\EmployeeLoan.png" />
     <Content Include="assets\img\ExpenseReimbursement.png" />
@@ -710,6 +711,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="assets\forms\Anomaly_Employment_Application_2016_V2.pdf" />
+    <Content Include="assets\forms\A2_DisciplinaryActionForm.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -814,6 +816,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DisciplinaryActions\" />
     <Folder Include="Documents\HR\" />
     <Folder Include="Documents\IT\" />
     <Folder Include="GalleryPhotos\" />

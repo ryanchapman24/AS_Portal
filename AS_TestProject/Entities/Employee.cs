@@ -24,8 +24,6 @@ namespace AS_TestProject.Entities
             this.AgentDailyHours = new HashSet<AgentDailyHour>();
             this.EmployeeHoursTotals = new HashSet<EmployeeHoursTotal>();
             this.AgentDailyHours1 = new HashSet<AgentDailyHour>();
-            this.DisciplinaryActions = new HashSet<DisciplinaryAction>();
-            this.DisciplinaryActions1 = new HashSet<DisciplinaryAction>();
             this.CFRInsurances = new HashSet<CFRInsurance>();
             this.CFRInsurances1 = new HashSet<CFRInsurance>();
             this.CFRInsurances2 = new HashSet<CFRInsurance>();
@@ -33,6 +31,8 @@ namespace AS_TestProject.Entities
             this.CFRMortgages1 = new HashSet<CFRMortgage>();
             this.CFRPatientRecruitments = new HashSet<CFRPatientRecruitment>();
             this.CFRPatientRecruitments1 = new HashSet<CFRPatientRecruitment>();
+            this.DisciplinaryActions = new HashSet<DisciplinaryAction>();
+            this.DisciplinaryActions1 = new HashSet<DisciplinaryAction>();
         }
     
         public int EmployeeID { get; set; }
@@ -58,6 +58,7 @@ namespace AS_TestProject.Entities
         public int AddByEmployeeID { get; set; }
         public Nullable<System.DateTime> RehireDate { get; set; }
         public string FileNumber { get; set; }
+        public string FullName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
@@ -76,10 +77,6 @@ namespace AS_TestProject.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AgentDailyHour> AgentDailyHours1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DisciplinaryAction> DisciplinaryActions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DisciplinaryAction> DisciplinaryActions1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CFRInsurance> CFRInsurances { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CFRInsurance> CFRInsurances1 { get; set; }
@@ -93,5 +90,9 @@ namespace AS_TestProject.Entities
         public virtual ICollection<CFRPatientRecruitment> CFRPatientRecruitments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CFRPatientRecruitment> CFRPatientRecruitments1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DisciplinaryAction> DisciplinaryActions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DisciplinaryAction> DisciplinaryActions1 { get; set; }
     }
 }

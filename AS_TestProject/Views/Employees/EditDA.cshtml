@@ -17,6 +17,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.DisciplinaryActionID)
                 @Html.HiddenFor(model => model.EmployeeID)
+                @Html.HiddenFor(model => model.File)
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
@@ -48,6 +49,25 @@
                     <div class="col-md-4">
                         <textarea class="form-control capitalize" name="Explanation" rows="3" required>@Model.Explanation</textarea>
                         @Html.ValidationMessageFor(model => model.Explanation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        File
+                    </div>
+                    <div class="col-md-4">
+                        @if (Model.File != null)
+                        {
+                            <a href="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",Model.File)" target="_blank"><i class="fa fa-paperclip" style="color: #29AAE3; font-size: 20px"></i></a><br />
+                            <input type="file" name="files" />
+                            <em style="color: red">if you choose to upload a new file, it will replace the old one</em>
+                        }
+                        else
+                        {
+                            <em style="color: #29AAE3">no file exists for this disciplinary action</em><br />
+                            <input type="file" name="files" />
+                        }
                     </div>
                 </div>
 

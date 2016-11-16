@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using AS_TestProject.Entities;
 using AS_TestProject.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace AS_TestProject.Controllers
 {
@@ -264,15 +265,38 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin, HR")]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateDA([Bind(Include = "DisciplinaryActionID,EmployeeID,FirstName,LastName,Date,Reason,Explanation,EditByEmployeeID,EditTimeStamp")] DisciplinaryAction DiscAct)
+        public ActionResult CreateDA([Bind(Include = "DisciplinaryActionID,EmployeeID,FirstName,LastName,Date,Reason,Explanation,EditByEmployeeID,EditTimeStamp,File")] DisciplinaryAction DiscAct, HttpPostedFileBase files)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
             if (ModelState.IsValid)
-            {
-                
+            {             
                 DiscAct.EditByEmployeeID = user.EmployeeID;
                 DiscAct.EditTimeStamp = System.DateTime.Now;
+
+                if (files != null)
+                {
+                    //Counter
+                    var num = 0;
+                    //Gets Filename without the extension
+                    var fileName = Path.GetFileNameWithoutExtension(files.FileName);
+                    var gPic = Path.Combine("/DisciplinaryActions/", fileName + Path.GetExtension(files.FileName));
+                    //Checks if pPic matches any of the current attachments, 
+                    //if so it will loop and add a (number) to the end of the filename
+                    while (mb.DisciplinaryActions.Any(d => d.File == gPic))
+                    {
+                        //Sets "filename" back to the default value
+                        fileName = Path.GetFileNameWithoutExtension(files.FileName);
+                        //Add's parentheses after the name with a number ex. filename(4)
+                        fileName = string.Format(fileName + "(" + ++num + ")");
+                        //Makes sure pPic gets updated with the new filename so it could check
+                        gPic = Path.Combine("/DisciplinaryActions/", fileName + Path.GetExtension(files.FileName));
+                    }
+                    files.SaveAs(Path.Combine(Server.MapPath("~/DisciplinaryActions/"), fileName + Path.GetExtension(files.FileName)));
+
+                    DiscAct.File = gPic;
+                    mb.SaveChanges();
+                }
                 mb.DisciplinaryActions.Add(DiscAct);
                 mb.SaveChanges();
 
@@ -303,7 +327,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin, HR")]
         [ValidateAntiForgeryToken]
-        public ActionResult EditDA([Bind(Include = "DisciplinaryActionID,EmployeeID,FirstName,LastName,Date,Reason,Explanation,EditByEmployeeID,EditTimeStamp")] DisciplinaryAction DiscAct)
+        public ActionResult EditDA([Bind(Include = "DisciplinaryActionID,EmployeeID,FirstName,LastName,Date,Reason,Explanation,EditByEmployeeID,EditTimeStamp,File")] DisciplinaryAction DiscAct, HttpPostedFileBase files)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
@@ -313,6 +337,31 @@ namespace AS_TestProject.Controllers
                 mb.Entry(DiscAct).Property("Date").IsModified = true;
                 mb.Entry(DiscAct).Property("Reason").IsModified = true;
                 mb.Entry(DiscAct).Property("Explanation").IsModified = true;
+                mb.Entry(DiscAct).Property("File").IsModified = true;
+                
+                if (files != null)
+                {
+                    //Counter
+                    var num = 0;
+                    //Gets Filename without the extension
+                    var fileName = Path.GetFileNameWithoutExtension(files.FileName);
+                    var gPic = Path.Combine("/DisciplinaryActions/", fileName + Path.GetExtension(files.FileName));
+                    //Checks if pPic matches any of the current attachments, 
+                    //if so it will loop and add a (number) to the end of the filename
+                    while (mb.DisciplinaryActions.Any(d => d.File == gPic))
+                    {
+                        //Sets "filename" back to the default value
+                        fileName = Path.GetFileNameWithoutExtension(files.FileName);
+                        //Add's parentheses after the name with a number ex. filename(4)
+                        fileName = string.Format(fileName + "(" + ++num + ")");
+                        //Makes sure pPic gets updated with the new filename so it could check
+                        gPic = Path.Combine("/DisciplinaryActions/", fileName + Path.GetExtension(files.FileName));
+                    }
+                    files.SaveAs(Path.Combine(Server.MapPath("~/DisciplinaryActions/"), fileName + Path.GetExtension(files.FileName)));
+
+                    DiscAct.File = gPic;
+                    mb.SaveChanges();
+                }                  
                 DiscAct.EditByEmployeeID = user.EmployeeID;
                 DiscAct.EditTimeStamp = System.DateTime.Now;
                 mb.SaveChanges();

@@ -23,6 +23,7 @@ namespace AS_TestProject.Entities
         public string Explanation { get; set; }
         public Nullable<int> EditByEmployeeID { get; set; }
         public Nullable<System.DateTime> EditTimeStamp { get; set; }
+        public string File { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Employee Employee1 { get; set; }

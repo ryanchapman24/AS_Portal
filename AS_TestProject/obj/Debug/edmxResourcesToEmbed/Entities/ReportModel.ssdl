@@ -88,6 +88,7 @@
     <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
     <Property Name="RehireDate" Type="date" />
     <Property Name="FileNumber" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="EmployeeFive9Agent">
     <Key>
@@ -300,7 +301,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="Strengths" Type="varchar(max)" />
     <Property Name="ActionPlan" Type="varchar(max)" />
     <Property Name="ManagerID" Type="int" />
-    <Property Name="DateOfFeedback" Type="date" Nullable="false" />
+    <Property Name="DateOfFeedback" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="CFRMortgage">
     <Key>
@@ -340,7 +341,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="Strengths" Type="varchar(max)" />
     <Property Name="ActionPlan" Type="varchar(max)" />
     <Property Name="ManagerID" Type="int" />
-    <Property Name="DateOfFeedback" Type="date" Nullable="false" />
+    <Property Name="DateOfFeedback" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="CFRPatientRecruitment">
     <Key>
@@ -378,7 +379,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="Strengths" Type="varchar(max)" />
     <Property Name="ActionPlan" Type="varchar(max)" />
     <Property Name="ManagerID" Type="int" />
-    <Property Name="DateOfFeedback" Type="date" Nullable="false" />
+    <Property Name="DateOfFeedback" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="CFRPerformanceAnalysis">
     <Key>
@@ -564,6 +565,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="Explanation" Type="nvarchar(max)" />
     <Property Name="EditByEmployeeID" Type="int" />
     <Property Name="EditTimeStamp" Type="datetime" />
+    <Property Name="File" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="EverquoteHourlyCampaignMetrics">
     <Key>

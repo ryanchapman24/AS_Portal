@@ -158,15 +158,6 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
     </AssociationSet>
-    <EntitySet Name="DisciplinaryActions" EntityType="ReportModel.DisciplinaryAction" />
-    <AssociationSet Name="FK_REPORT_DisciplinaryAction_EditByEmployeeID" Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_REPORT_DisciplinaryAction_EmployeeID" Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
-    </AssociationSet>
     <EntitySet Name="AgentDailyHours1" EntityType="ReportModel.AgentDailyHours1" />
     <EntitySet Name="CallLogRealTimes" EntityType="ReportModel.CallLogRealTime" />
     <EntitySet Name="AnswerKeys" EntityType="ReportModel.AnswerKey" />
@@ -498,6 +489,15 @@
       <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
       <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitments" />
     </AssociationSet>
+    <EntitySet Name="DisciplinaryActions" EntityType="ReportModel.DisciplinaryAction" />
+    <AssociationSet Name="FK_REPORT_DisciplinaryAction_EditByEmployeeID" Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPORT_DisciplinaryAction_EmployeeID" Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="uspInsertProblemMaster_Result">
     <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -621,8 +621,6 @@
     <NavigationProperty Name="AgentDailyHours" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" FromRole="Employee" ToRole="AgentDailyHour" />
     <NavigationProperty Name="EmployeeHoursTotals" Relationship="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID" FromRole="Employee" ToRole="EmployeeHoursTotal" />
     <NavigationProperty Name="AgentDailyHours1" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" FromRole="Employee" ToRole="AgentDailyHour" />
-    <NavigationProperty Name="DisciplinaryActions" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
-    <NavigationProperty Name="DisciplinaryActions1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
     <NavigationProperty Name="CFRInsurances" Relationship="ReportModel.FK__CFRInsura__Emplo__73BAFBDA" FromRole="Employee" ToRole="CFRInsurance" />
     <NavigationProperty Name="CFRInsurances1" Relationship="ReportModel.FK_QUALITY_CFRInsurance_EmployeeID" FromRole="Employee" ToRole="CFRInsurance" />
     <NavigationProperty Name="CFRInsurances2" Relationship="ReportModel.FK_QUALITY_CFRInsurance_ManagerID" FromRole="Employee" ToRole="CFRInsurance" />
@@ -630,6 +628,9 @@
     <NavigationProperty Name="CFRMortgages1" Relationship="ReportModel.FK_QUALITY_CFRMortgage_ManagerID" FromRole="Employee" ToRole="CFRMortgage" />
     <NavigationProperty Name="CFRPatientRecruitments" Relationship="ReportModel.FK_QUALITY_FRPatientRecruitment_DManagerID" FromRole="Employee" ToRole="CFRPatientRecruitment" />
     <NavigationProperty Name="CFRPatientRecruitments1" Relationship="ReportModel.FK_QUALITY_FRPatientRecruitment_EmployeeID" FromRole="Employee" ToRole="CFRPatientRecruitment" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DisciplinaryActions" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
+    <NavigationProperty Name="DisciplinaryActions1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
   </EntityType>
   <EntityType Name="EmployeeFive9Agent">
     <Key>
@@ -1513,46 +1514,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="DisciplinaryAction">
-    <Key>
-      <PropertyRef Name="DisciplinaryActionID" />
-    </Key>
-    <Property Name="DisciplinaryActionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="LastName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
-    <Property Name="Date" Type="DateTime" Precision="0" />
-    <Property Name="Reason" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
-    <Property Name="Explanation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="EditByEmployeeID" Type="Int32" />
-    <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" FromRole="DisciplinaryAction" ToRole="Employee" />
-    <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="DisciplinaryAction" ToRole="Employee" />
-  </EntityType>
-  <Association Name="FK_REPORT_DisciplinaryAction_EditByEmployeeID">
-    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="ReportModel.DisciplinaryAction" Role="DisciplinaryAction" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="EmployeeID" />
-      </Principal>
-      <Dependent Role="DisciplinaryAction">
-        <PropertyRef Name="EditByEmployeeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_REPORT_DisciplinaryAction_EmployeeID">
-    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
-    <End Type="ReportModel.DisciplinaryAction" Role="DisciplinaryAction" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="EmployeeID" />
-      </Principal>
-      <Dependent Role="DisciplinaryAction">
-        <PropertyRef Name="EmployeeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="AgentDailyHours1">
     <Key>
       <PropertyRef Name="AgentID" />
@@ -1698,7 +1659,7 @@
     <Property Name="Strengths" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ActionPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ManagerID" Type="Int32" />
-    <Property Name="DateOfFeedback" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfFeedback" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_QUALITY_CFRInsurance_DomainMasterID" FromRole="CFRInsurance" ToRole="DomainMaster" />
     <NavigationProperty Name="Employee" Relationship="ReportModel.FK__CFRInsura__Emplo__73BAFBDA" FromRole="CFRInsurance" ToRole="Employee" />
     <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_QUALITY_CFRInsurance_EmployeeID" FromRole="CFRInsurance" ToRole="Employee" />
@@ -1767,7 +1728,7 @@
     <Property Name="Strengths" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ActionPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ManagerID" Type="Int32" />
-    <Property Name="DateOfFeedback" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfFeedback" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_QUALITY_CFRMortgage_DomainMasterID" FromRole="CFRMortgage" ToRole="DomainMaster" />
     <NavigationProperty Name="Employee" Relationship="ReportModel.FK_QUALITY_CFRMortgage_EmployeeID" FromRole="CFRMortgage" ToRole="Employee" />
     <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_QUALITY_CFRMortgage_ManagerID" FromRole="CFRMortgage" ToRole="Employee" />
@@ -1832,7 +1793,7 @@
     <Property Name="Strengths" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ActionPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ManagerID" Type="Int32" />
-    <Property Name="DateOfFeedback" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfFeedback" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_QUALITY_FRPatientRecruitment_DomainMasterID" FromRole="CFRPatientRecruitment" ToRole="DomainMaster" />
     <NavigationProperty Name="Employee" Relationship="ReportModel.FK_QUALITY_FRPatientRecruitment_DManagerID" FromRole="CFRPatientRecruitment" ToRole="Employee" />
     <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_QUALITY_FRPatientRecruitment_EmployeeID" FromRole="CFRPatientRecruitment" ToRole="Employee" />
@@ -2850,6 +2811,47 @@
       </Principal>
       <Dependent Role="CFRPatientRecruitment">
         <PropertyRef Name="TelephoneEtiquetteRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DisciplinaryAction">
+    <Key>
+      <PropertyRef Name="DisciplinaryActionID" />
+    </Key>
+    <Property Name="DisciplinaryActionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Reason" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Explanation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EditByEmployeeID" Type="Int32" />
+    <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="File" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" FromRole="DisciplinaryAction" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="DisciplinaryAction" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK_REPORT_DisciplinaryAction_EditByEmployeeID">
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="ReportModel.DisciplinaryAction" Role="DisciplinaryAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DisciplinaryAction">
+        <PropertyRef Name="EditByEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REPORT_DisciplinaryAction_EmployeeID">
+    <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ReportModel.DisciplinaryAction" Role="DisciplinaryAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DisciplinaryAction">
+        <PropertyRef Name="EmployeeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
