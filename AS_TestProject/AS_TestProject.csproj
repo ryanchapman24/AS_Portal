@@ -242,6 +242,7 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Controllers\QualityController.cs" />
+    <Compile Include="Controllers\SisenseController.cs" />
     <Compile Include="Entities\AgentDailyHour.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
@@ -509,6 +510,7 @@
     <Content Include="assets\img\red_priority.png" />
     <Content Include="assets\img\Reimbursement.png" />
     <Content Include="assets\img\ReimbursementAlt.png" />
+    <Content Include="assets\img\sisense.png" />
     <Content Include="assets\img\StatusChange.png" />
     <Content Include="assets\img\sun-icon.png" />
     <Content Include="assets\img\TimeManagement.jpg" />
@@ -813,6 +815,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Sisense\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

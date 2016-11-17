@@ -135,7 +135,7 @@
 
         <div class="row mt">
             <!-- SERVER STATUS PANELS -->
-            <div class="col-md-4 col-sm-4 mb">
+            @*<div class="col-md-4 col-sm-4 mb">
                 <div class="white-panel pn donut-chart">
                     <div class="white-header" style="background-color: #444c57; color: white">
                         <h5>SERVER LOAD</h5>
@@ -160,7 +160,17 @@
                         var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
                     </script>
                 </div><! --/grey-panel -->
-            </div><!-- /col-md-4-->
+            </div><!-- /col-md-4-->*@
+
+            <div class="col-md-4 mb" style="margin-top: -20px">
+                <a href="@Url.Action("Index","Sisense")">
+                    <div class="sisense pn">
+                        <i></i>
+                        <h2></h2>
+                        <h4></h4>
+                    </div>
+                </a>
+            </div><!-- /col-md-4 -->
 
 
             <div class="col-md-4 col-sm-4 mb">
@@ -193,7 +203,7 @@
                     <div class="white-header" style="background-color: #444c57; color: white">
                         <h5>TOP USER</h5>
                     </div>
-                    <p><img src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",ViewBag.ProfilePic)" class="img-circle" style="width: 80px; height: 80px"></p>
+                    <p><img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",ViewBag.ProfilePic)" class="img-circle" style="width: 80px; height: 80px"></p>
                     <p><b>@ViewBag.DisplayName</b></p>
                     <div class="row">
                         <div class="col-md-6">
