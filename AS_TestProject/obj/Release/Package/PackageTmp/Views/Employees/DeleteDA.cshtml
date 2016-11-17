@@ -52,6 +52,21 @@
                 {
                     <dd></dd>
                 }
+
+                <dt>
+                    File
+                </dt>
+
+                @if (Model.File != null)
+                {
+                    <dd>
+                        <a href="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",Model.File)" target="_blank"><i class="fa fa-paperclip" style="color: #29AAE3; font-size: 20px"></i></a>
+                    </dd>
+                }
+                else
+                {
+                    <dd></dd>
+                }
                 <br />
                 <dd>
                     @using (Html.BeginForm())

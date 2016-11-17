@@ -51,9 +51,6 @@
         <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" />
         <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" />
         <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" />
-        <EntityTypeShape EntityType="ReportModel.DisciplinaryAction" Width="1.5" PointX="5.25" PointY="16.125" />
-        <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" />
-        <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" />
         <EntityTypeShape EntityType="ReportModel.AgentDailyHours1" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="ReportModel.CallLogRealTime" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="ReportModel.AnswerKey" Width="1.5" PointX="17.375" PointY="16.75" />
@@ -142,6 +139,9 @@
         <AssociationConnector Association="ReportModel.FK__CFRPatien__Compl__571EBD2C" />
         <AssociationConnector Association="ReportModel.FK__CFRPatien__Profe__562A98F3" />
         <AssociationConnector Association="ReportModel.FK__CFRPatien__Telep__553674BA" />
+        <EntityTypeShape EntityType="ReportModel.DisciplinaryAction" Width="1.5" PointX="5.25" PointY="15.75" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

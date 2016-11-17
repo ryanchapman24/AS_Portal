@@ -98,6 +98,7 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="ReportModel.Employee">
         <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
           <ScalarProperty Name="RehireDate" ColumnName="RehireDate" />
           <ScalarProperty Name="AddByEmployeeID" ColumnName="AddByEmployeeID" />
@@ -766,21 +767,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="uspOverTimeHoursCalculation1" FunctionName="ReportModel.Store.uspOverTimeHoursCalculation" />
-    <EntitySetMapping Name="DisciplinaryActions">
-      <EntityTypeMapping TypeName="ReportModel.DisciplinaryAction">
-        <MappingFragment StoreEntitySet="DisciplinaryAction">
-          <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
-          <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
-          <ScalarProperty Name="Explanation" ColumnName="Explanation" />
-          <ScalarProperty Name="Reason" ColumnName="Reason" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="DisciplinaryActionID" ColumnName="DisciplinaryActionID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AgentDailyHours1">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
         <MappingFragment StoreEntitySet="AgentDailyHours1">
@@ -954,6 +940,22 @@
         <MappingFragment StoreEntitySet="CFRPerformanceAnalysis">
           <ScalarProperty Name="PerformanceRating" ColumnName="PerformanceRating" />
           <ScalarProperty Name="CFRPerformanceAnalysisID" ColumnName="CFRPerformanceAnalysisID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DisciplinaryActions">
+      <EntityTypeMapping TypeName="ReportModel.DisciplinaryAction">
+        <MappingFragment StoreEntitySet="DisciplinaryAction">
+          <ScalarProperty Name="File" ColumnName="File" />
+          <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
+          <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
+          <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="DisciplinaryActionID" ColumnName="DisciplinaryActionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

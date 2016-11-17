@@ -193,58 +193,86 @@
                                 <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
                                     <thead>
                                         <tr>
-                                            <th class="text-nowrap" style="width: 5%">Employee ID</th>
-                                            <th>Last</th>
-                                            <th>First</th>
-                                            <th style="width: 10%">Title</th>
-                                            <th>Site</th>
-                                            <th style="width: 15%">Address</th>
-                                            <th style="width: 10%">Email</th>
-                                            <th>Phone</th>
-                                            @*<th style="width: 5%">Active</th>*@
-                                            <th style="width: 60px">Action</th>
+                                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                            {
+                                                <th class="text-nowrap" style="width: 5%">Employee ID</th>
+                                                <th>Last</th>
+                                                <th>First</th>
+                                                <th style="width: 10%">Title</th>
+                                                <th>Site</th>
+                                                <th style="width: 15%">Address</th>
+                                                <th style="width: 10%">Email</th>
+                                                <th>Phone</th>
+                                                <th style="width: 60px">Action</th>
+                                            }
+                                            else
+                                            {
+                                                <th class="text-nowrap" style="width: 5%">Employee ID</th>
+                                                <th>Last</th>
+                                                <th>First</th>
+                                                <th @*style="width: 10%"*@>Title</th>
+                                                <th>Site</th>
+                                                <th style="width: 60px">Action</th>
+                                            }
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var employee in ViewBag.ActiveEmps)
                                         {
                                             <tr>
-                                                <td>@employee.EmployeeID</td>
-                                                <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
-                                                <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
-                                                <td>@employee.Position.PositionName</td>
-                                                <td>@employee.Site.SiteName</td>
-                                                <td class="text-nowrap">
-                                                    @employee.AddressLine1 @employee.AddressLine2<br />
-                                                    @employee.City, @employee.State @employee.ZipCode
-                                                </td>
-                                                <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
-                                                <td class="text-nowrap" style="font-size: 11px">
-                                                    <i class="fa fa-phone"></i> @employee.HomePhone<br />
-                                                    <i class="fa fa-mobile"></i> @employee.CellPhone
-                                                </td>
-                                                @*@if (employee.IsActive == true)
+                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
                                                 {
-                                                    <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
+                                                    <td>@employee.EmployeeID</td>
+                                                    <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
+                                                    <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
+                                                    <td>@employee.Position.PositionName</td>
+                                                    <td>@employee.Site.SiteName</td>
+                                                    <td class="text-nowrap">
+                                                        @employee.AddressLine1 @employee.AddressLine2<br />
+                                                        @employee.City, @employee.State @employee.ZipCode
+                                                    </td>
+                                                    <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
+                                                    <td class="text-nowrap" style="font-size: 11px">
+                                                        <i class="fa fa-phone"></i> @employee.HomePhone<br />
+                                                        <i class="fa fa-mobile"></i> @employee.CellPhone
+                                                    </td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+                                                        {
+                                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                        {
+                                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />                          
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
                                                 }
                                                 else
                                                 {
-                                                    <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
-                                                }*@
-                                                <td class="text-nowrap">
-                                                    @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
-                                                    {
-                                                        <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
-                                                    }
-                                                    @if (User.IsInRole("Admin") || User.IsInRole("HR"))
-                                                    {
-                                                        <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />                          
-                                                    }
-                                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
-                                                    {
-                                                        <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
-                                                    }
-                                                </td>
+                                                    <td>@employee.EmployeeID</td>
+                                                    <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
+                                                    <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
+                                                    <td>@employee.Position.PositionName</td>
+                                                    <td>@employee.Site.SiteName</td>                                     
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+                                                        {
+                                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                        {
+                                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                }
                                             </tr>
                                         }
                                     </tbody>
@@ -426,55 +454,86 @@
                                 <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
                                     <thead>
                                         <tr>
-                                            <th class="text-nowrap" style="width: 5%">Employee ID</th>
-                                            <th>Last</th>
-                                            <th>First</th>
-                                            <th style="width: 10%">Title</th>
-                                            <th>Site</th>
-                                            <th style="width: 15%">Address</th>
-                                            <th style="width: 10%">Email</th>
-                                            <th>Phone</th>
-                                            @*<th style="width: 5%">Active</th>*@
-                                            <th style="width: 60px">Action</th>
+                                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                            {
+                                                <th class="text-nowrap" style="width: 5%">Employee ID</th>
+                                                <th>Last</th>
+                                                <th>First</th>
+                                                <th style="width: 10%">Title</th>
+                                                <th>Site</th>
+                                                <th style="width: 15%">Address</th>
+                                                <th style="width: 10%">Email</th>
+                                                <th>Phone</th>
+                                                <th style="width: 60px">Action</th>
+                                            }
+                                            else
+                                            {
+                                                <th class="text-nowrap" style="width: 5%">Employee ID</th>
+                                                <th>Last</th>
+                                                <th>First</th>
+                                                <th @*style="width: 10%"*@>Title</th>
+                                                <th>Site</th>
+                                                <th style="width: 60px">Action</th>
+                                            }
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var employee in ViewBag.InactiveEmps)
                                         {
                                             <tr>
-                                                <td>@employee.EmployeeID</td>
-                                                <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
-                                                <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
-                                                <td>@employee.Position.PositionName</td>
-                                                <td>@employee.Site.SiteName</td>
-                                                <td class="text-nowrap">
-                                                    @employee.AddressLine1 @employee.AddressLine2<br />
-                                                    @employee.City, @employee.State @employee.ZipCode
-                                                </td>
-                                                <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
-                                                <td class="text-nowrap" style="font-size: 11px">
-                                                    <i class="fa fa-phone"></i> @employee.HomePhone<br />
-                                                    <i class="fa fa-mobile"></i> @employee.CellPhone
-                                                </td>
-                                                @*@if (employee.IsActive == true)
+                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
                                                 {
-                                                    <td><i class="fa fa-thumbs-up" style="color: limegreen; font-size: 16px"></i></td>
+                                                    <td>@employee.EmployeeID</td>
+                                                    <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
+                                                    <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
+                                                    <td>@employee.Position.PositionName</td>
+                                                    <td>@employee.Site.SiteName</td>
+                                                    <td class="text-nowrap">
+                                                        @employee.AddressLine1 @employee.AddressLine2<br />
+                                                        @employee.City, @employee.State @employee.ZipCode
+                                                    </td>
+                                                    <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
+                                                    <td class="text-nowrap" style="font-size: 11px">
+                                                        <i class="fa fa-phone"></i> @employee.HomePhone<br />
+                                                        <i class="fa fa-mobile"></i> @employee.CellPhone
+                                                    </td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+                                                        {
+                                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                        {
+                                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
                                                 }
                                                 else
                                                 {
-                                                    <td><i class="fa fa-thumbs-down" style="color: red; font-size: 16px"></i></td>
-                                                }*@
-                                                <td class="text-nowrap">
-                                                    @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
-                                                    {
-                                                        <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
-                                                    }
-                                                    @if (User.IsInRole("Admin") || User.IsInRole("HR"))
-                                                    {
-                                                        <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
-                                                        <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
-                                                    }
-                                                </td>
+                                                    <td>@employee.EmployeeID</td>
+                                                    <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
+                                                    <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
+                                                    <td>@employee.Position.PositionName</td>
+                                                    <td>@employee.Site.SiteName</td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+                                                        {
+                                                            <a href="@Url.Action("Index","Payroll", new { id = employee.EmployeeID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Manage</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                        {
+                                                            <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                        }
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                }
                                             </tr>
                                         }
                                     </tbody>
