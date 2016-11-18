@@ -451,19 +451,27 @@ namespace AS_TestProject.Controllers
                 {
                     mTER++;
                 }
-                if (mTER == 0)
-                {
-                    cFRMortgage.TelephoneEtiquetteRating = 1;
-                }
-                if (mTER > 0 && mTER < 3)
-                {
-                    cFRMortgage.TelephoneEtiquetteRating = 2;
-                }
-                if (mTER >= 3)
-                {
-                    cFRMortgage.TelephoneEtiquetteRating = 3;
-                }
 
+                if (cFRMortgage.mTEQ1 == 3 && cFRMortgage.mTEQ2 == 3 && cFRMortgage.mTEQ3 == 3 && cFRMortgage.mTEQ4 == 3 && cFRMortgage.mTEQ5 == 3)
+                {
+                    cFRMortgage.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (mTER == 0)
+                    {
+                        cFRMortgage.TelephoneEtiquetteRating = 1;
+                    }
+                    if (mTER > 0 && mTER < 3)
+                    {
+                        cFRMortgage.TelephoneEtiquetteRating = 2;
+                    }
+                    if (mTER >= 3)
+                    {
+                        cFRMortgage.TelephoneEtiquetteRating = 3;
+                    }
+                }
+                
                 // Professionalism Rating Calculation (MORTGAGE)
                 int mPR = 0;
                 if (cFRMortgage.mPQ1 == 2)
@@ -473,20 +481,28 @@ namespace AS_TestProject.Controllers
                 if (cFRMortgage.mPQ2 == 2)
                 {
                     mPR++;
-                }     
-                if (mPR == 0)
-                {
-                    cFRMortgage.ProfessionalismRating = 1;
-                }
-                if (mPR == 1)
-                {
-                    cFRMortgage.ProfessionalismRating = 2;
-                }
-                if (mPR >= 2)
-                {
-                    cFRMortgage.ProfessionalismRating = 3;
                 }
 
+                if (cFRMortgage.mPQ1 == 3 && cFRMortgage.mPQ2 == 3)
+                {
+                    cFRMortgage.ProfessionalismRating = 4;
+                }
+                else
+                {
+                    if (mPR == 0)
+                    {
+                        cFRMortgage.ProfessionalismRating = 1;
+                    }
+                    if (mPR == 1)
+                    {
+                        cFRMortgage.ProfessionalismRating = 2;
+                    }
+                    if (mPR >= 2)
+                    {
+                        cFRMortgage.ProfessionalismRating = 3;
+                    }
+                }
+                
                 // Compliance Rating Calculation (MORTGAGE)
                 int mCR = 0;
                 if (cFRMortgage.mCQ1 == 2)
@@ -501,15 +517,23 @@ namespace AS_TestProject.Controllers
                 {
                     mCR++;
                 }
-                if (mCR == 0)
-                {
-                    cFRMortgage.ComplianceRating = 1;
-                }
-                if (mCR >= 1)
-                {
-                    cFRMortgage.ComplianceRating = 3;
-                }
 
+                if (cFRMortgage.mCQ1 == 3 && cFRMortgage.mCQ2 == 3 && cFRMortgage.mCQ3 == 3)
+                {
+                    cFRMortgage.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (mCR == 0)
+                    {
+                        cFRMortgage.ComplianceRating = 1;
+                    }
+                    if (mCR >= 1)
+                    {
+                        cFRMortgage.ComplianceRating = 3;
+                    }
+                }
+                
                 // Adherance Rating Calculation (MORTGAGE)
                 int mAR = 0;
                 if (cFRMortgage.mAQ1 == 2)
@@ -532,19 +556,27 @@ namespace AS_TestProject.Controllers
                 {
                     mAR++;
                 }
-                if (mAR == 0)
-                {
-                    cFRMortgage.AdheranceRating = 1;
-                }
-                if (mAR > 0 && mAR < 3)
-                {
-                    cFRMortgage.AdheranceRating = 2;
-                }
-                if (mAR >= 3)
-                {
-                    cFRMortgage.AdheranceRating = 3;
-                }
 
+                if (cFRMortgage.mAQ1 == 3 && cFRMortgage.mAQ2 == 3 && cFRMortgage.mAQ3 == 3 && cFRMortgage.mAQ4 == 3 && cFRMortgage.mAQ5 == 3)
+                {
+                    cFRMortgage.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (mAR == 0)
+                    {
+                        cFRMortgage.AdheranceRating = 1;
+                    }
+                    if (mAR > 0 && mAR < 3)
+                    {
+                        cFRMortgage.AdheranceRating = 2;
+                    }
+                    if (mAR >= 3)
+                    {
+                        cFRMortgage.AdheranceRating = 3;
+                    }
+                }
+                
                 // Accuracy of Information Rating Calculation (MORTGAGE)
                 int mAOIR = 0;
                 if (cFRMortgage.mAOIQ1 == 2)
@@ -563,15 +595,23 @@ namespace AS_TestProject.Controllers
                 {
                     mAOIR++;
                 }
-                if (mAOIR == 0)
-                {
-                    cFRMortgage.AccuracyOfInformationRating = 1;
-                }
-                if (mAOIR >= 1)
-                {
-                    cFRMortgage.AccuracyOfInformationRating = 3;
-                }
 
+                if (cFRMortgage.mAOIQ1 == 3 && cFRMortgage.mAOIQ2 == 3 && cFRMortgage.mAOIQ3 == 3 && cFRMortgage.mAOIQ4 == 3)
+                {
+                    cFRMortgage.AccuracyOfInformationRating = 4;
+                }
+                else
+                {
+                    if (mAOIR == 0)
+                    {
+                        cFRMortgage.AccuracyOfInformationRating = 1;
+                    }
+                    if (mAOIR >= 1)
+                    {
+                        cFRMortgage.AccuracyOfInformationRating = 3;
+                    }
+                }
+                
                 mb.CFRMortgages.Add(cFRMortgage);
                 mb.SaveChanges();
                 return RedirectToAction("Details", "Employees", new { id = cFRMortgage.EmployeeID });
@@ -797,19 +837,27 @@ namespace AS_TestProject.Controllers
                 {
                     iTER++;
                 }
-                if (iTER == 0)
-                {
-                    cFRInsurance.TelephoneEtiquetteRating = 1;
-                }
-                if (iTER > 0 && iTER < 3)
-                {
-                    cFRInsurance.TelephoneEtiquetteRating = 2;
-                }
-                if (iTER >= 3)
-                {
-                    cFRInsurance.TelephoneEtiquetteRating = 3;
-                }
 
+                if (cFRInsurance.iTEQ1 == 3 && cFRInsurance.iTEQ2 == 3 && cFRInsurance.iTEQ3 == 3 && cFRInsurance.iTEQ4 == 3 && cFRInsurance.iTEQ5 == 3)
+                {
+                    cFRInsurance.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (iTER == 0)
+                    {
+                        cFRInsurance.TelephoneEtiquetteRating = 1;
+                    }
+                    if (iTER > 0 && iTER < 3)
+                    {
+                        cFRInsurance.TelephoneEtiquetteRating = 2;
+                    }
+                    if (iTER >= 3)
+                    {
+                        cFRInsurance.TelephoneEtiquetteRating = 3;
+                    }
+                }
+                
                 // Professionalism Rating Calculation (INSURANCE)
                 int iPR = 0;
                 if (cFRInsurance.iPQ1 == 2)
@@ -820,19 +868,26 @@ namespace AS_TestProject.Controllers
                 {
                     iPR++;
                 }
-                if (iPR == 0)
+                if (cFRInsurance.iPQ1 == 3 && cFRInsurance.iPQ2 == 3)
                 {
-                    cFRInsurance.ProfessionalismRating = 1;
+                    cFRInsurance.ProfessionalismRating = 4;
                 }
-                if (iPR == 1)
+                else
                 {
-                    cFRInsurance.ProfessionalismRating = 2;
+                    if (iPR == 0)
+                    {
+                        cFRInsurance.ProfessionalismRating = 1;
+                    }
+                    if (iPR == 1)
+                    {
+                        cFRInsurance.ProfessionalismRating = 2;
+                    }
+                    if (iPR >= 2)
+                    {
+                        cFRInsurance.ProfessionalismRating = 3;
+                    }
                 }
-                if (iPR >= 2)
-                {
-                    cFRInsurance.ProfessionalismRating = 3;
-                }
-
+                
                 // Compliance Rating Calculation (INSURANCE)
                 int iCR = 0;
                 if (cFRInsurance.iCQ1 == 2)
@@ -847,15 +902,23 @@ namespace AS_TestProject.Controllers
                 {
                     iCR++;
                 }
-                if (iCR == 0)
-                {
-                    cFRInsurance.ComplianceRating = 1;
-                }
-                if (iCR >= 1)
-                {
-                    cFRInsurance.ComplianceRating = 3;
-                }
 
+                if (cFRInsurance.iCQ1 == 3 && cFRInsurance.iCQ2 == 3 && cFRInsurance.iCQ3 == 3)
+                {
+                    cFRInsurance.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (iCR == 0)
+                    {
+                        cFRInsurance.ComplianceRating = 1;
+                    }
+                    if (iCR >= 1)
+                    {
+                        cFRInsurance.ComplianceRating = 3;
+                    }
+                }
+                
                 // Adherance Rating Calculation (INSURANCE)
                 int iAR = 0;
                 if (cFRInsurance.iAQ1 == 2)
@@ -878,19 +941,27 @@ namespace AS_TestProject.Controllers
                 {
                     iAR++;
                 }
-                if (iAR == 0)
-                {
-                    cFRInsurance.AdheranceRating = 1;
-                }
-                if (iAR > 0 && iAR < 3)
-                {
-                    cFRInsurance.AdheranceRating = 2;
-                }
-                if (iAR >= 3)
-                {
-                    cFRInsurance.AdheranceRating = 3;
-                }
 
+                if (cFRInsurance.iAQ1 == 3 && cFRInsurance.iAQ2 == 3 && cFRInsurance.iAQ3 == 3 && cFRInsurance.iAQ4 == 3 && cFRInsurance.iAQ5 == 3)
+                {
+                    cFRInsurance.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (iAR == 0)
+                    {
+                        cFRInsurance.AdheranceRating = 1;
+                    }
+                    if (iAR > 0 && iAR < 3)
+                    {
+                        cFRInsurance.AdheranceRating = 2;
+                    }
+                    if (iAR >= 3)
+                    {
+                        cFRInsurance.AdheranceRating = 3;
+                    }
+                }
+                
                 // Accuracy of Information Rating Calculation (INSURANCE)
                 int iAOIR = 0;
                 if (cFRInsurance.iAOIQ1 == 2)
@@ -913,13 +984,21 @@ namespace AS_TestProject.Controllers
                 {
                     iAOIR++;
                 }
-                if (iAOIR == 0)
+
+                if (cFRInsurance.iAOIQ1 == 3 && cFRInsurance.iAOIQ2 == 3 && cFRInsurance.iAOIQ3 == 3 && cFRInsurance.iAOIQ4 == 3 && cFRInsurance.iAOIQ5 == 3)
                 {
-                    cFRInsurance.AccuracyOfInformationRating = 1;
+                    cFRInsurance.AccuracyOfInformationRating = 4;
                 }
-                if (iAOIR >= 1)
+                else
                 {
-                    cFRInsurance.AccuracyOfInformationRating = 3;
+                    if (iAOIR == 0)
+                    {
+                        cFRInsurance.AccuracyOfInformationRating = 1;
+                    }
+                    if (iAOIR >= 1)
+                    {
+                        cFRInsurance.AccuracyOfInformationRating = 3;
+                    }
                 }
 
                 mb.CFRInsurances.Add(cFRInsurance);
@@ -1142,19 +1221,27 @@ namespace AS_TestProject.Controllers
                 {
                     pTER++;
                 }
-                if (pTER == 0)
-                {
-                    cFRPatientRecruitment.TelephoneEtiquetteRating = 1;
-                }
-                if (pTER == 1)
-                {
-                    cFRPatientRecruitment.TelephoneEtiquetteRating = 2;
-                }
-                if (pTER >= 2)
-                {
-                    cFRPatientRecruitment.TelephoneEtiquetteRating = 3;
-                }
 
+                if (cFRPatientRecruitment.pTEQ1 == 3 && cFRPatientRecruitment.pTEQ2 == 3 && cFRPatientRecruitment.pTEQ3 == 3)
+                {
+                    cFRPatientRecruitment.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (pTER == 0)
+                    {
+                        cFRPatientRecruitment.TelephoneEtiquetteRating = 1;
+                    }
+                    if (pTER == 1)
+                    {
+                        cFRPatientRecruitment.TelephoneEtiquetteRating = 2;
+                    }
+                    if (pTER >= 2)
+                    {
+                        cFRPatientRecruitment.TelephoneEtiquetteRating = 3;
+                    }
+                }
+                
                 // Professionalism Rating Calculation (PATIENT RECRUITMENT)
                 int pPR = 0;
                 if (cFRPatientRecruitment.pPQ1 == 2)
@@ -1165,19 +1252,27 @@ namespace AS_TestProject.Controllers
                 {
                     pPR++;
                 }
-                if (pPR == 0)
-                {
-                    cFRPatientRecruitment.ProfessionalismRating = 1;
-                }
-                if (pPR == 1)
-                {
-                    cFRPatientRecruitment.ProfessionalismRating = 2;
-                }
-                if (pPR == 3)
-                {
-                    cFRPatientRecruitment.ProfessionalismRating = 3;
-                }
 
+                if (cFRPatientRecruitment.pPQ1 == 3 && cFRPatientRecruitment.pPQ2 == 3)
+                {
+                    cFRPatientRecruitment.ProfessionalismRating = 4;
+                }
+                else
+                {
+                    if (pPR == 0)
+                    {
+                        cFRPatientRecruitment.ProfessionalismRating = 1;
+                    }
+                    if (pPR == 1)
+                    {
+                        cFRPatientRecruitment.ProfessionalismRating = 2;
+                    }
+                    if (pPR == 3)
+                    {
+                        cFRPatientRecruitment.ProfessionalismRating = 3;
+                    }
+                }
+                
                 // Compliance Rating Calculation (PATIENT RECRUITMENT)
                 int pCR = 0;
                 if (cFRPatientRecruitment.pCQ1 == 2)
@@ -1200,15 +1295,23 @@ namespace AS_TestProject.Controllers
                 {
                     pCR++;
                 }
-                if (pCR == 0)
-                {
-                    cFRPatientRecruitment.ComplianceRating = 1;
-                }
-                if (pCR >= 1)
-                {
-                    cFRPatientRecruitment.ComplianceRating = 3;
-                }
 
+                if (cFRPatientRecruitment.pCQ1 == 3 && cFRPatientRecruitment.pCQ2 == 3 && cFRPatientRecruitment.pCQ3 == 3 && cFRPatientRecruitment.pCQ4 == 3 && cFRPatientRecruitment.pCQ5 == 3)
+                {
+                    cFRPatientRecruitment.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (pCR == 0)
+                    {
+                        cFRPatientRecruitment.ComplianceRating = 1;
+                    }
+                    if (pCR >= 1)
+                    {
+                        cFRPatientRecruitment.ComplianceRating = 3;
+                    }
+                }
+                
                 // Adherance Rating Calculation (PATIENT RECRUITMENT)
                 int pAR = 0;
                 if (cFRPatientRecruitment.pAQ1 == 2)
@@ -1231,15 +1334,23 @@ namespace AS_TestProject.Controllers
                 {
                     pAR++;
                 }
-                if (pAR == 0)
-                {
-                    cFRPatientRecruitment.AdheranceRating = 1;
-                }
-                if (pAR >= 1)
-                {
-                    cFRPatientRecruitment.AdheranceRating = 3;
-                }
 
+                if (cFRPatientRecruitment.pAQ1 == 3 && cFRPatientRecruitment.pAQ2 == 3 && cFRPatientRecruitment.pAQ3 == 3 && cFRPatientRecruitment.pAQ4 == 3 && cFRPatientRecruitment.pAQ5 == 3)
+                {
+                    cFRPatientRecruitment.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (pAR == 0)
+                    {
+                        cFRPatientRecruitment.AdheranceRating = 1;
+                    }
+                    if (pAR >= 1)
+                    {
+                        cFRPatientRecruitment.AdheranceRating = 3;
+                    }
+                }
+                
                 // Accuracy of Information Rating Calculation (PATIENT RECRUITMENT)
                 int pAOIR = 0;
                 if (cFRPatientRecruitment.pAOIQ1 == 2)
@@ -1250,15 +1361,23 @@ namespace AS_TestProject.Controllers
                 {
                     pAOIR++;
                 }
-                if (pAOIR == 0)
-                {
-                    cFRPatientRecruitment.AccuracyOfInformationRating = 1;
-                }
-                if (pAOIR >= 1)
-                {
-                    cFRPatientRecruitment.AccuracyOfInformationRating = 3;
-                }
 
+                if (cFRPatientRecruitment.pAOIQ1 == 3 && cFRPatientRecruitment.pAOIQ2 == 3)
+                {
+                    cFRPatientRecruitment.AccuracyOfInformationRating = 4;
+                }
+                else
+                {
+                    if (pAOIR == 0)
+                    {
+                        cFRPatientRecruitment.AccuracyOfInformationRating = 1;
+                    }
+                    if (pAOIR >= 1)
+                    {
+                        cFRPatientRecruitment.AccuracyOfInformationRating = 3;
+                    }
+                }
+                
                 mb.CFRPatientRecruitments.Add(cFRPatientRecruitment);
                 mb.SaveChanges();
                 return RedirectToAction("Details", "Employees", new { id = cFRPatientRecruitment.EmployeeID });
