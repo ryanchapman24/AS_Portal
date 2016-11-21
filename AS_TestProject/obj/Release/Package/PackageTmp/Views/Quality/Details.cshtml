@@ -15,7 +15,34 @@
         <div class="panel-body">
             <div class="tab-content">
                 <div id="cfr" class="tab-pane active">
-                    <h3 style="color: #29AAE3; margin-left: 0px; margin-bottom: 60px; text-align: center"><i class="fa fa-volume-control-phone" style="margin-right: 8px"></i><strong style="color: #FE5607">@ViewBag.TotalCalls</strong> Calls Monitored</h3>
+                    @using (Html.BeginForm("Details", "Quality", new { id = ViewBag.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row" style="margin-bottom: 60px">
+                            <div class="col-md-7"></div>
+                            <div class="col-md-2">
+                                <strong style="color: #29AAE3">Start</strong>
+                                <div class="input-group">
+                                    <input id="CFRstart" name="start" class="form-control datepicker" size="16" type="text" value="@ViewBag.StartDate" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <strong style="color: #29AAE3">End</strong>
+                                <div class="input-group">
+                                    <input id="CFRend" name="end" class="form-control datepicker" size="16" type="text" value="@ViewBag.EndDate" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="submit" class="btn btn-theme play" style="margin-top: 19px">Submit</button>
+                            </div>
+                        </div>
+                    }
+                    <h3 style="color: #29AAE3; margin-left: 0px; margin-bottom: 60px; text-align: center"><i class="fa fa-volume-control-phone" style="margin-right: 8px"></i><strong style="color: #FE5607">@ViewBag.TotalCalls</strong> Calls Monitored @if (ViewBag.DateRange == true){ <span>between <span style="color: #031B25">@ViewBag.StartDate</span> and <span style="color: #031B25">@ViewBag.EndDate</span></span> }</h3>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-2" style="text-align: center">
                             <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Etiquette</strong></h4>
@@ -166,6 +193,7 @@
                             <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #29AAE3; margin-right: 5px"></i>Excellent</p>
                             <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #031B25; margin-right: 5px"></i>Opportunity</p>
                             <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #FE5607; margin-right: 5px"></i>Poor</p>
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #BABDC1; margin-right: 5px"></i>N/A</p>
                         </div>
                     </div>
                 </div>

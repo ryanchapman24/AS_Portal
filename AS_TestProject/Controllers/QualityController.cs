@@ -28,7 +28,7 @@ namespace AS_TestProject.Controllers
 
         // GET: Quality/Details
         [Authorize(Roles = "Admin, Quality")]
-        public ActionResult Details(int? id, DateTime? start, DateTime? end)
+        public ActionResult Details(int? id, DateTime? start, DateTime? end, int? SiteID)
         {
             if (id == null)
             {
@@ -42,17 +42,17 @@ namespace AS_TestProject.Controllers
 
             ViewBag.Id = id;
             ViewBag.Domain = domain.FileMask + " - " + domain.DomainName;
-         
-            if (start != null && end != null)
+
+            if (start != null && end != null && SiteID != null)
             {
-                var mtgCFR = domain.CFRMortgages.Where(d => d.DateOfFeedback.Day >= start.Value.Day && d.DateOfFeedback.Month >= start.Value.Month && d.DateOfFeedback.Year >= start.Value.Year && d.DateOfFeedback.Day <= end.Value.Day && d.DateOfFeedback.Month <= end.Value.Month && d.DateOfFeedback.Year <= end.Value.Year).Count();
-                var insCFR = domain.CFRInsurances.Where(d => d.DateOfFeedback.Day >= start.Value.Day && d.DateOfFeedback.Month >= start.Value.Month && d.DateOfFeedback.Year >= start.Value.Year && d.DateOfFeedback.Day <= end.Value.Day && d.DateOfFeedback.Month <= end.Value.Month && d.DateOfFeedback.Year <= end.Value.Year).Count();
-                var prCFR = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback.Day >= start.Value.Day && d.DateOfFeedback.Month >= start.Value.Month && d.DateOfFeedback.Year >= start.Value.Year && d.DateOfFeedback.Day <= end.Value.Day && d.DateOfFeedback.Month <= end.Value.Month && d.DateOfFeedback.Year <= end.Value.Year).Count();
+                var mtgCFR = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID).Count();
+                var insCFR = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee2.SiteID == SiteID).Count();
+                var prCFR = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID).Count();
                 decimal totCFR = mtgCFR + insCFR + prCFR;
 
-                var mtgCFRs = domain.CFRMortgages.Where(d => d.DateOfFeedback.Day >= start.Value.Day && d.DateOfFeedback.Month >= start.Value.Month && d.DateOfFeedback.Year >= start.Value.Year && d.DateOfFeedback.Day <= end.Value.Day && d.DateOfFeedback.Month <= end.Value.Month && d.DateOfFeedback.Year <= end.Value.Year);
-                var insCFRs = domain.CFRInsurances.Where(d => d.DateOfFeedback.Day >= start.Value.Day && d.DateOfFeedback.Month >= start.Value.Month && d.DateOfFeedback.Year >= start.Value.Year && d.DateOfFeedback.Day <= end.Value.Day && d.DateOfFeedback.Month <= end.Value.Month && d.DateOfFeedback.Year <= end.Value.Year);
-                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback.Day >= start.Value.Day && d.DateOfFeedback.Month >= start.Value.Month && d.DateOfFeedback.Year >= start.Value.Year && d.DateOfFeedback.Day <= end.Value.Day && d.DateOfFeedback.Month <= end.Value.Month && d.DateOfFeedback.Year <= end.Value.Year);
+                var mtgCFRs = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID);
+                var insCFRs = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee2.SiteID == SiteID);
+                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID);
 
                 var totCalls = 0;
                 if (totCFR > 0)
@@ -272,7 +272,488 @@ namespace AS_TestProject.Controllers
 
                 ViewBag.StartDate = start.Value.ToString("d");
                 ViewBag.EndDate = end.Value.ToString("d");
-                ViewBag.DateRange = true;
+                if (SiteID == 1)
+                {
+                    ViewBag.Site = "Greensboro";
+                }
+                if (SiteID == 2)
+                {
+                    ViewBag.Site = "Wichita";
+                }
+                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", SiteID);
+                ViewBag.Phrase = 1;
+            }
+
+            else if ((start == null || end == null) && SiteID != null)
+            {
+                var mtgCFR = domain.CFRMortgages.Where(d => d.Employee1.SiteID == SiteID).Count();
+                var insCFR = domain.CFRInsurances.Where(d => d.Employee2.SiteID == SiteID).Count();
+                var prCFR = domain.CFRPatientRecruitments.Where(d => d.Employee.SiteID == SiteID).Count();
+                decimal totCFR = mtgCFR + insCFR + prCFR;
+
+                var mtgCFRs = domain.CFRMortgages.Where(d => d.Employee1.SiteID == SiteID);
+                var insCFRs = domain.CFRInsurances.Where(d => d.Employee2.SiteID == SiteID);
+                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.Employee.SiteID == SiteID);
+
+                var totCalls = 0;
+                if (totCFR > 0)
+                {
+                    foreach (var call in mtgCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+
+                    foreach (var call in insCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+
+                    foreach (var call in prCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+                }
+
+                ViewBag.TotalCalls = totCalls;
+
+                //Telephone Etiquette % calculation
+                var mtgTE1 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var mtgTE2 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var mtgTE3 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var mtgTE4 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                var insTE1 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var insTE2 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var insTE3 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var insTE4 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                var prTE1 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var prTE2 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var prTE3 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var prTE4 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                decimal totalTE1 = mtgTE1 + insTE1 + prTE1;
+                decimal totalTE2 = mtgTE2 + insTE2 + prTE2;
+                decimal totalTE3 = mtgTE3 + insTE3 + prTE3;
+                decimal totalTE4 = mtgTE4 + insTE4 + prTE4;
+
+                decimal percentTE1 = 0;
+                decimal percentTE2 = 0;
+                decimal percentTE3 = 0;
+                decimal percentTE4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentTE1 = Math.Round((totalTE1 * 10000) / totCFR) / 100;
+                    percentTE2 = Math.Round((totalTE2 * 10000) / totCFR) / 100;
+                    percentTE3 = Math.Round((totalTE3 * 10000) / totCFR) / 100;
+                    percentTE4 = Math.Round((totalTE4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentTE1 = percentTE1;
+                ViewBag.PercentTE2 = percentTE2;
+                ViewBag.PercentTE3 = percentTE3;
+                ViewBag.PercentTE4 = percentTE4;
+
+                //Professionalism % calculation
+                var mtgP1 = mtgCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var mtgP2 = mtgCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var mtgP3 = mtgCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var mtgP4 = mtgCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                var insP1 = insCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var insP2 = insCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var insP3 = insCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var insP4 = insCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                var prP1 = prCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var prP2 = prCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var prP3 = prCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var prP4 = prCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                decimal totalP1 = mtgP1 + insP1 + prP1;
+                decimal totalP2 = mtgP2 + insP2 + prP2;
+                decimal totalP3 = mtgP3 + insP3 + prP3;
+                decimal totalP4 = mtgP4 + insP4 + prP4;
+
+                decimal percentP1 = 0;
+                decimal percentP2 = 0;
+                decimal percentP3 = 0;
+                decimal percentP4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentP1 = Math.Round((totalP1 * 10000) / totCFR) / 100;
+                    percentP2 = Math.Round((totalP2 * 10000) / totCFR) / 100;
+                    percentP3 = Math.Round((totalP3 * 10000) / totCFR) / 100;
+                    percentP4 = Math.Round((totalP4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentP1 = percentP1;
+                ViewBag.PercentP2 = percentP2;
+                ViewBag.PercentP3 = percentP3;
+                ViewBag.PercentP4 = percentP4;
+
+                //Compliance % calculation
+                var mtgC1 = mtgCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var mtgC2 = mtgCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var mtgC3 = mtgCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var mtgC4 = mtgCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                var insC1 = insCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var insC2 = insCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var insC3 = insCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var insC4 = insCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                var prC1 = prCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var prC2 = prCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var prC3 = prCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var prC4 = prCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                decimal totalC1 = mtgC1 + insC1 + prC1;
+                decimal totalC2 = mtgC2 + insC2 + prC2;
+                decimal totalC3 = mtgC3 + insC3 + prC3;
+                decimal totalC4 = mtgC4 + insC4 + prC4;
+
+                decimal percentC1 = 0;
+                decimal percentC2 = 0;
+                decimal percentC3 = 0;
+                decimal percentC4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentC1 = Math.Round((totalC1 * 10000) / totCFR) / 100;
+                    percentC2 = Math.Round((totalC2 * 10000) / totCFR) / 100;
+                    percentC3 = Math.Round((totalC3 * 10000) / totCFR) / 100;
+                    percentC4 = Math.Round((totalC4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentC1 = percentC1;
+                ViewBag.PercentC2 = percentC2;
+                ViewBag.PercentC3 = percentC3;
+                ViewBag.PercentC4 = percentC4;
+
+                //Adherence % calculation
+                var mtgA1 = mtgCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var mtgA2 = mtgCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var mtgA3 = mtgCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var mtgA4 = mtgCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                var insA1 = insCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var insA2 = insCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var insA3 = insCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var insA4 = insCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                var prA1 = prCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var prA2 = prCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var prA3 = prCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var prA4 = prCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                decimal totalA1 = mtgA1 + insA1 + prA1;
+                decimal totalA2 = mtgA2 + insA2 + prA2;
+                decimal totalA3 = mtgA3 + insA3 + prA3;
+                decimal totalA4 = mtgA4 + insA4 + prA4;
+
+                decimal percentA1 = 0;
+                decimal percentA2 = 0;
+                decimal percentA3 = 0;
+                decimal percentA4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentA1 = Math.Round((totalA1 * 10000) / totCFR) / 100;
+                    percentA2 = Math.Round((totalA2 * 10000) / totCFR) / 100;
+                    percentA3 = Math.Round((totalA3 * 10000) / totCFR) / 100;
+                    percentA4 = Math.Round((totalA4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentA1 = percentA1;
+                ViewBag.PercentA2 = percentA2;
+                ViewBag.PercentA3 = percentA3;
+                ViewBag.PercentA4 = percentA4;
+
+                //Accuracy of Information % calculation
+                var mtgAOI1 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var mtgAOI2 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var mtgAOI3 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var mtgAOI4 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                var insAOI1 = insCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var insAOI2 = insCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var insAOI3 = insCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var insAOI4 = insCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                var prAOI1 = prCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var prAOI2 = prCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var prAOI3 = prCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var prAOI4 = prCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1;
+                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2;
+                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3;
+                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4;
+
+                decimal percentAOI1 = 0;
+                decimal percentAOI2 = 0;
+                decimal percentAOI3 = 0;
+                decimal percentAOI4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentAOI1 = Math.Round((totalAOI1 * 10000) / totCFR) / 100;
+                    percentAOI2 = Math.Round((totalAOI2 * 10000) / totCFR) / 100;
+                    percentAOI3 = Math.Round((totalAOI3 * 10000) / totCFR) / 100;
+                    percentAOI4 = Math.Round((totalAOI4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentAOI1 = percentAOI1;
+                ViewBag.PercentAOI2 = percentAOI2;
+                ViewBag.PercentAOI3 = percentAOI3;
+                ViewBag.PercentAOI4 = percentAOI4;
+
+                if (SiteID == 1)
+                {
+                    ViewBag.Site = "Greensboro";
+                }
+                if (SiteID == 2)
+                {
+                    ViewBag.Site = "Wichita";
+                }
+                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", SiteID);
+                ViewBag.Phrase = 2;
+            }
+
+            else if (start != null && end != null && SiteID == null)
+            {
+                var mtgCFR = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1)).Count();
+                var insCFR = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1)).Count();
+                var prCFR = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1)).Count();
+                decimal totCFR = mtgCFR + insCFR + prCFR;
+
+                var mtgCFRs = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1));
+                var insCFRs = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1));
+                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1));
+
+                var totCalls = 0;
+                if (totCFR > 0)
+                {
+                    foreach (var call in mtgCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+
+                    foreach (var call in insCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+
+                    foreach (var call in prCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+                }
+
+                ViewBag.TotalCalls = totCalls;
+
+                //Telephone Etiquette % calculation
+                var mtgTE1 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var mtgTE2 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var mtgTE3 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var mtgTE4 = mtgCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                var insTE1 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var insTE2 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var insTE3 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var insTE4 = insCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                var prTE1 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var prTE2 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var prTE3 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var prTE4 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                decimal totalTE1 = mtgTE1 + insTE1 + prTE1;
+                decimal totalTE2 = mtgTE2 + insTE2 + prTE2;
+                decimal totalTE3 = mtgTE3 + insTE3 + prTE3;
+                decimal totalTE4 = mtgTE4 + insTE4 + prTE4;
+
+                decimal percentTE1 = 0;
+                decimal percentTE2 = 0;
+                decimal percentTE3 = 0;
+                decimal percentTE4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentTE1 = Math.Round((totalTE1 * 10000) / totCFR) / 100;
+                    percentTE2 = Math.Round((totalTE2 * 10000) / totCFR) / 100;
+                    percentTE3 = Math.Round((totalTE3 * 10000) / totCFR) / 100;
+                    percentTE4 = Math.Round((totalTE4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentTE1 = percentTE1;
+                ViewBag.PercentTE2 = percentTE2;
+                ViewBag.PercentTE3 = percentTE3;
+                ViewBag.PercentTE4 = percentTE4;
+
+                //Professionalism % calculation
+                var mtgP1 = mtgCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var mtgP2 = mtgCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var mtgP3 = mtgCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var mtgP4 = mtgCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                var insP1 = insCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var insP2 = insCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var insP3 = insCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var insP4 = insCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                var prP1 = prCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var prP2 = prCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var prP3 = prCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var prP4 = prCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                decimal totalP1 = mtgP1 + insP1 + prP1;
+                decimal totalP2 = mtgP2 + insP2 + prP2;
+                decimal totalP3 = mtgP3 + insP3 + prP3;
+                decimal totalP4 = mtgP4 + insP4 + prP4;
+
+                decimal percentP1 = 0;
+                decimal percentP2 = 0;
+                decimal percentP3 = 0;
+                decimal percentP4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentP1 = Math.Round((totalP1 * 10000) / totCFR) / 100;
+                    percentP2 = Math.Round((totalP2 * 10000) / totCFR) / 100;
+                    percentP3 = Math.Round((totalP3 * 10000) / totCFR) / 100;
+                    percentP4 = Math.Round((totalP4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentP1 = percentP1;
+                ViewBag.PercentP2 = percentP2;
+                ViewBag.PercentP3 = percentP3;
+                ViewBag.PercentP4 = percentP4;
+
+                //Compliance % calculation
+                var mtgC1 = mtgCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var mtgC2 = mtgCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var mtgC3 = mtgCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var mtgC4 = mtgCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                var insC1 = insCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var insC2 = insCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var insC3 = insCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var insC4 = insCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                var prC1 = prCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var prC2 = prCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var prC3 = prCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var prC4 = prCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                decimal totalC1 = mtgC1 + insC1 + prC1;
+                decimal totalC2 = mtgC2 + insC2 + prC2;
+                decimal totalC3 = mtgC3 + insC3 + prC3;
+                decimal totalC4 = mtgC4 + insC4 + prC4;
+
+                decimal percentC1 = 0;
+                decimal percentC2 = 0;
+                decimal percentC3 = 0;
+                decimal percentC4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentC1 = Math.Round((totalC1 * 10000) / totCFR) / 100;
+                    percentC2 = Math.Round((totalC2 * 10000) / totCFR) / 100;
+                    percentC3 = Math.Round((totalC3 * 10000) / totCFR) / 100;
+                    percentC4 = Math.Round((totalC4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentC1 = percentC1;
+                ViewBag.PercentC2 = percentC2;
+                ViewBag.PercentC3 = percentC3;
+                ViewBag.PercentC4 = percentC4;
+
+                //Adherence % calculation
+                var mtgA1 = mtgCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var mtgA2 = mtgCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var mtgA3 = mtgCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var mtgA4 = mtgCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                var insA1 = insCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var insA2 = insCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var insA3 = insCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var insA4 = insCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                var prA1 = prCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var prA2 = prCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var prA3 = prCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var prA4 = prCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                decimal totalA1 = mtgA1 + insA1 + prA1;
+                decimal totalA2 = mtgA2 + insA2 + prA2;
+                decimal totalA3 = mtgA3 + insA3 + prA3;
+                decimal totalA4 = mtgA4 + insA4 + prA4;
+
+                decimal percentA1 = 0;
+                decimal percentA2 = 0;
+                decimal percentA3 = 0;
+                decimal percentA4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentA1 = Math.Round((totalA1 * 10000) / totCFR) / 100;
+                    percentA2 = Math.Round((totalA2 * 10000) / totCFR) / 100;
+                    percentA3 = Math.Round((totalA3 * 10000) / totCFR) / 100;
+                    percentA4 = Math.Round((totalA4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentA1 = percentA1;
+                ViewBag.PercentA2 = percentA2;
+                ViewBag.PercentA3 = percentA3;
+                ViewBag.PercentA4 = percentA4;
+
+                //Accuracy of Information % calculation
+                var mtgAOI1 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var mtgAOI2 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var mtgAOI3 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var mtgAOI4 = mtgCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                var insAOI1 = insCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var insAOI2 = insCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var insAOI3 = insCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var insAOI4 = insCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                var prAOI1 = prCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var prAOI2 = prCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var prAOI3 = prCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var prAOI4 = prCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1;
+                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2;
+                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3;
+                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4;
+
+                decimal percentAOI1 = 0;
+                decimal percentAOI2 = 0;
+                decimal percentAOI3 = 0;
+                decimal percentAOI4 = 0;
+
+                if (totCFR > 0)
+                {
+                    percentAOI1 = Math.Round((totalAOI1 * 10000) / totCFR) / 100;
+                    percentAOI2 = Math.Round((totalAOI2 * 10000) / totCFR) / 100;
+                    percentAOI3 = Math.Round((totalAOI3 * 10000) / totCFR) / 100;
+                    percentAOI4 = Math.Round((totalAOI4 * 10000) / totCFR) / 100;
+                }
+
+                ViewBag.PercentAOI1 = percentAOI1;
+                ViewBag.PercentAOI2 = percentAOI2;
+                ViewBag.PercentAOI3 = percentAOI3;
+                ViewBag.PercentAOI4 = percentAOI4;
+
+                ViewBag.StartDate = start.Value.ToString("d");
+                ViewBag.EndDate = end.Value.ToString("d");
+                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName");
+                ViewBag.Phrase = 3;
             }
 
             else
@@ -502,7 +983,7 @@ namespace AS_TestProject.Controllers
                 ViewBag.PercentAOI3 = percentAOI3;
                 ViewBag.PercentAOI4 = percentAOI4;
 
-                ViewBag.DateRange = false;
+                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName");
             }
            
             return View();
