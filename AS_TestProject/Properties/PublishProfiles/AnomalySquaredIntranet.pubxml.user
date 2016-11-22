@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\D05\ASPortal</_PublishTargetUrl>
+    <_PublishTargetUrl>\\D09\wwwroot\ASPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -736,7 +736,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>11/21/2016 17:56:30</publishTime>
+      <publishTime>11/22/2016 17:35:43</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1003,7 +1003,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/18/2016 14:50:44</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
-      <publishTime>11/04/2016 15:10:33</publishTime>
+      <publishTime>11/22/2016 17:23:18</publishTime>
     </File>
     <File Include="Controllers/HRController.cs">
       <publishTime>11/03/2016 13:42:18</publishTime>
@@ -1021,7 +1021,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/22/2016 11:41:29</publishTime>
     </File>
     <File Include="Controllers/QualityController.cs">
-      <publishTime>11/21/2016 12:45:23</publishTime>
+      <publishTime>11/21/2016 17:52:01</publishTime>
     </File>
     <File Include="Controllers/SisenseController.cs">
       <publishTime>11/17/2016 10:23:42</publishTime>
@@ -1573,7 +1573,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/17/2016 11:18:36</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
-      <publishTime>11/17/2016 10:33:21</publishTime>
+      <publishTime>11/22/2016 17:23:59</publishTime>
     </File>
     <File Include="Views/Home/Slack.cshtml">
       <publishTime>07/14/2016 15:04:24</publishTime>
