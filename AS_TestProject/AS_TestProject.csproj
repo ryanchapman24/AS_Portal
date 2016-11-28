@@ -713,7 +713,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="assets\forms\Anomaly_Employment_Application_2016_V2.pdf" />
-    <Content Include="assets\forms\A2_DisciplinaryActionForm.pdf" />
+    <Content Include="assets\forms\A2_DisciplinaryAction.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

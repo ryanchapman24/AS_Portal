@@ -1267,7 +1267,7 @@ namespace AS_TestProject.Controllers
                     {
                         cFRPatientRecruitment.ProfessionalismRating = 2;
                     }
-                    if (pPR == 3)
+                    if (pPR >= 2)
                     {
                         cFRPatientRecruitment.ProfessionalismRating = 3;
                     }
