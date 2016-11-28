@@ -534,7 +534,7 @@ namespace AS_TestProject.Controllers
                     }
                 }
                 
-                // Adherance Rating Calculation (MORTGAGE)
+                // Adherence Rating Calculation (MORTGAGE)
                 int mAR = 0;
                 if (cFRMortgage.mAQ1 == 2)
                 {
@@ -919,7 +919,7 @@ namespace AS_TestProject.Controllers
                     }
                 }
                 
-                // Adherance Rating Calculation (INSURANCE)
+                // Adherence Rating Calculation (INSURANCE)
                 int iAR = 0;
                 if (cFRInsurance.iAQ1 == 2)
                 {
@@ -1312,7 +1312,7 @@ namespace AS_TestProject.Controllers
                     }
                 }
                 
-                // Adherance Rating Calculation (PATIENT RECRUITMENT)
+                // Adherence Rating Calculation (PATIENT RECRUITMENT)
                 int pAR = 0;
                 if (cFRPatientRecruitment.pAQ1 == 2)
                 {

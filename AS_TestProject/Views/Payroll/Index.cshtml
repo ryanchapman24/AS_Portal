@@ -122,7 +122,10 @@
                                             <th>Regular Hours</th>
                                             <th>Overtime Hours</th>
                                             <th>Adjustment Reason</th>
-                                            <th>Action</th>
+                                            @if (User.IsInRole("Payroll") || User.IsInRole("Admin"))
+                                            {
+                                                <th>Action</th>
+                                            }
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -143,13 +146,9 @@
                                                 {
                                                     <td></td>
                                                 }
-                                                @if (User.IsInRole("Payroll"))
+                                                @if (User.IsInRole("Payroll") || User.IsInRole("Admin"))
                                                 {
                                                     <td><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
-                                                }
-                                                else
-                                                {
-                                                    <td></td>
                                                 }
                                             </tr>
                                         }
