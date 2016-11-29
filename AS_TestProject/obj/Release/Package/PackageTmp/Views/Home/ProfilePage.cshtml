@@ -68,9 +68,9 @@
                         <div class="row content-panel">
                             <div class="col-md-4 profile-text mt mb centered">
                                 <div class="right-divider hidden-sm hidden-xs">
-                                    <h4 style="color: #29AAE3">14</h4>
-                                    <h6>DAYS OF PTO LEFT</h6>
-                                    <h4 style="color: #29AAE3">@ViewBag.Hours@if (Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || User.IsInRole("Payroll")){<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })"><i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a>}</h4>
+                                    @*<h4 style="color: #29AAE3">14</h4>
+                                    <h6>DAYS OF PTO LEFT</h6>*@
+                                    <h4 style="color: #29AAE3">@if (Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || User.IsInRole("Payroll")){<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })">@ViewBag.Hours<i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a>} else {<span>N/A</span>}</h4>
                                     <h6>HOURS THIS PAY PERIOD</h6>
                                     <h4 style="color: #29AAE3">@ViewBag.TimeWithCompany</h4>
                                     <h6>TIME WITH ANOMALY SQUARED</h6>
@@ -171,9 +171,12 @@
                                     <li class="active">
                                         <a data-toggle="tab" href="#overview">Overview</a>
                                     </li>
-                                    <li>
-                                        <a data-toggle="tab" href="#contact" class="contact-map">Contact</a>
-                                    </li>
+                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || Model.Id == User.Identity.GetUserId())
+                                    {
+                                        <li>
+                                            <a data-toggle="tab" href="#contact" class="contact-map">Contact</a>
+                                        </li>
+                                    }
                                     @*<li>
                                         <a data-toggle="tab" href="#edit">Edit Profile</a>
                                     </li>*@
@@ -187,11 +190,14 @@
                                             <div class="col-md-6">
                                                 <h4>User Stats</h4>
                                                 <div class="row centered mt mb">
-                                                    <div class="col-sm-4">
-                                                        <h1><i class="fa fa-edit"></i></h1>
-                                                        <h3>@ViewBag.CFRyesterday <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="Today<br>@ViewBag.CFRtoday<br>Month<br>@ViewBag.CFRmonth<br>Year<br>@ViewBag.CFRyear" data-html="true" data-toggle="tooltip" data-placement="right"></i></h3>
-                                                        <h6>YESTERDAY'S CFRS</h6>
-                                                    </div>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                                                    {
+                                                        <div class="col-sm-4">
+                                                            <h1><i class="fa fa-edit"></i></h1>
+                                                            <h3>@ViewBag.CFRyesterday <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="Today<br>@ViewBag.CFRtoday<br>Month<br>@ViewBag.CFRmonth<br>Year<br>@ViewBag.CFRyear" data-html="true" data-toggle="tooltip" data-placement="right"></i></h3>
+                                                            <h6>CFRS SUBMITTED YESTERDAY</h6>
+                                                        </div>
+                                                    }
                                                     <div class="col-sm-4">
                                                         <h1><i class="fa fa-tasks"></i></h1>
                                                         <h3>@ViewBag.TaskCounter</h3>
@@ -199,8 +205,8 @@
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <h1><i class="fa fa-volume-control-phone"></i></h1>
-                                                        <h3>1980</h3>
-                                                        <h6>LEADS</h6>
+                                                        <h3>N/A</h3>
+                                                        <h6>TRANSFERS</h6>
                                                     </div>
                                                 </div><!-- /row -->                                  
                                             </div><!-- --/col-md-6 ---->

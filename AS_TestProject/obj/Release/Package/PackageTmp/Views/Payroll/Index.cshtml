@@ -122,7 +122,10 @@
                                             <th>Regular Hours</th>
                                             <th>Overtime Hours</th>
                                             <th>Adjustment Reason</th>
-                                            <th>Action</th>
+                                            @if (User.IsInRole("Payroll") || User.IsInRole("Admin"))
+                                            {
+                                                <th>Action</th>
+                                            }
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -143,13 +146,9 @@
                                                 {
                                                     <td></td>
                                                 }
-                                                @if (User.IsInRole("Payroll"))
+                                                @if (User.IsInRole("Payroll") || User.IsInRole("Admin"))
                                                 {
                                                     <td><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
-                                                }
-                                                else
-                                                {
-                                                    <td></td>
                                                 }
                                             </tr>
                                         }
@@ -158,6 +157,10 @@
                             </div>
                         </div>
                         <div style="padding-bottom: 5px">
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                            {
+                                <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span>
+                            }
                             @Html.ActionLink("Back to Directory", "Directory", "Home")
                         </div>
                     </div>
@@ -300,6 +303,10 @@
                             </div>
                         </div>
                         <div style="padding-bottom: 5px">
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                            {
+                                <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span> 
+                            }
                             @Html.ActionLink("Back to Directory", "Directory", "Home")
                         </div>
                     </div>

@@ -1041,7 +1041,7 @@
                                         <th>Etiquette</th>
                                         <th>Professionalism</th>
                                         <th>Compliance</th>
-                                        <th>Adherance</th>
+                                        <th>Adherence</th>
                                         <th>Accuracy</th>
                                         <th>Submitter</th>
                                         <th style="width: 80px">Action</th>
@@ -1089,7 +1089,7 @@
                                         <th>Etiquette</th>
                                         <th>Professionalism</th>
                                         <th>Compliance</th>
-                                        <th>Adherance</th>
+                                        <th>Adherence</th>
                                         <th>Accuracy</th>
                                         <th>Submitter</th>
                                         <th style="width: 80px">Action</th>
@@ -1246,6 +1246,10 @@
             @if (User.IsInRole("Admin") || User.IsInRole("HR"))
             {
                 @Html.ActionLink("Edit Employee Information", "Edit", new { id = Model.EmployeeID }) <span>|</span>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+            {
+                <a href="@Url.Action("Index","Payroll", new { id = Model.EmployeeID })"> Manage Time</a> <span>|</span>
             }
             @Html.ActionLink("Back to Directory", "Directory", "Home")
         </p>
