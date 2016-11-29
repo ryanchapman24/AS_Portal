@@ -1513,10 +1513,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/16/2016 17:16:39</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>11/16/2016 18:01:55</publishTime>
+      <publishTime>11/29/2016 14:31:04</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
-      <publishTime>07/27/2016 13:46:53</publishTime>
+      <publishTime>11/29/2016 14:25:37</publishTime>
     </File>
     <File Include="Views/Employees/EditDA.cshtml">
       <publishTime>11/16/2016 17:44:32</publishTime>
@@ -1576,7 +1576,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2016 11:09:10</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
-      <publishTime>11/28/2016 12:44:35</publishTime>
+      <publishTime>11/29/2016 13:40:04</publishTime>
     </File>
     <File Include="Views/Home/Slack.cshtml">
       <publishTime>07/14/2016 15:04:24</publishTime>
@@ -1630,7 +1630,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/05/2016 11:34:50</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>11/28/2016 12:41:55</publishTime>
+      <publishTime>11/29/2016 14:12:45</publishTime>
     </File>
     <File Include="Views/Quality/CFRStats.cshtml">
       <publishTime>11/14/2016 15:25:45</publishTime>

@@ -157,6 +157,10 @@
                             </div>
                         </div>
                         <div style="padding-bottom: 5px">
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                            {
+                                <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span>
+                            }
                             @Html.ActionLink("Back to Directory", "Directory", "Home")
                         </div>
                     </div>
@@ -299,6 +303,10 @@
                             </div>
                         </div>
                         <div style="padding-bottom: 5px">
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                            {
+                                <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span> 
+                            }
                             @Html.ActionLink("Back to Directory", "Directory", "Home")
                         </div>
                     </div>

@@ -1247,6 +1247,10 @@
             {
                 @Html.ActionLink("Edit Employee Information", "Edit", new { id = Model.EmployeeID }) <span>|</span>
             }
+            @if (User.IsInRole("Admin") || User.IsInRole("Payroll"))
+            {
+                <a href="@Url.Action("Index","Payroll", new { id = Model.EmployeeID })"> Manage Time</a> <span>|</span>
+            }
             @Html.ActionLink("Back to Directory", "Directory", "Home")
         </p>
     </div>
