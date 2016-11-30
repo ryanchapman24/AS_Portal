@@ -79,7 +79,7 @@ namespace AS_TestProject.Models
                 ViewBag.iAOI3 = "Does the CSR ask for a bilingual speaking Agent when necessary?";
                 ViewBag.iAOI4 = "Does the CSR connect to the correct department?";
                 ViewBag.iAOI5 = "Does the CSR select the correct disposition?";
-                /////////////////////////////// Mortgage CFR Questions
+                /////////////////////////////// Patient Recruitment CFR Questions
                 ViewBag.pTE1 = "Does the CSR ask if the contact name is available with clarity?";
                 ViewBag.pTE2 = "Does the CSR transition into the script without hesitation?";
                 ViewBag.pTE3 = "Does the CSR display confidence and clarity throughout the call?";
@@ -91,7 +91,7 @@ namespace AS_TestProject.Models
                 ViewBag.pC4 = "Does the CSR refer to the FAQ's link and training binder correctly?";
                 ViewBag.pC5 = "Does the CSR avoid prohibited statements about trail status (if vs when) and diagnosis?";
                 ViewBag.pA1 = "Does the CSR ask the questions listed using the word for word script?";
-                ViewBag.pA2 = "Does the CSR listen carefully to the answers provided by the contact?";
+                ViewBag.pA2 = "Does the CSR listen carefully to the answers provided by the contact and rebuttal when necessary?";
                 ViewBag.pA3 = "Does the CSR use proper pronunciation of the medical terms and conditions?";
                 ViewBag.pA4 = "Does the CSR select the correct answers before proceeding?";
                 ViewBag.pA5 = "Does the CSR exercise good judgement based on the answers to ensure excellent quality?";
