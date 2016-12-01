@@ -301,7 +301,17 @@
                   </li>
                   }
 
-                  @if (User.IsInRole("IT"))
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                  {
+                    <li>
+                        <a id="slack" href="http://d05:88/ASTickets/" target="_blank">
+                            <i class="fa fa-ticket"></i>
+                            <span>Ticketing System</span>
+                        </a>
+                    </li>
+                  }
+                  
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT"))
                   {
                   <li>
                       <a id="it" href="@Url.Action("Index", "IT")">
@@ -311,7 +321,7 @@
                   </li>
                   }
 
-                  @if (User.IsInRole("HR"))
+                  @if (User.IsInRole("Admin") || User.IsInRole("HR"))
                   {
                       <li>
                           <a id="hr" href="@Url.Action("Index", "HR")">
@@ -321,7 +331,7 @@
                       </li>
                   }
 
-                  @if (User.IsInRole("Quality"))
+                  @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
                   {
                       <li>
                           <a id="quality" href="@Url.Action("Index", "Quality")">
@@ -381,20 +391,19 @@
                       </a>
                   </li>
 
-                  @*<li>
-                      <a id="timesheet" href="http://64.215.31.82/Portal" target="_blank">
-                          <i class="fa fa-clock-o"></i>
-                          <span>Timesheet</span>
-                      </a>
-                  </li>*@
-
-
                   <li>
                       <a id="slack" href="https://slack.com" target="_blank">
                           <i class="fa fa-slack"></i>
                           <span>Slack</span>
                       </a>
                   </li>
+
+                  @*<li>
+                      <a id="timesheet" href="http://64.215.31.82/Portal" target="_blank">
+                          <i class="fa fa-clock-o"></i>
+                          <span>Timesheet</span>
+                      </a>
+                  </li>*@
 
                   @*<li class="sub-menu">
                       <a href="javascript:;" >
