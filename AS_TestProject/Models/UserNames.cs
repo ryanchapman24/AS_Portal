@@ -90,7 +90,7 @@ namespace AS_TestProject.Models
                 ViewBag.pC3 = "Does the CSR follow HIPAA compliance procedures and state the full privacy policy?";
                 ViewBag.pC4 = "Does the CSR refer to the FAQ's link and training binder correctly?";
                 ViewBag.pC5 = "Does the CSR avoid prohibited statements about trail status (if vs when) and diagnosis?";
-                ViewBag.pA1 = "Does the CSR ask the questions listed using the word for word script?";
+                ViewBag.pA1 = "Does the CSR ask the questions listed using the word for word script? *(specialty only: Did the CSR also verify all contact information including name, address, and phone number?)";
                 ViewBag.pA2 = "Does the CSR listen carefully to the answers provided by the contact and rebuttal when necessary?";
                 ViewBag.pA3 = "Does the CSR use proper pronunciation of the medical terms and conditions?";
                 ViewBag.pA4 = "Does the CSR select the correct answers before proceeding?";
