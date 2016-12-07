@@ -739,7 +739,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>12/07/2016 12:27:53</publishTime>
+      <publishTime>12/07/2016 17:37:45</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1004,6 +1004,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Controllers/EmployeesController.cs">
       <publishTime>11/28/2016 11:39:09</publishTime>
+    </File>
+    <File Include="Controllers/EventsController.cs">
+      <publishTime>12/07/2016 15:46:36</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
       <publishTime>12/07/2016 11:40:38</publishTime>
@@ -1548,6 +1551,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Employees/PatientRecruitmentCFR_Edit.cshtml">
       <publishTime>11/01/2016 14:04:57</publishTime>
     </File>
+    <File Include="Views/Events/DeleteEvent.cshtml">
+      <publishTime>12/07/2016 16:05:54</publishTime>
+    </File>
+    <File Include="Views/Events/EditEvent.cshtml">
+      <publishTime>12/07/2016 16:06:05</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
@@ -1555,7 +1564,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Views/Home/Calendar.cshtml">
-      <publishTime>12/07/2016 12:14:03</publishTime>
+      <publishTime>12/07/2016 17:21:58</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>06/20/2016 16:48:04</publishTime>
