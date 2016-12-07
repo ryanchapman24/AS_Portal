@@ -13,6 +13,7 @@ namespace AS_TestProject.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool AllDay { get; set; }
+        public bool Universal { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
     }

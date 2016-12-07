@@ -29,7 +29,7 @@ namespace AS_TestProject.Controllers
             ViewBag.Domains = mb.DomainMasters.OrderBy(d => d.FileMask).Include(d => d.Customer).Include(d => d.DomainType).ToList();
             ViewBag.Positions = mb.Positions.OrderBy(p => p.PositionName).ToList();
 
-            var customers = mb.Customers.Where(c => c.IsActive == true);
+            var customers = mb.Customers.Where(c => c.IsActive == true).OrderBy(c => c.CustomerName);
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName");
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName");
 

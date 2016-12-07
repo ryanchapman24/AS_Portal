@@ -32,6 +32,14 @@
                             <input id="oneRealEnd" type="hidden" name="EndDate" readonly="readonly" />
                             <div class="form-group">
                                 <div class="col-md-3 control-label">
+                                    For Everybody?
+                                </div>
+                                <div class="col-md-9" style="margin-top: -4px">
+                                    <div class="input-group bootstrap-timepicker">
+                                        <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                    </div>
+                                </div><br /><br />
+                                <div class="col-md-3 control-label">
                                     Title
                                 </div>
                                 <div class="col-md-9" style="margin-top: -5px">
@@ -79,11 +87,11 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div><br />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer" style="margin-top: 20px">
+                    <div class="modal-footer" style="margin-top: 30px">
                         <span id="oneWarning" class="hidden pull-left" style="margin-top: 8px; color: indianred">Start time can't be greater than end time!</span>             
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button id="oneSub" type="submit" class="btn btn-theme">Confirm</button>
@@ -100,6 +108,14 @@
                             <input id="multiRealEnd" type="hidden" name="EndDate" readonly="readonly" />*@
                             <input type="checkbox" class="hidden" name="AllDay" value="true" checked />                        
                             <div class="form-group">
+                                <div class="col-md-3 control-label">
+                                    For Everybody?
+                                </div>
+                                <div class="col-md-9" style="margin-top: -4px">
+                                    <div class="input-group bootstrap-timepicker">
+                                        <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                    </div>
+                                </div><br /><br />
                                 <div class="col-md-3 control-label">
                                     Title
                                 </div>

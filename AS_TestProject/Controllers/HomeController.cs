@@ -588,7 +588,7 @@ namespace AS_TestProject.Controllers
         public ActionResult GetEvents()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
-            var allEvents = db.Events.Where(e => e.AuthorId == user.Id).ToList();
+            var allEvents = db.Events.Where(e => e.AuthorId == user.Id || e.Universal == true).ToList();
             var eventlist = new List<object>();
             foreach (var x in allEvents)
             {
