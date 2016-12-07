@@ -235,6 +235,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\ITController.cs" />
@@ -778,6 +779,8 @@
     <Content Include="Views\Quality\Index.cshtml" />
     <Content Include="Views\Quality\Details.cshtml" />
     <Content Include="Views\Quality\CFRStats.cshtml" />
+    <Content Include="Views\Events\EditEvent.cshtml" />
+    <Content Include="Views\Events\DeleteEvent.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

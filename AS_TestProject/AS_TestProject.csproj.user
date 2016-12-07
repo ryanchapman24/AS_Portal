@@ -12,6 +12,7 @@
     <WebStackScaffolding_ViewDialogWidth>1152</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>AS_TestProject.Entities.ReportEntities</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <WebStackScaffolding_DbContextDialogWidth>600</WebStackScaffolding_DbContextDialogWidth>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

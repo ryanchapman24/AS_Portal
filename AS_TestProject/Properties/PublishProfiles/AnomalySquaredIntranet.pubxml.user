@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\D09\wwwroot\ASPortal</_PublishTargetUrl>
+    <_PublishTargetUrl>\\D05\ASPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -739,7 +739,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>12/01/2016 17:38:51</publishTime>
+      <publishTime>12/07/2016 12:27:53</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1000,13 +1000,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 15:45:01</publishTime>
     </File>
     <File Include="Controllers/AdminController.cs">
-      <publishTime>10/12/2016 12:08:07</publishTime>
+      <publishTime>12/07/2016 12:26:11</publishTime>
     </File>
     <File Include="Controllers/EmployeesController.cs">
       <publishTime>11/28/2016 11:39:09</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
-      <publishTime>11/28/2016 10:59:08</publishTime>
+      <publishTime>12/07/2016 11:40:38</publishTime>
     </File>
     <File Include="Controllers/HRController.cs">
       <publishTime>11/03/2016 13:42:18</publishTime>
@@ -1240,7 +1240,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/21/2016 12:19:02</publishTime>
     </File>
     <File Include="Models/Event.cs">
-      <publishTime>08/22/2016 13:48:46</publishTime>
+      <publishTime>12/07/2016 11:29:31</publishTime>
     </File>
     <File Include="Models/GalleryPhoto.cs">
       <publishTime>06/27/2016 15:12:18</publishTime>
@@ -1555,7 +1555,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Views/Home/Calendar.cshtml">
-      <publishTime>08/31/2016 16:14:20</publishTime>
+      <publishTime>12/07/2016 12:14:03</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>06/20/2016 16:48:04</publishTime>
@@ -1588,7 +1588,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2016 15:11:37</publishTime>
     </File>
     <File Include="Views/IT/Index.cshtml">
-      <publishTime>11/17/2016 10:49:29</publishTime>
+      <publishTime>12/07/2016 16:00:06</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>07/14/2016 09:51:25</publishTime>

@@ -160,8 +160,34 @@
 <!-- page start-->
 <div class="row mt">
     <aside class="col-lg-3 mt">
-        <h4><i class="fa fa-angle-right"></i> Upcoming Events</h4>
+        <h4 style="color: #29AAE3; margin-bottom: 30px">Upcoming Events</h4>
         <div id="external-events">
+            @foreach (var calEvent in ViewBag.UpcomingEvents)
+            {
+                <hr />
+                <div class="row">
+                    <div class="col-md-7" style="padding-right: 10px">
+                        <span>@if (calEvent.Universal == true){<i class="fa fa-users" style="color: #29AAE3"></i> }@calEvent.Title</span>
+                    </div>
+                    <div class="col-md-5" style="padding-left: 0px">
+                        @if (calEvent.AllDay == true)
+                        {
+                            if (calEvent.StartDate.Day != calEvent.EndDate.Day)
+                            {
+                                <span class="text-nowrap" style="font-size: 10px">@calEvent.StartDate.Month/@calEvent.StartDate.Day - @calEvent.EndDate.Month/@calEvent.EndDate.Day</span>
+                            }
+                            else
+                            {
+                                <span class="text-nowrap" style="font-size: 10px">@calEvent.StartDate.Month/@calEvent.StartDate.Day</span>
+                            }
+                        }
+                        @if (calEvent.AllDay == false)
+                        {
+                            <span class="text-nowrap" style="font-size: 10px">@calEvent.StartDate.Month/@calEvent.StartDate.Day @calEvent.StartDate.ToString("h:mm tt") - @calEvent.EndDate.ToString("h:mm tt")</span>
+                        }
+                    </div>
+                </div>
+            }
             @*<div class="external-event label label-theme">My Event 1</div>
             <div class="external-event label label-success">My Event 2</div>
             <div class="external-event label label-info">My Event 3</div>

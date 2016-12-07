@@ -51,17 +51,17 @@
         </div>
     </div>
 </div>
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-            <script>
-                $(document).ready(function () {
-                    $('#it').addClass("active");
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#it').addClass("active");
 
-                    $('.it-table').DataTable({
-                        "iDisplayLength": 5,
-                        "aaSorting": [],
-                        "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
-                    });
-                });
-            </script>
-        }
+            $('.it-table').DataTable({
+                "iDisplayLength": 5,
+                "aaSorting": [],
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
+        });
+    </script>
+}

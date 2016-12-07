@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace AS_TestProject.Controllers
 {
@@ -579,8 +580,12 @@ namespace AS_TestProject.Controllers
 
         public ActionResult Calendar()
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
             var now = System.DateTime.Now;
+            var nextMonth = now.AddMonths(1).Month;
+            var nextYear = now.AddYears(1).Year;
             ViewBag.Date = now.ToShortDateString();
+            ViewBag.UpcomingEvents = db.Events.Where(e => (e.AuthorId == user.Id || e.Universal == true) && ((e.StartDate.Day >= now.Day && e.StartDate.Month == now.Month && e.StartDate.Year == now.Year) || ((e.StartDate.Month == nextMonth && e.StartDate.Year == now.Year)) || (e.StartDate.Month == nextMonth && e.StartDate.Year == nextYear))).OrderBy(e => e.StartDate).ToList();
 
             return View();
         }
@@ -607,7 +612,7 @@ namespace AS_TestProject.Controllers
 
             return RedirectToAction("Calendar");
         }
-
+      
         public ActionResult Gallery()
         {
             var model = new PhotoJudgment();
