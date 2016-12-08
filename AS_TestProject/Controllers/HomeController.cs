@@ -586,6 +586,7 @@ namespace AS_TestProject.Controllers
             var nextYear = now.AddYears(1).Year;
             ViewBag.Date = now.ToShortDateString();
             ViewBag.UpcomingEvents = db.Events.Where(e => (e.AuthorId == user.Id || e.Universal == true) && ((e.StartDate.Day >= now.Day && e.StartDate.Month == now.Month && e.StartDate.Year == now.Year) || ((e.StartDate.Month == nextMonth && e.StartDate.Year == now.Year)) || (e.StartDate.Month == nextMonth && e.StartDate.Year == nextYear))).OrderBy(e => e.StartDate).ToList();
+            ViewBag.MyEvents = db.Events.Where(e => e.AuthorId == user.Id || e.Universal == true).OrderByDescending(e => e.StartDate).ToList();
 
             return View();
         }
