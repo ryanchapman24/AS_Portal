@@ -53,6 +53,7 @@ namespace AS_TestProject.Controllers
                     outboundMsg.Read = false;
                     outboundMsg.Active = true;
                     outboundMsg.Ghost = false;
+                    outboundMsg.File = null;
                     db.OutboundMessages.Add(outboundMsg);
                     db.SaveChanges();
 

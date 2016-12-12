@@ -51,7 +51,7 @@
                                             </div><br /><br /><br /><br /><br /><br />
 
                                             <div class="col-md-3 control-label">
-                                                File(s)
+                                                File
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="file" name="file" />
@@ -128,7 +128,7 @@
                                                 </div><br /><br /><br /><br /><br /><br />
 
                                                 <div class="col-md-3 control-label">
-                                                    File(s)
+                                                    File
                                                 </div>
                                                 <div class="col-md-9">
                                                     <input type="file" name="file" />
@@ -224,8 +224,14 @@
                                             </strong>
                                         </td>
                                         <!--File Row-->
-                                        <td class="message-rows" data-id="@message.Id"></td>
-
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
@@ -268,8 +274,14 @@
                                             { @Html.Raw(message.Content) }
                                         </td>
                                         <!--File Row-->
-                                        <td class="message-rows" data-id="@message.Id"></td>
-                                        
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }                                
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
@@ -336,8 +348,14 @@
                                             { @Html.Raw(message.Content) }
                                         </td>
                                         <!--File Row-->
-                                        <td class="message-rows"></td>
-
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
@@ -413,8 +431,14 @@
                                             { @Html.Raw(message.Content) }
                                         </td>
                                         <!--File Row-->
-                                        <td class="message-rows" data-id="@message.Id" data-toggle="modal" data-target="#DraftModal"></td>
-
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-toggle="modal" data-target="#DraftModal"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-toggle="modal" data-target="#DraftModal"></td>
+                                        }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("t")</td>
@@ -469,7 +493,7 @@
                                             </div><br /><br /><br /><br /><br /><br />
 
                                             <div class="col-md-3 control-label">
-                                                File(s)
+                                                File
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="file" name="file" />
@@ -550,8 +574,14 @@
                                             { @Html.Raw(message.Content) }
                                         </td>
                                         <!--File Row-->
-                                        <td class="message-rows" data-id="@message.Id"></td>
-
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
                                             <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
@@ -626,8 +656,14 @@
                                                 { @Html.Raw(message.Content) }
                                             </td>
                                             <!--File Row-->
-                                            <td class="message-rows" data-id="@message.Id"></td>
-
+                                            @if (message.File != null)
+                                            {
+                                                <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                            }
                                             @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                             {
                                                 <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
@@ -700,7 +736,7 @@
                                                         </div><br /><br /><br /><br /><br /><br />
 
                                                         <div class="col-md-3 control-label">
-                                                            File(s)
+                                                            File
                                                         </div>
                                                         <div class="col-md-9">
                                                             <input type="file" name="file" />
@@ -768,9 +804,9 @@
                     <p id="detailInboundContent" style="word-break: break-word; white-space: pre-wrap"></p>
                 </div><br />
                 <div class="attachment-mail">
-                    <p>
-                        <span><i class="fa fa-paperclip"></i> 0 attachment(s) — </span>
-                        <a href="#">Download all</a>
+                    <p id="detailFile" class="hidden">
+                        <span><i class="fa fa-paperclip"></i></span>
+                        <a id="detailInboundFile" href="#" target="_blank"></a>
                     </p>
                     @*<ul>
                         <li>
@@ -979,7 +1015,8 @@
                 var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
                 var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
                 var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
-                var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');           
+                var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                //var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
 
                 $('#draftModalId').val(id);
                 $('#draftModalImg').attr('src', profile);
@@ -1023,6 +1060,8 @@
                     var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
                     var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
 
                     $('#detailInboundId').val(id);
                     $('#detailInboundImg').attr('src', profile);             
@@ -1030,12 +1069,21 @@
                     $('#detailInboundContent').text(content);
                     $('#detailInboundFrom').text("From: " + name);
                     $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(short);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
                     }
                     else {
                         $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
                     }
 
                     $('#ReplyModalImg').attr('src', profile);
@@ -1067,6 +1115,8 @@
                     var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
                     var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
 
                     $('#detailOutboundId').val(id);
                     $('#detailInboundImg').attr('src', profile);
@@ -1074,12 +1124,21 @@
                     $('#detailInboundContent').text(content);
                     $('#detailInboundFrom').text("To: " + name);
                     $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(short);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
                     }
                     else {
                         $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
                     }
                 });
             });
@@ -1107,6 +1166,8 @@
                     var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
                     var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
 
                     $('#detailInTrashId').val(id);
                     $('#detailInboundImg').attr('src', profile);
@@ -1114,12 +1175,21 @@
                     $('#detailInboundContent').text(content);
                     $('#detailInboundFrom').text("From: " + name);
                     $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(short);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
                     }
                     else {
                         $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
                     }
 
                     $('#ReplyModalImg').attr('src', profile);
@@ -1151,6 +1221,8 @@
                     var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
                     var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
 
                     $('#detailOutTrashId').val(id);
                     $('#detailInboundImg').attr('src', profile);
@@ -1158,12 +1230,21 @@
                     $('#detailInboundContent').text(content);
                     $('#detailInboundFrom').text("To: " + name);
                     $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(short);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
                     }
                     else {
                         $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
                     }
                 });
             });

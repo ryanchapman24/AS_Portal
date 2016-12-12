@@ -826,6 +826,7 @@
     <Folder Include="Documents\HR\" />
     <Folder Include="Documents\IT\" />
     <Folder Include="GalleryPhotos\" />
+    <Folder Include="MessageFiles\" />
     <Folder Include="ProfilePics\" />
   </ItemGroup>
   <ItemGroup>
