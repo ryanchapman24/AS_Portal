@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using AS_TestProject.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace AS_TestProject.Controllers
 {
@@ -36,7 +37,7 @@ namespace AS_TestProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg, string pId)
+        public ActionResult Create([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,File,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg, string pId, HttpPostedFileBase file)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
@@ -86,6 +87,27 @@ namespace AS_TestProject.Controllers
                     outboundMsg.Read = false;
                     outboundMsg.Active = true;
                     outboundMsg.Ghost = false;
+                    if (file != null)
+                    {
+                        //Counter
+                        var num = 0;
+                        //Gets Filename without the extension
+                        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                        var gPic = Path.Combine("/MessageFiles/", fileName + Path.GetExtension(file.FileName));
+                        //Checks if pPic matches any of the current attachments, 
+                        //if so it will loop and add a (number) to the end of the filename
+                        while (db.OutboundMessages.Any(d => d.File == gPic))
+                        {
+                            //Sets "filename" back to the default value
+                            fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                            //Add's parentheses after the name with a number ex. filename(4)
+                            fileName = string.Format(fileName + "(" + ++num + ")");
+                            //Makes sure pPic gets updated with the new filename so it could check
+                            gPic = Path.Combine("/MessageFiles/", fileName + Path.GetExtension(file.FileName));
+                        }
+                        file.SaveAs(Path.Combine(Server.MapPath("~/MessageFiles/"), fileName + Path.GetExtension(file.FileName)));
+                        outboundMsg.File = gPic;
+                    }
                     db.OutboundMessages.Add(outboundMsg);
                     db.SaveChanges();
 
@@ -100,6 +122,7 @@ namespace AS_TestProject.Controllers
                     inboundMsg.Ghost = outboundMsg.Ghost;
                     inboundMsg.Subject = outboundMsg.Subject;
                     inboundMsg.Content = outboundMsg.Content;
+                    inboundMsg.File = outboundMsg.File;
 
                     db.InboundMessages.Add(inboundMsg);
                     db.SaveChanges();
@@ -125,7 +148,7 @@ namespace AS_TestProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize]
-        public ActionResult SendDraft([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg)
+        public ActionResult SendDraft([Bind(Include = "Id,Sent,Subject,Content,AuthorId,ReceiverId,File,Out,Read,Urgent,Active,Ghost")] OutboundMessage outboundMsg, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -134,6 +157,27 @@ namespace AS_TestProject.Controllers
                 db.OutboundMessages.Attach(outboundMsg);
                 outboundMsg.Sent = System.DateTime.Now;
                 outboundMsg.Out = true;
+                if (file != null)
+                {
+                    //Counter
+                    var num = 0;
+                    //Gets Filename without the extension
+                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                    var gPic = Path.Combine("/MessageFiles/", fileName + Path.GetExtension(file.FileName));
+                    //Checks if pPic matches any of the current attachments, 
+                    //if so it will loop and add a (number) to the end of the filename
+                    while (db.OutboundMessages.Any(d => d.File == gPic))
+                    {
+                        //Sets "filename" back to the default value
+                        fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                        //Add's parentheses after the name with a number ex. filename(4)
+                        fileName = string.Format(fileName + "(" + ++num + ")");
+                        //Makes sure pPic gets updated with the new filename so it could check
+                        gPic = Path.Combine("/MessageFiles/", fileName + Path.GetExtension(file.FileName));
+                    }
+                    file.SaveAs(Path.Combine(Server.MapPath("~/MessageFiles/"), fileName + Path.GetExtension(file.FileName)));
+                    outboundMsg.File = gPic;
+                }
                 db.Entry(outboundMsg).Property("Subject").IsModified = true;
                 db.Entry(outboundMsg).Property("Content").IsModified = true;
                 db.Entry(outboundMsg).Property("Urgent").IsModified = true;
@@ -145,6 +189,7 @@ namespace AS_TestProject.Controllers
                 inboundMsg.Subject = outboundMsg.Subject;
                 inboundMsg.Content = outboundMsg.Content;
                 inboundMsg.Urgent = outboundMsg.Urgent;
+                inboundMsg.File = outboundMsg.File;
                 db.SaveChanges();
                 return RedirectToAction("Index"); 
             }
