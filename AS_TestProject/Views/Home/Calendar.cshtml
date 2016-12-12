@@ -32,14 +32,17 @@
                             <input id="oneRealStart" type="hidden" name="StartDate" readonly="readonly" />
                             <input id="oneRealEnd" type="hidden" name="EndDate" readonly="readonly" />
                             <div class="form-group">
-                                <div class="col-md-3 control-label">
-                                    For Everybody?
-                                </div>
-                                <div class="col-md-9" style="margin-top: -4px">
-                                    <div class="input-group bootstrap-timepicker">
-                                        <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="col-md-3 control-label">
+                                        For Everybody?
                                     </div>
-                                </div><br /><br />
+                                    <div class="col-md-9" style="margin-top: -4px">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                        </div>
+                                    </div><br /><br />
+                                }
                                 <div class="col-md-3 control-label">
                                     Title
                                 </div>
@@ -109,14 +112,17 @@
                             <input id="multiRealEnd" type="hidden" name="EndDate" readonly="readonly" />*@
                             <input type="checkbox" class="hidden" name="AllDay" value="true" checked />                        
                             <div class="form-group">
-                                <div class="col-md-3 control-label">
-                                    For Everybody?
-                                </div>
-                                <div class="col-md-9" style="margin-top: -4px">
-                                    <div class="input-group bootstrap-timepicker">
-                                        <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="col-md-3 control-label">
+                                        For Everybody?
                                     </div>
-                                </div><br /><br />
+                                    <div class="col-md-9" style="margin-top: -4px">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                        </div>
+                                    </div><br /><br />
+                                }
                                 <div class="col-md-3 control-label">
                                     Title
                                 </div>
