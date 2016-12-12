@@ -9,547 +9,424 @@
         <h2>Are you sure you want to delete this Mortgage CFR for <span style="color: #29AAE3">@Model.Employee.FirstName @Model.Employee.LastName</span>?</h2>
         <hr />
         <div>
-            <dl class="dl-horizontal">
-                <dt>
-                    Date
-                </dt>
+            <div class="col-md-3 control-label">
+                Submitted By
+            </div>
+            <div class="col-md-9">
+                @Model.Employee1.FirstName @Model.Employee1.LastName
+            </div><br /><br /><br />
 
-                <dd>
-                    @Model.DateOfFeedback.ToString("g")
-                </dd>
+            <div class="col-md-3 control-label">
+                Date of Feedback
+            </div>
+            <div class="col-md-9">
+                @Model.DateOfFeedback.ToString("g")
+            </div><br /><br /><br />
 
-                <dt>
-                    Submitted By
-                </dt>
+            <div class="col-md-3 control-label">
+                Domain
+            </div>
+            <div class="col-md-9">
+                @Model.DomainMaster.DomainName
+            </div><br /><br /><br />
 
-                <dd>
-                    @Model.Employee1.FirstName @Model.Employee1.LastName
-                </dd>
+            <div class="col-md-3 control-label">
+                #Calls
+            </div>
+            <div class="col-md-9">
+                @Model.C_Calls
+            </div><br /><br /><br />
 
-                <dt>
-                    Domain
-                </dt>
+            <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi4.PerformanceRating)</span></h5><br />
 
-                <dd>
-                    @Model.DomainMaster.FileMask - @Model.DomainMaster.DomainName
-                </dd>
-
-                <dt>
-                    #Calls
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.C_Calls)
-                </dd>
-
-                @*<dt>
-                        Today's Conversion Rate
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.ConversionRateToday)
-                    </dd>
-
-                    <dt>
-                        Week To Date Conversion Rate
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.WeekToDate)
-                    </dd>*@
-
-                <dt><strong>Telephone Etiquette Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi4.PerformanceRating)</strong></dt>
-                <dd></dd>
-
-                <dt>
-                    Does the CSR state "Hello" and pause to identify gender?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE1
+            </div>
+            <div class="col-md-3">
                 @if (Model.mTEQ1 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mTEQ1 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mTEQ1 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR state the contact name assumptively without asking a question?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE2
+            </div>
+            <div class="col-md-3">
                 @if (Model.mTEQ2 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mTEQ2 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mTEQ2 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR state the website of inquiry (if applicable)?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE3
+            </div>
+            <div class="col-md-3">
                 @if (Model.mTEQ3 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mTEQ3 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mTEQ3 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR transition into the script without hesitation?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE4
+            </div>
+            <div class="col-md-3">
                 @if (Model.mTEQ4 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mTEQ4 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mTEQ4 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR display confidence and clarity throughout the call?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE5
+            </div>
+            <div class="col-md-3">
                 @if (Model.mTEQ5 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mTEQ5 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mTEQ5 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt><strong>Professionalism Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi3.PerformanceRating)</strong></dt>
-                <dd></dd>
+            <h5 style="color: #29AAE3"><strong>Professionalism</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi3.PerformanceRating)</span></h5><br />
 
-                <dt>
-                    Does the CSR speak with a delivery rate that is clearly understood?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mP1
+            </div>
+            <div class="col-md-3">
                 @if (Model.mPQ1 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mPQ1 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mPQ1 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR convey a sense of empathy and have a professional tone?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mP2
+            </div>
+            <div class="col-md-3">
                 @if (Model.mPQ2 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mPQ2 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mPQ2 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt><strong>Compliance Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi2.PerformanceRating)</strong></dt>
-                <dd></dd>
+            <h5 style="color: #29AAE3"><strong>Compliance</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi2.PerformanceRating)</span></h5><br />
 
-                <dt>
-                    Does the CSR identify him/herself with confidence using first and last name?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mC1
+            </div>
+            <div class="col-md-3">
                 @if (Model.mCQ1 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mCQ1 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mCQ1 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR state that he/she is calling on a recorded line?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mC2
+            </div>
+            <div class="col-md-3">
                 @if (Model.mCQ2 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mCQ2 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mCQ2 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR avoid prohibited references to rates and closing costs?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mC3
+            </div>
+            <div class="col-md-3">
                 @if (Model.mCQ3 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mCQ3 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mCQ3 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt><strong>Adherence Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi1.PerformanceRating)</strong></dt>
-                <dd></dd>
+            <h5 style="color: #29AAE3"><strong>Adherence</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi1.PerformanceRating)</span></h5><br />
 
-                <dt>
-                    Does the CSR ask the questions listed using the word for word script?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mA1
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAQ1 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAQ1 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAQ1 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR listen carefully to the answers provided by the contact?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mA2
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAQ2 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAQ2 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAQ2 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR ask the verifying questions to determine transfer eligibility?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mA3
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAQ3 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAQ3 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
-                else if (Model.mAQ4 == 3)
+                else if (Model.mAQ3 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR use all 3 steps of the rebuttal process? (T.Phrase, Rebuttal, Close)
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mA4
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAQ4 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAQ4 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAQ4 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR exercise good judgement based on the answers to ensure excellent quality?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mA5
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAQ5 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAQ5 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAQ5 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt><strong>Accuracy of Information Rating: </strong><strong style="color: #29AAE3">@Html.DisplayFor(model => model.CFRPerformanceAnalysi.PerformanceRating)</strong></dt>
-                <dd></dd>
+            <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi.PerformanceRating)</span></h5><br />
 
-                <dt>
-                    Does the CSR input the LO's NMLS/ITT ID number correctly?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI1
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAOIQ1 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAOIQ1 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAOIQ1 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR warm transfer properly to the LO in a professional tone?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI2
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAOIQ2 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAOIQ2 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAOIQ2 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR update Browser/Five9 to reflect the proper disposition needed?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI3
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAOIQ3 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAOIQ3 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAOIQ3 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt>
-                    Does the CSR connect to the correct department?
-                </dt>
-
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI4
+            </div>
+            <div class="col-md-3">
                 @if (Model.mAOIQ4 == 1)
                 {
-                    <dd>
-                        YES
-                    </dd>
+                    <span>Yes</span>
                 }
                 else if (Model.mAOIQ4 == 2)
                 {
-                    <dd>
-                        NO
-                    </dd>
+                    <span>No</span>
                 }
                 else if (Model.mAOIQ4 == 3)
                 {
-                    <dd>
-                        N/A
-                    </dd>
+                    <span>N/A</span>
                 }
+            </div><br /><br /><br />
 
-                <dt><strong>Additional Information</strong></dt>
-                <dd></dd>
+            <h5 style="color: #29AAE3"><strong>Additional Feedback</strong></h5><br />
 
-                <dt>
-                    Comments
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Comments)
-                </dd>
-
-                <dt>
-                    Strengths
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Strengths)
-                </dd>
-
-                <dt>
-                    Action Plan
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ActionPlan)
-                </dd>
-                <br />
-                <dd>
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.CFRMortgageID)
-                        <input type="submit" value="Delete" class="btn btn-theme" />
-                    }
-                </dd>
-            </dl>
-            <div class="form-actions no-color" style="padding-bottom: 5px">
-                @Html.ActionLink("Edit", "MortgageCFR_Edit", new { id = Model.CFRMortgageID }) |
-                @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
+            <div class="col-md-3 control-label">
+                Comments
             </div>
+            <div class="col-md-9">
+                @Model.Comments
+            </div><br /><br /><br /><br /><br />
+
+            <div class="col-md-3 control-label">
+                Strengths
+            </div>
+            <div class="col-md-9">
+                @Model.Strengths
+            </div><br /><br /><br /><br /><br />
+
+            <div class="col-md-3 control-label">
+                Action Plan
+            </div>
+            <div class="col-md-9">
+                @Model.ActionPlan
+            </div><br /><br /><br /><br /><br /><br /><br />
+        </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.CFRMortgageID)
+                <div class="form-group">
+                    <div class="col-md-offset-11 col-md-1">
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+
+        <div class="form-actions no-color" style="padding-bottom: 5px">
+            @Html.ActionLink("Edit", "MortgageCFR_Edit", new { id = Model.CFRMortgageID }) |
+            @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
         </div>
     </div>
 </div>

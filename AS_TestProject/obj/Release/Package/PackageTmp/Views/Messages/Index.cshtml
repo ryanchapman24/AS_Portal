@@ -95,7 +95,7 @@
                 <ul class="nav nav-pills nav-stacked labels-info" style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
                     @foreach (var user in ViewBag.Users)
                     {
-                        <li><a href="#" class="row msg-users" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2px" data-toggle="modal" data-target="#Modal-@user.Id"> <div class="col-md-3"><img src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",user.ProfilePic)" class="img-circle" style="width: 50px; height: 50px" /></div><p class="col-md-9" style="margin-top: 8px; margin-bottom: 0px"><strong style="font-size: 14px">@user.DisplayName</strong><br /><span class="msg-users-pos"><em>@user.Position.PositionName</em></span></p></a></li>
+                        <li><a href="#" class="row msg-users" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2px" data-toggle="modal" data-target="#Modal-@user.Id"> <div class="col-md-3"><img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 50px; height: 50px" /></div><p class="col-md-9" style="margin-top: 8px; margin-bottom: 0px"><strong style="font-size: 14px">@user.DisplayName</strong><br /><span class="msg-users-pos"><em>@user.Position.PositionName</em></span></p></a></li>
                         <!-- Modal -->
                         <div class="modal fade" id="Modal-@user.Id" tabindex="-1" role="dialog" aria-labelledby="ModalLabel-@user.Id" aria-hidden="true">
                             <div class="modal-dialog">
@@ -110,7 +110,7 @@
                                     <div class="modal-body">
                                         <div class="" style="">
                                             <div style="text-align: center; margin-bottom: 40px">
-                                                <img src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",user.ProfilePic)" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;"/>
+                                                <img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;"/>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-3 control-label">
@@ -200,7 +200,7 @@
                                             <input class="inbox-unread" type="checkbox" name="read" value="@message.Id"/>
                                         </td>
                                         <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><strong style="color: #29AAE3">@message.Author.DisplayName</strong>
-                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Author.ProfilePic)" />
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Author.ProfilePic)" />
                                             <input type="hidden" class="data-receiver" data-id="@message.Id" value="@message.AuthorId" />
                                         </td>
                                         @if (message.Urgent == true)
@@ -248,7 +248,7 @@
                                             <input type="checkbox" checked="" disabled/>
                                         </td>
                                         <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><span style="color: #29AAE3">@message.Author.DisplayName</span>
-                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Author.ProfilePic)" />
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Author.ProfilePic)" />
                                             <input type="hidden" class="data-receiver" data-id="@message.Id" value="@message.AuthorId" />
                                         </td>
                                         @if (message.Urgent == true)
@@ -317,7 +317,7 @@
                                 {
                                     <tr class="outbound">
                                         <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Receiver.DisplayName"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
-                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Receiver.ProfilePic)" />
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Receiver.ProfilePic)" />
                                         </td>
                                         @if (message.Urgent == true)
                                         {
@@ -393,7 +393,7 @@
                                 {
                                     <tr id="draft-rows">
                                         <td class="message-rows data-name text-nowrap" data-toggle="modal" data-target="#DraftModal" data-name="@message.Receiver.DisplayName" data-id="@message.Id"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
-                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Receiver.ProfilePic)" />
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Receiver.ProfilePic)" />
                                         </td>
                                         
                                         @if (message.Urgent == true)
@@ -530,7 +530,7 @@
                                 {
                                     <tr class="trashIn">
                                         <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><strong style="color: #29AAE3">@message.Author.DisplayName</strong>
-                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Author.ProfilePic)" />
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Author.ProfilePic)" />
                                             <input type="hidden" class="data-receiver" data-id="@message.Id" value="@message.AuthorId" />
                                         </td>
                                         @if (message.Urgent == true)
@@ -607,7 +607,7 @@
                                     {
                                         <tr class="trashOut">
                                             <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Receiver.DisplayName"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
-                                                <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.9/ASPortal", message.Receiver.ProfilePic)" />
+                                                <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Receiver.ProfilePic)" />
                                             </td>
                                             @if (message.Urgent == true)
                                             {
