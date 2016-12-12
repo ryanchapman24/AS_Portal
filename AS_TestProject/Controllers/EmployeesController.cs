@@ -646,11 +646,6 @@ namespace AS_TestProject.Controllers
             ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
             ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
             ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.TelephoneEtiquetteRating);
             return View(cFRMortgage);
         }
 
@@ -678,30 +673,26 @@ namespace AS_TestProject.Controllers
                 domains.Add(selection);
             }
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
-            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ1);
-            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
-            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
-            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
             ViewBag.mTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ1);
             ViewBag.mTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ2);
             ViewBag.mTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ3);
             ViewBag.mTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ4);
             ViewBag.mTEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ5);
+            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ1);
+            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ2);
+            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ1);
+            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ2);
+            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ3);
             ViewBag.mAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ1);
             ViewBag.mAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ2);
             ViewBag.mAQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ3);
             ViewBag.mAQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ4);
             ViewBag.mAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ5);
-            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ1);
-            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ2);
-            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ3);
-            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ1);
-            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ2);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.TelephoneEtiquetteRating);
+            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ1);
+            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
+            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
+            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
+            ViewBag.EmployeeName = cFRMortgage.Employee.FirstName + " " + cFRMortgage.Employee.LastName;
             return View(cFRMortgage);
         }
 
@@ -713,13 +704,227 @@ namespace AS_TestProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult MortgageCFR_Edit([Bind(Include = "CFRMortgageID,EmployeeID,DomainMasterID,C_Calls,mTEQ1,mTEQ2,mTEQ3,mTEQ4,mTEQ5,mPQ1,mPQ2,mCQ1,mCQ2,mCQ3,mAQ1,mAQ2,mAQ3,mAQ4,mAQ5,mAOIQ1,mAOIQ2,mAOIQ3,mAOIQ4,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRMortgage cFRMortgage)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
-                mb.Entry(cFRMortgage).State = EntityState.Modified;
+                mb.CFRMortgages.Attach(cFRMortgage);
+                mb.Entry(cFRMortgage).Property("DomainMasterID").IsModified = true;
+                mb.Entry(cFRMortgage).Property("C_Calls").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mTEQ1").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mTEQ2").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mTEQ3").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mTEQ4").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mTEQ5").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mPQ1").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mPQ2").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mCQ1").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mCQ2").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mCQ3").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAQ1").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAQ2").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAQ3").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAQ4").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAQ5").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAOIQ1").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAOIQ2").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAOIQ3").IsModified = true;
+                mb.Entry(cFRMortgage).Property("mAOIQ4").IsModified = true;
+                mb.Entry(cFRMortgage).Property("TelephoneEtiquetteRating").IsModified = true;
+                mb.Entry(cFRMortgage).Property("ProfessionalismRating").IsModified = true;
+                mb.Entry(cFRMortgage).Property("ComplianceRating").IsModified = true;
+                mb.Entry(cFRMortgage).Property("AdheranceRating").IsModified = true;
+                mb.Entry(cFRMortgage).Property("AccuracyOfInformationRating").IsModified = true;
+                mb.Entry(cFRMortgage).Property("Comments").IsModified = true;
+                mb.Entry(cFRMortgage).Property("Strengths").IsModified = true;
+                mb.Entry(cFRMortgage).Property("ActionPlan").IsModified = true;
+                cFRMortgage.ManagerID = user.EmployeeID;
+
+                // Telephone Etiquette Rating Calculation (MORTGAGE)
+                int mTER = 0;
+                if (cFRMortgage.mTEQ1 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.mTEQ2 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.mTEQ3 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.mTEQ4 == 2)
+                {
+                    mTER++;
+                }
+                if (cFRMortgage.mTEQ5 == 2)
+                {
+                    mTER++;
+                }
+
+                if (cFRMortgage.mTEQ1 == 3 && cFRMortgage.mTEQ2 == 3 && cFRMortgage.mTEQ3 == 3 && cFRMortgage.mTEQ4 == 3 && cFRMortgage.mTEQ5 == 3)
+                {
+                    cFRMortgage.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (mTER == 0)
+                    {
+                        cFRMortgage.TelephoneEtiquetteRating = 1;
+                    }
+                    if (mTER > 0 && mTER < 3)
+                    {
+                        cFRMortgage.TelephoneEtiquetteRating = 2;
+                    }
+                    if (mTER >= 3)
+                    {
+                        cFRMortgage.TelephoneEtiquetteRating = 3;
+                    }
+                }
+
+                // Professionalism Rating Calculation (MORTGAGE)
+                int mPR = 0;
+                if (cFRMortgage.mPQ1 == 2)
+                {
+                    mPR++;
+                }
+                if (cFRMortgage.mPQ2 == 2)
+                {
+                    mPR++;
+                }
+
+                if (cFRMortgage.mPQ1 == 3 && cFRMortgage.mPQ2 == 3)
+                {
+                    cFRMortgage.ProfessionalismRating = 4;
+                }
+                else
+                {
+                    if (mPR == 0)
+                    {
+                        cFRMortgage.ProfessionalismRating = 1;
+                    }
+                    if (mPR == 1)
+                    {
+                        cFRMortgage.ProfessionalismRating = 2;
+                    }
+                    if (mPR >= 2)
+                    {
+                        cFRMortgage.ProfessionalismRating = 3;
+                    }
+                }
+
+                // Compliance Rating Calculation (MORTGAGE)
+                int mCR = 0;
+                if (cFRMortgage.mCQ1 == 2)
+                {
+                    mCR++;
+                }
+                if (cFRMortgage.mCQ2 == 2)
+                {
+                    mCR++;
+                }
+                if (cFRMortgage.mCQ3 == 2)
+                {
+                    mCR++;
+                }
+
+                if (cFRMortgage.mCQ1 == 3 && cFRMortgage.mCQ2 == 3 && cFRMortgage.mCQ3 == 3)
+                {
+                    cFRMortgage.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (mCR == 0)
+                    {
+                        cFRMortgage.ComplianceRating = 1;
+                    }
+                    if (mCR >= 1)
+                    {
+                        cFRMortgage.ComplianceRating = 3;
+                    }
+                }
+
+                // Adherence Rating Calculation (MORTGAGE)
+                int mAR = 0;
+                if (cFRMortgage.mAQ1 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.mAQ2 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.mAQ3 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.mAQ4 == 2)
+                {
+                    mAR++;
+                }
+                if (cFRMortgage.mAQ5 == 2)
+                {
+                    mAR++;
+                }
+
+                if (cFRMortgage.mAQ1 == 3 && cFRMortgage.mAQ2 == 3 && cFRMortgage.mAQ3 == 3 && cFRMortgage.mAQ4 == 3 && cFRMortgage.mAQ5 == 3)
+                {
+                    cFRMortgage.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (mAR == 0)
+                    {
+                        cFRMortgage.AdheranceRating = 1;
+                    }
+                    if (mAR > 0 && mAR < 3)
+                    {
+                        cFRMortgage.AdheranceRating = 2;
+                    }
+                    if (mAR >= 3)
+                    {
+                        cFRMortgage.AdheranceRating = 3;
+                    }
+                }
+
+                // Accuracy of Information Rating Calculation (MORTGAGE)
+                int mAOIR = 0;
+                if (cFRMortgage.mAOIQ1 == 2)
+                {
+                    mAOIR++;
+                }
+                if (cFRMortgage.mAOIQ2 == 2)
+                {
+                    mAOIR++;
+                }
+                if (cFRMortgage.mAOIQ3 == 2)
+                {
+                    mAOIR++;
+                }
+                if (cFRMortgage.mAOIQ4 == 2)
+                {
+                    mAOIR++;
+                }
+
+                if (cFRMortgage.mAOIQ1 == 3 && cFRMortgage.mAOIQ2 == 3 && cFRMortgage.mAOIQ3 == 3 && cFRMortgage.mAOIQ4 == 3)
+                {
+                    cFRMortgage.AccuracyOfInformationRating = 4;
+                }
+                else
+                {
+                    if (mAOIR == 0)
+                    {
+                        cFRMortgage.AccuracyOfInformationRating = 1;
+                    }
+                    if (mAOIR >= 1)
+                    {
+                        cFRMortgage.AccuracyOfInformationRating = 3;
+                    }
+                }
                 mb.SaveChanges();
                 return RedirectToAction("Details", "Employees", new { id = cFRMortgage.EmployeeID });
             }
-
+        
             var domains = new List<Domain>();
             foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
             {
@@ -730,30 +935,26 @@ namespace AS_TestProject.Controllers
                 domains.Add(selection);
             }
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRMortgage.DomainMasterID);
-            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ1);
-            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
-            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
-            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
             ViewBag.mTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ1);
             ViewBag.mTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ2);
             ViewBag.mTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ3);
             ViewBag.mTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ4);
             ViewBag.mTEQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mTEQ5);
+            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ1);
+            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ2);
+            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ1);
+            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ2);
+            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ3);
             ViewBag.mAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ1);
             ViewBag.mAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ2);
             ViewBag.mAQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ3);
             ViewBag.mAQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ4);
             ViewBag.mAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAQ5);
-            ViewBag.mCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ1);
-            ViewBag.mCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ2);
-            ViewBag.mCQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mCQ3);
-            ViewBag.mPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ1);
-            ViewBag.mPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mPQ2);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRMortgage.TelephoneEtiquetteRating);
+            ViewBag.mAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ1);
+            ViewBag.mAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ2);
+            ViewBag.mAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ3);
+            ViewBag.mAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRMortgage.mAOIQ4);
+            ViewBag.EmployeeName = cFRMortgage.Employee.FirstName + " " + cFRMortgage.Employee.LastName;
             return View(cFRMortgage);
         }
 
@@ -1035,12 +1236,7 @@ namespace AS_TestProject.Controllers
             ViewBag.iAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ2);
             ViewBag.iAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ3);
             ViewBag.iAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ4);
-            ViewBag.iAOIQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ5);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.TelephoneEtiquetteRating);
+            ViewBag.iAOIQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ5);         
             return View(cFRInsurance);
         }
 
@@ -1088,11 +1284,7 @@ namespace AS_TestProject.Controllers
             ViewBag.iAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ3);
             ViewBag.iAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ4);
             ViewBag.iAOIQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ5);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.TelephoneEtiquetteRating);
+            ViewBag.EmployeeName = cFRInsurance.Employee1.FirstName + " " + cFRInsurance.Employee1.LastName;
             return View(cFRInsurance);
         }
 
@@ -1104,13 +1296,231 @@ namespace AS_TestProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult InsuranceCFR_Edit([Bind(Include = "CFRInsuranceID,EmployeeID,DomainMasterID,C_Calls,iTEQ1,iTEQ2,iTEQ3,iTEQ4,iTEQ5,iPQ1,iPQ2,iCQ1,iCQ2,iCQ3,iAQ1,iAQ2,iAQ3,iAQ4,iAQ5,iAOIQ1,iAOIQ2,iAOIQ3,iAOIQ4,iAOIQ5,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRInsurance cFRInsurance)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
-                mb.Entry(cFRInsurance).State = EntityState.Modified;
+                mb.CFRInsurances.Attach(cFRInsurance);
+                mb.Entry(cFRInsurance).Property("DomainMasterID").IsModified = true;
+                mb.Entry(cFRInsurance).Property("C_Calls").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iTEQ1").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iTEQ2").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iTEQ3").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iTEQ4").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iTEQ5").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iPQ1").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iPQ2").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iCQ1").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iCQ2").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iCQ3").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAQ1").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAQ2").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAQ3").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAQ4").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAQ5").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAOIQ1").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAOIQ2").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAOIQ3").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAOIQ4").IsModified = true;
+                mb.Entry(cFRInsurance).Property("iAOIQ5").IsModified = true;
+                mb.Entry(cFRInsurance).Property("TelephoneEtiquetteRating").IsModified = true;
+                mb.Entry(cFRInsurance).Property("ProfessionalismRating").IsModified = true;
+                mb.Entry(cFRInsurance).Property("ComplianceRating").IsModified = true;
+                mb.Entry(cFRInsurance).Property("AdheranceRating").IsModified = true;
+                mb.Entry(cFRInsurance).Property("AccuracyOfInformationRating").IsModified = true;
+                mb.Entry(cFRInsurance).Property("Comments").IsModified = true;
+                mb.Entry(cFRInsurance).Property("Strengths").IsModified = true;
+                mb.Entry(cFRInsurance).Property("ActionPlan").IsModified = true;
+                cFRInsurance.ManagerID = user.EmployeeID;
+
+                // Telephone Etiquette Rating Calculation (INSURANCE)
+                int iTER = 0;
+                if (cFRInsurance.iTEQ1 == 2)
+                {
+                    iTER++;
+                }
+                if (cFRInsurance.iTEQ2 == 2)
+                {
+                    iTER++;
+                }
+                if (cFRInsurance.iTEQ3 == 2)
+                {
+                    iTER++;
+                }
+                if (cFRInsurance.iTEQ4 == 2)
+                {
+                    iTER++;
+                }
+                if (cFRInsurance.iTEQ5 == 2)
+                {
+                    iTER++;
+                }
+
+                if (cFRInsurance.iTEQ1 == 3 && cFRInsurance.iTEQ2 == 3 && cFRInsurance.iTEQ3 == 3 && cFRInsurance.iTEQ4 == 3 && cFRInsurance.iTEQ5 == 3)
+                {
+                    cFRInsurance.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (iTER == 0)
+                    {
+                        cFRInsurance.TelephoneEtiquetteRating = 1;
+                    }
+                    if (iTER > 0 && iTER < 3)
+                    {
+                        cFRInsurance.TelephoneEtiquetteRating = 2;
+                    }
+                    if (iTER >= 3)
+                    {
+                        cFRInsurance.TelephoneEtiquetteRating = 3;
+                    }
+                }
+
+                // Professionalism Rating Calculation (INSURANCE)
+                int iPR = 0;
+                if (cFRInsurance.iPQ1 == 2)
+                {
+                    iPR++;
+                }
+                if (cFRInsurance.iPQ2 == 2)
+                {
+                    iPR++;
+                }
+                if (cFRInsurance.iPQ1 == 3 && cFRInsurance.iPQ2 == 3)
+                {
+                    cFRInsurance.ProfessionalismRating = 4;
+                }
+                else
+                {
+                    if (iPR == 0)
+                    {
+                        cFRInsurance.ProfessionalismRating = 1;
+                    }
+                    if (iPR == 1)
+                    {
+                        cFRInsurance.ProfessionalismRating = 2;
+                    }
+                    if (iPR >= 2)
+                    {
+                        cFRInsurance.ProfessionalismRating = 3;
+                    }
+                }
+
+                // Compliance Rating Calculation (INSURANCE)
+                int iCR = 0;
+                if (cFRInsurance.iCQ1 == 2)
+                {
+                    iCR++;
+                }
+                if (cFRInsurance.iCQ2 == 2)
+                {
+                    iCR++;
+                }
+                if (cFRInsurance.iCQ3 == 2)
+                {
+                    iCR++;
+                }
+
+                if (cFRInsurance.iCQ1 == 3 && cFRInsurance.iCQ2 == 3 && cFRInsurance.iCQ3 == 3)
+                {
+                    cFRInsurance.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (iCR == 0)
+                    {
+                        cFRInsurance.ComplianceRating = 1;
+                    }
+                    if (iCR >= 1)
+                    {
+                        cFRInsurance.ComplianceRating = 3;
+                    }
+                }
+
+                // Adherence Rating Calculation (INSURANCE)
+                int iAR = 0;
+                if (cFRInsurance.iAQ1 == 2)
+                {
+                    iAR++;
+                }
+                if (cFRInsurance.iAQ2 == 2)
+                {
+                    iAR++;
+                }
+                if (cFRInsurance.iAQ3 == 2)
+                {
+                    iAR++;
+                }
+                if (cFRInsurance.iAQ4 == 2)
+                {
+                    iAR++;
+                }
+                if (cFRInsurance.iAQ5 == 2)
+                {
+                    iAR++;
+                }
+
+                if (cFRInsurance.iAQ1 == 3 && cFRInsurance.iAQ2 == 3 && cFRInsurance.iAQ3 == 3 && cFRInsurance.iAQ4 == 3 && cFRInsurance.iAQ5 == 3)
+                {
+                    cFRInsurance.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (iAR == 0)
+                    {
+                        cFRInsurance.AdheranceRating = 1;
+                    }
+                    if (iAR > 0 && iAR < 3)
+                    {
+                        cFRInsurance.AdheranceRating = 2;
+                    }
+                    if (iAR >= 3)
+                    {
+                        cFRInsurance.AdheranceRating = 3;
+                    }
+                }
+
+                // Accuracy of Information Rating Calculation (INSURANCE)
+                int iAOIR = 0;
+                if (cFRInsurance.iAOIQ1 == 2)
+                {
+                    iAOIR++;
+                }
+                if (cFRInsurance.iAOIQ2 == 2)
+                {
+                    iAOIR++;
+                }
+                if (cFRInsurance.iAOIQ3 == 2)
+                {
+                    iAOIR++;
+                }
+                if (cFRInsurance.iAOIQ4 == 2)
+                {
+                    iAOIR++;
+                }
+                if (cFRInsurance.iAOIQ5 == 2)
+                {
+                    iAOIR++;
+                }
+
+                if (cFRInsurance.iAOIQ1 == 3 && cFRInsurance.iAOIQ2 == 3 && cFRInsurance.iAOIQ3 == 3 && cFRInsurance.iAOIQ4 == 3 && cFRInsurance.iAOIQ5 == 3)
+                {
+                    cFRInsurance.AccuracyOfInformationRating = 4;
+                }
+                else
+                {
+                    if (iAOIR == 0)
+                    {
+                        cFRInsurance.AccuracyOfInformationRating = 1;
+                    }
+                    if (iAOIR >= 1)
+                    {
+                        cFRInsurance.AccuracyOfInformationRating = 3;
+                    }
+                }
                 mb.SaveChanges();
                 return RedirectToAction("Details", "Employees", new { id = cFRInsurance.EmployeeID });
             }
-            
+
             var domains = new List<Domain>();
             foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
             {
@@ -1141,11 +1551,7 @@ namespace AS_TestProject.Controllers
             ViewBag.iAOIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ3);
             ViewBag.iAOIQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ4);
             ViewBag.iAOIQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRInsurance.iAOIQ5);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRInsurance.TelephoneEtiquetteRating);
+            ViewBag.EmployeeName = cFRInsurance.Employee1.FirstName + " " + cFRInsurance.Employee1.LastName;
             return View(cFRInsurance);
         }
 
@@ -1409,12 +1815,7 @@ namespace AS_TestProject.Controllers
             ViewBag.pAQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAQ4);
             ViewBag.pAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAQ5);
             ViewBag.pAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAOIQ1);
-            ViewBag.pAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAOIQ2);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.TelephoneEtiquetteRating);
+            ViewBag.pAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAOIQ2);           
             return View(cFRPatientRecruitment);
         }
 
@@ -1459,11 +1860,7 @@ namespace AS_TestProject.Controllers
             ViewBag.pAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAQ5);
             ViewBag.pAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAOIQ1);
             ViewBag.pAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAOIQ2);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.TelephoneEtiquetteRating);
+            ViewBag.EmployeeName = cFRPatientRecruitment.Employee1.FirstName + " " + cFRPatientRecruitment.Employee1.LastName;
             return View(cFRPatientRecruitment);
         }
 
@@ -1475,9 +1872,209 @@ namespace AS_TestProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PatientRecruitmentCFR_Edit([Bind(Include = "CFRPatientRecruitmentID,EmployeeID,DomainMasterID,C_Calls,pTEQ1,pTEQ2,pTEQ3,pPQ1,pPQ2,pCQ1,pCQ2,pCQ3,pCQ4,pCQ5,pAQ1,pAQ2,pAQ3,pAQ4,pAQ5,pAOIQ1,pAOIQ2,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRPatientRecruitment cFRPatientRecruitment)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
-                mb.Entry(cFRPatientRecruitment).State = EntityState.Modified;
+                mb.CFRPatientRecruitments.Attach(cFRPatientRecruitment);
+                mb.Entry(cFRPatientRecruitment).Property("DomainMasterID").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("C_Calls").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pTEQ1").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pTEQ2").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pTEQ3").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pPQ1").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pPQ2").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pCQ1").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pCQ2").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pCQ3").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pCQ4").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pCQ5").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pAQ1").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pAQ2").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pAQ3").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pAQ4").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pAQ5").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pAOIQ1").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("pAOIQ2").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("TelephoneEtiquetteRating").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("ProfessionalismRating").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("ComplianceRating").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("AdheranceRating").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("AccuracyOfInformationRating").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("Comments").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("Strengths").IsModified = true;
+                mb.Entry(cFRPatientRecruitment).Property("ActionPlan").IsModified = true;
+                cFRPatientRecruitment.ManagerID = user.EmployeeID;
+
+                // Telephone Etiquette Rating Calculation (PATIENT RECRUITMENT)
+                int pTER = 0;
+                if (cFRPatientRecruitment.pTEQ1 == 2)
+                {
+                    pTER++;
+                }
+                if (cFRPatientRecruitment.pTEQ2 == 2)
+                {
+                    pTER++;
+                }
+                if (cFRPatientRecruitment.pTEQ3 == 2)
+                {
+                    pTER++;
+                }
+
+                if (cFRPatientRecruitment.pTEQ1 == 3 && cFRPatientRecruitment.pTEQ2 == 3 && cFRPatientRecruitment.pTEQ3 == 3)
+                {
+                    cFRPatientRecruitment.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (pTER == 0)
+                    {
+                        cFRPatientRecruitment.TelephoneEtiquetteRating = 1;
+                    }
+                    if (pTER == 1)
+                    {
+                        cFRPatientRecruitment.TelephoneEtiquetteRating = 2;
+                    }
+                    if (pTER >= 2)
+                    {
+                        cFRPatientRecruitment.TelephoneEtiquetteRating = 3;
+                    }
+                }
+
+                // Professionalism Rating Calculation (PATIENT RECRUITMENT)
+                int pPR = 0;
+                if (cFRPatientRecruitment.pPQ1 == 2)
+                {
+                    pPR++;
+                }
+                if (cFRPatientRecruitment.pPQ2 == 2)
+                {
+                    pPR++;
+                }
+
+                if (cFRPatientRecruitment.pPQ1 == 3 && cFRPatientRecruitment.pPQ2 == 3)
+                {
+                    cFRPatientRecruitment.ProfessionalismRating = 4;
+                }
+                else
+                {
+                    if (pPR == 0)
+                    {
+                        cFRPatientRecruitment.ProfessionalismRating = 1;
+                    }
+                    if (pPR == 1)
+                    {
+                        cFRPatientRecruitment.ProfessionalismRating = 2;
+                    }
+                    if (pPR >= 2)
+                    {
+                        cFRPatientRecruitment.ProfessionalismRating = 3;
+                    }
+                }
+
+                // Compliance Rating Calculation (PATIENT RECRUITMENT)
+                int pCR = 0;
+                if (cFRPatientRecruitment.pCQ1 == 2)
+                {
+                    pCR++;
+                }
+                if (cFRPatientRecruitment.pCQ2 == 2)
+                {
+                    pCR++;
+                }
+                if (cFRPatientRecruitment.pCQ3 == 2)
+                {
+                    pCR++;
+                }
+                if (cFRPatientRecruitment.pCQ4 == 2)
+                {
+                    pCR++;
+                }
+                if (cFRPatientRecruitment.pCQ5 == 2)
+                {
+                    pCR++;
+                }
+
+                if (cFRPatientRecruitment.pCQ1 == 3 && cFRPatientRecruitment.pCQ2 == 3 && cFRPatientRecruitment.pCQ3 == 3 && cFRPatientRecruitment.pCQ4 == 3 && cFRPatientRecruitment.pCQ5 == 3)
+                {
+                    cFRPatientRecruitment.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (pCR == 0)
+                    {
+                        cFRPatientRecruitment.ComplianceRating = 1;
+                    }
+                    if (pCR >= 1)
+                    {
+                        cFRPatientRecruitment.ComplianceRating = 3;
+                    }
+                }
+
+                // Adherence Rating Calculation (PATIENT RECRUITMENT)
+                int pAR = 0;
+                if (cFRPatientRecruitment.pAQ1 == 2)
+                {
+                    pAR++;
+                }
+                if (cFRPatientRecruitment.pAQ2 == 2)
+                {
+                    pAR++;
+                }
+                if (cFRPatientRecruitment.pAQ3 == 2)
+                {
+                    pAR++;
+                }
+                if (cFRPatientRecruitment.pAQ4 == 2)
+                {
+                    pAR++;
+                }
+                if (cFRPatientRecruitment.pAQ5 == 2)
+                {
+                    pAR++;
+                }
+
+                if (cFRPatientRecruitment.pAQ1 == 3 && cFRPatientRecruitment.pAQ2 == 3 && cFRPatientRecruitment.pAQ3 == 3 && cFRPatientRecruitment.pAQ4 == 3 && cFRPatientRecruitment.pAQ5 == 3)
+                {
+                    cFRPatientRecruitment.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (pAR == 0)
+                    {
+                        cFRPatientRecruitment.AdheranceRating = 1;
+                    }
+                    if (pAR >= 1)
+                    {
+                        cFRPatientRecruitment.AdheranceRating = 3;
+                    }
+                }
+
+                // Accuracy of Information Rating Calculation (PATIENT RECRUITMENT)
+                int pAOIR = 0;
+                if (cFRPatientRecruitment.pAOIQ1 == 2)
+                {
+                    pAOIR++;
+                }
+                if (cFRPatientRecruitment.pAOIQ2 == 2)
+                {
+                    pAOIR++;
+                }
+
+                if (cFRPatientRecruitment.pAOIQ1 == 3 && cFRPatientRecruitment.pAOIQ2 == 3)
+                {
+                    cFRPatientRecruitment.AccuracyOfInformationRating = 4;
+                }
+                else
+                {
+                    if (pAOIR == 0)
+                    {
+                        cFRPatientRecruitment.AccuracyOfInformationRating = 1;
+                    }
+                    if (pAOIR >= 1)
+                    {
+                        cFRPatientRecruitment.AccuracyOfInformationRating = 3;
+                    }
+                }
                 mb.SaveChanges();
                 return RedirectToAction("Details", "Employees", new { id = cFRPatientRecruitment.EmployeeID });
             }
@@ -1509,11 +2106,7 @@ namespace AS_TestProject.Controllers
             ViewBag.pAQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAQ5);
             ViewBag.pAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAOIQ1);
             ViewBag.pAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRPatientRecruitment.pAOIQ2);
-            //ViewBag.AccuracyOfInformationRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.AccuracyOfInformationRating);
-            //ViewBag.AdheranceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.AdheranceRating);
-            //ViewBag.ComplianceRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.ComplianceRating);
-            //ViewBag.ProfessionalismRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.ProfessionalismRating);
-            //ViewBag.TelephoneEtiquetteRating = new SelectList(mb.CFRPerformanceAnalysis, "CFRPerformanceAnalysisID", "PerformanceRating", cFRPatientRecruitment.TelephoneEtiquetteRating);
+            ViewBag.EmployeeName = cFRPatientRecruitment.Employee1.FirstName + " " + cFRPatientRecruitment.Employee1.LastName;
             return View(cFRPatientRecruitment);
         }
 

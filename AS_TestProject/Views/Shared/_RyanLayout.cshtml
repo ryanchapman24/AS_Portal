@@ -118,7 +118,7 @@
                                 <li>
                                     <a>
                                         <div class="task-info row">
-                                            <div class="col-md-10" style="overflow: hidden; word-wrap: break-word">@if (task.Description.Length > 30) { @Html.Raw(task.Description.Substring(0, 30) + "...") } else { @Html.Raw(task.Description) }}</div>
+                                            <div class="col-md-10" style="overflow: hidden; word-wrap: break-word">@if (task.Description.Length > 30) { @Html.Raw(task.Description.Substring(0, 30) + "...") } else { @Html.Raw(task.Description) }</div>
                                             <div class="col-md-2"><img src="~/assets/img/red_priority.png" style="width: 15px; margin-left: -3px" /></div>
                                         </div>
                                     </a>
@@ -210,7 +210,7 @@
                             {
                                 <li>
                                     <a>
-                                        <span class="photo"><img alt="avatar" src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",newMsg.Author.ProfilePic)" style="height: 40px; width: 40px"></span>
+                                        <span class="photo"><img alt="avatar" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",newMsg.Author.ProfilePic)" style="height: 40px; width: 40px"></span>
                                         <span class="subject">
                                             <span class="from" style="overflow: hidden; word-wrap: break-word">@newMsg.Author.FirstName</span>
                                             @if (newMsg.Sent.Day == todayDay && newMsg.Sent.Month == todayMonth && newMsg.Sent.Year == todayYear)
@@ -578,7 +578,7 @@
                             <a href="@Url.Action("ProfilePage", "Home", new { id = member.Id })">
                                 <div class="desc">
                                     <div class="thumb">
-                                        <img class="img-circle" src="@string.Format("{0}{1}","http://192.168.1.9/ASPortal",member.ProfilePic)" style="width: 35px; height: 35px">
+                                        <img class="img-circle" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",member.ProfilePic)" style="width: 35px; height: 35px">
                                     </div>
                                     <div class="details">
                                         <p>

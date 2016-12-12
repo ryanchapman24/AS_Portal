@@ -4,310 +4,221 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h2>Edit Insurance CFR for <span style="color: #29AAE3">@ViewBag.EmployeeName</span></h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>CFRMortgage</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.CFRInsuranceID)
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmployeeID, "EmployeeID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("EmployeeID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.CFRInsuranceID)
+                @Html.HiddenFor(model => model.EmployeeID)
+                @Html.HiddenFor(model => model.DateOfFeedback)
+
+                <div class="col-md-6 control-label">
+                    Domain
+                </div>
+                <div class="col-md-6" style="margin-top: -5px">
+                    @Html.DropDownList("DomainMasterID", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    #Calls
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    <input class="form-control onlyNum" name="C_Calls" type="text" maxlength="2" value="@Model.C_Calls" required />
+                </div><br /><br /><br />
+
+                <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong></h5><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iTE1
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iTEQ1", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iTE2
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iTEQ2", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iTE3
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iTEQ3", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iTE4
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iTEQ4", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iTE5
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iTEQ5", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <h5 style="color: #29AAE3"><strong>Professionalism</strong></h5><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iP1
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iPQ1", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iP2
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iPQ2", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <h5 style="color: #29AAE3"><strong>Compliance</strong></h5><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iC1
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iCQ1", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iC2
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iCQ2", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iC3
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iCQ3", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <h5 style="color: #29AAE3"><strong>Adherence</strong></h5><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iA1
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAQ1", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iA2
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAQ2", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iA3
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAQ3", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iA4
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAQ4", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iA5
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAQ5", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong></h5><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iAOI1
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAOIQ1", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iAOI2
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAOIQ2", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iAOI3
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAOIQ3", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iAOI4
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAOIQ4", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <div class="col-md-9 control-label">
+                    @ViewBag.iAOI5
+                </div>
+                <div class="col-md-3" style="margin-top: -5px">
+                    @Html.DropDownList("iAOIQ5", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                </div><br /><br /><br />
+
+                <h5 style="color: #29AAE3"><strong>Additional Feedback</strong></h5><br />
+
+                <div class="col-md-3 control-label">
+                    Comments
+                </div>
+                <div class="col-md-9" style="margin-top: -5px">
+                    <textarea rows="3" class="form-control capitalize" name="Comments" placeholder="" required>@Model.Comments</textarea>
+                </div><br /><br /><br /><br /><br />
+
+                <div class="col-md-3 control-label">
+                    Strengths
+                </div>
+                <div class="col-md-9" style="margin-top: -5px">
+                    <textarea rows="3" class="form-control capitalize" name="Strengths" required>@Model.Strengths</textarea>
+                </div><br /><br /><br /><br /><br />
+
+                <div class="col-md-3 control-label">
+                    Action Plan
+                </div>
+                <div class="col-md-9" style="margin-top: -5px">
+                    <textarea rows="5" class="form-control capitalize" name="ActionPlan" required>@Model.ActionPlan</textarea>
+                </div><br /><br /><br /><br /><br /><br /><br />
+
+                <div class="form-group">
+                    <div class="col-md-offset-11 col-md-1">
+                        <input type="submit" value="Save" class="btn btn-theme pull-right" />
+                    </div>
+                </div>
             </div>
-        </div>
+        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DomainMasterID, "DomainMasterID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DomainMasterID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.C_Calls, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.C_Calls, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.C_Calls, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iTEQ1, "iTEQ1", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iTEQ1", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iTEQ1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iTEQ2, "iTEQ2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iTEQ2", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iTEQ2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iTEQ3, "iTEQ3", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iTEQ3", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iTEQ3, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iTEQ4, "iTEQ4", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iTEQ4", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iTEQ4, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iTEQ5, "iTEQ5", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iTEQ5", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iTEQ5, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iPQ1, "iPQ1", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iPQ1", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iPQ1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iPQ2, "iPQ2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iPQ2", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iPQ2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iCQ1, "iCQ1", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iCQ1", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iCQ1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iCQ2, "iCQ2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iCQ2", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iCQ2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iCQ3, "iCQ3", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iCQ3", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iCQ3, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAQ1, "iAQ1", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAQ1", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAQ1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAQ2, "iAQ2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAQ2", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAQ2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAQ3, "iAQ3", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAQ3", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAQ3, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAQ4, "iAQ4", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAQ4", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAQ4, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAQ5, "iAQ5", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAQ5", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAQ5, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAOIQ1, "iAOIQ1", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAOIQ1", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAOIQ1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAOIQ2, "iAOIQ2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAOIQ2", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAOIQ2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAOIQ3, "iAOIQ3", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAOIQ3", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAOIQ3, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAOIQ4, "iAOIQ4", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAOIQ4", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAOIQ4, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.iAOIQ5, "iAOIQ5", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("iAOIQ5", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.iAOIQ5, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TelephoneEtiquetteRating, "TelephoneEtiquetteRating", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("TelephoneEtiquetteRating", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TelephoneEtiquetteRating, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProfessionalismRating, "ProfessionalismRating", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ProfessionalismRating", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ProfessionalismRating, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ComplianceRating, "ComplianceRating", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ComplianceRating", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ComplianceRating, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AdheranceRating, "AdheranceRating", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AdheranceRating", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AdheranceRating, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AccuracyOfInformationRating, "AccuracyOfInformationRating", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AccuracyOfInformationRating", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AccuracyOfInformationRating, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConversionRateToday, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConversionRateToday, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ConversionRateToday, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WeekToDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WeekToDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WeekToDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Strengths, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Strengths, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Strengths, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ActionPlan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ActionPlan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ActionPlan, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ManagerID, "ManagerID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ManagerID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ManagerID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateOfFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateOfFeedback, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateOfFeedback, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div style="padding-bottom: 5px">
+            @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

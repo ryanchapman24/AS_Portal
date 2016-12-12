@@ -395,35 +395,35 @@
                                                 <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state "Hello" and pause to identify gender?
+                                                        @ViewBag.mTE1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mTEQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state the contact name assumptively without asking a question?
+                                                        @ViewBag.mTE2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mTEQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state the website of inquiry (if applicable)?
+                                                        @ViewBag.mTE3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mTEQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR transition into the script without hesitation?
+                                                        @ViewBag.mTE4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mTEQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR display confidence and clarity throughout the call?
+                                                        @ViewBag.mTE5
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mTEQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -432,14 +432,14 @@
                                                 <h5 style="color: #29AAE3"><strong>Professionalism</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR speak with a delivery rate that is clearly understood?
+                                                        @ViewBag.mP1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mPQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR convey a sense of empathy and have a professional tone?
+                                                        @ViewBag.mP2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mPQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -448,21 +448,21 @@
                                                 <h5 style="color: #29AAE3"><strong>Compliance</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR identify him/herself with confidence using first and last name?
+                                                        @ViewBag.mC1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mCQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state that he/she is calling on a recorded line?
+                                                        @ViewBag.mC2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mCQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR avoid prohibited references to rates and closing costs?
+                                                        @ViewBag.mC3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mCQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -471,35 +471,35 @@
                                                 <h5 style="color: #29AAE3"><strong>Adherence</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR ask the questions listed using the word for word script?
+                                                        @ViewBag.mA1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR listen carefully to the answers provided by the contact?
+                                                        @ViewBag.mA2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR ask the verifying questions to determine transfer eligibility?
+                                                        @ViewBag.mA3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR use all 3 steps of the rebuttal process? (T.Phrase, Rebuttal, Close)
+                                                        @ViewBag.mA4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR exercise good judgement based on the answers to ensure excellent quality?
+                                                        @ViewBag.mA5
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -508,28 +508,28 @@
                                                 <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR input the LO's NMLS/ITT ID number correctly?
+                                                        @ViewBag.mAOI1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAOIQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR warm transfer properly to the LO in a professional tone?
+                                                        @ViewBag.mAOI2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAOIQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR update Browser/Five9 to reflect the proper disposition needed?
+                                                        @ViewBag.mAOI3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAOIQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR connect to the correct department?
+                                                        @ViewBag.mAOI4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("mAOIQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -603,35 +603,35 @@
                                                 <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state "Hello" and pause to identify gender?
+                                                        @ViewBag.iTE1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iTEQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state the contact name assumptively without asking a question?
+                                                        @ViewBag.iTE2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iTEQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state the website of inquiry (if applicable)?
+                                                        @ViewBag.iTE3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iTEQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR transition into the script without hesitation?
+                                                        @ViewBag.iTE4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iTEQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR display confidence and clarity throughout the call?
+                                                        @ViewBag.iTE5
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iTEQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -640,14 +640,14 @@
                                                 <h5 style="color: #29AAE3"><strong>Professionalism</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR speak with a delivery rate that is clearly understood?
+                                                        @ViewBag.iP1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iPQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR convey a sense of empathy and have a professional tone?
+                                                        @ViewBag.iP2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iPQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -656,21 +656,21 @@
                                                 <h5 style="color: #29AAE3"><strong>Compliance</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR identify him/herself with confidence using first and last name?
+                                                        @ViewBag.iC1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iCQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state that he/she is calling on a recorded line?
+                                                        @ViewBag.iC2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iCQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR avoid prohibited references to rates?
+                                                        @ViewBag.iC3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iCQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -679,35 +679,35 @@
                                                 <h5 style="color: #29AAE3"><strong>Adherence</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state the name of the insurance agency?
+                                                        @ViewBag.iA1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR listen carefully to the answers provided by the contact?
+                                                        @ViewBag.iA2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR ask the verifying questions to determine transfer eligibility?
+                                                        @ViewBag.iA3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR provide a soft rebuttal when necessary?
+                                                        @ViewBag.iA4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR exercise good judgement based on the answers to ensure excellent quality?
+                                                        @ViewBag.iA5
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -716,35 +716,35 @@
                                                 <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR communicate all information to the Insurance Agent in a professional tone?
+                                                        @ViewBag.iAOI1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAOIQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR introduce the Agent to the customer?
+                                                        @ViewBag.iAOI2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAOIQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR ask for a bilingual speaking Agent when necessary?
+                                                        @ViewBag.iAOI3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAOIQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR connect to the correct department?
+                                                        @ViewBag.iAOI4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAOIQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR select the correct disposition?
+                                                        @ViewBag.iAOI5
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("iAOIQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true"})
@@ -818,21 +818,21 @@
                                                 <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR ask if the contact name is available with clarity?
+                                                        @ViewBag.pTE1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pTEQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR transition into the script without hesitation?
+                                                        @ViewBag.pTE2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pTEQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR display confidence and clarity throughout the call?
+                                                        @ViewBag.pTE3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pTEQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
@@ -841,14 +841,14 @@
                                                 <h5 style="color: #29AAE3"><strong>Professionalism</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR speak with a delivery rate that is clearly understood?
+                                                        @ViewBag.pP1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pPQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR convey a sense of empathy and have a professional tone?
+                                                        @ViewBag.pP2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pPQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
@@ -857,35 +857,35 @@
                                                 <h5 style="color: #29AAE3"><strong>Compliance</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR identify him/herself with confidence using first and last name?
+                                                        @ViewBag.pC1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pCQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR state that he/she is calling on a recorded line?
+                                                        @ViewBag.pC2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pCQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR follow HIPAA compliance procedures and state the full privacy policy?
+                                                        @ViewBag.pC3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pCQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR refer to the FAQ's link and training binder correctly?
+                                                        @ViewBag.pC4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pCQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR avoid prohibited statements about trail status (if vs when) and diagnosis?
+                                                        @ViewBag.pC5
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pCQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
@@ -894,35 +894,35 @@
                                                 <h5 style="color: #29AAE3"><strong>Adherence</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR ask the questions listed using the word for word script?  *(specialty only: Did the CSR also verify all contact information including name, address, and phone number?)
+                                                        @ViewBag.pA1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR listen carefully to the answers provided by the contact and rebuttal when necessary?
+                                                        @ViewBag.pA2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR use proper pronunciation of the medical terms and conditions?
+                                                        @ViewBag.pA3
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR select the correct answers before proceeding?
+                                                        @ViewBag.pA4
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR exercise good judgement based on the answers to ensure excellent quality?
+                                                        @ViewBag.pA5
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
@@ -931,14 +931,14 @@
                                                 <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong></h5><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR update Browser/Five9 to reflect the proper disposition as needed?
+                                                        @ViewBag.pAOI1
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAOIQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-9 control-label">
-                                                        Does the CSR connect to the correct department and select the correct disposition?
+                                                        @ViewBag.pAOI2
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: -5px">
                                                         @Html.DropDownList("pAOIQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
