@@ -1062,6 +1062,7 @@
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
                     var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
                     var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
 
                     $('#detailInboundId').val(id);
                     $('#detailInboundImg').attr('src', profile);             
@@ -1070,7 +1071,7 @@
                     $('#detailInboundFrom').text("From: " + name);
                     $('#detailInboundSent').text(sent);
                     $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(short);
+                    $('#detailInboundFile').text(shortFile);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
@@ -1117,6 +1118,7 @@
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
                     var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
                     var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
 
                     $('#detailOutboundId').val(id);
                     $('#detailInboundImg').attr('src', profile);
@@ -1125,7 +1127,7 @@
                     $('#detailInboundFrom').text("To: " + name);
                     $('#detailInboundSent').text(sent);
                     $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(short);
+                    $('#detailInboundFile').text(shortFile);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
@@ -1168,6 +1170,7 @@
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
                     var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
                     var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
 
                     $('#detailInTrashId').val(id);
                     $('#detailInboundImg').attr('src', profile);
@@ -1176,7 +1179,7 @@
                     $('#detailInboundFrom').text("From: " + name);
                     $('#detailInboundSent').text(sent);
                     $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(short);
+                    $('#detailInboundFile').text(shortFile);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
@@ -1223,6 +1226,7 @@
                     var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
                     var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
                     var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
 
                     $('#detailOutTrashId').val(id);
                     $('#detailInboundImg').attr('src', profile);
@@ -1231,7 +1235,7 @@
                     $('#detailInboundFrom').text("To: " + name);
                     $('#detailInboundSent').text(sent);
                     $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(short);
+                    $('#detailInboundFile').text(shortFile);
 
                     if (isUrgent == "true") {
                         $('#detailInboundUrgent').removeClass("hidden");
