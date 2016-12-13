@@ -1263,7 +1263,7 @@
                                                             @eFile.Created.ToString("G")
                                                         </td>
                                                         <td>
-                                                            <a href="@Url.Action("DeleteEmployeeFile", "Employees", new { id = eFile.Id })" style="color: #FE5607"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i>Delete</a>
+                                                            <a href="@Url.Action("DeleteEmployeeFile", "Employees", new { id = eFile.Id, empId = ViewBag.EmployeeID })" style="color: #FE5607"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i>Delete</a>
                                                         </td>
                                                     </tr>
                                                 }

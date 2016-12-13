@@ -2186,19 +2186,19 @@ namespace AS_TestProject.Controllers
                 var num = 0;
                 //Gets Filename without the extension
                 var fileName = Path.GetFileNameWithoutExtension(doc.FileName);
-                var gPic = Path.Combine("/EmployeeFiles/" + eFile.EmployeeID, fileName + Path.GetExtension(doc.FileName));
+                var gPic = Path.Combine("/EmployeeFiles/" + empId, fileName + Path.GetExtension(doc.FileName));
                 //Checks if pPic matches any of the current attachments, 
                 //if so it will loop and add a (number) to the end of the filename
-                while (db.Documents.Any(p => p.File == gPic))
+                while (db.EmployeeFiles.Where(p => p.EmployeeID == empId).Any(p => p.File == gPic))
                 {
                     //Sets "filename" back to the default value
                     fileName = Path.GetFileNameWithoutExtension(doc.FileName);
                     //Add's parentheses after the name with a number ex. filename(4)
                     fileName = string.Format(fileName + "(" + ++num + ")");
                     //Makes sure pPic gets updated with the new filename so it could check
-                    gPic = Path.Combine("/EmployeeFiles/" + eFile.EmployeeID, fileName + Path.GetExtension(doc.FileName));
+                    gPic = Path.Combine("/EmployeeFiles/" + empId, fileName + Path.GetExtension(doc.FileName));
                 }
-                doc.SaveAs(Path.Combine(Server.MapPath("~/EmployeeFiles/" + eFile.EmployeeID), fileName + Path.GetExtension(doc.FileName)));
+                doc.SaveAs(Path.Combine(Server.MapPath("~/EmployeeFiles/" + empId), fileName + Path.GetExtension(doc.FileName)));
 
                 eFile.File = gPic;
                 db.EmployeeFiles.Add(eFile);
@@ -2206,6 +2206,16 @@ namespace AS_TestProject.Controllers
             }
 
             return RedirectToAction("Details", "Employees", new { id = empId });
+        }
+
+        [Authorize(Roles = "Admin, HR")]
+        public ActionResult DeleteEmployeeFile(int id, int empId)
+        {
+            var eFile = db.EmployeeFiles.Find(id);
+            db.EmployeeFiles.Remove(eFile);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "HR");
         }
 
         protected override void Dispose(bool disposing)
