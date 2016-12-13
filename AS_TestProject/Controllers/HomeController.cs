@@ -29,19 +29,22 @@ namespace AS_TestProject.Controllers
             ViewBag.DailyMessages = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Out == true && m.Sent.Year == todayYear && m.Sent.Month == todayMonth && m.Sent.Day == todayDay).ToList();
 
             var siteId = user.SiteID;
-            var ourEmployees = new List<Employee>();
-            var theirEmployees = new List<Employee>();
-            foreach (var employee in mb.Employees)
-            {
-                if (employee.SiteID == siteId)
-                {
-                    ourEmployees.Add(employee);
-                }
-                if (employee.SiteID != siteId)
-                {
-                    theirEmployees.Add(employee);
-                }
-            }
+            //var ourEmployees = new List<Employee>();
+            //var theirEmployees = new List<Employee>();
+
+            var ourEmployees = mb.Employees.Where(e => e.SiteID == siteId && e.IsActive == true).ToList();
+            var theirEmployees = mb.Employees.Where(e => e.SiteID != siteId && e.IsActive == true).ToList();
+            //foreach (var employee in mb.Employees)
+            //{
+            //    if (employee.SiteID == siteId)
+            //    {
+            //        ourEmployees.Add(employee);
+            //    }
+            //    if (employee.SiteID != siteId)
+            //    {
+            //        theirEmployees.Add(employee);
+            //    }
+            //}
 
             var ourAgentIds = new List<EmployeeFive9Agent>();
             var theirAgentIds = new List<EmployeeFive9Agent>();
@@ -69,8 +72,9 @@ namespace AS_TestProject.Controllers
 
             var ourTransfers = new List<CallLogRealTime>();
             var theirTransfers = new List<CallLogRealTime>();
+            var calls = mb.CallLogRealTimes.Where(c => c.AgentID != "" && c.Disposition.Contains("Transfer") && !(c.Disposition.Contains("Not Int")) && c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay);
 
-            foreach (var call in mb.CallLogRealTimes.Where(c => c.AgentID != "" && c.Disposition.Contains("Transfer") && !(c.Disposition.Contains("Not Int")) && c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay))
+            foreach (var call in calls)
             {
                 foreach (var agent in ourAgentIds)
                 {
