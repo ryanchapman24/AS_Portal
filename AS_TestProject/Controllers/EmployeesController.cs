@@ -2215,7 +2215,7 @@ namespace AS_TestProject.Controllers
             db.EmployeeFiles.Remove(eFile);
             db.SaveChanges();
 
-            return RedirectToAction("Index", "HR");
+            return RedirectToAction("Details", "Employees", new { id = empId });
         }
 
         protected override void Dispose(bool disposing)
