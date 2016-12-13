@@ -381,6 +381,7 @@
     <Compile Include="Models\AdminUserListModels.cs" />
     <Compile Include="Models\AdminUserViewModels.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\EmployeeFile.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\GalleryPhoto.cs" />
     <Compile Include="Models\Helpers\UserRolesHelper.cs" />
@@ -825,6 +826,7 @@
     <Folder Include="DisciplinaryActions\" />
     <Folder Include="Documents\HR\" />
     <Folder Include="Documents\IT\" />
+    <Folder Include="EmployeeFiles\" />
     <Folder Include="GalleryPhotos\" />
     <Folder Include="MessageFiles\" />
     <Folder Include="ProfilePics\" />

@@ -216,6 +216,7 @@ namespace AS_TestProject.Controllers
             ViewBag.Manager = manager.FirstName + " " + manager.LastName;
             ViewBag.Creator = creator.FirstName + " " + creator.LastName;
             ViewBag.Date = System.DateTime.Now.ToShortDateString();
+            ViewBag.EmployeeID = employee.EmployeeID;
 
             ViewBag.DisciplinaryActions = mb.DisciplinaryActions.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(d => d.Date).ToList();
 
@@ -2136,6 +2137,74 @@ namespace AS_TestProject.Controllers
             mb.CFRPatientRecruitments.Remove(cFRPatientRecruitment);
             mb.SaveChanges();
             return RedirectToAction("Details", "Employees", new { id = cFRPatientRecruitment.EmployeeID });
+        }
+
+
+        //// POST: Employees/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin, HR")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddEmployeeFile(EmployeeFile eFile, IEnumerable<HttpPostedFileBase> files, int empId)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            bool directoryExists;
+            string directory = "http://192.168.1.8:88/ASPortal/EmployeeFiles/" + empId + "/";
+
+            var request = (FtpWebRequest)WebRequest.Create(directory);
+            request.Method = WebRequestMethods.Ftp.ListDirectory;
+            request.Credentials = new NetworkCredential("intranet", "MyDevils#1");
+
+            try
+            {
+                using (request.GetResponse())
+                {
+                    directoryExists = true;
+                }
+            }
+
+            catch (WebException)
+            {
+                directoryExists = false;
+            }
+
+            if (directoryExists == false)
+            {
+                var path = Server.MapPath("~/EmployeeFiles/2222222/" + empId);
+                Directory.CreateDirectory(path);
+            }
+
+            foreach (var doc in files)
+            {
+                eFile.Created = System.DateTime.Now;
+                eFile.AuthorId = user.Id;
+                eFile.EmployeeID = empId;
+                //Counter
+                var num = 0;
+                //Gets Filename without the extension
+                var fileName = Path.GetFileNameWithoutExtension(doc.FileName);
+                var gPic = Path.Combine("/EmployeeFiles/" + eFile.EmployeeID, fileName + Path.GetExtension(doc.FileName));
+                //Checks if pPic matches any of the current attachments, 
+                //if so it will loop and add a (number) to the end of the filename
+                while (db.Documents.Any(p => p.File == gPic))
+                {
+                    //Sets "filename" back to the default value
+                    fileName = Path.GetFileNameWithoutExtension(doc.FileName);
+                    //Add's parentheses after the name with a number ex. filename(4)
+                    fileName = string.Format(fileName + "(" + ++num + ")");
+                    //Makes sure pPic gets updated with the new filename so it could check
+                    gPic = Path.Combine("/EmployeeFiles/" + eFile.EmployeeID, fileName + Path.GetExtension(doc.FileName));
+                }
+                doc.SaveAs(Path.Combine(Server.MapPath("~/EmployeeFiles/" + eFile.EmployeeID), fileName + Path.GetExtension(doc.FileName)));
+
+                eFile.File = gPic;
+                db.EmployeeFiles.Add(eFile);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Details", "Employees", new { id = empId });
         }
 
         protected override void Dispose(bool disposing)
