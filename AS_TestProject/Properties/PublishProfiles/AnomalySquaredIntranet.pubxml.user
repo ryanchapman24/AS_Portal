@@ -1519,7 +1519,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/12/2016 13:26:14</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>12/13/2016 14:09:19</publishTime>
+      <publishTime>12/13/2016 14:20:26</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>11/29/2016 14:25:37</publishTime>
