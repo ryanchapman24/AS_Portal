@@ -219,6 +219,7 @@ namespace AS_TestProject.Controllers
             ViewBag.EmployeeID = employee.EmployeeID;
 
             ViewBag.DisciplinaryActions = mb.DisciplinaryActions.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(d => d.Date).ToList();
+            ViewBag.eFiles = db.EmployeeFiles.Where(f => f.EmployeeID == employee.EmployeeID).OrderByDescending(f => f.Created).ToList();
 
             //var mCFRs = new List<CFRMortgage>();
             //mCFRs = mb.CFRMortgages.Where(d => d.EmployeeID == employee.EmployeeID).ToList();
