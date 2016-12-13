@@ -2147,14 +2147,14 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin, HR")]
         [ValidateAntiForgeryToken]
-        public ActionResult AddEmployeeFile(EmployeeFile eFile, IEnumerable<HttpPostedFileBase> files, int empId)
+        public ActionResult AddEmployeeFile(EmployeeFile eFile, IEnumerable<HttpPostedFileBase> file, int empId)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
             bool directoryExists;
             string directory = "http://192.168.1.8:88/ASPortal/EmployeeFiles/" + empId + "/";
 
-            var request = (FtpWebRequest)WebRequest.Create(directory);
+            var request = (HttpWebRequest)WebRequest.Create(directory);
             request.Method = WebRequestMethods.Ftp.ListDirectory;
             request.Credentials = new NetworkCredential("intranet", "MyDevils#1");
 
@@ -2173,11 +2173,11 @@ namespace AS_TestProject.Controllers
 
             if (directoryExists == false)
             {
-                var path = Server.MapPath("~/EmployeeFiles/2222222/" + empId);
+                var path = Server.MapPath("~/EmployeeFiles/" + empId);
                 Directory.CreateDirectory(path);
             }
 
-            foreach (var doc in files)
+            foreach (var doc in file)
             {
                 eFile.Created = System.DateTime.Now;
                 eFile.AuthorId = user.Id;
