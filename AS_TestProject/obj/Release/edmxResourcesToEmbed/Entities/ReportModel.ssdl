@@ -89,6 +89,8 @@
     <Property Name="RehireDate" Type="date" />
     <Property Name="FileNumber" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="FullName" Type="varchar" MaxLength="255" />
+    <Property Name="EditByEmployeeID" Type="bigint" />
+    <Property Name="EditTimeStamp" Type="datetime" />
   </EntityType>
   <EntityType Name="EmployeeFive9Agent">
     <Key>

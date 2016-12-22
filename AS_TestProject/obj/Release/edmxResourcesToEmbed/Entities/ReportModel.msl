@@ -98,6 +98,8 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="ReportModel.Employee">
         <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
+          <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
           <ScalarProperty Name="RehireDate" ColumnName="RehireDate" />
