@@ -59,6 +59,8 @@ namespace AS_TestProject.Entities
         public Nullable<System.DateTime> RehireDate { get; set; }
         public string FileNumber { get; set; }
         public string FullName { get; set; }
+        public Nullable<long> EditByEmployeeID { get; set; }
+        public Nullable<System.DateTime> EditTimeStamp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

@@ -73,6 +73,11 @@ namespace AS_TestProject.Controllers
             }
             ViewBag.PositionID = new SelectList(mb.Positions, "PositionID", "PositionName", employee.PositionID);
             ViewBag.SiteID = new SelectList(mb.Sites, "SiteID", "SiteName", employee.SiteID);
+            if (employee.EditByEmployeeID != null)
+            {
+                Employee editor = mb.Employees.Find(employee.EditByEmployeeID);
+                ViewBag.Editor = editor.FirstName + " " + editor.LastName;
+            }
             return View(employee);
         }
 
@@ -99,9 +104,9 @@ namespace AS_TestProject.Controllers
                 {
                     employee.CellPhone = "";
                 }
-                //var user = db.Users.Find(User.Identity.GetUserId());
-                //employee.EditByEmployeeID = user.EmployeeID;
-                //employee.EditTimeStamp = System.DateTime.Now;
+                var user = db.Users.Find(User.Identity.GetUserId());
+                employee.EditByEmployeeID = user.EmployeeID;
+                employee.EditTimeStamp = System.DateTime.Now;
                 mb.Entry(employee).Property("FirstName").IsModified = true;
                 mb.Entry(employee).Property("LastName").IsModified = true;
                 mb.Entry(employee).Property("AddressLine1").IsModified = true;
@@ -218,6 +223,12 @@ namespace AS_TestProject.Controllers
 
             Employee manager = mb.Employees.Find(employee.ManagerEmployeeID);
             Employee creator = mb.Employees.Find(employee.AddByEmployeeID);
+            if (employee.EditByEmployeeID != null)
+            {
+                Employee editor = mb.Employees.Find(employee.EditByEmployeeID);
+                ViewBag.Editor = editor.FirstName + " " + editor.LastName;
+            }
+            
             ViewBag.Manager = manager.FirstName + " " + manager.LastName;
             ViewBag.Creator = creator.FirstName + " " + creator.LastName;
             ViewBag.Date = System.DateTime.Now.ToShortDateString();

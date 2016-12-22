@@ -94,6 +94,8 @@
           <Property Name="RehireDate" Type="date" />
           <Property Name="FileNumber" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="FullName" Type="varchar" MaxLength="255" />
+          <Property Name="EditByEmployeeID" Type="bigint" />
+          <Property Name="EditTimeStamp" Type="datetime" />
         </EntityType>
         <EntityType Name="EmployeeFive9Agent">
           <Key>
@@ -3519,6 +3521,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DisciplinaryActions" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
           <NavigationProperty Name="DisciplinaryActions1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
+          <Property Name="EditByEmployeeID" Type="Int64" />
+          <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
           </EntityType>
         <EntityType Name="EmployeeFive9Agent">
           <Key>
@@ -5846,6 +5850,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="ReportModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
+                <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
                 <ScalarProperty Name="RehireDate" ColumnName="RehireDate" />
