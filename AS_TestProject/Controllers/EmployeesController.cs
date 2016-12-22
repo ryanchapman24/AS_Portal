@@ -82,7 +82,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin, HR")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeID,FirstName,LastName,AddressLine1,AddressLine2,City,State,ZipCode,EmailAddress,HomePhone,CellPhone,BirthDate,HireDate,TerminationDate,IsManager,ManagerEmployeeID,PositionID,SiteID,IsActive,AddDate,AddByEmployeeID,RehireDate,FileNumber")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmployeeID,FirstName,LastName,AddressLine1,AddressLine2,City,State,ZipCode,EmailAddress,HomePhone,CellPhone,BirthDate,HireDate,TerminationDate,IsManager,ManagerEmployeeID,PositionID,SiteID,IsActive,AddDate,AddByEmployeeID,RehireDate,FileNumber,EditByEmployeeID,EditTimeStamp")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -99,6 +99,9 @@ namespace AS_TestProject.Controllers
                 {
                     employee.CellPhone = "";
                 }
+                //var user = db.Users.Find(User.Identity.GetUserId());
+                //employee.EditByEmployeeID = user.EmployeeID;
+                //employee.EditTimeStamp = System.DateTime.Now;
                 mb.Entry(employee).Property("FirstName").IsModified = true;
                 mb.Entry(employee).Property("LastName").IsModified = true;
                 mb.Entry(employee).Property("AddressLine1").IsModified = true;
@@ -119,6 +122,8 @@ namespace AS_TestProject.Controllers
                 mb.Entry(employee).Property("IsActive").IsModified = true;
                 mb.Entry(employee).Property("RehireDate").IsModified = true;
                 mb.Entry(employee).Property("FileNumber").IsModified = true;
+                mb.Entry(employee).Property("EditByEmployeeID").IsModified = true;
+                mb.Entry(employee).Property("EditTimeStamp").IsModified = true;
                 mb.SaveChanges();
                 return RedirectToAction("Directory", "Home");
             }
