@@ -512,6 +512,7 @@
     <Content Include="assets\img\red_priority.png" />
     <Content Include="assets\img\Reimbursement.png" />
     <Content Include="assets\img\ReimbursementAlt.png" />
+    <Content Include="assets\img\SchedulingForm.png" />
     <Content Include="assets\img\sisense.png" />
     <Content Include="assets\img\StatusChange.png" />
     <Content Include="assets\img\sun-icon.png" />
@@ -716,6 +717,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="assets\forms\Anomaly_Employment_Application_2016_V2.pdf" />
     <Content Include="assets\forms\A2_DisciplinaryAction.pdf" />
+    <Content Include="assets\forms\SchedulingForm.pdf" />
+    <Content Include="assets\forms\Anomaly Petty Cash.xlsx" />
+    <Content Include="assets\forms\AnomalySquared_Expense Report.xlsx" />
+    <Content Include="assets\forms\EmployeeLoanForm.pdf" />
+    <Content Include="assets\forms\IncidentReportForm.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

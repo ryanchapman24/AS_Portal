@@ -514,7 +514,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2016 11:26:40</publishTime>
     </File>
     <File Include="assets/js/bootstrap-datepicker/datepicker.js">
-      <publishTime>07/14/2016 16:46:45</publishTime>
+      <publishTime>07/14/2016 16:28:27</publishTime>
     </File>
     <File Include="assets/js/bootstrap-inputmask/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -529,13 +529,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2016 16:35:38</publishTime>
     </File>
     <File Include="assets/js/bootstrap-timepicker/timepicker.js">
-      <publishTime>07/28/2016 10:26:38</publishTime>
+      <publishTime>07/27/2016 16:51:23</publishTime>
     </File>
     <File Include="assets/js/bootstrap.min.js">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/calendar-conf-events.js">
-      <publishTime>08/22/2016 15:12:23</publishTime>
+      <publishTime>08/22/2016 12:25:27</publishTime>
     </File>
     <File Include="assets/js/chart-master/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -547,7 +547,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/common-scripts.js">
-      <publishTime>06/22/2016 09:40:07</publishTime>
+      <publishTime>06/21/2016 22:05:57</publishTime>
     </File>
     <File Include="assets/js/dropzone/css/dropzone.css">
       <publishTime>07/21/2016 12:02:05</publishTime>
@@ -571,7 +571,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/js/form-component.js">
-      <publishTime>07/27/2016 14:53:51</publishTime>
+      <publishTime>07/27/2016 13:13:04</publishTime>
     </File>
     <File Include="assets/js/fullcalendar/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -742,7 +742,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/16/2016 04:22:52</publishTime>
     </File>
     <File Include="assets/lineicons/lte-ie7.js">
-      <publishTime>07/18/2016 12:55:48</publishTime>
+      <publishTime>07/16/2016 04:22:53</publishTime>
     </File>
     <File Include="assets/lineicons/style.css">
       <publishTime>07/16/2016 04:22:54</publishTime>
@@ -757,7 +757,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>12/22/2016 13:46:51</publishTime>
+      <publishTime>01/04/2017 17:37:22</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1384,10 +1384,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:15:12</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>08/01/2016 17:29:07</publishTime>
+      <publishTime>08/01/2016 17:09:46</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>08/01/2016 17:29:07</publishTime>
+      <publishTime>08/01/2016 17:09:46</publishTime>
     </File>
     <File Include="Scripts/jquery-2.2.4.intellisense.js">
       <publishTime>06/20/2016 11:27:07</publishTime>
@@ -1426,10 +1426,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/01/2016 17:16:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>08/01/2016 17:29:07</publishTime>
+      <publishTime>08/01/2016 17:16:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>08/01/2016 17:29:07</publishTime>
+      <publishTime>08/01/2016 17:16:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
       <publishTime>06/20/2016 11:14:27</publishTime>
@@ -1456,7 +1456,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:43</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>08/01/2016 17:29:07</publishTime>
+      <publishTime>08/01/2016 17:16:47</publishTime>
     </File>
     <File Include="Service References/Application Insights/ConnectedService.json">
       <publishTime>06/20/2016 11:15:20</publishTime>
@@ -1597,7 +1597,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/04/2017 17:15:13</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
-      <publishTime>11/17/2016 10:32:49</publishTime>
+      <publishTime>01/02/2017 11:58:31</publishTime>
     </File>
     <File Include="Views/Home/Google.cshtml">
       <publishTime>07/25/2016 14:06:09</publishTime>
@@ -1693,13 +1693,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/17/2016 11:30:12</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>06/21/2016 16:31:23</publishTime>
+      <publishTime>06/20/2016 11:14:03</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>06/21/2016 11:08:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/28/2016 13:43:16</publishTime>
+      <publishTime>01/04/2017 17:40:15</publishTime>
     </File>
   </ItemGroup>
 </Project>
