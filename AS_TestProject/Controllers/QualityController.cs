@@ -45,14 +45,14 @@ namespace AS_TestProject.Controllers
 
             if (start != null && end != null && SiteID != null)
             {
-                var mtgCFR = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID).Count();
-                var insCFR = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee2.SiteID == SiteID).Count();
-                var prCFR = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID).Count();
+                var mtgCFR = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID).Count();
+                var insCFR = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID).Count();
+                var prCFR = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID).Count();
                 decimal totCFR = mtgCFR + insCFR + prCFR;
 
-                var mtgCFRs = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID);
-                var insCFRs = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee2.SiteID == SiteID);
-                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID);
+                var mtgCFRs = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID);
+                var insCFRs = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID);
+                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID);
 
                 var totCalls = 0;
                 if (totCFR > 0)
@@ -286,14 +286,14 @@ namespace AS_TestProject.Controllers
 
             else if ((start == null || end == null) && SiteID != null)
             {
-                var mtgCFR = domain.CFRMortgages.Where(d => d.Employee1.SiteID == SiteID).Count();
-                var insCFR = domain.CFRInsurances.Where(d => d.Employee2.SiteID == SiteID).Count();
-                var prCFR = domain.CFRPatientRecruitments.Where(d => d.Employee.SiteID == SiteID).Count();
+                var mtgCFR = domain.CFRMortgages.Where(d => d.Employee.SiteID == SiteID).Count();
+                var insCFR = domain.CFRInsurances.Where(d => d.Employee1.SiteID == SiteID).Count();
+                var prCFR = domain.CFRPatientRecruitments.Where(d => d.Employee1.SiteID == SiteID).Count();
                 decimal totCFR = mtgCFR + insCFR + prCFR;
 
-                var mtgCFRs = domain.CFRMortgages.Where(d => d.Employee1.SiteID == SiteID);
-                var insCFRs = domain.CFRInsurances.Where(d => d.Employee2.SiteID == SiteID);
-                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.Employee.SiteID == SiteID);
+                var mtgCFRs = domain.CFRMortgages.Where(d => d.Employee.SiteID == SiteID);
+                var insCFRs = domain.CFRInsurances.Where(d => d.Employee1.SiteID == SiteID);
+                var prCFRs = domain.CFRPatientRecruitments.Where(d => d.Employee1.SiteID == SiteID);
 
                 var totCalls = 0;
                 if (totCFR > 0)
