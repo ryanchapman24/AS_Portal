@@ -75,9 +75,20 @@
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
                     <span class="fa fa-file-text" style="padding-bottom: 20px; color: #29AAE3"></span>
-                    <h3>+8</h3>
+                    <h3>@ViewBag.DailyFiles</h3>
                 </div>
-                <p><strong>8 new files were added to your directory today.</strong></p>
+                @if (ViewBag.DailyFiles == 0)
+                {
+                    <p><strong>No new files have been uploaded to the portal today.</strong></p>
+                }
+                @if (ViewBag.DailyFiles == 1)
+                {
+                    <p><strong>1 new file has been uploaded to the portal today.</strong></p>
+                }
+                @if (ViewBag.DailyFiles > 1)
+                {
+                    <p><strong>@ViewBag.DailyFiles new files have been uploaded to the portal today.</strong></p>
+                }
             </div>
             <div class="col-md-2 col-sm-2 box0">
                 <div class="box1">
