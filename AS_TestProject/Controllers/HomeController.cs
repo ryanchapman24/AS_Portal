@@ -27,6 +27,7 @@ namespace AS_TestProject.Controllers
             ViewBag.birthdayList = mb.Employees.Where(e => e.BirthDate.Month == todayMonth && e.BirthDate.Day == todayDay && e.IsActive == true).ToList();
             ViewBag.MonthlyTasks = user.Tasks.Where(t => t.Complete == true && t.Completed.Value.Month == todayMonth && t.Completed.Value.Year == todayYear).ToList();
             ViewBag.DailyMessages = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Out == true && m.Sent.Year == todayYear && m.Sent.Month == todayMonth && m.Sent.Day == todayDay).ToList();
+            ViewBag.FilesAdded = db.EmployeeFiles.Where(f => f.Created.Year == todayYear && f.Created.Month == todayMonth && f.Created.Day == todayDay).Count() + db.Documents.Where(f => f.Created.Year == todayYear && f.Created.Month == todayMonth && f.Created.Day == todayDay).Count();
 
             var siteId = user.SiteID;
             //var ourEmployees = new List<Employee>();
