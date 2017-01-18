@@ -304,13 +304,27 @@
                   @if (User.IsInRole("Admin") || User.IsInRole("IT"))
                   {
                     <li>
-                        <a id="slack" href="http://d05:88/ASTickets/" target="_blank">
+                        <a id="tickets" href="http://d05:88/ASTickets/" target="_blank">
                             <i class="fa fa-ticket"></i>
                             <span>Ticketing System</span>
                         </a>
                     </li>
                   }
                   
+                  <li>
+                      <a id="profile" href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
+                          <i class="fa fa-user-plus"></i>
+                          <span>Profile</span>
+                      </a>
+                  </li>
+
+                  <li>
+                      <a id="direct" href="@Url.Action("Directory","Home")">
+                          <i class="fa fa-users"></i>
+                          <span>Directory</span>
+                      </a>
+                  </li>
+
                   @if (User.IsInRole("Admin") || User.IsInRole("IT"))
                   {
                   <li>
@@ -342,26 +356,12 @@
                   }
 
                   <li>
-                      <a id="profile" href="@Url.Action("ProfilePage","Home", new { id = User.Identity.GetUserId() })">
-                          <i class="fa fa-user-plus"></i>
-                          <span>Profile</span>
-                      </a>
-                  </li>
-
-                  <li>
                       <a id="messages" href="@Url.Action("Index","Messages")">
                           <i class="fa fa-envelope"></i>
                           <span>Messages</span>
                       </a>
                   </li>
-
-                  <li>
-                      <a id="direct" href="@Url.Action("Directory","Home")">
-                          <i class="fa fa-users"></i>
-                          <span>Directory</span>
-                      </a>
-                  </li>
-                  
+                
                   <li>
                       <a id="calend" href="@Url.Action("Calendar","Home")">
                           <i class="fa fa-calendar"></i>
@@ -391,12 +391,12 @@
                       </a>
                   </li>
 
-                  <li>
+                  @*<li>
                       <a id="slack" href="https://slack.com" target="_blank">
                           <i class="fa fa-slack"></i>
                           <span>Slack</span>
                       </a>
-                  </li>
+                  </li>*@
 
                   @*<li>
                       <a id="timesheet" href="http://64.215.31.82/Portal" target="_blank">
