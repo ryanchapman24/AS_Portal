@@ -327,6 +327,16 @@
 
                   @if (User.IsInRole("Admin") || User.IsInRole("IT"))
                   {
+                      <li>
+                          <a id="report" href="@Url.Action("Index", "Reporting")">
+                              <i class="fa fa-line-chart"></i>
+                              <span>Reporting</span>
+                          </a>
+                      </li>
+                  }
+
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                  {
                   <li>
                       <a id="it" href="@Url.Action("Index", "IT")">
                           <i class="fa fa-cogs"></i>
@@ -349,7 +359,7 @@
                   {
                       <li>
                           <a id="quality" href="@Url.Action("Index", "Quality")">
-                              <i class="fa fa-line-chart"></i>
+                              <i class="fa fa-check-square-o"></i>
                               <span>Quality</span>
                           </a>
                       </li>

@@ -243,6 +243,7 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Controllers\QualityController.cs" />
+    <Compile Include="Controllers\ReportingController.cs" />
     <Compile Include="Controllers\SisenseController.cs" />
     <Compile Include="Entities\AgentDailyHour.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
@@ -788,6 +789,8 @@
     <Content Include="Views\Quality\CFRStats.cshtml" />
     <Content Include="Views\Events\EditEvent.cshtml" />
     <Content Include="Views\Events\DeleteEvent.cshtml" />
+    <Content Include="Views\Reporting\Transfers.cshtml" />
+    <Content Include="Views\Reporting\Index.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

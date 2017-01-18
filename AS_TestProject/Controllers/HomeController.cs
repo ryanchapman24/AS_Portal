@@ -58,7 +58,6 @@ namespace AS_TestProject.Controllers
                         ourAgentIds.Add(agent);
                     }
                 }
-
             }
             foreach (var employee in theirEmployees)
             {
@@ -73,24 +72,27 @@ namespace AS_TestProject.Controllers
 
             var ourTransfers = new List<CallLogRealTime>();
             var theirTransfers = new List<CallLogRealTime>();
-            var calls = mb.CallLogRealTimes.Where(c => c.AgentID != "" && c.Disposition.Contains("Transfer") && !(c.Disposition.Contains("Not Int")) && c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay);
+            var calls = mb.CallLogRealTimes.Where(c => c.AgentID != "" && c.LeadID != "" && (c.Disposition.Contains("Transfer") || c.Disposition.Contains("LO Not Available") || c.Disposition.Contains("LA Not Available")) && !(c.Disposition.Contains("Not Int")) && c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay);
 
             foreach (var call in calls)
             {
-                foreach (var agent in ourAgentIds)
-                {
-                    if (call.AgentID == agent.AgentID)
+                //while (!(calls.Any(c => c.CampaignName == call.CampaignName && c.LeadID == call.LeadID)))
+                //{
+                    foreach (var agent in ourAgentIds)
                     {
-                        ourTransfers.Add(call);
+                        if (call.AgentID == agent.AgentID)
+                        {
+                            ourTransfers.Add(call);
+                        }
                     }
-                }
-                foreach (var agent in theirAgentIds)
-                {
-                    if (call.AgentID == agent.AgentID)
+                    foreach (var agent in theirAgentIds)
                     {
-                        theirTransfers.Add(call);
+                        if (call.AgentID == agent.AgentID)
+                        {
+                            theirTransfers.Add(call);
+                        }
                     }
-                }
+                //}
             }
             ViewBag.OurTransfersToday = ourTransfers.Count();
             ViewBag.TheirTransfersToday = theirTransfers.Count();
