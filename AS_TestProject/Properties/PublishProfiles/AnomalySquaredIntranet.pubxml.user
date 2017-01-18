@@ -760,7 +760,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>01/16/2017 11:31:38</publishTime>
+      <publishTime>01/18/2017 15:11:54</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1049,6 +1049,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Controllers/QualityController.cs">
       <publishTime>11/21/2016 17:52:01</publishTime>
+    </File>
+    <File Include="Controllers/ReportingController.cs">
+      <publishTime>01/18/2017 14:21:39</publishTime>
     </File>
     <File Include="Controllers/SisenseController.cs">
       <publishTime>11/17/2016 10:23:42</publishTime>
@@ -1609,7 +1612,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2016 11:09:10</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
-      <publishTime>12/12/2016 17:08:13</publishTime>
+      <publishTime>01/18/2017 10:14:19</publishTime>
     </File>
     <File Include="Views/Home/Slack.cshtml">
       <publishTime>07/14/2016 15:04:24</publishTime>
@@ -1673,6 +1676,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Quality/Index.cshtml">
       <publishTime>11/04/2016 18:10:12</publishTime>
+    </File>
+    <File Include="Views/Reporting/Index.cshtml">
+      <publishTime>01/18/2017 14:33:53</publishTime>
+    </File>
+    <File Include="Views/Reporting/Transfers.cshtml">
+      <publishTime>01/18/2017 15:07:58</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
