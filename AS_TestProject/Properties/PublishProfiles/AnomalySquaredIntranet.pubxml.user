@@ -189,6 +189,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/img/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
+    <File Include="assets/img/1stPlace.png">
+      <publishTime>01/18/2017 16:13:57</publishTime>
+    </File>
+    <File Include="assets/img/2ndPlace.png">
+      <publishTime>01/18/2017 16:13:57</publishTime>
+    </File>
+    <File Include="assets/img/3rdPlace.png">
+      <publishTime>01/18/2017 16:13:57</publishTime>
+    </File>
     <File Include="assets/img/AccessControl.png">
       <publishTime>07/19/2016 16:38:49</publishTime>
     </File>
@@ -1681,7 +1690,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/18/2017 14:33:53</publishTime>
     </File>
     <File Include="Views/Reporting/Transfers.cshtml">
-      <publishTime>01/18/2017 15:07:58</publishTime>
+      <publishTime>01/18/2017 16:53:54</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
