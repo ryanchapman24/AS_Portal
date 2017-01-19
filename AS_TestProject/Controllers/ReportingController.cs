@@ -311,15 +311,15 @@ namespace AS_TestProject.Controllers
 
                 employees.Add(item);
             }
-            ViewBag.EmployeesToday = employees.OrderByDescending(e => e.TotalTransfersToday);
-            ViewBag.WichitaToday = employees.Where(e => e.SiteID == 2).OrderByDescending(e => e.TotalTransfersToday);
-            ViewBag.GreensboroToday = employees.Where(e => e.SiteID == 1).OrderByDescending(e => e.TotalTransfersToday);
-            ViewBag.EmployeesMonth = employees.OrderByDescending(e => e.TotalTransfersMonth);
-            ViewBag.WichitaMonth = employees.Where(e => e.SiteID == 2).OrderByDescending(e => e.TotalTransfersMonth);
-            ViewBag.GreensboroMonth = employees.Where(e => e.SiteID == 1).OrderByDescending(e => e.TotalTransfersMonth);
-            ViewBag.EmployeesYear = employees.OrderByDescending(e => e.TotalTransfersYear);
-            ViewBag.WichitaYear = employees.Where(e => e.SiteID == 2).OrderByDescending(e => e.TotalTransfersYear);
-            ViewBag.GreensboroYear = employees.Where(e => e.SiteID == 1).OrderByDescending(e => e.TotalTransfersYear);
+            ViewBag.EmployeesToday = employees.Where(e => e.TotalTransfersToday > 0).OrderByDescending(e => e.TotalTransfersToday);
+            ViewBag.WichitaToday = employees.Where(e => e.SiteID == 2 && e.TotalTransfersToday > 0).OrderByDescending(e => e.TotalTransfersToday);
+            ViewBag.GreensboroToday = employees.Where(e => e.SiteID == 1 && e.TotalTransfersToday > 0).OrderByDescending(e => e.TotalTransfersToday);
+            ViewBag.EmployeesMonth = employees.Where(e => e.TotalTransfersMonth > 0).OrderByDescending(e => e.TotalTransfersMonth);
+            ViewBag.WichitaMonth = employees.Where(e => e.SiteID == 2 && e.TotalTransfersMonth > 0).OrderByDescending(e => e.TotalTransfersMonth);
+            ViewBag.GreensboroMonth = employees.Where(e => e.SiteID == 1 && e.TotalTransfersMonth > 0).OrderByDescending(e => e.TotalTransfersMonth);
+            ViewBag.EmployeesYear = employees.Where(e => e.TotalTransfersYear > 0).OrderByDescending(e => e.TotalTransfersYear);
+            ViewBag.WichitaYear = employees.Where(e => e.SiteID == 2 && e.TotalTransfersYear > 0).OrderByDescending(e => e.TotalTransfersYear);
+            ViewBag.GreensboroYear = employees.Where(e => e.SiteID == 1 && e.TotalTransfersYear > 0).OrderByDescending(e => e.TotalTransfersYear);
             return View();
         }
     }
