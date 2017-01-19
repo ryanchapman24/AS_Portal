@@ -190,13 +190,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/img/1stPlace.png">
-      <publishTime>01/18/2017 16:13:57</publishTime>
+      <publishTime>01/19/2017 11:35:55</publishTime>
     </File>
     <File Include="assets/img/2ndPlace.png">
-      <publishTime>01/18/2017 16:13:57</publishTime>
+      <publishTime>01/19/2017 11:35:55</publishTime>
     </File>
     <File Include="assets/img/3rdPlace.png">
-      <publishTime>01/18/2017 16:13:57</publishTime>
+      <publishTime>01/19/2017 11:35:55</publishTime>
     </File>
     <File Include="assets/img/AccessControl.png">
       <publishTime>07/19/2016 16:38:49</publishTime>
@@ -769,7 +769,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>01/18/2017 15:11:54</publishTime>
+      <publishTime>01/19/2017 11:39:56</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1060,7 +1060,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 17:52:01</publishTime>
     </File>
     <File Include="Controllers/ReportingController.cs">
-      <publishTime>01/18/2017 14:21:39</publishTime>
+      <publishTime>01/19/2017 11:21:46</publishTime>
     </File>
     <File Include="Controllers/SisenseController.cs">
       <publishTime>11/17/2016 10:23:42</publishTime>
@@ -1687,10 +1687,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/04/2016 18:10:12</publishTime>
     </File>
     <File Include="Views/Reporting/Index.cshtml">
-      <publishTime>01/18/2017 14:33:53</publishTime>
+      <publishTime>01/19/2017 02:14:52</publishTime>
     </File>
     <File Include="Views/Reporting/Transfers.cshtml">
       <publishTime>01/18/2017 16:53:54</publishTime>
+    </File>
+    <File Include="Views/Reporting/TransfersByDomain.cshtml">
+      <publishTime>01/19/2017 01:54:35</publishTime>
+    </File>
+    <File Include="Views/Reporting/TransfersByEmployee.cshtml">
+      <publishTime>01/19/2017 11:33:05</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/20/2016 11:14:31</publishTime>
