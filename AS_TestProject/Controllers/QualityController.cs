@@ -22,7 +22,7 @@ namespace AS_TestProject.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Domains = mb.DomainMasters.Where(d => d.IsActive == true && d.DomainMasterID != 21).ToList();
+            ViewBag.Domains = mb.DomainMasters.Where(d => d.IsActive == true && d.DomainMasterID != 21).OrderBy(d => d.FileMask).ToList();
             return View();
         }
 

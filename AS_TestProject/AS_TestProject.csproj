@@ -424,6 +424,9 @@
     <Content Include="assets\font-awesome\css\font-awesome.min.css" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\img\1stPlace.png" />
+    <Content Include="assets\img\2ndPlace.png" />
+    <Content Include="assets\img\3rdPlace.png" />
     <Content Include="assets\img\AccessControl.png" />
     <Content Include="assets\img\AnomalySquared-Logo-Dark-BG%402x.png" />
     <Content Include="assets\img\ApplicationPacket.png" />
@@ -789,8 +792,9 @@
     <Content Include="Views\Quality\CFRStats.cshtml" />
     <Content Include="Views\Events\EditEvent.cshtml" />
     <Content Include="Views\Events\DeleteEvent.cshtml" />
-    <Content Include="Views\Reporting\Transfers.cshtml" />
+    <Content Include="Views\Reporting\TransfersByDomain.cshtml" />
     <Content Include="Views\Reporting\Index.cshtml" />
+    <Content Include="Views\Reporting\TransfersByEmployee.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
