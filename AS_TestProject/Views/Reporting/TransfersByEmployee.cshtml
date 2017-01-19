@@ -17,184 +17,601 @@
         <div class="panel-body">
             <div class="tab-content">
                 <div id="daily" class="tab-pane active">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
-                        </div>
-                    </div>
-                    <hr style="margin-top: 10px; margin-bottom: 10px" />
-                    @{
-                        int count = 0;
-                        foreach (var employee in ViewBag.EmployeesToday)
-                        {
-                            count++;
-                            if (count < 4)
-                            {
-                                <div class="row" style="background-color: #f2f2f2">
-                                    <div class="col-md-6" style="margin-top: 20px">
-                                        <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="active">
+                                <a data-toggle="tab" href="#overall1">Overall</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#wichita1" class="contact-map">Wichita</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#greensboro1" class="contact-map">Greensboro</a>
+                            </li>
+                        </ul>
+                    </div><!-- --/panel-heading ---->
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div id="overall1" class="tab-pane active">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
                                     </div>
-                                    <div class="col-md-5" style="margin-top: 20px">
-                                        <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
                                     </div>
-                                    <div class="col-md-1">
-                                        @if (count == 1)
+                                </div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count = 0;
+                                    foreach (var employee in ViewBag.EmployeesToday)
+                                    {
+                                        count++;
+                                        if (count < 4)
                                         {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
-                                        }
-                                        else if (count == 2)
-                                        {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
-                                        }
-                                        else if (count == 3)
-                                        {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
                                         }
                                         else
                                         {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
                                         }
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                            <div id="wichita1" class="tab-pane">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
-                                    </div>                                  
-                                    <div class="col-md-5">
-                                        <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
                                     </div>
                                 </div>
-                            }
-                            <hr style="margin-top: 10px; margin-bottom: 10px" />
-                        }
-                    }
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count1 = 0;
+                                    foreach (var employee in ViewBag.WichitaToday)
+                                    {
+                                        count1++;
+                                        if (count1 < 4)
+                                        {
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count1 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count1 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count1 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
+                                        }
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                            <div id="greensboro1" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count2 = 0;
+                                    foreach (var employee in ViewBag.GreensboroToday)
+                                    {
+                                        count2++;
+                                        if (count2 < 4)
+                                        {
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count2 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count2 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count2 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersToday</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
+                                        }
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>                   
                 </div>
                 <div id="monthly" class="tab-pane">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
-                        </div>
-                    </div>
-                    <hr style="margin-top: 10px; margin-bottom: 10px" />
-                    @{
-                        int count2 = 0;
-                        foreach (var employee in ViewBag.EmployeesMonth)
-                        {
-                            count2++;
-                            if (count2 < 4)
-                            {
-                                <div class="row" style="background-color: #f2f2f2">
-                                    <div class="col-md-6" style="margin-top: 20px">
-                                        <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
-                                    </div>                              
-                                    <div class="col-md-5" style="margin-top: 20px">
-                                        <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="active">
+                                <a data-toggle="tab" href="#overall2">Overall</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#wichita2" class="contact-map">Wichita</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#greensboro2" class="contact-map">Greensboro</a>
+                            </li>
+                        </ul>
+                    </div><!-- --/panel-heading ---->
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div id="overall2" class="tab-pane active">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
                                     </div>
-                                    <div class="col-md-1">
-                                        @if (count2 == 1)
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count3 = 0;
+                                    foreach (var employee in ViewBag.EmployeesMonth)
+                                    {
+                                        count3++;
+                                        if (count3 < 4)
                                         {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
-                                        }
-                                        else if (count2 == 2)
-                                        {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
-                                        }
-                                        else if (count2 == 3)
-                                        {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count3 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count3 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count3 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
                                         }
                                         else
                                         {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
                                         }
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                            <div id="wichita2" class="tab-pane">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
                                     </div>
-                                    <div class="col-md-5">
-                                        <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
-                                    </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
                                     </div>
                                 </div>
-                            }
-                            <hr style="margin-top: 10px; margin-bottom: 10px" />
-                        }
-                    }
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count4 = 0;
+                                    foreach (var employee in ViewBag.WichitaMonth)
+                                    {
+                                        count4++;
+                                        if (count4 < 4)
+                                        {
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count4 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count4 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count4 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
+                                        }
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                            <div id="greensboro2" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count5 = 0;
+                                    foreach (var employee in ViewBag.GreensboroMonth)
+                                    {
+                                        count5++;
+                                        if (count5 < 4)
+                                        {
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count5 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count5 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count5 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersMonth</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
+                                        }
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div> 
                 </div>
                 <div id="yearly" class="tab-pane">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
-                        </div>
-                    </div>
-                    <hr style="margin-top: 10px; margin-bottom: 10px" />
-                    @{
-                        int count3 = 0;
-                        foreach (var employee in ViewBag.EmployeesYear)
-                        {
-                            count3++;
-                            if (count3 < 4)
-                            {
-                                <div class="row" style="background-color: #f2f2f2">
-                                    <div class="col-md-6" style="margin-top: 20px">
-                                        <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="active">
+                                <a data-toggle="tab" href="#overall3">Overall</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#wichita3" class="contact-map">Wichita</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#greensboro3" class="contact-map">Greensboro</a>
+                            </li>
+                        </ul>
+                    </div><!-- --/panel-heading ---->
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div id="overall3" class="tab-pane active">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
                                     </div>
-                                    <div class="col-md-5" style="margin-top: 20px">
-                                        <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
                                     </div>
-                                    <div class="col-md-1">
-                                        @if (count3 == 1)
+                                </div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count6 = 0;
+                                    foreach (var employee in ViewBag.EmployeesYear)
+                                    {
+                                        count6++;
+                                        if (count6 < 4)
                                         {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
-                                        }
-                                        else if (count3 == 2)
-                                        {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
-                                        }
-                                        else if (count3 == 3)
-                                        {
-                                            <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count6 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count6 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count6 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
                                         }
                                         else
                                         {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
                                         }
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                            <div id="wichita3" class="tab-pane">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
                                     </div>
-                                    <div class="col-md-5">
-                                        <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
-                                    </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
                                     </div>
                                 </div>
-                            }
-                            <hr style="margin-top: 10px; margin-bottom: 10px" />
-                        }
-                    }
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count7 = 0;
+                                    foreach (var employee in ViewBag.WichitaYear)
+                                    {
+                                        count7++;
+                                        if (count7 < 4)
+                                        {
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count7 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count7 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count7 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
+                                        }
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                            <div id="greensboro3" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>EMPLOYEE</strong></h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 style="color: #29AAE3; margin-left: 0px; color: #031B25"><strong>TOTAL</strong></h4>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                @{
+                                    int count8 = 0;
+                                    foreach (var employee in ViewBag.GreensboroYear)
+                                    {
+                                        count8++;
+                                        if (count8 < 4)
+                                        {
+                                            <div class="row" style="background-color: #f2f2f2">
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5" style="margin-top: 20px">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    @if (count8 == 1)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/1stPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count8 == 2)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/2ndPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else if (count8 == 3)
+                                                    {
+                                                        <strong style="font-size: 16px; color: #29AAE3"><img src="~/assets/img/3rdPlace.png" style="width: 60px" /></strong>
+                                                    }
+                                                    else
+                                                    {
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong style="font-size: 14px; color: #29AAE3">@employee.FullName</strong>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <strong style="font-size: 16px; color: #29AAE3">@employee.TotalTransfersYear</strong>
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                            </div>
+                                        }
+                                        <hr style="margin-top: 10px; margin-bottom: 10px" />
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
