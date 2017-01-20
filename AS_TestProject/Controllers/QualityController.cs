@@ -18,8 +18,17 @@ namespace AS_TestProject.Controllers
     {
         private ReportEntities mb = new ReportEntities();
 
-        // GET: Quality/Index
+        public class Emp
+        {
+            public int EmployeeID { get; set; }
+            public string FullName { get; set; }
+            public int SiteID { get; set; }
+            public int TotalCFRsMonth { get; set; }
+            public int RemainingCFRsNeeded { get; set; }
+        }
 
+
+        // GET: Quality/Index
         public ActionResult Index()
         {
             ViewBag.Domains = mb.DomainMasters.Where(d => d.IsActive == true && d.DomainMasterID != 21).OrderBy(d => d.FileMask).ToList();
@@ -1452,6 +1461,55 @@ namespace AS_TestProject.Controllers
             ViewBag.pAOI2no = Math.Round((pAOI2no * 10000) / prCFR) / 100;
             ViewBag.pAOI2na = Math.Round((pAOI2na * 10000) / prCFR) / 100;
 
+            return View();
+        }
+
+        // GET: Quality/Evals
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult EvaluationStats()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var todayYear = System.DateTime.Now.Year;
+            var todayMonth = System.DateTime.Now.Month;
+            var todayDay = System.DateTime.Now.Day;
+
+            var employees = new List<Emp>();
+            foreach (var employee in mb.Employees.Where(e => e.IsActive == true && (e.PositionID == 3 || e.PositionID == 26)).OrderBy(e => e.FirstName))
+            {
+                var empMtgCFRs = mb.CFRMortgages.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
+                var empInsCFRs = mb.CFRInsurances.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
+                var empPatRecCFRs = mb.CFRPatientRecruitments.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
+                var item = new Emp();
+                item.EmployeeID = employee.EmployeeID;
+                item.FullName = employee.FirstName + " " + employee.LastName;
+                item.SiteID = employee.SiteID;
+                item.TotalCFRsMonth = empMtgCFRs + empInsCFRs + empPatRecCFRs;
+                var remaining = 0;
+                if (item.TotalCFRsMonth >= 8)
+                {
+                    remaining = 0;
+                }
+                else
+                {
+                    remaining = 8 - item.TotalCFRsMonth;
+                }
+                item.RemainingCFRsNeeded = remaining;
+
+                employees.Add(item);
+            }
+            if (user.SiteID == 1)
+            {
+                ViewBag.UserLocation = "greensboro";
+                ViewBag.OtherLocation = "wichita";
+            }
+            else if (user.SiteID == 2)
+            {
+                ViewBag.UserLocation = "wichita";
+                ViewBag.OtherLocation = "greensboro";
+            }
+            
+            ViewBag.G_EmpsNeedingMoreEvals = employees.Where(e => e.SiteID == 1 && e.TotalCFRsMonth < 8).OrderByDescending(e => e.RemainingCFRsNeeded).ToList();
+            ViewBag.W_EmpsNeedingMoreEvals = employees.Where(e => e.SiteID == 2 && e.TotalCFRsMonth < 8).OrderByDescending(e => e.RemainingCFRsNeeded).ToList();
             return View();
         }
     }

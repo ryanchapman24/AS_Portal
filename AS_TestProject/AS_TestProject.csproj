@@ -795,6 +795,7 @@
     <Content Include="Views\Reporting\TransfersByDomain.cshtml" />
     <Content Include="Views\Reporting\Index.cshtml" />
     <Content Include="Views\Reporting\TransfersByEmployee.cshtml" />
+    <Content Include="Views\Quality\EvaluationStats.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
