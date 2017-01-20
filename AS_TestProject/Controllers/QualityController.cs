@@ -1474,7 +1474,7 @@ namespace AS_TestProject.Controllers
             var todayDay = System.DateTime.Now.Day;
 
             var employees = new List<Emp>();
-            foreach (var employee in mb.Employees.Where(e => e.IsActive == true && (e.PositionID == 3 || e.PositionID == 26)).OrderBy(e => e.FirstName))
+            foreach (var employee in mb.Employees.Where(e => e.IsActive == true && (e.PositionID == 3)).OrderBy(e => e.FirstName))
             {
                 var empMtgCFRs = mb.CFRMortgages.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
                 var empInsCFRs = mb.CFRInsurances.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();

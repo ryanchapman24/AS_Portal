@@ -2,7 +2,7 @@
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
         <h3 style="color: #29AAE3"><i class="fa fa-check-square-o"></i> Quality: <span style="color: #29AAE3">Evaluation Statistics</span></h3>
         <span><em>This data is with respect to our current goal of <strong style="color: #29AAE3">8</strong> CFRs to be completed per CSR each month.</em></span>
-        <br />
+        <br /><br />
         <div class="panel-heading">
             <ul class="nav nav-tabs nav-justified">
                 <li class="active">
@@ -40,7 +40,7 @@
                                     <tr>
                                         <th>Employee</th>
                                         <th>Remaining CFRs Needed</th>
-                                        <th>Action</th>
+                                        <th style="width: 60px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,7 +51,7 @@
                                             <tr>
                                                 <td>@item.FullName</td>
                                                 <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
-                                                <td><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
                                             </tr>
                                         }
                                     }
@@ -62,7 +62,7 @@
                                             <tr>
                                                 <td>@item.FullName</td>
                                                 <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
-                                                <td><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
                                             </tr>
                                         }
                                     }                                   
@@ -82,7 +82,7 @@
                                     <tr>
                                         <th>Employee</th>
                                         <th>Remaining CFRs Needed</th>
-                                        <th>Action</th>
+                                        <th style="width: 60px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,7 +93,7 @@
                                             <tr>
                                                 <td>@item.FullName</td>
                                                 <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
-                                                <td><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
                                             </tr>
                                         }
                                     }
@@ -104,7 +104,7 @@
                                             <tr>
                                                 <td>@item.FullName</td>
                                                 <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
-                                                <td><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
                                             </tr>
                                         }
                                     }
