@@ -769,7 +769,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>01/19/2017 11:52:08</publishTime>
+      <publishTime>01/20/2017 16:05:25</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1678,13 +1678,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2016 14:12:45</publishTime>
     </File>
     <File Include="Views/Quality/CFRStats.cshtml">
-      <publishTime>11/14/2016 15:25:45</publishTime>
+      <publishTime>01/20/2017 12:06:10</publishTime>
     </File>
     <File Include="Views/Quality/Details.cshtml">
-      <publishTime>11/28/2016 14:33:17</publishTime>
+      <publishTime>01/20/2017 12:05:50</publishTime>
+    </File>
+    <File Include="Views/Quality/EvaluationStats.cshtml">
+      <publishTime>01/20/2017 15:40:24</publishTime>
     </File>
     <File Include="Views/Quality/Index.cshtml">
-      <publishTime>11/04/2016 18:10:12</publishTime>
+      <publishTime>01/20/2017 15:46:03</publishTime>
     </File>
     <File Include="Views/Reporting/Index.cshtml">
       <publishTime>01/19/2017 02:14:52</publishTime>
