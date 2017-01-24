@@ -65,6 +65,11 @@ namespace AS_TestProject.Migrations
                 roleManager.Create(new IdentityRole { Name = "Quality" });
             }
 
+            if (!context.Roles.Any(r => r.Name == "Blocked"))
+            {
+                roleManager.Create(new IdentityRole { Name = "Blocked" });
+            }
+
             var userManager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(context));
 

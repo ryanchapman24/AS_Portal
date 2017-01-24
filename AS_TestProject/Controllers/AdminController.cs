@@ -33,18 +33,31 @@ namespace AS_TestProject.Controllers
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName");
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName");
 
-            List<AdminUserListModels> users = new List<AdminUserListModels>();
+            List<AdminUserListModels> activeUsers = new List<AdminUserListModels>();
+            List<AdminUserListModels> blockedUsers = new List<AdminUserListModels>();
             UserRolesHelper helper = new UserRolesHelper(db);
-            foreach (var user in db.Users.ToList())
+            foreach (var user in db.Users.Where(u => u.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0))
             {
                 var eachUser = new AdminUserListModels();
                 eachUser.roles = new List<string>();
                 eachUser.user = user;
                 eachUser.roles = helper.ListUserRoles(user.Id).ToList();
 
-                users.Add(eachUser);
+                activeUsers.Add(eachUser);
             }
-            return View(users.OrderBy(u => u.user.LastName).ToList());
+            foreach (var user in db.Users.Where(u => u.Roles.Any(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803")))
+            {
+                var eachUser = new AdminUserListModels();
+                eachUser.roles = new List<string>();
+                eachUser.user = user;
+                eachUser.roles = helper.ListUserRoles(user.Id).ToList();
+
+                blockedUsers.Add(eachUser);
+            }
+
+            ViewBag.ActiveUsers = activeUsers.OrderBy(a => a.user.LastName).ToList();
+            ViewBag.BlockedUsers = blockedUsers.OrderBy(a => a.user.LastName).ToList();
+            return View();
         }
 
         // Get: Admin/EditUserRoles
@@ -82,6 +95,13 @@ namespace AS_TestProject.Controllers
                     helper.AddUserToRole(user.Id, role);
                 }
 
+                if (user.Roles.Any(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803"))
+                {
+                    foreach (var role in db.Roles.Where(r => r.Id != "039c88d0-5882-4dcc-a892-82700cf1a803").Select(r => r.Name).ToList())
+                    {
+                        helper.RemoveUserFromRole(user.Id, role);
+                    }
+                }
                 return RedirectToAction("Index", "Admin");
             }
             else

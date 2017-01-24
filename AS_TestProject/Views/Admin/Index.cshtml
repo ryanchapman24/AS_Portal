@@ -5,7 +5,7 @@
 }
 
 <div class="col-lg-12 mt">
-    <div class="row content-panel">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
     <h1 style="text-align: center; margin-bottom: 20px; color: #29AAE3"><i class="fa fa-key" style="margin-right: 10px"></i>Administrator Panel</h1>
         <div class="panel-heading">
             <ul class="nav nav-tabs nav-justified">
@@ -27,54 +27,122 @@
         <div class="panel-body">
             <div class="tab-content">
                 <div id="users" class="tab-pane active">
-                    <div class="widget widget-table">
-                        <div class="widget-header">
-                            <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Users<button class="btn btn-theme btn-md pull-right" onclick="location.href='@Url.Action("Register", "Account")'" style="margin-top: -10px">+ New User</button></h3>
-                        </div>
-                        <div class="widget-content">
-                            <div class="table-responsive">
-                                <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable admin-tables">
-                                    <thead>
-                                        <tr>
-                                            <th>Last</th>
-                                            <th>First</th>
-                                            <th>Site</th>
-                                            <th>Position</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Employee ID</th>
-                                            <th>Role</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td><strong style="color: #29AAE3">@item.user.LastName</strong></td>
-                                                <td><strong style="color: #29AAE3">@item.user.FirstName</strong></td>
-                                                <td>@item.user.Site.SiteName</td>
-                                                <td>@item.user.Position.PositionName</td>
-                                                <td>@item.user.Email</td>
-                                                <td>@item.user.PhoneNumber</td>
-                                                <td>@item.user.EmployeeID</td>
-                                                <td>
-                                                    @foreach (var role in item.roles)
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="active">
+                                <a data-toggle="tab" href="#activeUsers">Active</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#blockedUsers" class="contact-map">Blocked</a>
+                            </li>
+                        </ul>
+                    </div><!-- --/panel-heading ---->
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div id="activeUsers" class="tab-pane active">
+                                <div class="widget widget-table">
+                                    <div class="widget-header">
+                                        <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Active<button class="btn btn-theme btn-md pull-right" onclick="location.href='@Url.Action("Register", "Account")'" style="margin-top: -10px">+ New User</button></h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="table-responsive">
+                                            <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable admin-tables">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Last</th>
+                                                        <th>First</th>
+                                                        <th>Site</th>
+                                                        <th>Position</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Employee ID</th>
+                                                        <th>Role</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in ViewBag.ActiveUsers)
                                                     {
-                                                        <p style="color: #FE5607"><strong>@role</strong></p>
+                                                        <tr>
+                                                            <td><strong style="color: #29AAE3">@item.user.LastName</strong></td>
+                                                            <td><strong style="color: #29AAE3">@item.user.FirstName</strong></td>
+                                                            <td>@item.user.Site.SiteName</td>
+                                                            <td>@item.user.Position.PositionName</td>
+                                                            <td>@item.user.Email</td>
+                                                            <td>@item.user.PhoneNumber</td>
+                                                            <td>@item.user.EmployeeID</td>
+                                                            <td>
+                                                                @foreach (var role in item.roles)
+                                                                {
+                                                                    <p style="color: #FE5607"><strong>@role</strong></p>
+                                                                }
+                                                            </td>
+                                                            <td class="text-nowrap">
+                                                                <a href="@Url.Action("EditUserRoles", "Admin", new { id = item.user.Id })"><i class="fa fa-lock" style="margin-right: 3px; font-size: 16px"></i> Manage Roles</a><br />
+                                                                <a href="@Url.Action("ProfilePage", "Home", new { id = item.user.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Profile</a>
+                                                            </td>
+                                                        </tr>
                                                     }
-                                                </td>
-                                                <td class="text-nowrap">
-                                                    <a href="@Url.Action("EditUserRoles", "Admin", new { id = item.user.Id })"><i class="fa fa-lock" style="margin-right: 3px; font-size: 16px"></i> Manage Roles</a><br />
-                                                    <a href="@Url.Action("ProfilePage", "Home", new { id = item.user.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Profile</a>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="blockedUsers" class="tab-pane">
+                                <div class="widget widget-table">
+                                    <div class="widget-header">
+                                        <h3 style="color: #29AAE3"><i class="fa fa-users"></i> Blocked<button class="btn btn-theme btn-md pull-right" onclick="location.href='@Url.Action("Register", "Account")'" style="margin-top: -10px">+ New User</button></h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="table-responsive">
+                                            <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable admin-tables">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Last</th>
+                                                        <th>First</th>
+                                                        <th>Site</th>
+                                                        <th>Position</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Employee ID</th>
+                                                        <th>Role</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in ViewBag.BlockedUsers)
+                                                    {
+                                                        <tr>
+                                                            <td><strong style="color: #29AAE3">@item.user.LastName</strong></td>
+                                                            <td><strong style="color: #29AAE3">@item.user.FirstName</strong></td>
+                                                            <td>@item.user.Site.SiteName</td>
+                                                            <td>@item.user.Position.PositionName</td>
+                                                            <td>@item.user.Email</td>
+                                                            <td>@item.user.PhoneNumber</td>
+                                                            <td>@item.user.EmployeeID</td>
+                                                            <td>
+                                                                @foreach (var role in item.roles)
+                                                                {
+                                                                    <p style="color: #FE5607"><strong>@role</strong></p>
+                                                                }
+                                                            </td>
+                                                            <td class="text-nowrap">
+                                                                <a href="@Url.Action("EditUserRoles", "Admin", new { id = item.user.Id })"><i class="fa fa-lock" style="margin-right: 3px; font-size: 16px"></i> Manage Roles</a><br />
+                                                                <a href="@Url.Action("ProfilePage", "Home", new { id = item.user.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Profile</a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                    </div>             
+                    </div>
+                                
                 </div><!-- --/tab-pane ---->
 
                 <div id="customers" class="tab-pane">
@@ -94,22 +162,22 @@
                                     {
                                         @Html.AntiForgeryToken()
                                         <div class="modal-body">
-                                            <div class="" style="">                         
-                                                <input type="hidden" name="TerminationDate" value="12/31/9999"/>
+                                            <div class="" style="">
+                                                <input type="hidden" name="TerminationDate" value="12/31/9999" />
                                                 <input type="hidden" name="AddDate" value="@today" />
                                                 <div class="form-group">
                                                     <div class="col-md-3 control-label">
                                                         Customer Name
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        <input class="form-control capitalize" name="CustomerName" type="text" required/>
+                                                        <input class="form-control capitalize" name="CustomerName" type="text" required />
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-3 control-label">
                                                         Address Line 1
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        <input class="form-control" name="AddressLine1" type="text"/>
+                                                        <input class="form-control" name="AddressLine1" type="text" />
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-3 control-label">
@@ -130,21 +198,21 @@
                                                         State
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        <input class="form-control" name="State" type="text" maxlength="2"/>
+                                                        <input class="form-control" name="State" type="text" maxlength="2" />
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-3 control-label">
                                                         Zip Code
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        <input class="form-control onlyNum" name="ZipCode" type="text" maxlength="5"/>
+                                                        <input class="form-control onlyNum" name="ZipCode" type="text" maxlength="5" />
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-3 control-label">
                                                         Implementation Date
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <input class="form-control" name="ImplementationDate" required/>
+                                                        <input class="form-control" name="ImplementationDate" required />
                                                     </div><br />
                                                 </div>
                                             </div>
@@ -201,9 +269,9 @@
                                 </table>
                             </div>
                         </div>
-                    </div>                   
-                </div><!-- --/tab-pane ---->    
-            
+                    </div>
+                </div><!-- --/tab-pane ---->
+
                 <div id="domains" class="tab-pane">
                     <div class="widget widget-table">
                         <div class="widget-header">
@@ -251,14 +319,14 @@
                                                         Cost Code
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        <input class="form-control" name="CostCode" type="text" maxlength="6" required/>
+                                                        <input class="form-control" name="CostCode" type="text" maxlength="6" required />
                                                     </div><br /><br /><br />
 
                                                     <div class="col-md-3 control-label">
                                                         File Mask
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        <input class="form-control capitalize" name="FileMask" type="text" maxlength="3" required/>
+                                                        <input class="form-control capitalize" name="FileMask" type="text" maxlength="3" required />
                                                     </div><br />
                                                 </div>
                                             </div>
@@ -312,7 +380,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- --/tab-pane ---->  
+                </div><!-- --/tab-pane ---->
 
                 <div id="positions" class="tab-pane">
                     <div class="widget widget-table">
@@ -383,7 +451,7 @@
                             </div>
                         </div>
                     </div>
-                </div>      
+                </div>
             </div><!-- /tab-content -->
         </div><!-- --/panel-body ---->
     </div><!-- /col-lg-12 -->

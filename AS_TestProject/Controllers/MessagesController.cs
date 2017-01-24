@@ -27,8 +27,8 @@ namespace AS_TestProject.Controllers
             ViewBag.Drafts = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == false && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Users = db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
-            ViewBag.ReceiverId = new SelectList(db.Users.Where(u => u.Id != user.Id).OrderBy(u => u.FirstName), "Id", "DisplayName");
+            ViewBag.Users = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
+            ViewBag.ReceiverId = new SelectList(db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(u => u.Id != user.Id).OrderBy(u => u.FirstName), "Id", "DisplayName");
             return View();
         }
 

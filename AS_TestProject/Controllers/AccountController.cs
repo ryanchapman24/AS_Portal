@@ -74,6 +74,13 @@ namespace AS_TestProject.Controllers
                 return View(model);
             }
 
+            var employee = db.Users.FirstOrDefault(u => u.Email == model.Email);
+
+            if (employee.Roles.Any(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803"))
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);

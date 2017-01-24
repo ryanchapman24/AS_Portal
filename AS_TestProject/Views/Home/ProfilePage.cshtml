@@ -72,7 +72,16 @@
                                     <h6>DAYS OF PTO LEFT</h6>*@
                                     <h4 style="color: #29AAE3">@if (Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || User.IsInRole("Payroll")){<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })">@ViewBag.Hours<i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a>} else {<span>N/A</span>}</h4>
                                     <h6>HOURS THIS PAY PERIOD</h6>
-                                    <h4 style="color: #29AAE3">@ViewBag.TimeWithCompany</h4>
+                                    <h4 style="color: #29AAE3">
+                                        @if (Model.Roles.Any(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803"))
+                                        {
+                                            <span>Terminated</span>
+                                        }
+                                        else
+                                        {
+                                            @ViewBag.TimeWithCompany
+                                        }
+                                    </h4>
                                     <h6>TIME WITH ANOMALY SQUARED</h6>
                                 </div>
                             </div><!-- --/col-md-4 ---->
@@ -192,22 +201,41 @@
                                                 <div class="row centered mt mb">
                                                     @if (User.IsInRole("Admin") || User.IsInRole("IT"))
                                                     {
+                                                        if (Model.Roles.Any(r => r.RoleId == "eafdc2c0-665a-4545-afef-05ce631dc48c"))
+                                                        {
+                                                            <div class="col-sm-4">
+                                                                <h1><i class="fa fa-edit"></i></h1>
+                                                                <h3>@ViewBag.CFRtoday <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="Yesterday<br>@ViewBag.CFRyesterday<br>Month<br>@ViewBag.CFRmonth<br>Year<br>@ViewBag.CFRyear" data-html="true" data-toggle="tooltip" data-placement="right"></i></h3>
+                                                                <h6>CFRS SUBMITTED TODAY</h6>
+                                                            </div>
+                                                        }
+                                                    }
+                                                    @if (Model.Roles.Any(r => r.RoleId == "eafdc2c0-665a-4545-afef-05ce631dc48c"))
+                                                    {
                                                         <div class="col-sm-4">
-                                                            <h1><i class="fa fa-edit"></i></h1>
-                                                            <h3>@ViewBag.CFRyesterday <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="Today<br>@ViewBag.CFRtoday<br>Month<br>@ViewBag.CFRmonth<br>Year<br>@ViewBag.CFRyear" data-html="true" data-toggle="tooltip" data-placement="right"></i></h3>
-                                                            <h6>CFRS SUBMITTED YESTERDAY</h6>
+                                                            <h1><i class="fa fa-tasks"></i></h1>
+                                                            <h3>@ViewBag.TaskCounter</h3>
+                                                            <h6>TOTAL COMPLETED TASKS</h6>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <h1><i class="fa fa-volume-control-phone"></i></h1>
+                                                            <h3>N/A</h3>
+                                                            <h6>TRANSFERS</h6>
                                                         </div>
                                                     }
-                                                    <div class="col-sm-4">
-                                                        <h1><i class="fa fa-tasks"></i></h1>
-                                                        <h3>@ViewBag.TaskCounter</h3>
-                                                        <h6>TOTAL COMPLETED TASKS</h6>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <h1><i class="fa fa-volume-control-phone"></i></h1>
-                                                        <h3>N/A</h3>
-                                                        <h6>TRANSFERS</h6>
-                                                    </div>
+                                                    else
+                                                    {
+                                                        <div class="col-sm-6">
+                                                            <h1><i class="fa fa-tasks"></i></h1>
+                                                            <h3>@ViewBag.TaskCounter</h3>
+                                                            <h6>TOTAL COMPLETED TASKS</h6>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <h1><i class="fa fa-volume-control-phone"></i></h1>
+                                                            <h3>N/A</h3>
+                                                            <h6>TRANSFERS</h6>
+                                                        </div>
+                                                    }
                                                 </div><!-- /row -->                                  
                                             </div><!-- --/col-md-6 ---->
                                             <div class="col-md-6 detailed">

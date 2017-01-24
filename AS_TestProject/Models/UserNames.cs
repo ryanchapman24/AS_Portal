@@ -36,7 +36,7 @@ namespace AS_TestProject.Models
                 ViewBag.LowTasks = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 1).OrderBy(t => t.Id).ToList();
 
                 ViewBag.Messages = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Read == false && m.Out == true && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-                ViewBag.Team = db.Users.Where(t => t.SiteID == user.SiteID && t.Id != user.Id).OrderBy(t => t.FirstName);
+                ViewBag.Team = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(t => t.SiteID == user.SiteID && t.Id != user.Id).OrderBy(t => t.FirstName);
 
                 /////////////////////////////// Mortgage CFR Questions
                 ViewBag.mTE1 = "Does the CSR state 'Hello' and pause to identify gender?";
