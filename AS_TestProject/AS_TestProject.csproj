@@ -723,9 +723,10 @@
     <Content Include="assets\forms\A2_DisciplinaryAction.pdf" />
     <Content Include="assets\forms\Anomaly Petty Cash.xlsx" />
     <Content Include="assets\forms\EmployeeLoanForm.pdf" />
-    <Content Include="assets\forms\IncidentReportForm.pdf" />
     <Content Include="assets\forms\SchedulingForm.pdf" />
     <Content Include="assets\forms\AnomalySquared_ExpenseReport_2017.xlsx" />
+    <Content Include="assets\forms\IncidentReportForm.pdf" />
+    <Content Include="assets\forms\ScheduleExemption.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
