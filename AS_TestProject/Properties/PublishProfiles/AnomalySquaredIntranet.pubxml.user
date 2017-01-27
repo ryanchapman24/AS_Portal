@@ -183,6 +183,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/forms/PayrollDeduction.pdf">
       <publishTime>10/07/2016 12:31:40</publishTime>
     </File>
+    <File Include="assets/forms/ScheduleExemption.pdf">
+      <publishTime>01/27/2017 13:22:36</publishTime>
+    </File>
     <File Include="assets/forms/SchedulingForm.pdf">
       <publishTime>01/05/2017 13:00:38</publishTime>
     </File>
@@ -470,6 +473,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/img/ReimbursementAlt.png">
       <publishTime>06/23/2016 11:30:50</publishTime>
+    </File>
+    <File Include="assets/img/ScheduleExemption.png">
+      <publishTime>01/27/2017 13:16:49</publishTime>
     </File>
     <File Include="assets/img/SchedulingForm.png">
       <publishTime>01/04/2017 17:12:49</publishTime>
@@ -1609,7 +1615,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/16/2016 15:07:39</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
-      <publishTime>01/05/2017 13:25:42</publishTime>
+      <publishTime>01/27/2017 13:24:26</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
       <publishTime>01/02/2017 11:58:31</publishTime>
