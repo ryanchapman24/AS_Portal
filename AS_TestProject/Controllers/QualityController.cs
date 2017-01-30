@@ -25,6 +25,7 @@ namespace AS_TestProject.Controllers
             public int SiteID { get; set; }
             public int TotalCFRsMonth { get; set; }
             public int RemainingCFRsNeeded { get; set; }
+            public int DaysHere { get; set; }
         }
 
 
@@ -1469,9 +1470,10 @@ namespace AS_TestProject.Controllers
         public ActionResult EvaluationStats()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
-            var todayYear = System.DateTime.Now.Year;
-            var todayMonth = System.DateTime.Now.Month;
-            var todayDay = System.DateTime.Now.Day;
+            var now = System.DateTime.Now;
+            var todayYear = now.Year;
+            var todayMonth = now.Month;
+            var todayDay = now.Day;
 
             var employees = new List<Emp>();
             foreach (var employee in mb.Employees.Where(e => e.IsActive == true && (e.PositionID == 3)).OrderBy(e => e.FirstName))
@@ -1479,11 +1481,13 @@ namespace AS_TestProject.Controllers
                 var empMtgCFRs = mb.CFRMortgages.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
                 var empInsCFRs = mb.CFRInsurances.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
                 var empPatRecCFRs = mb.CFRPatientRecruitments.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
+                var daysHere = (now - employee.HireDate).Days;
                 var item = new Emp();
                 item.EmployeeID = employee.EmployeeID;
                 item.FullName = employee.FirstName + " " + employee.LastName;
                 item.SiteID = employee.SiteID;
                 item.TotalCFRsMonth = empMtgCFRs + empInsCFRs + empPatRecCFRs;
+                item.DaysHere = daysHere;
                 var remaining = 0;
                 if (item.TotalCFRsMonth >= 8)
                 {

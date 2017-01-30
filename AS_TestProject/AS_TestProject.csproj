@@ -516,6 +516,7 @@
     <Content Include="assets\img\red_priority.png" />
     <Content Include="assets\img\Reimbursement.png" />
     <Content Include="assets\img\ReimbursementAlt.png" />
+    <Content Include="assets\img\ScheduleExemption.png" />
     <Content Include="assets\img\SchedulingForm.png" />
     <Content Include="assets\img\sisense.png" />
     <Content Include="assets\img\StatusChange.png" />
