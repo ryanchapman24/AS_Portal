@@ -180,6 +180,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/forms/IncidentReportForm.pdf">
       <publishTime>01/24/2017 17:04:58</publishTime>
     </File>
+    <File Include="assets/forms/LeaveOfAbsence.pdf">
+      <publishTime>02/02/2017 15:13:03</publishTime>
+    </File>
     <File Include="assets/forms/PayrollDeduction.pdf">
       <publishTime>10/07/2016 12:31:40</publishTime>
     </File>
@@ -395,6 +398,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/img/instagram.jpg">
       <publishTime>06/20/2016 16:13:43</publishTime>
+    </File>
+    <File Include="assets/img/LeaveOfAbsense.png">
+      <publishTime>02/02/2017 15:13:24</publishTime>
     </File>
     <File Include="assets/img/login-bg.jpg">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -1615,7 +1621,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/16/2016 15:07:39</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
-      <publishTime>01/27/2017 13:24:26</publishTime>
+      <publishTime>02/02/2017 15:14:24</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
       <publishTime>01/02/2017 11:58:31</publishTime>
