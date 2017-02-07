@@ -491,6 +491,7 @@
     <Content Include="assets\img\IncidentReport.png" />
     <Content Include="assets\img\InsertionOrder.png" />
     <Content Include="assets\img\instagram.jpg" />
+    <Content Include="assets\img\LeaveOfAbsense.png" />
     <Content Include="assets\img\login-bg.jpg" />
     <Content Include="assets\img\lorde.jpg" />
     <Content Include="assets\img\mask.png" />
@@ -728,6 +729,7 @@
     <Content Include="assets\forms\AnomalySquared_ExpenseReport_2017.xlsx" />
     <Content Include="assets\forms\IncidentReportForm.pdf" />
     <Content Include="assets\forms\ScheduleExemption.pdf" />
+    <Content Include="assets\forms\LeaveOfAbsence.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
