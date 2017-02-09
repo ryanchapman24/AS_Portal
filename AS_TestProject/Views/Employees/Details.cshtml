@@ -1021,13 +1021,12 @@
                                     <tr>
                                         <th style="width: 90%">Date</th>
                                         <th>Domain</th>
-                                        <th>#Calls</th>
+                                        @*<th>#Calls</th>*@
                                         <th>Etiquette</th>
                                         <th>Professionalism</th>
                                         <th>Compliance</th>
                                         <th>Adherence</th>
-                                        <th>Accuracy</th>
-                                        <th>Submitter</th>
+                                        <th>Accuracy</th>                         
                                         <th style="width: 80px">Action</th>
                                     </tr>
                                 </thead>
@@ -1035,15 +1034,17 @@
                                     @foreach (var item in ViewBag.mCFRs)
                                     {
                                         <tr>
-                                            <td class="text-nowrap">@item.DateOfFeedback.ToString("g")</td>
+                                            <td class="text-nowrap">
+                                                @item.DateOfFeedback.ToString("g")<br />
+                                                <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                            </td>
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
-                                            <td>@item.C_Calls</td>
+                                            @*<td>@item.C_Calls</td>*@
                                             <td>@item.CFRPerformanceAnalysi4.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi3.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi2.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi1.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
-                                            <td class="text-nowrap">@item.Employee1.FirstName @item.Employee1.LastName</td>
                                             <td class="text-nowrap">
                                                 @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
                                                 {
@@ -1069,13 +1070,12 @@
                                     <tr>
                                         <th style="width: 90%">Date</th>
                                         <th>Domain</th>
-                                        <th>#Calls</th>
+                                        @*<th>#Calls</th>*@
                                         <th>Etiquette</th>
                                         <th>Professionalism</th>
                                         <th>Compliance</th>
                                         <th>Adherence</th>
                                         <th>Accuracy</th>
-                                        <th>Submitter</th>
                                         <th style="width: 80px">Action</th>
                                     </tr>
                                 </thead>
@@ -1083,15 +1083,17 @@
                                     @foreach (var item in ViewBag.iCFRs)
                                     {
                                         <tr>
-                                            <td class="text-nowrap">@item.DateOfFeedback.ToString("g")</td>
+                                            <td class="text-nowrap">
+                                                @item.DateOfFeedback.ToString("g")<br />
+                                                <em><small>submitted by <strong style="color: #FE5607">@item.Employee2.FirstName @item.Employee2.LastName</strong></small></em>
+                                            </td>
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
-                                            <td>@item.C_Calls</td>
+                                            @*<td>@item.C_Calls</td>*@
                                             <td>@item.CFRPerformanceAnalysi4.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi3.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi2.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi1.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
-                                            <td class="text-nowrap">@item.Employee2.FirstName @item.Employee2.LastName</td>
                                             <td class="text-nowrap">
                                                 @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
                                                 {
@@ -1117,13 +1119,12 @@
                                     <tr>
                                         <th style="width: 90%">Date</th>
                                         <th>Domain</th>
-                                        <th>#Calls</th>
+                                        @*<th>#Calls</th>*@
                                         <th>Etiquette</th>
                                         <th>Professionalism</th>
                                         <th>Compliance</th>
                                         <th>Adherence</th>
                                         <th>Accuracy</th>
-                                        <th>Submitter</th>
                                         <th style="width: 80px">Action</th>
                                     </tr>
                                 </thead>
@@ -1131,15 +1132,17 @@
                                     @foreach (var item in ViewBag.pCFRs)
                                     {
                                         <tr>
-                                            <td class="text-nowrap">@item.DateOfFeedback.ToString("g")</td>
+                                            <td class="text-nowrap">
+                                                @item.DateOfFeedback.ToString("g")<br />
+                                                <em><small>submitted by <strong style="color: #FE5607">@item.Employee.FirstName @item.Employee.LastName</strong></small></em>
+                                            </td>
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
-                                            <td>@item.C_Calls</td>
+                                            @*<td>@item.C_Calls</td>*@
                                             <td>@item.CFRPerformanceAnalysi4.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi3.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi2.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi1.PerformanceRating</td>
                                             <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
-                                            <td class="text-nowrap">@item.Employee.FirstName @item.Employee.LastName</td>
                                             <td class="text-nowrap">
                                                 @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
                                                 {

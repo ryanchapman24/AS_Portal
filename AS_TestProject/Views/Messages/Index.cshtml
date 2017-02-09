@@ -2,13 +2,427 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_RightNavHidden.cshtml";
     var todayYear = System.DateTime.Now.Year;
     var todayMonth = System.DateTime.Now.Month;
     var todayDay = System.DateTime.Now.Day;
     var trash = ViewBag.TrashIn.Count + ViewBag.TrashOut.Count;
 }
 
-    <div class="col-md-4">
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#messages').addClass("active");
+
+            $('#datatable-basic-scrolling1').DataTable({
+                "iDisplayLength": 25,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No messages in your inbox",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling2').DataTable({
+                "iDisplayLength": 25,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No messages in your outbox",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling3').DataTable({
+                "iDisplayLength": 25,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No messages saved as drafts",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling4').DataTable({
+                "iDisplayLength": 10,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No trash from inbox",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling5').DataTable({
+                "iDisplayLength": 10,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No trash from outbox",
+                    "infoEmpty": ""
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('.inbound .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.outbound .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.trashIn .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.trashOut .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#outbox").click(function () {
+                $('#outbox').addClass("active");
+                $('#inbox').removeClass("active");
+                $('#drafts').removeClass("active");
+                $('#trash').removeClass("active");
+
+                $('#outbox-table').removeClass("hidden");
+                $('#inbox-table').addClass("hidden");
+                $('#draft-table').addClass("hidden");
+                $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+            $("#drafts").click(function () {
+                $('#drafts').addClass("active");
+                $('#inbox').removeClass("active");
+                $('#outbox').removeClass("active");
+                $('#trash').removeClass("active");
+
+                $('#draft-table').removeClass("hidden");
+                $('#inbox-table').addClass("hidden");
+                $('#outbox-table').addClass("hidden");
+                $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+            $("#trash").click(function () {
+                $('#trash').addClass("active");
+                $('#inbox').removeClass("active");
+                $('#drafts').removeClass("active");
+                $('#outbox').removeClass("active");
+
+                $('#trash-table').removeClass("hidden");
+                $('#inbox-table').addClass("hidden");
+                $('#draft-table').addClass("hidden");
+                $('#outbox-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+            $("#inbox").click(function () {
+                $('#inbox').addClass("active");
+                $('#outbox').removeClass("active");
+                $('#drafts').removeClass("active");
+                $('#trash').removeClass("active");
+
+                $('#inbox-table').removeClass("hidden");
+                $('#outbox-table').addClass("hidden");
+                $('#draft-table').addClass("hidden");
+                $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+        });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('#markAllRead').click(function () {
+                    $('.inbox-unread').attr('checked','checked');
+                });
+
+                $('#unmarkAllRead').click(function () {
+                    $('.inbox-unread').removeAttr('checked');
+                });
+
+                $('#markAllDrafts').click(function () {
+                    $('.draft-delete').attr('checked','checked');
+                });
+
+                $('#unmarkAllDrafts').click(function () {
+                    $('.draft-delete').removeAttr('checked');
+                });
+
+                $('#markAllInTrash').click(function () {
+                    $('.intrash-delete').attr('checked','checked');
+                });
+
+                $('#unmarkAllInTrash').click(function () {
+                    $('.intrash-delete').removeAttr('checked');
+                });
+
+                $('#markAllOutTrash').click(function () {
+                    $('.outtrash-delete').attr('checked','checked');
+                });
+
+                $('#unmarkAllOutTrash').click(function () {
+                    $('.outtrash-delete').removeAttr('checked');
+                });
+            });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#draft-rows .message-rows').click(function () {
+                var id = $(this).attr('data-id');
+                var profile = $('.data-profile[data-id="' + id + '"]').val();
+                var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                //var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+
+                $('#draftModalId').val(id);
+                $('#draftModalImg').attr('src', profile);
+                $('#draftModalSubject').val(subject);
+                $('#draftModalContent').text(content);
+                $('#DraftModalLabel').text("Finish New Message for " + name);
+
+                if (isUrgent == "true") {
+                    $('#draftModalUrgent').attr('checked', 'checked');
+                    var div = $('#draftModalUrgent').closest('div');
+                    div.removeClass('switch-off').addClass('switch-on');
+                }
+                else {
+                    $('#draftModalUrgent').removeAttr('checked');
+                    var div = $('#draftModalUrgent').closest('div');
+                    div.removeClass('switch-on').addClass('switch-off');
+                }
+            });
+        });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.inbound .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#reply-btn').removeClass("hidden");
+                    $('#inbox-trash-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var receiver = $('.data-receiver[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailInboundId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("From: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+
+                    $('#ReplyModalImg').attr('src', profile);
+                    $('#ReplyModalLabel').text("Reply to " + name);
+                    $('#ReplyModalReceiver').val(receiver);
+                    $('#OriginalMsg').text(content);
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.outbound .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#outbox-trash-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailOutboundId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("To: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.trashIn .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var receiver = $('.data-receiver[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailInTrashId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("From: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+
+                    $('#ReplyModalImg').attr('src', profile);
+                    $('#ReplyModalLabel').text("Reply to " + name);
+                    $('#ReplyModalReceiver').val(receiver);
+                    $('#OriginalMsg').text(content);
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.trashOut .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#outbox-delete-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailOutTrashId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("To: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+                });
+            });
+    </script>
+}
+
+    <div class="col-md-3">
         <section class="panel">
             <div class="panel-body">
                 <a href="#" class="btn btn-theme" style="width: 100%; padding: 10px; margin-bottom: 15px" data-toggle="modal" data-target="#ComposeModal">
@@ -95,7 +509,7 @@
                 <ul class="nav nav-pills nav-stacked labels-info" style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
                     @foreach (var user in ViewBag.Users)
                     {
-                        <li><a href="#" class="row msg-users" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2px" data-toggle="modal" data-target="#Modal-@user.Id"> <div class="col-md-3"><img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 50px; height: 50px" /></div><p class="col-md-9" style="margin-top: 8px; margin-bottom: 0px"><strong style="font-size: 14px">@user.DisplayName</strong><br /><span class="msg-users-pos"><em>@user.Position.PositionName</em></span></p></a></li>
+                        <li><a href="#" class="row msg-users" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2px" data-toggle="modal" data-target="#Modal-@user.Id"> <div class="col-md-3"><img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 50px; height: 50px" /></div><p class="col-md-9" style="margin-top: 8px; margin-bottom: 0px"><strong style="font-size: 14px">@user.DisplayName</strong><br /><span class="msg-users-pos"><em style="font-size: 10px">@user.Position.PositionName</em></span></p></a></li>
                         <!-- Modal -->
                         <div class="modal fade" id="Modal-@user.Id" tabindex="-1" role="dialog" aria-labelledby="ModalLabel-@user.Id" aria-hidden="true">
                             <div class="modal-dialog">
@@ -161,7 +575,7 @@
             </div>
         </section>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
         <section class="panel" style="padding-right: 20px; padding-left: 20px; padding-bottom: 5px;">
             <div id="inbox-table" class="widget widget-table">
             @using (Html.BeginForm("UpdateInbox", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -842,415 +1256,3 @@
     </section>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            $('#messages').addClass("active");
-
-            $('#datatable-basic-scrolling1').DataTable({
-                "iDisplayLength": 25,
-                "aaSorting": [],
-                "bSort": false,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                "language": {
-                    "emptyTable": "No messages in your inbox",
-                    "infoEmpty": ""
-                }               
-            });
-            $('#datatable-basic-scrolling2').DataTable({
-                "iDisplayLength": 25,
-                "aaSorting": [],
-                "bSort": false,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                "language": {
-                    "emptyTable": "No messages in your outbox",
-                    "infoEmpty": ""
-                }               
-            });
-            $('#datatable-basic-scrolling3').DataTable({
-                "iDisplayLength": 25,
-                "aaSorting": [],
-                "bSort": false,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                "language": {
-                    "emptyTable": "No messages saved as drafts",
-                    "infoEmpty": ""
-                }                
-            });
-            $('#datatable-basic-scrolling4').DataTable({
-                "iDisplayLength": 10,
-                "aaSorting": [],
-                "bSort": false,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                "language": {
-                    "emptyTable": "No trash from inbox",
-                    "infoEmpty": ""
-                }               
-            });
-            $('#datatable-basic-scrolling5').DataTable({
-                "iDisplayLength": 10,
-                "aaSorting": [],
-                "bSort": false,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                "language": {
-                    "emptyTable": "No trash from outbox",
-                    "infoEmpty": ""
-                }                
-            });          
-        });
-    </script>
-    <script>
-        $(function () {
-            $('.inbound .message-rows').bind("click", function () {
-                $('html, body').animate({ scrollTop: 0 });
-                return false;
-            });
-            $('.outbound .message-rows').bind("click", function () {
-                $('html, body').animate({ scrollTop: 0 });
-                return false;
-            });
-            $('.trashIn .message-rows').bind("click", function () {
-                $('html, body').animate({ scrollTop: 0 });
-                return false;
-            });
-            $('.trashOut .message-rows').bind("click", function () {
-                $('html, body').animate({ scrollTop: 0 });
-                return false;
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $("#outbox").click(function () { 
-                $('#outbox').addClass("active");
-                $('#inbox').removeClass("active");
-                $('#drafts').removeClass("active");
-                $('#trash').removeClass("active");
-
-                $('#outbox-table').removeClass("hidden");
-                $('#inbox-table').addClass("hidden");
-                $('#draft-table').addClass("hidden");
-                $('#trash-table').addClass("hidden");
-                $('#inboundDetail').addClass("hidden");
-            });
-            $("#drafts").click(function () {
-                $('#drafts').addClass("active");
-                $('#inbox').removeClass("active");
-                $('#outbox').removeClass("active");
-                $('#trash').removeClass("active");
-
-                $('#draft-table').removeClass("hidden");
-                $('#inbox-table').addClass("hidden");
-                $('#outbox-table').addClass("hidden");
-                $('#trash-table').addClass("hidden");
-                $('#inboundDetail').addClass("hidden");
-            });
-            $("#trash").click(function () {
-                $('#trash').addClass("active");
-                $('#inbox').removeClass("active");
-                $('#drafts').removeClass("active");
-                $('#outbox').removeClass("active");
-
-                $('#trash-table').removeClass("hidden");
-                $('#inbox-table').addClass("hidden");
-                $('#draft-table').addClass("hidden");
-                $('#outbox-table').addClass("hidden");
-                $('#inboundDetail').addClass("hidden");
-            });
-            $("#inbox").click(function () {
-                $('#inbox').addClass("active");
-                $('#outbox').removeClass("active");
-                $('#drafts').removeClass("active");
-                $('#trash').removeClass("active");
-
-                $('#inbox-table').removeClass("hidden");
-                $('#outbox-table').addClass("hidden");
-                $('#draft-table').addClass("hidden");
-                $('#trash-table').addClass("hidden");
-                $('#inboundDetail').addClass("hidden");
-            });
-        });
-    </script>
-    <script>
-            $(document).ready(function () {
-                $('#markAllRead').click(function () {
-                    $('.inbox-unread').attr('checked','checked');
-                });
-
-                $('#unmarkAllRead').click(function () {
-                    $('.inbox-unread').removeAttr('checked');
-                });
-
-                $('#markAllDrafts').click(function () {
-                    $('.draft-delete').attr('checked','checked');
-                });
-
-                $('#unmarkAllDrafts').click(function () {
-                    $('.draft-delete').removeAttr('checked');
-                });
-
-                $('#markAllInTrash').click(function () {
-                    $('.intrash-delete').attr('checked','checked');
-                });
-
-                $('#unmarkAllInTrash').click(function () {
-                    $('.intrash-delete').removeAttr('checked');
-                });
-
-                $('#markAllOutTrash').click(function () {
-                    $('.outtrash-delete').attr('checked','checked');
-                });
-
-                $('#unmarkAllOutTrash').click(function () {
-                    $('.outtrash-delete').removeAttr('checked');
-                });
-            });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#draft-rows .message-rows').click(function () {
-                var id = $(this).attr('data-id');
-                var profile = $('.data-profile[data-id="' + id + '"]').val();
-                var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
-                var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
-                var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
-                var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
-                //var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
-
-                $('#draftModalId').val(id);
-                $('#draftModalImg').attr('src', profile);
-                $('#draftModalSubject').val(subject);
-                $('#draftModalContent').text(content);
-                $('#DraftModalLabel').text("Finish New Message for " + name);
-
-                if (isUrgent == "true") {
-                    $('#draftModalUrgent').attr('checked', 'checked');
-                    var div = $('#draftModalUrgent').closest('div');
-                    div.removeClass('switch-off').addClass('switch-on');
-                }
-                else {
-                    $('#draftModalUrgent').removeAttr('checked');
-                    var div = $('#draftModalUrgent').closest('div');
-                    div.removeClass('switch-on').addClass('switch-off');
-                }
-            });
-        });
-    </script>
-    <script>
-            $(document).ready(function () {
-                $('.inbound .message-rows').click(function () {
-                    $('#inboundDetail').removeClass("hidden");
-                    $('#outbox-table').addClass("hidden");
-                    $('#inbox-table').addClass("hidden");
-                    $('#draft-table').addClass("hidden");
-                    $('#trash-table').addClass("hidden");
-
-                    $('#outbox-trash-btn').addClass("hidden");
-                    $('#outbox-delete-btn').addClass("hidden");
-                    $('#inbox-delete-btn').addClass("hidden");
-                    $('#reply-btn').removeClass("hidden");
-                    $('#inbox-trash-btn').removeClass("hidden");
-
-                    var id = $(this).attr('data-id');
-                    var profile = $('.data-profile[data-id="' + id + '"]').val();
-                    var receiver = $('.data-receiver[data-id="' + id + '"]').val();
-                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
-                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
-                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
-                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
-                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
-                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
-                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
-                    var shortFile = short.substring(14, short.length);
-
-                    $('#detailInboundId').val(id);
-                    $('#detailInboundImg').attr('src', profile);             
-                    $('#detailInboundSubject').text(subject);
-                    $('#detailInboundContent').text(content);
-                    $('#detailInboundFrom').text("From: " + name);
-                    $('#detailInboundSent').text(sent);
-                    $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(shortFile);
-
-                    if (isUrgent == "true") {
-                        $('#detailInboundUrgent').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailInboundUrgent').addClass("hidden");
-                    }
-
-                    if (file != "#") {
-                        $('#detailFile').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailFile').addClass("hidden");
-                    }
-
-                    $('#ReplyModalImg').attr('src', profile);
-                    $('#ReplyModalLabel').text("Reply to " + name);
-                    $('#ReplyModalReceiver').val(receiver);
-                    $('#OriginalMsg').text(content);
-                });
-            });
-    </script>
-    <script>
-            $(document).ready(function () {
-                $('.outbound .message-rows').click(function () {
-                    $('#inboundDetail').removeClass("hidden");
-                    $('#outbox-table').addClass("hidden");
-                    $('#inbox-table').addClass("hidden");
-                    $('#draft-table').addClass("hidden");
-                    $('#trash-table').addClass("hidden");
-
-                    $('#reply-btn').addClass("hidden");
-                    $('#inbox-trash-btn').addClass("hidden");
-                    $('#outbox-delete-btn').addClass("hidden");
-                    $('#inbox-delete-btn').addClass("hidden");
-                    $('#outbox-trash-btn').removeClass("hidden");
-
-                    var id = $(this).attr('data-id');
-                    var profile = $('.data-profile[data-id="' + id + '"]').val();
-                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
-                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
-                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
-                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
-                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
-                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
-                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
-                    var shortFile = short.substring(14, short.length);
-
-                    $('#detailOutboundId').val(id);
-                    $('#detailInboundImg').attr('src', profile);
-                    $('#detailInboundSubject').text(subject);
-                    $('#detailInboundContent').text(content);
-                    $('#detailInboundFrom').text("To: " + name);
-                    $('#detailInboundSent').text(sent);
-                    $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(shortFile);
-
-                    if (isUrgent == "true") {
-                        $('#detailInboundUrgent').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailInboundUrgent').addClass("hidden");
-                    }
-
-                    if (file != "#") {
-                        $('#detailFile').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailFile').addClass("hidden");
-                    }
-                });
-            });
-    </script>
-    <script>
-            $(document).ready(function () {
-                $('.trashIn .message-rows').click(function () {
-                    $('#inboundDetail').removeClass("hidden");
-                    $('#outbox-table').addClass("hidden");
-                    $('#inbox-table').addClass("hidden");
-                    $('#draft-table').addClass("hidden");
-                    $('#trash-table').addClass("hidden");
-
-                    $('#reply-btn').addClass("hidden");
-                    $('#inbox-trash-btn').addClass("hidden");
-                    $('#outbox-trash-btn').addClass("hidden");
-                    $('#outbox-delete-btn').addClass("hidden");
-                    $('#inbox-delete-btn').removeClass("hidden");
-
-                    var id = $(this).attr('data-id');
-                    var profile = $('.data-profile[data-id="' + id + '"]').val();
-                    var receiver = $('.data-receiver[data-id="' + id + '"]').val();
-                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
-                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
-                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
-                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
-                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
-                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
-                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
-                    var shortFile = short.substring(14, short.length);
-
-                    $('#detailInTrashId').val(id);
-                    $('#detailInboundImg').attr('src', profile);
-                    $('#detailInboundSubject').text(subject);
-                    $('#detailInboundContent').text(content);
-                    $('#detailInboundFrom').text("From: " + name);
-                    $('#detailInboundSent').text(sent);
-                    $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(shortFile);
-
-                    if (isUrgent == "true") {
-                        $('#detailInboundUrgent').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailInboundUrgent').addClass("hidden");
-                    }
-
-                    if (file != "#") {
-                        $('#detailFile').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailFile').addClass("hidden");
-                    }
-
-                    $('#ReplyModalImg').attr('src', profile);
-                    $('#ReplyModalLabel').text("Reply to " + name);
-                    $('#ReplyModalReceiver').val(receiver);
-                    $('#OriginalMsg').text(content);
-                });
-            });
-    </script>
-    <script>
-            $(document).ready(function () {
-                $('.trashOut .message-rows').click(function () {
-                    $('#inboundDetail').removeClass("hidden");
-                    $('#outbox-table').addClass("hidden");
-                    $('#inbox-table').addClass("hidden");
-                    $('#draft-table').addClass("hidden");
-                    $('#trash-table').addClass("hidden");
-
-                    $('#reply-btn').addClass("hidden");
-                    $('#outbox-trash-btn').addClass("hidden");
-                    $('#inbox-trash-btn').addClass("hidden");
-                    $('#inbox-delete-btn').addClass("hidden");
-                    $('#outbox-delete-btn').removeClass("hidden");
-
-                    var id = $(this).attr('data-id');
-                    var profile = $('.data-profile[data-id="' + id + '"]').val();
-                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
-                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
-                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
-                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
-                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
-                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
-                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
-                    var shortFile = short.substring(14, short.length);
-
-                    $('#detailOutTrashId').val(id);
-                    $('#detailInboundImg').attr('src', profile);
-                    $('#detailInboundSubject').text(subject);
-                    $('#detailInboundContent').text(content);
-                    $('#detailInboundFrom').text("To: " + name);
-                    $('#detailInboundSent').text(sent);
-                    $('#detailInboundFile').attr('href', file);
-                    $('#detailInboundFile').text(shortFile);
-
-                    if (isUrgent == "true") {
-                        $('#detailInboundUrgent').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailInboundUrgent').addClass("hidden");
-                    }
-
-                    if (file != "#") {
-                        $('#detailFile').removeClass("hidden");
-                    }
-                    else {
-                        $('#detailFile').addClass("hidden");
-                    }
-                });
-            });
-    </script>
-}

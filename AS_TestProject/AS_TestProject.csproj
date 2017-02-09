@@ -519,6 +519,7 @@
     <Content Include="assets\img\ReimbursementAlt.png" />
     <Content Include="assets\img\ScheduleExemption.png" />
     <Content Include="assets\img\SchedulingForm.png" />
+    <Content Include="assets\img\sisense.jpg" />
     <Content Include="assets\img\sisense.png" />
     <Content Include="assets\img\StatusChange.png" />
     <Content Include="assets\img\sun-icon.png" />
@@ -800,6 +801,7 @@
     <Content Include="Views\Reporting\Index.cshtml" />
     <Content Include="Views\Reporting\TransfersByEmployee.cshtml" />
     <Content Include="Views\Quality\EvaluationStats.cshtml" />
+    <Content Include="Views\Shared\_RightNavHidden.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

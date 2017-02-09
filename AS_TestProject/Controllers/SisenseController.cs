@@ -16,9 +16,9 @@ namespace AS_TestProject.Controllers
     public class SisenseController : UserNames
     {
         // GET: Sisense
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }
