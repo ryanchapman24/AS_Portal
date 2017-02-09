@@ -148,7 +148,7 @@
                                                 }
                                                 @if (User.IsInRole("Payroll") || User.IsInRole("Admin"))
                                                 {
-                                                    <td><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
                                                 }
                                             </tr>
                                         }
@@ -290,7 +290,7 @@
                                                 }
                                                 @if (User.IsInRole("Payroll"))
                                                 {
-                                                    <td><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
                                                 }
                                                 else
                                                 {

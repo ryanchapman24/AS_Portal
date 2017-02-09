@@ -1208,9 +1208,10 @@ PANELS CONFIGURATIONS
 
 /*Sisense*/
 .sisense {
-	background: url(../img/sisense.png) no-repeat center top;
+	background: url(../img/sisense.jpg) no-repeat center top;
 	text-align: center;
 	background-position: center center;
+    background-size: cover;
 }
 .sisense i {
 	color: white;

@@ -200,9 +200,8 @@
                                                 <th>First</th>
                                                 <th style="width: 10%">Title</th>
                                                 <th>Site</th>
-                                                <th style="width: 15%">Address</th>
-                                                <th style="width: 10%">Email</th>
-                                                <th>Phone</th>
+                                                @*<th style="width: 15%">Address</th>*@
+                                                <th style="width: 10%">Contact</th>
                                                 <th style="width: 60px">Action</th>
                                             }
                                             else
@@ -227,12 +226,15 @@
                                                     <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
                                                     <td>@employee.Position.PositionName</td>
                                                     <td>@employee.Site.SiteName</td>
-                                                    <td class="text-nowrap">
+                                                    @*<td class="text-nowrap">
                                                         @employee.AddressLine1 @employee.AddressLine2<br />
                                                         @employee.City, @employee.State @employee.ZipCode
-                                                    </td>
-                                                    <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
-                                                    <td class="text-nowrap" style="font-size: 11px">
+                                                    </td>*@
+                                                    <td>
+                                                        @if (employee.EmailAddress != null && employee.EmailAddress.Length > 0)
+                                                        {
+                                                            <a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a><br />
+                                                        }
                                                         <i class="fa fa-phone"></i> @employee.HomePhone<br />
                                                         <i class="fa fa-mobile"></i> @employee.CellPhone
                                                     </td>
@@ -461,9 +463,8 @@
                                                 <th>First</th>
                                                 <th style="width: 10%">Title</th>
                                                 <th>Site</th>
-                                                <th style="width: 15%">Address</th>
-                                                <th style="width: 10%">Email</th>
-                                                <th>Phone</th>
+                                                @*<th style="width: 15%">Address</th>*@
+                                                <th style="width: 10%">Contact</th>
                                                 <th style="width: 60px">Action</th>
                                             }
                                             else
@@ -488,12 +489,15 @@
                                                     <td><strong style="color: #29AAE3">@employee.FirstName</strong></td>
                                                     <td>@employee.Position.PositionName</td>
                                                     <td>@employee.Site.SiteName</td>
-                                                    <td class="text-nowrap">
+                                                    @*<td class="text-nowrap">
                                                         @employee.AddressLine1 @employee.AddressLine2<br />
                                                         @employee.City, @employee.State @employee.ZipCode
-                                                    </td>
-                                                    <td><a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a></td>
-                                                    <td class="text-nowrap" style="font-size: 11px">
+                                                    </td>*@
+                                                    <td>
+                                                        @if (employee.EmailAddress != null && employee.EmailAddress.Length > 0)
+                                                        {
+                                                            <a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a><br />
+                                                        }
                                                         <i class="fa fa-phone"></i> @employee.HomePhone<br />
                                                         <i class="fa fa-mobile"></i> @employee.CellPhone
                                                     </td>

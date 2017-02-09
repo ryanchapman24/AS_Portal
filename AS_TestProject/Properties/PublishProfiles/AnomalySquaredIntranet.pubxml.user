@@ -67,7 +67,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>12/08/2016 16:23:59</publishTime>
+      <publishTime>02/09/2017 16:20:44</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -486,6 +486,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/img/SchedulingForm.png">
       <publishTime>01/04/2017 17:12:49</publishTime>
     </File>
+    <File Include="assets/img/sisense.jpg">
+      <publishTime>02/09/2017 15:10:36</publishTime>
+    </File>
     <File Include="assets/img/sisense.png">
       <publishTime>11/17/2016 11:21:16</publishTime>
     </File>
@@ -781,7 +784,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 11:24:21</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>01/30/2017 10:57:36</publishTime>
+      <publishTime>02/09/2017 16:25:19</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1555,7 +1558,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 20:50:18</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>01/24/2017 16:37:28</publishTime>
+      <publishTime>02/09/2017 14:12:39</publishTime>
     </File>
     <File Include="Views/Employees/Create.cshtml">
       <publishTime>07/19/2016 10:18:45</publishTime>
@@ -1564,7 +1567,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/12/2016 13:26:14</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>12/22/2016 13:44:14</publishTime>
+      <publishTime>02/09/2017 14:29:42</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>12/22/2016 13:50:19</publishTime>
@@ -1618,10 +1621,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:48:04</publishTime>
     </File>
     <File Include="Views/Home/Directory.cshtml">
-      <publishTime>11/16/2016 15:07:39</publishTime>
+      <publishTime>02/09/2017 12:56:36</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
-      <publishTime>02/02/2017 15:14:24</publishTime>
+      <publishTime>02/08/2017 12:05:01</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
       <publishTime>01/02/2017 11:58:31</publishTime>
@@ -1678,7 +1681,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2016 10:09:08</publishTime>
     </File>
     <File Include="Views/Messages/Index.cshtml">
-      <publishTime>12/12/2016 17:06:11</publishTime>
+      <publishTime>02/09/2017 15:49:05</publishTime>
     </File>
     <File Include="Views/Payroll/Create.cshtml">
       <publishTime>07/12/2016 12:48:24</publishTime>
@@ -1687,7 +1690,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/05/2016 11:34:50</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>11/29/2016 14:12:45</publishTime>
+      <publishTime>02/09/2017 16:02:57</publishTime>
     </File>
     <File Include="Views/Quality/CFRStats.cshtml">
       <publishTime>01/20/2017 12:06:10</publishTime>
@@ -1727,6 +1730,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>07/25/2016 12:22:31</publishTime>
+    </File>
+    <File Include="Views/Shared/_RightNavHidden.cshtml">
+      <publishTime>02/09/2017 15:47:12</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
       <publishTime>12/01/2016 13:53:56</publishTime>
