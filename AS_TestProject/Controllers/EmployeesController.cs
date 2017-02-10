@@ -2219,6 +2219,21 @@ namespace AS_TestProject.Controllers
                 eFile.File = gPic;
                 db.EmployeeFiles.Add(eFile);
                 db.SaveChanges();
+
+                var emp = mb.Employees.First(e => e.EmployeeID == empId);
+
+                foreach (var HRuser in db.Users.Where(u => u.Roles.Any(r => r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348")))
+                {
+                    Notification n = new Notification()
+                    {
+                        EmployeeID = empId,
+                        NotificationTypeId = 1,
+                        Created = System.DateTime.Now,
+                        Description = "A new employee file was added for " + emp.FirstName + " " + emp.LastName + ".",
+                        Additional = fileName + Path.GetExtension(doc.FileName),
+                        NotifyUserId = user.Id,
+                    };
+                }
             }
 
             return RedirectToAction("Details", "Employees", new { id = empId });

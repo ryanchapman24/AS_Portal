@@ -25,9 +25,11 @@ namespace AS_TestProject.Models
         public ApplicationUser()
         {
             this.Tasks = new HashSet<WorkTask>();
+            this.Notifications = new HashSet<Notification>();
         }
 
         public virtual ICollection<WorkTask> Tasks { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -60,5 +62,7 @@ namespace AS_TestProject.Models
         public DbSet<InboundMessage> InboundMessages { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<EmployeeFile> EmployeeFiles { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<NotificationType> NotificationTypes { get; set; }
     }
 }
