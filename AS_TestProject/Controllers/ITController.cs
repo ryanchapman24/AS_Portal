@@ -56,7 +56,7 @@ namespace AS_TestProject.Controllers
                 db.Documents.Add(document);
                 db.SaveChanges();
 
-                foreach (var ITuser in db.Users.Where(u => u.Roles.Any(r => r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348")))
+                foreach (var ITuser in db.Users.Where(u => u.Roles.Any(r => r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348")).ToList())
                 {
                     Notification n = new Notification()
                     {

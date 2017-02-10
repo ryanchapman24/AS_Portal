@@ -2222,7 +2222,7 @@ namespace AS_TestProject.Controllers
 
                 var emp = mb.Employees.First(e => e.EmployeeID == empId);
 
-                foreach (var HRuser in db.Users.Where(u => u.Roles.Any(r => r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348")))
+                foreach (var HRuser in db.Users.Where(u => u.Roles.Any(r => r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348")).ToList())
                 {
                     Notification n = new Notification()
                     {
