@@ -708,5 +708,55 @@ namespace AS_TestProject.Controllers
 
             return RedirectToAction("Gallery", "Home");
         }
+        
+        public ActionResult DismissNotification(int? tId, int? nId, bool dA)
+        {
+            var mb = new ReportEntities();
+            var user = User.Identity.GetUserId();
+            var notification = db.Notifications.Find(nId);
+
+            if (dA && nId == null && tId == null)
+            {
+                var notes = db.Notifications.Where(u => u.NotifyUserId == user);
+                foreach (var note in notes)
+                {
+                    note.New = false;
+                }
+                db.SaveChanges();
+                return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
+            }
+
+            if (tId != null)
+            {
+                if (tId == 1)
+                {
+                    notification.New = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Employees", new { id = notification.EmployeeID });
+                }
+                else if (tId == 2)
+                {
+                    notification.New = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "IT");
+                }
+                else if (tId == 3)
+                {
+                    notification.New = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "HR");
+                }
+                else
+                {
+                    return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
+                }
+            }
+            else
+            {
+                notification.New = false;
+                db.SaveChanges();
+                return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
+            }
+        }
     }
 }

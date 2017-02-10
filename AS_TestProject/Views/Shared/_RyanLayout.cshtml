@@ -525,7 +525,7 @@
                             {
                                 if (notif.NotificationTypeId == 1)
                                 {
-                                <a href="@Url.Action("Details","Employees", new { id = notif.EmployeeID })">
+                                <a href="@Url.Action("DismissNotification", "Home", new { tId = 1, nId = notif.Id, dA = false })">
                                     <div class="desc" style="display: flex">
                                         <div class="thumb" style="align-items: stretch">
                                             <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
@@ -541,7 +541,8 @@
                                                     <muted style="font-size: 11px">@notif.Created.ToString("g")</muted><br />
                                                 }
                                                 <span style="color: #666666">@notif.Description</span><br />
-                                                <span style="color: #29AAE3">@notif.Additional</span>
+                                                <span style="color: #29AAE3">@notif.Additional</span><br />
+                                                <span>@notif.New (@notif.Id)</span>
                                             </p>
                                         </div>
                                     </div>
@@ -550,7 +551,7 @@
 
                                 if (notif.NotificationTypeId == 2)
                                 {
-                                <a href="@Url.Action("Index","IT")">
+                                <a href="@Url.Action("DismissNotification", "Home", new { tId = 2, nId = notif.Id, dA = false })">
                                     <div class="desc" style="display: flex">
                                         <div class="thumb" style="align-items: stretch">
                                             <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
@@ -566,7 +567,8 @@
                                                     <muted style="font-size: 11px">@notif.Created.ToString("g")</muted><br />
                                                 }
                                                 <span style="color: #666666">@notif.Description</span><br />
-                                                <span style="color: #29AAE3">@notif.Additional</span>
+                                                <span style="color: #29AAE3">@notif.Additional</span><br />
+                                                <span>@notif.New (@notif.Id)</span>
                                             </p>
                                         </div>
                                     </div>
@@ -575,7 +577,7 @@
 
                                 if (notif.NotificationTypeId == 3)
                                 {
-                                <a href="@Url.Action("Index","HR")">
+                                <a href="@Url.Action("DismissNotification", "Home", new { tId = 3, nId = notif.Id, dA = false })">
                                     <div class="desc" style="display: flex">
                                         <div class="thumb" style="align-items: stretch">
                                             <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
@@ -591,7 +593,8 @@
                                                     <muted style="font-size: 11px">@notif.Created.ToString("g")</muted><br />
                                                 }
                                                 <span style="color: #666666">@notif.Description</span><br />
-                                                <span style="color: #29AAE3">@notif.Additional</span>
+                                                <span style="color: #29AAE3">@notif.Additional</span><br />
+                                                <span>@notif.New (@notif.Id)</span>
                                             </p>
                                         </div>
                                     </div>

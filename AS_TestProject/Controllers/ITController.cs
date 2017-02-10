@@ -83,7 +83,7 @@ namespace AS_TestProject.Controllers
             db.Documents.Remove(document);
             db.SaveChanges();
 
-            foreach (var notif in db.Notifications.Where(n => n.CorrespondingItemId == document.Id && n.NotificationTypeId == 2))
+            foreach (var notif in db.Notifications.Where(n => n.CorrespondingItemId == document.Id && n.NotificationTypeId == 2).ToList())
             {
                 db.Notifications.Remove(notif);
                 db.SaveChanges();

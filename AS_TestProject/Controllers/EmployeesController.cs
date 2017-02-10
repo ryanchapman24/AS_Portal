@@ -2250,7 +2250,7 @@ namespace AS_TestProject.Controllers
             db.EmployeeFiles.Remove(eFile);
             db.SaveChanges();
 
-            foreach (var notif in db.Notifications.Where(n => n.CorrespondingItemId == eFile.Id && n.NotificationTypeId == 1))
+            foreach (var notif in db.Notifications.Where(n => n.CorrespondingItemId == eFile.Id && n.NotificationTypeId == 1).ToList())
             {
                 db.Notifications.Remove(notif);
                 db.SaveChanges();
