@@ -55,6 +55,21 @@ namespace AS_TestProject.Controllers
 
                 db.Documents.Add(document);
                 db.SaveChanges();
+
+                foreach (var ITuser in db.Users.Where(u => u.Roles.Any(r => r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348")))
+                {
+                    Notification n = new Notification()
+                    {
+                        NotificationTypeId = 2,
+                        Created = System.DateTime.Now,
+                        Description = "A new file was added to the IT Hub.",
+                        Additional = fileName + Path.GetExtension(doc.FileName),
+                        NotifyUserId = ITuser.Id,
+                        New = true,
+                    };
+                    db.Notifications.Add(n);
+                    db.SaveChanges();
+                }
             }
 
             return RedirectToAction("Index", "IT");

@@ -14,6 +14,7 @@ namespace AS_TestProject.Models
         public string Additional { get; set; }
         public int NotificationTypeId { get; set; }
         public string NotifyUserId { get; set; }
+        public bool New { get; set; }
 
         public virtual ApplicationUser NotifyUser { get; set; }
         public virtual NotificationType NotificationType { get; set; }

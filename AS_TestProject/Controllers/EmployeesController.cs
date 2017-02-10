@@ -2231,8 +2231,11 @@ namespace AS_TestProject.Controllers
                         Created = System.DateTime.Now,
                         Description = "A new employee file was added for " + emp.FirstName + " " + emp.LastName + ".",
                         Additional = fileName + Path.GetExtension(doc.FileName),
-                        NotifyUserId = user.Id,
+                        NotifyUserId = HRuser.Id,
+                        New = true,
                     };
+                    db.Notifications.Add(n);
+                    db.SaveChanges();
                 }
             }
 
