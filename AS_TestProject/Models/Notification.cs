@@ -13,6 +13,7 @@ namespace AS_TestProject.Models
         public string Description { get; set; }
         public string Additional { get; set; }
         public int NotificationTypeId { get; set; }
+        public int? CorrespondingItemId { get; set; }
         public string NotifyUserId { get; set; }
         public bool New { get; set; }
 

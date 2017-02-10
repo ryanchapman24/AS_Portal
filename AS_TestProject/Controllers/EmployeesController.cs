@@ -2231,6 +2231,7 @@ namespace AS_TestProject.Controllers
                         Created = System.DateTime.Now,
                         Description = "A new employee file was added for " + emp.FirstName + " " + emp.LastName + ".",
                         Additional = fileName + Path.GetExtension(doc.FileName),
+                        CorrespondingItemId = eFile.Id,
                         NotifyUserId = HRuser.Id,
                         New = true,
                     };
@@ -2249,6 +2250,11 @@ namespace AS_TestProject.Controllers
             db.EmployeeFiles.Remove(eFile);
             db.SaveChanges();
 
+            foreach (var notif in db.Notifications.Where(n => n.CorrespondingItemId == eFile.Id && n.NotificationTypeId == 1))
+            {
+                db.Notifications.Remove(notif);
+                db.SaveChanges();
+            }
             return RedirectToAction("Details", "Employees", new { id = empId });
         }
 

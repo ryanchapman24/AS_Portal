@@ -517,153 +517,125 @@
                               </div><!-- --/panel ---->
                           </div>
                       </div>
-                      @*<h3>NOTIFICATIONS</h3>
-
-                       First Action 
-                        @foreach (var notif in ViewBag.Notifications)
-                        {
-                            if (notif.NotificationTypeId == 1)
+                    @if (ViewBag.Notifications.Count > 0)
+                    {
+                        <h3>NOTIFICATIONS</h3>
+                        <div style="max-height: 415px; overflow-y: auto; overflow-x: hidden; margin-bottom: 20px">
+                            @foreach(var notif in ViewBag.Notifications)
                             {
+                                if (notif.NotificationTypeId == 1)
+                                {
                                 <a href="@Url.Action("Details","Employees", new { id = notif.EmployeeID })">
-                                    <div class="desc">
-                                        <div class="thumb">
+                                    <div class="desc" style="display: flex">
+                                        <div class="thumb" style="align-items: stretch">
                                             <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
                                         </div>
-                                        <div class="details">
+                                        <div class="details" style="align-items: stretch; word-break: break-word">
                                             <p>
                                                 @if (ViewBag.Site == "Wichita")
                                                 {
-                                                    <muted>@notif.Created.AddHours(-1).ToString("g")</muted><br />
+                                                    <muted style="font-size: 11px">@notif.Created.AddHours(-1).ToString("g")</muted><br />
                                                 }
                                                 else
                                                 {
-                                                    <muted>@notif.Created.ToString("g")</muted><br />
+                                                    <muted style="font-size: 11px">@notif.Created.ToString("g")</muted><br />
                                                 }
-                                                @notif.Description<br />
+                                                <span style="color: #666666">@notif.Description</span><br />
                                                 <span style="color: #29AAE3">@notif.Additional</span>
                                             </p>
                                         </div>
                                     </div>
                                 </a>
-                            }
-                            if (notif.NotificationTypeId == 2)
-                            {
-                                <a>
-                                    <div class="desc">
-                                        <div class="thumb">
-                                            <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
-                                        </div>
-                                        <div class="details">
-                                            <p>
-                                                <muted>2 Minutes Ago</muted><br />
-                                                uploaded a new file.<br />
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            }
-                            if (notif.NotificationTypeId == 3)
-                            {
-                                <a>
-                                    <div class="desc">
-                                        <div class="thumb">
-                                            <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
-                                        </div>
-                                        <div class="details">
-                                            <p>
-                                                <muted>2 Minutes Ago</muted><br />
-                                                uploaded a new file.<br />
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            }
-                        }*@
-                      
-                      @*<!-- Second Action -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <i class="fa fa-exclamation-circle" style="color: #29AAE3; font-size: 24px"></i>
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <muted>3 Hours Ago</muted><br />
-                                  <a href="#">Diana Kennedy</a> sent you a message.<br />
-                              </p>
-                          </div>
-                      </div>
-                      <!-- Third Action -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <i class="fa fa-exclamation-circle" style="color: #29AAE3; font-size: 24px"></i>
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <muted>7 Hours Ago</muted><br />
-                                  <a href="#">Brandon Page</a> added a new form.<br />
-                              </p>
-                          </div>
-                      </div>
-                      <!-- Fourth Action -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <i class="fa fa-exclamation-circle" style="color: #29AAE3; font-size: 24px"></i>
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <muted>11 Hours Ago</muted><br />
-                                  <a href="#">Mark Twain</a> posted a photo of you in the gallery.<br />
-                              </p>
-                          </div>
-                      </div>
-                      <!-- Fifth Action -->
-                      <div class="desc">
-                          <div class="thumb">
-                              <i class="fa fa-exclamation-circle" style="color: #29AAE3; font-size: 24px"></i>
-                          </div>
-                          <div class="details">
-                              <p>
-                                  <muted>18 Hours Ago</muted><br />
-                                  <a href="#">Daniel Pratt</a> broke the daily transfer record.<br />
-                              </p>
-                          </div>
-                      </div>*@
+                                }
 
-                      <!-- USERS ONLINE SECTION -->
-                      <h3>TEAM MEMBERS</h3>
-                      <div style="max-height: 815px; overflow-y: auto; overflow-x: hidden">
-                          @foreach (var member in ViewBag.Team)
-                          {
-                            <a href="@Url.Action("ProfilePage", "Home", new { id = member.Id })">
-                                <div class="desc">
-                                    <div class="thumb">
-                                        <img class="img-circle" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",member.ProfilePic)" style="width: 35px; height: 35px">
+                                if (notif.NotificationTypeId == 2)
+                                {
+                                <a href="@Url.Action("Index","IT")">
+                                    <div class="desc" style="display: flex">
+                                        <div class="thumb" style="align-items: stretch">
+                                            <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
+                                        </div>
+                                        <div class="details" style="align-items: stretch; word-break: break-word">
+                                            <p>
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <muted style="font-size: 11px">@notif.Created.AddHours(-1).ToString("g")</muted><br />
+                                                }
+                                                else
+                                                {
+                                                    <muted style="font-size: 11px">@notif.Created.ToString("g")</muted><br />
+                                                }
+                                                <span style="color: #666666">@notif.Description</span><br />
+                                                <span style="color: #29AAE3">@notif.Additional</span>
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="details">
-                                        <p>
-                                            <span><strong>@member.DisplayName</strong></span><br />
-                                            <muted class="text-nowrap">@member.Position.PositionName</muted>
-                                        </p>
+                                </a>
+                                }
+
+                                if (notif.NotificationTypeId == 3)
+                                {
+                                <a href="@Url.Action("Index","HR")">
+                                    <div class="desc" style="display: flex">
+                                        <div class="thumb" style="align-items: stretch">
+                                            <i class="fa fa-file-text" style="color: #29AAE3; font-size: 24px"></i>
+                                        </div>
+                                        <div class="details" style="align-items: stretch; word-break: break-word">
+                                            <p>
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <muted style="font-size: 11px">@notif.Created.AddHours(-1).ToString("g")</muted><br />
+                                                }
+                                                else
+                                                {
+                                                    <muted style="font-size: 11px">@notif.Created.ToString("g")</muted><br />
+                                                }
+                                                <span style="color: #666666">@notif.Description</span><br />
+                                                <span style="color: #29AAE3">@notif.Additional</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                }
+                            }
+                        </div>
+                    }
+
+                            <!-- USERS ONLINE SECTION -->
+                            <h3>TEAM MEMBERS</h3>
+                            <div style="max-height: 815px; overflow-y: auto; overflow-x: hidden">
+                                @foreach (var member in ViewBag.Team)
+                                {
+                                    <a href="@Url.Action("ProfilePage", "Home", new { id = member.Id })">
+                                        <div class="desc">
+                                            <div class="thumb">
+                                                <img class="img-circle" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",member.ProfilePic)" style="width: 35px; height: 35px">
+                                            </div>
+                                            <div class="details">
+                                                <p>
+                                                    <span><strong>@member.DisplayName</strong></span><br />
+                                                    <muted class="text-nowrap">@member.Position.PositionName</muted>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                }
+                            </div>
+                            <!-- CALENDAR-->
+                            <div id="calendar" class="mb" style="margin-top: 20px">
+                                <div class="panel green-panel no-margin">
+                                    <div class="panel-body">
+                                        <div id="date-popover" class="popover top" style="cursor: pointer; display: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                            <div class="arrow"></div>
+                                            <h3 class="popover-title" style="display: none;"></h3>
+                                            <div id="date-popover-content" class="popover-content"></div>
+                                        </div>
+                                        <div id="my-calendar"></div>
                                     </div>
                                 </div>
-                            </a>
-                          }
-                      </div>                    
-                      <!-- CALENDAR-->
-                      <div id="calendar" class="mb" style="margin-top: 20px">
-                          <div class="panel green-panel no-margin">
-                              <div class="panel-body">
-                                  <div id="date-popover" class="popover top" style="cursor: pointer; display: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                      <div class="arrow"></div>
-                                      <h3 class="popover-title" style="display: none;"></h3>
-                                      <div id="date-popover-content" class="popover-content"></div>
-                                  </div>
-                                  <div id="my-calendar"></div>
-                              </div>
-                          </div>
-                      </div><!-- / calendar -->
+                            </div><!-- / calendar -->
 
-                  </div><!-- /col-lg-3 -->
+                        </div><!-- /col-lg-3 -->
               </div><!-- /row -->
           </section>
       </section>

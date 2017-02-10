@@ -64,6 +64,7 @@ namespace AS_TestProject.Controllers
                         Created = System.DateTime.Now,
                         Description = "A new file was added to the HR Hub.",
                         Additional = fileName + Path.GetExtension(doc.FileName),
+                        CorrespondingItemId = document.Id,
                         NotifyUserId = HRuser.Id,
                         New = true,
                     };
@@ -82,6 +83,11 @@ namespace AS_TestProject.Controllers
             db.Documents.Remove(document);
             db.SaveChanges();
 
+            foreach (var notif in db.Notifications.Where(n => n.CorrespondingItemId == document.Id && n.NotificationTypeId == 3))
+            {
+                db.Notifications.Remove(notif);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index", "HR");
         }
     }
