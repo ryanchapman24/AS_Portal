@@ -66,7 +66,7 @@ namespace AS_TestProject.Controllers
                         Additional = fileName + Path.GetExtension(doc.FileName),
                         CorrespondingItemId = document.Id,
                         NotifyUserId = ITuser.Id,
-                        New = true,
+                        New = true
                     };
                     db.Notifications.Add(n);
                     db.SaveChanges();

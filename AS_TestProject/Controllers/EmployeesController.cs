@@ -2233,7 +2233,7 @@ namespace AS_TestProject.Controllers
                         Additional = fileName + Path.GetExtension(doc.FileName),
                         CorrespondingItemId = eFile.Id,
                         NotifyUserId = HRuser.Id,
-                        New = true,
+                        New = true
                     };
                     db.Notifications.Add(n);
                     db.SaveChanges();
