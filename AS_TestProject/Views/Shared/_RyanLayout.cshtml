@@ -520,6 +520,10 @@
                     @if (ViewBag.Notifications.Count > 0)
                     {
                         <h3>NOTIFICATIONS</h3>
+                        if (ViewBag.Notifications.Count > 1)
+                        {
+                            <a href="@Url.Action("DismissNotification", "Home", new { dA = true })"><h3 class="notif-clear-all" style="height: 20px; line-height: 20px; border-left: 1px solid #FE5607 ; border-right: 1px solid #FE5607; border-bottom: 1px solid #FE5607"><strong style="font-size: 10px; color: #FE5607">CLEAR ALL</strong></h3></a>
+                        }
                         <div style="max-height: 415px; overflow-y: auto; overflow-x: hidden; margin-bottom: 20px">
                             @foreach(var notif in ViewBag.Notifications)
                             {

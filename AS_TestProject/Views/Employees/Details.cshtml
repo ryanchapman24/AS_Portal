@@ -1298,7 +1298,14 @@
                                                             <em><small>uploaded by <strong style="color: #FE5607">@eFile.Author.DisplayName</strong></small></em>
                                                         </td>
                                                         <td class="text-nowrap">
-                                                            @eFile.Created.ToString("G")
+                                                            @if (ViewBag.Site == "Wichita")
+                                                            {
+                                                                @eFile.Created.AddHours(-1).ToString("g")
+                                                            }
+                                                            else
+                                                            {
+                                                                @eFile.Created.ToString("g")
+                                                            }
                                                         </td>
                                                         <td>
                                                             <a href="@Url.Action("DeleteEmployeeFile", "Employees", new { id = eFile.Id, empId = ViewBag.EmployeeID })" style="color: #FE5607"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i>Delete</a>
