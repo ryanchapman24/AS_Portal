@@ -2366,3 +2366,11 @@ label {
 .message-rows {
     cursor: pointer;
 }
+
+.notif-clear-all {
+    background: #ffffff !important;
+}
+
+.notif-clear-all:hover {
+    background: #f2f2f2 !important;
+}

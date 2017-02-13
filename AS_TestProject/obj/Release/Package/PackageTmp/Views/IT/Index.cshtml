@@ -27,7 +27,14 @@
                                                 <em><small>uploaded by <strong style="color: #FE5607">@document.Author.DisplayName</strong></small></em>
                                             </td>
                                             <td class="text-nowrap">
-                                                @document.Created.ToString("g")
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    @document.Created.AddHours(-1).ToString("g")
+                                                }
+                                                else
+                                                {
+                                                    @document.Created.ToString("g")
+                                                }
                                             </td>
                                             <td>
                                                 <a href="@Url.Action("DeleteDocument", "IT", new { id = document.Id })" style="color: #FE5607"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i>Delete</a>
