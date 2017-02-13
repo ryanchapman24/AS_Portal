@@ -758,5 +758,12 @@ namespace AS_TestProject.Controllers
                 return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
             }
         }
+
+        public ActionResult NotificationHistory()
+        {
+            var user = User.Identity.GetUserId();
+            ViewBag.NotificationHistory = db.Notifications.Where(n => n.NotifyUserId == user && n.New == false).OrderByDescending(n => n.Id).ToList();
+            return View();
+        }
     }
 }

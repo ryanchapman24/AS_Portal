@@ -236,7 +236,11 @@
                                                             <h6>TRANSFERS</h6>
                                                         </div>
                                                     }
-                                                </div><!-- /row -->                                  
+                                                </div><!-- /row -->
+                                                @if (Model.Id == User.Identity.GetUserId())
+                                                {
+                                                    <p style="margin-left: 10px"><a href="@Url.Action("NotificationHistory","Home")"><i class="fa fa-bolt" style="margin-right: 4px"></i>Notification History</a></p>
+                                                }                                            
                                             </div><!-- --/col-md-6 ---->
                                             <div class="col-md-6 detailed">
                                             @if (Model.Id == User.Identity.GetUserId())

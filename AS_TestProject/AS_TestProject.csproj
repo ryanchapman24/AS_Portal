@@ -804,6 +804,7 @@
     <Content Include="Views\Reporting\TransfersByEmployee.cshtml" />
     <Content Include="Views\Quality\EvaluationStats.cshtml" />
     <Content Include="Views\Shared\_RightNavHidden.cshtml" />
+    <Content Include="Views\Home\NotificationHistory.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
