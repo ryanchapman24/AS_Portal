@@ -1516,5 +1516,12 @@ namespace AS_TestProject.Controllers
             ViewBag.W_EmpsNeedingMoreEvals = employees.Where(e => e.SiteID == 2 && e.TotalCFRsMonth < 8).OrderByDescending(e => e.RemainingCFRsNeeded).ToList();
             return View();
         }
+
+        // GET: Quality/CallCriteria
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult CallCriteria()
+        {           
+            return View();
+        }
     }
 }
