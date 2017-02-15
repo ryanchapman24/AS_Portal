@@ -20,7 +20,14 @@
                 Date of Feedback
             </div>
             <div class="col-md-9">
-                @Model.DateOfFeedback.ToString("g")
+                @if (ViewBag.Site == "Wichita")
+                {
+                    @Model.DateOfFeedback.AddHours(-1).ToString("g")
+                }
+                else
+                {
+                    @Model.DateOfFeedback.ToString("g")
+                }
             </div><br /><br /><br />
 
             <div class="col-md-3 control-label">

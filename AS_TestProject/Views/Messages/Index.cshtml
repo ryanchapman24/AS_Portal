@@ -648,15 +648,36 @@
                                         }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")"><strong style="color: #031B25"><em>@message.Sent.AddHours(-1).ToString("t")</em></strong></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
+                                            }
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)"><strong style="color: #031B25"><em>@message.Sent>AddHours(-1).ToString("M/d/yyyy")</em></strong></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
+                                            }
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))"><strong style="color: #031B25"><em>@message.Sent.ToString("m")</em></strong></td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))"><strong style="color: #031B25"><em>@message.Sent.AddHours(-1).ToString("m")</em></strong></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))"><strong style="color: #031B25"><em>@message.Sent.ToString("m")</em></strong></td>
+                                            }
                                         }
                                         <td></td>
                                     </tr>
@@ -698,15 +719,36 @@
                                         }                                
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            }
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            }
                                         }
                                         <td>
                                             <input class="pull-right" type="checkbox" name="trash" value="@message.Id" />
@@ -772,15 +814,36 @@
                                         }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            }
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent"  data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            }
                                         }
                                         <td>
                                             <input class="pull-right" type="checkbox" name="trash" value="@message.Id" />
@@ -855,15 +918,36 @@
                                         }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("t")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("t")</td>
+                                            }
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("M/d/yyyy")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("m")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("m")</td>
+                                            }
                                         }
                                         <td>
                                             <input class="draft-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
@@ -998,15 +1082,36 @@
                                         }
                                         @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            }
                                         }
                                         else if (message.Sent.Year != todayYear)
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
                                         }
                                         else
                                         {
-                                            <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            }
                                         }
                                         <td>
                                             <input class="intrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
@@ -1080,15 +1185,36 @@
                                             }
                                             @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
                                             {
-                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                                if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                                }
                                             }
                                             else if (message.Sent.Year != todayYear)
                                             {
-                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                                if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                                if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                                }
                                             }
                                             <td>
                                                 <input class="outtrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
