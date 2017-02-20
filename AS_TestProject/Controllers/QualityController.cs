@@ -1467,7 +1467,7 @@ namespace AS_TestProject.Controllers
 
         // GET: Quality/Evals
         [Authorize(Roles = "Admin, Quality")]
-        public ActionResult EvaluationStats()
+        public ActionResult EvaluationCount()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             var now = System.DateTime.Now;
