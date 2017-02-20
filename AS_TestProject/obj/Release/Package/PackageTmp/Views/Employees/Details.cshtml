@@ -244,9 +244,18 @@
 
                                 if (Model.EditTimeStamp != null)
                                 {
-                                    <dd>
-                                        @Model.EditTimeStamp.Value.ToString("g")
-                                    </dd>
+                                    if (ViewBag.Site == "Wichita")
+                                    {
+                                        <dd>
+                                            @Model.EditTimeStamp.Value.AddHours(-1).ToString("g")
+                                        </dd>
+                                    }
+                                    else
+                                    {
+                                        <dd>
+                                            @Model.EditTimeStamp.Value.ToString("g")
+                                        </dd>
+                                    }
                                 }
                                 else
                                 {
@@ -1035,8 +1044,16 @@
                                     {
                                         <tr>
                                             <td class="text-nowrap">
-                                                @item.DateOfFeedback.ToString("g")<br />
-                                                <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    @item.DateOfFeedback.AddHours(-1).ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                                }
+                                                else
+                                                {
+                                                    @item.DateOfFeedback.ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                                }                             
                                             </td>
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
                                             @*<td>@item.C_Calls</td>*@
@@ -1084,8 +1101,16 @@
                                     {
                                         <tr>
                                             <td class="text-nowrap">
-                                                @item.DateOfFeedback.ToString("g")<br />
-                                                <em><small>submitted by <strong style="color: #FE5607">@item.Employee2.FirstName @item.Employee2.LastName</strong></small></em>
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    @item.DateOfFeedback.AddHours(-1).ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee2.FirstName @item.Employee2.LastName</strong></small></em>
+                                                }
+                                                else
+                                                {
+                                                    @item.DateOfFeedback.ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee2.FirstName @item.Employee2.LastName</strong></small></em>
+                                                } 
                                             </td>
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
                                             @*<td>@item.C_Calls</td>*@
@@ -1133,8 +1158,16 @@
                                     {
                                         <tr>
                                             <td class="text-nowrap">
-                                                @item.DateOfFeedback.ToString("g")<br />
-                                                <em><small>submitted by <strong style="color: #FE5607">@item.Employee.FirstName @item.Employee.LastName</strong></small></em>
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    @item.DateOfFeedback.AddHours(-1).ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee.FirstName @item.Employee.LastName</strong></small></em>
+                                                }
+                                                else
+                                                {
+                                                    @item.DateOfFeedback.ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee.FirstName @item.Employee.LastName</strong></small></em>
+                                                }
                                             </td>
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
                                             @*<td>@item.C_Calls</td>*@
@@ -1239,7 +1272,14 @@
                                             <td class="text-nowrap" style="color: #29AAE3"><strong>@item.Reason</strong></td>
                                             @if (item.EditByEmployeeID != null)
                                             {
-                                                <td>@item.Explanation <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee.FirstName @item.Employee.LastName <br> @item.EditTimeStamp.ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <td>@item.Explanation <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee.FirstName @item.Employee.LastName <br> @item.EditTimeStamp.AddHours(-1).ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@item.Explanation <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee.FirstName @item.Employee.LastName <br> @item.EditTimeStamp.ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                }
                                             }
                                             else
                                             {

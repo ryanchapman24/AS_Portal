@@ -802,7 +802,7 @@
     <Content Include="Views\Reporting\TransfersByDomain.cshtml" />
     <Content Include="Views\Reporting\Index.cshtml" />
     <Content Include="Views\Reporting\TransfersByEmployee.cshtml" />
-    <Content Include="Views\Quality\EvaluationStats.cshtml" />
+    <Content Include="Views\Quality\EvaluationCount.cshtml" />
     <Content Include="Views\Shared\_RightNavHidden.cshtml" />
     <Content Include="Views\Home\NotificationHistory.cshtml" />
     <Content Include="Views\Quality\CallCriteria.cshtml" />

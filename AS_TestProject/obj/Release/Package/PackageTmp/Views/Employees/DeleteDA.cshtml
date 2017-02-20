@@ -35,7 +35,7 @@
                 </dt>
 
                 <dd>
-                    @Model.Employee1.FirstName @Model.Employee1.LastName
+                    @Model.Employee.FirstName @Model.Employee.LastName
                 </dd>
 
                 <dt>
@@ -44,9 +44,18 @@
 
                 @if (Model.EditTimeStamp.HasValue)
                 {
-                    <dd>
-                        @Model.EditTimeStamp.Value.ToString("g")
-                    </dd>
+                    if (ViewBag.Site == "Wichita")
+                    {
+                        <dd>
+                            @Model.EditTimeStamp.Value.AddHours(-1).ToString("g")
+                        </dd>
+                    }
+                    else
+                    {
+                        <dd>
+                            @Model.EditTimeStamp.Value.ToString("g")
+                        </dd>
+                    }
                 }
                 else
                 {
