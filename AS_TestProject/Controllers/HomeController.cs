@@ -618,6 +618,58 @@ namespace AS_TestProject.Controllers
             db.Events.Add(calEvent);
             db.SaveChanges();
 
+            if (calEvent.Universal == true)
+            {
+                foreach (var employee in db.Users.ToList())
+                {
+                    if (calEvent.AllDay == true && calEvent.StartDate.Year == calEvent.EndDate.Year && calEvent.StartDate.Month == calEvent.EndDate.Month && calEvent.StartDate.Day == calEvent.EndDate.Day)
+                    {
+                        Notification n = new Notification()
+                        {
+                            NotificationTypeId = 4,
+                            Created = System.DateTime.Now,
+                            Description = "A new universal event was added to your calendar.",
+                            Additional = calEvent.Title + " (" + calEvent.StartDate.ToString("d") + ")",
+                            CorrespondingItemId = calEvent.Id,
+                            NotifyUserId = employee.Id,
+                            New = true
+                        };
+                        db.Notifications.Add(n);
+                        db.SaveChanges();
+                    }
+                    else if (calEvent.AllDay == true && (calEvent.StartDate.Year != calEvent.EndDate.Year || calEvent.StartDate.Month != calEvent.EndDate.Month || calEvent.StartDate.Day != calEvent.EndDate.Day))
+                    {
+                        Notification n = new Notification()
+                        {
+                            NotificationTypeId = 4,
+                            Created = System.DateTime.Now,
+                            Description = "A new universal event was added to your calendar.",
+                            Additional = calEvent.Title + " (" + calEvent.StartDate.ToString("d") + " - " + calEvent.EndDate.ToString("d") + ")",
+                            CorrespondingItemId = calEvent.Id,
+                            NotifyUserId = employee.Id,
+                            New = true
+                        };
+                        db.Notifications.Add(n);
+                        db.SaveChanges();
+                    }
+                    else if (calEvent.AllDay == false)
+                    {
+                        Notification n = new Notification()
+                        {
+                            NotificationTypeId = 4,
+                            Created = System.DateTime.Now,
+                            Description = "A new universal event was added to your calendar.",
+                            Additional = calEvent.Title + " (" + calEvent.StartDate.ToString("g") + " - " + calEvent.EndDate.ToShortTimeString() + ")",
+                            CorrespondingItemId = calEvent.Id,
+                            NotifyUserId = employee.Id,
+                            New = true
+                        };
+                        db.Notifications.Add(n);
+                        db.SaveChanges();
+                    }
+                }
+            }
+
             return RedirectToAction("Calendar");
         }
       
@@ -745,6 +797,12 @@ namespace AS_TestProject.Controllers
                     notification.New = false;
                     db.SaveChanges();
                     return RedirectToAction("Index", "HR");
+                }
+                else if (tId == 4)
+                {
+                    notification.New = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Calendar", "Home");
                 }
                 else
                 {

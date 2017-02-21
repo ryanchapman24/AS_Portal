@@ -601,6 +601,30 @@
                                     </div>
                                 </a>
                                 }
+                                if (notif.NotificationTypeId == 4)
+                                {
+                                    <a href="@Url.Action("DismissNotification", "Home", new { tId = 4, nId = notif.Id, dA = false })">
+                                        <div class="desc" style="display: flex">
+                                            <div class="thumb" style="align-items: stretch">
+                                                <i class="fa fa-calendar" style="color: #29AAE3; font-size: 24px"></i>
+                                            </div>
+                                            <div class="details" style="align-items: stretch; word-break: break-word">
+                                                <p>
+                                                    @if (ViewBag.Site == "Wichita")
+                                                    {
+                                                        <muted style="font-size: 11px">@notif.Created.AddHours(-1).ToString("g")</muted><br />
+                                                    }
+                                                    else
+                                                    {
+                                                        <muted style="font-size: 11px">@notif.Created.ToString("g")</muted><br />
+                                                    }
+                                                    <span style="color: #666666">@notif.Description</span><br />
+                                                    <span style="color: #29AAE3">@notif.Additional</span><br />
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                }
                             }
                         </div>
                     }

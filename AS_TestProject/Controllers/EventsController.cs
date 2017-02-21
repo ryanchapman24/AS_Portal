@@ -74,6 +74,12 @@ namespace AS_TestProject.Controllers
             Event calEvent = db.Events.Find(id);
             db.Events.Remove(calEvent);
             db.SaveChanges();
+
+            foreach (var notif in db.Notifications.Where(n => n.CorrespondingItemId == calEvent.Id && n.NotificationTypeId == 4).ToList())
+            {
+                db.Notifications.Remove(notif);
+                db.SaveChanges();
+            }
             return RedirectToAction("Calendar", "Home");
         }
     }
