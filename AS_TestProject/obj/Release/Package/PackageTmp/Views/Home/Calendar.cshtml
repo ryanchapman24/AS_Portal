@@ -251,7 +251,7 @@
                                     <td>@item.Title</td>
                                     @if (item.Universal == true)
                                     {
-                                        <td><i class="fa fa-users" style="color: #29AAE3"></i></td>
+                                        <td><i class="fa fa-users" style="color: #29AAE3; margin-right: 4px"></i> added by @item.Author.DisplayName</td>
                                     }
                                     else
                                     {
@@ -262,7 +262,7 @@
                                             var user = User.Identity.GetUserId();
                                             if (User.IsInRole("Admin") || item.AuthorId == user)
                                             {
-                                                <a href="@Url.Action("EditEvent","Events", new { id = item.Id })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                @*<a href="@Url.Action("EditEvent","Events", new { id = item.Id })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />*@
                                                 <a href="@Url.Action("DeleteEvent","Events", new { id = item.Id })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
                                             }
                                         }
