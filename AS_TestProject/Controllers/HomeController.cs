@@ -236,10 +236,10 @@ namespace AS_TestProject.Controllers
                     var iCFRmonth = mb.CFRInsurances.Where(c => c.Employee2.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
                     var iCFRyear = mb.CFRInsurances.Where(c => c.Employee2.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
 
-                    var pCFRyesterday = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == yesterDay && c.DateOfFeedback.Month == yesterMonth && c.DateOfFeedback.Year == yesterYear).Count();
-                    var pCFRtoday = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == now.Day && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
-                    var pCFRmonth = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
-                    var pCFRyear = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
+                    var pCFRyesterday = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == yesterDay && c.DateOfFeedback.Month == yesterMonth && c.DateOfFeedback.Year == yesterYear).Count();
+                    var pCFRtoday = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == now.Day && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+                    var pCFRmonth = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+                    var pCFRyear = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
 
                     ViewBag.CFRyesterday = mCFRyesterday + iCFRyesterday + pCFRyesterday;
                     ViewBag.CFRtoday = mCFRtoday + iCFRtoday + pCFRtoday;
@@ -383,10 +383,10 @@ namespace AS_TestProject.Controllers
             var iCFRmonthME = mb.CFRInsurances.Where(c => c.Employee2.EmployeeID == user.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
             var iCFRyearME = mb.CFRInsurances.Where(c => c.Employee2.EmployeeID == user.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
 
-            var pCFRyesterdayME = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Day == yesterDay && c.DateOfFeedback.Month == yesterMonth && c.DateOfFeedback.Year == yesterYear).Count();
-            var pCFRtodayME = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Day == now.Day && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
-            var pCFRmonthME = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
-            var pCFRyearME = mb.CFRInsurances.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
+            var pCFRyesterdayME = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Day == yesterDay && c.DateOfFeedback.Month == yesterMonth && c.DateOfFeedback.Year == yesterYear).Count();
+            var pCFRtodayME = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Day == now.Day && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+            var pCFRmonthME = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+            var pCFRyearME = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
 
             ViewBag.CFRyesterday = mCFRyesterdayME + iCFRyesterdayME + pCFRyesterdayME;
             ViewBag.CFRtoday = mCFRtodayME + iCFRtodayME + pCFRtodayME;
