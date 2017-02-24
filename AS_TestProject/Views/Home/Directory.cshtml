@@ -230,7 +230,7 @@
                                                         @employee.AddressLine1 @employee.AddressLine2<br />
                                                         @employee.City, @employee.State @employee.ZipCode
                                                     </td>*@
-                                                    <td>
+                                                    <td class="text-nowrap">
                                                         @if (employee.EmailAddress != null && employee.EmailAddress.Length > 0)
                                                         {
                                                             <a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a><br />
@@ -493,7 +493,7 @@
                                                         @employee.AddressLine1 @employee.AddressLine2<br />
                                                         @employee.City, @employee.State @employee.ZipCode
                                                     </td>*@
-                                                    <td>
+                                                    <td class="text-nowrap">
                                                         @if (employee.EmailAddress != null && employee.EmailAddress.Length > 0)
                                                         {
                                                             <a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a><br />
