@@ -198,7 +198,6 @@ namespace AS_TestProject.Controllers
             {
                 ViewBag.ActiveEmps = mb.Employees.Where(d => d.SiteID == user.SiteID && d.IsActive == true).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
                 ViewBag.InactiveEmps = mb.Employees.Where(d => d.SiteID == user.SiteID && d.IsActive == false).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
-
             }
 
             ViewBag.PositionID = new SelectList(mb.Positions, "PositionID", "PositionName");

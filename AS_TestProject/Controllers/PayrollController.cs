@@ -68,8 +68,11 @@ namespace AS_TestProject.Controllers
             }
 
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
-            //ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
+
+            //Prep for Payroll Changes
+            ViewBag.Domains = new MultiSelectList(domains, "Id", "FileMaskPlusName");
+            //End Prep
 
             return View(agentDailyHours);
         }
@@ -114,8 +117,11 @@ namespace AS_TestProject.Controllers
             }
 
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
-            //ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
+
+            //Prep for Payroll Changes
+            ViewBag.Domains = new MultiSelectList(domains, "Id", "FileMaskPlusName");
+            //End Prep
 
             return RedirectToAction("Index", new { id = empId });            
         }
@@ -135,10 +141,26 @@ namespace AS_TestProject.Controllers
             {
                 return HttpNotFound();
             }
+
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
             ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName", agentDailyHour.EmployeeID);
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason", agentDailyHour.AgentTimeAdjustmentReasonID);
             ViewBag.PayPeriodID = new SelectList(mb.PayPeriods, "PayPeriodID", "PayPeriodID", agentDailyHour.PayPeriodID);
+
+            //Prep for Payroll Changes
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            var domains2 = mb.DomainMasters.Where(d => d.DomainMasterID == agentDailyHour.DomainMasterID).ToArray();
+            ViewBag.Domains = new MultiSelectList(domains, "Id", "FileMaskPlusName", domains2);
+            //End Prep
+
             return View(agentDailyHour);
         }
 
@@ -182,6 +204,21 @@ namespace AS_TestProject.Controllers
             ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName", agentDailyHour.EmployeeID);
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason", agentDailyHour.AgentTimeAdjustmentReasonID);
             ViewBag.PayPeriodID = new SelectList(mb.PayPeriods, "PayPeriodID", "PayPeriodID", agentDailyHour.PayPeriodID);
+
+            //Prep for Payroll Changes
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            var domains2 = mb.DomainMasters.Where(d => d.DomainMasterID == agentDailyHour.DomainMasterID).ToArray();
+            ViewBag.Domains = new MultiSelectList(domains, "Id", "FileMaskPlusName", domains2);
+            //End Prep
+
             return View(agentDailyHour);
         }
     }

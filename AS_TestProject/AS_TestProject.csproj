@@ -690,11 +690,9 @@
     <Content Include="assets\lineicons\fonts\linecons.ttf" />
     <Content Include="assets\lineicons\fonts\linecons.woff" />
     <Content Include="assets\forms\Anomaly-Insertion-Order-Form.pdf" />
-    <Content Include="assets\forms\AnomalySquared_EmployeeHandbook_V.2.02.pdf" />
     <Content Include="assets\forms\Anomaly_AccessControl.pdf" />
     <Content Include="assets\forms\Anomaly_BonusPayment.pdf" />
     <Content Include="assets\forms\Anomaly_EmployeePTO.pdf" />
-    <Content Include="assets\forms\Anomaly_EmployeeStatusChange.pdf" />
     <Content Include="assets\forms\BusinessExpenseReimb_Policy.pdf" />
     <Content Include="assets\forms\PayrollDeduction.pdf" />
     <EntityDeploy Include="Entities\ReportModel.edmx">
@@ -733,6 +731,8 @@
     <Content Include="assets\forms\IncidentReportForm.pdf" />
     <Content Include="assets\forms\ScheduleExemption.pdf" />
     <Content Include="assets\forms\LeaveOfAbsence.pdf" />
+    <Content Include="assets\forms\AnomalySquared_EmployeeHandbook_R3.pdf" />
+    <Content Include="assets\forms\Anomaly_EmployeeStatusChange.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
