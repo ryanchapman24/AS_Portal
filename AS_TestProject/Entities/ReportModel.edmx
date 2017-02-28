@@ -151,6 +151,7 @@
           <Property Name="ZipCode" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="MainPhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="AddDate" Type="date" Nullable="false" />
+          <Property Name="ADPLocationCode" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="ProblemMaster">
           <Key>
@@ -231,6 +232,16 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="OverTimeHours" Type="decimal" Precision="5" Scale="2" />
           <Property Name="EditByEmployeeID" Type="int" />
           <Property Name="EditTimeStamp" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Report.PAYROLL.AgentDailyHoursToDomainMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AgentDailyHoursToDomainMaster">
+          <Key>
+            <PropertyRef Name="AgentDailyHoursID" />
+            <PropertyRef Name="DomainMasterID" />
+          </Key>
+          <Property Name="AgentDailyHoursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -604,7 +615,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="RollingCampaignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReportDate" Type="date" Nullable="false" />
           <Property Name="ReportTime" Type="time" Precision="7" Nullable="false" />
-          <Property Name="CampaignID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CampaignID" Type="varchar" MaxLength="125" />
           <Property Name="TotalAnswers" Type="int" Nullable="false" />
           <Property Name="TotalContacts" Type="int" Nullable="false" />
           <Property Name="ContactToTransfer" Type="decimal" Precision="7" Scale="4" Nullable="false" />
@@ -618,7 +629,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="TPHHours" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="TransfersPerHour" Type="decimal" Precision="9" Scale="3" Nullable="false" />
           <Property Name="CallHourOfDay" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="LeadSource" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="LeadSource" Type="varchar" MaxLength="125" />
           <Property Name="CostPerTransfer" Type="smallmoney" Nullable="false" />
         </EntityType>
         <EntityType Name="PreciseLeadsHourlyCampaignMetrics">
@@ -688,6 +699,7 @@ warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a prim
           <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="LoginDuration" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="EmployeeID" Type="nvarchar" MaxLength="320" />
+          <Property Name="SkillName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Report.STAGE.ClientLeads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2248,6 +2260,12 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [FreedomHourlyCallMetrics].[CallState] AS [CallState]
     FROM [FREEDOM].[FreedomHourlyCallMetrics] AS [FreedomHourlyCallMetrics]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="AgentDailyHoursToDomainMaster" EntityType="Self.AgentDailyHoursToDomainMaster" store:Type="Tables" store:Schema="PAYROLL">
+            <DefiningQuery>SELECT 
+    [AgentDailyHoursToDomainMaster].[AgentDailyHoursID] AS [AgentDailyHoursID], 
+    [AgentDailyHoursToDomainMaster].[DomainMasterID] AS [DomainMasterID]
+    FROM [PAYROLL].[AgentDailyHoursToDomainMaster] AS [AgentDailyHoursToDomainMaster]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="AgentDailyHours1" EntityType="Self.AgentDailyHours1" store:Type="Tables" store:Schema="STAGE" store:Name="AgentDailyHours">
             <DefiningQuery>SELECT 
     [AgentDailyHours1].[AgentID] AS [AgentID], 
@@ -2257,7 +2275,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [AgentDailyHours1].[LoginTimestamp] AS [LoginTimestamp], 
     [AgentDailyHours1].[LogoutTimestamp] AS [LogoutTimestamp], 
     [AgentDailyHours1].[LoginDuration] AS [LoginDuration], 
-    [AgentDailyHours1].[EmployeeID] AS [EmployeeID]
+    [AgentDailyHours1].[EmployeeID] AS [EmployeeID], 
+    [AgentDailyHours1].[SkillName] AS [SkillName]
     FROM [STAGE].[AgentDailyHours] AS [AgentDailyHours1]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ClientLeads" EntityType="Self.ClientLeads" store:Type="Tables" store:Schema="STAGE">
@@ -3388,6 +3407,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="Employee" EntitySet="Employees" />
             <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
           </AssociationSet>
+          <EntitySet Name="AgentDailyHoursToDomainMasters" EntityType="ReportModel.AgentDailyHoursToDomainMaster" />
           </EntityContainer>
         <ComplexType Name="uspInsertProblemMaster_Result">
           <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -3583,6 +3603,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="MainPhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Employees" Relationship="ReportModel.FK_COMPANY_Employee_SiteID" FromRole="Site" ToRole="Employee" />
+          <Property Name="ADPLocationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ProblemMaster">
           <Key>
@@ -3853,7 +3874,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="RollingCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CampaignID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
           <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
           <Property Name="TotalContacts" Type="Int32" Nullable="false" />
           <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
@@ -3867,7 +3888,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
           <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="LeadSource" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LeadSource" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
           <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
         </EntityType>
         <EntityType Name="PreciseLeadsHourlyCampaignMetric">
@@ -4424,6 +4445,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="LoginDuration" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="SkillName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CallLogRealTime">
           <Key>
@@ -5747,6 +5769,14 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AgentDailyHoursToDomainMaster">
+          <Key>
+            <PropertyRef Name="AgentDailyHoursID" />
+            <PropertyRef Name="DomainMasterID" />
+          </Key>
+          <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5927,6 +5957,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="Sites">
             <EntityTypeMapping TypeName="ReportModel.Site">
               <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="ADPLocationCode" ColumnName="ADPLocationCode" />
                 <ScalarProperty Name="AddDate" ColumnName="AddDate" />
                 <ScalarProperty Name="MainPhoneNumber" ColumnName="MainPhoneNumber" />
                 <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
@@ -6524,6 +6555,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="AgentDailyHours1">
             <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
               <MappingFragment StoreEntitySet="AgentDailyHours1">
+                <ScalarProperty Name="SkillName" ColumnName="SkillName" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
                 <ScalarProperty Name="LogoutTimestamp" ColumnName="LogoutTimestamp" />
@@ -6710,6 +6742,14 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="DisciplinaryActionID" ColumnName="DisciplinaryActionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentDailyHoursToDomainMasters">
+            <EntityTypeMapping TypeName="ReportModel.AgentDailyHoursToDomainMaster">
+              <MappingFragment StoreEntitySet="AgentDailyHoursToDomainMaster">
+                <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+                <ScalarProperty Name="AgentDailyHoursID" ColumnName="AgentDailyHoursID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

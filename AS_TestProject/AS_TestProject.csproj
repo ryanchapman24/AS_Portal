@@ -502,6 +502,7 @@
     <Content Include="assets\img\orange_priority.png" />
     <Content Include="assets\img\palmtree.png" />
     <Content Include="assets\img\PayrollDeduction.png" />
+    <Content Include="assets\img\Performance_Review.png" />
     <Content Include="assets\img\PettyCash.png" />
     <Content Include="assets\img\portfolio\port01.jpg" />
     <Content Include="assets\img\portfolio\port02.jpg" />
@@ -733,6 +734,7 @@
     <Content Include="assets\forms\LeaveOfAbsence.pdf" />
     <Content Include="assets\forms\AnomalySquared_EmployeeHandbook_R3.pdf" />
     <Content Include="assets\forms\Anomaly_EmployeeStatusChange.pdf" />
+    <Content Include="assets\forms\Pro_Staff_Employee_Performance_Review.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

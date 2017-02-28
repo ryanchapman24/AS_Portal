@@ -29,6 +29,7 @@ namespace AS_TestProject.Entities
         public string ZipCode { get; set; }
         public string MainPhoneNumber { get; set; }
         public System.DateTime AddDate { get; set; }
+        public string ADPLocationCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
