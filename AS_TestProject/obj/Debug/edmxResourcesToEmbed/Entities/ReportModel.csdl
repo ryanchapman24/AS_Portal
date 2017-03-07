@@ -2867,5 +2867,6 @@
     </Key>
     <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
   </EntityType>
 </Schema>

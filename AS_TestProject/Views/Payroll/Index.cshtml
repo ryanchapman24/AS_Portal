@@ -82,21 +82,20 @@
                                                         <div class="col-md-9" style="margin-top: -5px">
                                                             <input id="totalTime" class="form-control" readonly="readonly" name="LoginDuration" value="00:00:00" required />
                                                         </div><br /><br /><br />
-                                                        <div class="col-md-3 control-label">
+                                                        @*<div class="col-md-3 control-label">
                                                             Domain
                                                         </div>
                                                         <div class="col-md-9" style="margin-top: -5px">
                                                             @Html.DropDownList("DomainMasterID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
-                                                            @*@Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })*@
                                                         </div>
-                                                        <br /><br /><br />
-                                                        @*<div class="col-md-3 control-label">
+                                                        <br /><br /><br />*@
+                                                        <div class="col-md-3 control-label">
                                                             Skills
                                                         </div>
                                                         <div class="col-md-9" style="margin-top: -5px">
                                                             @Html.ListBox("Domains", null, new { @id = "skill-headers" })
                                                         </div>
-                                                        <br /><br /><br />*@
+                                                        <br /><br /><br />
                                                         <div class="col-md-3 control-label">
                                                             Reason
                                                         </div>
@@ -125,7 +124,8 @@
                                             <th>Login</th>
                                             <th>Logout</th>
                                             <th>Duration</th>
-                                            <th>Domain</th>
+                                            @*<th>Domain</th>*@
+                                            <th>Skills</th>
                                             <th>Regular Hours</th>
                                             <th>Overtime Hours</th>
                                             <th>Adjustment Reason</th>
@@ -142,7 +142,16 @@
                                                 <td>@Html.DisplayFor(modelItem => item.LoginTimeStamp)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.LogoutTimeStamp)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.LoginDuration)</td>
-                                                <td>@Html.DisplayFor(modelItem => item.DomainMaster.FileMask) - @Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
+                                                @*<td>@Html.DisplayFor(modelItem => item.DomainMaster.FileMask) - @Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>*@
+                                                <td>
+                                                    @foreach (var skill in ViewBag.Skills)
+                                                    {
+                                                        if (skill.Id == item.AgentDailyHoursID)
+                                                        {
+                                                            @skill.FileMaskPlusName<br />
+                                                        }
+                                                    }
+                                                </td>
                                                 <td>@Html.DisplayFor(modelItem => item.RegularHours)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.OverTimeHours)</td>
                                                 @if (item.AgentTimeAdjustmentReasonID != null)
@@ -277,7 +286,8 @@
                                             <th>Login</th>
                                             <th>Logout</th>
                                             <th>Duration</th>
-                                            <th>Domain</th>
+                                            @*<th>Domain</th>*@
+                                            <th>Skills</th>
                                             <th>Regular Hours</th>
                                             <th>Overtime Hours</th>
                                             <th>Adjustment Reason</th>
@@ -291,7 +301,16 @@
                                                 <td>@item.LoginTimeStamp</td>
                                                 <td>@item.LogoutTimeStamp</td>
                                                 <td>@item.LoginDuration</td>
-                                                <td>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</td>
+                                                @*<td>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</td>*@
+                                                <td>
+                                                    @foreach (var skill in ViewBag.Skills)
+                                                    {
+                                                        if (skill.Id == item.AgentDailyHoursID)
+                                                        {
+                                                            @skill.FileMaskPlusName<br />
+                                                        }
+                                                    }
+                                                </td>
                                                 <td>@item.RegularHours</td>
                                                 <td>@item.OverTimeHours</td>
                                                 @if (item.AgentTimeAdjustmentReasonID != null)

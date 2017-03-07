@@ -16,5 +16,6 @@ namespace AS_TestProject.Entities
     {
         public int AgentDailyHoursID { get; set; }
         public byte DomainMasterID { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     }
 }

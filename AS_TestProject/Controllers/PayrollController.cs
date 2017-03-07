@@ -23,6 +23,12 @@ namespace AS_TestProject.Controllers
             public string FileMaskPlusName { get; set; }
         }
 
+        public class Skill
+        {
+            public int Id { get; set; }
+            public string FileMaskPlusName { get; set; }
+        }
+
         // GET: Payroll
         [Authorize]
         public ActionResult Index(int id)
@@ -72,6 +78,20 @@ namespace AS_TestProject.Controllers
 
             //Prep for Payroll Changes
             ViewBag.Domains = new MultiSelectList(domains, "Id", "FileMaskPlusName");
+            var allAgentHours = mb.AgentDailyHours.Where(a => a.EmployeeID == id && (a.PayPeriodID == payPeriodId || a.PayPeriodID == prevPayPeriodId)).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
+            var agentHoursToDomainMasters = mb.AgentDailyHoursToDomainMasters.ToList();
+            var relatedSkills = agentHoursToDomainMasters.Where(a => allAgentHours.Any(h => h.AgentDailyHoursID == a.AgentDailyHoursID)).ToList();
+            var skills = new List<Skill>();
+            foreach (var skill in relatedSkills)
+            {
+                var newSkill = new Skill();
+                newSkill.Id = skill.AgentDailyHoursID;
+                var fileMaskPlusName = mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == skill.DomainMasterID).FileMask + " - " + mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == skill.DomainMasterID).DomainName;
+                newSkill.FileMaskPlusName = fileMaskPlusName;
+
+                skills.Add(newSkill);
+            }
+            ViewBag.Skills = skills;
             //End Prep
 
             return View(agentDailyHours);
@@ -83,7 +103,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin, Payroll")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID,EditByEmployeeID,EditTimeStamp")] AgentDailyHour agentDailyHour, int empId, short ppId)
+        public ActionResult Create([Bind(Include = "AgentDailyHoursID,EmployeeID,DomainMasterID,LoginTimeStamp,LogoutTimeStamp,LoginDuration,AgentTimeAdjustmentReasonID,PayPeriodID,EditByEmployeeID,EditTimeStamp")] AgentDailyHour agentDailyHour, int empId, short ppId, List<byte> Domains)
         {
             if (ModelState.IsValid)
             {
@@ -91,12 +111,28 @@ namespace AS_TestProject.Controllers
 
                 if (agentDailyHour.LoginTimeStamp != agentDailyHour.LogoutTimeStamp)
                 {
+                    agentDailyHour.DomainMasterID = 21;
                     agentDailyHour.PayPeriodID = ppId;
                     agentDailyHour.EmployeeID = empId;
                     agentDailyHour.EditByEmployeeID = user.EmployeeID;
                     agentDailyHour.EditTimeStamp = System.DateTime.Now;
                     mb.AgentDailyHours.Add(agentDailyHour);
                     mb.SaveChanges();
+
+                    if (Domains != null)
+                    {
+                        int count = Domains.Count();
+                        for (byte i = 0; i < count; i++)
+                        {
+                            var d = new AgentDailyHoursToDomainMaster();
+                            d.AgentDailyHoursID = agentDailyHour.AgentDailyHoursID;
+                            d.DomainMasterID = Domains[i];
+                            d.IsDeleted = false;
+                            mb.AgentDailyHoursToDomainMasters.Add(d);
+                            mb.SaveChanges();
+                        }
+                        mb.SaveChanges();
+                    }
 
                     // STORED PROCEDURES
                     mb.uspHoursCalculation(empId, ppId);

@@ -233,8 +233,6 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="EditByEmployeeID" Type="int" />
           <Property Name="EditTimeStamp" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Report.PAYROLL.AgentDailyHoursToDomainMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AgentDailyHoursToDomainMaster">
           <Key>
             <PropertyRef Name="AgentDailyHoursID" />
@@ -242,6 +240,7 @@ warning 6002: The table/view 'Report.PAYROLL.AgentDailyHoursToDomainMaster' does
           </Key>
           <Property Name="AgentDailyHoursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -2232,6 +2231,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="CampaignGroup" EntityType="Self.CampaignGroup" Schema="FREEDOM" store:Type="Tables" />
           <EntitySet Name="DailyPortfolioInventory" EntityType="Self.DailyPortfolioInventory" Schema="FREEDOM" store:Type="Tables" />
           <EntitySet Name="AgentDailyHours" EntityType="Self.AgentDailyHours" Schema="PAYROLL" store:Type="Tables" />
+          <EntitySet Name="AgentDailyHoursToDomainMaster" EntityType="Self.AgentDailyHoursToDomainMaster" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="AgentTimeAdjustmentReason" EntityType="Self.AgentTimeAdjustmentReason" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="EmployeeHoursTotal" EntityType="Self.EmployeeHoursTotal" Schema="PAYROLL" store:Type="Tables" />
           <EntitySet Name="PayPeriod" EntityType="Self.PayPeriod" Schema="PAYROLL" store:Type="Tables" />
@@ -2259,12 +2259,6 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [FreedomHourlyCallMetrics].[HourOfDay] AS [HourOfDay], 
     [FreedomHourlyCallMetrics].[CallState] AS [CallState]
     FROM [FREEDOM].[FreedomHourlyCallMetrics] AS [FreedomHourlyCallMetrics]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AgentDailyHoursToDomainMaster" EntityType="Self.AgentDailyHoursToDomainMaster" store:Type="Tables" store:Schema="PAYROLL">
-            <DefiningQuery>SELECT 
-    [AgentDailyHoursToDomainMaster].[AgentDailyHoursID] AS [AgentDailyHoursID], 
-    [AgentDailyHoursToDomainMaster].[DomainMasterID] AS [DomainMasterID]
-    FROM [PAYROLL].[AgentDailyHoursToDomainMaster] AS [AgentDailyHoursToDomainMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="AgentDailyHours1" EntityType="Self.AgentDailyHours1" store:Type="Tables" store:Schema="STAGE" store:Name="AgentDailyHours">
             <DefiningQuery>SELECT 
@@ -5776,6 +5770,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           </Key>
           <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -6748,6 +6743,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="AgentDailyHoursToDomainMasters">
             <EntityTypeMapping TypeName="ReportModel.AgentDailyHoursToDomainMaster">
               <MappingFragment StoreEntitySet="AgentDailyHoursToDomainMaster">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
                 <ScalarProperty Name="AgentDailyHoursID" ColumnName="AgentDailyHoursID" />
               </MappingFragment>
