@@ -822,5 +822,12 @@ namespace AS_TestProject.Controllers
             ViewBag.NotificationHistory = db.Notifications.Where(n => n.NotifyUserId == user && n.New == false).OrderByDescending(n => n.Id).ToList();
             return View();
         }
+
+        public ActionResult TaskHistory()
+        {
+            var user = User.Identity.GetUserId();
+            ViewBag.TaskHistory = db.Tasks.Where(t => t.AuthorId == user && t.Complete == true).OrderByDescending(n => n.Id).ToList();
+            return View();
+        }
     }
 }

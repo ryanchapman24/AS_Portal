@@ -175,6 +175,7 @@
     <EntitySetMapping Name="Sites">
       <EntityTypeMapping TypeName="ReportModel.Site">
         <MappingFragment StoreEntitySet="Site">
+          <ScalarProperty Name="ADPLocationCode" ColumnName="ADPLocationCode" />
           <ScalarProperty Name="AddDate" ColumnName="AddDate" />
           <ScalarProperty Name="MainPhoneNumber" ColumnName="MainPhoneNumber" />
           <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
@@ -772,6 +773,7 @@
     <EntitySetMapping Name="AgentDailyHours1">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHours1">
         <MappingFragment StoreEntitySet="AgentDailyHours1">
+          <ScalarProperty Name="SkillName" ColumnName="SkillName" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="LoginDuration" ColumnName="LoginDuration" />
           <ScalarProperty Name="LogoutTimestamp" ColumnName="LogoutTimestamp" />
@@ -958,6 +960,14 @@
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="DisciplinaryActionID" ColumnName="DisciplinaryActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentDailyHoursToDomainMasters">
+      <EntityTypeMapping TypeName="ReportModel.AgentDailyHoursToDomainMaster">
+        <MappingFragment StoreEntitySet="AgentDailyHoursToDomainMaster">
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="AgentDailyHoursID" ColumnName="AgentDailyHoursID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
