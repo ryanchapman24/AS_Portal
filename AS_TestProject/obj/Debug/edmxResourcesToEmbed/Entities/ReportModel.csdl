@@ -2862,11 +2862,11 @@
   </Association>
   <EntityType Name="AgentDailyHoursToDomainMaster">
     <Key>
-      <PropertyRef Name="AgentDailyHoursID" />
-      <PropertyRef Name="DomainMasterID" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" />
     <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
     <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
 </Schema>

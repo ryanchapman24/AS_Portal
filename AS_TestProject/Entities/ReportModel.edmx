@@ -235,12 +235,12 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
         </EntityType>
         <EntityType Name="AgentDailyHoursToDomainMaster">
           <Key>
-            <PropertyRef Name="AgentDailyHoursID" />
-            <PropertyRef Name="DomainMasterID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="AgentDailyHoursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentDailyHoursID" Type="int" Nullable="false" />
           <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -5765,12 +5765,12 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
         </Association>
         <EntityType Name="AgentDailyHoursToDomainMaster">
           <Key>
-            <PropertyRef Name="AgentDailyHoursID" />
-            <PropertyRef Name="DomainMasterID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" />
           <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -6743,6 +6743,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="AgentDailyHoursToDomainMasters">
             <EntityTypeMapping TypeName="ReportModel.AgentDailyHoursToDomainMaster">
               <MappingFragment StoreEntitySet="AgentDailyHoursToDomainMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
                 <ScalarProperty Name="AgentDailyHoursID" ColumnName="AgentDailyHoursID" />

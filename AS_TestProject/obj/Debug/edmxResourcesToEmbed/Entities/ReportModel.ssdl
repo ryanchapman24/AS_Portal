@@ -230,12 +230,12 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
   </EntityType>
   <EntityType Name="AgentDailyHoursToDomainMaster">
     <Key>
-      <PropertyRef Name="AgentDailyHoursID" />
-      <PropertyRef Name="DomainMasterID" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="AgentDailyHoursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgentDailyHoursID" Type="int" Nullable="false" />
     <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="AgentTimeAdjustmentReason">
     <Key>

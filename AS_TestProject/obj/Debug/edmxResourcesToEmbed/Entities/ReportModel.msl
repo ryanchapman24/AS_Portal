@@ -966,6 +966,7 @@
     <EntitySetMapping Name="AgentDailyHoursToDomainMasters">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHoursToDomainMaster">
         <MappingFragment StoreEntitySet="AgentDailyHoursToDomainMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="AgentDailyHoursID" ColumnName="AgentDailyHoursID" />
