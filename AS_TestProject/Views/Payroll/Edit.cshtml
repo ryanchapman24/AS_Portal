@@ -72,12 +72,25 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                @*<div class="form-group">
                     <div class="col-md-2 control-label">
                         Domain
                     </div>
                     <div class="col-md-4">
                         <span style="" readonly="readonly" class="form-control">@Model.DomainMaster.FileMask - @Model.DomainMaster.DomainName</span>
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Skills
+                    </div>
+                    <div class="col-md-4">
+                        @foreach (var skill in ViewBag.Skills)
+                        {
+                            @skill.FileMaskPlusName<br />
+                        }
+                        @*<span style="" readonly="readonly" class="form-control">@Model.DomainMaster.FileMask - @Model.DomainMaster.DomainName</span>*@
                     </div>
                 </div>
 

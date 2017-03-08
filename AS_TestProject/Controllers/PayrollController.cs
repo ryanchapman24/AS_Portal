@@ -91,7 +91,7 @@ namespace AS_TestProject.Controllers
 
                 skills.Add(newSkill);
             }
-            ViewBag.Skills = skills;
+            ViewBag.Skills = skills.OrderBy(s => s.FileMaskPlusName);
             //End Prep
 
             return View(agentDailyHours);
@@ -195,6 +195,18 @@ namespace AS_TestProject.Controllers
             }
             var domains2 = mb.DomainMasters.Where(d => d.DomainMasterID == agentDailyHour.DomainMasterID).ToArray();
             ViewBag.Domains = new MultiSelectList(domains, "Id", "FileMaskPlusName", domains2);
+            var relatedSkills = mb.AgentDailyHoursToDomainMasters.Where(h => h.AgentDailyHoursID == id).ToList();
+            var skills = new List<Skill>();
+            foreach (var skill in relatedSkills)
+            {
+                var newSkill = new Skill();
+                newSkill.Id = skill.AgentDailyHoursID;
+                var fileMaskPlusName = mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == skill.DomainMasterID).FileMask + " - " + mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == skill.DomainMasterID).DomainName;
+                newSkill.FileMaskPlusName = fileMaskPlusName;
+
+                skills.Add(newSkill);
+            }
+            ViewBag.Skills = skills.OrderBy(s => s.FileMaskPlusName);
             //End Prep
 
             return View(agentDailyHour);
@@ -216,6 +228,11 @@ namespace AS_TestProject.Controllers
                 {
                     mb.AgentDailyHours.Attach(agentDailyHour);
                     mb.AgentDailyHours.Remove(agentDailyHour);
+                    foreach (var skill in mb.AgentDailyHoursToDomainMasters.Where(s => s.AgentDailyHoursID == agentDailyHour.AgentDailyHoursID).ToList())
+                    {
+                        mb.AgentDailyHoursToDomainMasters.Remove(skill);
+                        mb.SaveChanges();
+                    }
                     mb.SaveChanges();
                 }
                 else
@@ -253,6 +270,18 @@ namespace AS_TestProject.Controllers
             }
             var domains2 = mb.DomainMasters.Where(d => d.DomainMasterID == agentDailyHour.DomainMasterID).ToArray();
             ViewBag.Domains = new MultiSelectList(domains, "Id", "FileMaskPlusName", domains2);
+            var relatedSkills = mb.AgentDailyHoursToDomainMasters.Where(h => h.AgentDailyHoursID == agentDailyHour.AgentDailyHoursID).ToList();
+            var skills = new List<Skill>();
+            foreach (var skill in relatedSkills)
+            {
+                var newSkill = new Skill();
+                newSkill.Id = skill.AgentDailyHoursID;
+                var fileMaskPlusName = mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == skill.DomainMasterID).FileMask + " - " + mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == skill.DomainMasterID).DomainName;
+                newSkill.FileMaskPlusName = fileMaskPlusName;
+
+                skills.Add(newSkill);
+            }
+            ViewBag.Skills = skills.OrderBy(s => s.FileMaskPlusName);
             //End Prep
 
             return View(agentDailyHour);
