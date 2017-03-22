@@ -529,6 +529,7 @@
     <Content Include="assets\img\sisense.png" />
     <Content Include="assets\img\StatusChange.png" />
     <Content Include="assets\img\sun-icon.png" />
+    <Content Include="assets\img\TaxationEmployeeGifts.png" />
     <Content Include="assets\img\TimeManagement.jpg" />
     <Content Include="assets\img\TimeManagement_Banner.jpg" />
     <Content Include="assets\img\ui-danro.jpg" />
@@ -738,6 +739,7 @@
     <Content Include="assets\forms\AnomalySquared_EmployeeHandbook_R3.pdf" />
     <Content Include="assets\forms\Anomaly_EmployeeStatusChange.pdf" />
     <Content Include="assets\forms\Pro_Staff_Employee_Performance_Review.pdf" />
+    <Content Include="assets\forms\TaxationEmployeeGifts.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -812,6 +814,7 @@
     <Content Include="Views\Home\NotificationHistory.cshtml" />
     <Content Include="Views\Quality\CallCriteria.cshtml" />
     <Content Include="Views\Home\TaskHistory.cshtml" />
+    <Content Include="Views\Employees\CFRsCompleted.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

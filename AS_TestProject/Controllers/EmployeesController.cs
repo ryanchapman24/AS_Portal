@@ -23,6 +23,15 @@ namespace AS_TestProject.Controllers
             public string FileMaskPlusName { get; set; }
         }
 
+        public class CompletedCFR
+        {
+            public int Id { get; set; }
+            public string ForEmployee { get; set; }
+            public int ForEmployeeID { get; set; }
+            public DateTime DateSubmitted { get; set; }
+            public string Type { get; set; }
+        }
+
         // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -2256,6 +2265,62 @@ namespace AS_TestProject.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Details", "Employees", new { id = empId });
+        }
+
+        // GET: Employees/CFRsCompleted/5
+        [Authorize(Roles = "Admin, IT")]
+        public ActionResult CFRsCompleted(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee = mb.Employees.Find(id);
+            
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.EmployeeName = employee.FirstName + " " + employee.LastName;
+            ViewBag.EmployeeID = db.Users.FirstOrDefault(u => u.EmployeeID == id).Id;
+
+            var cfrs = new List<CompletedCFR>();
+            foreach (var cfr in mb.CFRMortgages.Where(c => c.Employee1.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList())
+            {
+                var item = new CompletedCFR();
+                item.Id = cfr.CFRMortgageID;
+                item.DateSubmitted = cfr.DateOfFeedback;
+                item.ForEmployee = cfr.Employee.FirstName + " " + cfr.Employee.LastName;
+                item.ForEmployeeID = cfr.EmployeeID;
+                item.Type = "Mortgage";
+
+                cfrs.Add(item);
+            }
+            foreach (var cfr in mb.CFRInsurances.Where(c => c.Employee2.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList())
+            {
+                var item = new CompletedCFR();
+                item.Id = cfr.CFRInsuranceID;
+                item.DateSubmitted = cfr.DateOfFeedback;
+                item.ForEmployee = cfr.Employee1.FirstName + " " + cfr.Employee1.LastName;
+                item.ForEmployeeID = cfr.EmployeeID;
+                item.Type = "Insurance";
+
+                cfrs.Add(item);
+            }
+            foreach (var cfr in mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList())
+            {
+                var item = new CompletedCFR();
+                item.Id = cfr.CFRPatientRecruitmentID;
+                item.DateSubmitted = cfr.DateOfFeedback;
+                item.ForEmployee = cfr.Employee1.FirstName + " " + cfr.Employee1.LastName;
+                item.ForEmployeeID = cfr.EmployeeID;
+                item.Type = "Patient Recruitment";
+
+                cfrs.Add(item);
+            }
+
+            ViewBag.CFRs = cfrs.OrderByDescending(c => c.DateSubmitted).ToList();
+            return View();
         }
 
         protected override void Dispose(bool disposing)
