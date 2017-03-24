@@ -32,7 +32,7 @@ namespace AS_TestProject.Controllers
         // GET: Quality/Index
         public ActionResult Index()
         {
-            ViewBag.Domains = mb.DomainMasters.Where(d => d.IsActive == true && d.DomainMasterID != 21).OrderBy(d => d.FileMask).ToList();
+            ViewBag.Domains = mb.DomainMasters.Where(d => d.IsActive == true && d.DomainMasterID != 21 && d.DomainMasterID != 28).OrderBy(d => d.FileMask).ToList();
             return View();
         }
 

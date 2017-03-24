@@ -44,9 +44,82 @@ namespace AS_TestProject.Controllers
             public int TotalTransfersYear { get; set; }
         }
 
+        public class ActiveDomain
+        {
+            public int Number { get; set; }
+            public string Name { get; set; }
+            public int GCalls { get; set; }
+            public int WCalls { get; set; }
+        }
+
         // GET: Reporting
         public ActionResult Index()
         {
+            var todayYear = System.DateTime.Now.Year;
+            var todayMonth = System.DateTime.Now.Month;
+            var todayDay = System.DateTime.Now.Day;
+
+            var GEmployees = mb.Employees.Where(e => e.SiteID == 1 && e.IsActive == true).ToList();
+            var WEmployees = mb.Employees.Where(e => e.SiteID == 2 && e.IsActive == true).ToList();
+
+            var GAgentIds = new List<EmployeeFive9Agent>();
+            var WAgentIds = new List<EmployeeFive9Agent>();
+            foreach (var employee in GEmployees)
+            {
+                foreach (var agent in mb.EmployeeFive9Agent)
+                {
+                    if (agent.EmployeeID == employee.EmployeeID)
+                    {
+                        GAgentIds.Add(agent);
+                    }
+                }
+            }
+            foreach (var employee in WEmployees)
+            {
+                foreach (var agent in mb.EmployeeFive9Agent)
+                {
+                    if (agent.EmployeeID == employee.EmployeeID)
+                    {
+                        WAgentIds.Add(agent);
+                    }
+                }
+            }
+
+            var GCalls = new List<CallLogRealTime>();
+            var WCalls = new List<CallLogRealTime>();
+            var calls = mb.CallLogRealTimes.Where(c => c.RecordDate.Year == todayYear && c.RecordDate.Month == todayMonth && c.RecordDate.Day == todayDay);
+
+            foreach (var call in calls)
+            {
+                foreach (var agent in GAgentIds)
+                {
+                    if (call.AgentID == agent.AgentID)
+                    {
+                        GCalls.Add(call);
+                    }
+                }
+                foreach (var agent in WAgentIds)
+                {
+                    if (call.AgentID == agent.AgentID)
+                    {
+                        WCalls.Add(call);
+                    }
+                }
+            }
+
+            var actDoms = new List<ActiveDomain>();
+            int processed = 0;
+            foreach (var actDom in mb.DomainMasters.Where(d => d.IsActive == true && d.DomainMasterID != 21 && d.DomainMasterID != 28).OrderBy(d => d.DomainName))
+            {
+                var item = new ActiveDomain();
+                item.Number = processed++;
+                item.Name = actDom.DomainName;
+                item.GCalls = GCalls.Where(c => c.DomainMasterID == actDom.DomainMasterID).Count();
+                item.WCalls = WCalls.Where(c => c.DomainMasterID == actDom.DomainMasterID).Count();
+                actDoms.Add(item);
+            }
+
+            ViewBag.ActiveDomains = actDoms;
             return View();
         }
 

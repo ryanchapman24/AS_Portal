@@ -653,11 +653,11 @@
                             <div id="calendar" class="mb" style="margin-top: 20px">
                                 <div class="panel green-panel no-margin">
                                     <div class="panel-body">
-                                        <div id="date-popover" class="popover top" style="cursor: pointer; display: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        @*<div id="date-popover" class="popover top" style="cursor: pointer; display: block; margin-left: 33%; margin-top: -50px; width: 175px;">
                                             <div class="arrow"></div>
                                             <h3 class="popover-title" style="display: none;"></h3>
                                             <div id="date-popover-content" class="popover-content"></div>
-                                        </div>
+                                        </div>*@
                                         <div id="my-calendar"></div>
                                     </div>
                                 </div>
@@ -713,6 +713,13 @@
     <script src="~/assets/js/bootstrap-timepicker/timepicker.js"></script>
     <script src="~/assets/js/bootstrap-datepicker/datepicker.js"></script>
     <script src="~/assets/js/bootstrap-switch.js"></script>
+    <script src="~/assets/js/flot/jquery.flot.js"></script>
+    <script src="~/assets/js/flot/jquery.flot.resize.js"></script>
+    <script src="~/assets/js/flot/jquery.flot.stack.js"></script>
+    <script src="~/assets/js/flot/jquery.flot.crosshair.js"></script>
+    <script src="~/assets/js/flot/jquery.flot.tooltip.js"></script>
+    <!--Need this for DEMO FLOT CHARTS TO WORK (HTML COMMENTED OUT ON /REPORTING/INDEX PAGE) **HOWEVER UNCOMMENTING THIS SCRIPT BREAKS RIGHT NAV CALENDAR**-->
+    @*<script src="~/assets/js/flotchart-conf.js"></script>*@
     	
 	@*<script type="text/javascript">
         $(document).ready(function () {

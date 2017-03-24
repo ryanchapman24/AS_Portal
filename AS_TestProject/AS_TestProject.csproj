@@ -559,6 +559,12 @@
     <Content Include="assets\js\easy-pie-chart.js" />
     <Content Include="assets\js\fancybox\jquery.fancybox.css" />
     <Content Include="assets\js\fancybox\jquery.fancybox.js" />
+    <Content Include="assets\js\flotchart-conf.js" />
+    <Content Include="assets\js\flot\jquery.flot.crosshair.js" />
+    <Content Include="assets\js\flot\jquery.flot.js" />
+    <Content Include="assets\js\flot\jquery.flot.resize.js" />
+    <Content Include="assets\js\flot\jquery.flot.stack.js" />
+    <Content Include="assets\js\flot\jquery.flot.tooltip.js" />
     <Content Include="assets\js\form-component.js" />
     <Content Include="assets\js\fullcalendar\bootstrap-fullcalendar.css" />
     <Content Include="assets\js\fullcalendar\fullcalendar.min.js" />

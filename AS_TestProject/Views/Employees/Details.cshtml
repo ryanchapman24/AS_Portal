@@ -400,7 +400,7 @@
                 <div id="cfrs" class="tab-pane">
                     <div class="widget-header">
                         @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<h3 style="margin: 0px"><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal">+ New Mortgage CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#InsuranceCFRModal" style="margin-top: -8px">+ New Insurance CFR</button><br /></h3>}
-                        <h3 style="color: #29AAE3"><i class="fa fa-line-chart"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#PatientRecruitmentCFRModal" style="margin-top: -10px">+ New Patient Recruitment CFR</button>}</h3>
+                        <h3 style="color: #29AAE3"><i class="fa fa-check-square-o"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#PatientRecruitmentCFRModal" style="margin-top: -10px">+ New Patient Recruitment CFR</button>}</h3>
                     </div>
                     <!-- Mortgage Modal -->
                     <div class="modal fade" id="MortgageCFRModal" tabindex="-1" role="dialog" aria-labelledby="MortgageCFRModalLabel" aria-hidden="true">
