@@ -53,6 +53,7 @@
     <link href="~/assets/js/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
     <link href="~/assets/js/bootstrap-timepicker/timepicker.css" rel="stylesheet" />
     <link href="~/assets/js/bootstrap-datepicker/datepicker.css" rel="stylesheet" />  
+    <link href="~/assets/css/morris-0.4.3.min.css" rel="stylesheet" />
     
     <script src="~/assets/js/jquery.js"></script>
     <script src="~/assets/js/chart-master/Chart.js"></script>
@@ -301,7 +302,7 @@
                   </li>
                   }
 
-                  @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality"))
                   {
                     <li>
                         <a id="tickets" href="http://d05:88/ASTickets/" target="_blank">
@@ -720,6 +721,9 @@
     <script src="~/assets/js/flot/jquery.flot.tooltip.js"></script>
     <!--Need this for DEMO FLOT CHARTS TO WORK (HTML COMMENTED OUT ON /REPORTING/INDEX PAGE) **HOWEVER UNCOMMENTING THIS SCRIPT BREAKS RIGHT NAV CALENDAR**-->
     @*<script src="~/assets/js/flotchart-conf.js"></script>*@
+    <script src="~/assets/js/raphael-min.js"></script>
+    <script src="~/assets/js/morris-0.4.3.min.js"></script>
+    @*<script src="~/assets/js/morris-conf.js"></script>*@
     	
 	@*<script type="text/javascript">
         $(document).ready(function () {

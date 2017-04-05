@@ -226,6 +226,8 @@ namespace AS_TestProject.Controllers
 
                 if (agentDailyHour.LoginTimeStamp == agentDailyHour.LogoutTimeStamp)
                 {
+                    var empId = agentDailyHour.EmployeeID;
+                    var ppId = agentDailyHour.PayPeriodID;
                     mb.AgentDailyHours.Attach(agentDailyHour);
                     mb.AgentDailyHours.Remove(agentDailyHour);
                     foreach (var skill in mb.AgentDailyHoursToDomainMasters.Where(s => s.AgentDailyHoursID == agentDailyHour.AgentDailyHoursID).ToList())
@@ -233,6 +235,10 @@ namespace AS_TestProject.Controllers
                         mb.AgentDailyHoursToDomainMasters.Remove(skill);
                         mb.SaveChanges();
                     }
+                    mb.SaveChanges();
+
+                    // STORED PROCEDURES
+                    mb.uspHoursCalculation(empId, ppId);
                     mb.SaveChanges();
                 }
                 else

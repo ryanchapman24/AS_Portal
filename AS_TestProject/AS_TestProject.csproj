@@ -420,6 +420,7 @@
     <Content Include="assets\audio\Whoosh_Swoosh_Swing_Fishing_Pole_CloseFull_Fienup_001.mp3" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\datatables.css" />
+    <Content Include="assets\css\morris-0.4.3.min.css" />
     <Content Include="assets\css\style-responsive.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\table-responsive.css" />
@@ -589,6 +590,7 @@
     <Content Include="assets\js\jquery.sparkline.js" />
     <Content Include="assets\js\jquery.tagsinput.js" />
     <Content Include="assets\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="assets\js\morris-0.4.3.min.js" />
     <Content Include="assets\js\morris-conf.js" />
     <Content Include="assets\js\plugins\datatable\dataTables.bootstrap.js" />
     <Content Include="assets\js\plugins\datatable\exts\dataTables.colReorder.js" />
@@ -606,6 +608,7 @@
     <Content Include="assets\js\plugins\datatable\plugins\sorting\file-size.js" />
     <Content Include="assets\js\plugins\datatable\plugins\type-detection\date-uk.js" />
     <Content Include="assets\js\plugins\datatable\plugins\type-detection\file-size.js" />
+    <Content Include="assets\js\raphael-min.js" />
     <Content Include="assets\js\sparkline-chart.js" />
     <Content Include="assets\js\tasks.js" />
     <Content Include="assets\js\zabuto_calendar.js" />
@@ -821,6 +824,7 @@
     <Content Include="Views\Quality\CallCriteria.cshtml" />
     <Content Include="Views\Home\TaskHistory.cshtml" />
     <Content Include="Views\Employees\CFRsCompleted.cshtml" />
+    <Content Include="Views\HR\HireTerm.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

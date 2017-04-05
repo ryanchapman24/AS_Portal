@@ -7,12 +7,15 @@ using AS_TestProject.Models;
 using Microsoft.AspNet.Identity;
 using System.IO;
 using System.Threading.Tasks;
+using AS_TestProject.Entities;
 
 namespace AS_TestProject.Controllers
 {
     [Authorize(Roles = "Admin, HR")]
     public class HRController : UserNames
     {
+        private ReportEntities mb = new ReportEntities();
+
         // GET: HR
         [Authorize(Roles = "Admin, HR")]
         public ActionResult Index()
@@ -89,6 +92,72 @@ namespace AS_TestProject.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "HR");
+        }
+
+        // GET: HR
+        [Authorize(Roles = "Admin, HR")]
+        public ActionResult HireTerm()
+        {
+            var thisMonth = DateTime.Now.Month;
+            var lastMonth = DateTime.Now.AddMonths(-1).Month;
+            var twoMonthsAgo = DateTime.Now.AddMonths(-2).Month;
+            var threeMonthsAgo = DateTime.Now.AddMonths(-3).Month;
+            var fourMonthsAgo = DateTime.Now.AddMonths(-4).Month;
+            var fiveMonthsAgo = DateTime.Now.AddMonths(-5).Month;
+
+            var thisMonthYear = DateTime.Now.Year;
+            var lastMonthYear = DateTime.Now.AddMonths(-1).Year;
+            var twoMonthsAgoYear = DateTime.Now.AddMonths(-2).Year;
+            var threeMonthsAgoYear = DateTime.Now.AddMonths(-3).Year;
+            var fourMonthsAgoYear = DateTime.Now.AddMonths(-4).Year;
+            var fiveMonthsAgoYear = DateTime.Now.AddMonths(-5).Year;
+
+            ViewBag.ThisMonth = DateTime.Now.ToString("MMMM");
+            ViewBag.LastMonth = DateTime.Now.AddMonths(-1).ToString("MMMM");
+            ViewBag.TwoMonthsAgo = DateTime.Now.AddMonths(-2).ToString("MMMM");
+            ViewBag.ThreeMonthsAgo = DateTime.Now.AddMonths(-3).ToString("MMMM");
+            ViewBag.FourMonthsAgo = DateTime.Now.AddMonths(-4).ToString("MMMM");
+            ViewBag.FiveMonthsAgo = DateTime.Now.AddMonths(-5).ToString("MMMM");
+
+            ViewBag.ThisMonthOvrH = mb.Employees.Where( e=> e.HireDate.Month == thisMonth && e.HireDate.Year == thisMonthYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.LastMonthOvrH = mb.Employees.Where(e => e.HireDate.Month == lastMonth && e.HireDate.Year == lastMonthYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.TwoMonthsAgoOvrH = mb.Employees.Where(e => e.HireDate.Month == twoMonthsAgo && e.HireDate.Year == twoMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.ThreeMonthsAgoOvrH = mb.Employees.Where(e => e.HireDate.Month == threeMonthsAgo && e.HireDate.Year == threeMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.FourMonthsAgoOvrH = mb.Employees.Where(e => e.HireDate.Month == fourMonthsAgo && e.HireDate.Year == fourMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.FiveMonthsAgoOvrH = mb.Employees.Where(e => e.HireDate.Month == fiveMonthsAgo && e.HireDate.Year == fiveMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.ThisMonthOvrT = mb.Employees.Where(e => e.TerminationDate.Month == thisMonth && e.TerminationDate.Year == thisMonthYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.LastMonthOvrT = mb.Employees.Where(e => e.TerminationDate.Month == lastMonth && e.TerminationDate.Year == lastMonthYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.TwoMonthsAgoOvrT = mb.Employees.Where(e => e.TerminationDate.Month == twoMonthsAgo && e.TerminationDate.Year == twoMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.ThreeMonthsAgoOvrT = mb.Employees.Where(e => e.TerminationDate.Month == threeMonthsAgo && e.TerminationDate.Year == threeMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.FourMonthsAgoOvrT = mb.Employees.Where(e => e.TerminationDate.Month == fourMonthsAgo && e.TerminationDate.Year == fourMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.FiveMonthsAgoOvrT = mb.Employees.Where(e => e.TerminationDate.Month == fiveMonthsAgo && e.TerminationDate.Year == fiveMonthsAgoYear && (e.SiteID == 1 || e.SiteID == 2)).Count();
+
+            ViewBag.ThisMonthWH = mb.Employees.Where(e => e.HireDate.Month == thisMonth && e.HireDate.Year == thisMonthYear && e.SiteID == 2).Count();
+            ViewBag.LastMonthWH = mb.Employees.Where(e => e.HireDate.Month == lastMonth && e.HireDate.Year == lastMonthYear && e.SiteID == 2).Count();
+            ViewBag.TwoMonthsAgoWH = mb.Employees.Where(e => e.HireDate.Month == twoMonthsAgo && e.HireDate.Year == twoMonthsAgoYear && e.SiteID == 2).Count();
+            ViewBag.ThreeMonthsAgoWH = mb.Employees.Where(e => e.HireDate.Month == threeMonthsAgo && e.HireDate.Year == threeMonthsAgoYear && e.SiteID == 2).Count();
+            ViewBag.FourMonthsAgoWH = mb.Employees.Where(e => e.HireDate.Month == fourMonthsAgo && e.HireDate.Year == fourMonthsAgoYear && e.SiteID == 2).Count();
+            ViewBag.FiveMonthsAgoWH = mb.Employees.Where(e => e.HireDate.Month == fiveMonthsAgo && e.HireDate.Year == fiveMonthsAgoYear && e.SiteID == 2).Count();
+            ViewBag.ThisMonthWT = mb.Employees.Where(e => e.TerminationDate.Month == thisMonth && e.TerminationDate.Year == thisMonthYear && e.SiteID == 2).Count();
+            ViewBag.LastMonthWT = mb.Employees.Where(e => e.TerminationDate.Month == lastMonth && e.TerminationDate.Year == lastMonthYear && e.SiteID == 2).Count();
+            ViewBag.TwoMonthsAgoWT = mb.Employees.Where(e => e.TerminationDate.Month == twoMonthsAgo && e.TerminationDate.Year == twoMonthsAgoYear && e.SiteID == 2).Count();
+            ViewBag.ThreeMonthsAgoWT = mb.Employees.Where(e => e.TerminationDate.Month == threeMonthsAgo && e.TerminationDate.Year == threeMonthsAgoYear && e.SiteID == 2).Count();
+            ViewBag.FourMonthsAgoWT = mb.Employees.Where(e => e.TerminationDate.Month == fourMonthsAgo && e.TerminationDate.Year == fourMonthsAgoYear && e.SiteID == 2).Count();
+            ViewBag.FiveMonthsAgoWT = mb.Employees.Where(e => e.TerminationDate.Month == fiveMonthsAgo && e.TerminationDate.Year == fiveMonthsAgoYear && e.SiteID == 2).Count();
+
+            ViewBag.ThisMonthGH = mb.Employees.Where(e => e.HireDate.Month == thisMonth && e.HireDate.Year == thisMonthYear && e.SiteID == 1).Count();
+            ViewBag.LastMonthGH = mb.Employees.Where(e => e.HireDate.Month == lastMonth && e.HireDate.Year == lastMonthYear && e.SiteID == 1).Count();
+            ViewBag.TwoMonthsAgoGH = mb.Employees.Where(e => e.HireDate.Month == twoMonthsAgo && e.HireDate.Year == twoMonthsAgoYear && e.SiteID == 1).Count();
+            ViewBag.ThreeMonthsAgoGH = mb.Employees.Where(e => e.HireDate.Month == threeMonthsAgo && e.HireDate.Year == threeMonthsAgoYear && e.SiteID == 1).Count();
+            ViewBag.FourMonthsAgoGH = mb.Employees.Where(e => e.HireDate.Month == fourMonthsAgo && e.HireDate.Year == fourMonthsAgoYear && e.SiteID == 1).Count();
+            ViewBag.FiveMonthsAgoGH = mb.Employees.Where(e => e.HireDate.Month == fiveMonthsAgo && e.HireDate.Year == fiveMonthsAgoYear && e.SiteID == 1).Count();
+            ViewBag.ThisMonthGT = mb.Employees.Where(e => e.TerminationDate.Month == thisMonth && e.TerminationDate.Year == thisMonthYear && e.SiteID == 1).Count();
+            ViewBag.LastMonthGT = mb.Employees.Where(e => e.TerminationDate.Month == lastMonth && e.TerminationDate.Year == lastMonthYear && e.SiteID == 1).Count();
+            ViewBag.TwoMonthsAgoGT = mb.Employees.Where(e => e.TerminationDate.Month == twoMonthsAgo && e.TerminationDate.Year == twoMonthsAgoYear && e.SiteID == 1).Count();
+            ViewBag.ThreeMonthsAgoGT = mb.Employees.Where(e => e.TerminationDate.Month == threeMonthsAgo && e.TerminationDate.Year == threeMonthsAgoYear && e.SiteID == 1).Count();
+            ViewBag.FourMonthsAgoGT = mb.Employees.Where(e => e.TerminationDate.Month == fourMonthsAgo && e.TerminationDate.Year == fourMonthsAgoYear && e.SiteID == 1).Count();
+            ViewBag.FiveMonthsAgoGT = mb.Employees.Where(e => e.TerminationDate.Month == fiveMonthsAgo && e.TerminationDate.Year == fiveMonthsAgoYear && e.SiteID == 1).Count();
+            return View();
         }
     }
 }
