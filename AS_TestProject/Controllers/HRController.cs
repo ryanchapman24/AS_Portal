@@ -157,6 +157,31 @@ namespace AS_TestProject.Controllers
             ViewBag.ThreeMonthsAgoGT = mb.Employees.Where(e => e.TerminationDate.Month == threeMonthsAgo && e.TerminationDate.Year == threeMonthsAgoYear && e.SiteID == 1).Count();
             ViewBag.FourMonthsAgoGT = mb.Employees.Where(e => e.TerminationDate.Month == fourMonthsAgo && e.TerminationDate.Year == fourMonthsAgoYear && e.SiteID == 1).Count();
             ViewBag.FiveMonthsAgoGT = mb.Employees.Where(e => e.TerminationDate.Month == fiveMonthsAgo && e.TerminationDate.Year == fiveMonthsAgoYear && e.SiteID == 1).Count();
+
+            ViewBag.ThisMonthOvrDiff = ViewBag.ThisMonthOvrH - ViewBag.ThisMonthOvrT;
+            ViewBag.LastMonthOvrDiff = ViewBag.LastMonthOvrH - ViewBag.LastMonthOvrT;
+            ViewBag.TwoMonthsAgoOvrDiff = ViewBag.TwoMonthsAgoOvrH - ViewBag.TwoMonthsAgoOvrT;
+            ViewBag.ThreeMonthsAgoOvrDiff = ViewBag.ThreeMonthsAgoOvrH - ViewBag.ThreeMonthsAgoOvrT;
+            ViewBag.FourMonthsAgoOvrDiff = ViewBag.FourMonthsAgoOvrH - ViewBag.FourMonthsAgoOvrT;
+            ViewBag.FiveMonthsAgoOvrDiff = ViewBag.FiveMonthsAgoOvrH - ViewBag.FiveMonthsAgoOvrT;
+            ViewBag.OverallDiff = ViewBag.ThisMonthOvrDiff + ViewBag.LastMonthOvrDiff + ViewBag.TwoMonthsAgoOvrDiff + ViewBag.ThreeMonthsAgoOvrDiff + ViewBag.FourMonthsAgoOvrDiff + ViewBag.FiveMonthsAgoOvrDiff;
+
+            ViewBag.ThisMonthWDiff = ViewBag.ThisMonthWH - ViewBag.ThisMonthWT;
+            ViewBag.LastMonthWDiff = ViewBag.LastMonthWH - ViewBag.LastMonthWT;
+            ViewBag.TwoMonthsAgoWDiff = ViewBag.TwoMonthsAgoWH - ViewBag.TwoMonthsAgoWT;
+            ViewBag.ThreeMonthsAgoWDiff = ViewBag.ThreeMonthsAgoWH - ViewBag.ThreeMonthsAgoWT;
+            ViewBag.FourMonthsAgoWDiff = ViewBag.FourMonthsAgoWH - ViewBag.FourMonthsAgoWT;
+            ViewBag.FiveMonthsAgoWDiff = ViewBag.FiveMonthsAgoWH - ViewBag.FiveMonthsAgoWT;
+            ViewBag.WichitaDiff = ViewBag.ThisMonthWDiff + ViewBag.LastMonthWDiff + ViewBag.TwoMonthsAgoWDiff + ViewBag.ThreeMonthsAgoWDiff + ViewBag.FourMonthsAgoWDiff + ViewBag.FiveMonthsAgoWDiff;
+
+            ViewBag.ThisMonthGDiff = ViewBag.ThisMonthGH - ViewBag.ThisMonthGT;
+            ViewBag.LastMonthGDiff = ViewBag.LastMonthGH - ViewBag.LastMonthGT;
+            ViewBag.TwoMonthsAgoGDiff = ViewBag.TwoMonthsAgoGH - ViewBag.TwoMonthsAgoGT;
+            ViewBag.ThreeMonthsAgoGDiff = ViewBag.ThreeMonthsAgoGH - ViewBag.ThreeMonthsAgoGT;
+            ViewBag.FourMonthsAgoGDiff = ViewBag.FourMonthsAgoGH - ViewBag.FourMonthsAgoGT;
+            ViewBag.FiveMonthsAgoGDiff = ViewBag.FiveMonthsAgoGH - ViewBag.FiveMonthsAgoGT;
+            ViewBag.GreensboroDiff = ViewBag.ThisMonthGDiff + ViewBag.LastMonthGDiff + ViewBag.TwoMonthsAgoGDiff + ViewBag.ThreeMonthsAgoGDiff + ViewBag.FourMonthsAgoGDiff + ViewBag.FiveMonthsAgoGDiff;
+
             return View();
         }
     }

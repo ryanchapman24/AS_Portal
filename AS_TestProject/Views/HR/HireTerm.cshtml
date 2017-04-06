@@ -17,6 +17,69 @@
         <div class="panel-body">
             <div class="tab-content">
                 <div id="overall" class="tab-pane active">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.OverallDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white"><strong>Net Change<br />(@ViewBag.OverallDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white"><strong>Net Change<br />(+@ViewBag.OverallDiff)</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <hr />
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        @if (ViewBag.FiveMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(+@ViewBag.FiveMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.FourMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FourMonthsAgo<br />(@ViewBag.FourMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FourMonthsAgo<br />(+@ViewBag.FourMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThreeMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(@ViewBag.ThreeMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(+@ViewBag.ThreeMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.TwoMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(@ViewBag.TwoMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(+@ViewBag.TwoMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.LastMonthOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.LastMonth<br />(@ViewBag.LastMonthOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.LastMonth<br />(+@ViewBag.LastMonthOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThisMonthOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThisMonth<br />(@ViewBag.ThisMonthOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThisMonth<br />(+@ViewBag.ThisMonthOvrDiff)</strong></div>
+                        }
+                    </div>
                     <div class="row mt">
                         <div class="col-lg-6">
                             <div class="content-panel">
@@ -37,6 +100,69 @@
                     </div>
                 </div>
                 <div id="wichita" class="tab-pane">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.WichitaDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white"><strong>Net Change<br />(@ViewBag.WichitaDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white"><strong>Net Change<br />(+@ViewBag.WichitaDiff)</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <hr />
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        @if (ViewBag.FiveMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(+@ViewBag.FiveMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.FourMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FourMonthsAgo<br />(@ViewBag.FourMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FourMonthsAgo<br />(+@ViewBag.FourMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThreeMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(@ViewBag.ThreeMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(+@ViewBag.ThreeMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.TwoMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(@ViewBag.TwoMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(+@ViewBag.TwoMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.LastMonthWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.LastMonth<br />(@ViewBag.LastMonthWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.LastMonth<br />(+@ViewBag.LastMonthWDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThisMonthWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThisMonth<br />(@ViewBag.ThisMonthWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThisMonth<br />(+@ViewBag.ThisMonthWDiff)</strong></div>
+                        }
+                    </div>
                     <div class="row mt">
                         <div class="col-lg-6">
                             <div class="content-panel">
@@ -57,6 +183,69 @@
                     </div>
                 </div>
                 <div id="greensboro" class="tab-pane">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.GreensboroDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white"><strong>Net Change<br />(@ViewBag.GreensboroDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white"><strong>Net Change<br />(+@ViewBag.GreensboroDiff)</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <hr />
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        @if (ViewBag.FiveMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(+@ViewBag.FiveMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.FourMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FourMonthsAgo<br />(@ViewBag.FourMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FourMonthsAgo<br />(+@ViewBag.FourMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThreeMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(@ViewBag.ThreeMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(+@ViewBag.ThreeMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.TwoMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(@ViewBag.TwoMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(+@ViewBag.TwoMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.LastMonthGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.LastMonth<br />(@ViewBag.LastMonthGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.LastMonth<br />(+@ViewBag.LastMonthGDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThisMonthGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThisMonth<br />(@ViewBag.ThisMonthGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThisMonth<br />(+@ViewBag.ThisMonthGDiff)</strong></div>
+                        }
+                    </div>
                     <div class="row mt">
                         <div class="col-lg-6">
                             <div class="content-panel">
