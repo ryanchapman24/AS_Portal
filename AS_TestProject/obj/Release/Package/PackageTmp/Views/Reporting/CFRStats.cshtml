@@ -1,7 +1,7 @@
 ﻿
 <div class="col-lg-12 mt">
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
-        <h3 style="color: #29AAE3"><i class="fa fa-check-square-o"></i> Quality: <span style="color: #29AAE3">CFR Statistics</span></h3>
+        <h3 style="color: #29AAE3"><i class="fa fa-check-square-o" style="margin-right: 4px"></i>CFR Statistics</h3>
         <div class="panel-heading">
             <ul class="nav nav-tabs nav-justified">
                 <li class="active">
@@ -732,7 +732,7 @@
             </div>
         </div>
         <p style="padding-bottom: 5px; margin-top: 30px">
-            @Html.ActionLink("Back to Quality Hub", "Index", "Quality")
+            @Html.ActionLink("Back to Reporting", "Index", "Reporting")
         </p>
     </div>
 </div>
@@ -743,7 +743,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
-            $('#quality').addClass("active");
+            $('#report').addClass("active");
 
             $('.hr-table').DataTable({
                 "iDisplayLength": 5,

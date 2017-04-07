@@ -498,6 +498,7 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
     </AssociationSet>
+    <EntitySet Name="AgentDailyHoursToDomainMasters" EntityType="ReportModel.AgentDailyHoursToDomainMaster" />
   </EntityContainer>
   <ComplexType Name="uspInsertProblemMaster_Result">
     <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -693,6 +694,7 @@
     <Property Name="MainPhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Employees" Relationship="ReportModel.FK_COMPANY_Employee_SiteID" FromRole="Site" ToRole="Employee" />
+    <Property Name="ADPLocationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ProblemMaster">
     <Key>
@@ -963,7 +965,7 @@
     <Property Name="RollingCampaignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ReportTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignID" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="TotalAnswers" Type="Int32" Nullable="false" />
     <Property Name="TotalContacts" Type="Int32" Nullable="false" />
     <Property Name="ContactToTransfer" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
@@ -977,7 +979,7 @@
     <Property Name="TPHHours" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="TransfersPerHour" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
     <Property Name="CallHourOfDay" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="LeadSource" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LeadSource" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
     <Property Name="CostPerTransfer" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
   </EntityType>
   <EntityType Name="PreciseLeadsHourlyCampaignMetric">
@@ -1534,6 +1536,7 @@
     <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="LoginDuration" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+    <Property Name="SkillName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="CallLogRealTime">
     <Key>
@@ -2857,4 +2860,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="AgentDailyHoursToDomainMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="AgentDailyHoursID" Type="Int32" Nullable="false" />
+    <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
 </Schema>

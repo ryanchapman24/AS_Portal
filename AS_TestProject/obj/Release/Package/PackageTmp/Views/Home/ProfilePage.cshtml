@@ -205,7 +205,7 @@
                                                         {
                                                             <div class="col-sm-4">
                                                                 <h1><i class="fa fa-edit"></i></h1>
-                                                                <h3>@ViewBag.CFRtoday <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="Yesterday<br>@ViewBag.CFRyesterday<br>Month<br>@ViewBag.CFRmonth<br>Year<br>@ViewBag.CFRyear" data-html="true" data-toggle="tooltip" data-placement="right"></i></h3>
+                                                                <a href="@Url.Action("CFRsCompleted","Employees", new { id = ViewBag.EmployeeID })"><h3>@ViewBag.CFRtoday <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="Yesterday<br>@ViewBag.CFRyesterday<br>Month<br>@ViewBag.CFRmonth<br>Year<br>@ViewBag.CFRyear" data-html="true" data-toggle="tooltip" data-placement="right"></i></h3></a>
                                                                 <h6>CFRS SUBMITTED TODAY</h6>
                                                             </div>
                                                         }
@@ -240,6 +240,7 @@
                                                 @if (Model.Id == User.Identity.GetUserId())
                                                 {
                                                     <p style="margin-left: 10px"><a href="@Url.Action("NotificationHistory","Home")"><i class="fa fa-bolt" style="margin-right: 4px"></i>Notification History</a></p>
+                                                    <p style="margin-left: 10px"><a href="@Url.Action("TaskHistory","Home")"><i class="fa fa-tasks" style="margin-right: 4px"></i>Task History</a></p>
                                                 }                                            
                                             </div><!-- --/col-md-6 ---->
                                             <div class="col-md-6 detailed">

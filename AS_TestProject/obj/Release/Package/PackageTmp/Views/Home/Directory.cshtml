@@ -83,7 +83,7 @@
                                                         State
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", required = "true", maxlength = "2" } })
+                                                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", required = "true", maxlength = "2", minlength = "2" } })
                                                         @*@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })*@
                                                     </div><br /><br /><br />
 
@@ -91,7 +91,7 @@
                                                         Zip Code
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "5" } })
+                                                        @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "5", minlength = "5" } })
                                                         @*@Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })*@
                                                     </div><br /><br /><br />
 
@@ -107,7 +107,7 @@
                                                         Home Phone
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                                                        @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14", minlength = "14" } })
                                                         @*@Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })*@
                                                     </div><br /><br /><br />
 
@@ -115,7 +115,7 @@
                                                         Cell Phone
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14" } })
+                                                        @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control onlyNum phone", maxlength = "14", minlength = "14" } })
                                                         @*@Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })*@
                                                     </div><br /><br /><br />
 
@@ -150,7 +150,7 @@
                                                         Manager Employee ID
                                                     </div>
                                                     <div class="col-md-9">
-                                                        @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control onlyNum", type = "text", required = "true", maxlength = "7" } })
+                                                        @Html.EditorFor(model => model.ManagerEmployeeID, new { htmlAttributes = new { @class = "form-control onlyNum", type = "text", required = "true", maxlength = "7", minlength = "7" } })
                                                         @*@Html.ValidationMessageFor(model => model.ManagerEmployeeID, "", new { @class = "text-danger" })*@
                                                     </div><br /><br /><br /><br />
 
@@ -174,7 +174,7 @@
                                                         File Number
                                                     </div>
                                                     <div class="col-md-9" style="margin-top: -5px">
-                                                        @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "6" } })
+                                                        @Html.EditorFor(model => model.FileNumber, new { htmlAttributes = new { @class = "form-control onlyNum", required = "true", maxlength = "6", minlength = "6" } })
                                                         @*@Html.ValidationMessageFor(model => model.FileNumber, "", new { @class = "text-danger" })*@
                                                     </div><br />
                                                 </div>
@@ -230,7 +230,7 @@
                                                         @employee.AddressLine1 @employee.AddressLine2<br />
                                                         @employee.City, @employee.State @employee.ZipCode
                                                     </td>*@
-                                                    <td>
+                                                    <td class="text-nowrap">
                                                         @if (employee.EmailAddress != null && employee.EmailAddress.Length > 0)
                                                         {
                                                             <a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a><br />
@@ -493,7 +493,7 @@
                                                         @employee.AddressLine1 @employee.AddressLine2<br />
                                                         @employee.City, @employee.State @employee.ZipCode
                                                     </td>*@
-                                                    <td>
+                                                    <td class="text-nowrap">
                                                         @if (employee.EmailAddress != null && employee.EmailAddress.Length > 0)
                                                         {
                                                             <a href="@string.Format("{0}{1}","mailto:",employee.EmailAddress)">@employee.EmailAddress</a><br />

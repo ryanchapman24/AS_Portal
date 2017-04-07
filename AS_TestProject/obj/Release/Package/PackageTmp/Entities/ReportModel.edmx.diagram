@@ -142,6 +142,7 @@
         <EntityTypeShape EntityType="ReportModel.DisciplinaryAction" Width="1.5" PointX="5.25" PointY="15.75" />
         <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" />
         <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" />
+        <EntityTypeShape EntityType="ReportModel.AgentDailyHoursToDomainMaster" Width="1.5" PointX="3.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

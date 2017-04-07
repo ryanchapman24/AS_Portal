@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity;
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h2 style="color: #29AAE3"><i class="fa fa-tasks" style="margin-right: 4px"></i> Task History</h2>
+        <span><em>Only shows up to your last 500 completed tasks</em></span>
+        <hr />
+        <div class="widget-content">
+            <div class="table-responsive">
+                <table id="datatable-basic-scrolling" class="table table-hover datatable task-table">
+                    <thead>
+                        <tr>
+                            <th>Completed</th>
+                            <th>Description</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int processed = 0;
+                            foreach (var item in ViewBag.TaskHistory)
+                            {
+                                <tr>
+                                    @if (ViewBag.Site == "Wichita")
+                                    {
+                                        <td class="text-nowrap">@item.Completed.AddHours(-1).ToString("g")</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-nowrap">@item.Completed.ToString("g")</td>
+                                    }
+                                    <td>@item.Description</td>
+                                    <td><strong style="color: #29AAE3">@item.TaskPriority.Priority</strong></td>
+                                </tr>
+                                processed++;
+                            if (processed == 500) { break; };
+                            }
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p style="padding-bottom: 5px">
+            @Html.ActionLink("Back to Profile", "ProfilePage", new { id = User.Identity.GetUserId() })
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#profile').addClass("active");
+
+            $('.task-table').DataTable({
+                "iDisplayLength": 50,
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+            });
+        });
+    </script>
+}

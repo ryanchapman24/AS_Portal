@@ -1,9 +1,154 @@
-﻿<div class="col-lg-12 mt">
+﻿@{
+    var activeDoms = ViewBag.ActiveDomains;
+    var domGCalls = new int[ViewBag.ActiveDomains.Count];
+    var domWCalls = new int[ViewBag.ActiveDomains.Count];
+    var domNames = new string[ViewBag.ActiveDomains.Count];
+    var domIndex = 0;
+    foreach (var actDom in ViewBag.ActiveDomains)
+    {
+        domGCalls[domIndex] = actDom.GCalls;
+        domWCalls[domIndex] = actDom.WCalls;
+        domNames[domIndex] = actDom.Name;
+        domIndex++;
+        if (domIndex == ViewBag.ActiveDomains.Count)
+        {
+            break;
+        }
+    }
+}
+
+<div class="col-lg-12 mt">
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
         <h2 style="color: #29AAE3"><i class="fa fa-line-chart" style="margin-right: 4px"></i> Reporting</h2>
-        <hr />
-        <a href="@Url.Action("TransfersByDomain", "Reporting")" class="btn btn-theme btn-md">Transfers by Domain</a>
-        <a href="@Url.Action("TransfersByEmployee", "Reporting")" class="btn btn-theme btn-md">Transfers by Employee</a>
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#general">General</a>
+                </li>
+                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                {
+                    <li>
+                        <a data-toggle="tab" href="#humanresources">HR</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                {
+                    <li>
+                        <a data-toggle="tab" href="#informationtechnology">IT</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
+                {
+                    <li>
+                        <a data-toggle="tab" href="#qualdpt">Quality</a>
+                    </li>
+                }
+            </ul>
+        </div><!-- --/panel-heading ---->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="general" class="tab-pane active">
+                    <h4><strong style="color: #29AAE3">Call Volume Today</strong></h4>
+                    @*<div>
+                        @{
+                            foreach (var item in domGCalls)
+                            {
+                                <p>@item</p>
+                            }
+                        }
+                    </div>*@
+                    <div>
+                        @*@foreach (var actDom in ViewBag.ActiveDomains)
+                        {
+                            <p>
+                                @actDom.Number | @actDom.Name | @actDom.WCalls | @actDom.GCalls
+                            </p>
+                        }*@
+                        <div id="call-volume-chart" style="height:350px;"></div>
+                    </div>
+                    @*<div class="flot-chart">
+                        <!-- page start-->
+                        <div class="row mt">
+                            <div class="col-lg-12">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Tracking Chart</h4>
+                                    <div class="panel-body">
+                                        <div id="chart-1" class="chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt">
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Selection Chart</h4>
+                                    <div class="panel-body">
+                                        <div id="chart-2" class="chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Live Chart</h4>
+                                    <div class="panel-body">
+                                        <div id="chart-3" class="chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt">
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Support Chart</h4>
+                                    <div class="panel-body">
+                                        <div id="chart-4" class="chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Bar Chart</h4>
+                                    <div class="panel-body">
+                                        <div id="chart-6" style="height:350px;"></div>
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group stackControls">
+                                                <input type="button" class="btn btn-info" value="With stacking" />
+                                                <input type="button" class="btn btn-danger" value="Without stacking" />
+                                            </div>
+                                            <div class="space5"></div>
+                                            <div class="btn-group graphControls">
+                                                <input type="button" class="btn" value="Bars" />
+                                                <input type="button" class="btn" value="Lines" />
+                                                <input type="button" class="btn" value="Lines with steps" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--/coontent-panel -->
+                            </div><!-- /col-lg-6 --->
+                        </div><!-- row -->
+                    </div>*@<!--/flot-chart -->
+                </div>
+                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                {
+                    <div id="humanresources" class="tab-pane">
+                        <a href="@Url.Action("HireTerm", "Reporting")" class="btn btn-theme btn-md">Hire/Term Statistics</a>
+                    </div>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                {
+                    <div id="informationtechnology" class="tab-pane">
+                        <a href="@Url.Action("TransfersByDomain", "Reporting")" class="btn btn-theme btn-md">Transfers by Domain</a>
+                        <a href="@Url.Action("TransfersByEmployee", "Reporting")" class="btn btn-theme btn-md">Transfers by Employee</a> 
+                    </div>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
+                {
+                    <div id="qualdpt" class="tab-pane">
+                        <a href="@Url.Action("CFRStats", "Reporting")" class="btn btn-theme btn-md">CFR Statistics</a>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 </div>
 
@@ -12,6 +157,189 @@
     <script>
         $(document).ready(function () {
             $('#report').addClass("active");
+        });
+    </script>
+    @*<script>
+        //bar chart
+        $(function () {
+            var d1 = [];
+            for (var i = 0; i <= 10; i += 1)
+                d1.push([i, parseInt(Math.random() * 30)]);
+
+            var d2 = [];
+            for (var i = 0; i <= 10; i += 1)
+                d2.push([i, parseInt(Math.random() * 30)]);
+
+            var d3 = [];
+            for (var i = 0; i <= 10; i += 1)
+                d3.push([i, parseInt(Math.random() * 30)]);
+
+            var stack = 0, bars = true, lines = false, steps = false;
+
+            function plotWithOptions() {
+                $.plot($("#call-volume-chart"), [d1, d2, d3], {
+                    series: {
+                        stack: stack,
+                        lines: { show: lines, fill: true, steps: steps },
+                        bars: { show: bars, barWidth: 0.6 }
+                    }
+                });
+            }
+            plotWithOptions();
+            $(".stackControls input").click(function (e) {
+                e.preventDefault();
+                stack = $(this).val() == "With stacking" ? true : null;
+                plotWithOptions();
+            });
+            $(".graphControls input").click(function (e) {
+                e.preventDefault();
+                bars = $(this).val().indexOf("Bars") != -1;
+                lines = $(this).val().indexOf("Lines") != -1;
+                steps = $(this).val().indexOf("steps") != -1;
+                plotWithOptions();
+            });
+        });
+    </script>*@
+    <script>
+        @*var gCallsLength, gCallsValues, wCallsLength, wCallsValues, dNamesLength, dNamesValues;
+
+        gCallsLength = @domGCalls.Length;
+        wCallsLength = @domWCalls.Length;
+        dNamesLength = @domNames.Length;
+
+        var gCallsValues = "";
+        var wCallsValues = "";
+        var dNamesValues = "";
+
+        for (i = 0; i < gArray.length; i++) {
+            gCallsValues += "[" + i + "," + gArray[i] + "],";
+        };
+        for (i = 0; i < wArray.length; i++) {
+            wCallsValues += "[" + i + "," + wArray[i] + "],";
+        };
+        for (i = 0; i < nArray.length; i++) {
+            dNamesValues += "[" + i + "," + nArray[i] + ",";
+        };*@
+        $(function () {
+            var gArray = "";
+            var wArray = "";
+            var nArray = "";
+            @foreach (var c in activeDoms)
+            {
+                @:gArray += "[" + "@c.Number" + ", " + "@c.GCalls" + "],";
+            }
+            @foreach (var c in activeDoms)
+            {
+                @:wArray += "[" + "@c.Number" + ", " + "@c.WCalls" + "],";
+            }
+            @foreach (var d in activeDoms)
+            {
+                @:nArray += "[" + "@d.Number" + ", " + "@d.Name" + "],";
+            }
+            console.log(gArray);
+            console.log(wArray);
+            console.log(nArray);
+            var wichita = {
+                label: 'Wichita',
+                color: '#29AAE3',
+                //data: [ wArray ]
+                data: [
+                    [0, 1584],
+                    [1, 196],
+                    [2, 0],
+                    [3, 0],
+                    [4, 0],
+                    [5, 0],
+                    [6, 2576],
+                    [7, 2008],
+                    [8, 0],
+                    [9, 0],
+                    [10, 0],
+                    [11, 0],
+                    [12, 0],
+                    [13, 1226],
+                    [14, 0]
+                ]
+            };
+            var greensboro = {
+                label: 'Greensboro',
+                color: '#031B25',
+                //data: [ gArray ]
+                data: [
+                    [0, 2518],
+                    [1, 0],
+                    [2, 0],
+                    [3, 236],
+                    [4, 0],
+                    [5, 0],
+                    [6, 0],
+                    [7, 29],
+                    [8, 0],
+                    [9, 0],
+                    [10, 2],
+                    [11, 0],
+                    [12, 0],
+                    [13, 0],
+                    [14, 98]
+                ]
+            };
+            var dataset = [wichita, greensboro];
+
+            var options = {
+                series: {
+                    stack: true,
+                    bars: {
+                        show: true
+                    }
+                },
+                bars: {
+                    align: "center",
+                    horizontal: false,
+                    barWidth: .8,
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true,
+                    borderColor: null,
+                    backgroundColor: null,
+                    labelMargin: 10,
+                    minBorderMargin: 10
+                },
+                tooltip: {
+                    show: true,
+                    content: "%s | %y"
+                },
+                yaxis: {
+                    tickColor: '#eaeaea',
+                    tickDecimals: 0
+                },
+                xaxis: {
+                    tickColor: '#eaeaea',
+                    //ticks: [ nArray ]
+                    ticks: [
+                        [0, "Acurian"],
+                        [1, "AIS"],
+                        [2, "Bridgeview"],
+                        [3, "Chase"],
+                        [4, "Cornerstone"],
+                        [5, "Equate"],
+                        [6, "Everquote"],
+                        [7, "Freedom Mortgage"],
+                        [8, "FreedomEA"],
+                        [9, "GVG"],
+                        [10, "Lending Tree"],
+                        [11, "Liberty"],
+                        [12, "PeoplesDM"],
+                        [13, "Precise Leads"],
+                        [14, "Prime Lending"]
+                    ]
+                },
+                legend: {
+                    position: 'ne',
+                    show: true
+                }
+            };
+            $.plot($("#call-volume-chart"), dataset, options);
         });
     </script>
 }
