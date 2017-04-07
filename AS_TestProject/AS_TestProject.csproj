@@ -812,7 +812,6 @@
     <Content Include="Views\Employees\PatientRecruitmentCFR_Edit.cshtml" />
     <Content Include="Views\Quality\Index.cshtml" />
     <Content Include="Views\Quality\Details.cshtml" />
-    <Content Include="Views\Quality\CFRStats.cshtml" />
     <Content Include="Views\Events\EditEvent.cshtml" />
     <Content Include="Views\Events\DeleteEvent.cshtml" />
     <Content Include="Views\Reporting\TransfersByDomain.cshtml" />
@@ -824,7 +823,8 @@
     <Content Include="Views\Quality\CallCriteria.cshtml" />
     <Content Include="Views\Home\TaskHistory.cshtml" />
     <Content Include="Views\Employees\CFRsCompleted.cshtml" />
-    <Content Include="Views\HR\HireTerm.cshtml" />
+    <Content Include="Views\Reporting\HireTerm.cshtml" />
+    <Content Include="Views\Reporting\CFRStats.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
