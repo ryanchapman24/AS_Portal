@@ -1,20 +1,20 @@
 ﻿@{
-    var activeDoms = ViewBag.ActiveDomains;
-    var domGCalls = new int[ViewBag.ActiveDomains.Count];
-    var domWCalls = new int[ViewBag.ActiveDomains.Count];
-    var domNames = new string[ViewBag.ActiveDomains.Count];
-    var domIndex = 0;
-    foreach (var actDom in ViewBag.ActiveDomains)
-    {
-        domGCalls[domIndex] = actDom.GCalls;
-        domWCalls[domIndex] = actDom.WCalls;
-        domNames[domIndex] = actDom.Name;
-        domIndex++;
-        if (domIndex == ViewBag.ActiveDomains.Count)
-        {
-            break;
-        }
-    }
+//var activeDoms = ViewBag.ActiveDomains;
+//var domGCalls = new int[ViewBag.ActiveDomains.Count];
+//var domWCalls = new int[ViewBag.ActiveDomains.Count];
+//var domNames = new string[ViewBag.ActiveDomains.Count];
+//var domIndex = 0;
+//foreach (var actDom in ViewBag.ActiveDomains)
+//{
+//    domGCalls[domIndex] = actDom.GCalls;
+//    domWCalls[domIndex] = actDom.WCalls;
+//    domNames[domIndex] = actDom.Name;
+//    domIndex++;
+//    if (domIndex == ViewBag.ActiveDomains.Count)
+//    {
+//        break;
+//    }
+//}
 }
 
 <div class="col-lg-12 mt">
@@ -224,7 +224,8 @@
             var gArray = "";
             var wArray = "";
             var nArray = "";
-            @foreach (var c in activeDoms)
+            // ONLY THIS BLOCK NEEDS TO BE UNCOMMENTED TO GET WHERE I LAST LEFT OFF ///////////////
+            @*@foreach (var c in activeDoms)
             {
                 @:gArray += "[" + "@c.Number" + ", " + "@c.GCalls" + "],";
             }
@@ -238,7 +239,8 @@
             }
             console.log(gArray);
             console.log(wArray);
-            console.log(nArray);
+            console.log(nArray);*@
+            //////////////////////////////////////////////////////////////////////////////////
             var wichita = {
                 label: 'Wichita',
                 color: '#29AAE3',
