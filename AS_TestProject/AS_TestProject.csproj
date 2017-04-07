@@ -36,7 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -241,7 +241,6 @@
     <Compile Include="Controllers\ITController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
-    <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Controllers\QualityController.cs" />
     <Compile Include="Controllers\ReportingController.cs" />
     <Compile Include="Controllers\SisenseController.cs" />
@@ -786,8 +785,6 @@
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Manage\UpdateInformation.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
-    <Content Include="Views\Payroll\Edit.cshtml" />
-    <Content Include="Views\Payroll\Index.cshtml" />
     <Content Include="Views\Home\Tools.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\IT\Index.cshtml" />
