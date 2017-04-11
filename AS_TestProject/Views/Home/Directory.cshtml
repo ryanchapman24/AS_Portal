@@ -193,7 +193,7 @@
                                 <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
                                     <thead>
                                         <tr>
-                                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                                             {
                                                 <th class="text-nowrap" style="width: 5%">Employee ID</th>
                                                 <th>Last</th>
@@ -219,7 +219,7 @@
                                         @foreach (var employee in ViewBag.ActiveEmps)
                                         {
                                             <tr>
-                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                                                 {
                                                     <td>@employee.EmployeeID</td>
                                                     <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
@@ -247,7 +247,7 @@
                                                         {
                                                             <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />                          
                                                         }
-                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                                                         {
                                                             <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
                                                         }
@@ -269,7 +269,7 @@
                                                         {
                                                             <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
                                                         }
-                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                                                         {
                                                             <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
                                                         }
@@ -456,7 +456,7 @@
                                 <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable directable">
                                     <thead>
                                         <tr>
-                                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                                             {
                                                 <th class="text-nowrap" style="width: 5%">Employee ID</th>
                                                 <th>Last</th>
@@ -482,7 +482,7 @@
                                         @foreach (var employee in ViewBag.InactiveEmps)
                                         {
                                             <tr>
-                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                                                 {
                                                     <td>@employee.EmployeeID</td>
                                                     <td><strong style="color: #29AAE3">@employee.LastName</strong></td>
@@ -510,7 +510,7 @@
                                                         {
                                                             <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
                                                         }
-                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                                                         {
                                                             <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
                                                         }
@@ -532,7 +532,7 @@
                                                         {
                                                             <a href="@Url.Action("Edit","Employees", new { id = employee.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
                                                         }
-                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                                                         {
                                                             <a href="@Url.Action("Details","Employees", new { id = employee.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
                                                         }

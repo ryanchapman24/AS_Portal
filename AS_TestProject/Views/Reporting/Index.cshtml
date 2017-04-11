@@ -25,13 +25,13 @@
                 <li class="active">
                     <a data-toggle="tab" href="#general">General</a>
                 </li>
-                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                 {
                     <li>
                         <a data-toggle="tab" href="#humanresources">HR</a>
                     </li>
                 }
-                @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("Operations"))
                 {
                     <li>
                         <a data-toggle="tab" href="#informationtechnology">IT</a>
@@ -128,13 +128,17 @@
                         </div><!-- row -->
                     </div>*@<!--/flot-chart -->
                 </div>
-                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                 {
                     <div id="humanresources" class="tab-pane">
                         <a href="@Url.Action("HireTerm", "Reporting")" class="btn btn-theme btn-md">Hire/Term Statistics</a>
+                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                        {
+                            <a href="@Url.Action("Rehires", "Reporting")" class="btn btn-theme btn-md">Rehires</a>
+                        }
                     </div>
                 }
-                @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("Operations"))
                 {
                     <div id="informationtechnology" class="tab-pane">
                         <a href="@Url.Action("TransfersByDomain", "Reporting")" class="btn btn-theme btn-md">Transfers by Domain</a>

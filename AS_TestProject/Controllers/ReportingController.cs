@@ -52,7 +52,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Reporting
-        [Authorize(Roles = "Admin, IT, HR, Quality")]
+        [Authorize(Roles = "Admin, IT, HR, Quality, Operations")]
         public ActionResult Index()
         {
             var todayYear = System.DateTime.Now.Year;
@@ -124,7 +124,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Reporting/TransfersByDomain
-        [Authorize(Roles = "Admin, IT")]
+        [Authorize(Roles = "Admin, IT, Operations")]
         public ActionResult TransfersByDomain()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
@@ -256,7 +256,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Reporting/TransfersByEmployee
-        [Authorize(Roles = "Admin, IT")]
+        [Authorize(Roles = "Admin, IT, Operations")]
         public ActionResult TransfersByEmployee()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
@@ -399,7 +399,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: HR
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Operations")]
         public ActionResult HireTerm()
         {
             var thisMonth = DateTime.Now.Month;
@@ -489,8 +489,24 @@ namespace AS_TestProject.Controllers
             return View();
         }
 
+        // GET: HR
+        [Authorize(Roles = "Admin, HR")]
+        public ActionResult Rehires()
+        {
+            var thisYr = System.DateTime.Now.Year;
+            var lastYr = System.DateTime.Now.AddYears(-1).Year;
+            ViewBag.ThisYear = thisYr;
+            ViewBag.LastYear = lastYr;
+
+            ViewBag.ThisYearsRehires = mb.Employees.Where(e => e.RehireDate.Value.Year == thisYr).OrderByDescending(e => e.RehireDate).ToList();
+            ViewBag.ThisYearTotal = mb.Employees.Where(e => e.RehireDate.Value.Year == thisYr).Count();
+            ViewBag.LastYearsRehires = mb.Employees.Where(e => e.RehireDate.Value.Year == lastYr).OrderByDescending(e => e.RehireDate).ToList();
+            ViewBag.LastYearTotal = mb.Employees.Where(e => e.RehireDate.Value.Year == lastYr).Count();
+            return View();
+        }
+
         // GET: Quality/Index
-        [Authorize(Roles = "Admin, Quality")]
+        [Authorize(Roles = "Admin, Quality, Operations")]
         public ActionResult CFRStats()
         {
             decimal mtgCFR = mb.CFRMortgages.Count();

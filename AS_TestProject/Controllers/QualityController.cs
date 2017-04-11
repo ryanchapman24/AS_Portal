@@ -30,6 +30,7 @@ namespace AS_TestProject.Controllers
 
 
         // GET: Quality/Index
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult Index()
         {
             ViewBag.Domains = mb.DomainMasters.Where(d => d.IsActive == true && d.DomainMasterID != 21 && d.DomainMasterID != 28).OrderBy(d => d.FileMask).ToList();

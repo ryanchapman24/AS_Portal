@@ -180,7 +180,7 @@
                             </div>
                         </div>
                         <div style="padding-bottom: 5px">
-                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                             {
                                 <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span>
                             }
@@ -343,7 +343,7 @@
                             </div>
                         </div>
                         <div style="padding-bottom: 5px">
-                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                             {
                                 <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span> 
                             }

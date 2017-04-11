@@ -28,7 +28,7 @@
                 <div id="information" class="tab-pane active">
                     <div>
                         <dl class="dl-horizontal">
-                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                             {
                                 <dt style="width: 190px; margin-left: -20px">
                                     Employee ID
@@ -1195,7 +1195,7 @@
 
                 <div id="disciplinaryaction" class="tab-pane">
                     <div class="widget-header">
-                        <h3 style="color: #29AAE3"><i class="fa fa-warning"></i> Disciplinary Action @if (User.IsInRole("Admin") || User.IsInRole("HR")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#DAModal" style="margin-top: -10px">+ New DA</button>}</h3>
+                        <h3 style="color: #29AAE3"><i class="fa fa-warning"></i> Disciplinary Action @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#DAModal" style="margin-top: -10px">+ New DA</button>}</h3>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="DAModal" tabindex="-1" role="dialog" aria-labelledby="DAModalLabel" aria-hidden="true">
@@ -1294,7 +1294,7 @@
                                                 <td></td>
                                             }
                                             <td>                                     
-                                                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                                                 {
                                                     <a href="@Url.Action("EditDA","Employees", new { id = item.DisciplinaryActionID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
                                                     <a href="@Url.Action("DeleteDA","Employees", new { id = item.DisciplinaryActionID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>

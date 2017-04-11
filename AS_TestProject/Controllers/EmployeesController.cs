@@ -147,7 +147,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Customers/Details/5
-        [Authorize(Roles = "Admin, HR, Quality")]
+        [Authorize(Roles = "Admin, HR, Quality, Operations")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -290,7 +290,7 @@ namespace AS_TestProject.Controllers
         //}
 
         [HttpPost]
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Operations")]
         [ValidateAntiForgeryToken]
         public ActionResult CreateDA([Bind(Include = "DisciplinaryActionID,EmployeeID,FirstName,LastName,Date,Reason,Explanation,EditByEmployeeID,EditTimeStamp,File")] DisciplinaryAction DiscAct, HttpPostedFileBase files)
         {
@@ -333,7 +333,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Employees/EditDA/5
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Operations")]
         public ActionResult EditDA(int? id)
         {
             if (id == null)
@@ -352,7 +352,7 @@ namespace AS_TestProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Operations")]
         [ValidateAntiForgeryToken]
         public ActionResult EditDA([Bind(Include = "DisciplinaryActionID,EmployeeID,FirstName,LastName,Date,Reason,Explanation,EditByEmployeeID,EditTimeStamp,File")] DisciplinaryAction DiscAct, HttpPostedFileBase files)
         {
@@ -399,7 +399,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Employees/DeleteDA/5
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Operations")]
         public ActionResult DeleteDA(int? id)
         {
             if (id == null)
@@ -416,7 +416,7 @@ namespace AS_TestProject.Controllers
 
         // POST: Employees/DeleteDA/5
         [HttpPost, ActionName("DeleteDA")]
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Operations")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteDAConfirmed(int id)
         {
@@ -2268,7 +2268,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Employees/CFRsCompleted/5
-        [Authorize(Roles = "Admin, IT")]
+        [Authorize(Roles = "Admin, Operations")]
         public ActionResult CFRsCompleted(int? id)
         {
             if (id == null)

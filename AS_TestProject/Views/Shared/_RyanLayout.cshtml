@@ -302,7 +302,7 @@
                   </li>
                   }
 
-                  @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality"))
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                   {
                     <li>
                         <a id="tickets" href="http://d05:88/ASTickets/" target="_blank">
@@ -326,7 +326,7 @@
                       </a>
                   </li>
 
-                  @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                   {
                       <li>
                           <a id="report" href="@Url.Action("Index", "Reporting")">
