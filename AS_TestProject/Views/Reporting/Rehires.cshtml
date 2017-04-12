@@ -31,7 +31,7 @@
                                 <tbody>
                                     @foreach (var item in ViewBag.ThisYearsRehires)
                                     {
-                                        if (item.IsActive == false)
+                                        if (item.IsActive == true)
                                         {
                                             <tr style="background-color: #ffffcc">
                                                 <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
