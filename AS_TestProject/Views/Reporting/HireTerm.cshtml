@@ -22,16 +22,36 @@
                         <div class="col-lg-4"></div>
                         @if (ViewBag.OverallDiff < 0)
                         {
-                            <div class="col-lg-4" style="background-color: #FE5607; color: white"><strong>Net Change<br />(@ViewBag.OverallDiff)</strong></div>
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>- @ViewBag.OvrGrowthPercent</strong></div>
                         }
                         else
                         {
-                            <div class="col-lg-4" style="background-color: #29AAE3; color: white"><strong>Net Change<br />(+@ViewBag.OverallDiff)</strong></div>
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>+ @ViewBag.OvrGrowthPercent</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.OverallDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.OvrSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(@ViewBag.OverallDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.OvrCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.OvrSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(+@ViewBag.OverallDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.OvrCurrentEmpCount</strong></div>
+                            </div>
                         }
                         <div class="col-lg-4"></div>
                     </div>
                     <hr />
-                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px; box-shadow: 0px 3px 2px #aab2bd">
                         @if (ViewBag.FiveMonthsAgoOvrDiff < 0)
                         {
                             <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoOvrDiff)</strong></div>
@@ -167,16 +187,36 @@
                         <div class="col-lg-4"></div>
                         @if (ViewBag.WichitaDiff < 0)
                         {
-                            <div class="col-lg-4" style="background-color: #FE5607; color: white"><strong>Net Change<br />(@ViewBag.WichitaDiff)</strong></div>
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>- @ViewBag.WGrowthPercent</strong></div>
                         }
                         else
                         {
-                            <div class="col-lg-4" style="background-color: #29AAE3; color: white"><strong>Net Change<br />(+@ViewBag.WichitaDiff)</strong></div>
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>+ @ViewBag.WGrowthPercent</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.WichitaDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.WSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(@ViewBag.WichitaDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.WCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.WSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(+@ViewBag.WichitaDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.WCurrentEmpCount</strong></div>
+                            </div>
                         }
                         <div class="col-lg-4"></div>
                     </div>
                     <hr />
-                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px; box-shadow: 0px 3px 2px #aab2bd">
                         @if (ViewBag.FiveMonthsAgoWDiff < 0)
                         {
                             <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoWDiff)</strong></div>
@@ -312,16 +352,36 @@
                         <div class="col-lg-4"></div>
                         @if (ViewBag.GreensboroDiff < 0)
                         {
-                            <div class="col-lg-4" style="background-color: #FE5607; color: white"><strong>Net Change<br />(@ViewBag.GreensboroDiff)</strong></div>
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>- @ViewBag.GGrowthPercent</strong></div>
                         }
                         else
                         {
-                            <div class="col-lg-4" style="background-color: #29AAE3; color: white"><strong>Net Change<br />(+@ViewBag.GreensboroDiff)</strong></div>
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>+ @ViewBag.GGrowthPercent</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.GreensboroDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.GSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(@ViewBag.GreensboroDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.GCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.GSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(+@ViewBag.GreensboroDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.GCurrentEmpCount</strong></div>
+                            </div>
                         }
                         <div class="col-lg-4"></div>
                     </div>
                     <hr />
-                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px; box-shadow: 0px 3px 2px #aab2bd">
                         @if (ViewBag.FiveMonthsAgoGDiff < 0)
                         {
                             <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoGDiff)</strong></div>

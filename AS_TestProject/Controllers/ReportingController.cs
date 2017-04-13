@@ -493,6 +493,27 @@ namespace AS_TestProject.Controllers
             ViewBag.FiveMonthsAgoGDiff = ViewBag.FiveMonthsAgoGH - ViewBag.FiveMonthsAgoGT;
             ViewBag.GreensboroDiff = ViewBag.ThisMonthGDiff + ViewBag.LastMonthGDiff + ViewBag.TwoMonthsAgoGDiff + ViewBag.ThreeMonthsAgoGDiff + ViewBag.FourMonthsAgoGDiff + ViewBag.FiveMonthsAgoGDiff;
 
+            ViewBag.OvrCurrentEmpCount = mb.Employees.Where(e => e.IsActive == true && (e.SiteID == 1 || e.SiteID == 2)).Count();
+            ViewBag.OvrSixMonthsAgoEmpCount = ViewBag.OvrCurrentEmpCount - ViewBag.OverallDiff;
+            double overallDiff = ViewBag.OverallDiff;
+            double ovrSixMonthsAgoEmpCount = ViewBag.OvrSixMonthsAgoEmpCount;
+            double ovrGrowthPercent = Math.Abs(overallDiff) / ovrSixMonthsAgoEmpCount;
+            ViewBag.OvrGrowthPercent = ovrGrowthPercent.ToString("P2");
+
+            ViewBag.WCurrentEmpCount = mb.Employees.Where(e => e.IsActive == true && e.SiteID == 2).Count();
+            ViewBag.WSixMonthsAgoEmpCount = ViewBag.WCurrentEmpCount - ViewBag.WichitaDiff;
+            double wichitaDiff = ViewBag.WichitaDiff;
+            double wSixMonthsAgoEmpCount = ViewBag.wSixMonthsAgoEmpCount;
+            double wGrowthPercent = Math.Abs(wichitaDiff) / wSixMonthsAgoEmpCount;
+            ViewBag.WGrowthPercent = wGrowthPercent.ToString("P2");
+
+            ViewBag.GCurrentEmpCount = mb.Employees.Where(e => e.IsActive == true && e.SiteID == 1).Count();
+            ViewBag.GSixMonthsAgoEmpCount = ViewBag.GCurrentEmpCount - ViewBag.GreensboroDiff;
+            double greensboroDiff = ViewBag.GreensboroDiff;
+            double gSixMonthsAgoEmpCount = ViewBag.gSixMonthsAgoEmpCount;
+            double gGrowthPercent = Math.Abs(greensboroDiff) / gSixMonthsAgoEmpCount;
+            ViewBag.GGrowthPercent = gGrowthPercent.ToString("P2");
+
             return View();
         }
 
