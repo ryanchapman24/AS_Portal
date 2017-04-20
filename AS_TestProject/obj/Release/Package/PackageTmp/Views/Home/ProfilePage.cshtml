@@ -180,7 +180,7 @@
                                     <li class="active">
                                         <a data-toggle="tab" href="#overview">Overview</a>
                                     </li>
-                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || Model.Id == User.Identity.GetUserId())
+                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations") || Model.Id == User.Identity.GetUserId())
                                     {
                                         <li>
                                             <a data-toggle="tab" href="#contact" class="contact-map">Contact</a>
@@ -199,7 +199,7 @@
                                             <div class="col-md-6">
                                                 <h4>User Stats</h4>
                                                 <div class="row centered mt mb">
-                                                    @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                                                    @if (User.IsInRole("Admin") || (User.IsInRole("Quality") && (User.IsInRole("Operations") || User.IsInRole("HR"))))
                                                     {
                                                         if (Model.Roles.Any(r => r.RoleId == "eafdc2c0-665a-4545-afef-05ce631dc48c"))
                                                         {

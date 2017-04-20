@@ -1,20 +1,20 @@
 ﻿@{
-    var activeDoms = ViewBag.ActiveDomains;
-    var domGCalls = new int[ViewBag.ActiveDomains.Count];
-    var domWCalls = new int[ViewBag.ActiveDomains.Count];
-    var domNames = new string[ViewBag.ActiveDomains.Count];
-    var domIndex = 0;
-    foreach (var actDom in ViewBag.ActiveDomains)
-    {
-        domGCalls[domIndex] = actDom.GCalls;
-        domWCalls[domIndex] = actDom.WCalls;
-        domNames[domIndex] = actDom.Name;
-        domIndex++;
-        if (domIndex == ViewBag.ActiveDomains.Count)
-        {
-            break;
-        }
-    }
+//var activeDoms = ViewBag.ActiveDomains;
+//var domGCalls = new int[ViewBag.ActiveDomains.Count];
+//var domWCalls = new int[ViewBag.ActiveDomains.Count];
+//var domNames = new string[ViewBag.ActiveDomains.Count];
+//var domIndex = 0;
+//foreach (var actDom in ViewBag.ActiveDomains)
+//{
+//    domGCalls[domIndex] = actDom.GCalls;
+//    domWCalls[domIndex] = actDom.WCalls;
+//    domNames[domIndex] = actDom.Name;
+//    domIndex++;
+//    if (domIndex == ViewBag.ActiveDomains.Count)
+//    {
+//        break;
+//    }
+//}
 }
 
 <div class="col-lg-12 mt">
@@ -25,13 +25,13 @@
                 <li class="active">
                     <a data-toggle="tab" href="#general">General</a>
                 </li>
-                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                 {
                     <li>
                         <a data-toggle="tab" href="#humanresources">HR</a>
                     </li>
                 }
-                @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("Operations"))
                 {
                     <li>
                         <a data-toggle="tab" href="#informationtechnology">IT</a>
@@ -48,7 +48,7 @@
         <div class="panel-body">
             <div class="tab-content">
                 <div id="general" class="tab-pane active">
-                    <h4><strong style="color: #29AAE3">Call Volume Today</strong></h4>
+                    <h4><strong style="color: #29AAE3">Call Volume Today</strong><span style="font-size: 10px"> (these numbers aren't accurate. this chart is under construction)</span></h4>
                     @*<div>
                         @{
                             foreach (var item in domGCalls)
@@ -128,13 +128,17 @@
                         </div><!-- row -->
                     </div>*@<!--/flot-chart -->
                 </div>
-                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                 {
                     <div id="humanresources" class="tab-pane">
                         <a href="@Url.Action("HireTerm", "Reporting")" class="btn btn-theme btn-md">Hire/Term Statistics</a>
+                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                        {
+                            <a href="@Url.Action("Rehires", "Reporting")" class="btn btn-theme btn-md">Rehires</a>
+                        }
                     </div>
                 }
-                @if (User.IsInRole("Admin") || User.IsInRole("IT"))
+                @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("Operations"))
                 {
                     <div id="informationtechnology" class="tab-pane">
                         <a href="@Url.Action("TransfersByDomain", "Reporting")" class="btn btn-theme btn-md">Transfers by Domain</a>
@@ -224,7 +228,8 @@
             var gArray = "";
             var wArray = "";
             var nArray = "";
-            @foreach (var c in activeDoms)
+            // ONLY THIS BLOCK NEEDS TO BE UNCOMMENTED TO GET WHERE I LAST LEFT OFF ///////////////
+            @*@foreach (var c in activeDoms)
             {
                 @:gArray += "[" + "@c.Number" + ", " + "@c.GCalls" + "],";
             }
@@ -238,7 +243,8 @@
             }
             console.log(gArray);
             console.log(wArray);
-            console.log(nArray);
+            console.log(nArray);*@
+            //////////////////////////////////////////////////////////////////////////////////
             var wichita = {
                 label: 'Wichita',
                 color: '#29AAE3',

@@ -250,7 +250,7 @@
         }
 
         <div style="padding-bottom: 5px">
-            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
             {
                 <a href="@Url.Action("Details","Employees", new { id = Model.EmployeeID })"> Employee Details</a> <span>|</span>
             }
