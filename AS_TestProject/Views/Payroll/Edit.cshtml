@@ -27,12 +27,12 @@
                 @Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })
 
                 @*<div class="form-group">
-                    @Html.LabelFor(model => model.DomainMasterID, "DomainMasterID", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-4">
-                        @Html.DropDownList("DomainMasterID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })
-                    </div>
-                </div>*@
+                        @Html.LabelFor(model => model.DomainMasterID, "DomainMasterID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("DomainMasterID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
@@ -72,36 +72,14 @@
                     </div>
                 </div>
 
-                @*<div class="form-group">
+                <div class="form-group">
                     <div class="col-md-2 control-label">
                         Domain
                     </div>
                     <div class="col-md-4">
                         <span style="" readonly="readonly" class="form-control">@Model.DomainMaster.FileMask - @Model.DomainMaster.DomainName</span>
                     </div>
-                </div>*@
-
-                <div class="form-group">
-                    <div class="col-md-2 control-label">
-                        Skills
-                    </div>
-                    <div class="col-md-4">
-                        @foreach (var skill in ViewBag.Skills)
-                        {
-                            @skill.FileMaskPlusName<br />
-                        }
-                        @*<span style="" readonly="readonly" class="form-control">@Model.DomainMaster.FileMask - @Model.DomainMaster.DomainName</span>*@
-                    </div>
                 </div>
-
-                @*<div class="form-group">
-                    <div class="col-md-2 control-label">
-                        Skills
-                    </div>
-                    <div class="col-md-4">
-                        @Html.ListBox("Domains", null, new { @id = "skill-headers" })
-                    </div>
-                </div>*@
 
                 <div class="form-group">
                     <div class="col-md-2 control-label">
