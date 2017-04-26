@@ -156,8 +156,15 @@ namespace AS_TestProject.Controllers
 
                 if (agentDailyHour.LoginTimeStamp == agentDailyHour.LogoutTimeStamp)
                 {
+                    var empId = agentDailyHour.EmployeeID;
+                    var ppId = agentDailyHour.PayPeriodID;
+
                     mb.AgentDailyHours.Attach(agentDailyHour);
                     mb.AgentDailyHours.Remove(agentDailyHour);
+                    mb.SaveChanges();
+
+                    // STORED PROCEDURES
+                    mb.uspHoursCalculation(empId, ppId);
                     mb.SaveChanges();
                 }
                 else
