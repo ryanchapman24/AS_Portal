@@ -2268,7 +2268,7 @@ namespace AS_TestProject.Controllers
         }
 
         // GET: Employees/CFRsCompleted/5
-        [Authorize(Roles = "Admin, Operations")]
+        [Authorize(Roles = "Admin, Quality")]
         public ActionResult CFRsCompleted(int? id)
         {
             if (id == null)
