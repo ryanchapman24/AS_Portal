@@ -56,6 +56,8 @@
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary("", new { @class = "text-danger" })
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "email" })
+                            <p style="margin-top: 10px">Follow CSR Password Reset Rules?<input style="margin-left: 10px" type="checkbox" name="CSRrules" value="true" /></p> 
+
                         </div>
                         <div class="modal-footer">
                             <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>

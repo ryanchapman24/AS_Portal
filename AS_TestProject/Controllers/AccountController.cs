@@ -222,7 +222,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model, bool CSRrules)
         {
             if (ModelState.IsValid)
             {
@@ -237,7 +237,14 @@ namespace AS_TestProject.Controllers
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                if (CSRrules == true && (user.Roles.Count() == 1 && user.Roles.Any(r => r.RoleId == "580182ec-c40a-4f5d-87bf-227f48e7d221")))
+                {
+                    await UserManager.SendEmailAsync("87adfac1-6883-4ee4-bd38-1c10cad3a682", "Reset Password", "Please reset " + user.DisplayName + "'s password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                }
+                else
+                {
+                    await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                }
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 

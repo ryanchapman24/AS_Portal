@@ -47,86 +47,35 @@
         </div><!-- --/panel-heading ---->
         <div class="panel-body">
             <div class="tab-content">
-                <div id="general" class="tab-pane active">
-                    <h4><strong style="color: #29AAE3">Call Volume Today</strong><span style="font-size: 10px"> (these numbers aren't accurate. this chart is under construction)</span></h4>
-                    @*<div>
-                        @{
-                            foreach (var item in domGCalls)
-                            {
-                                <p>@item</p>
-                            }
-                        }
-                    </div>*@
+                <div id="general" class="tab-pane active" style="text-align: center">
+                    @*<h4><strong style="color: #29AAE3">Call Volume Today</strong><span style="font-size: 10px"> (these numbers aren't accurate. this chart is under construction)</span></h4>
                     <div>
-                        @*@foreach (var actDom in ViewBag.ActiveDomains)
-                        {
-                            <p>
-                                @actDom.Number | @actDom.Name | @actDom.WCalls | @actDom.GCalls
-                            </p>
-                        }*@
                         <div id="call-volume-chart" style="height:350px;"></div>
+                    </div>*@
+                    <div class="col-md-4" style="">
+                        <h4>DISCIPLINARY ACTIONS ENTERED TODAY</h4>
+                        <h2>@ViewBag.TotalDAs</h2>
                     </div>
-                    @*<div class="flot-chart">
-                        <!-- page start-->
-                        <div class="row mt">
-                            <div class="col-lg-12">
-                                <div class="content-panel">
-                                    <h4><i class="fa fa-angle-right"></i> Tracking Chart</h4>
-                                    <div class="panel-body">
-                                        <div id="chart-1" class="chart"></div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-md-4" style="border-left: 1px solid #797979;border-right: 1px solid #797979">
+                        <h4>CONSTRUCTIVE FEEDBACK REVIEWS COMPLETED TODAY</h4>
+                        <h2>@ViewBag.TotalCFRs</h2>
+                        <div class="col-md-4">
+                            <h6>MORTGAGE</h6>
+                            <h3>@ViewBag.TotalMortgageCFRs</h3>
                         </div>
-                        <div class="row mt">
-                            <div class="col-lg-6">
-                                <div class="content-panel">
-                                    <h4><i class="fa fa-angle-right"></i> Selection Chart</h4>
-                                    <div class="panel-body">
-                                        <div id="chart-2" class="chart"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="content-panel">
-                                    <h4><i class="fa fa-angle-right"></i> Live Chart</h4>
-                                    <div class="panel-body">
-                                        <div id="chart-3" class="chart"></div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <h6>INSURANCE</h6>
+                            <h3>@ViewBag.TotalInsuranceCFRs</h3>
                         </div>
-                        <div class="row mt">
-                            <div class="col-lg-6">
-                                <div class="content-panel">
-                                    <h4><i class="fa fa-angle-right"></i> Support Chart</h4>
-                                    <div class="panel-body">
-                                        <div id="chart-4" class="chart"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="content-panel">
-                                    <h4><i class="fa fa-angle-right"></i> Bar Chart</h4>
-                                    <div class="panel-body">
-                                        <div id="chart-6" style="height:350px;"></div>
-                                        <div class="btn-toolbar">
-                                            <div class="btn-group stackControls">
-                                                <input type="button" class="btn btn-info" value="With stacking" />
-                                                <input type="button" class="btn btn-danger" value="Without stacking" />
-                                            </div>
-                                            <div class="space5"></div>
-                                            <div class="btn-group graphControls">
-                                                <input type="button" class="btn" value="Bars" />
-                                                <input type="button" class="btn" value="Lines" />
-                                                <input type="button" class="btn" value="Lines with steps" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!--/coontent-panel -->
-                            </div><!-- /col-lg-6 --->
-                        </div><!-- row -->
-                    </div>*@<!--/flot-chart -->
+                        <div class="col-md-4">
+                            <h6>RECRUITMENT</h6>
+                            <h3>@ViewBag.TotalPatientRecruitmentCFRs</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="">
+                        <h4>EMPLOYEE FILES UPLOADED TODAY</h4>
+                        <h2>@ViewBag.TotalEmpFiles</h2>
+                    </div>
                 </div>
                 @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                 {

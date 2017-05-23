@@ -120,6 +120,20 @@ namespace AS_TestProject.Controllers
             }
 
             ViewBag.ActiveDomains = actDoms;
+
+            var totMCFRs = mb.CFRMortgages.Where(c => c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth && c.DateOfFeedback.Day == todayDay).Count();
+            var totICFRs = mb.CFRInsurances.Where(c => c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth && c.DateOfFeedback.Day == todayDay).Count();
+            var totPRCFRs = mb.CFRPatientRecruitments.Where(c => c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth && c.DateOfFeedback.Day == todayDay).Count();
+            ViewBag.TotalMortgageCFRs = totMCFRs;
+            ViewBag.TotalInsuranceCFRs = totICFRs;
+            ViewBag.TotalPatientRecruitmentCFRs = totPRCFRs;
+            ViewBag.TotalCFRs = totMCFRs + totICFRs + totPRCFRs;
+
+            var totDAs = mb.DisciplinaryActions.Where(d => d.EditTimeStamp.Value.Year == todayYear && d.EditTimeStamp.Value.Month == todayMonth && d.EditTimeStamp.Value.Day == todayDay).Count();
+            ViewBag.TotalDAs = totDAs;
+
+            var totEmpFiles = db.EmployeeFiles.Where(f => f.Created.Year == todayYear && f.Created.Month == todayMonth && f.Created.Day == todayDay).Count();
+            ViewBag.TotalEmpFiles = totEmpFiles;
             return View();
         }
 
