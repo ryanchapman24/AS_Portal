@@ -18,7 +18,7 @@
                         <a data-toggle="tab" href="#disciplinaryaction" class="contact-map">Disciplinary Action</a>
                     </li>
                 }
-                @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
                 {
                     <li>
                         <a data-toggle="tab" href="#eFiles" class="contact-map">Employee Files</a>
@@ -57,45 +57,48 @@
                                     @Html.DisplayFor(model => model.LastName)
                                 </dd>
 
-                                <dt style="width: 190px; margin-left: -20px">
-                                    Address Line 1
-                                </dt>
+                                if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                {
+                                    <dt style="width: 190px; margin-left: -20px">
+                                        Address Line 1
+                                    </dt>
 
-                                <dd>
-                                    @Html.DisplayFor(model => model.AddressLine1)
-                                </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.AddressLine1)
+                                    </dd>
 
-                                <dt style="width: 190px; margin-left: -20px">
-                                    Address Line 2
-                                </dt>
+                                    <dt style="width: 190px; margin-left: -20px">
+                                        Address Line 2
+                                    </dt>
 
-                                <dd>
-                                    @Html.DisplayFor(model => model.AddressLine2)
-                                </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.AddressLine2)
+                                    </dd>
 
-                                <dt style="width: 190px; margin-left: -20px">
-                                    City
-                                </dt>
+                                    <dt style="width: 190px; margin-left: -20px">
+                                        City
+                                    </dt>
 
-                                <dd>
-                                    @Html.DisplayFor(model => model.City)
-                                </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.City)
+                                    </dd>
 
-                                <dt style="width: 190px; margin-left: -20px">
-                                    State
-                                </dt>
+                                    <dt style="width: 190px; margin-left: -20px">
+                                        State
+                                    </dt>
 
-                                <dd>
-                                    @Html.DisplayFor(model => model.State)
-                                </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.State)
+                                    </dd>
 
-                                <dt style="width: 190px; margin-left: -20px">
-                                    Zip Code
-                                </dt>
+                                    <dt style="width: 190px; margin-left: -20px">
+                                        Zip Code
+                                    </dt>
 
-                                <dd>
-                                    @Html.DisplayFor(model => model.ZipCode)
-                                </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ZipCode)
+                                    </dd>
+                                }
 
                                 <dt style="width: 190px; margin-left: -20px">
                                     Email
@@ -120,14 +123,16 @@
                                 <dd>
                                     @Html.DisplayFor(model => model.CellPhone)
                                 </dd>
+                                if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                {
+                                    <dt style="width: 190px; margin-left: -20px">
+                                        Birth Date
+                                    </dt>
 
-                                <dt style="width: 190px; margin-left: -20px">
-                                    Birth Date
-                                </dt>
-
-                                <dd>
-                                    @Model.BirthDate.ToString("M/d/yyyy")
-                                </dd>
+                                    <dd>
+                                        @Model.BirthDate.ToString("M/d/yyyy")
+                                    </dd>
+                                }
 
                                 <dt style="width: 190px; margin-left: -20px">
                                     Hire Date
@@ -193,14 +198,16 @@
                                 <dd>
                                     @Html.DisplayFor(model => model.Site.SiteName)
                                 </dd>
+                                if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                                {
+                                    <dt style="width: 190px; margin-left: -20px">
+                                        File Number
+                                    </dt>
 
-                                <dt style="width: 190px; margin-left: -20px">
-                                    File Number
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.FileNumber)
-                                </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.FileNumber)
+                                    </dd>
+                                }
 
                                 <dt style="width: 190px; margin-left: -20px">
                                     Add Date
@@ -292,14 +299,6 @@
                                 </dd>
 
                                 <dt style="width: 190px; margin-left: -20px">
-                                    Birth Date
-                                </dt>
-
-                                <dd>
-                                    @Model.BirthDate.ToString("M/d/yyyy")
-                                </dd>
-
-                                <dt style="width: 190px; margin-left: -20px">
                                     Hire Date
                                 </dt>
 
@@ -362,14 +361,6 @@
 
                                 <dd>
                                     @Html.DisplayFor(model => model.Site.SiteName)
-                                </dd>
-
-                                <dt style="width: 190px; margin-left: -20px">
-                                    File Number
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.FileNumber)
                                 </dd>
 
                                 <dt style="width: 190px; margin-left: -20px">
@@ -1313,7 +1304,7 @@
                     </div>
                 </div>
             }
-            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
             {
                 <div id="eFiles" class="tab-pane">
                     <div class="row">

@@ -70,7 +70,7 @@
                                 <div class="right-divider hidden-sm hidden-xs">
                                     @*<h4 style="color: #29AAE3">14</h4>
                                     <h6>DAYS OF PTO LEFT</h6>*@
-                                    <h4 style="color: #29AAE3">@if (Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || User.IsInRole("Payroll")){<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })">@ViewBag.Hours<i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a>} else {<span>N/A</span>}</h4>
+                                    <h4 style="color: #29AAE3">@if ((Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || User.IsInRole("Payroll")) && ViewBag.Hours > 0){<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })">@ViewBag.Hours<i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a>} else {<span>N/A</span>}</h4>
                                     <h6>HOURS THIS PAY PERIOD</h6>
                                     <h4 style="color: #29AAE3">
                                         @if (Model.Roles.Any(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803"))
