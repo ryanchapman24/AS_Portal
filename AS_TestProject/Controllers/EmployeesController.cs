@@ -150,6 +150,7 @@ namespace AS_TestProject.Controllers
         [Authorize(Roles = "Admin, HR, Quality, Operations")]
         public ActionResult Details(int? id)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -244,7 +245,14 @@ namespace AS_TestProject.Controllers
             ViewBag.EmployeeID = employee.EmployeeID;
 
             ViewBag.DisciplinaryActions = mb.DisciplinaryActions.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(d => d.Date).ToList();
-            ViewBag.eFiles = db.EmployeeFiles.Where(f => f.EmployeeID == employee.EmployeeID).OrderByDescending(f => f.Created).ToList();
+            if (user.Roles.Where(r => r.RoleId == "66282d26-5686-4267-bf05-edad26bd3bcc").Count() == 1 && user.Roles.Where(r => r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348").Count() == 0)
+            {
+                ViewBag.eFiles = db.EmployeeFiles.Where(f => f.EmployeeID == employee.EmployeeID && f.AuthorId == user.Id).OrderByDescending(f => f.Created).ToList();
+            }
+            else
+            {
+                ViewBag.eFiles = db.EmployeeFiles.Where(f => f.EmployeeID == employee.EmployeeID).OrderByDescending(f => f.Created).ToList();
+            }
 
             //var mCFRs = new List<CFRMortgage>();
             //mCFRs = mb.CFRMortgages.Where(d => d.EmployeeID == employee.EmployeeID).ToList();
@@ -2170,7 +2178,7 @@ namespace AS_TestProject.Controllers
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin, HR")]
+        [Authorize(Roles = "Admin, HR, Operations")]
         [ValidateAntiForgeryToken]
         public ActionResult AddEmployeeFile(EmployeeFile eFile, IEnumerable<HttpPostedFileBase> file, int empId)
         {
