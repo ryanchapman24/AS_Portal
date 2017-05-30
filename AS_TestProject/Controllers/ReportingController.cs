@@ -51,6 +51,15 @@ namespace AS_TestProject.Controllers
             public int WCalls { get; set; }
         }
 
+        public class DomainHour
+        {
+            public int DomainMasterID { get; set; }
+            public string FileMaskPlusName { get; set; }
+            public string CostCode { get; set; }
+            public TimeSpan TotalHours { get; set; }
+            public short? PayPeriodID { get; set; }
+        }
+
         // GET: Reporting
         [Authorize(Roles = "Admin, IT, HR, Quality, Operations")]
         public ActionResult Index()
@@ -544,6 +553,92 @@ namespace AS_TestProject.Controllers
             ViewBag.ThisYearTotal = mb.Employees.Where(e => e.RehireDate.Value.Year == thisYr).Count();
             ViewBag.LastYearsRehires = mb.Employees.Where(e => e.RehireDate.Value.Year == lastYr).OrderByDescending(e => e.RehireDate).ToList();
             ViewBag.LastYearTotal = mb.Employees.Where(e => e.RehireDate.Value.Year == lastYr).Count();
+            return View();
+        }
+
+        // GET: HR
+        [Authorize(Roles = "Admin, HR")]
+        public ActionResult DomainHours()
+        {
+            var now = System.DateTime.Now; ;
+            var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
+            var payPeriodId = payPeriod.PayPeriodID;
+            var lastPayPeriodId = payPeriodId - 1;
+            var lastPayPeriod = mb.PayPeriods.First(p => p.PayPeriodID == lastPayPeriodId);
+            var twoPayPeriodsAgoId = payPeriodId - 2;
+            var twoPayPeriodsAgo = mb.PayPeriods.First(p => p.PayPeriodID == twoPayPeriodsAgoId);
+
+            var domainHoursThisPP = new List<DomainHour>();
+            var domainHoursLastPP = new List<DomainHour>();
+            var domainHoursTwoPPsAgo = new List<DomainHour>();
+            foreach (var entry in mb.AgentDailyHours.Where(e => e.PayPeriodID == payPeriodId))
+            {
+                if (domainHoursThisPP.Any(e => e.DomainMasterID == entry.DomainMasterID))
+                {
+                    var domainHour = domainHoursThisPP.FirstOrDefault(e => e.DomainMasterID == entry.DomainMasterID);
+                    domainHour.TotalHours = domainHour.TotalHours + entry.LoginDuration;
+                }
+                else
+                {
+                    var domain = mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == entry.DomainMasterID);
+                    var item = new DomainHour();
+                    item.DomainMasterID = entry.DomainMasterID;
+                    item.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+                    item.CostCode = domain.CostCode;
+                    item.TotalHours = entry.LoginDuration;
+                    item.PayPeriodID = entry.PayPeriodID;
+
+                    domainHoursThisPP.Add(item);
+                }
+            }
+            foreach (var entry in mb.AgentDailyHours.Where(e => e.PayPeriodID == lastPayPeriodId))
+            {
+                if (domainHoursLastPP.Any(e => e.DomainMasterID == entry.DomainMasterID))
+                {
+                    var domainHour = domainHoursLastPP.FirstOrDefault(e => e.DomainMasterID == entry.DomainMasterID);
+                    domainHour.TotalHours = domainHour.TotalHours + entry.LoginDuration;
+                }
+                else
+                {
+                    var domain = mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == entry.DomainMasterID);
+                    var item = new DomainHour();
+                    item.DomainMasterID = entry.DomainMasterID;
+                    item.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+                    item.CostCode = domain.CostCode;
+                    item.TotalHours = entry.LoginDuration;
+                    item.PayPeriodID = entry.PayPeriodID;
+
+                    domainHoursLastPP.Add(item);
+                }
+            }
+            foreach (var entry in mb.AgentDailyHours.Where(e => e.PayPeriodID == twoPayPeriodsAgoId))
+            {
+                if (domainHoursTwoPPsAgo.Any(e => e.DomainMasterID == entry.DomainMasterID))
+                {
+                    var domainHour = domainHoursTwoPPsAgo.FirstOrDefault(e => e.DomainMasterID == entry.DomainMasterID);
+                    domainHour.TotalHours = domainHour.TotalHours + entry.LoginDuration;
+                }
+                else
+                {
+                    var domain = mb.DomainMasters.FirstOrDefault(d => d.DomainMasterID == entry.DomainMasterID);
+                    var item = new DomainHour();
+                    item.DomainMasterID = entry.DomainMasterID;
+                    item.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+                    item.CostCode = domain.CostCode;
+                    item.TotalHours = entry.LoginDuration;
+                    item.PayPeriodID = entry.PayPeriodID;
+
+                    domainHoursTwoPPsAgo.Add(item);
+                }
+            }
+            ViewBag.DomainHoursThisPP = domainHoursThisPP.OrderByDescending(d => d.TotalHours);
+            ViewBag.DomainHoursLastPP = domainHoursLastPP.OrderByDescending(d => d.TotalHours);
+            ViewBag.DomainHoursTwoPPsAgo = domainHoursTwoPPsAgo.OrderByDescending(d => d.TotalHours);
+
+            ViewBag.ThisPayPeriodSpan = payPeriod.StartDate.ToShortDateString() + " - " + payPeriod.EndDate.ToShortDateString();
+            ViewBag.LastPayPeriodSpan = lastPayPeriod.StartDate.ToShortDateString() + " - " + lastPayPeriod.EndDate.ToShortDateString();
+            ViewBag.TwoPayPeriodsAgoSpan = twoPayPeriodsAgo.StartDate.ToShortDateString() + " - " + twoPayPeriodsAgo.EndDate.ToShortDateString();
+
             return View();
         }
 

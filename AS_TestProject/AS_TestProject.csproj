@@ -819,6 +819,7 @@
     <Content Include="Views\Reporting\HireTerm.cshtml" />
     <Content Include="Views\Reporting\CFRStats.cshtml" />
     <Content Include="Views\Reporting\Rehires.cshtml" />
+    <Content Include="Views\Reporting\DomainHours.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
