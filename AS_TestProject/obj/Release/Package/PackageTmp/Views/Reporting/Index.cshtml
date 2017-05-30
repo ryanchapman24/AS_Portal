@@ -84,6 +84,7 @@
                         @if (User.IsInRole("Admin") || User.IsInRole("HR"))
                         {
                             <a href="@Url.Action("Rehires", "Reporting")" class="btn btn-theme btn-md">Rehires</a>
+                            <a href="@Url.Action("DomainHours", "Reporting")" class="btn btn-theme btn-md">Domain Hours</a>
                         }
                     </div>
                 }

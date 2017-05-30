@@ -829,10 +829,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 11:43:35</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>05/25/2017 14:54:39</publishTime>
+      <publishTime>05/30/2017 16:31:12</publishTime>
     </File>
     <File Include="bin/AS_TestProject.pdb">
-      <publishTime>05/25/2017 14:54:39</publishTime>
+      <publishTime>05/30/2017 16:31:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1776,11 +1776,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Reporting/CFRStats.cshtml">
       <publishTime>04/07/2017 14:35:00</publishTime>
     </File>
+    <File Include="Views/Reporting/DomainHours.cshtml">
+      <publishTime>05/30/2017 16:25:50</publishTime>
+    </File>
     <File Include="Views/Reporting/HireTerm.cshtml">
       <publishTime>04/13/2017 13:28:15</publishTime>
     </File>
     <File Include="Views/Reporting/Index.cshtml">
-      <publishTime>05/18/2017 10:29:23</publishTime>
+      <publishTime>05/30/2017 14:03:57</publishTime>
     </File>
     <File Include="Views/Reporting/Rehires.cshtml">
       <publishTime>04/12/2017 09:51:06</publishTime>
