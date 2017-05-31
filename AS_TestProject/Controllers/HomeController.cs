@@ -189,7 +189,7 @@ namespace AS_TestProject.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
             var mb = new ReportEntities();
-            if (user.Roles.Any(r => r.RoleId == "eeb4b28d-b18f-4e01-977f-ea35aab23a6a" || r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348" || r.RoleId == "0f471264-3ee2-473d-9fb8-e1ac8b6e01b8"))
+            if (user.Roles.Any(r => r.RoleId == "eeb4b28d-b18f-4e01-977f-ea35aab23a6a" || r.RoleId == "cf0c9cdc-c2d7-4abf-9da7-72b5d4245348" || r.RoleId == "0f471264-3ee2-473d-9fb8-e1ac8b6e01b8" || r.RoleId == "66282d26-5686-4267-bf05-edad26bd3bcc"))
             {
                 ViewBag.ActiveEmps = mb.Employees.Where(d => d.IsActive == true).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
                 ViewBag.InactiveEmps = mb.Employees.Where(d => d.IsActive == false).OrderBy(d => d.LastName).ThenBy(d => d.FirstName).ToList();
