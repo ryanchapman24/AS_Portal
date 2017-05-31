@@ -829,10 +829,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 11:43:35</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>05/31/2017 09:45:28</publishTime>
+      <publishTime>05/31/2017 13:06:27</publishTime>
     </File>
     <File Include="bin/AS_TestProject.pdb">
-      <publishTime>05/31/2017 09:45:28</publishTime>
+      <publishTime>05/31/2017 13:06:27</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
