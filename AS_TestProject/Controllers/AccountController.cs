@@ -222,7 +222,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model, bool CSRrules)
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model, bool? CSRrules)
         {
             if (ModelState.IsValid)
             {
