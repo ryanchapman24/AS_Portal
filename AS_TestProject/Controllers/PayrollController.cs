@@ -46,10 +46,10 @@ namespace AS_TestProject.Controllers
             ViewBag.PrevAgentDailyHours = mb.AgentDailyHours.Where(a => a.EmployeeID == id && a.PayPeriodID == prevPayPeriodId).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
 
             ViewBag.AgentName = agent.FirstName + ' ' + agent.LastName;
-            ViewBag.PayPeriodStart = payPeriod.StartDate;
-            ViewBag.PayPeriodEnd = payPeriod.EndDate;
-            ViewBag.PrevPayPeriodStart = prevPayPeriod.StartDate;
-            ViewBag.PrevPayPeriodEnd = prevPayPeriod.EndDate;
+            ViewBag.PayPeriodStart = payPeriod.StartDate.ToShortDateString();
+            ViewBag.PayPeriodEnd = payPeriod.EndDate.ToShortDateString();
+            ViewBag.PrevPayPeriodStart = prevPayPeriod.StartDate.ToShortDateString();
+            ViewBag.PrevPayPeriodEnd = prevPayPeriod.EndDate.ToShortDateString();
 
             ViewBag.Date = now.ToShortDateString();
             ViewBag.PrevDate = prevPayPeriod.MidDate.ToShortDateString();

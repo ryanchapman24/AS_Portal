@@ -536,6 +536,8 @@
     <Content Include="assets\img\workhat.png" />
     <Content Include="assets\img\yellow_priority.png" />
     <Content Include="assets\img\zoom.png" />
+    <Content Include="assets\js\bootstrap-datepicker\datepicker-range.css" />
+    <Content Include="assets\js\bootstrap-datepicker\datepicker-range.js" />
     <Content Include="assets\js\bootstrap-datepicker\datepicker.css" />
     <Content Include="assets\js\bootstrap-datepicker\datepicker.js" />
     <Content Include="assets\js\bootstrap-inputmask\bootstrap-inputmask.min.js" />
