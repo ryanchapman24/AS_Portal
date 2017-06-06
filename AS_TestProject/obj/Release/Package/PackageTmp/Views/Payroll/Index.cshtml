@@ -49,7 +49,7 @@
                                                         </div>
                                                         <div class="col-md-9" style="margin-top: -5px">
                                                             <div class="input-group">
-                                                                <input id="date" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
+                                                                <input id="date" class="form-control datepickerP1" size="16" type="text" value="@ViewBag.Date" required>
                                                                 <span class="input-group-btn">
                                                                     <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
                                                                 </span>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4 style="margin-left: 0px"><strong>Current Pay Period</strong> (@ViewBag.PayPeriodStart.ToShortDateString() - @ViewBag.PayPeriodEnd.ToShortDateString())</h4>
+                            <h4 style="margin-left: 0px"><strong>Current Pay Period</strong> (@ViewBag.PayPeriodStart - @ViewBag.PayPeriodEnd)</h4>
                         </div>
                         <div class="widget-content">
                             <div class="table-responsive">
@@ -202,7 +202,7 @@
                                                         </div>
                                                         <div class="col-md-9" style="margin-top: -5px">
                                                             <div class="input-group">
-                                                                <input id="prevDate" class="form-control datepicker" size="16" type="text" value="@ViewBag.PrevDate" required>
+                                                                <input id="prevDate" class="form-control datepickerP2" size="16" type="text" value="@ViewBag.PrevDate" required>
                                                                 <span class="input-group-btn">
                                                                     <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
                                                                 </span>
@@ -262,7 +262,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4 style="margin-left: 0px"><strong>Previous Pay Period</strong> (@ViewBag.PrevPayPeriodStart.ToShortDateString() - @ViewBag.PrevPayPeriodEnd.ToShortDateString())</h4>
+                            <h4 style="margin-left: 0px"><strong>Previous Pay Period</strong> (@ViewBag.PrevPayPeriodStart - @ViewBag.PrevPayPeriodEnd)</h4>
                         </div>
                         <div class="widget-content">
                             <div class="table-responsive">
@@ -352,6 +352,28 @@
             });
         });
     </script>
+    <script>
+        @{
+            var pp1SD = ViewBag.PayPeriodStart;
+            var pp1ED = ViewBag.PayPeriodEnd;
+            var pp2SD = ViewBag.PrevPayPeriodStart;
+            var pp2ED = ViewBag.PrevPayPeriodEnd;
+        }
+
+        $(document).ready(function () {
+            $('.datepickerP1').datepicker({
+                format: 'm/d/yyyy',
+                startDate: '@pp1SD',
+                endDate: '@pp1ED'
+            });
+            $('.datepickerP2').datepicker({
+                format: 'm/d/yyyy',
+                startDate: '@pp2SD',
+                endDate: '@pp2ED'
+            });
+        });
+    </script>
+
     <script>
         $(document).ready(function () {
             $('.timetable').DataTable({

@@ -555,6 +555,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/js/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
+    <File Include="assets/js/bootstrap-datepicker/datepicker-range.css">
+      <publishTime>06/06/2017 11:25:46</publishTime>
+    </File>
+    <File Include="assets/js/bootstrap-datepicker/datepicker-range.js">
+      <publishTime>06/06/2017 10:49:59</publishTime>
+    </File>
     <File Include="assets/js/bootstrap-datepicker/datepicker.css">
       <publishTime>07/12/2016 11:26:40</publishTime>
     </File>
@@ -829,10 +835,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 11:43:35</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>05/31/2017 13:06:27</publishTime>
+      <publishTime>06/06/2017 13:00:11</publishTime>
     </File>
     <File Include="bin/AS_TestProject.pdb">
-      <publishTime>05/31/2017 13:06:27</publishTime>
+      <publishTime>06/06/2017 13:00:11</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1624,7 +1630,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/15/2017 13:52:01</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>05/25/2017 14:45:32</publishTime>
+      <publishTime>06/06/2017 13:05:49</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>04/10/2017 10:36:28</publishTime>
@@ -1753,7 +1759,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/20/2017 11:00:44</publishTime>
     </File>
     <File Include="Views/Payroll/Index.cshtml">
-      <publishTime>04/20/2017 11:06:48</publishTime>
+      <publishTime>06/06/2017 13:04:49</publishTime>
     </File>
     <File Include="Views/Quality/CallCriteria.cshtml">
       <publishTime>02/20/2017 16:07:42</publishTime>
@@ -1813,7 +1819,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RightNavHidden.cshtml">
-      <publishTime>04/11/2017 10:10:19</publishTime>
+      <publishTime>06/06/2017 11:43:32</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
       <publishTime>04/03/2017 14:09:42</publishTime>
