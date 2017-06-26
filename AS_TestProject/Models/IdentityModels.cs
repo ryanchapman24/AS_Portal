@@ -64,5 +64,7 @@ namespace AS_TestProject.Models
         public DbSet<EmployeeFile> EmployeeFiles { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<NotificationType> NotificationTypes { get; set; }
+        public DbSet<Suggestion> Suggestions { get; set; }
+        public DbSet<SuggestionType> SuggestionTypes { get; set; }
     }
 }

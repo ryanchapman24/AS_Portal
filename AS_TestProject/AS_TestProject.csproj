@@ -392,6 +392,8 @@
     <Compile Include="Models\PhotoJudgment.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\Suggestion.cs" />
+    <Compile Include="Models\SuggestionType.cs" />
     <Compile Include="Models\TaskPriority.cs" />
     <Compile Include="Models\UserNames.cs" />
     <Compile Include="Models\WorkTask.cs" />
