@@ -148,8 +148,8 @@ namespace AS_TestProject.Controllers
         public ActionResult Register()
         {
             RegisterViewModel model = new RegisterViewModel();           
-            ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName");
-            ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName");
+            ViewBag.PositionID = new SelectList(db.Positions.OrderByDescending(p => p.PositionName), "PositionID", "PositionName");
+            ViewBag.SiteID = new SelectList(db.Sites.OrderByDescending(s => s.SiteName), "SiteID", "SiteName");
 
             return View(model);
         }
@@ -165,8 +165,8 @@ namespace AS_TestProject.Controllers
             {
                 var pPic = "/assets/img/ASPortal-DefaultProfilePic.png";
 
-                ViewBag.PositionID = new SelectList(db.Positions, "PositionID", "PositionName", model.PositionID);
-                ViewBag.SiteID = new SelectList(db.Sites, "SiteID", "SiteName", model.SiteID);
+                ViewBag.PositionID = new SelectList(db.Positions.OrderByDescending(p => p.PositionName), "PositionID", "PositionName", model.PositionID);
+                ViewBag.SiteID = new SelectList(db.Sites.OrderByDescending(s => s.SiteName), "SiteID", "SiteName", model.SiteID);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, EmployeeID = model.EmployeeID, PositionID = model.PositionID, SiteID = model.SiteID, ProfilePic = pPic, TaskTally = 0, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

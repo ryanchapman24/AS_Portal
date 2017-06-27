@@ -182,7 +182,32 @@ namespace AS_TestProject.Controllers
 
         public ActionResult Tools()
         {
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName.Equals(User.Identity.Name));
+
+            ViewBag.MySuggestions = db.Suggestions.Where(s => s.AuthorId == user.Id).OrderByDescending(s => s.Created).ToList();
+            ViewBag.SuggestionTypeId = new SelectList(db.SuggestionTypes.OrderByDescending(t => t.TypeName), "Id", "TypeName");
             return View();
+        }
+
+        // POST: Tasks/Create/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult AddSuggestion(Suggestion suggestion)
+        {
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName.Equals(User.Identity.Name));
+
+            if (ModelState.IsValid)
+            {
+                suggestion.AuthorId = User.Identity.GetUserId();
+                suggestion.EmployeeID = user.EmployeeID;
+                suggestion.Created = System.DateTime.Now;
+                suggestion.New = true;
+                db.Suggestions.Add(suggestion);
+                db.SaveChanges();
+            }
+            ViewBag.SuggestionTypeId = new SelectList(db.SuggestionTypes.OrderByDescending(t => t.TypeName), "Id", "TypeName", suggestion.SuggestionTypeId);
+            return RedirectToAction("Tools");
         }
 
         public ActionResult Directory()

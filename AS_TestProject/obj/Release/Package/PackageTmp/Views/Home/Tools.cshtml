@@ -1,59 +1,117 @@
 ﻿<div class="row mt" style="padding-left: 20px; padding-right: 20px">
-        <div class="col-lg-12">
-            <div class="row content-panel" style="text-align: center">
-                <p>This page works only on Google Chrome.  If you are using a different browser and wish to use the tools on this page, switch to <a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank">Google Chrome</a> now.</P>
-                <p>If you are using Google Chrome and still can't see the content displayed within the tabs below, you need to download and activate a Google Chrome Extension called <a href="https://chrome.google.com/webstore/detail/iframe-allow/gifgpciglhhpmeefjdmlpboipkibhbjg?hl=en-US" target="_blank">iFrame Allow</a>.</p>
-            </div><!-- /row -->
-        </div><!-- --/col-lg-12 ---->
+    <div class="col-lg-12 mt">
+        <div class="row content-panel">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active">
+                        <a data-toggle="tab" href="#timezone">Time Zone Helper</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#suggest">Suggestions</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#idk">Miscellaneous</a>
+                    </li>
+                </ul>
+            </div><!-- --/panel-heading ---->
 
-        <div class="col-lg-12 mt">
-            <div class="row content-panel">
-                <div class="panel-heading">
-                    <ul class="nav nav-tabs nav-justified">
-                        <li class="active">
-                            <a data-toggle="tab" href="#maps">Google Maps</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#search">Google Search</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#timezone">Time Zone Helper</a>
-                        </li>
-                    </ul>
-                </div><!-- --/panel-heading ---->
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div id="timezone" class="tab-pane active">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="~/assets/img/US-Timezones-map.png" style="width: 100%" />
+                            </div>
+                        </div><!-- --/OVERVIEW ---->
+                    </div><!-- --/tab-pane ---->
 
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <div id="maps" class="tab-pane active">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <iframe id="google-map" src="https://google.com/maps/" style="width: 100%; height: 750px"></iframe>
+                    <div id="suggest" class="tab-pane">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="widget widget-table">
+                                        <div class="widget-header">
+                                            <h4 style="color: #29AAE3"><i class="fa fa-sticky-note" style="margin-right: 3px"></i> My Suggestions</h4>
+                                        </div>
+                                        <div class="widget-content">
+                                            <div class="table-responsive">
+                                                <table id="datatable-basic-scrolling" class="table table-hover datatable suggest-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 30%">Created</th>
+                                                            <th style="width: 10%">Type</th>
+                                                            <th>Body</th>
+                                                            <th style="width: 10%">Seen</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var suggestion in ViewBag.MySuggestions)
+                                                        {
+                                                            <tr>
+                                                                <td class="text-nowrap">
+                                                                    @if (ViewBag.Site == "Wichita")
+                                                                    {
+                                                                        @suggestion.Created.AddHours(-1).ToString("g")
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @suggestion.Created.ToString("g")
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @suggestion.SuggestionType.TypeName
+                                                                </td>
+                                                                <td style="display: block; word-break: break-word">
+                                                                    @suggestion.Body
+                                                                </td>
+                                                                <td>
+                                                                    @if (suggestion.New == false)
+                                                                    {
+                                                                        <span>Seen <i class="fa fa-check" style="color: #29AAE3"></i></span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span>Unseen</span>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div><!-- --/OVERVIEW ---->
-                        </div><!-- --/tab-pane ---->
+                                @using (Html.BeginForm("AddSuggestion", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="col-md-6">
+                                        <h4>New Suggestion<button type="submit" class="btn btn-sm btn-theme pull-right" style="margin-top: -10px">+ Add</button></h4>
+                                        <textarea rows="4" class="form-control capitalize" name="Body" id="Body" placeholder="message (500 character max)..." style="margin-bottom: 10px" maxlength="500" required></textarea>
+                                        <div class="form-group row" style="margin-bottom: 20px">
+                                            <div class="col-md-2 control-label">
+                                                Type
+                                            </div>
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("SuggestionTypeId", null, "",htmlAttributes: new { @class = "form-control", required = "true" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                        </div><!-- --/row ---->
+                    </div><!-- --/tab-pane ---->
 
-                        <div id="search" class="tab-pane">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <iframe id="google-search" src="https://google.com/" style="width: 100%; height: 750px"></iframe>
-                                </div>
-                            </div><!-- --/row ---->
-                        </div><!-- --/tab-pane ---->
+                    <div id="idk" class="tab-pane">
+                        <div class="row">
+                            
+                        </div><!-- --/row ---->
+                    </div><!-- --/tab-pane ---->
+                </div><!-- /tab-content -->
 
-                        <div id="timezone" class="tab-pane">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img src="~/assets/img/US-Timezones-map.png" style="width: 100%"/>
-                                </div>
-                            </div><!-- --/row ---->
-                        </div><!-- --/tab-pane ---->
-                    </div><!-- /tab-content -->
+            </div><!-- --/panel-body ---->
 
-                </div><!-- --/panel-body ---->
-
-            </div><!-- /col-lg-12 -->
-        </div><!-- --/row ---->
-    </div><!-- --/container ---->
+        </div><!-- /col-lg-12 -->
+    </div><!-- --/row ---->
+</div><!-- --/container ---->
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -62,5 +120,11 @@
         $(document).ready(function () {
             $('#tools').addClass("active");
         });
+
+        $('.suggest-table').DataTable({
+                "iDisplayLength": 5,
+                "aaSorting": [],
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
     </script>
 }

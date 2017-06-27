@@ -11,11 +11,15 @@ namespace AS_TestProject.Models
         public DateTime Created { get; set; }
         public string AuthorId { get; set; }
         public int EmployeeID { get; set; }
+        public string SeenById { get; set; }
+        public int? SeenByEmployeeID { get; set; }
+        public DateTime? TimeSeen { get; set; }
         public int SuggestionTypeId { get; set; }
         public string Body { get; set; }
         public bool New { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
+        public virtual ApplicationUser SeenBy { get; set; }
         public virtual SuggestionType SuggestionType { get; set; }
     }
 }
