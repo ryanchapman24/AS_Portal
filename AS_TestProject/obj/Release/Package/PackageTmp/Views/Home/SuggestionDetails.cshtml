@@ -1,0 +1,40 @@
+﻿@model AS_TestProject.Models.Suggestion
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h2 style="color: #29AAE3"><i class="fa fa-sticky-note" style="margin-right: 4px"></i> Suggestion Details</h2>
+        <hr />
+        <h2 style="color: #29AAE3">@Model.Author.FirstName @Model.Author.LastName</h2>
+        <h4>
+            <span style="color: #FE5607"><strong>@Model.SuggestionType.TypeName</strong></span>
+            <em style="font-size: 14px">
+                @if (ViewBag.Site == "Wichita")
+                {
+                    @Model.Created.AddHours(-1).ToString("g")
+                }
+                else
+                {
+                    @Model.Created.ToString("g")
+                }
+            </em>
+        </h4>
+        <div class="col-md-6">
+            <h5>@Model.Body</h5>
+        </div>
+        <div class="col-md-12">
+            <p style="padding-bottom: 5px; padding-top: 10px">
+                @Html.ActionLink("Back to Feedback Hub", "Feedback")
+            </p>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#quality').addClass("active");
+        });
+    </script>
+}

@@ -13,6 +13,7 @@
 @{ 
     var tasks = ViewBag.UrgentTasks.Count + ViewBag.HighTasks.Count + ViewBag.MediumTasks.Count + ViewBag.LowTasks.Count;
     var messages = ViewBag.Messages.Count;
+    var suggestions = ViewBag.Suggestions.Count;
     var todayYear = System.DateTime.Now.Year;
     var todayMonth = System.DateTime.Now.Month;
     var todayDay = System.DateTime.Now.Day;
@@ -92,7 +93,7 @@
                         }
                         @if (tasks == 0)
                         {
-                            <a>
+                            <a href="@Url.Action("ProfilePage", "Home", new { id = User.Identity.GetUserId() })">
                                 <i class="fa fa-tasks"></i>
                             </a>
                         }
@@ -187,7 +188,7 @@
 
                         @if (messages == 0)
                                             {
-                            <a>
+                            <a href="@Url.Action("Index", "Messages")">
                                 <i class="fa fa-envelope-o"></i>
                             </a>
                         }
@@ -252,6 +253,72 @@
                         </ul>
                     </li>
                     <!-- inbox dropdown end -->
+                    @if (User.IsInRole("Admin") || User.IsInRole("Suggestions"))
+                    {
+                        <li id="header_inbox_bar" class="dropdown">
+                            @if (suggestions > 0)
+                            {
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="">
+                                    <i class="fa fa-sticky-note-o"></i>
+                                    <span class="badge bg-nav" style="font-weight: 900">@suggestions</span>
+                                </a>
+                            }
+
+                            @if (suggestions == 0)
+                            {
+                                <a href="@Url.Action("Feedback", "Home")">
+                                    <i class="fa fa-sticky-note-o"></i>
+                                </a>
+                            }
+                            <ul class="dropdown-menu extended inbox">
+                                <div class="notify-arrow notify-arrow-green"></div>
+                                @if (suggestions == 1)
+                                {
+                                    <li>
+                                        <p class="green">You have 1 new feedback item</p>
+                                    </li>
+                                }
+                                @if (suggestions > 1)
+                                {
+                                    <li>
+                                        <p class="green">You have @suggestions new feedback items</p>
+                                    </li>
+                                }
+                                <div id="message-scroll" style="max-height: 600px; overflow-y: auto; overflow-x: hidden">
+                                    @foreach (var suggestion in ViewBag.Suggestions)
+                                    {
+                                        <li>
+                                            <a>
+                                                <span class="photo"><img alt="avatar" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",suggestion.Author.ProfilePic)" style="height: 40px; width: 40px"></span>
+                                                <span class="subject">
+                                                    <span class="from" style="overflow: hidden; word-wrap: break-word">@suggestion.Author.FirstName</span>
+                                                    @if (suggestion.Created.Day == todayDay && suggestion.Sent.Month == todayMonth && suggestion.Sent.Year == todayYear)
+                                                    {
+                                                        <span class="time pull-right">@suggestion.Created.ToString("t")</span>
+                                                    }
+                                                    else if (suggestion.Created.Year == todayYear)
+                                                    {
+                                                        <span class="time pull-right">@suggestion.Created.ToString("M/d/yyyy")</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="time pull-right">@suggestion.Created.ToString("m")</span>
+                                                    }
+                                                </span>
+                                                <span class="message" style="overflow: hidden; word-wrap: break-word">
+                                                    @suggestion.SuggestionType.TypeName
+                                                </span>
+                                            </a>
+                                        </li>
+                                    }
+                                </div>
+                                <li style="text-align: center">
+                                    <a href="@Url.Action("Feedback","Home")" style="background-color: #F7F8F9; color: #FE5607"><strong>Go to Feedback Hub</strong></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- suggestion dropdown end -->
+                    }
                 </ul>
                 <!--  notification end -->
             </div>
