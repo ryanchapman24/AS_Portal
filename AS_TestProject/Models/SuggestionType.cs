@@ -9,5 +9,6 @@ namespace AS_TestProject.Models
     {
         public int Id { get; set; }
         public string TypeName { get; set; }
+        public string Department { get; set; }
     }
 }

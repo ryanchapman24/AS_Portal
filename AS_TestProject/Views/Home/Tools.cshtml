@@ -27,77 +27,77 @@
 
                     <div id="suggest" class="tab-pane">
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div class="widget widget-table">
-                                        <div class="widget-header">
-                                            <h4 style="color: #29AAE3"><i class="fa fa-sticky-note" style="margin-right: 3px"></i> My Suggestions</h4>
-                                        </div>
-                                        <div class="widget-content">
-                                            <div class="table-responsive">
-                                                <table id="datatable-basic-scrolling" class="table table-hover datatable suggest-table">
-                                                    <thead>
+                            <div class="col-md-6">
+                                <div class="widget widget-table">
+                                    <div class="widget-header">
+                                        <h4 style="color: #29AAE3"><i class="fa fa-sticky-note" style="margin-right: 3px"></i> My Suggestions</h4>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="table-responsive">
+                                            <table id="datatable-basic-scrolling" class="table table-hover datatable suggest-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 30%">Created</th>
+                                                        <th style="width: 10%">Type</th>
+                                                        <th>Body</th>
+                                                        <th style="width: 10%">Seen</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var suggestion in ViewBag.MySuggestions)
+                                                    {
                                                         <tr>
-                                                            <th style="width: 30%">Created</th>
-                                                            <th style="width: 10%">Type</th>
-                                                            <th>Body</th>
-                                                            <th style="width: 10%">Seen</th>
+                                                            <td class="text-nowrap">
+                                                                @if (ViewBag.Site == "Wichita")
+                                                                {
+                                                                    @suggestion.Created.AddHours(-1).ToString("g")
+                                                                }
+                                                                else
+                                                                {
+                                                                    @suggestion.Created.ToString("g")
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @suggestion.SuggestionType.TypeName
+                                                            </td>
+                                                            <td style="display: block; word-break: break-word">
+                                                                @suggestion.Body
+                                                            </td>
+                                                            <td>
+                                                                @if (suggestion.New == false)
+                                                                {
+                                                                    <span>Seen <i class="fa fa-check" style="color: #29AAE3"></i></span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>Unseen</span>
+                                                                }
+                                                            </td>
                                                         </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach (var suggestion in ViewBag.MySuggestions)
-                                                        {
-                                                            <tr>
-                                                                <td class="text-nowrap">
-                                                                    @if (ViewBag.Site == "Wichita")
-                                                                    {
-                                                                        @suggestion.Created.AddHours(-1).ToString("g")
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        @suggestion.Created.ToString("g")
-                                                                    }
-                                                                </td>
-                                                                <td>
-                                                                    @suggestion.SuggestionType.TypeName
-                                                                </td>
-                                                                <td style="display: block; word-break: break-word">
-                                                                    @suggestion.Body
-                                                                </td>
-                                                                <td>
-                                                                    @if (suggestion.New == false)
-                                                                    {
-                                                                        <span>Seen <i class="fa fa-check" style="color: #29AAE3"></i></span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span>Unseen</span>
-                                                                    }
-                                                                </td>
-                                                            </tr>
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                    }
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-                                @using (Html.BeginForm("AddSuggestion", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    <div class="col-md-6">
-                                        <h4 style="color: #29AAE3">New Suggestion<button type="submit" class="btn btn-sm btn-theme pull-right" style="margin-top: -10px">+ Add</button></h4>
-                                        <em style="padding-left: 10px; color: #FE5607">Suggestions are final once submitted.  You can not edit/delete them.  Keep that in mind!</em>
-                                        <textarea style="margin-top: 5px" rows="4" class="form-control capitalize" name="Body" id="Body" placeholder="message (500 character max)..." style="margin-bottom: 10px" maxlength="500" required></textarea>
-                                        <div class="form-group row" style="margin-top: 10px; margin-bottom: 20px">
-                                            <div class="col-md-2 control-label">
-                                                <span style="padding-left: 10px">Type</span>
-                                            </div>
-                                            <div class="col-md-10">
-                                                @Html.DropDownList("SuggestionTypeId", null, "",htmlAttributes: new { @class = "form-control", required = "true" })
-                                            </div>
+                            </div>
+                            @using (Html.BeginForm("AddSuggestion", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="col-md-6">
+                                    <h4 style="color: #29AAE3">New Suggestion<button type="submit" class="btn btn-sm btn-theme pull-right" style="margin-top: -10px">+ Add</button></h4>
+                                    <em style="padding-left: 10px; color: #FE5607">Suggestions are final once submitted.  You can not edit/delete them.  Keep that in mind!</em>
+                                    <textarea style="margin-top: 5px" rows="4" class="form-control capitalize" name="Body" id="Body" placeholder="message (500 character max)..." style="margin-bottom: 10px" maxlength="500" required></textarea>
+                                    <div class="form-group row" style="margin-top: 10px; margin-bottom: 20px">
+                                        <div class="col-md-2 control-label">
+                                            <span style="padding-left: 10px">Type</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("SuggestionTypeId", null, "",htmlAttributes: new { @class = "form-control", required = "true" })
                                         </div>
                                     </div>
-                                }
+                                </div>
+                            }
                         </div><!-- --/row ---->
                     </div><!-- --/tab-pane ---->
 
@@ -123,9 +123,9 @@
         });
 
         $('.suggest-table').DataTable({
-                "iDisplayLength": 5,
-                "aaSorting": [],
-                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
-            });
+            "iDisplayLength": 5,
+            "aaSorting": [],
+            "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+        });
     </script>
 }

@@ -835,10 +835,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 11:43:35</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>06/27/2017 16:04:05</publishTime>
+      <publishTime>06/28/2017 14:21:56</publishTime>
     </File>
     <File Include="bin/AS_TestProject.pdb">
-      <publishTime>06/27/2017 16:04:05</publishTime>
+      <publishTime>06/28/2017 14:21:56</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1717,10 +1717,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/03/2017 13:38:16</publishTime>
     </File>
     <File Include="Views/Home/Tools.cshtml">
-      <publishTime>06/27/2017 16:48:05</publishTime>
+      <publishTime>06/28/2017 10:56:25</publishTime>
     </File>
     <File Include="Views/HR/Index.cshtml">
-      <publishTime>04/07/2017 13:59:12</publishTime>
+      <publishTime>06/28/2017 13:45:04</publishTime>
     </File>
     <File Include="Views/IT/Index.cshtml">
       <publishTime>02/11/2017 21:05:12</publishTime>

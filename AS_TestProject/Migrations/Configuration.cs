@@ -65,6 +65,11 @@ namespace AS_TestProject.Migrations
                 roleManager.Create(new IdentityRole { Name = "Quality" });
             }
 
+            if (!context.Roles.Any(r => r.Name == "Suggestions"))
+            {
+                roleManager.Create(new IdentityRole { Name = "Suggestions" });
+            }
+
             if (!context.Roles.Any(r => r.Name == "Blocked"))
             {
                 roleManager.Create(new IdentityRole { Name = "Blocked" });

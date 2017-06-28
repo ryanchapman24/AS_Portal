@@ -854,5 +854,49 @@ namespace AS_TestProject.Controllers
             ViewBag.TaskHistory = db.Tasks.Where(t => t.AuthorId == user && t.Complete == true).OrderByDescending(n => n.Id).ToList();
             return View();
         }
+
+        [Authorize(Roles = "Admin, Suggestions")]
+        public ActionResult Feedback()
+        {
+            var user = User.Identity.GetUserId();
+
+            if (User.IsInRole("Admin") || (User.IsInRole("Suggestions") && User.IsInRole("Quality") && User.IsInRole("Marketing")))
+            {
+                ViewBag.SuggestionsForMe = db.Suggestions.OrderByDescending(s => s.Created).ToList();
+            }
+            else if ((User.IsInRole("Suggestions") && User.IsInRole("Quality")))
+            {
+                ViewBag.SuggestionsForMe = db.Suggestions.Where(s => s.SuggestionType.Department == "Quality").OrderByDescending(s => s.Created).ToList();
+            }
+            else if ((User.IsInRole("Suggestions") && User.IsInRole("Marketing")))
+            {
+                ViewBag.SuggestionsForMe = db.Suggestions.Where(s => s.SuggestionType.Department == "Marketing").OrderByDescending(s => s.Created).ToList();
+            }
+            return View();
+        }
+
+        [Authorize(Roles = "Admin, Suggestions")]
+        public ActionResult SuggestionDetails(int? id)
+        {
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName.Equals(User.Identity.Name));
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Suggestion suggestion = db.Suggestions.Find(id);
+            if (suggestion == null)
+            {
+                return HttpNotFound();
+            }
+
+            suggestion.SeenById = user.Id;
+            suggestion.SeenByEmployeeID = user.EmployeeID;
+            suggestion.TimeSeen = System.DateTime.Now;
+            suggestion.New = false;
+            db.SaveChanges();
+
+            return View(suggestion);
+        }
     }
 }
