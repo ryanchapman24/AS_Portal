@@ -117,6 +117,7 @@ namespace AS_TestProject.Models
                 ViewBag.pA5 = "Does the CSR exercise good judgement based on the answers to ensure excellent quality?";
                 ViewBag.pAOI1 = "Does the CSR update Browser/Five9 to reflect the proper disposition as needed?";
                 ViewBag.pAOI2 = "Does the CSR connect to the correct department and select the correct disposition?";
+                /////////////////////////////// Sales CFR Questions
 
                 base.OnActionExecuting(filterContext);
             }
