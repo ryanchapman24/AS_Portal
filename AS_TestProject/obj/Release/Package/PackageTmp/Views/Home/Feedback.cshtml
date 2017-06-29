@@ -37,20 +37,32 @@
                                                 {
                                                     <tr>
                                                         <td class="text-nowrap">
-                                                            @if (ViewBag.Site == "Wichita")
-                                                            {
-                                                                @suggestion.Created.AddHours(-1).ToString("g")
-                                                            }
-                                                            else
-                                                            {
-                                                                @suggestion.Created.ToString("g")
-                                                            }
+                                                            <strong>
+                                                                <em style="color: #031B25">
+                                                                    @if (ViewBag.Site == "Wichita")
+                                                                    {
+                                                                        @suggestion.Created.AddHours(-1).ToString("g")
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @suggestion.Created.ToString("g")
+                                                                    }
+                                                                </em>
+                                                            </strong>                                                          
                                                         </td>
                                                         <td>
-                                                            @suggestion.SuggestionType.TypeName
+                                                            <strong>
+                                                                <em style="color: #031B25">
+                                                                    @suggestion.SuggestionType.TypeName
+                                                                </em>
+                                                            </strong>  
                                                         </td>
                                                         <td class="text-nowrap">
-                                                            @suggestion.Author.FirstName @suggestion.Author.LastName
+                                                            <strong>
+                                                                <em style="color: #031B25">
+                                                                    @suggestion.Author.FirstName @suggestion.Author.LastName
+                                                                </em>
+                                                            </strong>  
                                                         </td>
                                                         <td class="text-nowrap">
                                                             <a href="@Url.Action("SuggestionDetails", new { id = suggestion.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
