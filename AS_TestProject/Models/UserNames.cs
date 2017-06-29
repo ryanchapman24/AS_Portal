@@ -51,6 +51,10 @@ namespace AS_TestProject.Models
                 {
                     ViewBag.Suggestions = db.Suggestions.Where(s => s.SuggestionType.Department == "Marketing" && s.New == true).OrderByDescending(s => s.Created).ToList();
                 }
+                else
+                {
+                    ViewBag.Suggestions = db.Suggestions.Where(s => s.SuggestionType.Department == "None").ToList(); ;
+                }
                 ViewBag.Notifications = user.Notifications.Where(n => n.New == true).OrderByDescending(n => n.Created).ToList();
                 ViewBag.Team = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(t => t.Id != user.Id).OrderBy(t => t.FirstName);
 

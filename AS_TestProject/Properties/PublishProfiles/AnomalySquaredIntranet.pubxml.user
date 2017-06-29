@@ -835,10 +835,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 11:43:35</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>06/28/2017 17:33:41</publishTime>
+      <publishTime>06/29/2017 10:08:23</publishTime>
     </File>
     <File Include="bin/AS_TestProject.pdb">
-      <publishTime>06/28/2017 17:33:41</publishTime>
+      <publishTime>06/29/2017 10:08:23</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1831,7 +1831,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RightNavHidden.cshtml">
-      <publishTime>06/28/2017 17:20:38</publishTime>
+      <publishTime>06/29/2017 10:08:11</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
       <publishTime>04/03/2017 14:09:42</publishTime>
