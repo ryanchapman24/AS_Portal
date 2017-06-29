@@ -740,12 +740,12 @@
     <Content Include="assets\forms\AnomalySquared_EmployeeHandbook_R3.pdf" />
     <Content Include="assets\forms\Anomaly_EmployeeStatusChange.pdf" />
     <Content Include="assets\forms\Pro_Staff_Employee_Performance_Review.pdf" />
-    <Content Include="assets\forms\TaxationEmployeeGifts.pdf" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\forms\Taxation-Employee-Gifts.pdf" />
     <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
