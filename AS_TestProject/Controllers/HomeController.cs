@@ -210,6 +210,7 @@ namespace AS_TestProject.Controllers
             return RedirectToAction("Tools");
         }
 
+        [Authorize(Roles = "Admin, Executive, HR, Operations, Suggestions, Payroll, Quality, IT, Marketing")]
         public ActionResult Directory()
         {
             var user = db.Users.Find(User.Identity.GetUserId());

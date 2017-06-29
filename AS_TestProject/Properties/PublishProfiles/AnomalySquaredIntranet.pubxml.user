@@ -70,7 +70,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:44</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>06/28/2017 15:48:17</publishTime>
+      <publishTime>06/29/2017 11:38:29</publishTime>
     </File>
     <File Include="assets/css/table-responsive.css">
       <publishTime>06/20/2016 16:13:44</publishTime>
@@ -1699,10 +1699,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2017 10:36:28</publishTime>
     </File>
     <File Include="Views/Home/Feedback.cshtml">
-      <publishTime>06/28/2017 17:28:41</publishTime>
+      <publishTime>06/29/2017 11:34:49</publishTime>
     </File>
     <File Include="Views/Home/Forms.cshtml">
-      <publishTime>06/29/2017 11:06:24</publishTime>
+      <publishTime>06/29/2017 11:10:31</publishTime>
     </File>
     <File Include="Views/Home/Gallery.cshtml">
       <publishTime>01/02/2017 11:58:31</publishTime>
@@ -1768,7 +1768,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2016 10:09:08</publishTime>
     </File>
     <File Include="Views/Messages/Index.cshtml">
-      <publishTime>02/15/2017 14:33:13</publishTime>
+      <publishTime>06/29/2017 11:40:30</publishTime>
     </File>
     <File Include="Views/Payroll/Create.cshtml">
       <publishTime>07/12/2016 12:48:24</publishTime>
@@ -1837,7 +1837,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RightNavHidden.cshtml">
-      <publishTime>06/29/2017 10:08:11</publishTime>
+      <publishTime>06/29/2017 11:43:39</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
       <publishTime>04/03/2017 14:09:42</publishTime>

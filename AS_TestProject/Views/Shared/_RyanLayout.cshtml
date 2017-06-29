@@ -232,9 +232,9 @@
                                             @if (newMsg.Urgent == true)
                                             {
                                                 if (newMsg.Content.Length > 21)
-                                                { @Html.Raw(newMsg.Content.Substring(0, 21) + "... ")<i class="fa fa-exclamation" style="color: #ff5050; margin-right: 3px; font-size: 16px"></i> }
+                                                { @Html.Raw(newMsg.Content.Substring(0, 21) + "... ")<i class="fa fa-exclamation" style="color: #FE5607; margin-right: 3px; font-size: 16px"></i> }
                                                 else
-                                                { @Html.Raw(newMsg.Content) <i class="fa fa-exclamation" style="color: #ff5050; font-size: 16px"></i>}
+                                                { @Html.Raw(newMsg.Content) <i class="fa fa-exclamation" style="color: #FE5607; font-size: 16px"></i>}
                                             }
                                             else
                                             {
@@ -293,7 +293,7 @@
                                                 <span class="photo"><img alt="avatar" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",suggestion.Author.ProfilePic)" style="height: 40px; width: 40px"></span>
                                                 <span class="subject">
                                                     <span class="from" style="overflow: hidden; word-wrap: break-word">@suggestion.Author.FirstName</span>
-                                                    @if (suggestion.Created.Day == todayDay && suggestion.Sent.Month == todayMonth && suggestion.Sent.Year == todayYear)
+                                                    @if (suggestion.Created.Day == todayDay && suggestion.Created.Month == todayMonth && suggestion.Created.Year == todayYear)
                                                     {
                                                         <span class="time pull-right">@suggestion.Created.ToString("t")</span>
                                                     }
@@ -386,12 +386,15 @@
                       </a>
                   </li>
 
-                  <li>
-                      <a id="direct" href="@Url.Action("Directory","Home")">
-                          <i class="fa fa-users"></i>
-                          <span>Directory</span>
-                      </a>
-                  </li>
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality") || User.IsInRole("Operations") || User.IsInRole("Executive") || User.IsInRole("Marketing") || User.IsInRole("Suggestions"))
+                  {
+                      <li>
+                          <a id="direct" href="@Url.Action("Directory","Home")">
+                              <i class="fa fa-users"></i>
+                              <span>Directory</span>
+                          </a>
+                      </li>
+                  }
 
                   @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                   {
