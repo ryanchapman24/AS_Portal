@@ -56,7 +56,14 @@ namespace AS_TestProject.Models
                     ViewBag.Suggestions = db.Suggestions.Where(s => s.SuggestionType.Department == "None").ToList(); ;
                 }
                 ViewBag.Notifications = user.Notifications.Where(n => n.New == true).OrderByDescending(n => n.Created).ToList();
-                ViewBag.Team = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(t => t.Id != user.Id).OrderBy(t => t.FirstName);
+                if (user.Roles.Any(r => r.RoleId == "580182ec-c40a-4f5d-87bf-227f48e7d221") && user.Roles.Count() == 1)
+                {
+                    ViewBag.Team = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0 && (t.PositionID == 1 || t.PositionID == 5 || t.PositionID == 26 || t.PositionID == 29 || t.PositionID == 37) && (t.SiteID == user.SiteID)).Where(t => t.Id != user.Id).OrderBy(t => t.FirstName);
+                }
+                else
+                {
+                    ViewBag.Team = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(t => t.Id != user.Id).OrderBy(t => t.FirstName);
+                }
 
                 /////////////////////////////// Mortgage CFR Questions
                 ViewBag.mTE1 = "Does the CSR state 'Hello' and pause to identify gender?";

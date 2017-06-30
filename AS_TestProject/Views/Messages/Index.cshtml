@@ -507,7 +507,7 @@
             <div class="panel-body">
                 <h4>Team Members</h4>
                 <ul class="nav nav-pills nav-stacked labels-info" style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
-                    @foreach (var user in ViewBag.Users)
+                    @foreach (var user in ViewBag.Team)
                     {
                         <li><a href="#" class="row msg-users" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2px" data-toggle="modal" data-target="#Modal-@user.Id"> <div class="col-md-3"><img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 50px; height: 50px" /></div><p class="col-md-9" style="margin-top: 8px; margin-bottom: 0px"><strong style="font-size: 14px">@user.DisplayName</strong><br /><span class="msg-users-pos"><em style="font-size: 10px">@user.Position.PositionName</em></span></p></a></li>
                         <!-- Modal -->

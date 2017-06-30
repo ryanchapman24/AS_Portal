@@ -27,8 +27,15 @@ namespace AS_TestProject.Controllers
             ViewBag.Drafts = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Out == false && m.Active == true && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.TrashIn = db.InboundMessages.Where(m => m.ReceiverId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
             ViewBag.TrashOut = db.OutboundMessages.Where(m => m.AuthorId == user.Id && m.Active == false && m.Ghost == false).OrderByDescending(m => m.Sent).Include(m => m.Author).Include(m => m.Receiver).ToList();
-            ViewBag.Users = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
-            ViewBag.ReceiverId = new SelectList(db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(u => u.Id != user.Id).OrderBy(u => u.FirstName), "Id", "DisplayName");
+            //ViewBag.Users = db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(u => u.Id != user.Id).OrderBy(u => u.FirstName).ToList();
+            if (user.Roles.Any(r => r.RoleId == "580182ec-c40a-4f5d-87bf-227f48e7d221") && user.Roles.Count() == 1)
+            {
+                ViewBag.ReceiverId = new SelectList(db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0 && (t.PositionID == 1 || t.PositionID == 5 || t.PositionID == 26 || t.PositionID == 29 || t.PositionID == 37) && (t.SiteID == user.SiteID)).Where(u => u.Id != user.Id).OrderBy(u => u.FirstName), "Id", "DisplayName");
+            }
+            else
+            {
+                ViewBag.ReceiverId = new SelectList(db.Users.Where(t => t.Roles.Where(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803").Count() == 0).Where(u => u.Id != user.Id).OrderBy(u => u.FirstName), "Id", "DisplayName");
+            }
             return View();
         }
 
