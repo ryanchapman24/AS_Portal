@@ -1,0 +1,600 @@
+﻿@model IEnumerable<AS_TestProject.Entities.AgentDailyHour>
+
+@{
+    ViewBag.Title = "Index";
+    var noonToday = DateTime.Today.AddHours(12);
+}
+
+<div class="col-lg-12 mt" style="margin-top: 0px">
+    <div class="row content-panel" style="padding-top: 0px; overflow: hidden"><img src="~/assets/img/TimeManagement_Banner.jpg" style="width: 100%" /></div>
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#current">Current Pay Period</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#previous">Previous Pay Period</a>
+                </li>
+            </ul>
+        </div><!-- --/panel-heading ---->
+
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="current" class="tab-pane active">
+                    <div class="widget widget-table">
+                        <div class="widget-header">
+                            <h3 style="color: #29AAE3"><i class="fa fa-user"></i> @ViewBag.AgentName @if (User.IsInRole("Payroll"))
+                            {<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="">+ New Entry</button>}</h3>
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="margin-bottom: 15px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Create New Time Entry for @ViewBag.AgentName (CURRENT)</h4>
+                                        </div>
+                                        @using (Html.BeginForm("Create", "Payroll", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="modal-body">
+                                                <div class="" style="">
+                                                    <input id="login" type="hidden" name="LoginTimeStamp" readonly="readonly" />
+                                                    @*@Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })*@
+                                                    <input id="logout" type="hidden" name="LogoutTimeStamp" readonly="readonly" />
+                                                    @*@Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })*@
+                                                    <div class="form-group">
+                                                        <div class="col-md-3 control-label">
+                                                            Date
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <div class="input-group">
+                                                                <input id="date" class="form-control datepickerP1" size="16" type="text" value="@ViewBag.Date" required>
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-theme" type="button" style=""><i class="fa fa-calendar"></i></button>
+                                                                </span>
+                                                            </div>
+                                                        </div><br /><br /><br>
+                                                        <div class="col-md-3 control-label">
+                                                            Login Time
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <div class="input-group bootstrap-timepicker">
+                                                                <input id="time1" class="form-control timepicker-default" type="text" value="@noonToday.ToString("hh:mm:ss tt")" required />
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                                                </span>
+                                                            </div>
+                                                        </div><br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Logout Time
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <div class="input-group bootstrap-timepicker">
+                                                                <input id="time2" class="form-control timepicker-default" type="text" value="@noonToday.ToString("hh:mm:ss tt")" required />
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                                                </span>
+                                                            </div>
+                                                        </div><br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Duration
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <input id="totalTime" class="form-control" readonly="readonly" name="LoginDuration" value="00:00:00" required />
+                                                        </div><br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Domain
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("DomainMasterID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })*@
+                                                        </div>
+                                                        <br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Reason
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("AgentTimeAdjustmentReasonID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.AgentTimeAdjustmentReasonID, "", new { @class = "text-danger" })*@
+                                                        </div><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer" style="margin-top: 20px">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button id="time-update" type="submit" class="btn btn-theme play">Confirm</button>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 style="margin-left: 0px"><strong>Current Pay Period</strong> (@ViewBag.PayPeriodStart - @ViewBag.PayPeriodEnd)</h4>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table id="datatable-basic-scrolling" class="table table-hover datatable timetable">
+                                    <thead>
+                                        <tr>
+                                            <th>Login</th>
+                                            <th>Logout</th>
+                                            <th>Duration</th>
+                                            <th>Domain</th>
+                                            <th>Regular Hours</th>
+                                            <th>Overtime Hours</th>
+                                            <th>Adjustment Reason</th>
+                                            @if (User.IsInRole("Payroll") || User.IsInRole("Admin"))
+                                            {
+                                                <th>Action</th>
+                                            }
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.LoginTimeStamp)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.LogoutTimeStamp)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.LoginDuration)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.DomainMaster.FileMask) - @Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.RegularHours)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.OverTimeHours)</td>
+                                                @if (item.AgentTimeAdjustmentReasonID != null)
+                                                {
+                                                    if (ViewBag.Site == "Wichita")
+                                                    {
+                                                        <td>@Html.DisplayFor(modelItem => item.AgentTimeAdjustmentReason.Reason)<i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee1.FirstName @item.Employee1.LastName <br> @item.EditTimeStamp.Value.AddHours(-1).ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>@Html.DisplayFor(modelItem => item.AgentTimeAdjustmentReason.Reason)<i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee1.FirstName @item.Employee1.LastName <br> @item.EditTimeStamp.Value.ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                                @if (User.IsInRole("Payroll") || User.IsInRole("Admin"))
+                                                {
+                                                    <td class="text-nowrap"><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="padding-bottom: 5px">
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality"))
+                            {
+                                <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span>
+                            }
+                            @Html.ActionLink("Back to Directory", "Directory", "Home")
+                        </div>
+                    </div>
+                </div>
+
+                <div id="previous" class="tab-pane">
+                    <div class="widget widget-table">
+                        <div class="widget-header">
+                            <h3 style="color: #29AAE3"><i class="fa fa-user"></i> @ViewBag.AgentName @if (User.IsInRole("Payroll"))
+                            {<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myPrevModal" style="">+ New Entry</button>}</h3>
+                            <!-- Modal -->
+                            <div class="modal fade" id="myPrevModal" tabindex="-1" role="dialog" aria-labelledby="myPrevModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="margin-bottom: 15px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myPrevModalLabel">Create New Time Entry for @ViewBag.AgentName (PREVIOUS)</h4>
+                                        </div>
+                                        @using (Html.BeginForm("Create", "Payroll", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PrevPayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="modal-body">
+                                                <div class="" style="">
+                                                    <input id="prevLogin" type="hidden" name="LoginTimeStamp" readonly="readonly" />
+                                                    @*@Html.ValidationMessageFor(model => model.LoginTimeStamp, "", new { @class = "text-danger" })*@
+                                                    <input id="prevLogout" type="hidden" name="LogoutTimeStamp" readonly="readonly" />
+                                                    @*@Html.ValidationMessageFor(model => model.LogoutTimeStamp, "", new { @class = "text-danger" })*@
+                                                    <div class="form-group">
+                                                        <div class="col-md-3 control-label">
+                                                            Date
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <div class="input-group">
+                                                                <input id="prevDate" class="form-control datepickerP2" size="16" type="text" value="@ViewBag.PrevDate" required>
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-theme" type="button" style=""><i class="fa fa-calendar"></i></button>
+                                                                </span>
+                                                            </div>
+                                                        </div><br /><br /><br>
+                                                        <div class="col-md-3 control-label">
+                                                            Login Time
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <div class="input-group bootstrap-timepicker">
+                                                                <input id="time3" class="form-control timepicker-default" type="text" value="@noonToday.ToString("hh:mm:ss tt")" required />
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                                                </span>
+                                                            </div>
+                                                        </div><br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Logout Time
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <div class="input-group bootstrap-timepicker">
+                                                                <input id="time4" class="form-control timepicker-default" type="text" value="@noonToday.ToString("hh:mm:ss tt")" required />
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                                                </span>
+                                                            </div>
+                                                        </div><br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Duration
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <input id="prevTotalTime" class="form-control" readonly="readonly" name="LoginDuration" value="00:00:00" required />
+                                                        </div><br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Domain
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("DomainMasterID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.DomainMasterID, "", new { @class = "text-danger" })*@
+                                                        </div>
+                                                        <br /><br /><br />
+                                                        <div class="col-md-3 control-label">
+                                                            Reason
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            @Html.DropDownList("AgentTimeAdjustmentReasonID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                            @*@Html.ValidationMessageFor(model => model.AgentTimeAdjustmentReasonID, "", new { @class = "text-danger" })*@
+                                                        </div><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer" style="margin-top: 20px">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button id="prev-time-update" type="submit" class="btn btn-theme play">Confirm</button>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 style="margin-left: 0px"><strong>Previous Pay Period</strong> (@ViewBag.PrevPayPeriodStart - @ViewBag.PrevPayPeriodEnd)</h4>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table id="datatable-basic-scrolling" class="table table-hover datatable timetable">
+                                    <thead>
+                                        <tr>
+                                            <th>Login</th>
+                                            <th>Logout</th>
+                                            <th>Duration</th>
+                                            <th>Domain</th>
+                                            <th>Regular Hours</th>
+                                            <th>Overtime Hours</th>
+                                            <th>Adjustment Reason</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.PrevAgentDailyHours)
+                                        {
+                                            <tr>
+                                                <td>@item.LoginTimeStamp</td>
+                                                <td>@item.LogoutTimeStamp</td>
+                                                <td>@item.LoginDuration</td>
+                                                <td>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</td>
+                                                <td>@item.RegularHours</td>
+                                                <td>@item.OverTimeHours</td>
+                                                @if (item.AgentTimeAdjustmentReasonID != null)
+                                                {
+                                                    if (ViewBag.Site == "Wichita")
+                                                    {
+                                                        <td>@item.AgentTimeAdjustmentReason.Reason<i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee1.FirstName @item.Employee1.LastName <br> @item.EditTimeStamp.AddHours(-1).ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>@item.AgentTimeAdjustmentReason.Reason<i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@item.Employee1.FirstName @item.Employee1.LastName <br> @item.EditTimeStamp.ToString("g")" data-html="true" data-toggle="tooltip" data-placement="top"></i></td>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                                @if (User.IsInRole("Payroll"))
+                                                {
+                                                    <td class="text-nowrap"><a href="@Url.Action("Edit", new { id = item.AgentDailyHoursID })"><i class="fa fa-clock-o" style="margin-right: 3px; font-size: 16px"></i> Edit</a></td>
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="padding-bottom: 5px">
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                            {
+                                <a href="@Url.Action("Details","Employees", new { id = ViewBag.EmployeeID })"> Employee Details</a> <span>|</span>
+                            }
+                            @Html.ActionLink("Back to Directory", "Directory", "Home")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', '/ASPortal/assets/audio/clock%20winding%20the%20spring%202.mp3');
+            //audioElement.setAttribute('autoplay', 'autoplay');
+            //audioElement.load()
+
+            $.get();
+
+            //audioElement.addEventListener("load", function() {
+            //    audioElement.play();
+            //}, true);
+
+            $('.play').click(function () {
+                audioElement.play();
+            });
+        });
+    </script>
+    <script>
+        @{
+            var pp1SD = ViewBag.PayPeriodStart;
+            var pp1ED = ViewBag.PayPeriodEnd;
+            var pp2SD = ViewBag.PrevPayPeriodStart;
+            var pp2ED = ViewBag.PrevPayPeriodEnd;
+        }
+
+        $(document).ready(function () {
+            $('.datepickerP1').datepicker({
+                format: 'm/d/yyyy',
+                startDate: '@pp1SD',
+                endDate: '@pp1ED'
+            });
+            $('.datepickerP2').datepicker({
+                format: 'm/d/yyyy',
+                startDate: '@pp2SD',
+                endDate: '@pp2ED'
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.timetable').DataTable({
+                "iDisplayLength": 10,
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+            });
+
+            var $time1 = $("#time1");
+            var $time2 = $("#time2");
+            var $diff = $("#totalTime");
+            var $date = $("#date");
+
+            function updateHours() {
+
+                var dtStart = new Date("7/8/2016 " + $time1.val());
+                var dtEnd = new Date("7/8/2016 " + $time2.val());
+
+                var diff = dtEnd - dtStart;
+                var totalSec = diff / 1000;
+                var hours = parseInt(totalSec / 3600) % 24;
+                var minutes = parseInt(totalSec / 60) % 60;
+                var seconds = totalSec % 60;
+                var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                if (dtStart > dtEnd) {
+                    $("#time-update").prop('disabled', true);
+                    $diff.val("Login time can't be greater than logout time!");
+                }
+
+                if (dtStart <= dtEnd) {
+                    $("#time-update").prop('disabled', false);
+                    $diff.val(result);
+                }
+            }
+
+            function updateTime() {
+                var $login = $("#login");
+                var $logout = $("#logout");
+
+                var dateStr = $date.val().toString();
+
+                var time1Str = $time1.val().toString();
+                var time2Str = $time2.val().toString();
+
+                if (time1Str.match("^0")) {
+                    var time1Sub = time1Str.substring(1, time1Str.length);
+                }
+                else {
+                    var time1Sub = time1Str;
+                }
+
+                if (time2Str.match("^0")) {
+                    var time2Sub = time2Str.substring(1, time2Str.length);
+                }
+                else {
+                    var time2Sub = time2Str;
+                }
+
+                var login = dateStr + " " + time1Sub;
+                var logout = dateStr + " " + time2Sub;
+
+                $login.val(login);
+                $logout.val(logout);
+            }
+
+            $date.on('changeDate', function (ev) {
+                updateTime()
+            });
+
+            $time1.add($time2).change(function () {
+                if ($time1.val() && $time2.val()) {
+                    updateHours();
+                    updateTime()
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var $login = $("#login");
+            var $logout = $("#logout");
+            var $time1 = $("#time1");
+            var $time2 = $("#time2");
+            var $date = $("#date");
+
+            var dateStr = $date.val().toString();
+
+            var time1Str = $time1.val().toString();
+            var time2Str = $time2.val().toString();
+
+            if (time1Str.match("^0")) {
+                var time1Sub = time1Str.substring(1, time1Str.length);
+            }
+            else {
+                var time1Sub = time1Str;
+            }
+
+            if (time2Str.match("^0")) {
+                var time2Sub = time2Str.substring(1, time2Str.length);
+            }
+            else {
+                var time2Sub = time2Str;
+            }
+
+            var login = dateStr + " " + time1Sub;
+            var logout = dateStr + " " + time2Sub;
+
+            $login.val(login);
+            $logout.val(logout);
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            var $time3 = $("#time3");
+            var $time4 = $("#time4");
+            var $diff = $("#prevTotalTime");
+            var $date = $("#prevDate");
+
+            function updatePrevHours() {
+
+                var dtStart = new Date("7/8/2016 " + $time3.val());
+                var dtEnd = new Date("7/8/2016 " + $time4.val());
+
+                var diff = dtEnd - dtStart;
+                var totalSec = diff / 1000;
+                var hours = parseInt(totalSec / 3600) % 24;
+                var minutes = parseInt(totalSec / 60) % 60;
+                var seconds = totalSec % 60;
+                var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                if (dtStart > dtEnd) {
+                    $("#prev-time-update").prop('disabled', true);
+                    $diff.val("Login time can't be greater than logout time!");
+                }
+
+                if (dtStart <= dtEnd) {
+                    $("#prev-time-update").prop('disabled', false);
+                    $diff.val(result);
+                }
+            }
+
+            function updatePrevTime() {
+                var $login = $("#prevLogin");
+                var $logout = $("#prevLogout");
+
+                var dateStr = $date.val().toString();
+
+                var time1Str = $time3.val().toString();
+                var time2Str = $time4.val().toString();
+
+                if (time1Str.match("^0")) {
+                    var time1Sub = time1Str.substring(1, time1Str.length);
+                }
+                else {
+                    var time1Sub = time1Str;
+                }
+
+                if (time2Str.match("^0")) {
+                    var time2Sub = time2Str.substring(1, time2Str.length);
+                }
+                else {
+                    var time2Sub = time2Str;
+                }
+
+                var login = dateStr + " " + time1Sub;
+                var logout = dateStr + " " + time2Sub;
+
+                $login.val(login);
+                $logout.val(logout);
+            }
+
+            $date.on('changeDate', function (ev) {
+                updatePrevTime()
+            });
+
+            $time3.add($time4).change(function () {
+                if ($time3.val() && $time4.val()) {
+                    updatePrevHours();
+                    updatePrevTime()
+                }
+            });
+        });
+    </script>
+    <script>
+            $(document).ready(function () {
+                var $login = $("#prevLogin");
+                var $logout = $("#prevLogout");
+                var $time3 = $("#time3");
+                var $time4 = $("#time4");
+                var $date = $("#prevDate");
+
+                var dateStr = $date.val().toString();
+
+                var time1Str = $time3.val().toString();
+                var time2Str = $time4.val().toString();
+
+                if (time1Str.match("^0")) {
+                    var time1Sub = time1Str.substring(1, time1Str.length);
+                }
+                else {
+                    var time1Sub = time1Str;
+                }
+
+                if (time2Str.match("^0")) {
+                    var time2Sub = time2Str.substring(1, time2Str.length);
+                }
+                else {
+                    var time2Sub = time2Str;
+                }
+
+                var login = dateStr + " " + time1Sub;
+                var logout = dateStr + " " + time2Sub;
+
+                $login.val(login);
+                $logout.val(logout);
+            })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#direct').addClass("active");
+        });
+    </script>
+}

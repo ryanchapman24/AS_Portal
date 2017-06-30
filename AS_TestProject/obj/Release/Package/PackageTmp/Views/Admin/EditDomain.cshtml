@@ -1,0 +1,122 @@
+﻿@model AS_TestProject.Entities.DomainMaster
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h2>Edit Domain: <span style="color: #29AAE3">@Model.FileMask - @Model.DomainName</span></h2>
+
+        @using (Html.BeginForm())
+        { 
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.DomainMasterID)
+                @Html.HiddenFor(model => model.AddByEmployeeID)
+                <input name="AddDate" type="hidden" value="@Model.AddDate.ToString("M/d/yyyy")" />
+                <input name="AddTime" type="hidden" value="@Model.AddTime" />
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Domain Name
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DomainName, new { htmlAttributes = new { @class = "form-control capitalize", required = "true" } })
+                        @Html.ValidationMessageFor(model => model.DomainName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Customer
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DropDownList("CustomerID", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                        @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Domain Type
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DropDownList("DomainTypeID", null, htmlAttributes: new { @class = "form-control", required = "true" })
+                        @Html.ValidationMessageFor(model => model.DomainTypeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Cost Code
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CostCode, new { htmlAttributes = new { @class = "form-control", maxlength = "6", required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CostCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        File Mask
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.FileMask, new { htmlAttributes = new { @class = "form-control", maxlength = "3", required = "true" } })
+                        @Html.ValidationMessageFor(model => model.FileMask, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Deactive Date
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" name="DeactiveDate" type="text" value="@Model.DeactiveDate.ToString("M/d/yyyy")" required/>
+                        @Html.ValidationMessageFor(model => model.DeactiveDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        Is this Domain Active?
+                    </div>
+                    <div class="col-md-4">
+                        <div class="switch switch-square"
+                             data-on-label="<i class=' fa fa-check'></i>"
+                             data-off-label="<i class='fa fa-times'></i>">
+                            @Html.EditorFor(model => model.IsActive)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-4">
+                        <input type="submit" value="Save" class="btn btn-theme pull-right" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div style="padding-bottom: 5px">
+            @Html.ActionLink("Back to Index", "Index")
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#admin').addClass("active");
+
+            $(function () {
+                // Switch
+                $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
+            });
+        });
+    </script>
+}

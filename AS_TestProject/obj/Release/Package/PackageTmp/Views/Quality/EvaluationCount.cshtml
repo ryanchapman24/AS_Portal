@@ -1,0 +1,191 @@
+﻿<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h3 style="color: #29AAE3"><i class="fa fa-check-square-o"></i> Quality: <span style="color: #29AAE3">Evaluation Count</span></h3>
+        <span><em>This data is with respect to our current goal of <strong style="color: #29AAE3">8</strong> CFRs to be completed per CSR each month.  CSRs that have been with us for 90 days or less are highlighted in yellow.</em></span>       
+        <br /><br />
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    @if (ViewBag.UserLocation == "greensboro")
+                    {
+                        <a data-toggle="tab" href="#greensboro">Greensboro</a>
+                    }
+                    else if (ViewBag.UserLocation == "wichita")
+                    {
+                        <a data-toggle="tab" href="#wichita">Wichita</a>
+                    }
+                </li>
+                <li>
+                    @if (ViewBag.OtherLocation == "greensboro")
+                    {
+                        <a data-toggle="tab" href="#greensboro">Greensboro</a>
+                    }
+                    else if (ViewBag.OtherLocation == "wichita")
+                    {
+                        <a data-toggle="tab" href="#wichita">Wichita</a>
+                    }
+                </li>
+            </ul>
+        </div><!-- --/panel-heading ---->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="@ViewBag.UserLocation" class="tab-pane active">
+                    <div class="widget-header">
+                        <h4 style="color: #29AAE3"><i class="fa fa-user-plus"></i> Employees Needing More Evaluations This Month</h4>
+                    </div>
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-hover datatable qual-table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Remaining CFRs Needed</th>
+                                        <th></th>
+                                        <th style="width: 60px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.UserLocation == "greensboro")
+                                    {
+                                        foreach (var item in ViewBag.G_EmpsNeedingMoreEvals)
+                                        {
+                                            if (item.DaysHere < 91)
+                                            {
+                                                <tr style="background-color: #ffffcc">
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td>@item.DaysHere Days</td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td></td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                    else if (ViewBag.UserLocation == "wichita")
+                                    {
+                                        foreach (var item in ViewBag.W_EmpsNeedingMoreEvals)
+                                        {
+                                            if (item.DaysHere < 91)
+                                            {
+                                                <tr style="background-color: #ffffcc">
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td>@item.DaysHere Days</td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td></td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                        }
+                                    }                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="@ViewBag.OtherLocation" class="tab-pane">
+                    <div class="widget-header">
+                        <h4 style="color: #29AAE3"><i class="fa fa-user-plus"></i> Employees Needing More Evaluations This Month</h4>
+                    </div>
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-hover datatable qual-table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Remaining CFRs Needed</th>
+                                        <th></th>
+                                        <th style="width: 60px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.OtherLocation == "greensboro")
+                                    {
+                                        foreach (var item in ViewBag.G_EmpsNeedingMoreEvals)
+                                        {
+                                            if (item.DaysHere < 91)
+                                            {
+                                                <tr style="background-color: #ffffcc">
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td>@item.DaysHere Days</td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td></td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                    else if (ViewBag.OtherLocation == "wichita")
+                                    {
+                                        foreach (var item in ViewBag.W_EmpsNeedingMoreEvals)
+                                        {
+                                            if (item.DaysHere < 91)
+                                            {
+                                                <tr style="background-color: #ffffcc">
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td>@item.DaysHere Days</td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td>@item.FullName</td>
+                                                    <td style="color: #29AAE3"><strong>@item.RemainingCFRsNeeded</strong></td>
+                                                    <td></td>
+                                                    <td class="text-nowrap"><a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Perform CFR</a></td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="padding-bottom: 5px; margin-top: 30px">
+            @Html.ActionLink("Back to Quality Hub", "Index", "Quality")
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#quality').addClass("active");
+
+            $('.qual-table').DataTable({
+                "iDisplayLength": -1,
+                "bSort": false,
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
+        });
+    </script>
+}

@@ -1,0 +1,76 @@
+﻿<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h2 style="color: #29AAE3"><i class="fa fa-users" style="margin-right: 4px"></i> HR Hub</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="widget widget-table">
+                    <div class="widget-header">
+                        <h3 style="color: #29AAE3"><i class="fa fa-file-text" style="margin-right: 3px"></i> HR Documents</h3>
+                    </div>
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-hover datatable hr-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 65%">File</th>
+                                        <th style="width: 25%">Date</th>
+                                        <th style="width: 10%">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var document in ViewBag.Documents)
+                                    {
+                                        <tr>
+                                            <td style="display: block; word-break: break-word">
+                                                <strong><a href="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",document.File)" target="_blank">@document.File.Substring(14)</a></strong><br />
+                                                <em><small>uploaded by <strong style="color: #FE5607">@document.Author.DisplayName</strong></small></em>
+                                            </td>
+                                            <td class="text-nowrap">
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    @document.Created.AddHours(-1).ToString("g")
+                                                }
+                                                else
+                                                {
+                                                    @document.Created.ToString("g")
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("DeleteDocument", "HR", new { id = document.Id })" style="color: #FE5607"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i>Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3 style="color: #FE5607"><i class="fa fa-bullseye" style="font-size: 24px; margin-right: 1px"></i> DropZone<a href="@Url.Action("Index","HR")" class="btn btn-orange btn-md pull-right" style="margin-top: -3px"><i class="fa fa-long-arrow-left" style="margin-right: 5px"></i> Send Over</a></h3>
+                @using (Html.BeginForm("UploadDocument", "HR", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { @class = "dropzone", enctype = "multipart/form-data", style = "border: 2px solid #FE5607" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<button type="submit" class="btn btn-theme">Upload</button>*@
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#hr').addClass("active");
+
+            $('.hr-table').DataTable({
+                "iDisplayLength": 5,
+                "aaSorting": [],
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
+        });
+    </script>
+}
+
+

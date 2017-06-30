@@ -1,0 +1,475 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    var noonToday = DateTime.Today.AddHours(12);
+}
+
+<h3 style="color: #29AAE3"><i class="fa fa-calendar"></i> Calendar</h3>
+<hr />
+<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="margin-bottom: 25px">+ New Event</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="margin-bottom: 15px">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Create New Calendar Event</h4>
+            </div>
+            <div style="text-align: center">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" style="margin-top: 2px" checked> One Day
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" style="margin-top: 2px"> Multiple Days
+                </label>
+            </div><br /><br />
+            <div id="oneDay">
+                @using (Html.BeginForm("CreateEvent", "Home", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <div class="" style="">
+                            <input id="oneRealStart" type="hidden" name="StartDate" readonly="readonly" />
+                            <input id="oneRealEnd" type="hidden" name="EndDate" readonly="readonly" />
+                            <div class="form-group">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="col-md-3 control-label">
+                                        For Everybody?
+                                    </div>
+                                    <div class="col-md-9" style="margin-top: -4px">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                        </div>
+                                    </div><br /><br />
+                                }
+                                <div class="col-md-3 control-label">
+                                    Title
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <input id="oneTitle" class="form-control capitalize" name="Title" type="text" maxlength="30" required>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    Date
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <div class="input-group">
+                                        <input id="oneDate" class="form-control datepicker" size="16" type="text" value="@ViewBag.Date" required>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    All Day?
+                                </div>
+                                <div class="col-md-9" style="margin-top: -4px">
+                                    <div class="input-group bootstrap-timepicker">
+                                        <input id="oneAllDay" type="checkbox" name="AllDay" value="true" style="margin-top: 6px" checked/>
+                                    </div>
+                                </div><br /><br /><br />
+                                <div id="oneTimeDiv" style="margin-top: -5px">
+                                    <div class="col-md-3 control-label">
+                                        Start Time
+                                    </div>
+                                    <div class="col-md-9" style="margin-top: -4px">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input id="oneStartTime" class="form-control timepicker-calendar" type="text" value="@noonToday.ToString("hh:mm tt")" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div><br /><br /><br />
+                                    <div class="col-md-3 control-label">
+                                        End Time
+                                    </div>
+                                    <div class="col-md-9" style="margin-top: -4px">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input id="oneEndTime" class="form-control timepicker-calendar" type="text" value="@noonToday.ToString("hh:mm tt")" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-theme" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 30px">
+                        <span id="oneWarning" class="hidden pull-left" style="margin-top: 8px; color: indianred">Start time can't be greater than end time!</span>             
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="oneSub" type="submit" class="btn btn-theme">Confirm</button>
+                    </div>
+                }
+            </div>
+            <div id="multiDay" class="hidden">
+                @using (Html.BeginForm("CreateEvent", "Home", new { empId = ViewBag.EmployeeID, ppId = ViewBag.PayPeriodID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <div class="" style="">
+                            @*<input id="multiRealStart" type="hidden" name="StartDate" readonly="readonly" />
+                            <input id="multiRealEnd" type="hidden" name="EndDate" readonly="readonly" />*@
+                            <input type="checkbox" class="hidden" name="AllDay" value="true" checked />                        
+                            <div class="form-group">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="col-md-3 control-label">
+                                        For Everybody?
+                                    </div>
+                                    <div class="col-md-9" style="margin-top: -4px">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input type="checkbox" name="Universal" value="true" style="margin-top: 6px" />
+                                        </div>
+                                    </div><br /><br />
+                                }
+                                <div class="col-md-3 control-label">
+                                    Title
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <input id="multiTitle" class="form-control capitalize" name="Title" maxlength="30" type="text" required>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    Start Date
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <div class="input-group">
+                                        <input id="multiStartDate" class="form-control datepicker" name="StartDate" size="16" type="text" value="@ViewBag.Date" required>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div><br /><br /><br>
+                                <div class="col-md-3 control-label">
+                                    End Date
+                                </div>
+                                <div class="col-md-9" style="margin-top: -5px">
+                                    <div class="input-group">
+                                        <input id="multiEndDate" class="form-control datepicker" name="EndDate" size="16" type="text" value="@ViewBag.Date">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-theme" type="button" style="margin-bottom: -2px"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div><br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 20px">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-theme">Confirm</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- page start-->
+<div class="row mt">
+    <aside class="col-lg-3 mt">
+        <h4 style="color: #29AAE3; margin-bottom: 30px">Upcoming Events</h4>
+        <div id="external-events">
+            @foreach (var calEvent in ViewBag.UpcomingEvents)
+            {
+                <hr />
+                <div class="row">
+                    <div class="col-md-7" style="padding-right: 10px">
+                        <span>@if (calEvent.Universal == true){<i class="fa fa-users" style="color: #29AAE3"></i> }@calEvent.Title</span>
+                    </div>
+                    <div class="col-md-5" style="padding-left: 0px">
+                        @if (calEvent.AllDay == true)
+                        {
+                            if (calEvent.StartDate.Day != calEvent.EndDate.Day)
+                            {
+                                <span class="text-nowrap" style="font-size: 10px">@calEvent.StartDate.Month/@calEvent.StartDate.Day - @calEvent.EndDate.Month/@calEvent.EndDate.Day</span>
+                            }
+                            else
+                            {
+                                <span class="text-nowrap" style="font-size: 10px">@calEvent.StartDate.Month/@calEvent.StartDate.Day</span>
+                            }
+                        }
+                        @if (calEvent.AllDay == false)
+                        {
+                            <span class="text-nowrap" style="font-size: 10px">@calEvent.StartDate.Month/@calEvent.StartDate.Day @calEvent.StartDate.ToString("h:mm tt") - @calEvent.EndDate.ToString("h:mm tt")</span>
+                        }
+                    </div>
+                </div>
+            }
+            @*<div class="external-event label label-theme">My Event 1</div>
+            <div class="external-event label label-success">My Event 2</div>
+            <div class="external-event label label-info">My Event 3</div>
+            <div class="external-event label label-warning">My Event 4</div>
+            <div class="external-event label label-danger">My Event 5</div>
+            <div class="external-event label label-default">My Event 6</div>
+            <div class="external-event label label-theme">My Event 7</div>
+            <div class="external-event label label-info">My Event 8</div>
+            <div class="external-event label label-success">My Event 9</div>*@
+            @*<p class="drop-after">
+                <input type="checkbox" id="drop-remove">
+                Remove After Drop
+            </p>*@
+        </div>
+    </aside>
+    <aside class="col-lg-9 mt">
+        <section class="panel">
+            <div class="panel-body">
+                <div id="full-calendar" class="has-toolbar"></div>
+            </div>
+        </section>
+    </aside>
+    <div class="col-lg-12 mt">
+        <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px; margin-left: 0px; margin-right: 0px">
+            <div class="widget-header">
+                <h3 style="color: #29AAE3"><i class="fa fa-calendar"></i> My Events</h3>
+            </div>
+            <div class="widget-content">
+                <div class="table-responsive">
+                    <table id="datatable-basic-scrolling" class="table table-hover datatable eventable">
+                        <thead>
+                            <tr>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Title</th>
+                                <th>Universal</th>
+                                <th style="width: 80px">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.MyEvents)
+                            {
+                                <tr>
+                                    @if (item.AllDay == true)
+                                    {
+                                        <td class="text-nowrap">@item.StartDate.ToString("d")</td>
+                                        <td class="text-nowrap">@item.EndDate.ToString("d")</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-nowrap">@item.StartDate.ToString("g")</td>
+                                        <td class="text-nowrap">@item.EndDate.ToString("g")</td>
+                                    }
+                                    <td>@item.Title</td>
+                                    @if (item.Universal == true)
+                                    {
+                                        <td><i class="fa fa-users" style="color: #29AAE3; margin-right: 4px"></i> added by @item.Author.DisplayName</td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    <td>
+                                        @{
+                                            var user = User.Identity.GetUserId();
+                                            if (User.IsInRole("Admin") || item.AuthorId == user)
+                                            {
+                                                @*<a href="@Url.Action("EditEvent","Events", new { id = item.Id })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />*@
+                                                <a href="@Url.Action("DeleteEvent","Events", new { id = item.Id })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+<!-- page end-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#calend').addClass("active");
+            var div = $('#oneTimeDiv').closest('.modal-body');
+
+            $("#inlineCheckbox1").click(function () {
+                $('#inlineCheckbox2').removeAttr("checked");
+                $('#oneDay').removeClass("hidden")
+                $('#multiDay').addClass("hidden")
+            });
+            $("#inlineCheckbox2").click(function () {
+                $('#inlineCheckbox1').removeAttr("checked");
+                $('#multiDay').removeClass("hidden")
+                $('#oneDay').addClass("hidden")
+            });         
+            $('#oneAllDay').change(function () {                         
+                $('#oneTimeDiv').toggle(!this.checked);
+                if ($("#oneTimeDiv").css('display') == 'none') {
+                    div.css({ height: "171px" });
+                };
+                if ($("#oneTimeDiv").css('display') != 'none') {
+                    div.css({ height: "auto" });
+                };
+            }).change(); //ensure visible state matches initially
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.eventable').DataTable({
+                "iDisplayLength": 10,
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+            });
+        });
+    </script>
+    <script>
+        var Script = function () {
+            /* initialize the external events
+             -----------------------------------------------------------------*/
+
+            $('#external-events div.external-event').each(function () {
+                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                // it doesn't need to have a start or end
+                var eventObject = {
+                    title: $.trim($(this).text()) // use the element's text as the event title
+                };
+                // store the Event Object in the DOM element so we can get to it later
+                $(this).data('eventObject', eventObject);
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true,      // will cause the event to go back to its
+                    revertDuration: 0  //  original position after the drag
+                });
+            });
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+
+            $('#full-calendar').fullCalendar({
+                header: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar !!!
+                drop: function (date, allDay) { // this function is called when something is dropped
+
+                    // retrieve the dropped element's stored Event Object
+                    var originalEventObject = $(this).data('eventObject');
+
+                    // we need to copy it, so that multiple events don't have a reference to the same object
+                    var copiedEventObject = $.extend({}, originalEventObject);
+
+                    // assign it the date that was reported
+                    copiedEventObject.start = date;
+                    copiedEventObject.allDay = allDay;
+
+                    // render the event on the calendar
+                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                    $('#full-calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+                    // is the "remove after drop" checkbox checked?
+                    if ($('#drop-remove').is(':checked')) {
+                        // if so, remove the element from the "Draggable Events" list
+                        $(this).remove();
+                    }
+                },
+                events: '@Url.Action("GetEvents", "Home")'
+            });
+        }();
+    </script>
+    <script>
+        $(document).ready(function () {
+            var $date = $("#oneDate");
+            var $time1 = $("#oneStartTime");
+            var $time2 = $("#oneEndTime");
+            var div = $('#oneTimeDiv').closest('.modal-body');
+
+            function updateTime() {
+                var $login = $("#oneRealStart");
+                var $logout = $("#oneRealEnd");
+
+                var dateStr = $date.val().toString();
+
+                var time1Str = $time1.val().toString();
+                var time2Str = $time2.val().toString();
+
+                if (time1Str.match("^0")) {
+                    var time1Sub = time1Str.substring(1, time1Str.length);
+                }
+                else {
+                    var time1Sub = time1Str;
+                }
+
+                if (time2Str.match("^0")) {
+                    var time2Sub = time2Str.substring(1, time2Str.length);
+                }
+                else {
+                    var time2Sub = time2Str;
+                }
+
+                var login = dateStr + " " + time1Sub;
+                var logout = dateStr + " " + time2Sub;
+
+                $login.val(login);
+                $logout.val(logout);
+
+                var dtStart = new Date("7/8/2016 " + $time1.val());
+                var dtEnd = new Date("7/8/2016 " + $time2.val());
+
+                if (dtStart > dtEnd) {
+                    $("#oneSub").prop('disabled', true);
+                    $("#oneWarning").removeClass('hidden');
+                }
+                if (dtStart <= dtEnd) {
+                    $("#oneSub").prop('disabled', false);
+                    $("#oneWarning").addClass('hidden');
+                }
+            }
+
+            $date.on('changeDate', function (ev) {
+                updateTime()
+            });
+
+            $time1.add($time2).change(function () {
+                if ($time1.val() && $time2.val()) {
+                    updateTime()
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var $login = $("#oneRealStart");
+            var $logout = $("#oneRealEnd");
+            var $time1 = $("#oneStartTime");
+            var $time2 = $("#oneEndTime");
+            var $date = $("#oneDate");
+
+            var dateStr = $date.val().toString();
+
+            var time1Str = $time1.val().toString();
+            var time2Str = $time2.val().toString();
+
+            if (time1Str.match("^0")) {
+                var time1Sub = time1Str.substring(1, time1Str.length);
+            }
+            else {
+                var time1Sub = time1Str;
+            }
+
+            if (time2Str.match("^0")) {
+                var time2Sub = time2Str.substring(1, time2Str.length);
+            }
+            else {
+                var time2Sub = time2Str;
+            }
+
+            var login = dateStr + " " + time1Sub;
+            var logout = dateStr + " " + time2Sub;
+
+            $login.val(login);
+            $logout.val(logout);
+        })
+    </script>
+}

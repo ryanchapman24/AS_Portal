@@ -1,0 +1,301 @@
+﻿@{
+//var activeDoms = ViewBag.ActiveDomains;
+//var domGCalls = new int[ViewBag.ActiveDomains.Count];
+//var domWCalls = new int[ViewBag.ActiveDomains.Count];
+//var domNames = new string[ViewBag.ActiveDomains.Count];
+//var domIndex = 0;
+//foreach (var actDom in ViewBag.ActiveDomains)
+//{
+//    domGCalls[domIndex] = actDom.GCalls;
+//    domWCalls[domIndex] = actDom.WCalls;
+//    domNames[domIndex] = actDom.Name;
+//    domIndex++;
+//    if (domIndex == ViewBag.ActiveDomains.Count)
+//    {
+//        break;
+//    }
+//}
+}
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h2 style="color: #29AAE3"><i class="fa fa-line-chart" style="margin-right: 4px"></i> Reporting</h2>
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#general">General</a>
+                </li>
+                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
+                {
+                    <li>
+                        <a data-toggle="tab" href="#humanresources">HR</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("Operations"))
+                {
+                    <li>
+                        <a data-toggle="tab" href="#informationtechnology">IT</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
+                {
+                    <li>
+                        <a data-toggle="tab" href="#qualdpt">Quality</a>
+                    </li>
+                }
+            </ul>
+        </div><!-- --/panel-heading ---->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="general" class="tab-pane active" style="text-align: center">
+                    @*<h4><strong style="color: #29AAE3">Call Volume Today</strong><span style="font-size: 10px"> (these numbers aren't accurate. this chart is under construction)</span></h4>
+                    <div>
+                        <div id="call-volume-chart" style="height:350px;"></div>
+                    </div>*@
+                    <div class="col-md-4" style="">
+                        <h4>DISCIPLINARY ACTIONS ENTERED TODAY</h4>
+                        <h2>@ViewBag.TotalDAs</h2>
+                    </div>
+                    <div class="col-md-4" style="border-left: 1px solid #797979;border-right: 1px solid #797979">
+                        <h4>CONSTRUCTIVE FEEDBACK REVIEWS COMPLETED TODAY</h4>
+                        <h2>@ViewBag.TotalCFRs</h2>
+                        <div class="col-md-4">
+                            <h6>MORTGAGE</h6>
+                            <h3>@ViewBag.TotalMortgageCFRs</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>INSURANCE</h6>
+                            <h3>@ViewBag.TotalInsuranceCFRs</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>RECRUITMENT</h6>
+                            <h3>@ViewBag.TotalPatientRecruitmentCFRs</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="">
+                        <h4>EMPLOYEE FILES UPLOADED TODAY</h4>
+                        <h2>@ViewBag.TotalEmpFiles</h2>
+                    </div>
+                </div>
+                @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
+                {
+                    <div id="humanresources" class="tab-pane">
+                        <a href="@Url.Action("HireTerm", "Reporting")" class="btn btn-theme btn-md">Hire/Term Statistics</a>
+                        @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                        {
+                            <a href="@Url.Action("Rehires", "Reporting")" class="btn btn-theme btn-md">Rehires</a>
+                            <a href="@Url.Action("DomainHours", "Reporting")" class="btn btn-theme btn-md">Domain Hours</a>
+                        }
+                    </div>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("Operations"))
+                {
+                    <div id="informationtechnology" class="tab-pane">
+                        <a href="@Url.Action("TransfersByDomain", "Reporting")" class="btn btn-theme btn-md">Transfers by Domain</a>
+                        <a href="@Url.Action("TransfersByEmployee", "Reporting")" class="btn btn-theme btn-md">Transfers by Employee</a> 
+                    </div>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
+                {
+                    <div id="qualdpt" class="tab-pane">
+                        <a href="@Url.Action("CFRStats", "Reporting")" class="btn btn-theme btn-md">CFR Statistics</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#report').addClass("active");
+        });
+    </script>
+    @*<script>
+        //bar chart
+        $(function () {
+            var d1 = [];
+            for (var i = 0; i <= 10; i += 1)
+                d1.push([i, parseInt(Math.random() * 30)]);
+
+            var d2 = [];
+            for (var i = 0; i <= 10; i += 1)
+                d2.push([i, parseInt(Math.random() * 30)]);
+
+            var d3 = [];
+            for (var i = 0; i <= 10; i += 1)
+                d3.push([i, parseInt(Math.random() * 30)]);
+
+            var stack = 0, bars = true, lines = false, steps = false;
+
+            function plotWithOptions() {
+                $.plot($("#call-volume-chart"), [d1, d2, d3], {
+                    series: {
+                        stack: stack,
+                        lines: { show: lines, fill: true, steps: steps },
+                        bars: { show: bars, barWidth: 0.6 }
+                    }
+                });
+            }
+            plotWithOptions();
+            $(".stackControls input").click(function (e) {
+                e.preventDefault();
+                stack = $(this).val() == "With stacking" ? true : null;
+                plotWithOptions();
+            });
+            $(".graphControls input").click(function (e) {
+                e.preventDefault();
+                bars = $(this).val().indexOf("Bars") != -1;
+                lines = $(this).val().indexOf("Lines") != -1;
+                steps = $(this).val().indexOf("steps") != -1;
+                plotWithOptions();
+            });
+        });
+    </script>*@
+    <script>
+        @*var gCallsLength, gCallsValues, wCallsLength, wCallsValues, dNamesLength, dNamesValues;
+
+        gCallsLength = @domGCalls.Length;
+        wCallsLength = @domWCalls.Length;
+        dNamesLength = @domNames.Length;
+
+        var gCallsValues = "";
+        var wCallsValues = "";
+        var dNamesValues = "";
+
+        for (i = 0; i < gArray.length; i++) {
+            gCallsValues += "[" + i + "," + gArray[i] + "],";
+        };
+        for (i = 0; i < wArray.length; i++) {
+            wCallsValues += "[" + i + "," + wArray[i] + "],";
+        };
+        for (i = 0; i < nArray.length; i++) {
+            dNamesValues += "[" + i + "," + nArray[i] + ",";
+        };*@
+        $(function () {
+            var gArray = "";
+            var wArray = "";
+            var nArray = "";
+            // ONLY THIS BLOCK NEEDS TO BE UNCOMMENTED TO GET WHERE I LAST LEFT OFF ///////////////
+            @*@foreach (var c in activeDoms)
+            {
+                @:gArray += "[" + "@c.Number" + ", " + "@c.GCalls" + "],";
+            }
+            @foreach (var c in activeDoms)
+            {
+                @:wArray += "[" + "@c.Number" + ", " + "@c.WCalls" + "],";
+            }
+            @foreach (var d in activeDoms)
+            {
+                @:nArray += "[" + "@d.Number" + ", " + "@d.Name" + "],";
+            }
+            console.log(gArray);
+            console.log(wArray);
+            console.log(nArray);*@
+            //////////////////////////////////////////////////////////////////////////////////
+            var wichita = {
+                label: 'Wichita',
+                color: '#29AAE3',
+                //data: [ wArray ]
+                data: [
+                    [0, 1584],
+                    [1, 196],
+                    [2, 0],
+                    [3, 0],
+                    [4, 0],
+                    [5, 0],
+                    [6, 2576],
+                    [7, 2008],
+                    [8, 0],
+                    [9, 0],
+                    [10, 0],
+                    [11, 0],
+                    [12, 0],
+                    [13, 1226],
+                    [14, 0]
+                ]
+            };
+            var greensboro = {
+                label: 'Greensboro',
+                color: '#031B25',
+                //data: [ gArray ]
+                data: [
+                    [0, 2518],
+                    [1, 0],
+                    [2, 0],
+                    [3, 236],
+                    [4, 0],
+                    [5, 0],
+                    [6, 0],
+                    [7, 29],
+                    [8, 0],
+                    [9, 0],
+                    [10, 2],
+                    [11, 0],
+                    [12, 0],
+                    [13, 0],
+                    [14, 98]
+                ]
+            };
+            var dataset = [wichita, greensboro];
+
+            var options = {
+                series: {
+                    stack: true,
+                    bars: {
+                        show: true
+                    }
+                },
+                bars: {
+                    align: "center",
+                    horizontal: false,
+                    barWidth: .8,
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true,
+                    borderColor: null,
+                    backgroundColor: null,
+                    labelMargin: 10,
+                    minBorderMargin: 10
+                },
+                tooltip: {
+                    show: true,
+                    content: "%s | %y"
+                },
+                yaxis: {
+                    tickColor: '#eaeaea',
+                    tickDecimals: 0
+                },
+                xaxis: {
+                    tickColor: '#eaeaea',
+                    //ticks: [ nArray ]
+                    ticks: [
+                        [0, "Acurian"],
+                        [1, "AIS"],
+                        [2, "Bridgeview"],
+                        [3, "Chase"],
+                        [4, "Cornerstone"],
+                        [5, "Equate"],
+                        [6, "Everquote"],
+                        [7, "Freedom Mortgage"],
+                        [8, "FreedomEA"],
+                        [9, "GVG"],
+                        [10, "Lending Tree"],
+                        [11, "Liberty"],
+                        [12, "PeoplesDM"],
+                        [13, "Precise Leads"],
+                        [14, "Prime Lending"]
+                    ]
+                },
+                legend: {
+                    position: 'ne',
+                    show: true
+                }
+            };
+            $.plot($("#call-volume-chart"), dataset, options);
+        });
+    </script>
+}

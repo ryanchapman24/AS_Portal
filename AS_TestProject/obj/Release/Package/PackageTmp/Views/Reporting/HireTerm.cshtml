@@ -1,0 +1,734 @@
+﻿<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h3 style="color: #29AAE3"><i class="fa fa-user-plus" style="margin-right: 4px"></i>Hires / <i class="fa fa-user-times" style="margin-right: 4px"></i>Terms</h3>
+        <span><em>This data is with respect to the last 6 months.</em></span>
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#overall" class="ovr">Overall</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#wichita" class="wct">Wichita</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#greensboro" class="gso">Greensboro</a>
+                </li>
+            </ul>
+        </div><!-- --/panel-heading ---->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="overall" class="tab-pane active">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.OverallDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>- @ViewBag.OvrGrowthPercent</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>+ @ViewBag.OvrGrowthPercent</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.OverallDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.OvrSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(@ViewBag.OverallDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.OvrCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.OvrSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(+@ViewBag.OverallDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.OvrCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <hr />
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px; box-shadow: 0px 3px 2px #aab2bd">
+                        @if (ViewBag.FiveMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(+@ViewBag.FiveMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.FourMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FourMonthsAgo<br />(@ViewBag.FourMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FourMonthsAgo<br />(+@ViewBag.FourMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThreeMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(@ViewBag.ThreeMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(+@ViewBag.ThreeMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.TwoMonthsAgoOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(@ViewBag.TwoMonthsAgoOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(+@ViewBag.TwoMonthsAgoOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.LastMonthOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.LastMonth<br />(@ViewBag.LastMonthOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.LastMonth<br />(+@ViewBag.LastMonthOvrDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThisMonthOvrDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThisMonth<br />(@ViewBag.ThisMonthOvrDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThisMonth<br />(+@ViewBag.ThisMonthOvrDiff)</strong></div>
+                        }
+                    </div>
+                    <div class="row mt">
+                        <div class="col-lg-6">
+                            <div class="content-panel">
+                                <h4><strong style="color: #29AAE3">Hires</strong></h4>
+                                <div class="panel-body">
+                                    <div id="overall-hires" class="graph"></div>
+                                </div>
+                            </div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                            {
+                                <div class="table-responsive" style="margin-top: 20px">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable ht-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Month</th>
+                                                <th class="text-nowrap">Hire Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.OverallHires)
+                                            {
+                                                <tr>
+                                                    <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
+                                                    <td>@item.HireDate.ToString("MMMM")</td>
+                                                    <td class="text-nowrap">@item.HireDate.ToString("d")</td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="content-panel">
+                                <h4><strong style="color: #FE5607">Terms</strong></h4>
+                                <div class="panel-body">
+                                    <div id="overall-terms" class="graph"></div>
+                                </div>
+                            </div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                            {
+                                <div class="table-responsive" style="margin-top: 20px">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable ht-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Month</th>
+                                                <th class="text-nowrap">Term Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.OverallTerms)
+                                            {
+                                                <tr>
+                                                    <td class="text-nowrap" style="color: #FE5607"><strong>@item.FirstName @item.LastName</strong></td>
+                                                    <td>@item.TerminationDate.ToString("MMMM")</td>
+                                                    <td class="text-nowrap">@item.TerminationDate.ToString("d")</td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })" style="color: #FE5607"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div id="wichita" class="tab-pane">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.WichitaDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>- @ViewBag.WGrowthPercent</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>+ @ViewBag.WGrowthPercent</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.WichitaDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.WSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(@ViewBag.WichitaDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.WCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.WSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(+@ViewBag.WichitaDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.WCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <hr />
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px; box-shadow: 0px 3px 2px #aab2bd">
+                        @if (ViewBag.FiveMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(+@ViewBag.FiveMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.FourMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FourMonthsAgo<br />(@ViewBag.FourMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FourMonthsAgo<br />(+@ViewBag.FourMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThreeMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(@ViewBag.ThreeMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(+@ViewBag.ThreeMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.TwoMonthsAgoWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(@ViewBag.TwoMonthsAgoWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(+@ViewBag.TwoMonthsAgoWDiff)</strong></div>
+                        }
+                        @if (ViewBag.LastMonthWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.LastMonth<br />(@ViewBag.LastMonthWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.LastMonth<br />(+@ViewBag.LastMonthWDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThisMonthWDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThisMonth<br />(@ViewBag.ThisMonthWDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThisMonth<br />(+@ViewBag.ThisMonthWDiff)</strong></div>
+                        }
+                    </div>
+                    <div class="row mt">
+                        <div class="col-lg-6">
+                            <div class="content-panel">
+                                <h4><strong style="color: #29AAE3">Hires</strong></h4>
+                                <div class="panel-body">
+                                    <div id="w-hires" class="graph"></div>
+                                </div>
+                            </div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                            {
+                                <div class="table-responsive" style="margin-top: 20px">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable ht-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Month</th>
+                                                <th class="text-nowrap">Hire Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.WichitaHires)
+                                            {
+                                                <tr>
+                                                    <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
+                                                    <td>@item.HireDate.ToString("MMMM")</td>
+                                                    <td class="text-nowrap">@item.HireDate.ToString("d")</td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="content-panel">
+                                <h4><strong style="color: #FE5607">Terms</strong></h4>
+                                <div class="panel-body">
+                                    <div id="w-terms" class="graph"></div>
+                                </div>
+                            </div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                            {
+                                <div class="table-responsive" style="margin-top: 20px">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable ht-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Month</th>
+                                                <th class="text-nowrap">Term Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.WichitaTerms)
+                                            {
+                                                <tr>
+                                                    <td class="text-nowrap" style="color: #FE5607"><strong>@item.FirstName @item.LastName</strong></td>
+                                                    <td>@item.TerminationDate.ToString("MMMM")</td>
+                                                    <td class="text-nowrap">@item.TerminationDate.ToString("d")</td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })" style="color: #FE5607"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div id="greensboro" class="tab-pane">
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.GreensboroDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>- @ViewBag.GGrowthPercent</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; font-size: 36px; line-height: 50px; box-shadow: 0px 0px 2px #aab2bd"><strong>+ @ViewBag.GGrowthPercent</strong></div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px">
+                        <div class="col-lg-4"></div>
+                        @if (ViewBag.GreensboroDiff < 0)
+                        {
+                            <div class="col-lg-4" style="background-color: #FE5607; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.GSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(@ViewBag.GreensboroDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.GCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4" style="background-color: #29AAE3; color: white; box-shadow: 0px 3px 2px #aab2bd">
+                                <div class="col-lg-3"><strong>From<br />@ViewBag.GSixMonthsAgoEmpCount</strong></div>
+                                <div class="col-lg-6"><strong>Net Change<br />(+@ViewBag.GreensboroDiff)</strong></div>
+                                <div class="col-lg-3"><strong>To<br />@ViewBag.GCurrentEmpCount</strong></div>
+                            </div>
+                        }
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <hr />
+                    <div class="row" style="text-align: center;margin-left: 0px; margin-right: 0px; font-size: 14px; line-height: 24px; box-shadow: 0px 3px 2px #aab2bd">
+                        @if (ViewBag.FiveMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(@ViewBag.FiveMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FiveMonthsAgo<br />(+@ViewBag.FiveMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.FourMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.FourMonthsAgo<br />(@ViewBag.FourMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.FourMonthsAgo<br />(+@ViewBag.FourMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThreeMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(@ViewBag.ThreeMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThreeMonthsAgo<br />(+@ViewBag.ThreeMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.TwoMonthsAgoGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(@ViewBag.TwoMonthsAgoGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.TwoMonthsAgo<br />(+@ViewBag.TwoMonthsAgoGDiff)</strong></div>
+                        }
+                        @if (ViewBag.LastMonthGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.LastMonth<br />(@ViewBag.LastMonthGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.LastMonth<br />(+@ViewBag.LastMonthGDiff)</strong></div>
+                        }
+                        @if (ViewBag.ThisMonthGDiff < 0)
+                        {
+                            <div class="col-lg-2" style="background-color: #FE5607; color: white"><strong>@ViewBag.ThisMonth<br />(@ViewBag.ThisMonthGDiff)</strong></div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-2" style="background-color: #29AAE3; color: white"><strong>@ViewBag.ThisMonth<br />(+@ViewBag.ThisMonthGDiff)</strong></div>
+                        }
+                    </div>
+                    <div class="row mt">
+                        <div class="col-lg-6">
+                            <div class="content-panel">
+                                <h4><strong style="color: #29AAE3">Hires</strong></h4>
+                                <div class="panel-body">
+                                    <div id="g-hires" class="graph"></div>
+                                </div>
+                            </div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                            {
+                                <div class="table-responsive" style="margin-top: 20px">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable ht-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Month</th>
+                                                <th class="text-nowrap">Hire Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.GreensboroHires)
+                                            {
+                                                <tr>
+                                                    <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
+                                                    <td>@item.HireDate.ToString("MMMM")</td>
+                                                    <td class="text-nowrap">@item.HireDate.ToString("d")</td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="content-panel">
+                                <h4><strong style="color: #FE5607">Terms</strong></h4>
+                                <div class="panel-body">
+                                    <div id="g-terms" class="graph"></div>
+                                </div>
+                            </div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                            {
+                                <div class="table-responsive" style="margin-top: 20px">
+                                    <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable ht-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Month</th>
+                                                <th class="text-nowrap">Term Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.GreensboroTerms)
+                                            {
+                                                <tr>
+                                                    <td class="text-nowrap" style="color: #FE5607"><strong>@item.FirstName @item.LastName</strong></td>
+                                                    <td>@item.TerminationDate.ToString("MMMM")</td>
+                                                    <td class="text-nowrap">@item.TerminationDate.ToString("d")</td>
+                                                    <td class="text-nowrap">
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                        {
+                                                            <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })" style="color: #FE5607"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <p style="padding-bottom: 5px; margin-top: 30px">
+            @Html.ActionLink("Back to Reporting", "Index", "Reporting")
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#report').addClass("active");
+
+            $('.ht-table').DataTable({
+                "iDisplayLength": -1,
+                "aaSorting": [],
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
+        });
+    </script>
+    <script>
+        @{
+            string thisMonth = ViewBag.ThisMonth;
+            string lastMonth = ViewBag.LastMonth;
+            string twoMonthsAgo = ViewBag.TwoMonthsAgo;
+            string threeMonthsAgo = ViewBag.ThreeMonthsAgo;
+            string fourMonthsAgo = ViewBag.FourMonthsAgo;
+            string fiveMonthsAgo = ViewBag.FiveMonthsAgo;
+
+            int thisMonthOvrH = ViewBag.ThisMonthOvrH;
+            int lastMonthOvrH = ViewBag.LastMonthOvrH;
+            int twoMonthsAgoOvrH = ViewBag.TwoMonthsAgoOvrH;
+            int threeMonthsAgoOvrH = ViewBag.ThreeMonthsAgoOvrH;
+            int fourMonthsAgoOvrH = ViewBag.FourMonthsAgoOvrH;
+            int fiveMonthsAgoOvrH = ViewBag.FiveMonthsAgoOvrH;
+            int thisMonthOvrT = ViewBag.ThisMonthOvrT;
+            int lastMonthOvrT = ViewBag.LastMonthOvrT;
+            int twoMonthsAgoOvrT = ViewBag.TwoMonthsAgoOvrT;
+            int threeMonthsAgoOvrT = ViewBag.ThreeMonthsAgoOvrT;
+            int fourMonthsAgoOvrT = ViewBag.FourMonthsAgoOvrT;
+            int fiveMonthsAgoOvrT = ViewBag.FiveMonthsAgoOvrT;
+
+            int thisMonthWH = ViewBag.ThisMonthWH;
+            int lastMonthWH = ViewBag.LastMonthWH;
+            int twoMonthsAgoWH = ViewBag.TwoMonthsAgoWH;
+            int threeMonthsAgoWH = ViewBag.ThreeMonthsAgoWH;
+            int fourMonthsAgoWH = ViewBag.FourMonthsAgoWH;
+            int fiveMonthsAgoWH = ViewBag.FiveMonthsAgoWH;
+            int thisMonthWT = ViewBag.ThisMonthWT;
+            int lastMonthWT = ViewBag.LastMonthWT;
+            int twoMonthsAgoWT = ViewBag.TwoMonthsAgoWT;
+            int threeMonthsAgoWT = ViewBag.ThreeMonthsAgoWT;
+            int fourMonthsAgoWT = ViewBag.FourMonthsAgoWT;
+            int fiveMonthsAgoWT = ViewBag.FiveMonthsAgoWT;
+
+            int thisMonthGH = ViewBag.ThisMonthGH;
+            int lastMonthGH = ViewBag.LastMonthGH;
+            int twoMonthsAgoGH = ViewBag.TwoMonthsAgoGH;
+            int threeMonthsAgoGH = ViewBag.ThreeMonthsAgoGH;
+            int fourMonthsAgoGH = ViewBag.FourMonthsAgoGH;
+            int fiveMonthsAgoGH = ViewBag.FiveMonthsAgoGH;
+            int thisMonthGT = ViewBag.ThisMonthGT;
+            int lastMonthGT = ViewBag.LastMonthGT;
+            int twoMonthsAgoGT = ViewBag.TwoMonthsAgoGT;
+            int threeMonthsAgoGT = ViewBag.ThreeMonthsAgoGT;
+            int fourMonthsAgoGT = ViewBag.FourMonthsAgoGT;
+            int fiveMonthsAgoGT = ViewBag.FiveMonthsAgoGT;
+        }
+        $(function () {
+            var graph1 = Morris.Bar({
+                            element: 'overall-hires',
+                            data: [
+                              { device: '@fiveMonthsAgo', geekbench: @fiveMonthsAgoOvrH },
+                              { device: '@fourMonthsAgo', geekbench: @fourMonthsAgoOvrH },
+                              { device: '@threeMonthsAgo', geekbench: @threeMonthsAgoOvrH },
+                              { device: '@twoMonthsAgo', geekbench: @twoMonthsAgoOvrH },
+                              { device: '@lastMonth', geekbench: @lastMonthOvrH },
+                              { device: '@thisMonth', geekbench: @thisMonthOvrH }
+                            ],
+                            xkey: 'device',
+                            ykeys: ['geekbench'],
+                            labels: ['Total'],
+                            barRatio: 0.4,
+                            xLabelAngle: 35,
+                            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+                            //gridIntegers: true,
+                            //ymin: 0,
+                            hideHover: 'auto',
+                            barColors: ['#29AAE3']
+                        });
+
+            var graph2 = Morris.Bar({
+                            element: 'overall-terms',
+                            data: [
+                              { device: '@fiveMonthsAgo', geekbench: @fiveMonthsAgoOvrT },
+                              { device: '@fourMonthsAgo', geekbench: @fourMonthsAgoOvrT },
+                              { device: '@threeMonthsAgo', geekbench: @threeMonthsAgoOvrT },
+                              { device: '@twoMonthsAgo', geekbench: @twoMonthsAgoOvrT },
+                              { device: '@lastMonth', geekbench: @lastMonthOvrT },
+                              { device: '@thisMonth', geekbench: @thisMonthOvrT }
+                            ],
+                            xkey: 'device',
+                            ykeys: ['geekbench'],
+                            labels: ['Total'],
+                            barRatio: 0.4,
+                            xLabelAngle: 35,
+                            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+                            //gridIntegers: true,
+                            //ymin: 0,
+                            hideHover: 'auto',
+                            barColors: ['#FE5607']
+                        });
+
+            var graph3 = Morris.Bar({
+                            element: 'w-hires',
+                            data: [
+                              { device: '@fiveMonthsAgo', geekbench: @fiveMonthsAgoWH },
+                              { device: '@fourMonthsAgo', geekbench: @fourMonthsAgoWH },
+                              { device: '@threeMonthsAgo', geekbench: @threeMonthsAgoWH },
+                              { device: '@twoMonthsAgo', geekbench: @twoMonthsAgoWH },
+                              { device: '@lastMonth', geekbench: @lastMonthWH },
+                              { device: '@thisMonth', geekbench: @thisMonthWH }
+                            ],
+                            xkey: 'device',
+                            ykeys: ['geekbench'],
+                            labels: ['Total'],
+                            barRatio: 0.4,
+                            xLabelAngle: 35,
+                            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+                            //gridIntegers: true,
+                            //ymin: 0,
+                            hideHover: 'auto',
+                            barColors: ['#29AAE3']
+                        });
+
+            var graph4 = Morris.Bar({
+                            element: 'w-terms',
+                            data: [
+                              { device: '@fiveMonthsAgo', geekbench: @fiveMonthsAgoWT },
+                              { device: '@fourMonthsAgo', geekbench: @fourMonthsAgoWT },
+                              { device: '@threeMonthsAgo', geekbench: @threeMonthsAgoWT },
+                              { device: '@twoMonthsAgo', geekbench: @twoMonthsAgoWT },
+                              { device: '@lastMonth', geekbench: @lastMonthWT },
+                              { device: '@thisMonth', geekbench: @thisMonthWT }
+                            ],
+                            xkey: 'device',
+                            ykeys: ['geekbench'],
+                            labels: ['Total'],
+                            barRatio: 0.4,
+                            xLabelAngle: 35,
+                            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+                            //gridIntegers: true,
+                            //ymin: 0,
+                            hideHover: 'auto',
+                            barColors: ['#FE5607']
+                        });
+
+            var graph5 = Morris.Bar({
+                            element: 'g-hires',
+                            data: [
+                              { device: '@fiveMonthsAgo', geekbench: @fiveMonthsAgoGH },
+                              { device: '@fourMonthsAgo', geekbench: @fourMonthsAgoGH },
+                              { device: '@threeMonthsAgo', geekbench: @threeMonthsAgoGH },
+                              { device: '@twoMonthsAgo', geekbench: @twoMonthsAgoGH },
+                              { device: '@lastMonth', geekbench: @lastMonthGH },
+                              { device: '@thisMonth', geekbench: @thisMonthGH }
+                            ],
+                            xkey: 'device',
+                            ykeys: ['geekbench'],
+                            labels: ['Total'],
+                            barRatio: 0.4,
+                            xLabelAngle: 35,
+                            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+                            //gridIntegers: true,
+                            //ymin: 0,
+                            hideHover: 'auto',
+                            barColors: ['#29AAE3']
+                        });
+
+            var graph6 = Morris.Bar({
+                            element: 'g-terms',
+                            data: [
+                              { device: '@fiveMonthsAgo', geekbench: @fiveMonthsAgoGT },
+                              { device: '@fourMonthsAgo', geekbench: @fourMonthsAgoGT },
+                              { device: '@threeMonthsAgo', geekbench: @threeMonthsAgoGT },
+                              { device: '@twoMonthsAgo', geekbench: @twoMonthsAgoGT },
+                              { device: '@lastMonth', geekbench: @lastMonthGT },
+                              { device: '@thisMonth', geekbench: @thisMonthGT }
+                            ],
+                            xkey: 'device',
+                            ykeys: ['geekbench'],
+                            labels: ['Total'],
+                            barRatio: 0.4,
+                            xLabelAngle: 35,
+                            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+                            //gridIntegers: true,
+                            //ymin: 0,
+                            hideHover: 'auto',
+                            barColors: ['#FE5607']
+                        });
+
+            $('ul.nav a.ovr').on('shown.bs.tab', function (e) {
+                graph1.redraw();
+                graph2.redraw();
+            });
+            $('ul.nav a.wct').on('shown.bs.tab', function (e) {
+                graph3.redraw();
+                graph4.redraw();
+            });
+            $('ul.nav a.gso').on('shown.bs.tab', function (e) {
+                graph5.redraw();
+                graph6.redraw();
+            });
+            //$('.graph').each(function (index, el) {
+            //    eval($(el).text());
+            //});
+        });
+    </script>
+}

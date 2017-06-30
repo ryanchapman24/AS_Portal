@@ -1,0 +1,245 @@
+﻿
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h3 style="color: #29AAE3"><i class="fa fa-check-square-o"></i> Quality: <span style="color: #29AAE3">@ViewBag.Domain</span></h3>
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#cfr">CFR Data</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#other" class="contact-map">Other</a>
+                </li>
+            </ul>
+        </div><!-- --/panel-heading ---->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="cfr" class="tab-pane active">
+                    @using (Html.BeginForm("Details", "Quality", new { id = ViewBag.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-2" style="margin-top: 1px">
+                                <strong style="color: #29AAE3">Site</strong>
+                                @if (ViewBag.Phrase == 1 || ViewBag.Phrase == 2)
+                                {
+                                    @Html.DropDownList("SiteID", null, htmlAttributes: new { @class = "form-control"})
+                                }
+                                else
+                                {
+                                    @Html.DropDownList("SiteID", null, "", htmlAttributes: new { @class = "form-control"})
+                                }                                   
+                            </div>
+                            <div class="col-md-2">
+                                <strong style="color: #29AAE3">Start</strong>
+                                <div class="input-group">
+                                    <input id="CFRstart" name="start" class="form-control datepickerQ" size="16" type="text" value="@ViewBag.StartDate">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button" style=""><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <strong style="color: #29AAE3">End</strong>
+                                <div class="input-group">
+                                    <input id="CFRend" name="end" class="form-control datepickerQ" size="16" type="text" value="@ViewBag.EndDate">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-theme" type="button" style=""><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="submit" class="btn btn-theme play" style="width: 72px; margin-top: 19px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px">Submit</button>
+                            </div>
+                        </div>
+                    }
+                    @using (Html.BeginForm("Details", "Quality", new { id = ViewBag.Id}, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {  
+                        <div class="row" style="margin-bottom: 60px">
+                            <div class="col-md-11"></div>
+                            <div class="col-md-1">
+                                <button type="submit" class="btn btn-default btn-xs" style="width: 72px; border-top-right-radius: 0px; border-top-left-radius: 0px">Clear</button>
+                            </div>
+                        </div>
+                    }
+                    <h3 style="color: #29AAE3; margin-left: 0px; margin-bottom: 60px; text-align: center"><i class="fa fa-volume-control-phone" style="margin-right: 8px"></i><strong style="color: #FE5607">@ViewBag.TotalCalls</strong> Calls Monitored @if (ViewBag.Phrase == 1){ <span>between <span style="color: #031B25">@ViewBag.StartDate</span> and <span style="color: #031B25">@ViewBag.EndDate</span> for <span style="color: #031B25">@ViewBag.Site</span></span> } @if (ViewBag.Phrase == 2){ <span> for <span style="color: #031B25">@ViewBag.Site</span></span> } @if (ViewBag.Phrase == 3){ <span>between <span style="color: #031B25">@ViewBag.StartDate</span> and <span style="color: #031B25">@ViewBag.EndDate</span></span> }</h3>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-2" style="text-align: center">
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Etiquette</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentTE1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentTE2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentTE3</strong>% POOR</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentTE4</strong>% N/A</p>
+                            <canvas id="serverstatus02" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentTE1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentTE2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentTE3,
+                                        color : "#FE5607"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentTE4,
+                                        color : "#BABDC1"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Professionalism</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentP1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentP2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentP3</strong>% POOR</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentP4</strong>% N/A</p>
+                            <canvas id="serverstatus03" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentP1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentP2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentP3,
+                                        color : "#FE5607"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentP4,
+                                        color : "#BABDC1"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus03").getContext("2d")).Doughnut(doughnutData);
+                            </script>                         
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Compliance</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentC1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentC2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentC3</strong>% POOR</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentC4</strong>% N/A</p>
+                            <canvas id="serverstatus04" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentC1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentC2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentC3,
+                                        color : "#FE5607"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentC4,
+                                        color : "#BABDC1"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus04").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Adherence</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentA1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentA2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentA3</strong>% POOR</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentA4</strong>% N/A</p>
+                            <canvas id="serverstatus05" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentA1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentA2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentA3,
+                                        color : "#FE5607"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentA4,
+                                        color : "#BABDC1"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus05").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                        </div>
+                        <div class="col-md-2" style="text-align: center">
+                            <h4 style="color: #031B25; margin-left: 0px; margin-bottom: 20px"><strong>Accuracy</strong></h4>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentAOI1</strong>% EXCELLENT</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentAOI2</strong>% OPPORTUNITY</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentAOI3</strong>% POOR</p>
+                            <p class="text-nowrap"><strong style="color: #29AAE3">@ViewBag.PercentAOI4</strong>% N/A</p>
+                            <canvas id="serverstatus06" height="140" width="140" style="margin-top: 15px"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value : @ViewBag.PercentAOI1,
+                                        color : "#29AAE3"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentAOI2,
+                                        color : "#031B25"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentAOI3,
+                                        color : "#FE5607"
+                                    },
+                                    {
+                                        value : @ViewBag.PercentAOI4,
+                                        color : "#BABDC1"
+                                    },
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus06").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                        </div>
+                        <div class="col-md-offset-5 col-md-2" style="text-align: left; margin-top: 40px">
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #29AAE3; margin-right: 5px"></i>Excellent</p>
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #031B25; margin-right: 5px"></i>Opportunity</p>
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #FE5607; margin-right: 5px"></i>Poor</p>
+                            <p style="margin-bottom: 0px; text-align: left"><i class="fa fa-square" style="color: #BABDC1; margin-right: 5px"></i>N/A</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="other" class="tab-pane">
+                    <em>Placeholder for data we want to implement later...</em>
+                </div>
+            </div>
+        </div>
+        <p style="padding-bottom: 5px">
+            @Html.ActionLink("Back to Quality Hub", "Index", "Quality")
+        </p>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#quality').addClass("active");
+
+            $('.datepickerQ').datepicker({
+                format: 'm/d/yyyy',
+                orientation: 'bottom'
+            });
+        });
+    </script>
+}

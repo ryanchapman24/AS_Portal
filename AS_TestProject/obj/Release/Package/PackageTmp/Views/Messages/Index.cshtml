@@ -1,0 +1,1384 @@
+﻿@model IEnumerable<AS_TestProject.Models.OutboundMessage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_RightNavHidden.cshtml";
+    var todayYear = System.DateTime.Now.Year;
+    var todayMonth = System.DateTime.Now.Month;
+    var todayDay = System.DateTime.Now.Day;
+    var trash = ViewBag.TrashIn.Count + ViewBag.TrashOut.Count;
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#messages').addClass("active");
+
+            $('#datatable-basic-scrolling1').DataTable({
+                "iDisplayLength": 25,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No messages in your inbox",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling2').DataTable({
+                "iDisplayLength": 25,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No messages in your outbox",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling3').DataTable({
+                "iDisplayLength": 25,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No messages saved as drafts",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling4').DataTable({
+                "iDisplayLength": 10,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No trash from inbox",
+                    "infoEmpty": ""
+                }
+            });
+            $('#datatable-basic-scrolling5').DataTable({
+                "iDisplayLength": 10,
+                "aaSorting": [],
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "language": {
+                    "emptyTable": "No trash from outbox",
+                    "infoEmpty": ""
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('.inbound .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.outbound .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.trashIn .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+            $('.trashOut .message-rows').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#outbox").click(function () {
+                $('#outbox').addClass("active");
+                $('#inbox').removeClass("active");
+                $('#drafts').removeClass("active");
+                $('#trash').removeClass("active");
+
+                $('#outbox-table').removeClass("hidden");
+                $('#inbox-table').addClass("hidden");
+                $('#draft-table').addClass("hidden");
+                $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+            $("#drafts").click(function () {
+                $('#drafts').addClass("active");
+                $('#inbox').removeClass("active");
+                $('#outbox').removeClass("active");
+                $('#trash').removeClass("active");
+
+                $('#draft-table').removeClass("hidden");
+                $('#inbox-table').addClass("hidden");
+                $('#outbox-table').addClass("hidden");
+                $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+            $("#trash").click(function () {
+                $('#trash').addClass("active");
+                $('#inbox').removeClass("active");
+                $('#drafts').removeClass("active");
+                $('#outbox').removeClass("active");
+
+                $('#trash-table').removeClass("hidden");
+                $('#inbox-table').addClass("hidden");
+                $('#draft-table').addClass("hidden");
+                $('#outbox-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+            $("#inbox").click(function () {
+                $('#inbox').addClass("active");
+                $('#outbox').removeClass("active");
+                $('#drafts').removeClass("active");
+                $('#trash').removeClass("active");
+
+                $('#inbox-table').removeClass("hidden");
+                $('#outbox-table').addClass("hidden");
+                $('#draft-table').addClass("hidden");
+                $('#trash-table').addClass("hidden");
+                $('#inboundDetail').addClass("hidden");
+            });
+        });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('#markAllRead').click(function () {
+                    $('.inbox-unread').attr('checked','checked');
+                });
+
+                $('#unmarkAllRead').click(function () {
+                    $('.inbox-unread').removeAttr('checked');
+                });
+
+                $('#markAllDrafts').click(function () {
+                    $('.draft-delete').attr('checked','checked');
+                });
+
+                $('#unmarkAllDrafts').click(function () {
+                    $('.draft-delete').removeAttr('checked');
+                });
+
+                $('#markAllInTrash').click(function () {
+                    $('.intrash-delete').attr('checked','checked');
+                });
+
+                $('#unmarkAllInTrash').click(function () {
+                    $('.intrash-delete').removeAttr('checked');
+                });
+
+                $('#markAllOutTrash').click(function () {
+                    $('.outtrash-delete').attr('checked','checked');
+                });
+
+                $('#unmarkAllOutTrash').click(function () {
+                    $('.outtrash-delete').removeAttr('checked');
+                });
+            });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#draft-rows .message-rows').click(function () {
+                var id = $(this).attr('data-id');
+                var profile = $('.data-profile[data-id="' + id + '"]').val();
+                var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                //var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+
+                $('#draftModalId').val(id);
+                $('#draftModalImg').attr('src', profile);
+                $('#draftModalSubject').val(subject);
+                $('#draftModalContent').text(content);
+                $('#DraftModalLabel').text("Finish New Message for " + name);
+
+                if (isUrgent == "true") {
+                    $('#draftModalUrgent').attr('checked', 'checked');
+                    var div = $('#draftModalUrgent').closest('div');
+                    div.removeClass('switch-off').addClass('switch-on');
+                }
+                else {
+                    $('#draftModalUrgent').removeAttr('checked');
+                    var div = $('#draftModalUrgent').closest('div');
+                    div.removeClass('switch-on').addClass('switch-off');
+                }
+            });
+        });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.inbound .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#reply-btn').removeClass("hidden");
+                    $('#inbox-trash-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var receiver = $('.data-receiver[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailInboundId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("From: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+
+                    $('#ReplyModalImg').attr('src', profile);
+                    $('#ReplyModalLabel').text("Reply to " + name);
+                    $('#ReplyModalReceiver').val(receiver);
+                    $('#OriginalMsg').text(content);
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.outbound .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#outbox-trash-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailOutboundId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("To: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.trashIn .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#outbox-delete-btn').addClass("hidden");
+                    $('#inbox-delete-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var receiver = $('.data-receiver[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailInTrashId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("From: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+
+                    $('#ReplyModalImg').attr('src', profile);
+                    $('#ReplyModalLabel').text("Reply to " + name);
+                    $('#ReplyModalReceiver').val(receiver);
+                    $('#OriginalMsg').text(content);
+                });
+            });
+    </script>
+    <script>
+            $(document).ready(function () {
+                $('.trashOut .message-rows').click(function () {
+                    $('#inboundDetail').removeClass("hidden");
+                    $('#outbox-table').addClass("hidden");
+                    $('#inbox-table').addClass("hidden");
+                    $('#draft-table').addClass("hidden");
+                    $('#trash-table').addClass("hidden");
+
+                    $('#reply-btn').addClass("hidden");
+                    $('#outbox-trash-btn').addClass("hidden");
+                    $('#inbox-trash-btn').addClass("hidden");
+                    $('#inbox-delete-btn').addClass("hidden");
+                    $('#outbox-delete-btn').removeClass("hidden");
+
+                    var id = $(this).attr('data-id');
+                    var profile = $('.data-profile[data-id="' + id + '"]').val();
+                    var name = $('.data-name[data-id="' + id + '"]').attr('data-name');
+                    var subject = $('.data-subject[data-id="' + id + '"]').attr('data-subject');
+                    var content = $('.data-content[data-id="' + id + '"]').attr('data-content');
+                    var isUrgent = $('.data-subject[data-id="' + id + '"]').attr('data-urgent');
+                    var sent = $('.data-sent[data-id="' + id + '"]').attr('data-sent');
+                    var file = $('.data-file[data-id="' + id + '"]').attr('data-file');
+                    var short = $('.data-file[data-id="' + id + '"]').attr('data-short');
+                    var shortFile = short.substring(14, short.length);
+
+                    $('#detailOutTrashId').val(id);
+                    $('#detailInboundImg').attr('src', profile);
+                    $('#detailInboundSubject').text(subject);
+                    $('#detailInboundContent').text(content);
+                    $('#detailInboundFrom').text("To: " + name);
+                    $('#detailInboundSent').text(sent);
+                    $('#detailInboundFile').attr('href', file);
+                    $('#detailInboundFile').text(shortFile);
+
+                    if (isUrgent == "true") {
+                        $('#detailInboundUrgent').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailInboundUrgent').addClass("hidden");
+                    }
+
+                    if (file != "#") {
+                        $('#detailFile').removeClass("hidden");
+                    }
+                    else {
+                        $('#detailFile').addClass("hidden");
+                    }
+                });
+            });
+    </script>
+}
+
+    <div class="col-md-3">
+        <section class="panel">
+            <div class="panel-body">
+                <a href="#" class="btn btn-theme" style="width: 100%; padding: 10px; margin-bottom: 15px" data-toggle="modal" data-target="#ComposeModal">
+                    <i class="fa fa-pencil"></i>  Compose Message
+                </a>
+                <!-- Modal -->
+                <div class="modal fade" id="ComposeModal" tabindex="-1" role="dialog" aria-labelledby="ComposeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="margin-bottom: 15px">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="ComposeModalLabel">New Message</h4>
+                            </div>
+                            @using (Html.BeginForm("Create", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div class="modal-body">
+                                    <div class="" style="">
+                                        @*<div style="text-align: center; margin-bottom: 40px">
+                                            <img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
+                                        </div>*@
+                                        <div class="col-md-3 control-label">
+                                            To
+                                        </div>
+                                        <div class="col-md-9" style="margin-top: -5px">
+                                            @Html.DropDownList("ReceiverId", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                        </div><br /><br /><br />
+                                        <div class="form-group">
+                                            <div class="col-md-3 control-label">
+                                                Subject
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                <input class="form-control capitalize" name="Subject" type="text" maxlength="40" required />
+                                            </div><br /><br /><br />
+
+                                            <div class="col-md-3 control-label">
+                                                Body
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                <textarea rows="4" class="form-control capitalize" name="Content" required></textarea>
+                                            </div><br /><br /><br /><br /><br /><br />
+
+                                            <div class="col-md-3 control-label">
+                                                File
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="file" name="file" />
+                                            </div><br /><br /><br />
+
+                                            <div class="col-md-3 control-label">
+                                                Urgent?
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                <div class="switch switch-square"
+                                                        data-on-label="<i class=' fa fa-check'></i>"
+                                                        data-off-label="<i class='fa fa-times'></i>">
+                                                    <input type="checkbox" name="Urgent" value="true" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="margin-top: 20px">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button name="saveAsDraft" type="submit" class="btn btn-default">Save as Draft</button>
+                                    <button name="createMessage" type="submit" class="btn btn-theme play sendMsg-btn">Send</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav nav-pills nav-stacked mail-nav">
+                    <li id="inbox" class="active"><a href="#"> <strong><i class="fa fa-inbox"></i> Inbox</strong> @if (ViewBag.Unread.Count > 0) {<span class="label label-theme pull-right inbox-notification" style="padding-top: 5px">@ViewBag.Unread.Count</span>}</a></li>
+                    <li id="outbox"><a href="#"> <strong><i class="fa fa-envelope-o"></i> Outbox</strong></a></li>
+                    <li id="drafts"><a href="#"> <strong><i class="fa fa-file-text-o"></i> Drafts</strong> @if (ViewBag.Drafts.Count > 0) {<span class="label label-theme pull-right inbox-notification" style="padding-top: 5px">@ViewBag.Drafts.Count</span>}</a></li>
+                    <li id="trash"><a href="#"> <strong><i class="fa fa-trash-o"></i> Trash</strong> @if (trash > 0) {<span class="label label-theme pull-right inbox-notification" style="padding-top: 5px">@trash</span>}</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-body">
+                <h4>Team Members</h4>
+                <ul class="nav nav-pills nav-stacked labels-info" style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
+                    @foreach (var user in ViewBag.Team)
+                    {
+                        <li><a href="#" class="row msg-users" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2px" data-toggle="modal" data-target="#Modal-@user.Id"> <div class="col-md-3"><img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 50px; height: 50px" /></div><p class="col-md-9" style="margin-top: 8px; margin-bottom: 0px"><strong style="font-size: 14px">@user.DisplayName</strong><br /><span class="msg-users-pos"><em style="font-size: 10px">@user.Position.PositionName</em></span></p></a></li>
+                        <!-- Modal -->
+                        <div class="modal fade" id="Modal-@user.Id" tabindex="-1" role="dialog" aria-labelledby="ModalLabel-@user.Id" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="margin-bottom: 15px">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="ModalLabel-@user.Id">New Message for @user.DisplayName</h4>
+                                    </div>
+                                    @using (Html.BeginForm("Create", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                    <input type="hidden" name="ReceiverId" value="@user.Id"/>
+                                    <div class="modal-body">
+                                        <div class="" style="">
+                                            <div style="text-align: center; margin-bottom: 40px">
+                                                <img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",user.ProfilePic)" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-3 control-label">
+                                                    Subject
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <input class="form-control capitalize" name="Subject" type="text" maxlength="40" required />
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Body
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <textarea rows="4" class="form-control capitalize" name="Content" required></textarea>
+                                                </div><br /><br /><br /><br /><br /><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    File
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input type="file" name="file" />
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Urgent?
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <div class="switch switch-square"
+                                                         data-on-label="<i class=' fa fa-check'></i>"
+                                                         data-off-label="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" name="Urgent" value="true"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="margin-top: 20px">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button name="saveAsDraft" type="submit" class="btn btn-default">Save as Draft</button>
+                                        <button name="createMessage" type="submit" class="btn btn-theme play sendMsg-btn">Send</button>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-9">
+        <section class="panel" style="padding-right: 20px; padding-left: 20px; padding-bottom: 5px;">
+            <div id="inbox-table" class="widget widget-table">
+            @using (Html.BeginForm("UpdateInbox", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="widget-header">
+                    <h3 style="color: #29AAE3"><i class="fa fa-inbox"></i> Inbox <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
+                </div>
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table id="datatable-basic-scrolling1" class="table table-sorting table-hover datatable message-tables">
+                            <thead>
+                                <tr>
+                                    <th><div class="btn-group"><a id="markAllRead" class="btn btn-theme">Mark all</a><a id="unmarkAllRead" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th style="min-width: 114px">Read</th>
+                                    <th>From</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="width: 5%">Trash</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var message in ViewBag.Unread)
+                                {
+                                    <tr class="inbound">
+                                        <td>
+                                            <input class="inbox-unread" type="checkbox" name="read" value="@message.Id"/>
+                                        </td>
+                                        <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><strong style="color: #29AAE3">@message.Author.DisplayName</strong>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Author.ProfilePic)" />
+                                            <input type="hidden" class="data-receiver" data-id="@message.Id" value="@message.AuthorId" />
+                                        </td>
+                                        @if (message.Urgent == true)
+                                        {
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                                <i class="fa fa-warning" style="color: #FE5607; margin-right: 3px"></i><strong style="color: #031B25"><em>@message.Subject</em></strong>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false"><strong style="color: #031B25"><em>@message.Subject</em></strong></td>
+                                        }
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            <strong style="color: #031B25">
+                                                <em>
+                                                    @if (message.Content.Length > 150)
+                                                    { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                                    else
+                                                    { @Html.Raw(message.Content) }
+                                                </em>
+                                            </strong>
+                                        </td>
+                                        <!--File Row-->
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }
+                                        @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")"><strong style="color: #031B25"><em>@message.Sent.AddHours(-1).ToString("t")</em></strong></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")"><strong style="color: #031B25"><em>@message.Sent.ToString("t")</em></strong></td>
+                                            }
+                                        }
+                                        else if (message.Sent.Year != todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)"><strong style="color: #031B25"><em>@message.Sent>AddHours(-1).ToString("M/d/yyyy")</em></strong></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)"><strong style="color: #031B25"><em>@message.Sent.ToString("M/d/yyyy")</em></strong></td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))"><strong style="color: #031B25"><em>@message.Sent.AddHours(-1).ToString("m")</em></strong></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))"><strong style="color: #031B25"><em>@message.Sent.ToString("m")</em></strong></td>
+                                            }
+                                        }
+                                        <td></td>
+                                    </tr>
+                                }
+                                @foreach (var message in ViewBag.Read)
+                                {
+                                    <tr class="inbound">
+                                        <td>
+                                            <input type="checkbox" checked="" disabled/>
+                                        </td>
+                                        <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><span style="color: #29AAE3">@message.Author.DisplayName</span>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Author.ProfilePic)" />
+                                            <input type="hidden" class="data-receiver" data-id="@message.Id" value="@message.AuthorId" />
+                                        </td>
+                                        @if (message.Urgent == true)
+                                        {
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                                <i class="fa fa-warning" style="color: #FE5607; margin-right: 3px"></i>@message.Subject
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
+                                        }
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
+                                        <!--File Row-->
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }                                
+                                        @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            }
+                                        }
+                                        else if (message.Sent.Year != todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            }
+                                        }
+                                        <td>
+                                            <input class="pull-right" type="checkbox" name="trash" value="@message.Id" />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            </div>
+            <div id="outbox-table" class="widget widget-table hidden">
+            @using (Html.BeginForm("UpdateOutbox", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="widget-header">
+                    <h3 style="color: #29AAE3"><i class="fa fa-envelope"></i> Outbox <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
+                </div>
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table id="datatable-basic-scrolling2" class="table table-sorting table-hover datatable message-tables">
+                            <thead>
+                                <tr>
+                                    <th style="width: 130px">To</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="width: 5%">Trash</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var message in ViewBag.Outbox)
+                                {
+                                    <tr class="outbound">
+                                        <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Receiver.DisplayName"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Receiver.ProfilePic)" />
+                                        </td>
+                                        @if (message.Urgent == true)
+                                        {
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                                <i class="fa fa-warning" style="color: #FE5607; margin-right: 3px"></i>@message.Subject
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
+                                        }
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
+                                        <!--File Row-->
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }
+                                        @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            }
+                                        }
+                                        else if (message.Sent.Year != todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            }
+                                        }
+                                        <td>
+                                            <input class="pull-right" type="checkbox" name="trash" value="@message.Id" />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            </div>
+            <div id="draft-table" class="widget widget-table hidden">
+                @using (Html.BeginForm("UpdateDrafts", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div class="widget-header">
+                    <h3 style="color: #29AAE3"><i class="fa fa-file-text"></i> Drafts <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
+                </div>
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table id="datatable-basic-scrolling3" class="table table-sorting table-hover datatable message-tables">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th><div class="btn-group"><a id="markAllDrafts" class="btn btn-theme">Mark all</a><a id="unmarkAllDrafts" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                </tr>
+                                <tr>
+                                    <th style="width: 130px">To</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="min-width: 114px; text-align: right">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var message in ViewBag.Drafts)
+                                {
+                                    <tr id="draft-rows">
+                                        <td class="message-rows data-name text-nowrap" data-toggle="modal" data-target="#DraftModal" data-name="@message.Receiver.DisplayName" data-id="@message.Id"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Receiver.ProfilePic)" />
+                                        </td>
+                                        
+                                        @if (message.Urgent == true)
+                                        {
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true" data-toggle="modal" data-target="#DraftModal">
+                                                <i class="fa fa-warning" style="color: #FE5607; margin-right: 3px"></i>@message.Subject
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false" data-toggle="modal" data-target="#DraftModal">@message.Subject</td>
+                                        }
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" data-toggle="modal" data-target="#DraftModal" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
+                                        <!--File Row-->
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-toggle="modal" data-target="#DraftModal"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-toggle="modal" data-target="#DraftModal"></td>
+                                        }
+                                        @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("t")</td>
+                                            }
+                                        }
+                                        else if (message.Sent.Year != todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap" data-toggle="modal" data-target="#DraftModal" data-id="@message.Id">@message.Sent.ToString("m")</td>
+                                            }
+                                        }
+                                        <td>
+                                            <input class="draft-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
+                                        </td>
+                                    </tr>                             
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                }
+                <!-- Modal -->
+                <div class="modal fade" id="DraftModal" tabindex="-1" role="dialog" aria-labelledby="DraftModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="margin-bottom: 15px">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="DraftModalLabel"></h4>
+                            </div>
+                            @using (Html.BeginForm("SendDraft", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <input id="draftModalId" type="hidden" name="Id" value="" />
+                                <div class="modal-body">
+                                    <div class="" style="">
+                                        <div style="text-align: center; margin-bottom: 40px">
+                                            <img id="draftModalImg" src="" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3 control-label">
+                                                Subject
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                <input id="draftModalSubject" class="form-control capitalize" name="Subject" type="text" value="" maxlength="40" required />
+                                            </div><br /><br /><br />
+
+                                            <div class="col-md-3 control-label">
+                                                Body
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                <textarea id="draftModalContent" rows="4" class="form-control capitalize" name="Content" required></textarea>
+                                            </div><br /><br /><br /><br /><br /><br />
+
+                                            <div class="col-md-3 control-label">
+                                                File
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="file" name="file" />
+                                            </div><br /><br /><br />
+
+                                            <div class="col-md-3 control-label">
+                                                Urgent?
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: -5px">
+                                                <div class="switch switch-square"
+                                                    data-on-label="<i class=' fa fa-check'></i>"
+                                                    data-off-label="<i class='fa fa-times'></i>">
+                                                    <input id="draftModalUrgent" type="checkbox" name="Urgent" value="true" />                      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="margin-top: 20px">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-theme play sendMsg-btn">Send</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div id="trash-table" class="hidden">
+            <div class="widget widget-table">
+            @using (Html.BeginForm("UpdateInTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="widget-header">
+                    <h3 style="color: #29AAE3"><i class="fa fa-trash"></i> Inbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
+                </div>
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table id="datatable-basic-scrolling4" class="table table-sorting table-hover datatable trash-tables">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th><div class="btn-group"><a id="markAllInTrash" class="btn btn-theme">Mark all</a><a id="unmarkAllInTrash" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                </tr>
+                                <tr>
+                                    <th style="width: 130px">From</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="min-width: 114px; text-align: right">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var message in ViewBag.TrashIn)
+                                {
+                                    <tr class="trashIn">
+                                        <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Author.DisplayName"><strong style="color: #29AAE3">@message.Author.DisplayName</strong>
+                                            <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Author.ProfilePic)" />
+                                            <input type="hidden" class="data-receiver" data-id="@message.Id" value="@message.AuthorId" />
+                                        </td>
+                                        @if (message.Urgent == true)
+                                        {
+                                            <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                                <i class="fa fa-warning" style="color: #FE5607; margin-right: 3px"></i>@message.Subject
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
+                                        }
+                                        <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                            @if (message.Content.Length > 150)
+                                            { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                            else
+                                            { @Html.Raw(message.Content) }
+                                        </td>
+                                        <!--File Row-->
+                                        @if (message.File != null)
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                        }
+                                        @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                            }
+                                        }
+                                        else if (message.Sent.Year != todayYear)
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (ViewBag.Site == "Wichita")
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                            }
+                                        }
+                                        <td>
+                                            <input class="intrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            <hr /><br />
+            <div class="widget widget-table">
+                @using (Html.BeginForm("UpdateOutTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div class="widget-header">
+                    <h3 style="color: #29AAE3"><i class="fa fa-trash"></i> Outbox Trash <button type="submit" class="btn btn-theme btn-md pull-right" style="margin-top: -10px">Update</button></h3>
+                </div>
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table id="datatable-basic-scrolling5" class="table table-sorting table-hover datatable trash-tables">                         
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th><div class="btn-group"><a id="markAllOutTrash" class="btn btn-theme">Mark all</a><a id="unmarkAllOutTrash" class="btn btn-theme"><i class="fa fa-undo"></i></a></div></th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 130px">To</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th style="min-width: 114px; text-align: right">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var message in ViewBag.TrashOut)
+                                    {
+                                        <tr class="trashOut">
+                                            <td class="message-rows text-nowrap data-name" data-id="@message.Id" data-name="@message.Receiver.DisplayName"><strong style="color: #29AAE3">@message.Receiver.DisplayName</strong>
+                                                <input type="hidden" class="data-profile" data-id="@message.Id" value="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.Receiver.ProfilePic)" />
+                                            </td>
+                                            @if (message.Urgent == true)
+                                            {
+                                                <td class="message-rows data-subject text-nowrap" data-id="@message.Id" data-subject="@message.Subject" data-urgent="true">
+                                                    <i class="fa fa-warning" style="color: #FE5607; margin-right: 3px"></i>@message.Subject
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows data-subject" data-id="@message.Id" data-subject="@message.Subject" data-urgent="false">@message.Subject</td>
+                                            }
+                                            <td class="message-rows data-content" data-id="@message.Id" data-content="@message.Content" style="word-break: break-word">
+                                                @if (message.Content.Length > 150)
+                                                { @Html.Raw(message.Content.Substring(0, 150) + "... ") }
+                                                else
+                                                { @Html.Raw(message.Content) }
+                                            </td>
+                                            <!--File Row-->
+                                            @if (message.File != null)
+                                            {
+                                                <td class="message-rows data-file" data-id="@message.Id" data-file="@string.Format("{0}{1}", "http://192.168.1.8:88/ASPortal", message.File)" data-short="@message.File"><i class="fa fa-paperclip" style="color: #29AAE3"></i></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="message-rows data-file" data-id="@message.Id" data-file="#" data-short="NONE"></td>
+                                            }
+                                            @if (message.Sent.Day == todayDay && message.Sent.Month == todayMonth && message.Sent.Year == todayYear)
+                                            {
+                                                if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.AddHours(-1).ToString("t"), " - Today")">@message.Sent.AddHours(-1).ToString("t")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}", message.Sent.ToString("t"), " - Today")">@message.Sent.ToString("t")</td>
+                                                }
+                                            }
+                                            else if (message.Sent.Year != todayYear)
+                                            {
+                                                if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"), ", ", message.Sent.AddHours(-1).Year)">@message.Sent.AddHours(-1).ToString("M/d/yyyy")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}{3}{4}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"), ", ", message.Sent.Year)">@message.Sent.ToString("M/d/yyyy")</td>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (ViewBag.Site == "Wichita")
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.AddHours(-1).ToString("t"), " - ", message.Sent.AddHours(-1).ToString("m"))">@message.Sent.AddHours(-1).ToString("m")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="message-rows text-nowrap data-sent" data-id="@message.Id" data-sent="@string.Format("{0}{1}{2}", message.Sent.ToString("t"), " - ", message.Sent.ToString("m"))">@message.Sent.ToString("m")</td>
+                                                }
+                                            }
+                                            <td>
+                                                <input class="outtrash-delete pull-right" type="checkbox" name="delete" value="@message.Id" />
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="inboundDetail" class="hidden">
+            <header class="panel-heading wht-bg">
+                <h3 class="gen-case" style="color: #29AAE3"><i class="fa fa-paper-plane" style="margin-right: 4px"></i>Message Details</h3>
+            </header>
+            <div class="panel-body ">
+                <hr />
+                <div class="mail-header row">
+                    <div class="col-md-8">      
+                        <h4 class="pull-left" style="margin-top: 0px"><span id="detailInboundFrom"></span><i id="detailInboundUrgent" class="fa fa-warning hidden" style="color: #FE5607; margin-left: 5px"></i></h4>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="compose-btn pull-right" style="width: 350px; text-align: right">
+                            <span id="detailInboundSent" class="text-nowrap" style="margin-right: 20px"></span>
+                            <a id="reply-btn" href="#" class="btn btn-sm btn-theme" data-toggle="modal" data-target="#ReplyModal"><i class="fa fa-reply"></i> Reply</a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="ReplyModal" tabindex="-1" role="dialog" aria-labelledby="ReplyModalLabel" aria-hidden="true" style="text-align: left">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="margin-bottom: 15px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="ReplyModalLabel" style="margin-left: 10px"></h4>
+                                        </div>
+                                        @using (Html.BeginForm("Create", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            <input id="ReplyModalReceiver" type="hidden" name="ReceiverId" value="" />
+                                            <div class="modal-body">
+                                                <div class="" style="">
+                                                    <div style="text-align: center; margin-bottom: 40px">
+                                                        <img id="ReplyModalImg" src="" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
+                                                        <p style="margin-top: 15px"><em>"</em><em id="OriginalMsg" style="word-break: break-word; white-space: pre-wrap"></em><em>"</em></p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-3 control-label">
+                                                            Subject
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <input class="form-control capitalize" name="Subject" type="text" maxlength="40" required />
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Body
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <textarea rows="4" class="form-control capitalize" name="Content" required></textarea>
+                                                        </div><br /><br /><br /><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            File
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="file" name="file" />
+                                                        </div><br /><br /><br />
+
+                                                        <div class="col-md-3 control-label">
+                                                            Urgent?
+                                                        </div>
+                                                        <div class="col-md-9" style="margin-top: -5px">
+                                                            <div class="switch switch-square"
+                                                                 data-on-label="<i class=' fa fa-check'></i>"
+                                                                 data-off-label="<i class='fa fa-times'></i>">
+                                                                <input type="checkbox" name="Urgent" value="true" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer" style="margin-top: 20px">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button name="saveAsDraft" type="submit" class="btn btn-default">Save as Draft</button>
+                                                <button name="createMessage" type="submit" class="btn btn-theme play sendMsg-btn">Send</button>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm("UpdateInbox", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data", style = "display: inline" }))
+                            {
+                                <input id="detailInboundId" type="hidden" name="trash" value="" />
+                                <button id="inbox-trash-btn" type="submit" class="btn btn-sm tooltips" data-original-title="Trash" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                            }
+                            @using (Html.BeginForm("UpdateOutbox", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data", style = "display: inline" }))
+                            {
+                                <input id="detailOutboundId" type="hidden" name="trash" value="" />
+                                <button id="outbox-trash-btn" type="submit" class="btn btn-sm tooltips" data-original-title="Trash" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                            }
+                            @using (Html.BeginForm("UpdateInTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data", style = "display: inline" }))
+                            {
+                                <input id="detailInTrashId" type="hidden" name="delete" value="" />
+                                <button id="inbox-delete-btn" type="submit" class="btn btn-sm tooltips" data-original-title="Delete" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                            }
+                            @using (Html.BeginForm("UpdateOutTrash", "Messages", new { }, FormMethod.Post, new { enctype = "multipart/form-data", style = "display: inline" }))
+                            {
+                                <input id="detailOutTrashId" type="hidden" name="delete" value="" />
+                                <button id="outbox-delete-btn" type="submit" class="btn btn-sm tooltips" data-original-title="Delete" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="mail-sender">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img id="detailInboundImg" src="" alt="" style="width: 128px; height: 128px">                        
+                        </div>
+                    </div>                      
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 id="detailInboundSubject" style="color: #29AAE3"></h4>
+                    </div>
+                </div>
+                <div class="view-mail">
+                    <p id="detailInboundContent" style="word-break: break-word; white-space: pre-wrap"></p>
+                </div><br />
+                <div class="attachment-mail">
+                    <p id="detailFile" class="hidden">
+                        <span><i class="fa fa-paperclip"></i></span>
+                        <a id="detailInboundFile" href="#" target="_blank"></a>
+                    </p>
+                    @*<ul>
+                        <li>
+                            <a class="atch-thumb" href="#">
+                                <img src="assets/img/instagram.jpg">
+                            </a>
+                            <a class="name" href="#">
+                                IMG_001.jpg
+                                <span>20KB</span>
+                            </a>
+                            <div class="links">
+                                <a href="#">View</a> -
+                                <a href="#">Download</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="atch-thumb" href="#">
+                                <img src="assets/img/weather.jpg">
+                            </a>
+                            <a class="name" href="#">
+                                IMG_001.jpg
+                                <span>20KB</span>
+                            </a>
+                            <div class="links">
+                                <a href="#">View</a> -
+                                <a href="#">Download</a>
+                            </div>
+                        </li>
+                    </ul>*@
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

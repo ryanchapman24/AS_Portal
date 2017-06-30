@@ -1,0 +1,148 @@
+﻿<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h3 style="color: #29AAE3"><i class="fa fa-user-plus" style="margin-right: 4px"></i>Rehires</h3>
+        <span><em>Employees that are still with us are highlihgted in yellow.</em></span>
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a data-toggle="tab" href="#thisYr">@ViewBag.ThisYear</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#lastYr">@ViewBag.LastYear</a>
+                </li>
+            </ul>
+        </div><!-- --/panel-heading ---->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="thisYr" class="tab-pane active">
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable rehire-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Location</th>
+                                        <th>Rehire Date</th>
+                                        <th>Termination Date</th>
+                                        <th>Original Hire Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.ThisYearsRehires)
+                                    {
+                                        if (item.IsActive == true)
+                                        {
+                                            <tr style="background-color: #ffffcc">
+                                                <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
+                                                <td>@item.Site.SiteName</td>
+                                                <td>@item.RehireDate.ToString("d")</td>
+                                                <td>@item.TerminationDate.ToString("d")</td>
+                                                <td>@item.HireDate.ToString("d")</td>
+                                                <td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                    {
+                                                        <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
+                                                <td>@item.Site.SiteName</td>
+                                                <td>@item.RehireDate.ToString("d")</td>
+                                                <td>@item.TerminationDate.ToString("d")</td>
+                                                <td>@item.HireDate.ToString("d")</td>
+                                                <td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                    {
+                                                        <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="lastYr" class="tab-pane">
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-sorting table-hover datatable rehire-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Location</th>
+                                        <th>Rehire Date</th>
+                                        <th>Termination Date</th>
+                                        <th>Original Hire Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.LastYearsRehires)
+                                    {
+                                        if (item.IsActive == true)
+                                        {
+                                            <tr style="background-color: #ffffcc">
+                                                <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
+                                                <td>@item.Site.SiteName</td>
+                                                <td>@item.RehireDate.ToString("d")</td>
+                                                <td>@item.TerminationDate.ToString("d")</td>
+                                                <td>@item.HireDate.ToString("d")</td>
+                                                <td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                    {
+                                                        <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td class="text-nowrap" style="color: #29AAE3"><strong>@item.FirstName @item.LastName</strong></td>
+                                                <td>@item.Site.SiteName</td>
+                                                <td>@item.RehireDate.ToString("d")</td>
+                                                <td>@item.TerminationDate.ToString("d")</td>
+                                                <td>@item.HireDate.ToString("d")</td>
+                                                <td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Quality") || User.IsInRole("Operations"))
+                                                    {
+                                                        <a href="@Url.Action("Details","Employees", new { id = item.EmployeeID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>                             
+            </div>
+        </div>
+        <p style="padding-bottom: 5px; margin-top: 30px">
+            @Html.ActionLink("Back to Reporting", "Index", "Reporting")
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#report').addClass("active");
+
+            $('.rehire-table').DataTable({
+                "iDisplayLength": -1,
+                "aaSorting": [],
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
+        });
+    </script>
+}

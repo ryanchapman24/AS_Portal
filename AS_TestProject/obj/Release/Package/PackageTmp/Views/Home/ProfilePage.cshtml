@@ -1,0 +1,435 @@
+﻿@model AS_TestProject.Models.ApplicationUser
+@using AS_TestProject.Models;
+@using Microsoft.AspNet.Identity;
+
+    <style type="text/css">
+        /*.gm-err-container {
+            height: 100%;
+            width: 100%;
+            display: table;
+            background-color: #e0e0e0;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+
+        .gm-err-content {
+            border-radius: 1px;
+            padding-top: 0;
+            padding-left: 10%;
+            padding-right: 10%;
+            position: static;
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .gm-err-content a {
+            color: #4285f4;
+        }
+
+        .gm-err-icon {
+            text-align: center;
+        }
+
+        .gm-err-title {
+            margin: 5px;
+            margin-bottom: 20px;
+            color: #616161;
+            font-family: Roboto,Arial,sans-serif;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .gm-err-message {
+            margin: 5px;
+            color: #757575;
+            font-family: Roboto,Arial,sans-serif;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .gm-err-autocomplete {
+            padding-left: 20px;
+            background-repeat: no-repeat;
+            background-size: 15px 15px;
+        }*/
+
+        .all-done:focus{
+            outline: none;
+        }
+    </style>
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+            <section class="wrapper site-min-height" style="margin-top: 0px">
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="row content-panel">
+                            <div class="col-md-4 profile-text mt mb centered">
+                                <div class="right-divider hidden-sm hidden-xs">
+                                    @*<h4 style="color: #29AAE3">14</h4>
+                                    <h6>DAYS OF PTO LEFT</h6>*@
+                                    <h4 style="color: #29AAE3">@if ((Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || User.IsInRole("Payroll")) && ViewBag.Hours > 0){<a href="@Url.Action("Index","Payroll", new { id = ViewBag.EmployeeID })">@ViewBag.Hours<i class="fa fa-question-circle" style="margin-left: 3px; font-size: 16px"></i></a>} else {<span>N/A</span>}</h4>
+                                    <h6>HOURS THIS PAY PERIOD</h6>
+                                    <h4 style="color: #29AAE3">
+                                        @if (Model.Roles.Any(r => r.RoleId == "039c88d0-5882-4dcc-a892-82700cf1a803"))
+                                        {
+                                            <span>Terminated</span>
+                                        }
+                                        else
+                                        {
+                                            @ViewBag.TimeWithCompany
+                                        }
+                                    </h4>
+                                    <h6>TIME WITH ANOMALY SQUARED</h6>
+                                </div>
+                            </div><!-- --/col-md-4 ---->
+
+                            <div class="col-md-4 profile-text" style="margin-top: 10px">
+                                <h3 style="color: #29AAE3">@Model.DisplayName</h3>
+                                <h5>@Model.Site.SiteName</h5>
+                                <h5><strong>@Model.Position.PositionName</strong></h5>
+                                <p><em>@Model.Position.PositionDescription</em></p>
+                                @if (Model.Id == User.Identity.GetUserId())
+                                {
+                                <a href="@Url.Action("Index","Manage")">Edit Info</a>
+                                }
+                                <br />
+                                <br />
+                                @if (Model.Id != User.Identity.GetUserId())
+                                {
+                                    <p><button class="btn btn-theme" data-toggle="modal" data-target="#ProfileMessage">@*<i class="fa fa-camera"></i>*@ Send Message</button></p>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="ProfileMessage" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="margin-bottom: 15px">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="ModalLabel">New Message for @Model.DisplayName</h4>
+                                                </div>
+                                                @using (Html.BeginForm("Create", "Messages", new { pId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                {
+                                                    <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                                    <div class="modal-body">
+                                                        <div class="" style="">
+                                                            <div style="text-align: center; margin-bottom: 40px">
+                                                                <img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",Model.ProfilePic)" class="img-circle" style="width: 200px; height: 200px; border: 3px solid #29AAE3; border-radius: 500px;" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-md-3 control-label">
+                                                                    Subject
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <input class="form-control capitalize" name="Subject" type="text" maxlength="40" required />
+                                                                </div><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    Body
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <textarea rows="4" class="form-control capitalize" name="Content" required></textarea>
+                                                                </div><br /><br /><br /><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    File
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <input type="file" name="file" />
+                                                                </div><br /><br /><br />
+
+                                                                <div class="col-md-3 control-label">
+                                                                    Urgent?
+                                                                </div>
+                                                                <div class="col-md-9" style="margin-top: -5px">
+                                                                    <div class="switch switch-square"
+                                                                         data-on-label="<i class=' fa fa-check'></i>"
+                                                                         data-off-label="<i class='fa fa-times'></i>">
+                                                                        <input type="checkbox" name="Urgent" value="true" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer" style="margin-top: 20px">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <button name="saveAsDraft" type="submit" class="btn btn-default">Save as Draft</button>
+                                                        <button name="createMessage" type="submit" class="btn btn-theme play sendMsg-btn">Send</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }                             
+                            </div><!-- --/col-md-4 ---->
+
+                            <div class="col-md-4 centered">
+                                <div class="profile-pic">
+                                    <p><img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",Model.ProfilePic)" class="img-circle" style="width: 280px; height: 280px"></p>
+                                    <p>
+                                    </p>
+                                </div>
+                            </div><!-- --/col-md-4 ---->
+                        </div><!-- /row -->
+                    </div><!-- --/col-lg-12 ---->
+
+                    <div class="col-lg-12 mt">
+                        <div class="row content-panel">
+                            <div class="panel-heading">
+                                <ul class="nav nav-tabs nav-justified">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#overview">Overview</a>
+                                    </li>
+                                    @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations") || Model.Id == User.Identity.GetUserId())
+                                    {
+                                        <li>
+                                            <a data-toggle="tab" href="#contact" class="contact-map">Contact</a>
+                                        </li>
+                                    }
+                                    @*<li>
+                                        <a data-toggle="tab" href="#edit">Edit Profile</a>
+                                    </li>*@
+                                </ul>
+                            </div><!-- --/panel-heading ---->
+
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div id="overview" class="tab-pane active">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>User Stats</h4>
+                                                <div class="row centered mt mb">
+                                                    @if (Model.Id == User.Identity.GetUserId() || User.IsInRole("Admin") || (User.IsInRole("Quality") && (User.IsInRole("Operations") || User.IsInRole("HR"))))
+                                                    {
+                                                        if (Model.Roles.Any(r => r.RoleId == "eafdc2c0-665a-4545-afef-05ce631dc48c"))
+                                                        {
+                                                            <div class="col-sm-4">
+                                                                <h1><i class="fa fa-edit"></i></h1>
+                                                                <a href="@Url.Action("CFRsCompleted","Employees", new { id = ViewBag.EmployeeID })"><h3>@ViewBag.CFRtoday <i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="Yesterday<br>@ViewBag.CFRyesterday<br>Month<br>@ViewBag.CFRmonth<br>Year<br>@ViewBag.CFRyear" data-html="true" data-toggle="tooltip" data-placement="right"></i></h3></a>
+                                                                <h6>CFRS SUBMITTED TODAY</h6>
+                                                            </div>
+                                                        }
+                                                    }
+                                                    @if (Model.Roles.Any(r => r.RoleId == "eafdc2c0-665a-4545-afef-05ce631dc48c"))
+                                                    {
+                                                        <div class="col-sm-4">
+                                                            <h1><i class="fa fa-tasks"></i></h1>
+                                                            <h3>@ViewBag.TaskCounter</h3>
+                                                            <h6>TOTAL COMPLETED TASKS</h6>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <h1><i class="fa fa-volume-control-phone"></i></h1>
+                                                            <h3>N/A</h3>
+                                                            <h6>TRANSFERS</h6>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-sm-6">
+                                                            <h1><i class="fa fa-tasks"></i></h1>
+                                                            <h3>@ViewBag.TaskCounter</h3>
+                                                            <h6>TOTAL COMPLETED TASKS</h6>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <h1><i class="fa fa-volume-control-phone"></i></h1>
+                                                            <h3>N/A</h3>
+                                                            <h6>TRANSFERS</h6>
+                                                        </div>
+                                                    }
+                                                </div><!-- /row -->
+                                                @if (Model.Id == User.Identity.GetUserId())
+                                                {
+                                                    <p style="margin-left: 10px"><a href="@Url.Action("NotificationHistory","Home")"><i class="fa fa-bolt" style="margin-right: 4px"></i>Notification History</a></p>
+                                                    <p style="margin-left: 10px"><a href="@Url.Action("TaskHistory","Home")"><i class="fa fa-tasks" style="margin-right: 4px"></i>Task History</a></p>
+                                                }                                            
+                                            </div><!-- --/col-md-6 ---->
+                                            <div class="col-md-6 detailed">
+                                            @if (Model.Id == User.Identity.GetUserId())
+                                            {
+                                                using (Html.BeginForm("AddTask", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <h4>New Task<button type="submit" class="btn btn-sm btn-theme pull-right" style="margin-top: -10px">+ Add</button></h4>
+                                                    <textarea rows="4" class="form-control capitalize" name="Description" id="Description" placeholder="task description here..." style="margin-bottom: 10px" maxlength="55" required></textarea>
+                                                    <div class="form-group row" style="margin-bottom: 20px">
+                                                        <div class="col-md-2 control-label">
+                                                            Priority
+                                                        </div>
+                                                        <div class="col-md-10">
+                                                            @Html.DropDownList("TaskPriorityId", null, htmlAttributes: new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                }
+                                                <br />
+                                                <br />
+                                                if ((ViewBag.Urgent.Count + ViewBag.High.Count + ViewBag.Medium.Count + ViewBag.Low.Count) > 0)
+                                                { 
+                                                <h4>Pending Tasks</h4>
+                                                <div class="row center">
+                                                    <div class="col-md-12">
+                                                        <!-- TODO PANEL -->
+                                                        <div class="steps task-pn">
+                                                            @using (Html.BeginForm("SubmitTask", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                            {
+                                                            @Html.AntiForgeryToken()
+                                                                foreach (var task in ViewBag.Urgent)
+                                                                {
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: red">@task.TaskPriority.Priority</span></label>
+                                                                }
+                                                                foreach (var task in ViewBag.High)
+                                                                {
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: orange">@task.TaskPriority.Priority</span></label>
+                                                                }
+                                                                foreach (var task in ViewBag.Medium)
+                                                                {
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: yellow">@task.TaskPriority.Priority</span></label>
+                                                                }
+                                                                foreach (var task in ViewBag.Low)
+                                                                {
+                                                                    <input id='@task.Id' name='Change' type='checkbox' value='@task.Id' />
+                                                                    <label for='@task.Id' style="display: inline-block; word-break: break-word">@task.Description | <span style="color: dodgerblue">@task.TaskPriority.Priority</span></label>
+                                                                }                                  
+                                                                <input id="complete" class="all-done" type='submit' name="complete" value='Complete' />
+                                                                <hr style="padding: 0px; margin: 0px"/>
+                                                                <input id="abort" class="all-done" type='submit' name="abort" value='Abort' />
+                                                            }
+                                                        </div>                                                      
+                                                    </div><!-- --/col-md-8 ---->
+                                                </div><!-- --/row ---->
+                                                }
+                                            }
+                                            </div><!-- /col-md-6 -->
+                                        </div><!-- --/OVERVIEW ---->
+                                    </div><!-- --/tab-pane ---->
+
+                                    <div id="contact" class="tab-pane">
+                                        <div class="row" style="text-align: center">
+                                            <div class="col-md-6 detailed">
+                                                <h4>EMAIL</h4>
+                                                <div class="col-md-8 col-md-offset-2 mt">
+                                                    <p style="color: #29AAE3">
+                                                        <strong><a href="@string.Format("{0}{1}","mailto:",Model.Email)">@Model.Email</a></strong>
+                                                    </p>
+                                                </div>
+                                            </div><!-- --/col-md-6 ---->
+                                            <div class="col-md-6 detailed">
+                                                <h4>PHONE</h4>
+                                                <div class="col-md-8 col-md-offset-2 mt">
+                                                    <p style="margin-left: 12px; color: #29AAE3">
+                                                        <strong>@Model.PhoneNumber</strong>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div><!-- --/row ---->
+                                    </div><!-- --/tab-pane ---->
+
+                                    @*<div id="edit" class="tab-pane">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-lg-offset-2 detailed">
+                                                <h4 class="mb">Personal Information</h4>
+                                                <form role="form" class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label"> Avatar</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="file" id="exampleInputFile" class="file-pos">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Company</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="c-name" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Lives In</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="lives-in" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Country</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="country" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Description</label>
+                                                        <div class="col-lg-10">
+                                                            <textarea rows="10" cols="30" class="form-control" id="" name=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="col-lg-8 col-lg-offset-2 detailed mt">
+                                                <h4 class="mb">Contact Information</h4>
+                                                <form role="form" class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Address 1</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="addr1" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Address 2</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="addr2" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Phone</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="phone" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Cell</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="cell" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Email</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="email" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Skype</label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" placeholder="" id="skype" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-lg-offset-2 col-lg-10">
+                                                            <button class="btn btn-theme" type="submit">Save</button>
+                                                            <button class="btn btn-theme04" type="button">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div><!-- --/col-lg-8 ---->
+                                        </div><!-- --/row ---->
+                                    </div>*@<!-- --/tab-pane ---->
+                                </div><!-- /tab-content -->
+
+                            </div><!-- --/panel-body ---->
+
+                        </div><!-- /col-lg-12 -->
+                    </div><!-- --/row ---->
+                </div><!-- --/container ---->
+
+            </section><!-- --/wrapper ---->
+        <!--main content end-->    
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#profile').addClass("active");
+        });
+    </script>
+}

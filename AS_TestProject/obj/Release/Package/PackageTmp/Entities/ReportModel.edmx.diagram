@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="beac64d0e12341b4835494dc276df4eb" Name="Diagram1" ZoomLevel="49">
+        <EntityTypeShape EntityType="ReportModel.Customer" Width="1.5" PointX="5.25" PointY="26.875" />
+        <EntityTypeShape EntityType="ReportModel.CustomerContact" Width="1.5" PointX="7.5" PointY="55.25" />
+        <EntityTypeShape EntityType="ReportModel.DomainMaster" Width="1.5" PointX="7.5" PointY="26.875" />
+        <EntityTypeShape EntityType="ReportModel.DomainType" Width="1.5" PointX="5.25" PointY="35.5" />
+        <EntityTypeShape EntityType="ReportModel.Employee" Width="1.5" PointX="3" PointY="23.875" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeFive9Agent" Width="1.5" PointX="5.25" PointY="23.75" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeNote" Width="1.5" PointX="5.25" PointY="20.75" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeNoteType" Width="1.5" PointX="5.25" PointY="31.625" />
+        <EntityTypeShape EntityType="ReportModel.Position" Width="1.5" PointX="0.75" PointY="22.375" />
+        <EntityTypeShape EntityType="ReportModel.Site" Width="1.5" PointX="0.75" PointY="25.875" />
+        <EntityTypeShape EntityType="ReportModel.ProblemMaster" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.CampaignGroup" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.DailyPortfolioInventory" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ReportModel.AgentDailyHour" Width="1.5" PointX="12.75" PointY="25.5" />
+        <EntityTypeShape EntityType="ReportModel.AgentTimeAdjustmentReason" Width="1.5" PointX="10.5" PointY="17" />
+        <EntityTypeShape EntityType="ReportModel.EmployeeHoursTotal" Width="1.5" PointX="12.75" PointY="30.125" />
+        <EntityTypeShape EntityType="ReportModel.PayPeriod" Width="1.5" PointX="10.5" PointY="19.875" />
+        <EntityTypeShape EntityType="ReportModel.CallLogMaster" Width="1.5" PointX="9.75" PointY="23" />
+        <EntityTypeShape EntityType="ReportModel.EverquoteHourlyCampaignMetric" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ReportModel.EverquoteRollingCampaignMetric" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsHourlyCampaignMetric" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsRollingCampaignMetric" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.FreedomHourlyCallMetric" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ReportModel.ClientLead" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ReportModel.EverQuoteHourlyCallLogMaster" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.FreedomDailyPortfolioInventory" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ReportModel.FreedomHourlyCallMetrics1" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ReportModel.PreciseLeadsHourlyCallLogMaster" Width="1.5" PointX="14.75" PointY="0.75" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_Customer_AddByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_CustomerContact_CustomerID" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_DomainMaster_CustomerID" />
+        <AssociationConnector Association="ReportModel.FK_CLIENT_DomainMaster_DomainTypeID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_CallLogMaster_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_Employee_RoleID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_Employee_SiteID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeFive9Agent_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeNote_AddByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_COMPANY_EmployeeNoteType_AddByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_AgentTimeAdjustmentReasonID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_PayPeriodID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_EmployeeHoursTotal_PayPeriodID" />
+        <AssociationConnector Association="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" />
+        <EntityTypeShape EntityType="ReportModel.AgentDailyHours1" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ReportModel.CallLogRealTime" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ReportModel.AnswerKey" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="ReportModel.CFRInsurance" Width="1.5" PointX="19.625" PointY="18" />
+        <EntityTypeShape EntityType="ReportModel.CFRMortgage" Width="1.5" PointX="25.625" PointY="18.375" />
+        <EntityTypeShape EntityType="ReportModel.CFRPatientRecruitment" Width="1.5" PointX="22.625" PointY="19.75" />
+        <EntityTypeShape EntityType="ReportModel.CFRPerformanceAnalysi" Width="1.5" PointX="17.375" PointY="30.625" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRInsurance_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRMortgage_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_FRPatientRecruitment_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__Emplo__73BAFBDA" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRInsurance_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRInsurance_ManagerID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRMortgage_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRMortgage_ManagerID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_FRPatientRecruitment_DManagerID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_FRPatientRecruitment_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__AOIQ1__6A3191A0" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__AOIQ2__6B25B5D9" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__AOIQ3__6C19DA12" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__AOIQ4__6D0DFE4B" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__AOIQ5__6E022284" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuran__TEQ1__5BE37249" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuran__TEQ2__5CD79682" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuran__TEQ3__5DCBBABB" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuran__TEQ4__5EBFDEF4" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuran__TEQ5__5FB4032D" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__AQ1__656CDC83" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__AQ2__666100BC" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__AQ3__675524F5" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__AQ4__6849492E" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__AQ5__693D6D67" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__CQ1__62906FD8" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__CQ2__63849411" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__CQ3__6478B84A" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__PQ1__60A82766" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsuranc__PQ2__619C4B9F" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__AOIQ1__3A827E7E" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__AOIQ2__3B76A2B7" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__AOIQ3__3C6AC6F0" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__AOIQ4__3D5EEB29" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgag__TEQ1__2C345F27" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgag__TEQ2__2D288360" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgag__TEQ3__2E1CA799" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgag__TEQ4__2F10CBD2" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgag__TEQ5__3004F00B" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__AQ1__35BDC961" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__AQ2__36B1ED9A" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__AQ3__37A611D3" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__AQ4__389A360C" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__AQ5__398E5A45" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__CQ1__32E15CB6" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__CQ2__33D580EF" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__CQ3__34C9A528" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__PQ1__30F91444" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortgage__PQ2__31ED387D" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatien__AOIQ1__534E2C48" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatien__AOIQ2__54425081" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatient__TEQ1__45000CF1" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatient__TEQ2__45F4312A" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatient__TEQ3__46E85563" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__AQ1__4E89772B" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__AQ2__4F7D9B64" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__AQ3__5071BF9D" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__AQ4__5165E3D6" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__AQ5__525A080F" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__CQ1__49C4C20E" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__CQ2__4AB8E647" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__CQ3__4BAD0A80" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__CQ4__4CA12EB9" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__CQ5__4D9552F2" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__PQ1__47DC799C" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatientR__PQ2__48D09DD5" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__Accur__72C6D7A1" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__Adher__71D2B368" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__Compl__70DE8F2F" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__Profe__6FEA6AF6" />
+        <AssociationConnector Association="ReportModel.FK__CFRInsura__Telep__6EF646BD" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__Accur__4223A046" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__Adher__412F7C0D" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__Compl__403B57D4" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__Profe__3F47339B" />
+        <AssociationConnector Association="ReportModel.FK__CFRMortga__Telep__3E530F62" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatien__Accur__5907059E" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatien__Adher__5812E165" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatien__Compl__571EBD2C" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatien__Profe__562A98F3" />
+        <AssociationConnector Association="ReportModel.FK__CFRPatien__Telep__553674BA" />
+        <EntityTypeShape EntityType="ReportModel.DisciplinaryAction" Width="1.5" PointX="5.25" PointY="15.75" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" />
+        <EntityTypeShape EntityType="ReportModel.AgentDailyHoursToDomainMaster" Width="1.5" PointX="3.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

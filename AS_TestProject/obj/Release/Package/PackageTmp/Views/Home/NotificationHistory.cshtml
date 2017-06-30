@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNet.Identity;
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+        <h2 style="color: #29AAE3"><i class="fa fa-bolt" style="margin-right: 4px"></i> Notification History</h2>
+        <span><em>Only shows up to your last 500 old notifications</em></span>
+        <hr />
+        <div class="widget-content">
+            <div class="table-responsive">
+                <table id="datatable-basic-scrolling" class="table table-hover datatable notif-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int processed = 0;
+                            foreach (var item in ViewBag.NotificationHistory)
+                            {
+                                <tr>
+                                    @if (ViewBag.Site == "Wichita")
+                                    {
+                                        <td class="text-nowrap">@item.Created.AddHours(-1).ToString("g")</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-nowrap">@item.Created.ToString("g")</td>
+                                    }
+                                    <td><strong style="color: #29AAE3">@item.NotificationType.TypeName</strong></td>
+                                    <td>@item.Description</td>
+                                    <td><span style="color: #29AAE3">@item.Additional</span></td>
+                                </tr>
+                                processed++;
+                            if (processed == 500) { break; };
+                            }
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p style="padding-bottom: 5px">
+            @Html.ActionLink("Back to Profile", "ProfilePage", new { id = User.Identity.GetUserId() })
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#profile').addClass("active");
+
+            $('.notif-table').DataTable({
+                "iDisplayLength": 50,
+                "bSort": false,
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+            });
+        });
+    </script>
+}

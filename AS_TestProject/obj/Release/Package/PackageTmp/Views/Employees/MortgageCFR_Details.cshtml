@@ -1,0 +1,436 @@
+﻿@model AS_TestProject.Entities.CFRMortgage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h2>Mortgage CFR Details for <span style="color: #29AAE3">@Model.Employee.FirstName @Model.Employee.LastName</span></h2>
+        <hr />
+        <div>
+            <div class="col-md-3 control-label">
+                Submitted By
+            </div>
+            <div class="col-md-9">
+                @Model.Employee1.FirstName @Model.Employee1.LastName
+            </div><br /><br /><br />
+
+            <div class="col-md-3 control-label">
+                Date of Feedback
+            </div>
+            <div class="col-md-9">
+                @if (ViewBag.Site == "Wichita")
+                {
+                    @Model.DateOfFeedback.AddHours(-1).ToString("g")
+                }
+                else
+                {
+                    @Model.DateOfFeedback.ToString("g")
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-3 control-label">
+                Domain
+            </div>
+            <div class="col-md-9">
+                @Model.DomainMaster.DomainName
+            </div><br /><br /><br />
+
+            <div class="col-md-3 control-label">
+                #Calls
+            </div>
+            <div class="col-md-9">
+                @Model.C_Calls
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi4.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE1
+            </div>
+            <div class="col-md-3">
+                @if (Model.mTEQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mTEQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mTEQ1 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE2
+            </div>
+            <div class="col-md-3">
+                @if (Model.mTEQ2 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mTEQ2 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mTEQ2 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE3
+            </div>
+            <div class="col-md-3">
+                @if (Model.mTEQ3 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mTEQ3 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mTEQ3 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE4
+            </div>
+            <div class="col-md-3">
+                @if (Model.mTEQ4 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mTEQ4 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mTEQ4 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mTE5
+            </div>
+            <div class="col-md-3">
+                @if (Model.mTEQ5 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mTEQ5 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mTEQ5 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Professionalism</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi3.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mP1
+            </div>
+            <div class="col-md-3">
+                @if (Model.mPQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mPQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mPQ1 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mP2
+            </div>
+            <div class="col-md-3">
+                @if (Model.mPQ2 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mPQ2 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mPQ2 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Compliance</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi2.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mC1
+            </div>
+            <div class="col-md-3">
+                @if (Model.mCQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mCQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mCQ1 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mC2
+            </div>
+            <div class="col-md-3">
+                @if (Model.mCQ2 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mCQ2 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mCQ2 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mC3
+            </div>
+            <div class="col-md-3">
+                @if (Model.mCQ3 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mCQ3 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mCQ3 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Adherence</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi1.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mA1
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAQ1 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mA2
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAQ2 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAQ2 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAQ2 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mA3
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAQ3 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAQ3 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAQ3 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mA4
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAQ4 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAQ4 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAQ4 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mA5
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAQ5 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAQ5 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAQ5 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI1
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAOIQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAOIQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAOIQ1 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI2
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAOIQ2 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAOIQ2 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAOIQ2 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI3
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAOIQ3 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAOIQ3 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAOIQ3 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.mAOI4
+            </div>
+            <div class="col-md-3">
+                @if (Model.mAOIQ4 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.mAOIQ4 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.mAOIQ4 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Additional Feedback</strong></h5><br />
+
+            <div class="col-md-3 control-label">
+                Comments
+            </div>
+            <div class="col-md-9">
+                @Model.Comments
+            </div><br /><br /><br /><br /><br />
+
+            <div class="col-md-3 control-label">
+                Strengths
+            </div>
+            <div class="col-md-9">
+                @Model.Strengths
+            </div><br /><br /><br /><br /><br />
+
+            <div class="col-md-3 control-label">
+                Action Plan
+            </div>
+            <div class="col-md-9">
+                @Model.ActionPlan
+            </div><br /><br /><br /><br /><br /><br /><br />
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "MortgageCFR_Edit", new { id = Model.CFRMortgageID }) |
+            @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#direct').addClass("active");
+        });
+    </script>
+}

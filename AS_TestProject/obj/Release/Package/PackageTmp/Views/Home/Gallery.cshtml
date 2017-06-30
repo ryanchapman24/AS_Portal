@@ -1,0 +1,91 @@
+﻿@model AS_TestProject.Models.PhotoJudgment
+@{
+    ViewBag.Title = "Gallery";
+}
+
+@if (Model.PhotoList.Count > 0)
+{
+    if (User.IsInRole("Marketing"))
+    {
+        <div class="showback">
+            <h3 style="margin-bottom: 20px; color: #29AAE3"><i class="fa fa-hand-paper-o"></i> Unpublished</h3>
+            <div>
+                @using (Html.BeginForm("Publish", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    foreach (var photo in Model.PhotoList)
+                    {
+                        <a class="fancybox" title="@photo.Caption @if (photo.Caption != null){<br />} <em>Posted by @photo.Author.DisplayName<em/>" href="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",photo.File)"><img class="img-responsive" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",photo.File)" alt="" style="display: inline; margin: 10px; border: 2px solid #29AAE3; width: 500px"></a>
+                        <input type="checkbox" name="Published" value="@photo.Id" /> <span style="margin-right: 20px"> Publish</span>
+                        <input type="checkbox" name="Delete" value="@photo.Id" /> <span> Delete</span>
+                        <br />
+                    }
+                    <hr />
+                    <button type="submit" class="btn btn-theme">Confirm</button>
+                }
+            </div>
+        </div>
+    }
+<br />
+<br />
+}
+<div class="col-lg-12 mt">
+    <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
+        <h3 style="color: #29AAE3"><i class="fa fa-photo"></i> Gallery <button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#myModal" style="margin-top: -10px">+ New Photo</button></h3>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Upload Photos for Approval</h4>
+                    </div>
+                    @using (Html.BeginForm("AddPhotoToGallery", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="modal-body">
+                            <div class="">
+                                <div class="form-group">
+                                    <input type="file" name="image" id="image" required />
+                                    <br />
+                                    <textarea class="form-control" name="Caption" id="Caption" placeholder="caption..." rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-theme">Confirm</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt">
+            @foreach (var photo in ViewBag.GalleryPhotos)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc" style="margin-bottom: 25px">
+                    <div class="project-wrapper">
+                        <div class="project">
+                            <div class="photo-wrapper">
+                                <div class="photo">
+                                    <a class="fancybox" rel="gallery" title="@photo.Caption @if (photo.Caption != null){<br />} <em>Posted by @photo.Author.DisplayName<em/>" href="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",photo.File)"><img class="img-responsive" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASPortal",photo.File)" alt="" style="height: 273px"></a>
+                                </div>
+                                <div class="overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- col-lg-4 -->
+            }
+        </div><!-- /row -->
+    </div>
+</div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script>
+                $(document).ready(function () {
+                    $('#gallery').addClass("active");
+                });
+            </script>
+        }
