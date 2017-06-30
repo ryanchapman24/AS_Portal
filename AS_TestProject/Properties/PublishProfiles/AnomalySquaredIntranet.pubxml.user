@@ -1837,7 +1837,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2016 12:22:31</publishTime>
     </File>
     <File Include="Views/Shared/_RightNavHidden.cshtml">
-      <publishTime>06/29/2017 11:43:39</publishTime>
+      <publishTime>06/30/2017 14:26:04</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
       <publishTime>04/03/2017 14:09:42</publishTime>
