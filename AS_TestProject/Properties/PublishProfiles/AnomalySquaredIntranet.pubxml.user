@@ -88,10 +88,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2016 16:13:43</publishTime>
     </File>
     <File Include="assets/font-awesome/css/font-awesome.css">
-      <publishTime>07/18/2016 14:08:07</publishTime>
+      <publishTime>07/06/2017 15:44:21</publishTime>
     </File>
     <File Include="assets/font-awesome/css/font-awesome.min.css">
-      <publishTime>07/18/2016 14:08:07</publishTime>
+      <publishTime>07/06/2017 15:44:32</publishTime>
     </File>
     <File Include="assets/font-awesome/fonts/.DS_Store">
       <publishTime>06/20/2016 16:13:43</publishTime>
@@ -841,10 +841,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 11:43:35</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>06/30/2017 14:09:50</publishTime>
+      <publishTime>07/11/2017 15:50:06</publishTime>
     </File>
     <File Include="bin/AS_TestProject.pdb">
-      <publishTime>06/30/2017 14:09:50</publishTime>
+      <publishTime>07/11/2017 15:50:06</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1146,6 +1146,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Entities/AgentDailyHours1.cs">
       <publishTime>10/14/2016 14:59:30</publishTime>
     </File>
+    <File Include="Entities/AgentDailyHoursToDomainMaster.cs">
+      <publishTime>07/05/2017 13:20:54</publishTime>
+    </File>
     <File Include="Entities/AgentTimeAdjustmentReason.cs">
       <publishTime>10/07/2016 14:36:44</publishTime>
     </File>
@@ -1172,6 +1175,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Entities/CFRPerformanceAnalysi.cs">
       <publishTime>10/28/2016 11:25:49</publishTime>
+    </File>
+    <File Include="Entities/CFRSale.cs">
+      <publishTime>07/05/2017 13:20:54</publishTime>
     </File>
     <File Include="Entities/ClientLead.cs">
       <publishTime>06/27/2016 09:57:41</publishTime>
@@ -1264,7 +1270,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2016 11:29:48</publishTime>
     </File>
     <File Include="Entities/ReportModel.edmx.diagram">
-      <publishTime>04/13/2017 16:23:44</publishTime>
+      <publishTime>07/05/2017 13:20:30</publishTime>
     </File>
     <File Include="Entities/ReportModel.tt">
       <publishTime>06/27/2016 10:49:54</publishTime>
@@ -1642,7 +1648,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/15/2017 13:52:01</publishTime>
     </File>
     <File Include="Views/Employees/Details.cshtml">
-      <publishTime>06/06/2017 13:05:49</publishTime>
+      <publishTime>07/06/2017 15:57:44</publishTime>
     </File>
     <File Include="Views/Employees/Edit.cshtml">
       <publishTime>04/10/2017 10:36:28</publishTime>
@@ -1651,7 +1657,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/16/2016 17:44:32</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Delete.cshtml">
-      <publishTime>02/15/2017 13:56:16</publishTime>
+      <publishTime>07/06/2017 16:16:40</publishTime>
     </File>
     <File Include="Views/Employees/InsuranceCFR_Details.cshtml">
       <publishTime>02/15/2017 13:55:51</publishTime>
@@ -1660,7 +1666,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/12/2016 14:13:04</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Delete.cshtml">
-      <publishTime>02/15/2017 13:55:44</publishTime>
+      <publishTime>07/06/2017 16:16:30</publishTime>
     </File>
     <File Include="Views/Employees/MortgageCFR_Details.cshtml">
       <publishTime>02/15/2017 13:55:37</publishTime>
@@ -1669,13 +1675,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/12/2016 13:37:42</publishTime>
     </File>
     <File Include="Views/Employees/PatientRecruitmentCFR_Delete.cshtml">
-      <publishTime>02/15/2017 13:55:24</publishTime>
+      <publishTime>07/06/2017 16:15:46</publishTime>
     </File>
     <File Include="Views/Employees/PatientRecruitmentCFR_Details.cshtml">
       <publishTime>02/15/2017 13:55:11</publishTime>
     </File>
     <File Include="Views/Employees/PatientRecruitmentCFR_Edit.cshtml">
       <publishTime>12/12/2016 14:16:55</publishTime>
+    </File>
+    <File Include="Views/Employees/SalesCFR_Delete.cshtml">
+      <publishTime>07/06/2017 16:15:28</publishTime>
+    </File>
+    <File Include="Views/Employees/SalesCFR_Details.cshtml">
+      <publishTime>07/06/2017 16:12:25</publishTime>
+    </File>
+    <File Include="Views/Employees/SalesCFR_Edit.cshtml">
+      <publishTime>07/06/2017 16:19:46</publishTime>
     </File>
     <File Include="Views/Events/DeleteEvent.cshtml">
       <publishTime>02/21/2017 11:53:39</publishTime>
@@ -1795,10 +1810,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/30/2017 11:09:10</publishTime>
     </File>
     <File Include="Views/Quality/Index.cshtml">
-      <publishTime>04/07/2017 14:25:34</publishTime>
+      <publishTime>07/10/2017 15:31:17</publishTime>
     </File>
     <File Include="Views/Reporting/CFRStats.cshtml">
-      <publishTime>04/07/2017 14:35:00</publishTime>
+      <publishTime>07/11/2017 11:06:58</publishTime>
     </File>
     <File Include="Views/Reporting/DomainHours.cshtml">
       <publishTime>05/30/2017 16:25:50</publishTime>
@@ -1807,7 +1822,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2017 13:28:15</publishTime>
     </File>
     <File Include="Views/Reporting/Index.cshtml">
-      <publishTime>05/30/2017 14:03:57</publishTime>
+      <publishTime>07/06/2017 17:16:34</publishTime>
     </File>
     <File Include="Views/Reporting/Rehires.cshtml">
       <publishTime>04/12/2017 09:51:06</publishTime>

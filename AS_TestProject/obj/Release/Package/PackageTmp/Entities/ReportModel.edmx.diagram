@@ -143,6 +143,31 @@
         <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EditByEmployeeID" />
         <AssociationConnector Association="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" />
         <EntityTypeShape EntityType="ReportModel.AgentDailyHoursToDomainMaster" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="ReportModel.CFRSale" Width="1.5" PointX="28.625" PointY="21.75" />
+        <AssociationConnector Association="ReportModel.FK_AgentDailyHoursToDomainMaster_DomainMaster" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRSales_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRSales_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRSales_ManagerID" />
+        <AssociationConnector Association="ReportModel.FK_AgentDailyHoursToDomainMaster_AgentDailyHours" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sAOIQ1__08D61451" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sAOIQ2__09CA388A" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sAQ1__116B5A52" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sAQ2__125F7E8B" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sCQ1__1353A2C4" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sCQ2__1447C6FD" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sPQ1__153BEB36" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sPQ2__16300F6F" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sPQ3__172433A8" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sPQ4__181857E1" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sTEQ1__0D9AC96E" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sTEQ2__0E8EEDA7" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sTEQ3__0F8311E0" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__sTEQ4__10773619" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__Accura__06EDCBDF" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__Adhera__07E1F018" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__Compli__0ABE5CC3" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__Profes__0BB280FC" />
+        <AssociationConnector Association="ReportModel.FK__CFRSales__Teleph__0CA6A535" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

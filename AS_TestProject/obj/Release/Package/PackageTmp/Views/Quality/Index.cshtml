@@ -64,7 +64,8 @@
                                     int mtgCFR = domain.CFRMortgages.Count;
                                     int insCFR = domain.CFRInsurances.Count;
                                     int prCFR = domain.CFRPatientRecruitments.Count;
-                                    int totCFR = mtgCFR + insCFR + prCFR;
+                                    int sCFR = domain.CFRSales.Count;
+                                    int totCFR = mtgCFR + insCFR + prCFR + sCFR;
                                 }
                                 <div class="col-sm-6 col-xs-6 goleft">
                                     <p><i class="fa fa-edit"></i> @totCFR CFRs</p>

@@ -385,12 +385,15 @@
                       </a>
                   </li>
 
-                  <li>
-                      <a id="direct" href="@Url.Action("Directory","Home")">
-                          <i class="fa fa-users"></i>
-                          <span>Directory</span>
-                      </a>
-                  </li>
+                  @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality") || User.IsInRole("Operations") || User.IsInRole("Executive") || User.IsInRole("Marketing") || User.IsInRole("Suggestions"))
+                  {
+                    <li>
+                        <a id="direct" href="@Url.Action("Directory","Home")">
+                            <i class="fa fa-users"></i>
+                            <span>Directory</span>
+                        </a>
+                    </li>
+                  }
 
                   @if (User.IsInRole("Admin") || User.IsInRole("IT") || User.IsInRole("HR") || User.IsInRole("Payroll") || User.IsInRole("Quality") || User.IsInRole("Operations"))
                   {
