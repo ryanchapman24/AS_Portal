@@ -33,6 +33,8 @@ namespace AS_TestProject.Entities
             this.CFRPatientRecruitments1 = new HashSet<CFRPatientRecruitment>();
             this.DisciplinaryActions = new HashSet<DisciplinaryAction>();
             this.DisciplinaryActions1 = new HashSet<DisciplinaryAction>();
+            this.CFRSales = new HashSet<CFRSale>();
+            this.CFRSales1 = new HashSet<CFRSale>();
         }
     
         public int EmployeeID { get; set; }
@@ -96,5 +98,9 @@ namespace AS_TestProject.Entities
         public virtual ICollection<DisciplinaryAction> DisciplinaryActions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DisciplinaryAction> DisciplinaryActions1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales1 { get; set; }
     }
 }

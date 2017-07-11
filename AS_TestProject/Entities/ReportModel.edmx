@@ -405,6 +405,41 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="CFRPerformanceAnalysisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PerformanceRating" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CFRSales">
+          <Key>
+            <PropertyRef Name="CFRSalesID" />
+          </Key>
+          <Property Name="CFRSalesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="DomainMasterID" Type="tinyint" />
+          <Property Name="#Calls" Type="smallint" Nullable="false" />
+          <Property Name="sTEQ1" Type="int" />
+          <Property Name="sTEQ2" Type="int" />
+          <Property Name="sTEQ3" Type="int" />
+          <Property Name="sTEQ4" Type="int" />
+          <Property Name="sPQ1" Type="int" />
+          <Property Name="sPQ2" Type="int" />
+          <Property Name="sPQ3" Type="int" />
+          <Property Name="sPQ4" Type="int" />
+          <Property Name="sCQ1" Type="int" />
+          <Property Name="sCQ2" Type="int" />
+          <Property Name="sAQ1" Type="int" />
+          <Property Name="sAQ2" Type="int" />
+          <Property Name="sAOIQ1" Type="int" />
+          <Property Name="sAOIQ2" Type="int" />
+          <Property Name="TelephoneEtiquetteRating" Type="int" />
+          <Property Name="ProfessionalismRating" Type="int" />
+          <Property Name="ComplianceRating" Type="int" />
+          <Property Name="AdheranceRating" Type="int" />
+          <Property Name="AccuracyOfInformationRating" Type="int" />
+          <Property Name="ConversionRateToday" Type="varchar" MaxLength="1" />
+          <Property Name="WeekToDate" Type="varchar" MaxLength="1" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="Strengths" Type="varchar(max)" />
+          <Property Name="ActionPlan" Type="varchar(max)" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="DateOfFeedback" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="CallLogMaster">
           <Key>
             <PropertyRef Name="CallLogMasterID" />
@@ -698,7 +733,7 @@ warning 6002: The table/view 'Report.STAGE.AgentDailyHours' does not have a prim
           <Property Name="LogoutTimestamp" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="LoginDuration" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="EmployeeID" Type="nvarchar" MaxLength="320" />
-          <Property Name="SkillName" Type="varchar" MaxLength="50" />
+          <Property Name="SkillName" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Report.STAGE.ClientLeads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1826,6 +1861,258 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CFRSales__Accura__06EDCBDF">
+          <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysis">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="AccuracyOfInformationRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Adhera__07E1F018">
+          <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysis">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="AdheranceRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Compli__0ABE5CC3">
+          <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysis">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="ComplianceRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Profes__0BB280FC">
+          <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysis">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="ProfessionalismRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAOIQ1__08D61451">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sAOIQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAOIQ2__09CA388A">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sAOIQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAQ1__116B5A52">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sAQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAQ2__125F7E8B">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sAQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sCQ1__1353A2C4">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sCQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sCQ2__1447C6FD">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sCQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ1__153BEB36">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sPQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ2__16300F6F">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sPQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ3__172433A8">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sPQ3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ4__181857E1">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sPQ4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ1__0D9AC96E">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sTEQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ2__0E8EEDA7">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sTEQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ3__0F8311E0">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sTEQ3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ4__10773619">
+          <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="sTEQ4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Teleph__0CA6A535">
+          <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysis">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="TelephoneEtiquetteRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgentDailyHoursToDomainMaster_AgentDailyHours">
+          <End Role="AgentDailyHours" Type="Self.AgentDailyHours" Multiplicity="1" />
+          <End Role="AgentDailyHoursToDomainMaster" Type="Self.AgentDailyHoursToDomainMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentDailyHours">
+              <PropertyRef Name="AgentDailyHoursID" />
+            </Principal>
+            <Dependent Role="AgentDailyHoursToDomainMaster">
+              <PropertyRef Name="AgentDailyHoursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgentDailyHoursToDomainMaster_DomainMaster">
+          <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
+          <End Role="AgentDailyHoursToDomainMaster" Type="Self.AgentDailyHoursToDomainMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Principal>
+            <Dependent Role="AgentDailyHoursToDomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CLIENT_Customer_AddByEmployeeID">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
@@ -2054,6 +2341,42 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_QUALITY_CFRSales_DomainMasterID">
+          <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="DomainMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUALITY_CFRSales_EmployeeID">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUALITY_CFRSales_ManagerID">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="CFRSales" Type="Self.CFRSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="CFRSales">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_QUALITY_FRPatientRecruitment_DManagerID">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="CFRPatientRecruitment" Type="Self.CFRPatientRecruitment" Multiplicity="*" />
@@ -2240,6 +2563,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySet Name="CFRMortgage" EntityType="Self.CFRMortgage" Schema="QUALITY" store:Type="Tables" />
           <EntitySet Name="CFRPatientRecruitment" EntityType="Self.CFRPatientRecruitment" Schema="QUALITY" store:Type="Tables" />
           <EntitySet Name="CFRPerformanceAnalysis" EntityType="Self.CFRPerformanceAnalysis" Schema="QUALITY" store:Type="Tables" />
+          <EntitySet Name="CFRSales" EntityType="Self.CFRSales" Schema="QUALITY" store:Type="Tables" />
           <EntitySet Name="CallLogMaster" EntityType="Self.CallLogMaster" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="CallLogRealTime" EntityType="Self.CallLogRealTime" Schema="REPORT" store:Type="Tables" />
           <EntitySet Name="DisciplinaryAction" EntityType="Self.DisciplinaryAction" Schema="REPORT" store:Type="Tables" />
@@ -2786,6 +3110,90 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="AnswerKey" EntitySet="AnswerKey" />
             <End Role="CFRPatientRecruitment" EntitySet="CFRPatientRecruitment" />
           </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Accura__06EDCBDF" Association="Self.FK__CFRSales__Accura__06EDCBDF">
+            <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Adhera__07E1F018" Association="Self.FK__CFRSales__Adhera__07E1F018">
+            <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Compli__0ABE5CC3" Association="Self.FK__CFRSales__Compli__0ABE5CC3">
+            <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Profes__0BB280FC" Association="Self.FK__CFRSales__Profes__0BB280FC">
+            <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAOIQ1__08D61451" Association="Self.FK__CFRSales__sAOIQ1__08D61451">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAOIQ2__09CA388A" Association="Self.FK__CFRSales__sAOIQ2__09CA388A">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAQ1__116B5A52" Association="Self.FK__CFRSales__sAQ1__116B5A52">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAQ2__125F7E8B" Association="Self.FK__CFRSales__sAQ2__125F7E8B">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sCQ1__1353A2C4" Association="Self.FK__CFRSales__sCQ1__1353A2C4">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sCQ2__1447C6FD" Association="Self.FK__CFRSales__sCQ2__1447C6FD">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ1__153BEB36" Association="Self.FK__CFRSales__sPQ1__153BEB36">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ2__16300F6F" Association="Self.FK__CFRSales__sPQ2__16300F6F">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ3__172433A8" Association="Self.FK__CFRSales__sPQ3__172433A8">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ4__181857E1" Association="Self.FK__CFRSales__sPQ4__181857E1">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ1__0D9AC96E" Association="Self.FK__CFRSales__sTEQ1__0D9AC96E">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ2__0E8EEDA7" Association="Self.FK__CFRSales__sTEQ2__0E8EEDA7">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ3__0F8311E0" Association="Self.FK__CFRSales__sTEQ3__0F8311E0">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ4__10773619" Association="Self.FK__CFRSales__sTEQ4__10773619">
+            <End Role="AnswerKey" EntitySet="AnswerKey" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Teleph__0CA6A535" Association="Self.FK__CFRSales__Teleph__0CA6A535">
+            <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgentDailyHoursToDomainMaster_AgentDailyHours" Association="Self.FK_AgentDailyHoursToDomainMaster_AgentDailyHours">
+            <End Role="AgentDailyHours" EntitySet="AgentDailyHours" />
+            <End Role="AgentDailyHoursToDomainMaster" EntitySet="AgentDailyHoursToDomainMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgentDailyHoursToDomainMaster_DomainMaster" Association="Self.FK_AgentDailyHoursToDomainMaster_DomainMaster">
+            <End Role="DomainMaster" EntitySet="DomainMaster" />
+            <End Role="AgentDailyHoursToDomainMaster" EntitySet="AgentDailyHoursToDomainMaster" />
+          </AssociationSet>
           <AssociationSet Name="FK_CLIENT_Customer_AddByEmployeeID" Association="Self.FK_CLIENT_Customer_AddByEmployeeID">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Customer" EntitySet="Customer" />
@@ -2861,6 +3269,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <AssociationSet Name="FK_QUALITY_CFRMortgage_ManagerID" Association="Self.FK_QUALITY_CFRMortgage_ManagerID">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="CFRMortgage" EntitySet="CFRMortgage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUALITY_CFRSales_DomainMasterID" Association="Self.FK_QUALITY_CFRSales_DomainMasterID">
+            <End Role="DomainMaster" EntitySet="DomainMaster" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUALITY_CFRSales_EmployeeID" Association="Self.FK_QUALITY_CFRSales_EmployeeID">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUALITY_CFRSales_ManagerID" Association="Self.FK_QUALITY_CFRSales_ManagerID">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="CFRSales" EntitySet="CFRSales" />
           </AssociationSet>
           <AssociationSet Name="FK_QUALITY_FRPatientRecruitment_DManagerID" Association="Self.FK_QUALITY_FRPatientRecruitment_DManagerID">
             <End Role="Employee" EntitySet="Employee" />
@@ -3402,6 +3822,103 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
             <End Role="DisciplinaryAction" EntitySet="DisciplinaryActions" />
           </AssociationSet>
           <EntitySet Name="AgentDailyHoursToDomainMasters" EntityType="ReportModel.AgentDailyHoursToDomainMaster" />
+          <EntitySet Name="CFRSales" EntityType="ReportModel.CFRSale" />
+          <AssociationSet Name="FK_AgentDailyHoursToDomainMaster_DomainMaster" Association="ReportModel.FK_AgentDailyHoursToDomainMaster_DomainMaster">
+            <End Role="DomainMaster" EntitySet="DomainMasters" />
+            <End Role="AgentDailyHoursToDomainMaster" EntitySet="AgentDailyHoursToDomainMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUALITY_CFRSales_DomainMasterID" Association="ReportModel.FK_QUALITY_CFRSales_DomainMasterID">
+            <End Role="DomainMaster" EntitySet="DomainMasters" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUALITY_CFRSales_EmployeeID" Association="ReportModel.FK_QUALITY_CFRSales_EmployeeID">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUALITY_CFRSales_ManagerID" Association="ReportModel.FK_QUALITY_CFRSales_ManagerID">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgentDailyHoursToDomainMaster_AgentDailyHours" Association="ReportModel.FK_AgentDailyHoursToDomainMaster_AgentDailyHours">
+            <End Role="AgentDailyHour" EntitySet="AgentDailyHours" />
+            <End Role="AgentDailyHoursToDomainMaster" EntitySet="AgentDailyHoursToDomainMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAOIQ1__08D61451" Association="ReportModel.FK__CFRSales__sAOIQ1__08D61451">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAOIQ2__09CA388A" Association="ReportModel.FK__CFRSales__sAOIQ2__09CA388A">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAQ1__116B5A52" Association="ReportModel.FK__CFRSales__sAQ1__116B5A52">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sAQ2__125F7E8B" Association="ReportModel.FK__CFRSales__sAQ2__125F7E8B">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sCQ1__1353A2C4" Association="ReportModel.FK__CFRSales__sCQ1__1353A2C4">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sCQ2__1447C6FD" Association="ReportModel.FK__CFRSales__sCQ2__1447C6FD">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ1__153BEB36" Association="ReportModel.FK__CFRSales__sPQ1__153BEB36">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ2__16300F6F" Association="ReportModel.FK__CFRSales__sPQ2__16300F6F">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ3__172433A8" Association="ReportModel.FK__CFRSales__sPQ3__172433A8">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sPQ4__181857E1" Association="ReportModel.FK__CFRSales__sPQ4__181857E1">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ1__0D9AC96E" Association="ReportModel.FK__CFRSales__sTEQ1__0D9AC96E">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ2__0E8EEDA7" Association="ReportModel.FK__CFRSales__sTEQ2__0E8EEDA7">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ3__0F8311E0" Association="ReportModel.FK__CFRSales__sTEQ3__0F8311E0">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__sTEQ4__10773619" Association="ReportModel.FK__CFRSales__sTEQ4__10773619">
+            <End Role="AnswerKey" EntitySet="AnswerKeys" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Accura__06EDCBDF" Association="ReportModel.FK__CFRSales__Accura__06EDCBDF">
+            <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Adhera__07E1F018" Association="ReportModel.FK__CFRSales__Adhera__07E1F018">
+            <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Compli__0ABE5CC3" Association="ReportModel.FK__CFRSales__Compli__0ABE5CC3">
+            <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Profes__0BB280FC" Association="ReportModel.FK__CFRSales__Profes__0BB280FC">
+            <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CFRSales__Teleph__0CA6A535" Association="ReportModel.FK__CFRSales__Teleph__0CA6A535">
+            <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
+            <End Role="CFRSale" EntitySet="CFRSales" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="uspInsertProblemMaster_Result">
           <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -3474,6 +3991,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="CFRInsurances" Relationship="ReportModel.FK_QUALITY_CFRInsurance_DomainMasterID" FromRole="DomainMaster" ToRole="CFRInsurance" />
           <NavigationProperty Name="CFRMortgages" Relationship="ReportModel.FK_QUALITY_CFRMortgage_DomainMasterID" FromRole="DomainMaster" ToRole="CFRMortgage" />
           <NavigationProperty Name="CFRPatientRecruitments" Relationship="ReportModel.FK_QUALITY_FRPatientRecruitment_DomainMasterID" FromRole="DomainMaster" ToRole="CFRPatientRecruitment" />
+          <NavigationProperty Name="AgentDailyHoursToDomainMasters" Relationship="ReportModel.FK_AgentDailyHoursToDomainMaster_DomainMaster" FromRole="DomainMaster" ToRole="AgentDailyHoursToDomainMaster" />
+          <NavigationProperty Name="CFRSales" Relationship="ReportModel.FK_QUALITY_CFRSales_DomainMasterID" FromRole="DomainMaster" ToRole="CFRSale" />
         </EntityType>
         <EntityType Name="DomainType">
           <Key>
@@ -3537,6 +4056,8 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="DisciplinaryActions1" Relationship="ReportModel.FK_REPORT_DisciplinaryAction_EmployeeID" FromRole="Employee" ToRole="DisciplinaryAction" />
           <Property Name="EditByEmployeeID" Type="Int64" />
           <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CFRSales" Relationship="ReportModel.FK_QUALITY_CFRSales_EmployeeID" FromRole="Employee" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales1" Relationship="ReportModel.FK_QUALITY_CFRSales_ManagerID" FromRole="Employee" ToRole="CFRSale" />
           </EntityType>
         <EntityType Name="EmployeeFive9Agent">
           <Key>
@@ -3660,6 +4181,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="EditByEmployeeID" Type="Int32" />
           <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" FromRole="AgentDailyHour" ToRole="Employee" />
+          <NavigationProperty Name="AgentDailyHoursToDomainMasters" Relationship="ReportModel.FK_AgentDailyHoursToDomainMaster_AgentDailyHours" FromRole="AgentDailyHour" ToRole="AgentDailyHoursToDomainMaster" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -4439,7 +4961,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="LogoutTimestamp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="LoginDuration" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="EmployeeID" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
-          <Property Name="SkillName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SkillName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CallLogRealTime">
           <Key>
@@ -4527,6 +5049,20 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="CFRPatientRecruitments14" Relationship="ReportModel.FK__CFRPatientR__CQ5__4D9552F2" FromRole="AnswerKey" ToRole="CFRPatientRecruitment" />
           <NavigationProperty Name="CFRPatientRecruitments15" Relationship="ReportModel.FK__CFRPatientR__PQ1__47DC799C" FromRole="AnswerKey" ToRole="CFRPatientRecruitment" />
           <NavigationProperty Name="CFRPatientRecruitments16" Relationship="ReportModel.FK__CFRPatientR__PQ2__48D09DD5" FromRole="AnswerKey" ToRole="CFRPatientRecruitment" />
+          <NavigationProperty Name="CFRSales" Relationship="ReportModel.FK__CFRSales__sAOIQ1__08D61451" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales1" Relationship="ReportModel.FK__CFRSales__sAOIQ2__09CA388A" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales2" Relationship="ReportModel.FK__CFRSales__sAQ1__116B5A52" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales3" Relationship="ReportModel.FK__CFRSales__sAQ2__125F7E8B" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales4" Relationship="ReportModel.FK__CFRSales__sCQ1__1353A2C4" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales5" Relationship="ReportModel.FK__CFRSales__sCQ2__1447C6FD" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales6" Relationship="ReportModel.FK__CFRSales__sPQ1__153BEB36" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales7" Relationship="ReportModel.FK__CFRSales__sPQ2__16300F6F" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales8" Relationship="ReportModel.FK__CFRSales__sPQ3__172433A8" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales9" Relationship="ReportModel.FK__CFRSales__sPQ4__181857E1" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales10" Relationship="ReportModel.FK__CFRSales__sTEQ1__0D9AC96E" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales11" Relationship="ReportModel.FK__CFRSales__sTEQ2__0E8EEDA7" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales12" Relationship="ReportModel.FK__CFRSales__sTEQ3__0F8311E0" FromRole="AnswerKey" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales13" Relationship="ReportModel.FK__CFRSales__sTEQ4__10773619" FromRole="AnswerKey" ToRole="CFRSale" />
         </EntityType>
         <EntityType Name="CFRInsurance">
           <Key>
@@ -4749,6 +5285,11 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <NavigationProperty Name="CFRPatientRecruitments2" Relationship="ReportModel.FK__CFRPatien__Compl__571EBD2C" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
           <NavigationProperty Name="CFRPatientRecruitments3" Relationship="ReportModel.FK__CFRPatien__Profe__562A98F3" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
           <NavigationProperty Name="CFRPatientRecruitments4" Relationship="ReportModel.FK__CFRPatien__Telep__553674BA" FromRole="CFRPerformanceAnalysi" ToRole="CFRPatientRecruitment" />
+          <NavigationProperty Name="CFRSales" Relationship="ReportModel.FK__CFRSales__Accura__06EDCBDF" FromRole="CFRPerformanceAnalysi" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales1" Relationship="ReportModel.FK__CFRSales__Adhera__07E1F018" FromRole="CFRPerformanceAnalysi" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales2" Relationship="ReportModel.FK__CFRSales__Compli__0ABE5CC3" FromRole="CFRPerformanceAnalysi" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales3" Relationship="ReportModel.FK__CFRSales__Profes__0BB280FC" FromRole="CFRPerformanceAnalysi" ToRole="CFRSale" />
+          <NavigationProperty Name="CFRSales4" Relationship="ReportModel.FK__CFRSales__Teleph__0CA6A535" FromRole="CFRPerformanceAnalysi" ToRole="CFRSale" />
         </EntityType>
         <Association Name="FK_QUALITY_CFRInsurance_DomainMasterID">
           <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="0..1" />
@@ -5771,7 +6312,354 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="DomainMasterID" Type="Byte" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_AgentDailyHoursToDomainMaster_DomainMaster" FromRole="AgentDailyHoursToDomainMaster" ToRole="DomainMaster" />
+          <NavigationProperty Name="AgentDailyHour" Relationship="ReportModel.FK_AgentDailyHoursToDomainMaster_AgentDailyHours" FromRole="AgentDailyHoursToDomainMaster" ToRole="AgentDailyHour" />
         </EntityType>
+        <EntityType Name="CFRSale">
+          <Key>
+            <PropertyRef Name="CFRSalesID" />
+          </Key>
+          <Property Name="CFRSalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="DomainMasterID" Type="Byte" />
+          <Property Name="C_Calls" Type="Int16" Nullable="false" />
+          <Property Name="sTEQ1" Type="Int32" />
+          <Property Name="sTEQ2" Type="Int32" />
+          <Property Name="sTEQ3" Type="Int32" />
+          <Property Name="sTEQ4" Type="Int32" />
+          <Property Name="sPQ1" Type="Int32" />
+          <Property Name="sPQ2" Type="Int32" />
+          <Property Name="sPQ3" Type="Int32" />
+          <Property Name="sPQ4" Type="Int32" />
+          <Property Name="sCQ1" Type="Int32" />
+          <Property Name="sCQ2" Type="Int32" />
+          <Property Name="sAQ1" Type="Int32" />
+          <Property Name="sAQ2" Type="Int32" />
+          <Property Name="sAOIQ1" Type="Int32" />
+          <Property Name="sAOIQ2" Type="Int32" />
+          <Property Name="TelephoneEtiquetteRating" Type="Int32" />
+          <Property Name="ProfessionalismRating" Type="Int32" />
+          <Property Name="ComplianceRating" Type="Int32" />
+          <Property Name="AdheranceRating" Type="Int32" />
+          <Property Name="AccuracyOfInformationRating" Type="Int32" />
+          <Property Name="ConversionRateToday" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WeekToDate" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Strengths" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActionPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="DateOfFeedback" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DomainMaster" Relationship="ReportModel.FK_QUALITY_CFRSales_DomainMasterID" FromRole="CFRSale" ToRole="DomainMaster" />
+          <NavigationProperty Name="Employee" Relationship="ReportModel.FK_QUALITY_CFRSales_EmployeeID" FromRole="CFRSale" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_QUALITY_CFRSales_ManagerID" FromRole="CFRSale" ToRole="Employee" />
+          <NavigationProperty Name="AnswerKey" Relationship="ReportModel.FK__CFRSales__sAOIQ1__08D61451" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey1" Relationship="ReportModel.FK__CFRSales__sAOIQ2__09CA388A" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey2" Relationship="ReportModel.FK__CFRSales__sAQ1__116B5A52" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey3" Relationship="ReportModel.FK__CFRSales__sAQ2__125F7E8B" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey4" Relationship="ReportModel.FK__CFRSales__sCQ1__1353A2C4" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey5" Relationship="ReportModel.FK__CFRSales__sCQ2__1447C6FD" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey6" Relationship="ReportModel.FK__CFRSales__sPQ1__153BEB36" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey7" Relationship="ReportModel.FK__CFRSales__sPQ2__16300F6F" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey8" Relationship="ReportModel.FK__CFRSales__sPQ3__172433A8" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey9" Relationship="ReportModel.FK__CFRSales__sPQ4__181857E1" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey10" Relationship="ReportModel.FK__CFRSales__sTEQ1__0D9AC96E" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey11" Relationship="ReportModel.FK__CFRSales__sTEQ2__0E8EEDA7" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey12" Relationship="ReportModel.FK__CFRSales__sTEQ3__0F8311E0" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="AnswerKey13" Relationship="ReportModel.FK__CFRSales__sTEQ4__10773619" FromRole="CFRSale" ToRole="AnswerKey" />
+          <NavigationProperty Name="CFRPerformanceAnalysi" Relationship="ReportModel.FK__CFRSales__Accura__06EDCBDF" FromRole="CFRSale" ToRole="CFRPerformanceAnalysi" />
+          <NavigationProperty Name="CFRPerformanceAnalysi1" Relationship="ReportModel.FK__CFRSales__Adhera__07E1F018" FromRole="CFRSale" ToRole="CFRPerformanceAnalysi" />
+          <NavigationProperty Name="CFRPerformanceAnalysi2" Relationship="ReportModel.FK__CFRSales__Compli__0ABE5CC3" FromRole="CFRSale" ToRole="CFRPerformanceAnalysi" />
+          <NavigationProperty Name="CFRPerformanceAnalysi3" Relationship="ReportModel.FK__CFRSales__Profes__0BB280FC" FromRole="CFRSale" ToRole="CFRPerformanceAnalysi" />
+          <NavigationProperty Name="CFRPerformanceAnalysi4" Relationship="ReportModel.FK__CFRSales__Teleph__0CA6A535" FromRole="CFRSale" ToRole="CFRPerformanceAnalysi" />
+        </EntityType>
+        <Association Name="FK_AgentDailyHoursToDomainMaster_DomainMaster">
+          <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="1" />
+          <End Type="ReportModel.AgentDailyHoursToDomainMaster" Role="AgentDailyHoursToDomainMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Principal>
+            <Dependent Role="AgentDailyHoursToDomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUALITY_CFRSales_DomainMasterID">
+          <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DomainMaster">
+              <PropertyRef Name="DomainMasterID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="DomainMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUALITY_CFRSales_EmployeeID">
+          <End Type="ReportModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUALITY_CFRSales_ManagerID">
+          <End Type="ReportModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgentDailyHoursToDomainMaster_AgentDailyHours">
+          <End Type="ReportModel.AgentDailyHour" Role="AgentDailyHour" Multiplicity="1" />
+          <End Type="ReportModel.AgentDailyHoursToDomainMaster" Role="AgentDailyHoursToDomainMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentDailyHour">
+              <PropertyRef Name="AgentDailyHoursID" />
+            </Principal>
+            <Dependent Role="AgentDailyHoursToDomainMaster">
+              <PropertyRef Name="AgentDailyHoursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAOIQ1__08D61451">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sAOIQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAOIQ2__09CA388A">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sAOIQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAQ1__116B5A52">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sAQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sAQ2__125F7E8B">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sAQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sCQ1__1353A2C4">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sCQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sCQ2__1447C6FD">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sCQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ1__153BEB36">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sPQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ2__16300F6F">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sPQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ3__172433A8">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sPQ3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sPQ4__181857E1">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sPQ4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ1__0D9AC96E">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sTEQ1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ2__0E8EEDA7">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sTEQ2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ3__0F8311E0">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sTEQ3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__sTEQ4__10773619">
+          <End Type="ReportModel.AnswerKey" Role="AnswerKey" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerKey">
+              <PropertyRef Name="AnswerKeyID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="sTEQ4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Accura__06EDCBDF">
+          <End Type="ReportModel.CFRPerformanceAnalysi" Role="CFRPerformanceAnalysi" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysi">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="AccuracyOfInformationRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Adhera__07E1F018">
+          <End Type="ReportModel.CFRPerformanceAnalysi" Role="CFRPerformanceAnalysi" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysi">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="AdheranceRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Compli__0ABE5CC3">
+          <End Type="ReportModel.CFRPerformanceAnalysi" Role="CFRPerformanceAnalysi" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysi">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="ComplianceRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Profes__0BB280FC">
+          <End Type="ReportModel.CFRPerformanceAnalysi" Role="CFRPerformanceAnalysi" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysi">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="ProfessionalismRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CFRSales__Teleph__0CA6A535">
+          <End Type="ReportModel.CFRPerformanceAnalysi" Role="CFRPerformanceAnalysi" Multiplicity="0..1" />
+          <End Type="ReportModel.CFRSale" Role="CFRSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CFRPerformanceAnalysi">
+              <PropertyRef Name="CFRPerformanceAnalysisID" />
+            </Principal>
+            <Dependent Role="CFRSale">
+              <PropertyRef Name="TelephoneEtiquetteRating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6747,6 +7635,42 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
                 <ScalarProperty Name="AgentDailyHoursID" ColumnName="AgentDailyHoursID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CFRSales">
+            <EntityTypeMapping TypeName="ReportModel.CFRSale">
+              <MappingFragment StoreEntitySet="CFRSales">
+                <ScalarProperty Name="DateOfFeedback" ColumnName="DateOfFeedback" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="ActionPlan" ColumnName="ActionPlan" />
+                <ScalarProperty Name="Strengths" ColumnName="Strengths" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="WeekToDate" ColumnName="WeekToDate" />
+                <ScalarProperty Name="ConversionRateToday" ColumnName="ConversionRateToday" />
+                <ScalarProperty Name="AccuracyOfInformationRating" ColumnName="AccuracyOfInformationRating" />
+                <ScalarProperty Name="AdheranceRating" ColumnName="AdheranceRating" />
+                <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
+                <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
+                <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
+                <ScalarProperty Name="sAOIQ2" ColumnName="sAOIQ2" />
+                <ScalarProperty Name="sAOIQ1" ColumnName="sAOIQ1" />
+                <ScalarProperty Name="sAQ2" ColumnName="sAQ2" />
+                <ScalarProperty Name="sAQ1" ColumnName="sAQ1" />
+                <ScalarProperty Name="sCQ2" ColumnName="sCQ2" />
+                <ScalarProperty Name="sCQ1" ColumnName="sCQ1" />
+                <ScalarProperty Name="sPQ4" ColumnName="sPQ4" />
+                <ScalarProperty Name="sPQ3" ColumnName="sPQ3" />
+                <ScalarProperty Name="sPQ2" ColumnName="sPQ2" />
+                <ScalarProperty Name="sPQ1" ColumnName="sPQ1" />
+                <ScalarProperty Name="sTEQ4" ColumnName="sTEQ4" />
+                <ScalarProperty Name="sTEQ3" ColumnName="sTEQ3" />
+                <ScalarProperty Name="sTEQ2" ColumnName="sTEQ2" />
+                <ScalarProperty Name="sTEQ1" ColumnName="sTEQ1" />
+                <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
+                <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="CFRSalesID" ColumnName="CFRSalesID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

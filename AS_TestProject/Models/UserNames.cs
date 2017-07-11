@@ -125,6 +125,20 @@ namespace AS_TestProject.Models
                 ViewBag.pAOI1 = "Does the CSR update Browser/Five9 to reflect the proper disposition as needed?";
                 ViewBag.pAOI2 = "Does the CSR connect to the correct department and select the correct disposition?";
                 /////////////////////////////// Sales CFR Questions
+                ViewBag.sTE1 = "Did the CSR use proper greetings and instructions?";
+                ViewBag.sTE2 = "Did the CSR display a professional attitude?";
+                ViewBag.sTE3 = "Did the CSR  use appropriate tone of voice and phrasing, avoids jargon, and speaks clearly?";
+                ViewBag.sTE4 = "Did the CSR use appropriate closing; confirms information and actions taken?";
+                ViewBag.sP1 = "Does the CSR listen to and empathize with customers; acknowledges customers concerns?";
+                ViewBag.sP2 = "Did the CSR gather information to determine customer’s needs and apply problem solving skills effectively?";
+                ViewBag.sP3 = "Did the CSR communicate information about the products to the customer clearly and completely?";
+                ViewBag.sP4 = "Did the CSR control the pace and flow of the conversation?";
+                ViewBag.sC1 = "Did the CSR state the recorded call disclosure?";
+                ViewBag.sC2 = "Did the CSR demonstrate compliance in role as CSR; has a good understanding of call center policies and procedures: DNC, Permission Requirements or/ Misleading  Information?";
+                ViewBag.sA1 = "Did the CSR efficiently handle the customer’s request; keeps the pace of the call moving and manages call time effectively?";
+                ViewBag.sA2 = "Did the CSR utilize the tools and rebuttals (at least three times) before ending the call?";
+                ViewBag.sAOI1 = "Did the CSR verify caller identity, provided accurate information to the customer, read the confirmation scripting, correctly enter account changes and notes, and properly codes call (for call tracking)?";
+                ViewBag.sAOI2 = "Did the CSR demonstrate good procedural skills, effectively uses systems and tools, and follows call guidelines and scripts?";
 
                 base.OnActionExecuting(filterContext);
             }

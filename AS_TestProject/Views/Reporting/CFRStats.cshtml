@@ -13,6 +13,9 @@
                 <li>
                     <a data-toggle="tab" href="#patientrecruitment" class="contact-map">Patient Recruitment</a>
                 </li>
+                <li>
+                    <a data-toggle="tab" href="#sales" class="contact-map">Sales</a>
+                </li>
             </ul>
         </div><!-- --/panel-heading ---->
         <div class="panel-body">
@@ -729,6 +732,226 @@
                         </div>
                     </div>    
                 </div>
+
+                <div id="sales" class="tab-pane">
+                    <h3 style="color: #29AAE3; margin-left: 0px; margin-bottom: 60px; text-align: center"><i class="fa fa-edit" style="margin-right: 8px"></i><strong style="color: #FE5607">@ViewBag.slsCFR</strong> Sales CFRs</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 style="color: #29AAE3"><strong>Etiquette</strong></h3>
+                            <p style="color: #031B25"><strong>Q1</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sTE1" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sTE1yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sTE1no</span><span>% NO</span><br />
+                            <span>@ViewBag.sTE1na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q2</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sTE2" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sTE2yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sTE2no</span><span>% NO</span><br />
+                            <span>@ViewBag.sTE2na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q3</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sTE3" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sTE3yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sTE3no</span><span>% NO</span><br />
+                            <span>@ViewBag.sTE3na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q4</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sTE4" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sTE4yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sTE4no</span><span>% NO</span><br />
+                            <span>@ViewBag.sTE4na</span><span>% N/A</span><br /><br />
+                        </div>
+                        <div class="col-md-8" style="text-align: center">
+                            <canvas id="sTE" height="300" width="700" style="margin-top: 100px"></canvas>
+                            <script>
+                                var barChartData = {
+                                    labels: ["Q1", "Q2", "Q3", "Q4"],
+                                    datasets: [
+                                    {
+                                        fillColor: "#29AAE3",
+                                        strokeColor: "rgba(220,220,220,1)",
+                                        data: [@ViewBag.sTE1yes, @ViewBag.sTE2yes, @ViewBag.sTE3yes, @ViewBag.sTE4yes]
+                                    },
+                                    {
+                                        fillColor: "#FE5607",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        data: [@ViewBag.sTE1no, @ViewBag.sTE2no, @ViewBag.sTE3no, @ViewBag.sTE4no]
+                                    },
+                                    {
+                                        fillColor: "#031B25",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        data: [@ViewBag.sTE1na, @ViewBag.sTE2na, @ViewBag.sTE3na, @ViewBag.sTE4na]
+                                    }
+                                    ]
+                                };
+                                new Chart(document.getElementById("sTE").getContext("2d")).Bar(barChartData);
+                            </script>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 style="color: #29AAE3"><strong>Professionalism</strong></h3>
+                            <p style="color: #031B25"><strong>Q1</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sP1" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sP1yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sP1no</span><span>% NO</span><br />
+                            <span>@ViewBag.sP1na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q2</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sP2" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sP2yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sP2no</span><span>% NO</span><br />
+                            <span>@ViewBag.sP2na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q3</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sP3" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sP3yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sP3no</span><span>% NO</span><br />
+                            <span>@ViewBag.sP3na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q4</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sP4" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sP4yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sP4no</span><span>% NO</span><br />
+                            <span>@ViewBag.sP4na</span><span>% N/A</span><br /><br />
+                        </div>
+                        <div class="col-md-8" style="text-align: center">
+                            <canvas id="sP" height="300" width="700" style="margin-top: 100px"></canvas>
+                            <script>
+                                var barChartData = {
+                                    labels: ["Q1", "Q2", "Q3", "Q4"],
+                                    datasets: [
+                                    {
+                                        fillColor: "#29AAE3",
+                                        strokeColor: "rgba(220,220,220,1)",
+                                        data: [@ViewBag.sP1yes, @ViewBag.sP2yes, @ViewBag.sP3yes, @ViewBag.sP4yes]
+                                    },
+                                    {
+                                        fillColor: "#FE5607",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        data: [@ViewBag.sP1no, @ViewBag.sP2no, @ViewBag.sP3no, @ViewBag.sP4no]
+                                    },
+                                    {
+                                        fillColor: "#031B25",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        data: [@ViewBag.sP1na, @ViewBag.sP2na, @ViewBag.sP3na, @ViewBag.sP4na]
+                                    }
+                                    ]
+                                };
+                                new Chart(document.getElementById("sP").getContext("2d")).Bar(barChartData);
+                            </script>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 style="color: #29AAE3"><strong>Compliance</strong></h3>
+                            <p style="color: #031B25"><strong>Q1</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sC1" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sC1yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sC1no</span><span>% NO</span><br />
+                            <span>@ViewBag.sC1na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q2</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sC2" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sC2yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sC2no</span><span>% NO</span><br />
+                            <span>@ViewBag.sC2na</span><span>% N/A</span><br /><br />
+                        </div>
+                        <div class="col-md-8" style="text-align: center">
+                            <canvas id="sC" height="300" width="400" style="margin-top: 20px"></canvas>
+                            <script>
+                                    var barChartData = {
+                                        labels: ["Q1", "Q2"],
+                                        datasets: [
+                                        {
+                                            fillColor: "#29AAE3",
+                                            strokeColor: "rgba(220,220,220,1)",
+                                            data: [@ViewBag.sC1yes, @ViewBag.sC2yes]
+                                        },
+                                        {
+                                            fillColor: "#FE5607",
+                                            strokeColor: "rgba(151,187,205,1)",
+                                            data: [@ViewBag.sC1no, @ViewBag.sC2no]
+                                        },
+                                        {
+                                            fillColor: "#031B25",
+                                            strokeColor: "rgba(151,187,205,1)",
+                                            data: [@ViewBag.sC1na, @ViewBag.sC2na]
+                                        }
+                                        ]
+                                    };
+                                    new Chart(document.getElementById("sC").getContext("2d")).Bar(barChartData);
+                            </script>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 style="color: #29AAE3"><strong>Adherence</strong></h3>
+                            <p style="color: #031B25"><strong>Q1</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sA1" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sA1yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sA1no</span><span>% NO</span><br />
+                            <span>@ViewBag.sA1na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q2</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sA2" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sA2yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sA2no</span><span>% NO</span><br />
+                            <span>@ViewBag.sA2na</span><span>% N/A</span><br /><br />
+                        </div>
+                        <div class="col-md-8" style="text-align: center">
+                            <canvas id="sA" height="300" width="400" style="margin-top: 20px"></canvas>
+                            <script>
+                                    var barChartData = {
+                                        labels: ["Q1", "Q2"],
+                                        datasets: [
+                                        {
+                                            fillColor: "#29AAE3",
+                                            strokeColor: "rgba(220,220,220,1)",
+                                            data: [@ViewBag.sA1yes, @ViewBag.sA2yes]
+                                        },
+                                        {
+                                            fillColor: "#FE5607",
+                                            strokeColor: "rgba(151,187,205,1)",
+                                            data: [@ViewBag.sA1no, @ViewBag.sA2no]
+                                        },
+                                        {
+                                            fillColor: "#031B25",
+                                            strokeColor: "rgba(151,187,205,1)",
+                                            data: [@ViewBag.sA1na, @ViewBag.sA2na]
+                                        }
+                                        ]
+                                    };
+                                    new Chart(document.getElementById("sA").getContext("2d")).Bar(barChartData);
+                            </script>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 style="color: #29AAE3"><strong>Accuracy</strong></h3>
+                            <p style="color: #031B25"><strong>Q1</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sAOI1" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sAOI1yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sAOI1no</span><span>% NO</span><br />
+                            <span>@ViewBag.sAOI1na</span><span>% N/A</span><br /><br />
+                            <p style="color: #031B25"><strong>Q2</strong><i class="fa fa-question-circle tooltips" style="color: #29AAE3; margin-left: 5px" data-original-title="@ViewBag.sAOI2" data-html="true" data-toggle="tooltip" data-placement="right"></i></p>
+                            <span>@ViewBag.sAOI2yes</span><span>% YES</span><br />
+                            <span>@ViewBag.sAOI2no</span><span>% NO</span><br />
+                            <span>@ViewBag.sAOI2na</span><span>% N/A</span><br /><br />
+                        </div>
+                        <div class="col-md-8" style="text-align: center">
+                            <canvas id="sAOI" height="300" width="400" style="margin-top: 20px"></canvas>
+                            <script>
+                                    var barChartData = {
+                                        labels: ["Q1", "Q2"],
+                                        datasets: [
+                                        {
+                                            fillColor: "#29AAE3",
+                                            strokeColor: "rgba(220,220,220,1)",
+                                            data: [@ViewBag.sAOI1yes, @ViewBag.sAOI2yes]
+                                        },
+                                        {
+                                            fillColor: "#FE5607",
+                                            strokeColor: "rgba(151,187,205,1)",
+                                            data: [@ViewBag.sAOI1no, @ViewBag.sAOI2no]
+                                        },
+                                        {
+                                            fillColor: "#031B25",
+                                            strokeColor: "rgba(151,187,205,1)",
+                                            data: [@ViewBag.sAOI1na, @ViewBag.sAOI2na]
+                                        }
+                                        ]
+                                    };
+                                    new Chart(document.getElementById("sAOI").getContext("2d")).Bar(barChartData);
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <p style="padding-bottom: 5px; margin-top: 30px">

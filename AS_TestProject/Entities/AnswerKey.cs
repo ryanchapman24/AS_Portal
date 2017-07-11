@@ -73,6 +73,20 @@ namespace AS_TestProject.Entities
             this.CFRPatientRecruitments14 = new HashSet<CFRPatientRecruitment>();
             this.CFRPatientRecruitments15 = new HashSet<CFRPatientRecruitment>();
             this.CFRPatientRecruitments16 = new HashSet<CFRPatientRecruitment>();
+            this.CFRSales = new HashSet<CFRSale>();
+            this.CFRSales1 = new HashSet<CFRSale>();
+            this.CFRSales2 = new HashSet<CFRSale>();
+            this.CFRSales3 = new HashSet<CFRSale>();
+            this.CFRSales4 = new HashSet<CFRSale>();
+            this.CFRSales5 = new HashSet<CFRSale>();
+            this.CFRSales6 = new HashSet<CFRSale>();
+            this.CFRSales7 = new HashSet<CFRSale>();
+            this.CFRSales8 = new HashSet<CFRSale>();
+            this.CFRSales9 = new HashSet<CFRSale>();
+            this.CFRSales10 = new HashSet<CFRSale>();
+            this.CFRSales11 = new HashSet<CFRSale>();
+            this.CFRSales12 = new HashSet<CFRSale>();
+            this.CFRSales13 = new HashSet<CFRSale>();
         }
     
         public int AnswerKeyID { get; set; }
@@ -190,5 +204,33 @@ namespace AS_TestProject.Entities
         public virtual ICollection<CFRPatientRecruitment> CFRPatientRecruitments15 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CFRPatientRecruitment> CFRPatientRecruitments16 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales4 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales5 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales6 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales7 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales8 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales9 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales10 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales11 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales12 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRSale> CFRSales13 { get; set; }
     }
 }

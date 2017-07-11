@@ -64,6 +64,7 @@ namespace AS_TestProject.Entities
         public virtual DbSet<CFRPerformanceAnalysi> CFRPerformanceAnalysis { get; set; }
         public virtual DbSet<DisciplinaryAction> DisciplinaryActions { get; set; }
         public virtual DbSet<AgentDailyHoursToDomainMaster> AgentDailyHoursToDomainMasters { get; set; }
+        public virtual DbSet<CFRSale> CFRSales { get; set; }
     
         public virtual ObjectResult<uspInsertProblemMaster_Result> uspInsertProblemMaster(string userID, string processName, Nullable<int> errorNumber, Nullable<int> lineNumber, string exceptionMessage, string exceptionSource, Nullable<int> exceptionSeverity, Nullable<int> exceptionState)
         {

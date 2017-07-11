@@ -973,5 +973,41 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CFRSales">
+      <EntityTypeMapping TypeName="ReportModel.CFRSale">
+        <MappingFragment StoreEntitySet="CFRSales">
+          <ScalarProperty Name="DateOfFeedback" ColumnName="DateOfFeedback" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="ActionPlan" ColumnName="ActionPlan" />
+          <ScalarProperty Name="Strengths" ColumnName="Strengths" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="WeekToDate" ColumnName="WeekToDate" />
+          <ScalarProperty Name="ConversionRateToday" ColumnName="ConversionRateToday" />
+          <ScalarProperty Name="AccuracyOfInformationRating" ColumnName="AccuracyOfInformationRating" />
+          <ScalarProperty Name="AdheranceRating" ColumnName="AdheranceRating" />
+          <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
+          <ScalarProperty Name="ProfessionalismRating" ColumnName="ProfessionalismRating" />
+          <ScalarProperty Name="TelephoneEtiquetteRating" ColumnName="TelephoneEtiquetteRating" />
+          <ScalarProperty Name="sAOIQ2" ColumnName="sAOIQ2" />
+          <ScalarProperty Name="sAOIQ1" ColumnName="sAOIQ1" />
+          <ScalarProperty Name="sAQ2" ColumnName="sAQ2" />
+          <ScalarProperty Name="sAQ1" ColumnName="sAQ1" />
+          <ScalarProperty Name="sCQ2" ColumnName="sCQ2" />
+          <ScalarProperty Name="sCQ1" ColumnName="sCQ1" />
+          <ScalarProperty Name="sPQ4" ColumnName="sPQ4" />
+          <ScalarProperty Name="sPQ3" ColumnName="sPQ3" />
+          <ScalarProperty Name="sPQ2" ColumnName="sPQ2" />
+          <ScalarProperty Name="sPQ1" ColumnName="sPQ1" />
+          <ScalarProperty Name="sTEQ4" ColumnName="sTEQ4" />
+          <ScalarProperty Name="sTEQ3" ColumnName="sTEQ3" />
+          <ScalarProperty Name="sTEQ2" ColumnName="sTEQ2" />
+          <ScalarProperty Name="sTEQ1" ColumnName="sTEQ1" />
+          <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CFRSalesID" ColumnName="CFRSalesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

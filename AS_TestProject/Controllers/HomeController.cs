@@ -250,7 +250,6 @@ namespace AS_TestProject.Controllers
                 {
                     var userA = userCheck.Id;
 
-
                     var mCFRyesterday = mb.CFRMortgages.Where(c => c.Employee1.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == yesterDay && c.DateOfFeedback.Month == yesterMonth && c.DateOfFeedback.Year == yesterYear).Count();
                     var mCFRtoday = mb.CFRMortgages.Where(c => c.Employee1.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == now.Day && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
                     var mCFRmonth = mb.CFRMortgages.Where(c => c.Employee1.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
@@ -266,10 +265,15 @@ namespace AS_TestProject.Controllers
                     var pCFRmonth = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
                     var pCFRyear = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
 
-                    ViewBag.CFRyesterday = mCFRyesterday + iCFRyesterday + pCFRyesterday;
-                    ViewBag.CFRtoday = mCFRtoday + iCFRtoday + pCFRtoday;
-                    ViewBag.CFRmonth = mCFRmonth + iCFRmonth + pCFRmonth;
-                    ViewBag.CFRyear = mCFRyear + iCFRyear + pCFRyear;
+                    var sCFRyesterday = mb.CFRSales.Where(c => c.Employee1.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == yesterDay && c.DateOfFeedback.Month == yesterMonth && c.DateOfFeedback.Year == yesterYear).Count();
+                    var sCFRtoday = mb.CFRSales.Where(c => c.Employee1.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Day == now.Day && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+                    var sCFRmonth = mb.CFRSales.Where(c => c.Employee1.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+                    var sCFRyear = mb.CFRSales.Where(c => c.Employee1.EmployeeID == userCheck.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
+
+                    ViewBag.CFRyesterday = mCFRyesterday + iCFRyesterday + pCFRyesterday + sCFRyesterday;
+                    ViewBag.CFRtoday = mCFRtoday + iCFRtoday + pCFRtoday + sCFRtoday;
+                    ViewBag.CFRmonth = mCFRmonth + iCFRmonth + pCFRmonth + sCFRmonth;
+                    ViewBag.CFRyear = mCFRyear + iCFRyear + pCFRyear +sCFRyear;
 
                     ViewBag.TaskPriorityId = new SelectList(db.TaskPriorities, "Id", "Priority");
                     ViewBag.Urgent = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 4).OrderBy(t => t.Id).ToList();
@@ -413,10 +417,15 @@ namespace AS_TestProject.Controllers
             var pCFRmonthME = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
             var pCFRyearME = mb.CFRPatientRecruitments.Where(c => c.Employee.EmployeeID == user.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
 
-            ViewBag.CFRyesterday = mCFRyesterdayME + iCFRyesterdayME + pCFRyesterdayME;
-            ViewBag.CFRtoday = mCFRtodayME + iCFRtodayME + pCFRtodayME;
-            ViewBag.CFRmonth = mCFRmonthME + iCFRmonthME + pCFRmonthME;
-            ViewBag.CFRyear = mCFRyearME + iCFRyearME + pCFRyearME;
+            var sCFRyesterdayME = mb.CFRSales.Where(c => c.Employee1.EmployeeID == user.EmployeeID && c.DateOfFeedback.Day == yesterDay && c.DateOfFeedback.Month == yesterMonth && c.DateOfFeedback.Year == yesterYear).Count();
+            var sCFRtodayME = mb.CFRSales.Where(c => c.Employee1.EmployeeID == user.EmployeeID && c.DateOfFeedback.Day == now.Day && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+            var sCFRmonthME = mb.CFRSales.Where(c => c.Employee1.EmployeeID == user.EmployeeID && c.DateOfFeedback.Month == now.Month && c.DateOfFeedback.Year == now.Year).Count();
+            var sCFRyearME = mb.CFRSales.Where(c => c.Employee1.EmployeeID == user.EmployeeID && c.DateOfFeedback.Year == now.Year).Count();
+
+            ViewBag.CFRyesterday = mCFRyesterdayME + iCFRyesterdayME + pCFRyesterdayME + sCFRyesterdayME;
+            ViewBag.CFRtoday = mCFRtodayME + iCFRtodayME + pCFRtodayME + sCFRtodayME;
+            ViewBag.CFRmonth = mCFRmonthME + iCFRmonthME + pCFRmonthME + sCFRmonthME;
+            ViewBag.CFRyear = mCFRyearME + iCFRyearME + pCFRyearME + sCFRyearME;
 
             ViewBag.TaskPriorityId = new SelectList(db.TaskPriorities, "Id", "Priority");
             ViewBag.Urgent = db.Tasks.Where(t => t.AuthorId == user.Id && t.Complete == false && t.TaskPriorityId == 4).OrderBy(t => t.Id).ToList();

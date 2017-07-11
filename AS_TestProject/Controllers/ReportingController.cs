@@ -649,10 +649,12 @@ namespace AS_TestProject.Controllers
             decimal mtgCFR = mb.CFRMortgages.Count();
             decimal insCFR = mb.CFRInsurances.Count();
             decimal prCFR = mb.CFRPatientRecruitments.Count();
+            decimal slsCFR = mb.CFRSales.Count();
 
             ViewBag.mtgCFR = mtgCFR;
             ViewBag.insCFR = insCFR;
             ViewBag.prCFR = prCFR;
+            ViewBag.slsCFR = slsCFR;
 
             ////////////////////// MORTGAGE //////////////////////////////////////////////////////////
             decimal mTE1yes = mb.CFRMortgages.Where(c => c.mTEQ1 == 1).Count();
@@ -1104,6 +1106,119 @@ namespace AS_TestProject.Controllers
             ViewBag.pAOI2yes = Math.Round((pAOI2yes * 10000) / prCFR) / 100;
             ViewBag.pAOI2no = Math.Round((pAOI2no * 10000) / prCFR) / 100;
             ViewBag.pAOI2na = Math.Round((pAOI2na * 10000) / prCFR) / 100;
+
+            ////////////////////// SALES //////////////////////////////////////////////////////////
+            decimal sTE1yes = mb.CFRSales.Where(c => c.sTEQ1 == 1).Count();
+            decimal sTE1no = mb.CFRSales.Where(c => c.sTEQ1 == 2).Count();
+            decimal sTE1na = mb.CFRSales.Where(c => c.sTEQ1 == 3).Count();
+
+            ViewBag.sTE1yes = Math.Round((sTE1yes * 10000) / slsCFR) / 100;
+            ViewBag.sTE1no = Math.Round((sTE1no * 10000) / slsCFR) / 100;
+            ViewBag.sTE1na = Math.Round((sTE1na * 10000) / slsCFR) / 100;
+
+            decimal sTE2yes = mb.CFRSales.Where(c => c.sTEQ2 == 1).Count();
+            decimal sTE2no = mb.CFRSales.Where(c => c.sTEQ2 == 2).Count();
+            decimal sTE2na = mb.CFRSales.Where(c => c.sTEQ2 == 3).Count();
+
+            ViewBag.sTE2yes = Math.Round((sTE2yes * 10000) / slsCFR) / 100;
+            ViewBag.sTE2no = Math.Round((sTE2no * 10000) / slsCFR) / 100;
+            ViewBag.sTE2na = Math.Round((sTE2na * 10000) / slsCFR) / 100;
+
+            decimal sTE3yes = mb.CFRSales.Where(c => c.sTEQ3 == 1).Count();
+            decimal sTE3no = mb.CFRSales.Where(c => c.sTEQ3 == 2).Count();
+            decimal sTE3na = mb.CFRSales.Where(c => c.sTEQ3 == 3).Count();
+
+            ViewBag.sTE3yes = Math.Round((sTE3yes * 10000) / slsCFR) / 100;
+            ViewBag.sTE3no = Math.Round((sTE3no * 10000) / slsCFR) / 100;
+            ViewBag.sTE3na = Math.Round((sTE3na * 10000) / slsCFR) / 100;
+
+            decimal sTE4yes = mb.CFRSales.Where(c => c.sTEQ4 == 1).Count();
+            decimal sTE4no = mb.CFRSales.Where(c => c.sTEQ4 == 2).Count();
+            decimal sTE4na = mb.CFRSales.Where(c => c.sTEQ4 == 3).Count();
+
+            ViewBag.sTE4yes = Math.Round((sTE4yes * 10000) / slsCFR) / 100;
+            ViewBag.sTE4no = Math.Round((sTE4no * 10000) / slsCFR) / 100;
+            ViewBag.sTE4na = Math.Round((sTE4na * 10000) / slsCFR) / 100;
+
+            decimal sP1yes = mb.CFRSales.Where(c => c.sPQ1 == 1).Count();
+            decimal sP1no = mb.CFRSales.Where(c => c.sPQ1 == 2).Count();
+            decimal sP1na = mb.CFRSales.Where(c => c.sPQ1 == 3).Count();
+
+            ViewBag.sP1yes = Math.Round((sP1yes * 10000) / slsCFR) / 100;
+            ViewBag.sP1no = Math.Round((sP1no * 10000) / slsCFR) / 100;
+            ViewBag.sP1na = Math.Round((sP1na * 10000) / slsCFR) / 100;
+
+            decimal sP2yes = mb.CFRSales.Where(c => c.sPQ2 == 1).Count();
+            decimal sP2no = mb.CFRSales.Where(c => c.sPQ2 == 2).Count();
+            decimal sP2na = mb.CFRSales.Where(c => c.sPQ2 == 3).Count();
+
+            ViewBag.sP2yes = Math.Round((sP2yes * 10000) / slsCFR) / 100;
+            ViewBag.sP2no = Math.Round((sP2no * 10000) / slsCFR) / 100;
+            ViewBag.sP2na = Math.Round((sP2na * 10000) / slsCFR) / 100;
+
+            decimal sP3yes = mb.CFRSales.Where(c => c.sPQ3 == 1).Count();
+            decimal sP3no = mb.CFRSales.Where(c => c.sPQ3 == 2).Count();
+            decimal sP3na = mb.CFRSales.Where(c => c.sPQ3 == 3).Count();
+
+            ViewBag.sP3yes = Math.Round((sP3yes * 10000) / slsCFR) / 100;
+            ViewBag.sP3no = Math.Round((sP3no * 10000) / slsCFR) / 100;
+            ViewBag.sP3na = Math.Round((sP3na * 10000) / slsCFR) / 100;
+
+            decimal sP4yes = mb.CFRSales.Where(c => c.sPQ4 == 1).Count();
+            decimal sP4no = mb.CFRSales.Where(c => c.sPQ4 == 2).Count();
+            decimal sP4na = mb.CFRSales.Where(c => c.sPQ4 == 3).Count();
+
+            ViewBag.sP4yes = Math.Round((sP4yes * 10000) / slsCFR) / 100;
+            ViewBag.sP4no = Math.Round((sP4no * 10000) / slsCFR) / 100;
+            ViewBag.sP4na = Math.Round((sP4na * 10000) / slsCFR) / 100;
+
+            decimal sC1yes = mb.CFRSales.Where(c => c.sCQ1 == 1).Count();
+            decimal sC1no = mb.CFRSales.Where(c => c.sCQ1 == 2).Count();
+            decimal sC1na = mb.CFRSales.Where(c => c.sCQ1 == 3).Count();
+
+            ViewBag.sC1yes = Math.Round((sC1yes * 10000) / slsCFR) / 100;
+            ViewBag.sC1no = Math.Round((sC1no * 10000) / slsCFR) / 100;
+            ViewBag.sC1na = Math.Round((sC1na * 10000) / slsCFR) / 100;
+
+            decimal sC2yes = mb.CFRSales.Where(c => c.sCQ2 == 1).Count();
+            decimal sC2no = mb.CFRSales.Where(c => c.sCQ2 == 2).Count();
+            decimal sC2na = mb.CFRSales.Where(c => c.sCQ2 == 3).Count();
+
+            ViewBag.sC2yes = Math.Round((sC2yes * 10000) / slsCFR) / 100;
+            ViewBag.sC2no = Math.Round((sC2no * 10000) / slsCFR) / 100;
+            ViewBag.sC2na = Math.Round((sC2na * 10000) / slsCFR) / 100;
+
+            decimal sA1yes = mb.CFRSales.Where(c => c.sAQ1 == 1).Count();
+            decimal sA1no = mb.CFRSales.Where(c => c.sAQ1 == 2).Count();
+            decimal sA1na = mb.CFRSales.Where(c => c.sAQ1 == 3).Count();
+
+            ViewBag.sA1yes = Math.Round((sA1yes * 10000) / slsCFR) / 100;
+            ViewBag.sA1no = Math.Round((sA1no * 10000) / slsCFR) / 100;
+            ViewBag.sA1na = Math.Round((sA1na * 10000) / slsCFR) / 100;
+
+            decimal sA2yes = mb.CFRSales.Where(c => c.sAQ2 == 1).Count();
+            decimal sA2no = mb.CFRSales.Where(c => c.sAQ2 == 2).Count();
+            decimal sA2na = mb.CFRSales.Where(c => c.sAQ2 == 3).Count();
+
+            ViewBag.sA2yes = Math.Round((sA2yes * 10000) / slsCFR) / 100;
+            ViewBag.sA2no = Math.Round((sA2no * 10000) / slsCFR) / 100;
+            ViewBag.sA2na = Math.Round((sA2na * 10000) / slsCFR) / 100;
+
+            decimal sAOI1yes = mb.CFRSales.Where(c => c.sAOIQ1 == 1).Count();
+            decimal sAOI1no = mb.CFRSales.Where(c => c.sAOIQ1 == 2).Count();
+            decimal sAOI1na = mb.CFRSales.Where(c => c.sAOIQ1 == 3).Count();
+
+            ViewBag.sAOI1yes = Math.Round((sAOI1yes * 10000) / slsCFR) / 100;
+            ViewBag.sAOI1no = Math.Round((sAOI1no * 10000) / slsCFR) / 100;
+            ViewBag.sAOI1na = Math.Round((sAOI1na * 10000) / slsCFR) / 100;
+
+            decimal sAOI2yes = mb.CFRSales.Where(c => c.sAOIQ2 == 1).Count();
+            decimal sAOI2no = mb.CFRSales.Where(c => c.sAOIQ2 == 2).Count();
+            decimal sAOI2na = mb.CFRSales.Where(c => c.sAOIQ2 == 3).Count();
+
+            ViewBag.sAOI2yes = Math.Round((sAOI2yes * 10000) / slsCFR) / 100;
+            ViewBag.sAOI2no = Math.Round((sAOI2no * 10000) / slsCFR) / 100;
+            ViewBag.sAOI2na = Math.Round((sAOI2na * 10000) / slsCFR) / 100;
 
             return View();
         }

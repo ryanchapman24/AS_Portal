@@ -154,8 +154,8 @@
             });
         });
     </script>*@
-    <script>
-        @*var gCallsLength, gCallsValues, wCallsLength, wCallsValues, dNamesLength, dNamesValues;
+    @*<script>
+        var gCallsLength, gCallsValues, wCallsLength, wCallsValues, dNamesLength, dNamesValues;
 
         gCallsLength = @domGCalls.Length;
         wCallsLength = @domWCalls.Length;
@@ -173,13 +173,13 @@
         };
         for (i = 0; i < nArray.length; i++) {
             dNamesValues += "[" + i + "," + nArray[i] + ",";
-        };*@
+        };
         $(function () {
             var gArray = "";
             var wArray = "";
             var nArray = "";
             // ONLY THIS BLOCK NEEDS TO BE UNCOMMENTED TO GET WHERE I LAST LEFT OFF ///////////////
-            @*@foreach (var c in activeDoms)
+            @foreach (var c in activeDoms)
             {
                 @:gArray += "[" + "@c.Number" + ", " + "@c.GCalls" + "],";
             }
@@ -193,7 +193,7 @@
             }
             console.log(gArray);
             console.log(wArray);
-            console.log(nArray);*@
+            console.log(nArray);
             //////////////////////////////////////////////////////////////////////////////////
             var wichita = {
                 label: 'Wichita',
@@ -297,5 +297,5 @@
             };
             $.plot($("#call-volume-chart"), dataset, options);
         });
-    </script>
+    </script>*@
 }

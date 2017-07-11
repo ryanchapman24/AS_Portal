@@ -14,6 +14,12 @@ namespace AS_TestProject.Entities
     
     public partial class AgentDailyHour
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AgentDailyHour()
+        {
+            this.AgentDailyHoursToDomainMasters = new HashSet<AgentDailyHoursToDomainMaster>();
+        }
+    
         public int AgentDailyHoursID { get; set; }
         public int EmployeeID { get; set; }
         public byte DomainMasterID { get; set; }
@@ -32,5 +38,7 @@ namespace AS_TestProject.Entities
         public virtual AgentTimeAdjustmentReason AgentTimeAdjustmentReason { get; set; }
         public virtual PayPeriod PayPeriod { get; set; }
         public virtual Employee Employee1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgentDailyHoursToDomainMaster> AgentDailyHoursToDomainMasters { get; set; }
     }
 }

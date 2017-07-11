@@ -274,6 +274,9 @@
     <Compile Include="Entities\CFRPerformanceAnalysi.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\CFRSale.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\ClientLead.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
@@ -826,6 +829,9 @@
     <Content Include="Views\Reporting\DomainHours.cshtml" />
     <Content Include="Views\Home\Feedback.cshtml" />
     <Content Include="Views\Home\SuggestionDetails.cshtml" />
+    <Content Include="Views\Employees\SalesCFR_Delete.cshtml" />
+    <Content Include="Views\Employees\SalesCFR_Details.cshtml" />
+    <Content Include="Views\Employees\SalesCFR_Edit.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

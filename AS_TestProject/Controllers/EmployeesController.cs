@@ -162,7 +162,7 @@ namespace AS_TestProject.Controllers
             }
 
             var domains = new List<Domain>();
-            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true && d.FileMask != "D00").OrderBy(d => d.FileMask))
             {
                 var selection = new Domain();
                 selection.Id = domain.DomainMasterID;
@@ -231,6 +231,21 @@ namespace AS_TestProject.Controllers
             ViewBag.pAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
             ViewBag.pAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
 
+            ViewBag.sTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sPQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sPQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.sAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+
             Employee manager = mb.Employees.Find(employee.ManagerEmployeeID);
             Employee creator = mb.Employees.Find(employee.AddByEmployeeID);
             if (employee.EditByEmployeeID != null)
@@ -268,6 +283,7 @@ namespace AS_TestProject.Controllers
             ViewBag.mCFRs = mb.CFRMortgages.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             ViewBag.iCFRs = mb.CFRInsurances.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             ViewBag.pCFRs = mb.CFRPatientRecruitments.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
+            ViewBag.sCFRs = mb.CFRSales.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             return View(employee);
         }
 
@@ -1021,7 +1037,535 @@ namespace AS_TestProject.Controllers
             return RedirectToAction("Details", "Employees", new { id = cFRMortgage.EmployeeID });
         }
 
-            // GET: CFRInsurances/Details/5
+        // GET: CFRSales/Details/5
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult SalesCFR_Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRSale cFRSales = mb.CFRSales.Find(id);
+            if (cFRSales == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cFRSales);
+        }
+
+        // POST: CFRSales/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin, Quality")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SalesCFR_Create([Bind(Include = "CFRSalesID,EmployeeID,DomainMasterID,C_Calls,sTEQ1,sTEQ2,sTEQ3,sTEQ4,sPQ1,sPQ2,sPQ3,sPQ4,sCQ1,sCQ2,sAQ1,sAQ2,sAOIQ1,sAOIQ2,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRSale cFRSales)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (ModelState.IsValid)
+            {
+                cFRSales.ManagerID = user.EmployeeID;
+                cFRSales.DateOfFeedback = System.DateTime.Now;
+
+                // Telephone Etiquette Rating Calculation (SALES)
+                int sTER = 0;
+                if (cFRSales.sTEQ1 == 2)
+                {
+                    sTER++;
+                }
+                if (cFRSales.sTEQ2 == 2)
+                {
+                    sTER++;
+                }
+                if (cFRSales.sTEQ3 == 2)
+                {
+                    sTER++;
+                }
+                if (cFRSales.sTEQ4 == 2)
+                {
+                    sTER++;
+                }
+
+                if (cFRSales.sTEQ1 == 3 && cFRSales.sTEQ2 == 3 && cFRSales.sTEQ3 == 3 && cFRSales.sTEQ4 == 3)
+                {
+                    cFRSales.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (sTER == 0)
+                    {
+                        cFRSales.TelephoneEtiquetteRating = 1;
+                    }
+                    if (sTER > 0 && sTER <= 3)
+                    {
+                        cFRSales.TelephoneEtiquetteRating = 2;
+                    }
+                    if (sTER == 4)
+                    {
+                        cFRSales.TelephoneEtiquetteRating = 3;
+                    }
+                }
+
+                // Professionalism Rating Calculation (SALES)
+                int sPR = 0;
+                if (cFRSales.sPQ1 == 2)
+                {
+                    sPR++;
+                }
+                if (cFRSales.sPQ2 == 2)
+                {
+                    sPR++;
+                }
+                if (cFRSales.sPQ3 == 2)
+                {
+                    sPR++;
+                }
+                if (cFRSales.sPQ4 == 2)
+                {
+                    sPR++;
+                }
+
+                if (cFRSales.sPQ1 == 3 && cFRSales.sPQ2 == 3 && cFRSales.sPQ3 == 3 && cFRSales.sPQ4 == 3)
+                {
+                    cFRSales.ProfessionalismRating = 4;
+                }
+                else
+                {
+                    if (sPR == 0)
+                    {
+                        cFRSales.ProfessionalismRating = 1;
+                    }
+                    if (sPR > 0 && sPR <= 3)
+                    {
+                        cFRSales.ProfessionalismRating = 2;
+                    }
+                    if (sPR == 4)
+                    {
+                        cFRSales.ProfessionalismRating = 3;
+                    }
+                }
+
+                // Compliance Rating Calculation (SALES)
+                int sCR = 0;
+                if (cFRSales.sCQ1 == 2)
+                {
+                    sCR++;
+                }
+                if (cFRSales.sCQ2 == 2)
+                {
+                    sCR++;
+                }
+
+                if (cFRSales.sCQ1 == 3 && cFRSales.sCQ2 == 3)
+                {
+                    cFRSales.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (sCR == 0)
+                    {
+                        cFRSales.ComplianceRating = 1;
+                    }
+                    if (sCR > 0)
+                    {
+                        cFRSales.ComplianceRating = 3;
+                    }
+                }
+
+                // Adherence Rating Calculation (SALES)
+                int sAR = 0;
+                if (cFRSales.sAQ1 == 2)
+                {
+                    sAR++;
+                }
+                if (cFRSales.sAQ2 == 2)
+                {
+                    sAR++;
+                }
+
+                if (cFRSales.sAQ1 == 3 && cFRSales.sAQ2 == 3)
+                {
+                    cFRSales.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (sAR == 0)
+                    {
+                        cFRSales.AdheranceRating = 1;
+                    }
+                    if (sAR == 1)
+                    {
+                        cFRSales.AdheranceRating = 2;
+                    }
+                    if (sAR > 1)
+                    {
+                        cFRSales.AdheranceRating = 3;
+                    }
+                }
+
+                // Accuracy of Information Rating Calculation (SALES)
+                int sAOIR = 0;
+                if (cFRSales.sAOIQ1 == 2)
+                {
+                    sAOIR++;
+                }
+                if (cFRSales.sAOIQ2 == 2)
+                {
+                    sAOIR++;
+                }
+                
+                if (cFRSales.sAOIQ1 == 3 && cFRSales.sAOIQ2 == 3)
+                {
+                    cFRSales.AccuracyOfInformationRating = 4;
+                }
+                else
+                {
+                    if (sAOIR == 0)
+                    {
+                        cFRSales.AccuracyOfInformationRating = 1;
+                    }
+                    if (sAOIR > 0)
+                    {
+                        cFRSales.AccuracyOfInformationRating = 3;
+                    }
+                }
+
+                mb.CFRSales.Add(cFRSales);
+                mb.SaveChanges();
+                return RedirectToAction("Details", "Employees", new { id = cFRSales.EmployeeID });
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRSales.DomainMasterID);
+            ViewBag.sTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ1);
+            ViewBag.sTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ2);
+            ViewBag.sTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ3);
+            ViewBag.sTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ4);
+            ViewBag.sPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ1);
+            ViewBag.sPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ2);
+            ViewBag.sPQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ3);
+            ViewBag.sPQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ4);
+            ViewBag.sCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sCQ1);
+            ViewBag.sCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sCQ2);
+            ViewBag.sAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAQ1);
+            ViewBag.sAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAQ2);
+            ViewBag.sAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAOIQ1);
+            ViewBag.sAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAOIQ2);
+            return View(cFRSales);
+        }
+
+        // GET: CFRSales/Edit/5
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult SalesCFR_Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRSale cFRSales = mb.CFRSales.Find(id);
+            if (cFRSales == null)
+            {
+                return HttpNotFound();
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true && d.FileMask != "D00").OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRSales.DomainMasterID);
+            ViewBag.sTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ1);
+            ViewBag.sTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ2);
+            ViewBag.sTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ3);
+            ViewBag.sTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ4);
+            ViewBag.sPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ1);
+            ViewBag.sPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ2);
+            ViewBag.sPQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ3);
+            ViewBag.sPQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ4);
+            ViewBag.sCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sCQ1);
+            ViewBag.sCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sCQ2);
+            ViewBag.sAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAQ1);
+            ViewBag.sAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAQ2);
+            ViewBag.sAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAOIQ1);
+            ViewBag.sAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAOIQ2);
+            ViewBag.EmployeeName = cFRSales.Employee.FirstName + " " + cFRSales.Employee.LastName;
+            return View(cFRSales);
+        }
+
+        // POST: CFRSales/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin, Quality")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SalesCFR_Edit([Bind(Include = "CFRSalesID,EmployeeID,DomainMasterID,C_Calls,sTEQ1,sTEQ2,sTEQ3,sTEQ4,sPQ1,sPQ2,sPQ3,sPQ4,sCQ1,sCQ2,sAQ1,sAQ2,sAOIQ1,sAOIQ2,TelephoneEtiquetteRating,ProfessionalismRating,ComplianceRating,AdheranceRating,AccuracyOfInformationRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRSale cFRSales)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (ModelState.IsValid)
+            {
+                mb.CFRSales.Attach(cFRSales);
+                mb.Entry(cFRSales).Property("DomainMasterID").IsModified = true;
+                mb.Entry(cFRSales).Property("C_Calls").IsModified = true;
+                mb.Entry(cFRSales).Property("sTEQ1").IsModified = true;
+                mb.Entry(cFRSales).Property("sTEQ2").IsModified = true;
+                mb.Entry(cFRSales).Property("sTEQ3").IsModified = true;
+                mb.Entry(cFRSales).Property("sTEQ4").IsModified = true;
+                mb.Entry(cFRSales).Property("sPQ1").IsModified = true;
+                mb.Entry(cFRSales).Property("sPQ2").IsModified = true;
+                mb.Entry(cFRSales).Property("sPQ3").IsModified = true;
+                mb.Entry(cFRSales).Property("sPQ4").IsModified = true;
+                mb.Entry(cFRSales).Property("sCQ1").IsModified = true;
+                mb.Entry(cFRSales).Property("sCQ2").IsModified = true;
+                mb.Entry(cFRSales).Property("sAQ1").IsModified = true;
+                mb.Entry(cFRSales).Property("sAQ2").IsModified = true;
+                mb.Entry(cFRSales).Property("sAOIQ1").IsModified = true;
+                mb.Entry(cFRSales).Property("sAOIQ2").IsModified = true;
+                mb.Entry(cFRSales).Property("TelephoneEtiquetteRating").IsModified = true;
+                mb.Entry(cFRSales).Property("ProfessionalismRating").IsModified = true;
+                mb.Entry(cFRSales).Property("ComplianceRating").IsModified = true;
+                mb.Entry(cFRSales).Property("AdheranceRating").IsModified = true;
+                mb.Entry(cFRSales).Property("AccuracyOfInformationRating").IsModified = true;
+                mb.Entry(cFRSales).Property("Comments").IsModified = true;
+                mb.Entry(cFRSales).Property("Strengths").IsModified = true;
+                mb.Entry(cFRSales).Property("ActionPlan").IsModified = true;
+                cFRSales.ManagerID = user.EmployeeID;
+
+                // Telephone Etiquette Rating Calculation (SALES)
+                int sTER = 0;
+                if (cFRSales.sTEQ1 == 2)
+                {
+                    sTER++;
+                }
+                if (cFRSales.sTEQ2 == 2)
+                {
+                    sTER++;
+                }
+                if (cFRSales.sTEQ3 == 2)
+                {
+                    sTER++;
+                }
+                if (cFRSales.sTEQ4 == 2)
+                {
+                    sTER++;
+                }
+
+                if (cFRSales.sTEQ1 == 3 && cFRSales.sTEQ2 == 3 && cFRSales.sTEQ3 == 3 && cFRSales.sTEQ4 == 3)
+                {
+                    cFRSales.TelephoneEtiquetteRating = 4;
+                }
+                else
+                {
+                    if (sTER == 0)
+                    {
+                        cFRSales.TelephoneEtiquetteRating = 1;
+                    }
+                    if (sTER > 0 && sTER <= 3)
+                    {
+                        cFRSales.TelephoneEtiquetteRating = 2;
+                    }
+                    if (sTER == 4)
+                    {
+                        cFRSales.TelephoneEtiquetteRating = 3;
+                    }
+                }
+
+                // Professionalism Rating Calculation (SALES)
+                int sPR = 0;
+                if (cFRSales.sPQ1 == 2)
+                {
+                    sPR++;
+                }
+                if (cFRSales.sPQ2 == 2)
+                {
+                    sPR++;
+                }
+                if (cFRSales.sPQ3 == 2)
+                {
+                    sPR++;
+                }
+                if (cFRSales.sPQ4 == 2)
+                {
+                    sPR++;
+                }
+
+                if (cFRSales.sPQ1 == 3 && cFRSales.sPQ2 == 3 && cFRSales.sPQ3 == 3 && cFRSales.sPQ4 == 3)
+                {
+                    cFRSales.ProfessionalismRating = 4;
+                }
+                else
+                {
+                    if (sPR == 0)
+                    {
+                        cFRSales.ProfessionalismRating = 1;
+                    }
+                    if (sPR > 0 && sPR <= 3)
+                    {
+                        cFRSales.ProfessionalismRating = 2;
+                    }
+                    if (sPR == 4)
+                    {
+                        cFRSales.ProfessionalismRating = 3;
+                    }
+                }
+
+                // Compliance Rating Calculation (SALES)
+                int sCR = 0;
+                if (cFRSales.sCQ1 == 2)
+                {
+                    sCR++;
+                }
+                if (cFRSales.sCQ2 == 2)
+                {
+                    sCR++;
+                }
+
+                if (cFRSales.sCQ1 == 3 && cFRSales.sCQ2 == 3)
+                {
+                    cFRSales.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (sCR == 0)
+                    {
+                        cFRSales.ComplianceRating = 1;
+                    }
+                    if (sCR > 0)
+                    {
+                        cFRSales.ComplianceRating = 3;
+                    }
+                }
+
+                // Adherence Rating Calculation (SALES)
+                int sAR = 0;
+                if (cFRSales.sAQ1 == 2)
+                {
+                    sAR++;
+                }
+                if (cFRSales.sAQ2 == 2)
+                {
+                    sAR++;
+                }
+
+                if (cFRSales.sAQ1 == 3 && cFRSales.sAQ2 == 3)
+                {
+                    cFRSales.AdheranceRating = 4;
+                }
+                else
+                {
+                    if (sAR == 0)
+                    {
+                        cFRSales.AdheranceRating = 1;
+                    }
+                    if (sAR == 1)
+                    {
+                        cFRSales.AdheranceRating = 2;
+                    }
+                    if (sAR > 1)
+                    {
+                        cFRSales.AdheranceRating = 3;
+                    }
+                }
+
+                // Accuracy of Information Rating Calculation (SALES)
+                int sAOIR = 0;
+                if (cFRSales.sAOIQ1 == 2)
+                {
+                    sAOIR++;
+                }
+                if (cFRSales.sAOIQ2 == 2)
+                {
+                    sAOIR++;
+                }
+
+                if (cFRSales.sAOIQ1 == 3 && cFRSales.sAOIQ2 == 3)
+                {
+                    cFRSales.AccuracyOfInformationRating = 4;
+                }
+                else
+                {
+                    if (sAOIR == 0)
+                    {
+                        cFRSales.AccuracyOfInformationRating = 1;
+                    }
+                    if (sAOIR > 0)
+                    {
+                        cFRSales.AccuracyOfInformationRating = 3;
+                    }
+                }
+
+                mb.SaveChanges();
+                return RedirectToAction("Details", "Employees", new { id = cFRSales.EmployeeID });
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRSales.DomainMasterID);
+            ViewBag.sTEQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ1);
+            ViewBag.sTEQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ2);
+            ViewBag.sTEQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ3);
+            ViewBag.sTEQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sTEQ4);
+            ViewBag.sPQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ1);
+            ViewBag.sPQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ2);
+            ViewBag.sPQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ3);
+            ViewBag.sPQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sPQ4);
+            ViewBag.sCQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sCQ1);
+            ViewBag.sCQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sCQ2);
+            ViewBag.sAQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAQ1);
+            ViewBag.sAQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAQ2);
+            ViewBag.sAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAOIQ1);
+            ViewBag.sAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRSales.sAOIQ2);
+            ViewBag.EmployeeName = cFRSales.Employee.FirstName + " " + cFRSales.Employee.LastName;
+            return View(cFRSales);
+        }
+
+        // GET: CFRSales/Delete/5
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult SalesCFR_Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRSale cFRSales = mb.CFRSales.Find(id);
+            if (cFRSales == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cFRSales);
+        }
+
+        // POST: CFRSales/Delete/5
+        [HttpPost, ActionName("SalesCFR_Delete")]
+        [Authorize(Roles = "Admin, Quality")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SalesCFR_DeleteConfirmed(int id)
+        {
+            CFRSale cFRSales = mb.CFRSales.Find(id);
+            mb.CFRSales.Remove(cFRSales);
+            mb.SaveChanges();
+            return RedirectToAction("Details", "Employees", new { id = cFRSales.EmployeeID });
+        }
+
+        // GET: CFRInsurances/Details/5
         [Authorize(Roles = "Admin, Quality")]
         public ActionResult InsuranceCFR_Details(int? id)
         {
@@ -2323,6 +2867,17 @@ namespace AS_TestProject.Controllers
                 item.ForEmployee = cfr.Employee1.FirstName + " " + cfr.Employee1.LastName;
                 item.ForEmployeeID = cfr.EmployeeID;
                 item.Type = "Patient Recruitment";
+
+                cfrs.Add(item);
+            }
+            foreach (var cfr in mb.CFRSales.Where(c => c.Employee1.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList())
+            {
+                var item = new CompletedCFR();
+                item.Id = cfr.CFRSalesID;
+                item.DateSubmitted = cfr.DateOfFeedback;
+                item.ForEmployee = cfr.Employee.FirstName + " " + cfr.Employee.LastName;
+                item.ForEmployeeID = cfr.EmployeeID;
+                item.Type = "Sales";
 
                 cfrs.Add(item);
             }

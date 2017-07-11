@@ -59,11 +59,13 @@ namespace AS_TestProject.Controllers
                 var mtgCFR = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID).Count();
                 var insCFR = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID).Count();
                 var prCFR = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID).Count();
-                decimal totCFR = mtgCFR + insCFR + prCFR;
+                var slsCFR = domain.CFRSales.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID).Count();
+                decimal totCFR = mtgCFR + insCFR + prCFR + slsCFR;
 
                 var mtgCFRs = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID);
                 var insCFRs = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID);
                 var prCFRs = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee1.SiteID == SiteID);
+                var slsCFRs = domain.CFRSales.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1) && d.Employee.SiteID == SiteID);
 
                 var totCalls = 0;
                 if (totCFR > 0)
@@ -79,6 +81,11 @@ namespace AS_TestProject.Controllers
                     }
 
                     foreach (var call in prCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+
+                    foreach (var call in slsCFRs)
                     {
                         totCalls = totCalls + call.C_Calls;
                     }
@@ -102,10 +109,15 @@ namespace AS_TestProject.Controllers
                 var prTE3 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
                 var prTE4 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
 
-                decimal totalTE1 = mtgTE1 + insTE1 + prTE1;
-                decimal totalTE2 = mtgTE2 + insTE2 + prTE2;
-                decimal totalTE3 = mtgTE3 + insTE3 + prTE3;
-                decimal totalTE4 = mtgTE4 + insTE4 + prTE4;
+                var slsTE1 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var slsTE2 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var slsTE3 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var slsTE4 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                decimal totalTE1 = mtgTE1 + insTE1 + prTE1 + slsTE1;
+                decimal totalTE2 = mtgTE2 + insTE2 + prTE2 + slsTE2;
+                decimal totalTE3 = mtgTE3 + insTE3 + prTE3 + slsTE3;
+                decimal totalTE4 = mtgTE4 + insTE4 + prTE4 + slsTE4;
 
                 decimal percentTE1 = 0;
                 decimal percentTE2 = 0;
@@ -141,10 +153,15 @@ namespace AS_TestProject.Controllers
                 var prP3 = prCFRs.Where(d => d.ProfessionalismRating == 3).Count();
                 var prP4 = prCFRs.Where(d => d.ProfessionalismRating == 4).Count();
 
-                decimal totalP1 = mtgP1 + insP1 + prP1;
-                decimal totalP2 = mtgP2 + insP2 + prP2;
-                decimal totalP3 = mtgP3 + insP3 + prP3;
-                decimal totalP4 = mtgP4 + insP4 + prP4;
+                var slsP1 = slsCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var slsP2 = slsCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var slsP3 = slsCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var slsP4 = slsCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                decimal totalP1 = mtgP1 + insP1 + prP1 + slsP1;
+                decimal totalP2 = mtgP2 + insP2 + prP2 + slsP2;
+                decimal totalP3 = mtgP3 + insP3 + prP3 + slsP3;
+                decimal totalP4 = mtgP4 + insP4 + prP4 + slsP4;
 
                 decimal percentP1 = 0;
                 decimal percentP2 = 0;
@@ -180,10 +197,15 @@ namespace AS_TestProject.Controllers
                 var prC3 = prCFRs.Where(d => d.ComplianceRating == 3).Count();
                 var prC4 = prCFRs.Where(d => d.ComplianceRating == 4).Count();
 
-                decimal totalC1 = mtgC1 + insC1 + prC1;
-                decimal totalC2 = mtgC2 + insC2 + prC2;
-                decimal totalC3 = mtgC3 + insC3 + prC3;
-                decimal totalC4 = mtgC4 + insC4 + prC4;
+                var slsC1 = slsCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var slsC2 = slsCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var slsC3 = slsCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var slsC4 = slsCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                decimal totalC1 = mtgC1 + insC1 + prC1 + slsC1;
+                decimal totalC2 = mtgC2 + insC2 + prC2 + slsC2;
+                decimal totalC3 = mtgC3 + insC3 + prC3 + slsC3;
+                decimal totalC4 = mtgC4 + insC4 + prC4 + slsC4;
 
                 decimal percentC1 = 0;
                 decimal percentC2 = 0;
@@ -219,10 +241,15 @@ namespace AS_TestProject.Controllers
                 var prA3 = prCFRs.Where(d => d.AdheranceRating == 3).Count();
                 var prA4 = prCFRs.Where(d => d.AdheranceRating == 4).Count();
 
-                decimal totalA1 = mtgA1 + insA1 + prA1;
-                decimal totalA2 = mtgA2 + insA2 + prA2;
-                decimal totalA3 = mtgA3 + insA3 + prA3;
-                decimal totalA4 = mtgA4 + insA4 + prA4;
+                var slsA1 = slsCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var slsA2 = slsCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var slsA3 = slsCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var slsA4 = slsCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                decimal totalA1 = mtgA1 + insA1 + prA1 + slsA1;
+                decimal totalA2 = mtgA2 + insA2 + prA2 + slsA2;
+                decimal totalA3 = mtgA3 + insA3 + prA3 + slsA3;
+                decimal totalA4 = mtgA4 + insA4 + prA4 + slsA4;
 
                 decimal percentA1 = 0;
                 decimal percentA2 = 0;
@@ -258,10 +285,15 @@ namespace AS_TestProject.Controllers
                 var prAOI3 = prCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
                 var prAOI4 = prCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
 
-                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1;
-                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2;
-                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3;
-                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4;
+                var slsAOI1 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var slsAOI2 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var slsAOI3 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var slsAOI4 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1 + slsAOI1;
+                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2 + slsAOI2;
+                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3 + slsAOI3;
+                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4 + slsAOI4;
 
                 decimal percentAOI1 = 0;
                 decimal percentAOI2 = 0;
@@ -300,11 +332,13 @@ namespace AS_TestProject.Controllers
                 var mtgCFR = domain.CFRMortgages.Where(d => d.Employee.SiteID == SiteID).Count();
                 var insCFR = domain.CFRInsurances.Where(d => d.Employee1.SiteID == SiteID).Count();
                 var prCFR = domain.CFRPatientRecruitments.Where(d => d.Employee1.SiteID == SiteID).Count();
-                decimal totCFR = mtgCFR + insCFR + prCFR;
+                var slsCFR = domain.CFRSales.Where(d => d.Employee.SiteID == SiteID).Count();
+                decimal totCFR = mtgCFR + insCFR + prCFR + slsCFR;
 
                 var mtgCFRs = domain.CFRMortgages.Where(d => d.Employee.SiteID == SiteID);
                 var insCFRs = domain.CFRInsurances.Where(d => d.Employee1.SiteID == SiteID);
                 var prCFRs = domain.CFRPatientRecruitments.Where(d => d.Employee1.SiteID == SiteID);
+                var slsCFRs = domain.CFRSales.Where(d => d.Employee.SiteID == SiteID);
 
                 var totCalls = 0;
                 if (totCFR > 0)
@@ -320,6 +354,10 @@ namespace AS_TestProject.Controllers
                     }
 
                     foreach (var call in prCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+                    foreach (var call in slsCFRs)
                     {
                         totCalls = totCalls + call.C_Calls;
                     }
@@ -343,10 +381,15 @@ namespace AS_TestProject.Controllers
                 var prTE3 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
                 var prTE4 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
 
-                decimal totalTE1 = mtgTE1 + insTE1 + prTE1;
-                decimal totalTE2 = mtgTE2 + insTE2 + prTE2;
-                decimal totalTE3 = mtgTE3 + insTE3 + prTE3;
-                decimal totalTE4 = mtgTE4 + insTE4 + prTE4;
+                var slsTE1 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var slsTE2 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var slsTE3 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var slsTE4 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                decimal totalTE1 = mtgTE1 + insTE1 + prTE1 + slsTE1;
+                decimal totalTE2 = mtgTE2 + insTE2 + prTE2 + slsTE2;
+                decimal totalTE3 = mtgTE3 + insTE3 + prTE3 + slsTE3;
+                decimal totalTE4 = mtgTE4 + insTE4 + prTE4 + slsTE4;
 
                 decimal percentTE1 = 0;
                 decimal percentTE2 = 0;
@@ -382,10 +425,15 @@ namespace AS_TestProject.Controllers
                 var prP3 = prCFRs.Where(d => d.ProfessionalismRating == 3).Count();
                 var prP4 = prCFRs.Where(d => d.ProfessionalismRating == 4).Count();
 
-                decimal totalP1 = mtgP1 + insP1 + prP1;
-                decimal totalP2 = mtgP2 + insP2 + prP2;
-                decimal totalP3 = mtgP3 + insP3 + prP3;
-                decimal totalP4 = mtgP4 + insP4 + prP4;
+                var slsP1 = slsCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var slsP2 = slsCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var slsP3 = slsCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var slsP4 = slsCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                decimal totalP1 = mtgP1 + insP1 + prP1 + slsP1;
+                decimal totalP2 = mtgP2 + insP2 + prP2 + slsP2;
+                decimal totalP3 = mtgP3 + insP3 + prP3 + slsP3;
+                decimal totalP4 = mtgP4 + insP4 + prP4 + slsP4;
 
                 decimal percentP1 = 0;
                 decimal percentP2 = 0;
@@ -421,10 +469,15 @@ namespace AS_TestProject.Controllers
                 var prC3 = prCFRs.Where(d => d.ComplianceRating == 3).Count();
                 var prC4 = prCFRs.Where(d => d.ComplianceRating == 4).Count();
 
-                decimal totalC1 = mtgC1 + insC1 + prC1;
-                decimal totalC2 = mtgC2 + insC2 + prC2;
-                decimal totalC3 = mtgC3 + insC3 + prC3;
-                decimal totalC4 = mtgC4 + insC4 + prC4;
+                var slsC1 = slsCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var slsC2 = slsCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var slsC3 = slsCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var slsC4 = slsCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                decimal totalC1 = mtgC1 + insC1 + prC1 + slsC1;
+                decimal totalC2 = mtgC2 + insC2 + prC2 + slsC2;
+                decimal totalC3 = mtgC3 + insC3 + prC3 + slsC3;
+                decimal totalC4 = mtgC4 + insC4 + prC4 + slsC4;
 
                 decimal percentC1 = 0;
                 decimal percentC2 = 0;
@@ -460,10 +513,15 @@ namespace AS_TestProject.Controllers
                 var prA3 = prCFRs.Where(d => d.AdheranceRating == 3).Count();
                 var prA4 = prCFRs.Where(d => d.AdheranceRating == 4).Count();
 
-                decimal totalA1 = mtgA1 + insA1 + prA1;
-                decimal totalA2 = mtgA2 + insA2 + prA2;
-                decimal totalA3 = mtgA3 + insA3 + prA3;
-                decimal totalA4 = mtgA4 + insA4 + prA4;
+                var slsA1 = slsCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var slsA2 = slsCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var slsA3 = slsCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var slsA4 = slsCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                decimal totalA1 = mtgA1 + insA1 + prA1 + slsA1;
+                decimal totalA2 = mtgA2 + insA2 + prA2 + slsA2;
+                decimal totalA3 = mtgA3 + insA3 + prA3 + slsA3;
+                decimal totalA4 = mtgA4 + insA4 + prA4 + slsA4;
 
                 decimal percentA1 = 0;
                 decimal percentA2 = 0;
@@ -499,10 +557,15 @@ namespace AS_TestProject.Controllers
                 var prAOI3 = prCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
                 var prAOI4 = prCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
 
-                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1;
-                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2;
-                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3;
-                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4;
+                var slsAOI1 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var slsAOI2 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var slsAOI3 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var slsAOI4 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1 + slsAOI1;
+                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2 + slsAOI2;
+                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3 + slsAOI3;
+                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4 + slsAOI4;
 
                 decimal percentAOI1 = 0;
                 decimal percentAOI2 = 0;
@@ -539,11 +602,13 @@ namespace AS_TestProject.Controllers
                 var mtgCFR = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1)).Count();
                 var insCFR = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1)).Count();
                 var prCFR = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1)).Count();
-                decimal totCFR = mtgCFR + insCFR + prCFR;
+                var slsCFR = domain.CFRSales.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1)).Count();
+                decimal totCFR = mtgCFR + insCFR + prCFR + slsCFR;
 
                 var mtgCFRs = domain.CFRMortgages.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1));
                 var insCFRs = domain.CFRInsurances.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1));
                 var prCFRs = domain.CFRPatientRecruitments.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1));
+                var slsCFRs = domain.CFRSales.Where(d => d.DateOfFeedback >= start.Value && d.DateOfFeedback < end.Value.AddDays(1));
 
                 var totCalls = 0;
                 if (totCFR > 0)
@@ -559,6 +624,10 @@ namespace AS_TestProject.Controllers
                     }
 
                     foreach (var call in prCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+                    foreach (var call in slsCFRs)
                     {
                         totCalls = totCalls + call.C_Calls;
                     }
@@ -582,10 +651,15 @@ namespace AS_TestProject.Controllers
                 var prTE3 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
                 var prTE4 = prCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
 
-                decimal totalTE1 = mtgTE1 + insTE1 + prTE1;
-                decimal totalTE2 = mtgTE2 + insTE2 + prTE2;
-                decimal totalTE3 = mtgTE3 + insTE3 + prTE3;
-                decimal totalTE4 = mtgTE4 + insTE4 + prTE4;
+                var slsTE1 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var slsTE2 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var slsTE3 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var slsTE4 = slsCFRs.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                decimal totalTE1 = mtgTE1 + insTE1 + prTE1 + slsTE1;
+                decimal totalTE2 = mtgTE2 + insTE2 + prTE2 + slsTE2;
+                decimal totalTE3 = mtgTE3 + insTE3 + prTE3 + slsTE3;
+                decimal totalTE4 = mtgTE4 + insTE4 + prTE4 + slsTE4;
 
                 decimal percentTE1 = 0;
                 decimal percentTE2 = 0;
@@ -621,10 +695,15 @@ namespace AS_TestProject.Controllers
                 var prP3 = prCFRs.Where(d => d.ProfessionalismRating == 3).Count();
                 var prP4 = prCFRs.Where(d => d.ProfessionalismRating == 4).Count();
 
-                decimal totalP1 = mtgP1 + insP1 + prP1;
-                decimal totalP2 = mtgP2 + insP2 + prP2;
-                decimal totalP3 = mtgP3 + insP3 + prP3;
-                decimal totalP4 = mtgP4 + insP4 + prP4;
+                var slsP1 = slsCFRs.Where(d => d.ProfessionalismRating == 1).Count();
+                var slsP2 = slsCFRs.Where(d => d.ProfessionalismRating == 2).Count();
+                var slsP3 = slsCFRs.Where(d => d.ProfessionalismRating == 3).Count();
+                var slsP4 = slsCFRs.Where(d => d.ProfessionalismRating == 4).Count();
+
+                decimal totalP1 = mtgP1 + insP1 + prP1 + slsP1;
+                decimal totalP2 = mtgP2 + insP2 + prP2 + slsP2;
+                decimal totalP3 = mtgP3 + insP3 + prP3 + slsP3;
+                decimal totalP4 = mtgP4 + insP4 + prP4 + slsP4;
 
                 decimal percentP1 = 0;
                 decimal percentP2 = 0;
@@ -660,10 +739,15 @@ namespace AS_TestProject.Controllers
                 var prC3 = prCFRs.Where(d => d.ComplianceRating == 3).Count();
                 var prC4 = prCFRs.Where(d => d.ComplianceRating == 4).Count();
 
-                decimal totalC1 = mtgC1 + insC1 + prC1;
-                decimal totalC2 = mtgC2 + insC2 + prC2;
-                decimal totalC3 = mtgC3 + insC3 + prC3;
-                decimal totalC4 = mtgC4 + insC4 + prC4;
+                var slsC1 = slsCFRs.Where(d => d.ComplianceRating == 1).Count();
+                var slsC2 = slsCFRs.Where(d => d.ComplianceRating == 2).Count();
+                var slsC3 = slsCFRs.Where(d => d.ComplianceRating == 3).Count();
+                var slsC4 = slsCFRs.Where(d => d.ComplianceRating == 4).Count();
+
+                decimal totalC1 = mtgC1 + insC1 + prC1 + slsC1;
+                decimal totalC2 = mtgC2 + insC2 + prC2 + slsC2;
+                decimal totalC3 = mtgC3 + insC3 + prC3 + slsC3;
+                decimal totalC4 = mtgC4 + insC4 + prC4 + slsC4;
 
                 decimal percentC1 = 0;
                 decimal percentC2 = 0;
@@ -699,10 +783,15 @@ namespace AS_TestProject.Controllers
                 var prA3 = prCFRs.Where(d => d.AdheranceRating == 3).Count();
                 var prA4 = prCFRs.Where(d => d.AdheranceRating == 4).Count();
 
-                decimal totalA1 = mtgA1 + insA1 + prA1;
-                decimal totalA2 = mtgA2 + insA2 + prA2;
-                decimal totalA3 = mtgA3 + insA3 + prA3;
-                decimal totalA4 = mtgA4 + insA4 + prA4;
+                var slsA1 = slsCFRs.Where(d => d.AdheranceRating == 1).Count();
+                var slsA2 = slsCFRs.Where(d => d.AdheranceRating == 2).Count();
+                var slsA3 = slsCFRs.Where(d => d.AdheranceRating == 3).Count();
+                var slsA4 = slsCFRs.Where(d => d.AdheranceRating == 4).Count();
+
+                decimal totalA1 = mtgA1 + insA1 + prA1 + slsA1;
+                decimal totalA2 = mtgA2 + insA2 + prA2 + slsA2;
+                decimal totalA3 = mtgA3 + insA3 + prA3 + slsA3;
+                decimal totalA4 = mtgA4 + insA4 + prA4 + slsA4;
 
                 decimal percentA1 = 0;
                 decimal percentA2 = 0;
@@ -738,10 +827,15 @@ namespace AS_TestProject.Controllers
                 var prAOI3 = prCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
                 var prAOI4 = prCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
 
-                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1;
-                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2;
-                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3;
-                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4;
+                var slsAOI1 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var slsAOI2 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var slsAOI3 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var slsAOI4 = slsCFRs.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1 + slsAOI1;
+                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2 + slsAOI2;
+                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3 + slsAOI3;
+                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4 + slsAOI4;
 
                 decimal percentAOI1 = 0;
                 decimal percentAOI2 = 0;
@@ -772,7 +866,8 @@ namespace AS_TestProject.Controllers
                 var mtgCFR = domain.CFRMortgages.Count;
                 var insCFR = domain.CFRInsurances.Count;
                 var prCFR = domain.CFRPatientRecruitments.Count;
-                decimal totCFR = mtgCFR + insCFR + prCFR;
+                var slsCFR = domain.CFRSales.Count;
+                decimal totCFR = mtgCFR + insCFR + prCFR + slsCFR;
                 var totCalls = 0;
 
                 if (totCFR > 0)
@@ -780,6 +875,7 @@ namespace AS_TestProject.Controllers
                     var mtgCFRs = domain.CFRMortgages;
                     var insCFRs = domain.CFRInsurances;
                     var prCFRs = domain.CFRPatientRecruitments;
+                    var slsCFRs = domain.CFRSales;
 
                     foreach (var call in mtgCFRs)
                     {
@@ -792,6 +888,10 @@ namespace AS_TestProject.Controllers
                     }
 
                     foreach (var call in prCFRs)
+                    {
+                        totCalls = totCalls + call.C_Calls;
+                    }
+                    foreach (var call in slsCFRs)
                     {
                         totCalls = totCalls + call.C_Calls;
                     }
@@ -815,10 +915,15 @@ namespace AS_TestProject.Controllers
                 var prTE3 = domain.CFRPatientRecruitments.Where(d => d.TelephoneEtiquetteRating == 3).Count();
                 var prTE4 = domain.CFRPatientRecruitments.Where(d => d.TelephoneEtiquetteRating == 4).Count();
 
-                decimal totalTE1 = mtgTE1 + insTE1 + prTE1;
-                decimal totalTE2 = mtgTE2 + insTE2 + prTE2;
-                decimal totalTE3 = mtgTE3 + insTE3 + prTE3;
-                decimal totalTE4 = mtgTE4 + insTE4 + prTE4;
+                var slsTE1 = domain.CFRSales.Where(d => d.TelephoneEtiquetteRating == 1).Count();
+                var slsTE2 = domain.CFRSales.Where(d => d.TelephoneEtiquetteRating == 2).Count();
+                var slsTE3 = domain.CFRSales.Where(d => d.TelephoneEtiquetteRating == 3).Count();
+                var slsTE4 = domain.CFRSales.Where(d => d.TelephoneEtiquetteRating == 4).Count();
+
+                decimal totalTE1 = mtgTE1 + insTE1 + prTE1 + slsTE1;
+                decimal totalTE2 = mtgTE2 + insTE2 + prTE2 + slsTE2;
+                decimal totalTE3 = mtgTE3 + insTE3 + prTE3 + slsTE3;
+                decimal totalTE4 = mtgTE4 + insTE4 + prTE4 + slsTE4;
 
                 decimal percentTE1 = 0;
                 decimal percentTE2 = 0;
@@ -854,10 +959,15 @@ namespace AS_TestProject.Controllers
                 var prP3 = domain.CFRPatientRecruitments.Where(d => d.ProfessionalismRating == 3).Count();
                 var prP4 = domain.CFRPatientRecruitments.Where(d => d.ProfessionalismRating == 4).Count();
 
-                decimal totalP1 = mtgP1 + insP1 + prP1;
-                decimal totalP2 = mtgP2 + insP2 + prP2;
-                decimal totalP3 = mtgP3 + insP3 + prP3;
-                decimal totalP4 = mtgP4 + insP4 + prP4;
+                var slsP1 = domain.CFRSales.Where(d => d.ProfessionalismRating == 1).Count();
+                var slsP2 = domain.CFRSales.Where(d => d.ProfessionalismRating == 2).Count();
+                var slsP3 = domain.CFRSales.Where(d => d.ProfessionalismRating == 3).Count();
+                var slsP4 = domain.CFRSales.Where(d => d.ProfessionalismRating == 4).Count();
+
+                decimal totalP1 = mtgP1 + insP1 + prP1 + slsP1;
+                decimal totalP2 = mtgP2 + insP2 + prP2 + slsP2;
+                decimal totalP3 = mtgP3 + insP3 + prP3 + slsP3;
+                decimal totalP4 = mtgP4 + insP4 + prP4 + slsP4;
 
                 decimal percentP1 = 0;
                 decimal percentP2 = 0;
@@ -893,10 +1003,15 @@ namespace AS_TestProject.Controllers
                 var prC3 = domain.CFRPatientRecruitments.Where(d => d.ComplianceRating == 3).Count();
                 var prC4 = domain.CFRPatientRecruitments.Where(d => d.ComplianceRating == 4).Count();
 
-                decimal totalC1 = mtgC1 + insC1 + prC1;
-                decimal totalC2 = mtgC2 + insC2 + prC2;
-                decimal totalC3 = mtgC3 + insC3 + prC3;
-                decimal totalC4 = mtgC4 + insC4 + prC4;
+                var slsC1 = domain.CFRSales.Where(d => d.ComplianceRating == 1).Count();
+                var slsC2 = domain.CFRSales.Where(d => d.ComplianceRating == 2).Count();
+                var slsC3 = domain.CFRSales.Where(d => d.ComplianceRating == 3).Count();
+                var slsC4 = domain.CFRSales.Where(d => d.ComplianceRating == 4).Count();
+
+                decimal totalC1 = mtgC1 + insC1 + prC1 + slsC1;
+                decimal totalC2 = mtgC2 + insC2 + prC2 + slsC2;
+                decimal totalC3 = mtgC3 + insC3 + prC3 + slsC3;
+                decimal totalC4 = mtgC4 + insC4 + prC4 + slsC4;
 
                 decimal percentC1 = 0;
                 decimal percentC2 = 0;
@@ -932,10 +1047,15 @@ namespace AS_TestProject.Controllers
                 var prA3 = domain.CFRPatientRecruitments.Where(d => d.AdheranceRating == 3).Count();
                 var prA4 = domain.CFRPatientRecruitments.Where(d => d.AdheranceRating == 4).Count();
 
-                decimal totalA1 = mtgA1 + insA1 + prA1;
-                decimal totalA2 = mtgA2 + insA2 + prA2;
-                decimal totalA3 = mtgA3 + insA3 + prA3;
-                decimal totalA4 = mtgA4 + insA4 + prA4;
+                var slsA1 = domain.CFRSales.Where(d => d.AdheranceRating == 1).Count();
+                var slsA2 = domain.CFRSales.Where(d => d.AdheranceRating == 2).Count();
+                var slsA3 = domain.CFRSales.Where(d => d.AdheranceRating == 3).Count();
+                var slsA4 = domain.CFRSales.Where(d => d.AdheranceRating == 4).Count();
+
+                decimal totalA1 = mtgA1 + insA1 + prA1 + slsA1;
+                decimal totalA2 = mtgA2 + insA2 + prA2 + slsA2;
+                decimal totalA3 = mtgA3 + insA3 + prA3 + slsA3;
+                decimal totalA4 = mtgA4 + insA4 + prA4 + slsA4;
 
                 decimal percentA1 = 0;
                 decimal percentA2 = 0;
@@ -971,10 +1091,15 @@ namespace AS_TestProject.Controllers
                 var prAOI3 = domain.CFRPatientRecruitments.Where(d => d.AccuracyOfInformationRating == 3).Count();
                 var prAOI4 = domain.CFRPatientRecruitments.Where(d => d.AccuracyOfInformationRating == 4).Count();
 
-                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1;
-                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2;
-                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3;
-                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4;
+                var slsAOI1 = domain.CFRSales.Where(d => d.AccuracyOfInformationRating == 1).Count();
+                var slsAOI2 = domain.CFRSales.Where(d => d.AccuracyOfInformationRating == 2).Count();
+                var slsAOI3 = domain.CFRSales.Where(d => d.AccuracyOfInformationRating == 3).Count();
+                var slsAOI4 = domain.CFRSales.Where(d => d.AccuracyOfInformationRating == 4).Count();
+
+                decimal totalAOI1 = mtgAOI1 + insAOI1 + prAOI1 + slsAOI1;
+                decimal totalAOI2 = mtgAOI2 + insAOI2 + prAOI2 + slsAOI2;
+                decimal totalAOI3 = mtgAOI3 + insAOI3 + prAOI3 + slsAOI3;
+                decimal totalAOI4 = mtgAOI4 + insAOI4 + prAOI4 + slsAOI4;
 
                 decimal percentAOI1 = 0;
                 decimal percentAOI2 = 0;
@@ -1015,13 +1140,14 @@ namespace AS_TestProject.Controllers
             {
                 var empMtgCFRs = mb.CFRMortgages.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
                 var empInsCFRs = mb.CFRInsurances.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
+                var empSlsCFRs = mb.CFRSales.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
                 var empPatRecCFRs = mb.CFRPatientRecruitments.Where(c => c.EmployeeID == employee.EmployeeID && c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth).Count();
                 var daysHere = (now - employee.HireDate).Days;
                 var item = new Emp();
                 item.EmployeeID = employee.EmployeeID;
                 item.FullName = employee.FirstName + " " + employee.LastName;
                 item.SiteID = employee.SiteID;
-                item.TotalCFRsMonth = empMtgCFRs + empInsCFRs + empPatRecCFRs;
+                item.TotalCFRsMonth = empMtgCFRs + empInsCFRs + empPatRecCFRs + empSlsCFRs;
                 item.DaysHere = daysHere;
                 var remaining = 0;
                 if (item.TotalCFRsMonth >= 8)

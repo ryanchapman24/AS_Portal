@@ -18,5 +18,8 @@ namespace AS_TestProject.Entities
         public byte DomainMasterID { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public long ID { get; set; }
+    
+        public virtual DomainMaster DomainMaster { get; set; }
+        public virtual AgentDailyHour AgentDailyHour { get; set; }
     }
 }
