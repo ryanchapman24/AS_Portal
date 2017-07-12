@@ -4,9 +4,33 @@
     ViewBag.Title = "Index";
     var noonToday = DateTime.Today.AddHours(12);
 }
-
+@if (ViewBag.ConflictBool == 1)
+{
+    <div class="col-md-12" style="color: white; background-color: #FE5607; margin-bottom: 20px; padding-top: 10px; padding-bottom: 10px">
+        @if (ViewBag.Conflicted.Count > 1)
+        {
+            <p>You attempted to create a time entry that conflicts with the following entries:</p>            
+        }
+        else
+        {
+            <p>You attempted to create a time entry that conflicts with the following entry:</p>
+        }
+        <div class="col-md-6">
+            <div class="col-md-4"><strong>LOGIN</strong></div>
+            <div class="col-md-4"><strong>LOGOUT</strong></div>
+            <div class="col-md-4"><strong>DOMAIN</strong></div>
+            @foreach (var entry in ViewBag.Conflicted)
+            {
+                <div class="col-md-4">@entry.LoginTimeStamp</div>
+                <div class="col-md-4">@entry.LogoutTimeStamp</div>
+                <div class="col-md-4">@entry.DomainMaster.FileMask - @entry.DomainMaster.DomainName</div>
+            }
+        </div>
+    </div>
+    <br /><hr />
+}
 <div class="col-lg-12 mt" style="margin-top: 0px">
-    <div class="row content-panel" style="padding-top: 0px; overflow: hidden"><img src="~/assets/img/TimeManagement_Banner.jpg" style="width: 100%" /></div>
+    <div class="row content-panel" style="padding-top: 0px; overflow: hidden"><img src="~/assets/img/TimeManagement_Banner.jpg" style="width: 100%" /></div>    
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
         <div class="panel-heading">
             <ul class="nav nav-tabs nav-justified">

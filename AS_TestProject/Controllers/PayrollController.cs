@@ -25,8 +25,9 @@ namespace AS_TestProject.Controllers
 
         // GET: Payroll
         [Authorize]
-        public ActionResult Index(int id)
+        public ActionResult Index(int id/*, List<AgentDailyHour> conflicted*/)
         {
+            var conflicted = TempData["list"] as List<AgentDailyHour>;
             var user = db.Users.Find(User.Identity.GetUserId());
 
             if (id != user.EmployeeID && !(User.IsInRole("Payroll")))
@@ -34,7 +35,7 @@ namespace AS_TestProject.Controllers
                 return RedirectToAction("Directory", "Home");
             }
 
-            var now = System.DateTime.Now; ;
+            var now = System.DateTime.Now;
             var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
             var payPeriodId = payPeriod.PayPeriodID;
             var prevPayPeriodId = payPeriodId - 1;
@@ -70,6 +71,15 @@ namespace AS_TestProject.Controllers
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
             //ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
+            if (conflicted != null)
+            {
+                ViewBag.ConflictBool = 1;
+                ViewBag.Conflicted = conflicted;
+            }
+            else
+            {
+                ViewBag.ConflictBool = 0;
+            }
 
             return View(agentDailyHours);
         }
@@ -86,18 +96,35 @@ namespace AS_TestProject.Controllers
             {
                 var user = db.Users.Find(User.Identity.GetUserId());
 
+                var now = System.DateTime.Now;
+                var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
+                var payPeriodId = payPeriod.PayPeriodID;
+                var prevPayPeriodId = payPeriodId - 1;
+                var prevPayPeriod = mb.PayPeriods.First(p => p.PayPeriodID == prevPayPeriodId);
+
                 if (agentDailyHour.LoginTimeStamp != agentDailyHour.LogoutTimeStamp)
                 {
-                    agentDailyHour.PayPeriodID = ppId;
-                    agentDailyHour.EmployeeID = empId;
-                    agentDailyHour.EditByEmployeeID = user.EmployeeID;
-                    agentDailyHour.EditTimeStamp = System.DateTime.Now;
-                    mb.AgentDailyHours.Add(agentDailyHour);
-                    mb.SaveChanges();
+                    var agent = mb.Employees.Find(empId);
+                    var agentDailyHours = mb.AgentDailyHours.Where(a => a.EmployeeID == empId && (a.PayPeriodID == payPeriodId || a.PayPeriodID == prevPayPeriodId)).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
+                    if (agentDailyHours.Any(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)))
+                    {
+                        var conflictedHours = agentDailyHours.Where(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)).ToList();
+                        TempData["list"] = conflictedHours.ToList();
+                        return RedirectToAction("Index", new { id = empId });
+                    }
+                    else
+                    {
+                        agentDailyHour.PayPeriodID = ppId;
+                        agentDailyHour.EmployeeID = empId;
+                        agentDailyHour.EditByEmployeeID = user.EmployeeID;
+                        agentDailyHour.EditTimeStamp = System.DateTime.Now;
+                        mb.AgentDailyHours.Add(agentDailyHour);
+                        mb.SaveChanges();
 
-                    // STORED PROCEDURES
-                    mb.uspHoursCalculation(empId, ppId);
-                    mb.SaveChanges();
+                        // STORED PROCEDURES
+                        mb.uspHoursCalculation(empId, ppId);
+                        mb.SaveChanges();
+                    }
                 }
 
                 return RedirectToAction("Index", new { id = empId });
