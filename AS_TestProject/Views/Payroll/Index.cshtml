@@ -6,14 +6,14 @@
 }
 @if (ViewBag.ConflictBool == 1)
 {
-    <div class="col-md-12" style="color: white; background-color: #FE5607; margin-bottom: 20px; padding-top: 10px; padding-bottom: 10px">
+    <div class="col-md-12 animated flash" style="color: white; background-color: #FE5607; margin-bottom: 20px; padding-top: 10px; padding-bottom: 10px; animation-delay: .5s">
         @if (ViewBag.Conflicted.Count > 1)
         {
-            <p>You attempted to create a time entry that conflicts with the following entries:</p>            
+            <h4><i class="fa fa-exclamation-triangle" style="margin-right: 10px"></i><strong>YOU ATTEMPTED TO CREATE A TIME ENTRY THAT CONFLICTS WITH THE FOLLOWING ENTRIES:</strong></h4>
         }
         else
         {
-            <p>You attempted to create a time entry that conflicts with the following entry:</p>
+            <h4><i class="fa fa-exclamation-triangle" style="margin-right: 10px"></i><strong>YOU ATTEMPTED TO CREATE A TIME ENTRY THAT CONFLICTS WITH THE FOLLOWING ENTRY:</strong></h4>
         }
         <div class="col-md-6">
             <div class="col-md-4"><strong>LOGIN</strong></div>
@@ -21,9 +21,9 @@
             <div class="col-md-4"><strong>DOMAIN</strong></div>
             @foreach (var entry in ViewBag.Conflicted)
             {
-                <div class="col-md-4">@entry.LoginTimeStamp</div>
-                <div class="col-md-4">@entry.LogoutTimeStamp</div>
-                <div class="col-md-4">@entry.DomainMaster.FileMask - @entry.DomainMaster.DomainName</div>
+                <div class="col-md-4 text-nowrap">@entry.LoginTimeStamp</div>
+                <div class="col-md-4 text-nowrap">@entry.LogoutTimeStamp</div>
+                <div class="col-md-4 text-nowrap">@entry.DomainMaster.FileMask - @entry.DomainMaster.DomainName</div>
             }
         </div>
     </div>
@@ -157,8 +157,8 @@
                                         @foreach (var item in Model)
                                         {
                                             <tr>
-                                                <td>@Html.DisplayFor(modelItem => item.LoginTimeStamp)</td>
-                                                <td>@Html.DisplayFor(modelItem => item.LogoutTimeStamp)</td>
+                                                <td class="text-nowrap">@Html.DisplayFor(modelItem => item.LoginTimeStamp)</td>
+                                                <td class="text-nowrap">@Html.DisplayFor(modelItem => item.LogoutTimeStamp)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.LoginDuration)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.DomainMaster.FileMask) - @Html.DisplayFor(modelItem => item.DomainMaster.DomainName)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.RegularHours)</td>
@@ -307,8 +307,8 @@
                                         @foreach (var item in ViewBag.PrevAgentDailyHours)
                                         {
                                             <tr>
-                                                <td>@item.LoginTimeStamp</td>
-                                                <td>@item.LogoutTimeStamp</td>
+                                                <td class="text-nowrap">@item.LoginTimeStamp</td>
+                                                <td class="text-nowrap">@item.LogoutTimeStamp</td>
                                                 <td>@item.LoginDuration</td>
                                                 <td>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</td>
                                                 <td>@item.RegularHours</td>

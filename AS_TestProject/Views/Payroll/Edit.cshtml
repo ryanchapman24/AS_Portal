@@ -4,6 +4,31 @@
     ViewBag.Title = "Edit";
 }
 
+@if (ViewBag.ConflictBool == 1)
+{
+    <div class="col-md-12 animated flash" style="color: white; background-color: #FE5607; padding-top: 10px; padding-bottom: 10px; animation-delay: .5s">
+        @if (ViewBag.Conflicted.Count > 1)
+        {
+            <h4><i class="fa fa-exclamation-triangle" style="margin-right: 10px"></i><strong>YOU ATTEMPTED TO CREATE A TIME ENTRY THAT CONFLICTS WITH THE FOLLOWING ENTRIES:</strong></h4>
+        }
+        else
+        {
+            <h4><i class="fa fa-exclamation-triangle" style="margin-right: 10px"></i><strong>YOU ATTEMPTED TO CREATE A TIME ENTRY THAT CONFLICTS WITH THE FOLLOWING ENTRY:</strong></h4>
+        }
+        <div class="col-md-6">
+            <div class="col-md-4"><strong>LOGIN</strong></div>
+            <div class="col-md-4"><strong>LOGOUT</strong></div>
+            <div class="col-md-4"><strong>DOMAIN</strong></div>
+            @foreach (var entry in ViewBag.Conflicted)
+            {
+                <div class="col-md-4 text-nowrap">@entry.LoginTimeStamp</div>
+                <div class="col-md-4 text-nowrap">@entry.LogoutTimeStamp</div>
+                <div class="col-md-4 text-nowrap">@entry.DomainMaster.FileMask - @entry.DomainMaster.DomainName</div>
+            }
+        </div>
+    </div>
+    <br /><hr />
+}
 
 <div class="col-lg-12 mt">
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">

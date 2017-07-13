@@ -151,6 +151,7 @@ namespace AS_TestProject.Controllers
         [Authorize(Roles = "Admin, Payroll")]
         public ActionResult Edit(int? id)
         {
+            var conflicted = TempData["list"] as List<AgentDailyHour>;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -161,6 +162,15 @@ namespace AS_TestProject.Controllers
             if (agentDailyHour == null)
             {
                 return HttpNotFound();
+            }
+            if (conflicted != null)
+            {
+                ViewBag.ConflictBool = 1;
+                ViewBag.Conflicted = conflicted;
+            }
+            else
+            {
+                ViewBag.ConflictBool = 0;
             }
             ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName", agentDailyHour.DomainMasterID);
             ViewBag.EmployeeID = new SelectList(mb.Employees, "EmployeeID", "FirstName", agentDailyHour.EmployeeID);
@@ -180,10 +190,24 @@ namespace AS_TestProject.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.Users.Find(User.Identity.GetUserId());
+                var empId = agentDailyHour.EmployeeID;
+                var now = System.DateTime.Now;
+                var payPeriod = mb.PayPeriods.First(p => p.StartDate <= now && System.Data.Entity.DbFunctions.AddDays(p.EndDate, 1) > now);
+                var payPeriodId = payPeriod.PayPeriodID;
+                var prevPayPeriodId = payPeriodId - 1;
+                var prevPayPeriod = mb.PayPeriods.First(p => p.PayPeriodID == prevPayPeriodId);
+
+                var agent = mb.Employees.Find(empId);
+                var agentDailyHours = mb.AgentDailyHours.AsNoTracking().Where(a => a.AgentDailyHoursID != agentDailyHour.AgentDailyHoursID).Where(a => a.EmployeeID == empId && (a.PayPeriodID == payPeriodId || a.PayPeriodID == prevPayPeriodId)).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
+                if (agentDailyHours.Any(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)))
+                {
+                    var conflictedHours = agentDailyHours.Where(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)).ToList();
+                    TempData["list"] = conflictedHours.ToList();
+                    return RedirectToAction("Edit", new { id = agentDailyHour.AgentDailyHoursID });
+                }
 
                 if (agentDailyHour.LoginTimeStamp == agentDailyHour.LogoutTimeStamp)
                 {
-                    var empId = agentDailyHour.EmployeeID;
                     var ppId = agentDailyHour.PayPeriodID;
 
                     mb.AgentDailyHours.Attach(agentDailyHour);
