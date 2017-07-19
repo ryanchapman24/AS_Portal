@@ -118,6 +118,7 @@ namespace AS_TestProject.Controllers
                         agentDailyHour.EmployeeID = empId;
                         agentDailyHour.EditByEmployeeID = user.EmployeeID;
                         agentDailyHour.EditTimeStamp = System.DateTime.Now;
+                        agentDailyHour.IsNew = true;
                         mb.AgentDailyHours.Add(agentDailyHour);
                         mb.SaveChanges();
 

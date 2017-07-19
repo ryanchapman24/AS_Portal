@@ -232,6 +232,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
           <Property Name="OverTimeHours" Type="decimal" Precision="5" Scale="2" />
           <Property Name="EditByEmployeeID" Type="int" />
           <Property Name="EditTimeStamp" Type="datetime" />
+          <Property Name="IsNew" Type="bit" />
         </EntityType>
         <EntityType Name="AgentDailyHoursToDomainMaster">
           <Key>
@@ -4182,6 +4183,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" FromRole="AgentDailyHour" ToRole="Employee" />
           <NavigationProperty Name="AgentDailyHoursToDomainMasters" Relationship="ReportModel.FK_AgentDailyHoursToDomainMaster_AgentDailyHours" FromRole="AgentDailyHour" ToRole="AgentDailyHoursToDomainMaster" />
+          <Property Name="IsNew" Type="Boolean" />
         </EntityType>
         <EntityType Name="AgentTimeAdjustmentReason">
           <Key>
@@ -6897,6 +6899,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
           <EntitySetMapping Name="AgentDailyHours">
             <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
               <MappingFragment StoreEntitySet="AgentDailyHours">
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
                 <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
                 <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
                 <ScalarProperty Name="OverTimeHours" ColumnName="OverTimeHours" />

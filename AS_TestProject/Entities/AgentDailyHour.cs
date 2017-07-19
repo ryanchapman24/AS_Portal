@@ -32,6 +32,7 @@ namespace AS_TestProject.Entities
         public Nullable<decimal> OverTimeHours { get; set; }
         public Nullable<int> EditByEmployeeID { get; set; }
         public Nullable<System.DateTime> EditTimeStamp { get; set; }
+        public Nullable<bool> IsNew { get; set; }
     
         public virtual DomainMaster DomainMaster { get; set; }
         public virtual Employee Employee { get; set; }
