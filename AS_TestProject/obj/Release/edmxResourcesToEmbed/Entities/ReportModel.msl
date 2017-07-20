@@ -232,6 +232,7 @@
     <EntitySetMapping Name="AgentDailyHours">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
         <MappingFragment StoreEntitySet="AgentDailyHours">
+          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
           <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
           <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
           <ScalarProperty Name="OverTimeHours" ColumnName="OverTimeHours" />

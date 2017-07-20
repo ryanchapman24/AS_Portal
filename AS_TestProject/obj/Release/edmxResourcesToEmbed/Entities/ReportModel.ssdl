@@ -227,6 +227,7 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="OverTimeHours" Type="decimal" Precision="5" Scale="2" />
     <Property Name="EditByEmployeeID" Type="int" />
     <Property Name="EditTimeStamp" Type="datetime" />
+    <Property Name="IsNew" Type="bit" />
   </EntityType>
   <EntityType Name="AgentDailyHoursToDomainMaster">
     <Key>

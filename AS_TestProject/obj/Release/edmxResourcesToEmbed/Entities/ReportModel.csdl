@@ -859,6 +859,7 @@
     <Property Name="EditTimeStamp" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Employee1" Relationship="ReportModel.FK_PAYROLL_AgentDailyHours_EditByEmployeeID" FromRole="AgentDailyHour" ToRole="Employee" />
     <NavigationProperty Name="AgentDailyHoursToDomainMasters" Relationship="ReportModel.FK_AgentDailyHoursToDomainMaster_AgentDailyHours" FromRole="AgentDailyHour" ToRole="AgentDailyHoursToDomainMaster" />
+    <Property Name="IsNew" Type="Boolean" />
   </EntityType>
   <EntityType Name="AgentTimeAdjustmentReason">
     <Key>
