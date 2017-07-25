@@ -87,6 +87,35 @@ namespace AS_TestProject.Entities
             this.CFRSales11 = new HashSet<CFRSale>();
             this.CFRSales12 = new HashSet<CFRSale>();
             this.CFRSales13 = new HashSet<CFRSale>();
+            this.CFRAcurians = new HashSet<CFRAcurian>();
+            this.CFRAcurians1 = new HashSet<CFRAcurian>();
+            this.CFRAcurians2 = new HashSet<CFRAcurian>();
+            this.CFRAcurians3 = new HashSet<CFRAcurian>();
+            this.CFRAcurians4 = new HashSet<CFRAcurian>();
+            this.CFRAcurians5 = new HashSet<CFRAcurian>();
+            this.CFRAcurians6 = new HashSet<CFRAcurian>();
+            this.CFRAcurians7 = new HashSet<CFRAcurian>();
+            this.CFRAcurians8 = new HashSet<CFRAcurian>();
+            this.CFRAcurians9 = new HashSet<CFRAcurian>();
+            this.CFRAcurians10 = new HashSet<CFRAcurian>();
+            this.CFRAcurians11 = new HashSet<CFRAcurian>();
+            this.CFRAcurians12 = new HashSet<CFRAcurian>();
+            this.CFRAcurians13 = new HashSet<CFRAcurian>();
+            this.CFRAcurians14 = new HashSet<CFRAcurian>();
+            this.CFRAcurians15 = new HashSet<CFRAcurian>();
+            this.CFRAcurians16 = new HashSet<CFRAcurian>();
+            this.CFRAcurians17 = new HashSet<CFRAcurian>();
+            this.CFRAcurians18 = new HashSet<CFRAcurian>();
+            this.CFRAcurians19 = new HashSet<CFRAcurian>();
+            this.CFRAcurians20 = new HashSet<CFRAcurian>();
+            this.CFRAcurians21 = new HashSet<CFRAcurian>();
+            this.CFRAcurians22 = new HashSet<CFRAcurian>();
+            this.CFRAcurians23 = new HashSet<CFRAcurian>();
+            this.CFRAcurians24 = new HashSet<CFRAcurian>();
+            this.CFRAcurians25 = new HashSet<CFRAcurian>();
+            this.CFRAcurians26 = new HashSet<CFRAcurian>();
+            this.CFRAcurians27 = new HashSet<CFRAcurian>();
+            this.CFRAcurians28 = new HashSet<CFRAcurian>();
         }
     
         public int AnswerKeyID { get; set; }
@@ -232,5 +261,63 @@ namespace AS_TestProject.Entities
         public virtual ICollection<CFRSale> CFRSales12 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CFRSale> CFRSales13 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians4 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians5 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians6 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians7 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians8 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians9 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians10 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians11 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians12 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians13 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians14 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians15 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians16 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians17 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians18 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians19 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians20 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians21 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians22 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians23 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians24 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians25 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians26 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians27 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians28 { get; set; }
     }
 }

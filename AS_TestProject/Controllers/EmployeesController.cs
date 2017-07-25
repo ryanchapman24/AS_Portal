@@ -32,6 +32,13 @@ namespace AS_TestProject.Controllers
             public string Type { get; set; }
         }
 
+        public class EmployeeCFR
+        {
+            public int Id { get; set; }
+            public string Type { get; set; }
+            public double Score { get; set; }
+        }
+
         // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -284,6 +291,1774 @@ namespace AS_TestProject.Controllers
             ViewBag.iCFRs = mb.CFRInsurances.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             ViewBag.pCFRs = mb.CFRPatientRecruitments.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             ViewBag.sCFRs = mb.CFRSales.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
+            double mScore = 0;
+            double iScore = 0;
+            double pScore = 0;
+            double sScore = 0;
+
+            var cfrs = new List<EmployeeCFR>();
+            foreach (var cfr in ViewBag.mCFRs)
+            {
+                var item = new EmployeeCFR();
+                item.Type = "Mortgage";
+                int n = 0;
+                double s = 0;               
+                if (cfr.TelephoneEtiquetteRating == 1 || cfr.TelephoneEtiquetteRating == 2 || cfr.TelephoneEtiquetteRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ProfessionalismRating == 1 || cfr.ProfessionalismRating == 2 || cfr.ProfessionalismRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ComplianceRating == 1 || cfr.ComplianceRating == 2 || cfr.ComplianceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AdheranceRating == 1 || cfr.AdheranceRating == 2 || cfr.AdheranceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AccuracyOfInformationRating == 1 || cfr.AccuracyOfInformationRating == 2 || cfr.AccuracyOfInformationRating == 3)
+                {
+                    n++;
+                }
+
+                if (n == 0)
+                {
+                    item.Score = 100;
+                    mScore = mScore + item.Score;
+                }
+                if (n == 1)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    mScore = mScore + item.Score;
+                }
+                else if (n == 2)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    mScore = mScore + item.Score;
+                }
+                else if (n == 3)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    mScore = mScore + item.Score;
+                }
+                else if (n == 4)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    mScore = mScore + item.Score;
+                }
+                else if (n == 5)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    mScore = mScore + item.Score;
+                    cfrs.Add(item);
+                }
+            }
+            foreach (var cfr in ViewBag.iCFRs)
+            {
+                var item = new EmployeeCFR();
+                item.Type = "Insurance";
+                int n = 0;
+                double s = 0;
+                if (cfr.TelephoneEtiquetteRating == 1 || cfr.TelephoneEtiquetteRating == 2 || cfr.TelephoneEtiquetteRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ProfessionalismRating == 1 || cfr.ProfessionalismRating == 2 || cfr.ProfessionalismRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ComplianceRating == 1 || cfr.ComplianceRating == 2 || cfr.ComplianceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AdheranceRating == 1 || cfr.AdheranceRating == 2 || cfr.AdheranceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AccuracyOfInformationRating == 1 || cfr.AccuracyOfInformationRating == 2 || cfr.AccuracyOfInformationRating == 3)
+                {
+                    n++;
+                }
+
+                if (n == 0)
+                {
+                    item.Score = 100;
+                    iScore = iScore + item.Score;
+                }
+                if (n == 1)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    iScore = iScore + item.Score;
+                }
+                else if (n == 2)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    iScore = iScore + item.Score;
+                }
+                else if (n == 3)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    iScore = iScore + item.Score;
+                }
+                else if (n == 4)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    iScore = iScore + item.Score;
+                }
+                else if (n == 5)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    iScore = iScore + item.Score;
+                    cfrs.Add(item);
+                }
+            }
+            foreach (var cfr in ViewBag.pCFRs)
+            {
+                var item = new EmployeeCFR();
+                item.Type = "Patient Recruitment";
+                int n = 0;
+                double s = 0;
+                if (cfr.TelephoneEtiquetteRating == 1 || cfr.TelephoneEtiquetteRating == 2 || cfr.TelephoneEtiquetteRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ProfessionalismRating == 1 || cfr.ProfessionalismRating == 2 || cfr.ProfessionalismRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ComplianceRating == 1 || cfr.ComplianceRating == 2 || cfr.ComplianceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AdheranceRating == 1 || cfr.AdheranceRating == 2 || cfr.AdheranceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AccuracyOfInformationRating == 1 || cfr.AccuracyOfInformationRating == 2 || cfr.AccuracyOfInformationRating == 3)
+                {
+                    n++;
+                }
+
+                if (n == 0)
+                {
+                    item.Score = 100;
+                    pScore = pScore + item.Score;
+                }
+                if (n == 1)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    pScore = pScore + item.Score;
+                }
+                else if (n == 2)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    pScore = pScore + item.Score;
+                }
+                else if (n == 3)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    pScore = pScore + item.Score;
+                }
+                else if (n == 4)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    pScore = pScore + item.Score;
+                }
+                else if (n == 5)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    pScore = pScore + item.Score;
+                    cfrs.Add(item);
+                }
+            }
+            foreach (var cfr in ViewBag.sCFRs)
+            {
+                var item = new EmployeeCFR();
+                item.Type = "Sales";
+                int n = 0;
+                double s = 0;
+                if (cfr.TelephoneEtiquetteRating == 1 || cfr.TelephoneEtiquetteRating == 2 || cfr.TelephoneEtiquetteRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ProfessionalismRating == 1 || cfr.ProfessionalismRating == 2 || cfr.ProfessionalismRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ComplianceRating == 1 || cfr.ComplianceRating == 2 || cfr.ComplianceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AdheranceRating == 1 || cfr.AdheranceRating == 2 || cfr.AdheranceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.AccuracyOfInformationRating == 1 || cfr.AccuracyOfInformationRating == 2 || cfr.AccuracyOfInformationRating == 3)
+                {
+                    n++;
+                }
+
+                if (n == 0)
+                {
+                    item.Score = 100;
+                    sScore = sScore + item.Score;
+                }
+                if (n == 1)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    sScore = sScore + item.Score;
+                }
+                else if (n == 2)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    sScore = sScore + item.Score;
+                }
+                else if (n == 3)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    sScore = sScore + item.Score;
+                }
+                else if (n == 4)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    sScore = sScore + item.Score;
+                }
+                else if (n == 5)
+                {
+                    if (cfr.TelephoneEtiquetteRating != 4)
+                    {
+                        if (cfr.TelephoneEtiquetteRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.TelephoneEtiquetteRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ProfessionalismRating != 4)
+                    {
+                        if (cfr.ProfessionalismRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ProfessionalismRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ProfessionalismRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AdheranceRating != 4)
+                    {
+                        if (cfr.AdheranceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AdheranceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AdheranceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.AccuracyOfInformationRating != 4)
+                    {
+                        if (cfr.AccuracyOfInformationRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.AccuracyOfInformationRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    sScore = sScore + item.Score;
+                    cfrs.Add(item);
+                }
+            }
+            var mCFRs = ViewBag.mCFRs.Count;
+            var iCFRs = ViewBag.iCFRs.Count;
+            var pCFRs = ViewBag.pCFRs.Count;
+            var sCFRs = ViewBag.sCFRs.Count;
+
+            ViewBag.mScore = "N/A";
+            ViewBag.iScore = "N/A";
+            ViewBag.pScore = "N/A";
+            ViewBag.sScore = "N/A";
+
+            if (mCFRs > 0)
+            {
+                ViewBag.mScore = Math.Round(mScore / mCFRs);
+            }
+            if (iCFRs > 0)
+            {
+                ViewBag.iScore = Math.Round(iScore / iCFRs);
+            }
+            if (pCFRs > 0)
+            {
+                ViewBag.pScore = Math.Round(pScore / pCFRs);
+            }
+            if (sCFRs > 0)
+            {
+                ViewBag.sScore = Math.Round(sScore / sCFRs);
+            }
             return View(employee);
         }
 
@@ -462,6 +2237,429 @@ namespace AS_TestProject.Controllers
             if (cFRMortgage == null)
             {
                 return HttpNotFound();
+            }
+
+            int n = 0;
+            double s = 0;
+            if (cFRMortgage.TelephoneEtiquetteRating == 1 || cFRMortgage.TelephoneEtiquetteRating == 2 || cFRMortgage.TelephoneEtiquetteRating == 3)
+            {
+                n++;
+            }
+            if (cFRMortgage.ProfessionalismRating == 1 || cFRMortgage.ProfessionalismRating == 2 || cFRMortgage.ProfessionalismRating == 3)
+            {
+                n++;
+            }
+            if (cFRMortgage.ComplianceRating == 1 || cFRMortgage.ComplianceRating == 2 || cFRMortgage.ComplianceRating == 3)
+            {
+                n++;
+            }
+            if (cFRMortgage.AdheranceRating == 1 || cFRMortgage.AdheranceRating == 2 || cFRMortgage.AdheranceRating == 3)
+            {
+                n++;
+            }
+            if (cFRMortgage.AccuracyOfInformationRating == 1 || cFRMortgage.AccuracyOfInformationRating == 2 || cFRMortgage.AccuracyOfInformationRating == 3)
+            {
+                n++;
+            }
+
+            if (n == 0)
+            {
+                ViewBag.OverallScore = "N/A";
+            }
+            if (n == 1)
+            {
+                if (cFRMortgage.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRMortgage.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ProfessionalismRating != 4)
+                {
+                    if (cFRMortgage.ProfessionalismRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ComplianceRating != 4)
+                {
+                    if (cFRMortgage.ComplianceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AdheranceRating != 4)
+                {
+                    if (cFRMortgage.AdheranceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRMortgage.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 2)
+            {
+                if (cFRMortgage.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRMortgage.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ProfessionalismRating != 4)
+                {
+                    if (cFRMortgage.ProfessionalismRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ComplianceRating != 4)
+                {
+                    if (cFRMortgage.ComplianceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AdheranceRating != 4)
+                {
+                    if (cFRMortgage.AdheranceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRMortgage.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 3)
+            {
+                if (cFRMortgage.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRMortgage.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ProfessionalismRating != 4)
+                {
+                    if (cFRMortgage.ProfessionalismRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ComplianceRating != 4)
+                {
+                    if (cFRMortgage.ComplianceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AdheranceRating != 4)
+                {
+                    if (cFRMortgage.AdheranceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRMortgage.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 4)
+            {
+                if (cFRMortgage.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRMortgage.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ProfessionalismRating != 4)
+                {
+                    if (cFRMortgage.ProfessionalismRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ComplianceRating != 4)
+                {
+                    if (cFRMortgage.ComplianceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AdheranceRating != 4)
+                {
+                    if (cFRMortgage.AdheranceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRMortgage.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 5)
+            {
+                if (cFRMortgage.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRMortgage.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRMortgage.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ProfessionalismRating != 4)
+                {
+                    if (cFRMortgage.ProfessionalismRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRMortgage.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.ComplianceRating != 4)
+                {
+                    if (cFRMortgage.ComplianceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRMortgage.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AdheranceRating != 4)
+                {
+                    if (cFRMortgage.AdheranceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRMortgage.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRMortgage.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRMortgage.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRMortgage.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
             }
             return View(cFRMortgage);
         }
@@ -1050,6 +3248,429 @@ namespace AS_TestProject.Controllers
             {
                 return HttpNotFound();
             }
+
+            int n = 0;
+            double s = 0;
+            if (cFRSales.TelephoneEtiquetteRating == 1 || cFRSales.TelephoneEtiquetteRating == 2 || cFRSales.TelephoneEtiquetteRating == 3)
+            {
+                n++;
+            }
+            if (cFRSales.ProfessionalismRating == 1 || cFRSales.ProfessionalismRating == 2 || cFRSales.ProfessionalismRating == 3)
+            {
+                n++;
+            }
+            if (cFRSales.ComplianceRating == 1 || cFRSales.ComplianceRating == 2 || cFRSales.ComplianceRating == 3)
+            {
+                n++;
+            }
+            if (cFRSales.AdheranceRating == 1 || cFRSales.AdheranceRating == 2 || cFRSales.AdheranceRating == 3)
+            {
+                n++;
+            }
+            if (cFRSales.AccuracyOfInformationRating == 1 || cFRSales.AccuracyOfInformationRating == 2 || cFRSales.AccuracyOfInformationRating == 3)
+            {
+                n++;
+            }
+            
+            if (n == 0)
+            {
+                ViewBag.OverallScore = "N/A";
+            }
+            if (n == 1)
+            {
+                if (cFRSales.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRSales.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ProfessionalismRating != 4)
+                {
+                    if (cFRSales.ProfessionalismRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ComplianceRating != 4)
+                {
+                    if (cFRSales.ComplianceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRSales.ComplianceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AdheranceRating != 4)
+                {
+                    if (cFRSales.AdheranceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRSales.AdheranceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRSales.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 2)
+            {
+                if (cFRSales.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRSales.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ProfessionalismRating != 4)
+                {
+                    if (cFRSales.ProfessionalismRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ComplianceRating != 4)
+                {
+                    if (cFRSales.ComplianceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.ComplianceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AdheranceRating != 4)
+                {
+                    if (cFRSales.AdheranceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.AdheranceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRSales.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 3)
+            {
+                if (cFRSales.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRSales.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ProfessionalismRating != 4)
+                {
+                    if (cFRSales.ProfessionalismRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ComplianceRating != 4)
+                {
+                    if (cFRSales.ComplianceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRSales.ComplianceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRSales.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AdheranceRating != 4)
+                {
+                    if (cFRSales.AdheranceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRSales.AdheranceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRSales.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRSales.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 4)
+            {
+                if (cFRSales.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRSales.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ProfessionalismRating != 4)
+                {
+                    if (cFRSales.ProfessionalismRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ComplianceRating != 4)
+                {
+                    if (cFRSales.ComplianceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.ComplianceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRSales.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AdheranceRating != 4)
+                {
+                    if (cFRSales.AdheranceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.AdheranceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRSales.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRSales.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 5)
+            {
+                if (cFRSales.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRSales.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRSales.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ProfessionalismRating != 4)
+                {
+                    if (cFRSales.ProfessionalismRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRSales.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.ComplianceRating != 4)
+                {
+                    if (cFRSales.ComplianceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRSales.ComplianceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRSales.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AdheranceRating != 4)
+                {
+                    if (cFRSales.AdheranceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRSales.AdheranceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRSales.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRSales.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRSales.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRSales.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
             return View(cFRSales);
         }
 
@@ -1577,6 +4198,429 @@ namespace AS_TestProject.Controllers
             if (cFRInsurance == null)
             {
                 return HttpNotFound();
+            }
+
+            int n = 0;
+            double s = 0;
+            if (cFRInsurance.TelephoneEtiquetteRating == 1 || cFRInsurance.TelephoneEtiquetteRating == 2 || cFRInsurance.TelephoneEtiquetteRating == 3)
+            {
+                n++;
+            }
+            if (cFRInsurance.ProfessionalismRating == 1 || cFRInsurance.ProfessionalismRating == 2 || cFRInsurance.ProfessionalismRating == 3)
+            {
+                n++;
+            }
+            if (cFRInsurance.ComplianceRating == 1 || cFRInsurance.ComplianceRating == 2 || cFRInsurance.ComplianceRating == 3)
+            {
+                n++;
+            }
+            if (cFRInsurance.AdheranceRating == 1 || cFRInsurance.AdheranceRating == 2 || cFRInsurance.AdheranceRating == 3)
+            {
+                n++;
+            }
+            if (cFRInsurance.AccuracyOfInformationRating == 1 || cFRInsurance.AccuracyOfInformationRating == 2 || cFRInsurance.AccuracyOfInformationRating == 3)
+            {
+                n++;
+            }
+
+            if (n == 0)
+            {
+                ViewBag.OverallScore = "N/A";
+            }
+            if (n == 1)
+            {
+                if (cFRInsurance.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRInsurance.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ProfessionalismRating != 4)
+                {
+                    if (cFRInsurance.ProfessionalismRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ComplianceRating != 4)
+                {
+                    if (cFRInsurance.ComplianceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AdheranceRating != 4)
+                {
+                    if (cFRInsurance.AdheranceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRInsurance.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 2)
+            {
+                if (cFRInsurance.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRInsurance.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ProfessionalismRating != 4)
+                {
+                    if (cFRInsurance.ProfessionalismRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ComplianceRating != 4)
+                {
+                    if (cFRInsurance.ComplianceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AdheranceRating != 4)
+                {
+                    if (cFRInsurance.AdheranceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRInsurance.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 3)
+            {
+                if (cFRInsurance.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRInsurance.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ProfessionalismRating != 4)
+                {
+                    if (cFRInsurance.ProfessionalismRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ComplianceRating != 4)
+                {
+                    if (cFRInsurance.ComplianceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AdheranceRating != 4)
+                {
+                    if (cFRInsurance.AdheranceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRInsurance.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 4)
+            {
+                if (cFRInsurance.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRInsurance.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ProfessionalismRating != 4)
+                {
+                    if (cFRInsurance.ProfessionalismRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ComplianceRating != 4)
+                {
+                    if (cFRInsurance.ComplianceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AdheranceRating != 4)
+                {
+                    if (cFRInsurance.AdheranceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRInsurance.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 5)
+            {
+                if (cFRInsurance.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRInsurance.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRInsurance.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ProfessionalismRating != 4)
+                {
+                    if (cFRInsurance.ProfessionalismRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRInsurance.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.ComplianceRating != 4)
+                {
+                    if (cFRInsurance.ComplianceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRInsurance.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AdheranceRating != 4)
+                {
+                    if (cFRInsurance.AdheranceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRInsurance.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRInsurance.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRInsurance.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRInsurance.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
             }
             return View(cFRInsurance);
         }
@@ -2174,6 +5218,429 @@ namespace AS_TestProject.Controllers
             if (cFRPatientRecruitment == null)
             {
                 return HttpNotFound();
+            }
+
+            int n = 0;
+            double s = 0;
+            if (cFRPatientRecruitment.TelephoneEtiquetteRating == 1 || cFRPatientRecruitment.TelephoneEtiquetteRating == 2 || cFRPatientRecruitment.TelephoneEtiquetteRating == 3)
+            {
+                n++;
+            }
+            if (cFRPatientRecruitment.ProfessionalismRating == 1 || cFRPatientRecruitment.ProfessionalismRating == 2 || cFRPatientRecruitment.ProfessionalismRating == 3)
+            {
+                n++;
+            }
+            if (cFRPatientRecruitment.ComplianceRating == 1 || cFRPatientRecruitment.ComplianceRating == 2 || cFRPatientRecruitment.ComplianceRating == 3)
+            {
+                n++;
+            }
+            if (cFRPatientRecruitment.AdheranceRating == 1 || cFRPatientRecruitment.AdheranceRating == 2 || cFRPatientRecruitment.AdheranceRating == 3)
+            {
+                n++;
+            }
+            if (cFRPatientRecruitment.AccuracyOfInformationRating == 1 || cFRPatientRecruitment.AccuracyOfInformationRating == 2 || cFRPatientRecruitment.AccuracyOfInformationRating == 3)
+            {
+                n++;
+            }
+
+            if (n == 0)
+            {
+                ViewBag.OverallScore = 100;
+            }
+            if (n == 1)
+            {
+                if (cFRPatientRecruitment.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRPatientRecruitment.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ProfessionalismRating != 4)
+                {
+                    if (cFRPatientRecruitment.ProfessionalismRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ComplianceRating != 4)
+                {
+                    if (cFRPatientRecruitment.ComplianceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AdheranceRating != 4)
+                {
+                    if (cFRPatientRecruitment.AdheranceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRPatientRecruitment.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 2)
+            {
+                if (cFRPatientRecruitment.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRPatientRecruitment.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ProfessionalismRating != 4)
+                {
+                    if (cFRPatientRecruitment.ProfessionalismRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ComplianceRating != 4)
+                {
+                    if (cFRPatientRecruitment.ComplianceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AdheranceRating != 4)
+                {
+                    if (cFRPatientRecruitment.AdheranceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRPatientRecruitment.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 3)
+            {
+                if (cFRPatientRecruitment.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRPatientRecruitment.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ProfessionalismRating != 4)
+                {
+                    if (cFRPatientRecruitment.ProfessionalismRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ComplianceRating != 4)
+                {
+                    if (cFRPatientRecruitment.ComplianceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AdheranceRating != 4)
+                {
+                    if (cFRPatientRecruitment.AdheranceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRPatientRecruitment.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 4)
+            {
+                if (cFRPatientRecruitment.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRPatientRecruitment.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ProfessionalismRating != 4)
+                {
+                    if (cFRPatientRecruitment.ProfessionalismRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ComplianceRating != 4)
+                {
+                    if (cFRPatientRecruitment.ComplianceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AdheranceRating != 4)
+                {
+                    if (cFRPatientRecruitment.AdheranceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRPatientRecruitment.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 5)
+            {
+                if (cFRPatientRecruitment.TelephoneEtiquetteRating != 4)
+                {
+                    if (cFRPatientRecruitment.TelephoneEtiquetteRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRPatientRecruitment.TelephoneEtiquetteRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ProfessionalismRating != 4)
+                {
+                    if (cFRPatientRecruitment.ProfessionalismRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRPatientRecruitment.ProfessionalismRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.ComplianceRating != 4)
+                {
+                    if (cFRPatientRecruitment.ComplianceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRPatientRecruitment.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AdheranceRating != 4)
+                {
+                    if (cFRPatientRecruitment.AdheranceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRPatientRecruitment.AdheranceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRPatientRecruitment.AccuracyOfInformationRating != 4)
+                {
+                    if (cFRPatientRecruitment.AccuracyOfInformationRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRPatientRecruitment.AccuracyOfInformationRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
             }
             return View(cFRPatientRecruitment);
         }

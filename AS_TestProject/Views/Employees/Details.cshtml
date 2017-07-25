@@ -1188,7 +1188,7 @@
                     </div>
                     <hr />
                     <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-home"></i> Mortgage</h4>
+                        <h4 style="color: #29AAE3"><i class="fa fa-home"></i> Mortgage<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.mScore</span></span></h4>
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
@@ -1245,7 +1245,7 @@
                     </div>
                     <hr />
                     <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-shield"></i> Insurance</h4>
+                        <h4 style="color: #29AAE3"><i class="fa fa-shield"></i> Insurance<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.iScore</span></span></h4>
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
@@ -1302,64 +1302,7 @@
                     </div>
                     <hr />
                     <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-tags"></i> Sales</h4>
-                    </div>
-                    <div class="widget-content">
-                        <div class="table-responsive">
-                            <table id="datatable-basic-scrolling" class="table table-hover datatable DAtable">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 90%">Date</th>
-                                        <th>Domain</th>
-                                        @*<th>#Calls</th>*@
-                                        <th>Etiquette</th>
-                                        <th>Professionalism</th>
-                                        <th>Compliance</th>
-                                        <th>Adherence</th>
-                                        <th>Accuracy</th>
-                                        <th style="width: 80px">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in ViewBag.sCFRs)
-                                    {
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                @if (ViewBag.Site == "Wichita")
-                                                {
-                                                    @item.DateOfFeedback.AddHours(-1).ToString("g")<br />
-                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
-                                                }
-                                                else
-                                                {
-                                                    @item.DateOfFeedback.ToString("g")<br />
-                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
-                                                }
-                                            </td>
-                                            <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
-                                            @*<td>@item.C_Calls</td>*@
-                                            <td>@item.CFRPerformanceAnalysi4.PerformanceRating</td>
-                                            <td>@item.CFRPerformanceAnalysi3.PerformanceRating</td>
-                                            <td>@item.CFRPerformanceAnalysi2.PerformanceRating</td>
-                                            <td>@item.CFRPerformanceAnalysi1.PerformanceRating</td>
-                                            <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
-                                            <td class="text-nowrap">
-                                                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
-                                                {
-                                                    <a href="@Url.Action("SalesCFR_Details","Employees", new { id = item.CFRSalesID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
-                                                    <a href="@Url.Action("SalesCFR_Edit","Employees", new { id = item.CFRSalesID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
-                                                    <a href="@Url.Action("SalesCFR_Delete","Employees", new { id = item.CFRSalesID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
-                                                }
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-user-plus"></i> Patient Recruitment</h4>
+                        <h4 style="color: #29AAE3"><i class="fa fa-user-plus"></i> Patient Recruitment<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.pScore</span></span></h4>
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
@@ -1414,7 +1357,63 @@
                             </table>
                         </div>
                     </div>
-
+                    <hr />
+                    <div class="widget-header">
+                        <h4 style="color: #29AAE3"><i class="fa fa-tags"></i> Sales<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.sScore</span></span></h4>
+                    </div>
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-hover datatable DAtable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 90%">Date</th>
+                                        <th>Domain</th>
+                                        @*<th>#Calls</th>*@
+                                        <th>Etiquette</th>
+                                        <th>Professionalism</th>
+                                        <th>Compliance</th>
+                                        <th>Adherence</th>
+                                        <th>Accuracy</th>
+                                        <th style="width: 80px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.sCFRs)
+                                    {
+                                        <tr>
+                                            <td class="text-nowrap">
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    @item.DateOfFeedback.AddHours(-1).ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                                }
+                                                else
+                                                {
+                                                    @item.DateOfFeedback.ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                                }
+                                            </td>
+                                            <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
+                                            @*<td>@item.C_Calls</td>*@
+                                            <td>@item.CFRPerformanceAnalysi4.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi3.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi2.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi1.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
+                                            <td class="text-nowrap">
+                                                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
+                                                {
+                                                    <a href="@Url.Action("SalesCFR_Details","Employees", new { id = item.CFRSalesID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                                    <a href="@Url.Action("SalesCFR_Edit","Employees", new { id = item.CFRSalesID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                    <a href="@Url.Action("SalesCFR_Delete","Employees", new { id = item.CFRSalesID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
             {

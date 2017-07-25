@@ -262,6 +262,9 @@
     <Compile Include="Entities\CampaignGroup.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\CFRAcurian.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\CFRInsurance.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>

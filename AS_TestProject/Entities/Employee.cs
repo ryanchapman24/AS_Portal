@@ -35,6 +35,8 @@ namespace AS_TestProject.Entities
             this.DisciplinaryActions1 = new HashSet<DisciplinaryAction>();
             this.CFRSales = new HashSet<CFRSale>();
             this.CFRSales1 = new HashSet<CFRSale>();
+            this.CFRAcurians = new HashSet<CFRAcurian>();
+            this.CFRAcurians1 = new HashSet<CFRAcurian>();
         }
     
         public int EmployeeID { get; set; }
@@ -102,5 +104,9 @@ namespace AS_TestProject.Entities
         public virtual ICollection<CFRSale> CFRSales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CFRSale> CFRSales1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CFRAcurian> CFRAcurians1 { get; set; }
     }
 }

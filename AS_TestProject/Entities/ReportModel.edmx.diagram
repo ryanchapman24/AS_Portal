@@ -168,6 +168,44 @@
         <AssociationConnector Association="ReportModel.FK__CFRSales__Compli__0ABE5CC3" />
         <AssociationConnector Association="ReportModel.FK__CFRSales__Profes__0BB280FC" />
         <AssociationConnector Association="ReportModel.FK__CFRSales__Teleph__0CA6A535" />
+        <EntityTypeShape EntityType="ReportModel.CFRAcurian" Width="1.5" PointX="31.625" PointY="19" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRAcurian_DomainMasterID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRAcurian_EmployeeID" />
+        <AssociationConnector Association="ReportModel.FK_QUALITY_CFRAcurian_ManagerID" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCLQ1__70C98096" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCLQ2__71BDA4CF" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCLQ3__72B1C908" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ1__69285ECE" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ2__6A1C8307" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ3__6B10A740" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ4__6C04CB79" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ5__6CF8EFB2" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ6__6DED13EB" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ7__6EE13824" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCOQ8__6FD55C5D" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCSQ1__5ADA3F77" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCSQ2__5BCE63B0" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCSQ3__5CC287E9" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCSQ4__5DB6AC22" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCSQ5__5EAAD05B" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCSQ6__5F9EF494" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aCSQ7__609318CD" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ1__61873D06" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ2__627B613F" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ3__636F8578" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ4__6463A9B1" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ5__6557CDEA" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ6__664BF223" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ7__6740165C" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__aSSQ8__68343A95" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcurian__aIQ1__57FDD2CC" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcurian__aIQ2__58F1F705" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcurian__aIQ3__59E61B3E" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__Closi__02E830D1" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__Commu__000BC426" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__Compl__01F40C98" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__Intro__7F179FED" />
+        <AssociationConnector Association="ReportModel.FK__CFRAcuria__SoftS__00FFE85F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

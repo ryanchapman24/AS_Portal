@@ -232,6 +232,7 @@
     <EntitySetMapping Name="AgentDailyHours">
       <EntityTypeMapping TypeName="ReportModel.AgentDailyHour">
         <MappingFragment StoreEntitySet="AgentDailyHours">
+          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
           <ScalarProperty Name="EditTimeStamp" ColumnName="EditTimeStamp" />
           <ScalarProperty Name="EditByEmployeeID" ColumnName="EditByEmployeeID" />
           <ScalarProperty Name="OverTimeHours" ColumnName="OverTimeHours" />
@@ -1006,6 +1007,57 @@
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="CFRSalesID" ColumnName="CFRSalesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CFRAcurians">
+      <EntityTypeMapping TypeName="ReportModel.CFRAcurian">
+        <MappingFragment StoreEntitySet="CFRAcurian">
+          <ScalarProperty Name="DateOfFeedback" ColumnName="DateOfFeedback" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="ActionPlan" ColumnName="ActionPlan" />
+          <ScalarProperty Name="Strengths" ColumnName="Strengths" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="WeekToDate" ColumnName="WeekToDate" />
+          <ScalarProperty Name="ConversionRateToday" ColumnName="ConversionRateToday" />
+          <ScalarProperty Name="ClosingRating" ColumnName="ClosingRating" />
+          <ScalarProperty Name="ComplianceRating" ColumnName="ComplianceRating" />
+          <ScalarProperty Name="SoftSkillsRating" ColumnName="SoftSkillsRating" />
+          <ScalarProperty Name="CommunicationSkillsRating" ColumnName="CommunicationSkillsRating" />
+          <ScalarProperty Name="IntroductionRating" ColumnName="IntroductionRating" />
+          <ScalarProperty Name="aCLQ3" ColumnName="aCLQ3" />
+          <ScalarProperty Name="aCLQ2" ColumnName="aCLQ2" />
+          <ScalarProperty Name="aCLQ1" ColumnName="aCLQ1" />
+          <ScalarProperty Name="aCOQ8" ColumnName="aCOQ8" />
+          <ScalarProperty Name="aCOQ7" ColumnName="aCOQ7" />
+          <ScalarProperty Name="aCOQ6" ColumnName="aCOQ6" />
+          <ScalarProperty Name="aCOQ5" ColumnName="aCOQ5" />
+          <ScalarProperty Name="aCOQ4" ColumnName="aCOQ4" />
+          <ScalarProperty Name="aCOQ3" ColumnName="aCOQ3" />
+          <ScalarProperty Name="aCOQ2" ColumnName="aCOQ2" />
+          <ScalarProperty Name="aCOQ1" ColumnName="aCOQ1" />
+          <ScalarProperty Name="aSSQ8" ColumnName="aSSQ8" />
+          <ScalarProperty Name="aSSQ7" ColumnName="aSSQ7" />
+          <ScalarProperty Name="aSSQ6" ColumnName="aSSQ6" />
+          <ScalarProperty Name="aSSQ5" ColumnName="aSSQ5" />
+          <ScalarProperty Name="aSSQ4" ColumnName="aSSQ4" />
+          <ScalarProperty Name="aSSQ3" ColumnName="aSSQ3" />
+          <ScalarProperty Name="aSSQ2" ColumnName="aSSQ2" />
+          <ScalarProperty Name="aSSQ1" ColumnName="aSSQ1" />
+          <ScalarProperty Name="aCSQ7" ColumnName="aCSQ7" />
+          <ScalarProperty Name="aCSQ6" ColumnName="aCSQ6" />
+          <ScalarProperty Name="aCSQ5" ColumnName="aCSQ5" />
+          <ScalarProperty Name="aCSQ4" ColumnName="aCSQ4" />
+          <ScalarProperty Name="aCSQ3" ColumnName="aCSQ3" />
+          <ScalarProperty Name="aCSQ2" ColumnName="aCSQ2" />
+          <ScalarProperty Name="aCSQ1" ColumnName="aCSQ1" />
+          <ScalarProperty Name="aIQ3" ColumnName="aIQ3" />
+          <ScalarProperty Name="aIQ2" ColumnName="aIQ2" />
+          <ScalarProperty Name="aIQ1" ColumnName="aIQ1" />
+          <ScalarProperty Name="C_Calls" ColumnName="#Calls" />
+          <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CFRAcurianID" ColumnName="CFRAcurianID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
