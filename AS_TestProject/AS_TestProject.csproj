@@ -835,6 +835,9 @@
     <Content Include="Views\Employees\SalesCFR_Delete.cshtml" />
     <Content Include="Views\Employees\SalesCFR_Details.cshtml" />
     <Content Include="Views\Employees\SalesCFR_Edit.cshtml" />
+    <Content Include="Views\Employees\AcurianCFR_Delete.cshtml" />
+    <Content Include="Views\Employees\AcurianCFR_Details.cshtml" />
+    <Content Include="Views\Employees\AcurianCFR_Edit.cshtml" />
     <None Include="Views\Shared\_RyanLayout.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />

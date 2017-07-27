@@ -253,6 +253,36 @@ namespace AS_TestProject.Controllers
             ViewBag.sAOIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
             ViewBag.sAOIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
 
+            ViewBag.aIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aSSQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCOQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCLQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCLQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+            ViewBag.aCLQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption");
+
             Employee manager = mb.Employees.Find(employee.ManagerEmployeeID);
             Employee creator = mb.Employees.Find(employee.AddByEmployeeID);
             if (employee.EditByEmployeeID != null)
@@ -291,10 +321,12 @@ namespace AS_TestProject.Controllers
             ViewBag.iCFRs = mb.CFRInsurances.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             ViewBag.pCFRs = mb.CFRPatientRecruitments.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             ViewBag.sCFRs = mb.CFRSales.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
+            ViewBag.aCFRs = mb.CFRAcurians.Where(d => d.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList();
             double mScore = 0;
             double iScore = 0;
             double pScore = 0;
             double sScore = 0;
+            double aScore = 0;
 
             var cfrs = new List<EmployeeCFR>();
             foreach (var cfr in ViewBag.mCFRs)
@@ -2033,15 +2065,451 @@ namespace AS_TestProject.Controllers
                     cfrs.Add(item);
                 }
             }
+            foreach (var cfr in ViewBag.aCFRs)
+            {
+                var item = new EmployeeCFR();
+                item.Type = "Acurian";
+                int n = 0;
+                double s = 0;
+                if (cfr.IntroductionRating == 1 || cfr.IntroductionRating == 2 || cfr.IntroductionRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.CommunicationSkillsRating == 1 || cfr.CommunicationSkillsRating == 2 || cfr.CommunicationSkillsRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.SoftSkillsRating == 1 || cfr.SoftSkillsRating == 2 || cfr.SoftSkillsRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ComplianceRating == 1 || cfr.ComplianceRating == 2 || cfr.ComplianceRating == 3)
+                {
+                    n++;
+                }
+                if (cfr.ClosingRating == 1 || cfr.ClosingRating == 2 || cfr.ClosingRating == 3)
+                {
+                    n++;
+                }
+
+                if (n == 0)
+                {
+                    item.Score = 100;
+                    aScore = aScore + item.Score;
+                }
+                if (n == 1)
+                {
+                    if (cfr.IntroductionRating != 4)
+                    {
+                        if (cfr.IntroductionRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.IntroductionRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.IntroductionRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.CommunicationSkillsRating != 4)
+                    {
+                        if (cfr.CommunicationSkillsRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.SoftSkillsRating != 4)
+                    {
+                        if (cfr.SoftSkillsRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.SoftSkillsRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.SoftSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ClosingRating != 4)
+                    {
+                        if (cfr.ClosingRating == 1)
+                        {
+                            s = s + 100;
+                        }
+                        else if (cfr.ClosingRating == 2)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ClosingRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    aScore = aScore + item.Score;
+                }
+                else if (n == 2)
+                {
+                    if (cfr.IntroductionRating != 4)
+                    {
+                        if (cfr.IntroductionRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.IntroductionRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.IntroductionRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.CommunicationSkillsRating != 4)
+                    {
+                        if (cfr.CommunicationSkillsRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.SoftSkillsRating != 4)
+                    {
+                        if (cfr.SoftSkillsRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.SoftSkillsRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.SoftSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ClosingRating != 4)
+                    {
+                        if (cfr.ClosingRating == 1)
+                        {
+                            s = s + 50;
+                        }
+                        else if (cfr.ClosingRating == 2)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ClosingRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    aScore = aScore + item.Score;
+                }
+                else if (n == 3)
+                {
+                    if (cfr.IntroductionRating != 4)
+                    {
+                        if (cfr.IntroductionRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.IntroductionRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.IntroductionRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.CommunicationSkillsRating != 4)
+                    {
+                        if (cfr.CommunicationSkillsRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.SoftSkillsRating != 4)
+                    {
+                        if (cfr.SoftSkillsRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.SoftSkillsRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.SoftSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ClosingRating != 4)
+                    {
+                        if (cfr.ClosingRating == 1)
+                        {
+                            s = s + 33.33;
+                        }
+                        else if (cfr.ClosingRating == 2)
+                        {
+                            s = s + 16.67;
+                        }
+                        else if (cfr.ClosingRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    aScore = aScore + item.Score;
+                }
+                else if (n == 4)
+                {
+                    if (cfr.IntroductionRating != 4)
+                    {
+                        if (cfr.IntroductionRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.IntroductionRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.IntroductionRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.CommunicationSkillsRating != 4)
+                    {
+                        if (cfr.CommunicationSkillsRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.SoftSkillsRating != 4)
+                    {
+                        if (cfr.SoftSkillsRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.SoftSkillsRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.SoftSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ClosingRating != 4)
+                    {
+                        if (cfr.ClosingRating == 1)
+                        {
+                            s = s + 25;
+                        }
+                        else if (cfr.ClosingRating == 2)
+                        {
+                            s = s + 12.5;
+                        }
+                        else if (cfr.ClosingRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    aScore = aScore + item.Score;
+                }
+                else if (n == 5)
+                {
+                    if (cfr.IntroductionRating != 4)
+                    {
+                        if (cfr.IntroductionRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.IntroductionRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.IntroductionRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.CommunicationSkillsRating != 4)
+                    {
+                        if (cfr.CommunicationSkillsRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.CommunicationSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.SoftSkillsRating != 4)
+                    {
+                        if (cfr.SoftSkillsRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.SoftSkillsRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.SoftSkillsRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ComplianceRating != 4)
+                    {
+                        if (cfr.ComplianceRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ComplianceRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ComplianceRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    if (cfr.ClosingRating != 4)
+                    {
+                        if (cfr.ClosingRating == 1)
+                        {
+                            s = s + 20;
+                        }
+                        else if (cfr.ClosingRating == 2)
+                        {
+                            s = s + 10;
+                        }
+                        else if (cfr.ClosingRating == 3)
+                        {
+                            s = s + 0;
+                        }
+                    }
+                    item.Score = Math.Round(s);
+                    aScore = aScore + item.Score;
+                    cfrs.Add(item);
+                }
+            }
             var mCFRs = ViewBag.mCFRs.Count;
             var iCFRs = ViewBag.iCFRs.Count;
             var pCFRs = ViewBag.pCFRs.Count;
             var sCFRs = ViewBag.sCFRs.Count;
+            var aCFRs = ViewBag.aCFRs.Count;
 
             ViewBag.mScore = "N/A";
             ViewBag.iScore = "N/A";
             ViewBag.pScore = "N/A";
             ViewBag.sScore = "N/A";
+            ViewBag.aScore = "N/A";
 
             if (mCFRs > 0)
             {
@@ -2058,6 +2526,10 @@ namespace AS_TestProject.Controllers
             if (sCFRs > 0)
             {
                 ViewBag.sScore = Math.Round(sScore / sCFRs);
+            }
+            if (aCFRs > 0)
+            {
+                ViewBag.aScore = Math.Round(aScore / aCFRs);
             }
             return View(employee);
         }
@@ -6184,6 +6656,1151 @@ namespace AS_TestProject.Controllers
             return RedirectToAction("Details", "Employees", new { id = cFRPatientRecruitment.EmployeeID });
         }
 
+        // GET: CFRAcurians/Details/5
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult AcurianCFR_Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRAcurian cFRAcurian = mb.CFRAcurians.Find(id);
+            if (cFRAcurian == null)
+            {
+                return HttpNotFound();
+            }
+
+            int n = 0;
+            double s = 0;
+            if (cFRAcurian.IntroductionRating == 1 || cFRAcurian.IntroductionRating == 2 || cFRAcurian.IntroductionRating == 3)
+            {
+                n++;
+            }
+            if (cFRAcurian.CommunicationSkillsRating == 1 || cFRAcurian.CommunicationSkillsRating == 2 || cFRAcurian.CommunicationSkillsRating == 3)
+            {
+                n++;
+            }
+            if (cFRAcurian.SoftSkillsRating == 1 || cFRAcurian.SoftSkillsRating == 2 || cFRAcurian.SoftSkillsRating == 3)
+            {
+                n++;
+            }
+            if (cFRAcurian.ComplianceRating == 1 || cFRAcurian.ComplianceRating == 2 || cFRAcurian.ComplianceRating == 3)
+            {
+                n++;
+            }
+            if (cFRAcurian.ClosingRating == 1 || cFRAcurian.ClosingRating == 2 || cFRAcurian.ClosingRating == 3)
+            {
+                n++;
+            }
+
+            if (n == 0)
+            {
+                ViewBag.OverallScore = "N/A";
+            }
+            if (n == 1)
+            {
+                if (cFRAcurian.IntroductionRating != 4)
+                {
+                    if (cFRAcurian.IntroductionRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.CommunicationSkillsRating != 4)
+                {
+                    if (cFRAcurian.CommunicationSkillsRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.SoftSkillsRating != 4)
+                {
+                    if (cFRAcurian.SoftSkillsRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ComplianceRating != 4)
+                {
+                    if (cFRAcurian.ComplianceRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ClosingRating != 4)
+                {
+                    if (cFRAcurian.ClosingRating == 1)
+                    {
+                        s = s + 100;
+                    }
+                    else if (cFRAcurian.ClosingRating == 2)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.ClosingRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 2)
+            {
+                if (cFRAcurian.IntroductionRating != 4)
+                {
+                    if (cFRAcurian.IntroductionRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.CommunicationSkillsRating != 4)
+                {
+                    if (cFRAcurian.CommunicationSkillsRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.SoftSkillsRating != 4)
+                {
+                    if (cFRAcurian.SoftSkillsRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ComplianceRating != 4)
+                {
+                    if (cFRAcurian.ComplianceRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ClosingRating != 4)
+                {
+                    if (cFRAcurian.ClosingRating == 1)
+                    {
+                        s = s + 50;
+                    }
+                    else if (cFRAcurian.ClosingRating == 2)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.ClosingRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 3)
+            {
+                if (cFRAcurian.IntroductionRating != 4)
+                {
+                    if (cFRAcurian.IntroductionRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.CommunicationSkillsRating != 4)
+                {
+                    if (cFRAcurian.CommunicationSkillsRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.SoftSkillsRating != 4)
+                {
+                    if (cFRAcurian.SoftSkillsRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ComplianceRating != 4)
+                {
+                    if (cFRAcurian.ComplianceRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ClosingRating != 4)
+                {
+                    if (cFRAcurian.ClosingRating == 1)
+                    {
+                        s = s + 33.33;
+                    }
+                    else if (cFRAcurian.ClosingRating == 2)
+                    {
+                        s = s + 16.67;
+                    }
+                    else if (cFRAcurian.ClosingRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 4)
+            {
+                if (cFRAcurian.IntroductionRating != 4)
+                {
+                    if (cFRAcurian.IntroductionRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.CommunicationSkillsRating != 4)
+                {
+                    if (cFRAcurian.CommunicationSkillsRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.SoftSkillsRating != 4)
+                {
+                    if (cFRAcurian.SoftSkillsRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ComplianceRating != 4)
+                {
+                    if (cFRAcurian.ComplianceRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ClosingRating != 4)
+                {
+                    if (cFRAcurian.ClosingRating == 1)
+                    {
+                        s = s + 25;
+                    }
+                    else if (cFRAcurian.ClosingRating == 2)
+                    {
+                        s = s + 12.5;
+                    }
+                    else if (cFRAcurian.ClosingRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            else if (n == 5)
+            {
+                if (cFRAcurian.IntroductionRating != 4)
+                {
+                    if (cFRAcurian.IntroductionRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRAcurian.IntroductionRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.CommunicationSkillsRating != 4)
+                {
+                    if (cFRAcurian.CommunicationSkillsRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRAcurian.CommunicationSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.SoftSkillsRating != 4)
+                {
+                    if (cFRAcurian.SoftSkillsRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRAcurian.SoftSkillsRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ComplianceRating != 4)
+                {
+                    if (cFRAcurian.ComplianceRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRAcurian.ComplianceRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                if (cFRAcurian.ClosingRating != 4)
+                {
+                    if (cFRAcurian.ClosingRating == 1)
+                    {
+                        s = s + 20;
+                    }
+                    else if (cFRAcurian.ClosingRating == 2)
+                    {
+                        s = s + 10;
+                    }
+                    else if (cFRAcurian.ClosingRating == 3)
+                    {
+                        s = s + 0;
+                    }
+                }
+                ViewBag.OverallScore = Math.Round(s);
+            }
+            return View(cFRAcurian);
+        }
+
+        // POST: CFRAcurians/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin, Quality")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AcurianCFR_Create([Bind(Include = "CFRAcurianID,EmployeeID,DomainMasterID,C_Calls,aIQ1,aIQ2,aIQ3,aCSQ1,aCSQ2,aCSQ3,aCSQ4,aCSQ5,aCSQ6,aCSQ7,aSSQ1,aSSQ2,aSSQ3,aSSQ4,aSSQ5,aSSQ6,aSSQ7,aSSQ8,aCOQ1,aCOQ2,aCOQ3,aCOQ4,aCOQ5,aCOQ6,aCOQ7,aCOQ8,aCLQ1,aCLQ2,aCLQ3,IntroductionRating,CommunicationSkillsRating,SoftSkillsRating,ComplianceRating,ClosingRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRAcurian cFRAcurian)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (ModelState.IsValid)
+            {
+                cFRAcurian.ManagerID = user.EmployeeID;
+                cFRAcurian.DateOfFeedback = System.DateTime.Now;
+
+                // Introduction Rating Calculation (ACURIAN)
+                int aIR = 0;
+                if (cFRAcurian.aIQ1 == 2)
+                {
+                    aIR++;
+                }
+                if (cFRAcurian.aIQ2 == 2)
+                {
+                    aIR++;
+                }
+                if (cFRAcurian.aIQ3 == 2)
+                {
+                    aIR++;
+                }
+
+                if (cFRAcurian.aIQ1 == 3 && cFRAcurian.aIQ2 == 3 && cFRAcurian.aIQ3 == 3)
+                {
+                    cFRAcurian.IntroductionRating = 4;
+                }
+                else
+                {
+                    if (aIR == 0)
+                    {
+                        cFRAcurian.IntroductionRating = 1;
+                    }
+                    if (aIR > 0 && aIR < 2)
+                    {
+                        cFRAcurian.IntroductionRating = 2;
+                    }
+                    if (aIR >= 2)
+                    {
+                        cFRAcurian.IntroductionRating = 3;
+                    }
+                }
+
+                // Communication Skills Rating Calculation (ACURIAN)
+                int aCSR = 0;
+                if (cFRAcurian.aCSQ1 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ2 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ3 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ4 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ5 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ6 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ7 == 2)
+                {
+                    aCSR++;
+                }
+
+                if (cFRAcurian.aCSQ1 == 3 && cFRAcurian.aCSQ2 == 3 && cFRAcurian.aCSQ1 == 3 && cFRAcurian.aCSQ2 == 3 && cFRAcurian.aCSQ3 == 3 && cFRAcurian.aCSQ4 == 3 && cFRAcurian.aCSQ5 == 3 && cFRAcurian.aCSQ6 == 3 && cFRAcurian.aCSQ7 == 3)
+                {
+                    cFRAcurian.CommunicationSkillsRating = 4;
+                }
+                else
+                {
+                    if (aCSR == 0)
+                    {
+                        cFRAcurian.CommunicationSkillsRating = 1;
+                    }
+                    if (aCSR > 0 && aCSR < 3)
+                    {
+                        cFRAcurian.CommunicationSkillsRating = 2;
+                    }
+                    if (aCSR >= 3)
+                    {
+                        cFRAcurian.CommunicationSkillsRating = 3;
+                    }
+                }
+
+                // Soft Skills Rating Calculation (ACURIAN)
+                int aSSR = 0;
+                if (cFRAcurian.aSSQ1 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ2 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ3 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ4 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ5 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ6 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ7 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ8 == 2)
+                {
+                    aSSR++;
+                }
+
+                if (cFRAcurian.aSSQ1 == 3 && cFRAcurian.aSSQ2 == 3 && cFRAcurian.aSSQ3 == 3 && cFRAcurian.aSSQ4 == 3 && cFRAcurian.aSSQ5 == 3 && cFRAcurian.aSSQ6 == 3 && cFRAcurian.aSSQ7 == 3 && cFRAcurian.aSSQ8 == 3)
+                {
+                    cFRAcurian.SoftSkillsRating = 4;
+                }
+                else
+                {
+                    if (aSSR == 0)
+                    {
+                        cFRAcurian.SoftSkillsRating = 1;
+                    }
+                    if (aSSR > 0 && aSSR < 4)
+                    {
+                        cFRAcurian.SoftSkillsRating = 2;
+                    }
+                    if (aSSR >= 4)
+                    {
+                        cFRAcurian.SoftSkillsRating = 3;
+                    }
+                }
+
+                // Compliance Rating Calculation (ACURIAN)
+                int aCOR = 0;
+                if (cFRAcurian.aCOQ1 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ2 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ3 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ4 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ5 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ6 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ7 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ8 == 2)
+                {
+                    aCOR++;
+                }
+
+                if (cFRAcurian.aCOQ1 == 3 && cFRAcurian.aCOQ2 == 3 && cFRAcurian.aCOQ3 == 3 && cFRAcurian.aCOQ4 == 3 && cFRAcurian.aCOQ5 == 3 && cFRAcurian.aCOQ6 == 3 && cFRAcurian.aCOQ7 == 3 && cFRAcurian.aCOQ8 == 3)
+                {
+                    cFRAcurian.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (aCOR == 0)
+                    {
+                        cFRAcurian.ComplianceRating = 1;
+                    }
+                    if (aCOR == 1 && cFRAcurian.aCOQ8 == 2)
+                    {
+                        cFRAcurian.ComplianceRating = 2;
+                    }
+                    if ((aCOR == 1 && cFRAcurian.aCOQ8 != 2) || aCOR > 1)
+                    {
+                        cFRAcurian.ComplianceRating = 3;
+                    }
+                }
+
+                // Closing Rating Calculation (ACURIAN)
+                int aCLR = 0;
+                if (cFRAcurian.aCLQ1 == 2)
+                {
+                    aCLR++;
+                }
+                if (cFRAcurian.aCLQ2 == 2)
+                {
+                    aCLR++;
+                }
+                if (cFRAcurian.aCLQ3 == 2)
+                {
+                    aCLR++;
+                }
+
+                if (cFRAcurian.aCLQ1 == 3 && cFRAcurian.aCLQ2 == 3 && cFRAcurian.aCLQ3 == 3)
+                {
+                    cFRAcurian.ClosingRating = 4;
+                }
+                else
+                {
+                    if (aCLR == 0)
+                    {
+                        cFRAcurian.ClosingRating = 1;
+                    }
+                    if (aCLR > 0 && aCLR < 2)
+                    {
+                        cFRAcurian.ClosingRating = 2;
+                    }
+                    if (aCLR >= 2)
+                    {
+                        cFRAcurian.ClosingRating = 3;
+                    }
+                }
+
+                mb.CFRAcurians.Add(cFRAcurian);
+                mb.SaveChanges();
+                return RedirectToAction("Details", "Employees", new { id = cFRAcurian.EmployeeID });
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRAcurian.DomainMasterID);
+            ViewBag.aIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ1);
+            ViewBag.aIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ2);
+            ViewBag.aIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ3);
+            ViewBag.aCSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ1);
+            ViewBag.aCSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ2);
+            ViewBag.aCSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ3);
+            ViewBag.aCSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ4);
+            ViewBag.aCSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ5);
+            ViewBag.aCSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ6);
+            ViewBag.aCSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ7);
+            ViewBag.aSSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ1);
+            ViewBag.aSSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ2);
+            ViewBag.aSSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ3);
+            ViewBag.aSSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ4);
+            ViewBag.aSSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ5);
+            ViewBag.aSSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ6);
+            ViewBag.aSSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ7);
+            ViewBag.aSSQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ8);
+            ViewBag.aCOQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ1);
+            ViewBag.aCOQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ2);
+            ViewBag.aCOQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ3);
+            ViewBag.aCOQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ4);
+            ViewBag.aCOQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ5);
+            ViewBag.aCOQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ6);
+            ViewBag.aCOQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ7);
+            ViewBag.aCOQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ8);
+            ViewBag.aCLQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ1);
+            ViewBag.aCLQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ2);
+            ViewBag.aCLQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ3);
+            return View(cFRAcurian);
+        }
+
+        // GET: CFRAcurians/Edit/5
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult AcurianCFR_Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRAcurian cFRAcurian = mb.CFRAcurians.Find(id);
+            if (cFRAcurian == null)
+            {
+                return HttpNotFound();
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRAcurian.DomainMasterID);
+            ViewBag.aIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ1);
+            ViewBag.aIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ2);
+            ViewBag.aIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ3);
+            ViewBag.aCSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ1);
+            ViewBag.aCSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ2);
+            ViewBag.aCSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ3);
+            ViewBag.aCSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ4);
+            ViewBag.aCSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ5);
+            ViewBag.aCSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ6);
+            ViewBag.aCSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ7);
+            ViewBag.aSSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ1);
+            ViewBag.aSSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ2);
+            ViewBag.aSSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ3);
+            ViewBag.aSSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ4);
+            ViewBag.aSSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ5);
+            ViewBag.aSSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ6);
+            ViewBag.aSSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ7);
+            ViewBag.aSSQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ8);
+            ViewBag.aCOQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ1);
+            ViewBag.aCOQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ2);
+            ViewBag.aCOQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ3);
+            ViewBag.aCOQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ4);
+            ViewBag.aCOQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ5);
+            ViewBag.aCOQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ6);
+            ViewBag.aCOQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ7);
+            ViewBag.aCOQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ8);
+            ViewBag.aCLQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ1);
+            ViewBag.aCLQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ2);
+            ViewBag.aCLQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ3);
+            ViewBag.EmployeeName = cFRAcurian.Employee.FirstName + " " + cFRAcurian.Employee.LastName;
+            return View(cFRAcurian);
+        }
+
+        // POST: CFRAcurians/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Admin, Quality")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AcurianCFR_Edit([Bind(Include = "CFRAcurianID,EmployeeID,DomainMasterID,C_Calls,aIQ1,aIQ2,aIQ3,aCSQ1,aCSQ2,aCSQ3,aCSQ4,aCSQ5,aCSQ6,aCSQ7,aSSQ1,aSSQ2,aSSQ3,aSSQ4,aSSQ5,aSSQ6,aSSQ7,aSSQ8,aCOQ1,aCOQ2,aCOQ3,aCOQ4,aCOQ5,aCOQ6,aCOQ7,aCOQ8,aCLQ1,aCLQ2,aCLQ3,IntroductionRating,CommunicationSkillsRating,SoftSkillsRating,ComplianceRating,ClosingRating,ConversionRateToday,WeekToDate,Comments,Strengths,ActionPlan,ManagerID,DateOfFeedback")] CFRAcurian cFRAcurian)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            if (ModelState.IsValid)
+            {
+                mb.CFRAcurians.Attach(cFRAcurian);
+                mb.Entry(cFRAcurian).Property("C_Calls").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aIQ1").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aIQ2").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aIQ3").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCSQ1").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCSQ2").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCSQ3").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCSQ4").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCSQ5").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCSQ6").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCSQ7").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ1").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ2").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ3").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ4").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ5").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ6").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ7").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aSSQ8").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ1").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ2").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ3").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ4").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ5").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ6").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ7").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCOQ8").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCLQ1").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCLQ2").IsModified = true;
+                mb.Entry(cFRAcurian).Property("aCLQ3").IsModified = true;
+                mb.Entry(cFRAcurian).Property("IntroductionRating").IsModified = true;
+                mb.Entry(cFRAcurian).Property("CommunicationSkillsRating").IsModified = true;
+                mb.Entry(cFRAcurian).Property("SoftSkillsRating").IsModified = true;
+                mb.Entry(cFRAcurian).Property("ComplianceRating").IsModified = true;
+                mb.Entry(cFRAcurian).Property("ClosingRating").IsModified = true;
+                mb.Entry(cFRAcurian).Property("Comments").IsModified = true;
+                mb.Entry(cFRAcurian).Property("Strengths").IsModified = true;
+                mb.Entry(cFRAcurian).Property("ActionPlan").IsModified = true;
+                cFRAcurian.ManagerID = user.EmployeeID;
+
+                // Introduction Rating Calculation (ACURIAN)
+                int aIR = 0;
+                if (cFRAcurian.aIQ1 == 2)
+                {
+                    aIR++;
+                }
+                if (cFRAcurian.aIQ2 == 2)
+                {
+                    aIR++;
+                }
+                if (cFRAcurian.aIQ3 == 2)
+                {
+                    aIR++;
+                }
+
+                if (cFRAcurian.aIQ1 == 3 && cFRAcurian.aIQ2 == 3 && cFRAcurian.aIQ3 == 3)
+                {
+                    cFRAcurian.IntroductionRating = 4;
+                }
+                else
+                {
+                    if (aIR == 0)
+                    {
+                        cFRAcurian.IntroductionRating = 1;
+                    }
+                    if (aIR > 0 && aIR < 2)
+                    {
+                        cFRAcurian.IntroductionRating = 2;
+                    }
+                    if (aIR >= 2)
+                    {
+                        cFRAcurian.IntroductionRating = 3;
+                    }
+                }
+
+                // Communication Skills Rating Calculation (ACURIAN)
+                int aCSR = 0;
+                if (cFRAcurian.aCSQ1 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ2 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ3 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ4 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ5 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ6 == 2)
+                {
+                    aCSR++;
+                }
+                if (cFRAcurian.aCSQ7 == 2)
+                {
+                    aCSR++;
+                }
+
+                if (cFRAcurian.aCSQ1 == 3 && cFRAcurian.aCSQ2 == 3 && cFRAcurian.aCSQ1 == 3 && cFRAcurian.aCSQ2 == 3 && cFRAcurian.aCSQ3 == 3 && cFRAcurian.aCSQ4 == 3 && cFRAcurian.aCSQ5 == 3 && cFRAcurian.aCSQ6 == 3 && cFRAcurian.aCSQ7 == 3)
+                {
+                    cFRAcurian.CommunicationSkillsRating = 4;
+                }
+                else
+                {
+                    if (aCSR == 0)
+                    {
+                        cFRAcurian.CommunicationSkillsRating = 1;
+                    }
+                    if (aCSR > 0 && aCSR < 3)
+                    {
+                        cFRAcurian.CommunicationSkillsRating = 2;
+                    }
+                    if (aCSR >= 3)
+                    {
+                        cFRAcurian.CommunicationSkillsRating = 3;
+                    }
+                }
+
+                // Soft Skills Rating Calculation (ACURIAN)
+                int aSSR = 0;
+                if (cFRAcurian.aSSQ1 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ2 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ3 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ4 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ5 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ6 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ7 == 2)
+                {
+                    aSSR++;
+                }
+                if (cFRAcurian.aSSQ8 == 2)
+                {
+                    aSSR++;
+                }
+
+                if (cFRAcurian.aSSQ1 == 3 && cFRAcurian.aSSQ2 == 3 && cFRAcurian.aSSQ3 == 3 && cFRAcurian.aSSQ4 == 3 && cFRAcurian.aSSQ5 == 3 && cFRAcurian.aSSQ6 == 3 && cFRAcurian.aSSQ7 == 3 && cFRAcurian.aSSQ8 == 3)
+                {
+                    cFRAcurian.SoftSkillsRating = 4;
+                }
+                else
+                {
+                    if (aSSR == 0)
+                    {
+                        cFRAcurian.SoftSkillsRating = 1;
+                    }
+                    if (aSSR > 0 && aSSR < 4)
+                    {
+                        cFRAcurian.SoftSkillsRating = 2;
+                    }
+                    if (aSSR >= 4)
+                    {
+                        cFRAcurian.SoftSkillsRating = 3;
+                    }
+                }
+
+                // Compliance Rating Calculation (ACURIAN)
+                int aCOR = 0;
+                if (cFRAcurian.aCOQ1 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ2 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ3 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ4 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ5 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ6 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ7 == 2)
+                {
+                    aCOR++;
+                }
+                if (cFRAcurian.aCOQ8 == 2)
+                {
+                    aCOR++;
+                }
+
+                if (cFRAcurian.aCOQ1 == 3 && cFRAcurian.aCOQ2 == 3 && cFRAcurian.aCOQ3 == 3 && cFRAcurian.aCOQ4 == 3 && cFRAcurian.aCOQ5 == 3 && cFRAcurian.aCOQ6 == 3 && cFRAcurian.aCOQ7 == 3 && cFRAcurian.aCOQ8 == 3)
+                {
+                    cFRAcurian.ComplianceRating = 4;
+                }
+                else
+                {
+                    if (aCOR == 0)
+                    {
+                        cFRAcurian.ComplianceRating = 1;
+                    }
+                    if (aCOR == 1 && cFRAcurian.aCOQ8 == 2)
+                    {
+                        cFRAcurian.ComplianceRating = 2;
+                    }
+                    if ((aCOR == 1 && cFRAcurian.aCOQ8 != 2) || aCOR > 1)
+                    {
+                        cFRAcurian.ComplianceRating = 3;
+                    }
+                }
+
+                // Closing Rating Calculation (ACURIAN)
+                int aCLR = 0;
+                if (cFRAcurian.aCLQ1 == 2)
+                {
+                    aCLR++;
+                }
+                if (cFRAcurian.aCLQ2 == 2)
+                {
+                    aCLR++;
+                }
+                if (cFRAcurian.aCLQ3 == 2)
+                {
+                    aCLR++;
+                }
+
+                if (cFRAcurian.aCLQ1 == 3 && cFRAcurian.aCLQ2 == 3 && cFRAcurian.aCLQ3 == 3)
+                {
+                    cFRAcurian.ClosingRating = 4;
+                }
+                else
+                {
+                    if (aCLR == 0)
+                    {
+                        cFRAcurian.ClosingRating = 1;
+                    }
+                    if (aCLR > 0 && aCLR < 2)
+                    {
+                        cFRAcurian.ClosingRating = 2;
+                    }
+                    if (aCLR >= 2)
+                    {
+                        cFRAcurian.ClosingRating = 3;
+                    }
+                }
+
+                mb.SaveChanges();
+                return RedirectToAction("Details", "Employees", new { id = cFRAcurian.EmployeeID });
+            }
+
+            var domains = new List<Domain>();
+            foreach (var domain in mb.DomainMasters.Where(d => d.IsActive == true).OrderBy(d => d.FileMask))
+            {
+                var selection = new Domain();
+                selection.Id = domain.DomainMasterID;
+                selection.FileMaskPlusName = domain.FileMask + " - " + domain.DomainName;
+
+                domains.Add(selection);
+            }
+            ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName", cFRAcurian.DomainMasterID);
+            ViewBag.aIQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ1);
+            ViewBag.aIQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ2);
+            ViewBag.aIQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aIQ3);
+            ViewBag.aCSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ1);
+            ViewBag.aCSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ2);
+            ViewBag.aCSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ3);
+            ViewBag.aCSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ4);
+            ViewBag.aCSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ5);
+            ViewBag.aCSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ6);
+            ViewBag.aCSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCSQ7);
+            ViewBag.aSSQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ1);
+            ViewBag.aSSQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ2);
+            ViewBag.aSSQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ3);
+            ViewBag.aSSQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ4);
+            ViewBag.aSSQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ5);
+            ViewBag.aSSQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ6);
+            ViewBag.aSSQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ7);
+            ViewBag.aSSQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aSSQ8);
+            ViewBag.aCOQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ1);
+            ViewBag.aCOQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ2);
+            ViewBag.aCOQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ3);
+            ViewBag.aCOQ4 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ4);
+            ViewBag.aCOQ5 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ5);
+            ViewBag.aCOQ6 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ6);
+            ViewBag.aCOQ7 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ7);
+            ViewBag.aCOQ8 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCOQ8);
+            ViewBag.aCLQ1 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ1);
+            ViewBag.aCLQ2 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ2);
+            ViewBag.aCLQ3 = new SelectList(mb.AnswerKeys, "AnswerKeyID", "AnswerOption", cFRAcurian.aCLQ3);
+            ViewBag.EmployeeName = cFRAcurian.Employee.FirstName + " " + cFRAcurian.Employee.LastName;
+            return View(cFRAcurian);
+        }
+
+        // GET: CFRAcurians/Delete/5
+        [Authorize(Roles = "Admin, Quality")]
+        public ActionResult AcurianCFR_Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CFRAcurian cFRAcurian = mb.CFRAcurians.Find(id);
+            if (cFRAcurian == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cFRAcurian);
+        }
+
+        // POST: CFRAcurians/Delete/5
+        [HttpPost, ActionName("AcurianCFR_Delete")]
+        [Authorize(Roles = "Admin, Quality")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AcurianCFR_DeleteConfirmed(int id)
+        {
+            CFRAcurian cFRAcurian = mb.CFRAcurians.Find(id);
+            mb.CFRAcurians.Remove(cFRAcurian);
+            mb.SaveChanges();
+            return RedirectToAction("Details", "Employees", new { id = cFRAcurian.EmployeeID });
+        }
 
         //// POST: Employees/Create
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -6345,6 +7962,17 @@ namespace AS_TestProject.Controllers
                 item.ForEmployee = cfr.Employee.FirstName + " " + cfr.Employee.LastName;
                 item.ForEmployeeID = cfr.EmployeeID;
                 item.Type = "Sales";
+
+                cfrs.Add(item);
+            }
+            foreach (var cfr in mb.CFRAcurians.Where(c => c.Employee1.EmployeeID == employee.EmployeeID).OrderByDescending(c => c.DateOfFeedback).ToList())
+            {
+                var item = new CompletedCFR();
+                item.Id = cfr.CFRAcurianID;
+                item.DateSubmitted = cfr.DateOfFeedback;
+                item.ForEmployee = cfr.Employee.FirstName + " " + cfr.Employee.LastName;
+                item.ForEmployeeID = cfr.EmployeeID;
+                item.Type = "Acurian";
 
                 cfrs.Add(item);
             }

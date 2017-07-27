@@ -1,4 +1,4 @@
-﻿@model AS_TestProject.Entities.CFRInsurance
+﻿@model AS_TestProject.Entities.CFRAcurian
 
 @{
     ViewBag.Title = "Details";
@@ -6,7 +6,7 @@
 
 <div class="col-lg-12 mt">
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
-        <h2>Insurance CFR Details for <span style="color: #29AAE3">@Model.Employee1.FirstName @Model.Employee1.LastName</span></h2>
+        <h2>Insurance CFR Details for <span style="color: #29AAE3">@Model.Employee.FirstName @Model.Employee.LastName</span></h2>
         <hr />
         <div class="col-md-12" style="padding: 0px; margin-bottom: 10px">
             <div class="col-md-6" style="padding: 0px">
@@ -14,7 +14,7 @@
                     Submitted By
                 </div>
                 <div class="col-md-6">
-                    @Model.Employee2.FirstName @Model.Employee2.LastName
+                    @Model.Employee1.FirstName @Model.Employee1.LastName
                 </div><br /><br /><br />
 
                 <div class="col-md-6 control-label">
@@ -50,131 +50,331 @@
             </div>
         </div>
         <div>
-            <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi4.PerformanceRating)</span></h5><br />
+            <h5 style="color: #29AAE3"><strong>Introduction</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi3.PerformanceRating)</span></h5><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iTE1
+                @ViewBag.aI1
             </div>
             <div class="col-md-3">
-                @if (Model.iTEQ1 == 1)
+                @if (Model.aIQ1 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iTEQ1 == 2)
+                else if (Model.aIQ1 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iTEQ1 == 3)
+                else if (Model.aIQ1 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iTE2
+                @ViewBag.aI2
             </div>
             <div class="col-md-3">
-                @if (Model.iTEQ2 == 1)
+                @if (Model.aIQ2 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iTEQ2 == 2)
+                else if (Model.aIQ2 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iTEQ2 == 3)
+                else if (Model.aIQ2 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iTE3
+                @ViewBag.aI3
             </div>
             <div class="col-md-3">
-                @if (Model.iTEQ3 == 1)
+                @if (Model.aIQ3 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iTEQ3 == 2)
+                else if (Model.aIQ3 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iTEQ3 == 3)
+                else if (Model.aIQ3 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Communication Skills</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi1.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aCS1
+            </div>
+            <div class="col-md-3">
+                @if (Model.aCSQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aCSQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aCSQ1 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iTE4
+                @ViewBag.aCS2
             </div>
             <div class="col-md-3">
-                @if (Model.iTEQ4 == 1)
+                @if (Model.aCSQ2 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iTEQ4 == 2)
+                else if (Model.aCSQ2 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iTEQ4 == 3)
+                else if (Model.aCSQ2 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iTE5
+                @ViewBag.aCS3
             </div>
             <div class="col-md-3">
-                @if (Model.iTEQ5 == 1)
+                @if (Model.aCSQ3 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iTEQ5 == 2)
+                else if (Model.aCSQ3 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iTEQ5 == 3)
-                {
-                    <span>N/A</span>
-                }
-            </div><br /><br /><br />
-
-            <h5 style="color: #29AAE3"><strong>Professionalism</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi3.PerformanceRating)</span></h5><br />
-
-            <div class="col-md-9 control-label">
-                @ViewBag.iP1
-            </div>
-            <div class="col-md-3">
-                @if (Model.iPQ1 == 1)
-                {
-                    <span>Yes</span>
-                }
-                else if (Model.iPQ1 == 2)
-                {
-                    <span>No</span>
-                }
-                else if (Model.iPQ1 == 3)
+                else if (Model.aCSQ3 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iP2
+                @ViewBag.aCS4
             </div>
             <div class="col-md-3">
-                @if (Model.iPQ2 == 1)
+                @if (Model.aCSQ4 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iPQ2 == 2)
+                else if (Model.aCSQ4 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iPQ2 == 3)
+                else if (Model.aCSQ4 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aCS5
+            </div>
+            <div class="col-md-3">
+                @if (Model.aCSQ5 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aCSQ5 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aCSQ5 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aCS6
+            </div>
+            <div class="col-md-3">
+                @if (Model.aCSQ6 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aCSQ6 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aCSQ6 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aCS7
+            </div>
+            <div class="col-md-3">
+                @if (Model.aCSQ7 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aCSQ7 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aCSQ7 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Soft Skills</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi4.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS1
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ1 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS2
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ2 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ2 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ2 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS3
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ3 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ3 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ3 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS4
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ4 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ4 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ4 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS5
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ5 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ5 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ5 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS6
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ6 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ6 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ6 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS7
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ7 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ7 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ7 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aSS8
+            </div>
+            <div class="col-md-3">
+                @if (Model.aSSQ8 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aSSQ8 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aSSQ8 == 3)
                 {
                     <span>N/A</span>
                 }
@@ -183,238 +383,200 @@
             <h5 style="color: #29AAE3"><strong>Compliance</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi2.PerformanceRating)</span></h5><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iC1
+                @ViewBag.aCO1
             </div>
             <div class="col-md-3">
-                @if (Model.iCQ1 == 1)
+                @if (Model.aCOQ1 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iCQ1 == 2)
+                else if (Model.aCOQ1 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iCQ1 == 3)
+                else if (Model.aCOQ1 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iC2
+                @ViewBag.aCO2
             </div>
             <div class="col-md-3">
-                @if (Model.iCQ2 == 1)
+                @if (Model.aCOQ2 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iCQ2 == 2)
+                else if (Model.aCOQ2 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iCQ2 == 3)
+                else if (Model.aCOQ2 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iC3
+                @ViewBag.aCO3
             </div>
             <div class="col-md-3">
-                @if (Model.iCQ3 == 1)
+                @if (Model.aCOQ3 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iCQ3 == 2)
+                else if (Model.aCOQ3 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iCQ3 == 3)
-                {
-                    <span>N/A</span>
-                }
-            </div><br /><br /><br />
-
-            <h5 style="color: #29AAE3"><strong>Adherence</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi1.PerformanceRating)</span></h5><br />
-
-            <div class="col-md-9 control-label">
-                @ViewBag.iA1
-            </div>
-            <div class="col-md-3">
-                @if (Model.iAQ1 == 1)
-                {
-                    <span>Yes</span>
-                }
-                else if (Model.iAQ1 == 2)
-                {
-                    <span>No</span>
-                }
-                else if (Model.iAQ1 == 3)
+                else if (Model.aCOQ3 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iA2
+                @ViewBag.aCO4
             </div>
             <div class="col-md-3">
-                @if (Model.iAQ2 == 1)
+                @if (Model.aCOQ4 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iAQ2 == 2)
+                else if (Model.aCOQ4 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iAQ2 == 3)
+                else if (Model.aCOQ4 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iA3
+                @ViewBag.aCO5
             </div>
             <div class="col-md-3">
-                @if (Model.iAQ3 == 1)
+                @if (Model.aCOQ5 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iAQ3 == 2)
+                else if (Model.aCOQ5 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iAQ3 == 3)
+                else if (Model.aCOQ5 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iA4
+                @ViewBag.aCO6
             </div>
             <div class="col-md-3">
-                @if (Model.iAQ4 == 1)
+                @if (Model.aCOQ6 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iAQ4 == 2)
+                else if (Model.aCOQ6 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iAQ4 == 3)
+                else if (Model.aCOQ6 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iA5
+                @ViewBag.aCO7
             </div>
             <div class="col-md-3">
-                @if (Model.iAQ5 == 1)
+                @if (Model.aCOQ7 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iAQ5 == 2)
+                else if (Model.aCOQ7 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iAQ5 == 3)
-                {
-                    <span>N/A</span>
-                }
-            </div><br /><br /><br />
-
-            <h5 style="color: #29AAE3"><strong>Accuracy of Information</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi.PerformanceRating)</span></h5><br />
-
-            <div class="col-md-9 control-label">
-                @ViewBag.iAOI1
-            </div>
-            <div class="col-md-3">
-                @if (Model.iAOIQ1 == 1)
-                {
-                    <span>Yes</span>
-                }
-                else if (Model.iAOIQ1 == 2)
-                {
-                    <span>No</span>
-                }
-                else if (Model.iAOIQ1 == 3)
+                else if (Model.aCOQ7 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iAOI2
+                @ViewBag.aCO8
             </div>
             <div class="col-md-3">
-                @if (Model.iAOIQ2 == 1)
+                @if (Model.aCOQ8 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iAOIQ2 == 2)
+                else if (Model.aCOQ8 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iAOIQ2 == 3)
+                else if (Model.aCOQ8 == 3)
+                {
+                    <span>N/A</span>
+                }
+            </div><br /><br /><br />
+
+            <h5 style="color: #29AAE3"><strong>Closing</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi.PerformanceRating)</span></h5><br />
+
+            <div class="col-md-9 control-label">
+                @ViewBag.aCL1
+            </div>
+            <div class="col-md-3">
+                @if (Model.aCLQ1 == 1)
+                {
+                    <span>Yes</span>
+                }
+                else if (Model.aCLQ1 == 2)
+                {
+                    <span>No</span>
+                }
+                else if (Model.aCLQ1 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iAOI3
+                @ViewBag.aCL2
             </div>
             <div class="col-md-3">
-                @if (Model.iAOIQ3 == 1)
+                @if (Model.aCLQ2 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iAOIQ3 == 2)
+                else if (Model.aCLQ2 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iAOIQ3 == 3)
+                else if (Model.aCLQ2 == 3)
                 {
                     <span>N/A</span>
                 }
             </div><br /><br /><br />
 
             <div class="col-md-9 control-label">
-                @ViewBag.iAOI4
+                @ViewBag.aCL3
             </div>
             <div class="col-md-3">
-                @if (Model.iAOIQ4 == 1)
+                @if (Model.aCLQ3 == 1)
                 {
                     <span>Yes</span>
                 }
-                else if (Model.iAOIQ4 == 2)
+                else if (Model.aCLQ3 == 2)
                 {
                     <span>No</span>
                 }
-                else if (Model.iAOIQ4 == 3)
-                {
-                    <span>N/A</span>
-                }
-            </div><br /><br /><br />
-
-            <div class="col-md-9 control-label">
-                @ViewBag.iAOI5
-            </div>
-            <div class="col-md-3">
-                @if (Model.iAOIQ5 == 1)
-                {
-                    <span>Yes</span>
-                }
-                else if (Model.iAOIQ5 == 2)
-                {
-                    <span>No</span>
-                }
-                else if (Model.iAOIQ5 == 3)
+                else if (Model.aCLQ3 == 3)
                 {
                     <span>N/A</span>
                 }
@@ -444,7 +606,7 @@
             </div><br /><br /><br /><br /><br /><br /><br />
         </div>
         <p>
-            @Html.ActionLink("Edit", "InsuranceCFR_Edit", new { id = Model.CFRInsuranceID }) |
+            @Html.ActionLink("Edit", "AcurianCFR_Edit", new { id = Model.CFRAcurianID }) |
             @Html.ActionLink("Back to Employee Details", "Details", new { id = Model.EmployeeID })
         </p>
     </div>

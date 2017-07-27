@@ -139,6 +139,36 @@ namespace AS_TestProject.Models
                 ViewBag.sA2 = "Did the CSR utilize the tools and rebuttals (at least three times) before ending the call?";
                 ViewBag.sAOI1 = "Did the CSR verify caller identity, provided accurate information to the customer, read the confirmation scripting, correctly enter account changes and notes, and properly codes call (for call tracking)?";
                 ViewBag.sAOI2 = "Did the CSR demonstrate good procedural skills, effectively uses systems and tools, and follows call guidelines and scripts?";
+                /////////////////////////////// Acurian CFR Questions
+                ViewBag.aI1 = "Opening/Greeting";
+                ViewBag.aI2 = "Capturing Personal Identifiable Information";
+                ViewBag.aI3 = "Privacy Policy";
+                ViewBag.aCS1 = "Tone and Inflection";
+                ViewBag.aCS2 = "Pronunciation";
+                ViewBag.aCS3 = "Speech";
+                ViewBag.aCS4 = "Pace";
+                ViewBag.aCS5 = "Behavior";
+                ViewBag.aCS6 = "Attitude";
+                ViewBag.aCS7 = "Professionalism";
+                ViewBag.aSS1 = "Listening";
+                ViewBag.aSS2 = "Personalization";
+                ViewBag.aSS3 = "Rapport";
+                ViewBag.aSS4 = "Empathy and Acknowledgement";
+                ViewBag.aSS5 = "Respect";
+                ViewBag.aSS6 = "Confidence";
+                ViewBag.aSS7 = "Engaging";
+                ViewBag.aSS8 = "Control";
+                ViewBag.aCO1 = "Follows Script";
+                ViewBag.aCO2 = "Reading";
+                ViewBag.aCO3 = "Transitional Phrases and Holds";
+                ViewBag.aCO4 = "Sites";
+                ViewBag.aCO5 = "Follows Protocol";
+                ViewBag.aCO6 = "Resources and Tools";
+                ViewBag.aCO7 = "Accuracy";
+                ViewBag.aCO8 = "Rebuttals";
+                ViewBag.aCL1 = "Site Information";
+                ViewBag.aCL2 = "Screening Result";
+                ViewBag.aCL3 = "Wrap-up / Closing";
 
                 base.OnActionExecuting(filterContext);
             }

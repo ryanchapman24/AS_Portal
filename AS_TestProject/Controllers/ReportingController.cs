@@ -134,11 +134,14 @@ namespace AS_TestProject.Controllers
             var totICFRs = mb.CFRInsurances.Where(c => c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth && c.DateOfFeedback.Day == todayDay).Count();
             var totPRCFRs = mb.CFRPatientRecruitments.Where(c => c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth && c.DateOfFeedback.Day == todayDay).Count();
             var totSCFRs = mb.CFRSales.Where(c => c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth && c.DateOfFeedback.Day == todayDay).Count();
+            var totACFRs = mb.CFRAcurians.Where(c => c.DateOfFeedback.Year == todayYear && c.DateOfFeedback.Month == todayMonth && c.DateOfFeedback.Day == todayDay).Count();
+
             ViewBag.TotalMortgageCFRs = totMCFRs;
             ViewBag.TotalInsuranceCFRs = totICFRs;
             ViewBag.TotalPatientRecruitmentCFRs = totPRCFRs;
             ViewBag.TotalSalesCFRs = totSCFRs;
-            ViewBag.TotalCFRs = totMCFRs + totICFRs + totPRCFRs + totSCFRs;
+            ViewBag.TotalAcurianCFRs = totACFRs;
+            ViewBag.TotalCFRs = totMCFRs + totICFRs + totPRCFRs + totSCFRs + totACFRs;
 
             var totDAs = mb.DisciplinaryActions.Where(d => d.EditTimeStamp.Value.Year == todayYear && d.EditTimeStamp.Value.Month == todayMonth && d.EditTimeStamp.Value.Day == todayDay).Count();
             ViewBag.TotalDAs = totDAs;
