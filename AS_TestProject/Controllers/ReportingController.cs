@@ -655,11 +655,13 @@ namespace AS_TestProject.Controllers
             decimal insCFR = mb.CFRInsurances.Count();
             decimal prCFR = mb.CFRPatientRecruitments.Count();
             decimal slsCFR = mb.CFRSales.Count();
+            decimal accCFR = mb.CFRAcurians.Count();
 
             ViewBag.mtgCFR = mtgCFR;
             ViewBag.insCFR = insCFR;
             ViewBag.prCFR = prCFR;
             ViewBag.slsCFR = slsCFR;
+            ViewBag.accCFR = accCFR;
 
             ////////////////////// MORTGAGE //////////////////////////////////////////////////////////
             decimal mTE1yes = mb.CFRMortgages.Where(c => c.mTEQ1 == 1).Count();
@@ -1224,6 +1226,239 @@ namespace AS_TestProject.Controllers
             ViewBag.sAOI2yes = Math.Round((sAOI2yes * 10000) / slsCFR) / 100;
             ViewBag.sAOI2no = Math.Round((sAOI2no * 10000) / slsCFR) / 100;
             ViewBag.sAOI2na = Math.Round((sAOI2na * 10000) / slsCFR) / 100;
+
+            ////////////////////// ACURIAN //////////////////////////////////////////////////////////
+            decimal aI1yes = mb.CFRAcurians.Where(c => c.aIQ1 == 1).Count();
+            decimal aI1no = mb.CFRAcurians.Where(c => c.aIQ1 == 2).Count();
+            decimal aI1na = mb.CFRAcurians.Where(c => c.aIQ1 == 3).Count();
+
+            ViewBag.aI1yes = Math.Round((aI1yes * 10000) / accCFR) / 100;
+            ViewBag.aI1no = Math.Round((aI1no * 10000) / accCFR) / 100;
+            ViewBag.aI1na = Math.Round((aI1na * 10000) / accCFR) / 100;
+
+            decimal aI2yes = mb.CFRAcurians.Where(c => c.aIQ2 == 1).Count();
+            decimal aI2no = mb.CFRAcurians.Where(c => c.aIQ2 == 2).Count();
+            decimal aI2na = mb.CFRAcurians.Where(c => c.aIQ2 == 3).Count();
+
+            ViewBag.aI2yes = Math.Round((aI2yes * 10000) / accCFR) / 100;
+            ViewBag.aI2no = Math.Round((aI2no * 10000) / accCFR) / 100;
+            ViewBag.aI2na = Math.Round((aI2na * 10000) / accCFR) / 100;
+
+            decimal aI3yes = mb.CFRAcurians.Where(c => c.aIQ3 == 1).Count();
+            decimal aI3no = mb.CFRAcurians.Where(c => c.aIQ3 == 2).Count();
+            decimal aI3na = mb.CFRAcurians.Where(c => c.aIQ3 == 3).Count();
+
+            ViewBag.aI3yes = Math.Round((aI3yes * 10000) / accCFR) / 100;
+            ViewBag.aI3no = Math.Round((aI3no * 10000) / accCFR) / 100;
+            ViewBag.aI3na = Math.Round((aI3na * 10000) / accCFR) / 100;
+
+            decimal aCS1yes = mb.CFRAcurians.Where(c => c.aCSQ1 == 1).Count();
+            decimal aCS1no = mb.CFRAcurians.Where(c => c.aCSQ1 == 2).Count();
+            decimal aCS1na = mb.CFRAcurians.Where(c => c.aCSQ1 == 3).Count();
+
+            ViewBag.aCS1yes = Math.Round((aCS1yes * 10000) / accCFR) / 100;
+            ViewBag.aCS1no = Math.Round((aCS1no * 10000) / accCFR) / 100;
+            ViewBag.aCS1na = Math.Round((aCS1na * 10000) / accCFR) / 100;
+
+            decimal aCS2yes = mb.CFRAcurians.Where(c => c.aCSQ2 == 1).Count();
+            decimal aCS2no = mb.CFRAcurians.Where(c => c.aCSQ2 == 2).Count();
+            decimal aCS2na = mb.CFRAcurians.Where(c => c.aCSQ2 == 3).Count();
+
+            ViewBag.aCS2yes = Math.Round((aCS2yes * 10000) / accCFR) / 100;
+            ViewBag.aCS2no = Math.Round((aCS2no * 10000) / accCFR) / 100;
+            ViewBag.aCS2na = Math.Round((aCS2na * 10000) / accCFR) / 100;
+
+            decimal aCS3yes = mb.CFRAcurians.Where(c => c.aCSQ3 == 1).Count();
+            decimal aCS3no = mb.CFRAcurians.Where(c => c.aCSQ3 == 2).Count();
+            decimal aCS3na = mb.CFRAcurians.Where(c => c.aCSQ3 == 3).Count();
+
+            ViewBag.aCS3yes = Math.Round((aCS3yes * 10000) / accCFR) / 100;
+            ViewBag.aCS3no = Math.Round((aCS3no * 10000) / accCFR) / 100;
+            ViewBag.aCS3na = Math.Round((aCS3na * 10000) / accCFR) / 100;
+
+            decimal aCS4yes = mb.CFRAcurians.Where(c => c.aCSQ4 == 1).Count();
+            decimal aCS4no = mb.CFRAcurians.Where(c => c.aCSQ4 == 2).Count();
+            decimal aCS4na = mb.CFRAcurians.Where(c => c.aCSQ4 == 3).Count();
+
+            ViewBag.aCS4yes = Math.Round((aCS4yes * 10000) / accCFR) / 100;
+            ViewBag.aCS4no = Math.Round((aCS4no * 10000) / accCFR) / 100;
+            ViewBag.aCS4na = Math.Round((aCS4na * 10000) / accCFR) / 100;
+
+            decimal aCS5yes = mb.CFRAcurians.Where(c => c.aCSQ5 == 1).Count();
+            decimal aCS5no = mb.CFRAcurians.Where(c => c.aCSQ5 == 2).Count();
+            decimal aCS5na = mb.CFRAcurians.Where(c => c.aCSQ5 == 3).Count();
+
+            ViewBag.aCS5yes = Math.Round((aCS5yes * 10000) / accCFR) / 100;
+            ViewBag.aCS5no = Math.Round((aCS5no * 10000) / accCFR) / 100;
+            ViewBag.aCS5na = Math.Round((aCS5na * 10000) / accCFR) / 100;
+
+            decimal aCS6yes = mb.CFRAcurians.Where(c => c.aCSQ6 == 1).Count();
+            decimal aCS6no = mb.CFRAcurians.Where(c => c.aCSQ6 == 2).Count();
+            decimal aCS6na = mb.CFRAcurians.Where(c => c.aCSQ6 == 3).Count();
+
+            ViewBag.aCS6yes = Math.Round((aCS6yes * 10000) / accCFR) / 100;
+            ViewBag.aCS6no = Math.Round((aCS6no * 10000) / accCFR) / 100;
+            ViewBag.aCS6na = Math.Round((aCS6na * 10000) / accCFR) / 100;
+
+            decimal aCS7yes = mb.CFRAcurians.Where(c => c.aCSQ7 == 1).Count();
+            decimal aCS7no = mb.CFRAcurians.Where(c => c.aCSQ7 == 2).Count();
+            decimal aCS7na = mb.CFRAcurians.Where(c => c.aCSQ7 == 3).Count();
+
+            ViewBag.aCS7yes = Math.Round((aCS7yes * 10000) / accCFR) / 100;
+            ViewBag.aCS7no = Math.Round((aCS7no * 10000) / accCFR) / 100;
+            ViewBag.aCS7na = Math.Round((aCS7na * 10000) / accCFR) / 100;
+
+            decimal aSS1yes = mb.CFRAcurians.Where(c => c.aSSQ1 == 1).Count();
+            decimal aSS1no = mb.CFRAcurians.Where(c => c.aSSQ1 == 2).Count();
+            decimal aSS1na = mb.CFRAcurians.Where(c => c.aSSQ1 == 3).Count();
+
+            ViewBag.aSS1yes = Math.Round((aSS1yes * 10000) / accCFR) / 100;
+            ViewBag.aSS1no = Math.Round((aSS1no * 10000) / accCFR) / 100;
+            ViewBag.aSS1na = Math.Round((aSS1na * 10000) / accCFR) / 100;
+
+            decimal aSS2yes = mb.CFRAcurians.Where(c => c.aSSQ2 == 1).Count();
+            decimal aSS2no = mb.CFRAcurians.Where(c => c.aSSQ2 == 2).Count();
+            decimal aSS2na = mb.CFRAcurians.Where(c => c.aSSQ2 == 3).Count();
+
+            ViewBag.aSS2yes = Math.Round((aSS2yes * 10000) / accCFR) / 100;
+            ViewBag.aSS2no = Math.Round((aSS2no * 10000) / accCFR) / 100;
+            ViewBag.aSS2na = Math.Round((aSS2na * 10000) / accCFR) / 100;
+
+            decimal aSS3yes = mb.CFRAcurians.Where(c => c.aSSQ3 == 1).Count();
+            decimal aSS3no = mb.CFRAcurians.Where(c => c.aSSQ3 == 2).Count();
+            decimal aSS3na = mb.CFRAcurians.Where(c => c.aSSQ3 == 3).Count();
+
+            ViewBag.aSS3yes = Math.Round((aSS3yes * 10000) / accCFR) / 100;
+            ViewBag.aSS3no = Math.Round((aSS3no * 10000) / accCFR) / 100;
+            ViewBag.aSS3na = Math.Round((aSS3na * 10000) / accCFR) / 100;
+
+            decimal aSS4yes = mb.CFRAcurians.Where(c => c.aSSQ4 == 1).Count();
+            decimal aSS4no = mb.CFRAcurians.Where(c => c.aSSQ4 == 2).Count();
+            decimal aSS4na = mb.CFRAcurians.Where(c => c.aSSQ4 == 3).Count();
+
+            ViewBag.aSS4yes = Math.Round((aSS4yes * 10000) / accCFR) / 100;
+            ViewBag.aSS4no = Math.Round((aSS4no * 10000) / accCFR) / 100;
+            ViewBag.aSS4na = Math.Round((aSS4na * 10000) / accCFR) / 100;
+
+            decimal aSS5yes = mb.CFRAcurians.Where(c => c.aSSQ5 == 1).Count();
+            decimal aSS5no = mb.CFRAcurians.Where(c => c.aSSQ5 == 2).Count();
+            decimal aSS5na = mb.CFRAcurians.Where(c => c.aSSQ5 == 3).Count();
+
+            ViewBag.aSS5yes = Math.Round((aSS5yes * 10000) / accCFR) / 100;
+            ViewBag.aSS5no = Math.Round((aSS5no * 10000) / accCFR) / 100;
+            ViewBag.aSS5na = Math.Round((aSS5na * 10000) / accCFR) / 100;
+
+            decimal aSS6yes = mb.CFRAcurians.Where(c => c.aSSQ6 == 1).Count();
+            decimal aSS6no = mb.CFRAcurians.Where(c => c.aSSQ6 == 2).Count();
+            decimal aSS6na = mb.CFRAcurians.Where(c => c.aSSQ6 == 3).Count();
+
+            ViewBag.aSS6yes = Math.Round((aSS6yes * 10000) / accCFR) / 100;
+            ViewBag.aSS6no = Math.Round((aSS6no * 10000) / accCFR) / 100;
+            ViewBag.aSS6na = Math.Round((aSS6na * 10000) / accCFR) / 100;
+
+            decimal aSS7yes = mb.CFRAcurians.Where(c => c.aSSQ7 == 1).Count();
+            decimal aSS7no = mb.CFRAcurians.Where(c => c.aSSQ7 == 2).Count();
+            decimal aSS7na = mb.CFRAcurians.Where(c => c.aSSQ7 == 3).Count();
+
+            ViewBag.aSS7yes = Math.Round((aSS7yes * 10000) / accCFR) / 100;
+            ViewBag.aSS7no = Math.Round((aSS7no * 10000) / accCFR) / 100;
+            ViewBag.aSS7na = Math.Round((aSS7na * 10000) / accCFR) / 100;
+
+            decimal aSS8yes = mb.CFRAcurians.Where(c => c.aSSQ8 == 1).Count();
+            decimal aSS8no = mb.CFRAcurians.Where(c => c.aSSQ8 == 2).Count();
+            decimal aSS8na = mb.CFRAcurians.Where(c => c.aSSQ8 == 3).Count();
+
+            ViewBag.aSS8yes = Math.Round((aSS8yes * 10000) / accCFR) / 100;
+            ViewBag.aSS8no = Math.Round((aSS8no * 10000) / accCFR) / 100;
+            ViewBag.aSS8na = Math.Round((aSS8na * 10000) / accCFR) / 100;
+
+            decimal aCO1yes = mb.CFRAcurians.Where(c => c.aCOQ1 == 1).Count();
+            decimal aCO1no = mb.CFRAcurians.Where(c => c.aCOQ1 == 2).Count();
+            decimal aCO1na = mb.CFRAcurians.Where(c => c.aCOQ1 == 3).Count();
+
+            ViewBag.aCO1yes = Math.Round((aCO1yes * 10000) / accCFR) / 100;
+            ViewBag.aCO1no = Math.Round((aCO1no * 10000) / accCFR) / 100;
+            ViewBag.aCO1na = Math.Round((aCO1na * 10000) / accCFR) / 100;
+
+            decimal aCO2yes = mb.CFRAcurians.Where(c => c.aCOQ2 == 1).Count();
+            decimal aCO2no = mb.CFRAcurians.Where(c => c.aCOQ2 == 2).Count();
+            decimal aCO2na = mb.CFRAcurians.Where(c => c.aCOQ2 == 3).Count();
+
+            ViewBag.aCO2yes = Math.Round((aCO2yes * 10000) / accCFR) / 100;
+            ViewBag.aCO2no = Math.Round((aCO2no * 10000) / accCFR) / 100;
+            ViewBag.aCO2na = Math.Round((aCO2na * 10000) / accCFR) / 100;
+
+            decimal aCO3yes = mb.CFRAcurians.Where(c => c.aCOQ3 == 1).Count();
+            decimal aCO3no = mb.CFRAcurians.Where(c => c.aCOQ3 == 2).Count();
+            decimal aCO3na = mb.CFRAcurians.Where(c => c.aCOQ3 == 3).Count();
+
+            ViewBag.aCO3yes = Math.Round((aCO3yes * 10000) / accCFR) / 100;
+            ViewBag.aCO3no = Math.Round((aCO3no * 10000) / accCFR) / 100;
+            ViewBag.aCO3na = Math.Round((aCO3na * 10000) / accCFR) / 100;
+
+            decimal aCO4yes = mb.CFRAcurians.Where(c => c.aCOQ4 == 1).Count();
+            decimal aCO4no = mb.CFRAcurians.Where(c => c.aCOQ4 == 2).Count();
+            decimal aCO4na = mb.CFRAcurians.Where(c => c.aCOQ4 == 3).Count();
+
+            ViewBag.aCO4yes = Math.Round((aCO4yes * 10000) / accCFR) / 100;
+            ViewBag.aCO4no = Math.Round((aCO4no * 10000) / accCFR) / 100;
+            ViewBag.aCO4na = Math.Round((aCO4na * 10000) / accCFR) / 100;
+
+            decimal aCO5yes = mb.CFRAcurians.Where(c => c.aCOQ5 == 1).Count();
+            decimal aCO5no = mb.CFRAcurians.Where(c => c.aCOQ5 == 2).Count();
+            decimal aCO5na = mb.CFRAcurians.Where(c => c.aCOQ5 == 3).Count();
+
+            ViewBag.aCO5yes = Math.Round((aCO5yes * 10000) / accCFR) / 100;
+            ViewBag.aCO5no = Math.Round((aCO5no * 10000) / accCFR) / 100;
+            ViewBag.aCO5na = Math.Round((aCO5na * 10000) / accCFR) / 100;
+
+            decimal aCO6yes = mb.CFRAcurians.Where(c => c.aCOQ6 == 1).Count();
+            decimal aCO6no = mb.CFRAcurians.Where(c => c.aCOQ6 == 2).Count();
+            decimal aCO6na = mb.CFRAcurians.Where(c => c.aCOQ6 == 3).Count();
+
+            ViewBag.aCO6yes = Math.Round((aCO6yes * 10000) / accCFR) / 100;
+            ViewBag.aCO6no = Math.Round((aCO6no * 10000) / accCFR) / 100;
+            ViewBag.aCO6na = Math.Round((aCO6na * 10000) / accCFR) / 100;
+
+            decimal aCO7yes = mb.CFRAcurians.Where(c => c.aCOQ7 == 1).Count();
+            decimal aCO7no = mb.CFRAcurians.Where(c => c.aCOQ7 == 2).Count();
+            decimal aCO7na = mb.CFRAcurians.Where(c => c.aCOQ7 == 3).Count();
+
+            ViewBag.aCO7yes = Math.Round((aCO7yes * 10000) / accCFR) / 100;
+            ViewBag.aCO7no = Math.Round((aCO7no * 10000) / accCFR) / 100;
+            ViewBag.aCO7na = Math.Round((aCO7na * 10000) / accCFR) / 100;
+
+            decimal aCO8yes = mb.CFRAcurians.Where(c => c.aCOQ8 == 1).Count();
+            decimal aCO8no = mb.CFRAcurians.Where(c => c.aCOQ8 == 2).Count();
+            decimal aCO8na = mb.CFRAcurians.Where(c => c.aCOQ8 == 3).Count();
+
+            ViewBag.aCO8yes = Math.Round((aCO8yes * 10000) / accCFR) / 100;
+            ViewBag.aCO8no = Math.Round((aCO8no * 10000) / accCFR) / 100;
+            ViewBag.aCO8na = Math.Round((aCO8na * 10000) / accCFR) / 100;
+
+            decimal aCL1yes = mb.CFRAcurians.Where(c => c.aCLQ1 == 1).Count();
+            decimal aCL1no = mb.CFRAcurians.Where(c => c.aCLQ1 == 2).Count();
+            decimal aCL1na = mb.CFRAcurians.Where(c => c.aCLQ1 == 3).Count();
+
+            ViewBag.aCL1yes = Math.Round((aCL1yes * 10000) / accCFR) / 100;
+            ViewBag.aCL1no = Math.Round((aCL1no * 10000) / accCFR) / 100;
+            ViewBag.aCL1na = Math.Round((aCL1na * 10000) / accCFR) / 100;
+
+            decimal aCL2yes = mb.CFRAcurians.Where(c => c.aCLQ2 == 1).Count();
+            decimal aCL2no = mb.CFRAcurians.Where(c => c.aCLQ2 == 2).Count();
+            decimal aCL2na = mb.CFRAcurians.Where(c => c.aCLQ2 == 3).Count();
+
+            ViewBag.aCL2yes = Math.Round((aCL2yes * 10000) / accCFR) / 100;
+            ViewBag.aCL2no = Math.Round((aCL2no * 10000) / accCFR) / 100;
+            ViewBag.aCL2na = Math.Round((aCL2na * 10000) / accCFR) / 100;
+
+            decimal aCL3yes = mb.CFRAcurians.Where(c => c.aCLQ3 == 1).Count();
+            decimal aCL3no = mb.CFRAcurians.Where(c => c.aCLQ3 == 2).Count();
+            decimal aCL3na = mb.CFRAcurians.Where(c => c.aCLQ3 == 3).Count();
+
+            ViewBag.aCL3yes = Math.Round((aCL3yes * 10000) / accCFR) / 100;
+            ViewBag.aCL3no = Math.Round((aCL3no * 10000) / accCFR) / 100;
+            ViewBag.aCL3na = Math.Round((aCL3na * 10000) / accCFR) / 100;
 
             return View();
         }
