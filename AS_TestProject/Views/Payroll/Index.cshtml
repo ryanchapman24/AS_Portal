@@ -380,6 +380,7 @@
         @{
             var pp1SD = ViewBag.PayPeriodStart;
             var pp1ED = ViewBag.PayPeriodEnd;
+            var pp1today = ViewBag.Today;
             var pp2SD = ViewBag.PrevPayPeriodStart;
             var pp2ED = ViewBag.PrevPayPeriodEnd;
         }
@@ -388,7 +389,7 @@
             $('.datepickerP1').datepicker({
                 format: 'm/d/yyyy',
                 startDate: '@pp1SD',
-                endDate: '@pp1ED'
+                endDate: '@pp1today'
             });
             $('.datepickerP2').datepicker({
                 format: 'm/d/yyyy',

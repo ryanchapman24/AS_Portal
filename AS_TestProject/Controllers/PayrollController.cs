@@ -51,6 +51,7 @@ namespace AS_TestProject.Controllers
             ViewBag.PayPeriodEnd = payPeriod.EndDate.ToShortDateString();
             ViewBag.PrevPayPeriodStart = prevPayPeriod.StartDate.ToShortDateString();
             ViewBag.PrevPayPeriodEnd = prevPayPeriod.EndDate.ToShortDateString();
+            ViewBag.Today = System.DateTime.Now.ToShortDateString();
 
             ViewBag.Date = now.ToShortDateString();
             ViewBag.PrevDate = prevPayPeriod.MidDate.ToShortDateString();
@@ -200,13 +201,7 @@ namespace AS_TestProject.Controllers
 
                 var agent = mb.Employees.Find(empId);
                 var agentDailyHours = mb.AgentDailyHours.AsNoTracking().Where(a => a.AgentDailyHoursID != agentDailyHour.AgentDailyHoursID).Where(a => a.EmployeeID == empId && (a.PayPeriodID == payPeriodId || a.PayPeriodID == prevPayPeriodId)).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
-                if (agentDailyHours.Any(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)))
-                {
-                    var conflictedHours = agentDailyHours.Where(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)).ToList();
-                    TempData["list"] = conflictedHours.ToList();
-                    return RedirectToAction("Edit", new { id = agentDailyHour.AgentDailyHoursID });
-                }
-
+                
                 if (agentDailyHour.LoginTimeStamp == agentDailyHour.LogoutTimeStamp)
                 {
                     var ppId = agentDailyHour.PayPeriodID;
@@ -221,6 +216,13 @@ namespace AS_TestProject.Controllers
                 }
                 else
                 {
+                    if (agentDailyHours.Any(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)))
+                    {
+                        var conflictedHours = agentDailyHours.Where(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)).ToList();
+                        TempData["list"] = conflictedHours.ToList();
+                        return RedirectToAction("Edit", new { id = agentDailyHour.AgentDailyHoursID });
+                    }
+
                     mb.AgentDailyHours.Attach(agentDailyHour);
                     agentDailyHour.EditByEmployeeID = user.EmployeeID;
                     agentDailyHour.EditTimeStamp = System.DateTime.Now;

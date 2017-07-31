@@ -1645,10 +1645,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2017 16:47:14</publishTime>
     </File>
     <File Include="Views/Employees/AcurianCFR_Details.cshtml">
-      <publishTime>07/27/2017 16:45:50</publishTime>
+      <publishTime>07/31/2017 15:12:06</publishTime>
     </File>
     <File Include="Views/Employees/AcurianCFR_Edit.cshtml">
-      <publishTime>07/27/2017 12:09:04</publishTime>
+      <publishTime>07/31/2017 15:11:59</publishTime>
     </File>
     <File Include="Views/Employees/CFRsCompleted.cshtml">
       <publishTime>07/27/2017 12:11:55</publishTime>
