@@ -8,42 +8,48 @@
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
         <h2>Patient Recruitment CFR Details for <span style="color: #29AAE3">@Model.Employee1.FirstName @Model.Employee1.LastName</span></h2>
         <hr />
+        <div class="col-md-12" style="padding: 0px; margin-bottom: 10px">
+            <div class="col-md-6" style="padding: 0px">
+                <div class="col-md-6 control-label">
+                    Submitted By
+                </div>
+                <div class="col-md-6">
+                    @Model.Employee.FirstName @Model.Employee.LastName
+                </div><br /><br /><br />
+
+                <div class="col-md-6 control-label">
+                    Date of Feedback
+                </div>
+                <div class="col-md-6">
+                    @if (ViewBag.Site == "Wichita")
+                    {
+                        @Model.DateOfFeedback.AddHours(-1).ToString("g")
+                    }
+                    else
+                    {
+                        @Model.DateOfFeedback.ToString("g")
+                    }
+                </div><br /><br /><br />
+
+                <div class="col-md-6 control-label">
+                    Domain
+                </div>
+                <div class="col-md-6">
+                    @Model.DomainMaster.DomainName
+                </div><br /><br /><br />
+
+                <div class="col-md-6 control-label">
+                    #Calls
+                </div>
+                <div class="col-md-6">
+                    @Model.C_Calls
+                </div><br /><br /><br />
+            </div>
+            <div class="col-md-6" style="padding: 0px; text-align: center; border: 1px solid #FE5607">
+                <h1 style="color: #29AAE3; font-size: 160px">@ViewBag.OverallScore <span style="font-size: 100px">%</span></h1>
+            </div>
+        </div>
         <div>
-            <div class="col-md-3 control-label">
-                Submitted By
-            </div>
-            <div class="col-md-9">
-                @Model.Employee.FirstName @Model.Employee.LastName
-            </div><br /><br /><br />
-
-            <div class="col-md-3 control-label">
-                Date of Feedback
-            </div>
-            <div class="col-md-9">
-                @if (ViewBag.Site == "Wichita")
-                {
-                    @Model.DateOfFeedback.AddHours(-1).ToString("g")
-                }
-                else
-                {
-                    @Model.DateOfFeedback.ToString("g")
-                }
-            </div><br /><br /><br />
-
-            <div class="col-md-3 control-label">
-                Domain
-            </div>
-            <div class="col-md-9">
-                @Model.DomainMaster.DomainName
-            </div><br /><br /><br />
-
-            <div class="col-md-3 control-label">
-                #Calls
-            </div>
-            <div class="col-md-9">
-                @Model.C_Calls
-            </div><br /><br /><br />
-
             <h5 style="color: #29AAE3"><strong>Telephone Etiquette</strong><span style="color: #FE5607"> (@Model.CFRPerformanceAnalysi4.PerformanceRating)</span></h5><br />
 
             <div class="col-md-9 control-label">

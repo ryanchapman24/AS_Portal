@@ -65,7 +65,16 @@
                                     int insCFR = domain.CFRInsurances.Count;
                                     int prCFR = domain.CFRPatientRecruitments.Count;
                                     int sCFR = domain.CFRSales.Count;
-                                    int totCFR = mtgCFR + insCFR + prCFR + sCFR;
+                                    int aCFR = domain.CFRAcurians.Count;
+                                    int totCFR = 0;
+                                    if (domain.DomainMasterID == 1)
+                                    {
+                                        totCFR = aCFR;
+                                    }
+                                    else
+                                    {
+                                        totCFR = mtgCFR + insCFR + prCFR + sCFR + aCFR;
+                                    }
                                 }
                                 <div class="col-sm-6 col-xs-6 goleft">
                                     <p><i class="fa fa-edit"></i> @totCFR CFRs</p>

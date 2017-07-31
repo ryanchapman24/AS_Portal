@@ -275,6 +275,56 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="AnswerKeyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AnswerOption" Type="varchar" MaxLength="5" />
   </EntityType>
+  <EntityType Name="CFRAcurian">
+    <Key>
+      <PropertyRef Name="CFRAcurianID" />
+    </Key>
+    <Property Name="CFRAcurianID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="DomainMasterID" Type="tinyint" />
+    <Property Name="#Calls" Type="smallint" Nullable="false" />
+    <Property Name="aIQ1" Type="int" />
+    <Property Name="aIQ2" Type="int" />
+    <Property Name="aIQ3" Type="int" />
+    <Property Name="aCSQ1" Type="int" />
+    <Property Name="aCSQ2" Type="int" />
+    <Property Name="aCSQ3" Type="int" />
+    <Property Name="aCSQ4" Type="int" />
+    <Property Name="aCSQ5" Type="int" />
+    <Property Name="aCSQ6" Type="int" />
+    <Property Name="aCSQ7" Type="int" />
+    <Property Name="aSSQ1" Type="int" />
+    <Property Name="aSSQ2" Type="int" />
+    <Property Name="aSSQ3" Type="int" />
+    <Property Name="aSSQ4" Type="int" />
+    <Property Name="aSSQ5" Type="int" />
+    <Property Name="aSSQ6" Type="int" />
+    <Property Name="aSSQ7" Type="int" />
+    <Property Name="aSSQ8" Type="int" />
+    <Property Name="aCOQ1" Type="int" />
+    <Property Name="aCOQ2" Type="int" />
+    <Property Name="aCOQ3" Type="int" />
+    <Property Name="aCOQ4" Type="int" />
+    <Property Name="aCOQ5" Type="int" />
+    <Property Name="aCOQ6" Type="int" />
+    <Property Name="aCOQ7" Type="int" />
+    <Property Name="aCOQ8" Type="int" />
+    <Property Name="aCLQ1" Type="int" />
+    <Property Name="aCLQ2" Type="int" />
+    <Property Name="aCLQ3" Type="int" />
+    <Property Name="IntroductionRating" Type="int" />
+    <Property Name="CommunicationSkillsRating" Type="int" />
+    <Property Name="SoftSkillsRating" Type="int" />
+    <Property Name="ComplianceRating" Type="int" />
+    <Property Name="ClosingRating" Type="int" />
+    <Property Name="ConversionRateToday" Type="varchar" MaxLength="1" />
+    <Property Name="WeekToDate" Type="varchar" MaxLength="1" />
+    <Property Name="Comments" Type="varchar(max)" />
+    <Property Name="Strengths" Type="varchar(max)" />
+    <Property Name="ActionPlan" Type="varchar(max)" />
+    <Property Name="ManagerID" Type="int" />
+    <Property Name="DateOfFeedback" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="CFRInsurance">
     <Key>
       <PropertyRef Name="CFRInsuranceID" />
@@ -993,6 +1043,414 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <Property Name="InputWebsite" Type="varchar" MaxLength="255" />
     <Property Name="SourceID" Type="varchar" MaxLength="25" />
   </EntityType>
+  <Association Name="FK__CFRAcuria__aCLQ1__70C98096">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCLQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCLQ2__71BDA4CF">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCLQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCLQ3__72B1C908">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCLQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ1__69285ECE">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ2__6A1C8307">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ3__6B10A740">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ4__6C04CB79">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ5__6CF8EFB2">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ6__6DED13EB">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ6" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ7__6EE13824">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ7" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCOQ8__6FD55C5D">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCOQ8" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCSQ1__5ADA3F77">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCSQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCSQ2__5BCE63B0">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCSQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCSQ3__5CC287E9">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCSQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCSQ4__5DB6AC22">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCSQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCSQ5__5EAAD05B">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCSQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCSQ6__5F9EF494">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCSQ6" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aCSQ7__609318CD">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aCSQ7" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ1__61873D06">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ2__627B613F">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ3__636F8578">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ4__6463A9B1">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ5__6557CDEA">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ6__664BF223">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ6" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ7__6740165C">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ7" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__aSSQ8__68343A95">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aSSQ8" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__Closi__02E830D1">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="ClosingRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__Commu__000BC426">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="CommunicationSkillsRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__Compl__01F40C98">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="ComplianceRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__Intro__7F179FED">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="IntroductionRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcuria__SoftS__00FFE85F">
+    <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CFRPerformanceAnalysis">
+        <PropertyRef Name="CFRPerformanceAnalysisID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="SoftSkillsRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcurian__aIQ1__57FDD2CC">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aIQ1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcurian__aIQ2__58F1F705">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aIQ2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CFRAcurian__aIQ3__59E61B3E">
+    <End Role="AnswerKey" Type="Self.AnswerKey" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerKey">
+        <PropertyRef Name="AnswerKeyID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="aIQ3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__CFRInsura__Accur__72C6D7A1">
     <End Role="CFRPerformanceAnalysis" Type="Self.CFRPerformanceAnalysis" Multiplicity="0..1" />
     <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
@@ -2265,6 +2723,42 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_QUALITY_CFRAcurian_DomainMasterID">
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomainMaster">
+        <PropertyRef Name="DomainMasterID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="DomainMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUALITY_CFRAcurian_EmployeeID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUALITY_CFRAcurian_ManagerID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="CFRAcurian" Type="Self.CFRAcurian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="CFRAcurian">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_QUALITY_CFRInsurance_DomainMasterID">
     <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="0..1" />
     <End Role="CFRInsurance" Type="Self.CFRInsurance" Multiplicity="*" />
@@ -2555,6 +3049,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <EntitySet Name="EmployeeHoursTotal" EntityType="Self.EmployeeHoursTotal" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="PayPeriod" EntityType="Self.PayPeriod" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="AnswerKey" EntityType="Self.AnswerKey" Schema="QUALITY" store:Type="Tables" />
+    <EntitySet Name="CFRAcurian" EntityType="Self.CFRAcurian" Schema="QUALITY" store:Type="Tables" />
     <EntitySet Name="CFRInsurance" EntityType="Self.CFRInsurance" Schema="QUALITY" store:Type="Tables" />
     <EntitySet Name="CFRMortgage" EntityType="Self.CFRMortgage" Schema="QUALITY" store:Type="Tables" />
     <EntitySet Name="CFRPatientRecruitment" EntityType="Self.CFRPatientRecruitment" Schema="QUALITY" store:Type="Tables" />
@@ -2818,6 +3313,142 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     [PreciseLeadsHourlyCallLogMaster].[SourceID] AS [SourceID]
     FROM [STAGE].[PreciseLeadsHourlyCallLogMaster] AS [PreciseLeadsHourlyCallLogMaster]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK__CFRAcuria__aCLQ1__70C98096" Association="Self.FK__CFRAcuria__aCLQ1__70C98096">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCLQ2__71BDA4CF" Association="Self.FK__CFRAcuria__aCLQ2__71BDA4CF">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCLQ3__72B1C908" Association="Self.FK__CFRAcuria__aCLQ3__72B1C908">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ1__69285ECE" Association="Self.FK__CFRAcuria__aCOQ1__69285ECE">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ2__6A1C8307" Association="Self.FK__CFRAcuria__aCOQ2__6A1C8307">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ3__6B10A740" Association="Self.FK__CFRAcuria__aCOQ3__6B10A740">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ4__6C04CB79" Association="Self.FK__CFRAcuria__aCOQ4__6C04CB79">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ5__6CF8EFB2" Association="Self.FK__CFRAcuria__aCOQ5__6CF8EFB2">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ6__6DED13EB" Association="Self.FK__CFRAcuria__aCOQ6__6DED13EB">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ7__6EE13824" Association="Self.FK__CFRAcuria__aCOQ7__6EE13824">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCOQ8__6FD55C5D" Association="Self.FK__CFRAcuria__aCOQ8__6FD55C5D">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCSQ1__5ADA3F77" Association="Self.FK__CFRAcuria__aCSQ1__5ADA3F77">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCSQ2__5BCE63B0" Association="Self.FK__CFRAcuria__aCSQ2__5BCE63B0">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCSQ3__5CC287E9" Association="Self.FK__CFRAcuria__aCSQ3__5CC287E9">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCSQ4__5DB6AC22" Association="Self.FK__CFRAcuria__aCSQ4__5DB6AC22">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCSQ5__5EAAD05B" Association="Self.FK__CFRAcuria__aCSQ5__5EAAD05B">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCSQ6__5F9EF494" Association="Self.FK__CFRAcuria__aCSQ6__5F9EF494">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aCSQ7__609318CD" Association="Self.FK__CFRAcuria__aCSQ7__609318CD">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ1__61873D06" Association="Self.FK__CFRAcuria__aSSQ1__61873D06">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ2__627B613F" Association="Self.FK__CFRAcuria__aSSQ2__627B613F">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ3__636F8578" Association="Self.FK__CFRAcuria__aSSQ3__636F8578">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ4__6463A9B1" Association="Self.FK__CFRAcuria__aSSQ4__6463A9B1">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ5__6557CDEA" Association="Self.FK__CFRAcuria__aSSQ5__6557CDEA">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ6__664BF223" Association="Self.FK__CFRAcuria__aSSQ6__664BF223">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ7__6740165C" Association="Self.FK__CFRAcuria__aSSQ7__6740165C">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__aSSQ8__68343A95" Association="Self.FK__CFRAcuria__aSSQ8__68343A95">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__Closi__02E830D1" Association="Self.FK__CFRAcuria__Closi__02E830D1">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__Commu__000BC426" Association="Self.FK__CFRAcuria__Commu__000BC426">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__Compl__01F40C98" Association="Self.FK__CFRAcuria__Compl__01F40C98">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__Intro__7F179FED" Association="Self.FK__CFRAcuria__Intro__7F179FED">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcuria__SoftS__00FFE85F" Association="Self.FK__CFRAcuria__SoftS__00FFE85F">
+      <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcurian__aIQ1__57FDD2CC" Association="Self.FK__CFRAcurian__aIQ1__57FDD2CC">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcurian__aIQ2__58F1F705" Association="Self.FK__CFRAcurian__aIQ2__58F1F705">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CFRAcurian__aIQ3__59E61B3E" Association="Self.FK__CFRAcurian__aIQ3__59E61B3E">
+      <End Role="AnswerKey" EntitySet="AnswerKey" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
     <AssociationSet Name="FK__CFRInsura__Accur__72C6D7A1" Association="Self.FK__CFRInsura__Accur__72C6D7A1">
       <End Role="CFRPerformanceAnalysis" EntitySet="CFRPerformanceAnalysis" />
       <End Role="CFRInsurance" EntitySet="CFRInsurance" />
@@ -3241,6 +3872,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <AssociationSet Name="FK_PAYROLL_AgentDailyHours_PayPeriodID" Association="Self.FK_PAYROLL_AgentDailyHours_PayPeriodID">
       <End Role="PayPeriod" EntitySet="PayPeriod" />
       <End Role="AgentDailyHours" EntitySet="AgentDailyHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUALITY_CFRAcurian_DomainMasterID" Association="Self.FK_QUALITY_CFRAcurian_DomainMasterID">
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUALITY_CFRAcurian_EmployeeID" Association="Self.FK_QUALITY_CFRAcurian_EmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUALITY_CFRAcurian_ManagerID" Association="Self.FK_QUALITY_CFRAcurian_ManagerID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="CFRAcurian" EntitySet="CFRAcurian" />
     </AssociationSet>
     <AssociationSet Name="FK_QUALITY_CFRInsurance_DomainMasterID" Association="Self.FK_QUALITY_CFRInsurance_DomainMasterID">
       <End Role="DomainMaster" EntitySet="DomainMaster" />

@@ -393,7 +393,7 @@
 
                 <div id="cfrs" class="tab-pane">
                     <div class="widget-header">
-                        @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<h3 style="margin: 0px"><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal">+ New Mortgage CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#InsuranceCFRModal" style="margin-top: -6px">+ New Insurance CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#SalesCFRModal" style="margin-top: -12px">+ New Sales CFR</button><br /></h3>}
+                        @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<h3 style="margin: 0px"><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#MortgageCFRModal" style="margin-top: 6px">+ New Mortgage CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#InsuranceCFRModal" style="margin-top: 0px">+ New Insurance CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#SalesCFRModal" style="margin-top: -6px">+ New Sales CFR</button><br /><br /><button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#AcurianCFRModal" style="margin-top: -12px">+ New Acurian CFR</button><br /></h3>}
                         <h3 style="color: #29AAE3"><i class="fa fa-check-square-o"></i> Constructive Feedback Reviews @if (User.IsInRole("Admin") || User.IsInRole("Quality")){<button class="btn btn-theme btn-md pull-right" data-toggle="modal" data-target="#PatientRecruitmentCFRModal" style="margin-top: -12px">+ New Patient Recruitment CFR</button>}</h3>
                     </div>
                     <!-- Mortgage Modal -->
@@ -1186,9 +1186,287 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Acurian Modal -->
+                    <div class="modal fade" id="AcurianCFRModal" tabindex="-1" role="dialog" aria-labelledby="AcurianCFRModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="margin-bottom: 15px">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="InsuranceCFRModalLabel">Add New Acurian CFR for @Model.FirstName @Model.LastName</h4>
+                                </div>
+                                @using (Html.BeginForm("AcurianCFR_Create", "Employees", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="EmployeeID" value="@Model.EmployeeID" readonly="readonly" />
+                                    <input type="hidden" name="DomainMasterID" value="1" readonly="readonly" />
+                                    <div class="modal-body">
+                                        <div class="" style="">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group">
+                                                @*<div class="col-md-6 control-label">
+                                                    Domain
+                                                </div>
+                                                <div class="col-md-6" style="margin-top: -5px">
+                                                    @Html.DropDownList("DomainMasterID", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />*@
+
+                                                <div class="col-md-9 control-label">
+                                                    #Calls
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    <input class="form-control onlyNum" name="C_Calls" type="text" maxlength="2" required />
+                                                </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Introduction</strong></h5><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aI1
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aIQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aI2
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aIQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aI3
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aIQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />                         
+
+                                                <h5 style="color: #29AAE3"><strong>Communication Skills</strong></h5><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCS1
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCSQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCS2
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCSQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCS3
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCSQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCS4
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCSQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCS5
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCSQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCS6
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCSQ6", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCS7
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCSQ7", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Soft Skills</strong></h5><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS1
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS2
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS3
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS4
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS5
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS6
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ6", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS7
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ7", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aSS8
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aSSQ8", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Compliance</strong></h5><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO1
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO2
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO3
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO4
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ4", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO5
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ5", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO6
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ6", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO7
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ7", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCO8
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCOQ8", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <h5 style="color: #29AAE3"><strong>Closing</strong></h5><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCL1
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCLQ1", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCL2
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCLQ2", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />
+
+                                                <div class="col-md-9 control-label">
+                                                    @ViewBag.aCL3
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: -5px">
+                                                    @Html.DropDownList("aCLQ3", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
+                                                </div><br /><br /><br />                                        
+
+                                                <h5 style="color: #29AAE3"><strong>Additional Feedback</strong></h5><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Comments
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <textarea rows="3" class="form-control capitalize" name="Comments" placeholder="if you know the call IDs pertaining to this review, list them here..." required></textarea>
+                                                </div><br /><br /><br /><br /><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Strengths
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <textarea rows="3" class="form-control capitalize" name="Strengths" required></textarea>
+                                                </div><br /><br /><br /><br /><br />
+
+                                                <div class="col-md-3 control-label">
+                                                    Action Plan
+                                                </div>
+                                                <div class="col-md-9" style="margin-top: -5px">
+                                                    <textarea rows="5" class="form-control capitalize" name="ActionPlan" required></textarea>
+                                                </div><br /><br /><br /><br /><br />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="margin-top: 20px">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button id="" type="submit" class="btn btn-theme play">Confirm</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
                     <hr />
                     <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-home"></i> Mortgage</h4>
+                        <h4 style="color: #29AAE3"><i class="fa fa-home"></i> Mortgage<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.mScore</span></span></h4>
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
@@ -1245,7 +1523,7 @@
                     </div>
                     <hr />
                     <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-shield"></i> Insurance</h4>
+                        <h4 style="color: #29AAE3"><i class="fa fa-shield"></i> Insurance<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.iScore</span></span></h4>
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
@@ -1299,10 +1577,10 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div>                   
                     <hr />
                     <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-tags"></i> Sales</h4>
+                        <h4 style="color: #29AAE3"><i class="fa fa-tags"></i> Sales<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.sScore</span></span></h4>
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
@@ -1359,7 +1637,64 @@
                     </div>
                     <hr />
                     <div class="widget-header">
-                        <h4 style="color: #29AAE3"><i class="fa fa-user-plus"></i> Patient Recruitment</h4>
+                        <h4 style="color: #29AAE3"><i class="fa fa-user-plus"></i> Acurian<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.aScore</span></span></h4>
+                    </div>
+                    <div class="widget-content">
+                        <div class="table-responsive">
+                            <table id="datatable-basic-scrolling" class="table table-hover datatable DAtable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 90%">Date</th>
+                                        <th>Domain</th>
+                                        @*<th>#Calls</th>*@
+                                        <th>Introduction</th>
+                                        <th>Communication</th>
+                                        <th>Soft</th>
+                                        <th>Compliance</th>
+                                        <th>Closing</th>
+                                        <th style="width: 80px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.aCFRs)
+                                    {
+                                        <tr>
+                                            <td class="text-nowrap">
+                                                @if (ViewBag.Site == "Wichita")
+                                                {
+                                                    @item.DateOfFeedback.AddHours(-1).ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                                }
+                                                else
+                                                {
+                                                    @item.DateOfFeedback.ToString("g")<br />
+                                                    <em><small>submitted by <strong style="color: #FE5607">@item.Employee1.FirstName @item.Employee1.LastName</strong></small></em>
+                                                }
+                                            </td>
+                                            <td class="text-nowrap" style="color: #29AAE3"><strong>@item.DomainMaster.FileMask - @item.DomainMaster.DomainName</strong></td>
+                                            @*<td>@item.C_Calls</td>*@
+                                            <td>@item.CFRPerformanceAnalysi3.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi1.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi4.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi2.PerformanceRating</td>
+                                            <td>@item.CFRPerformanceAnalysi.PerformanceRating</td>
+                                            <td class="text-nowrap">
+                                                @if (User.IsInRole("Admin") || User.IsInRole("Quality"))
+                                                {
+                                                    <a href="@Url.Action("AcurianCFR_Details","Employees", new { id = item.CFRAcurianID })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                                    <a href="@Url.Action("AcurianCFR_Edit","Employees", new { id = item.CFRAcurianID })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                    <a href="@Url.Action("AcurianCFR_Delete","Employees", new { id = item.CFRAcurianID })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="widget-header">
+                        <h4 style="color: #29AAE3"><i class="fa fa-user-plus"></i> Patient Recruitment<span class="pull-right">AVG SCORE: <span style="border: 1px solid #FE5607; padding-left: 2px; padding-right: 2px">@ViewBag.pScore</span></span></h4>
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
@@ -1414,7 +1749,6 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
             @if (User.IsInRole("Admin") || User.IsInRole("HR") || User.IsInRole("Operations"))
             {

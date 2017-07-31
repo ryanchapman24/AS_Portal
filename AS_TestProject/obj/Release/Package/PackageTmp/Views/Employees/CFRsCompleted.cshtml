@@ -42,6 +42,14 @@
                                         {
                                             <a href="@Url.Action("PatientRecruitmentCFR_Details","Employees", new { id = item.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
                                         }
+                                        if (item.Type == "Sales")
+                                        {
+                                            <a href="@Url.Action("SalesCFR_Details","Employees", new { id = item.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                        }
+                                        if (item.Type == "Acurian")
+                                        {
+                                            <a href="@Url.Action("AcurianCFR_Details","Employees", new { id = item.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a>
+                                        }
                                     }
                                 </td>
                             </tr>
