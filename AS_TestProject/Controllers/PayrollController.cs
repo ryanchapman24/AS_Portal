@@ -27,6 +27,7 @@ namespace AS_TestProject.Controllers
         [Authorize]
         public ActionResult Index(int id/*, List<AgentDailyHour> conflicted*/)
         {
+            var future = TempData["future"];
             var conflicted = TempData["list"] as List<AgentDailyHour>;
             var user = db.Users.Find(User.Identity.GetUserId());
 
@@ -72,6 +73,15 @@ namespace AS_TestProject.Controllers
             ViewBag.DomainMasterID = new SelectList(domains, "Id", "FileMaskPlusName");
             //ViewBag.DomainMasterID = new SelectList(mb.DomainMasters, "DomainMasterID", "DomainName");
             ViewBag.AgentTimeAdjustmentReasonID = new SelectList(mb.AgentTimeAdjustmentReasons, "AgentTimeAdjustmentReasonID", "Reason");
+            if (future != null)
+            {
+                ViewBag.FutureBool = 1;
+                ViewBag.Future = future;
+            }
+            else
+            {
+                ViewBag.FutureBool = 0;
+            }
             if (conflicted != null)
             {
                 ViewBag.ConflictBool = 1;
@@ -107,7 +117,12 @@ namespace AS_TestProject.Controllers
                 {
                     var agent = mb.Employees.Find(empId);
                     var agentDailyHours = mb.AgentDailyHours.Where(a => a.EmployeeID == empId && (a.PayPeriodID == payPeriodId || a.PayPeriodID == prevPayPeriodId)).Include(a => a.DomainMaster).Include(a => a.Employee).Include(a => a.AgentTimeAdjustmentReason).Include(a => a.PayPeriod).OrderByDescending(a => a.LoginTimeStamp).ToList();
-                    if (agentDailyHours.Any(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)))
+                    if (agentDailyHour.LogoutTimeStamp > now)
+                    {
+                        TempData["future"] = "YOU ATTEMPTED TO CREATE A TIME ENTRY THAT OCCURS IN THE FUTURE.";
+                        return RedirectToAction("Index", new { id = empId });
+                    }
+                    else if (agentDailyHours.Any(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)))
                     {
                         var conflictedHours = agentDailyHours.Where(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)).ToList();
                         TempData["list"] = conflictedHours.ToList();
@@ -153,6 +168,7 @@ namespace AS_TestProject.Controllers
         [Authorize(Roles = "Admin, Payroll")]
         public ActionResult Edit(int? id)
         {
+            var future = TempData["future"];
             var conflicted = TempData["list"] as List<AgentDailyHour>;
             if (id == null)
             {
@@ -164,6 +180,15 @@ namespace AS_TestProject.Controllers
             if (agentDailyHour == null)
             {
                 return HttpNotFound();
+            }
+            if (future != null)
+            {
+                ViewBag.FutureBool = 1;
+                ViewBag.Future = future;
+            }
+            else
+            {
+                ViewBag.FutureBool = 0;
             }
             if (conflicted != null)
             {
@@ -216,6 +241,11 @@ namespace AS_TestProject.Controllers
                 }
                 else
                 {
+                    if (agentDailyHour.LogoutTimeStamp > now)
+                    {
+                        TempData["future"] = "YOU ATTEMPTED TO EDIT A TIME ENTRY THAT OCCURS IN THE FUTURE.";
+                        return RedirectToAction("Edit", new { id = agentDailyHour.AgentDailyHoursID });
+                    }
                     if (agentDailyHours.Any(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)))
                     {
                         var conflictedHours = agentDailyHours.Where(a => (a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp && a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp) || (a.LoginTimeStamp < agentDailyHour.LogoutTimeStamp && a.LogoutTimeStamp > agentDailyHour.LoginTimeStamp)).ToList();

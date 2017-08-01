@@ -4,6 +4,13 @@
     ViewBag.Title = "Index";
     var noonToday = DateTime.Today.AddHours(12);
 }
+@if (ViewBag.FutureBool == 1)
+{
+    <div class="col-md-12 animated flash" style="color: white; background-color: #FE5607; padding-top: 10px; padding-bottom: 10px; animation-delay: .5s">
+        <h4><i class="fa fa-exclamation-triangle" style="margin-right: 10px"></i><strong>@ViewBag.Future</strong></h4>
+    </div>
+    <br />
+}
 @if (ViewBag.ConflictBool == 1)
 {
     <div class="col-md-12 animated flash" style="color: white; background-color: #FE5607; margin-bottom: 20px; padding-top: 10px; padding-bottom: 10px; animation-delay: .5s">
@@ -27,8 +34,9 @@
             }
         </div>
     </div>
-    <br /><hr />
+    <br />
 }
+
 <div class="col-lg-12 mt" style="margin-top: 0px">
     <div class="row content-panel" style="padding-top: 0px; overflow: hidden"><img src="~/assets/img/TimeManagement_Banner.jpg" style="width: 100%" /></div>    
     <div class="row content-panel" style="padding-left: 20px; padding-right: 20px">
