@@ -39,6 +39,7 @@ namespace AS_TestProject.Entities
         public System.DateTime AddDate { get; set; }
         public System.TimeSpan AddTime { get; set; }
         public int AddByEmployeeID { get; set; }
+        public Nullable<int> InvoiceTypeID { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual DomainType DomainType { get; set; }
@@ -60,5 +61,7 @@ namespace AS_TestProject.Entities
         public virtual ICollection<CFRSale> CFRSales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CFRAcurian> CFRAcurians { get; set; }
+        public virtual InvoiceType InvoiceType { get; set; }
+        public virtual InvoiceType InvoiceType1 { get; set; }
     }
 }

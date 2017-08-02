@@ -206,6 +206,9 @@
         <AssociationConnector Association="ReportModel.FK__CFRAcuria__Compl__01F40C98" />
         <AssociationConnector Association="ReportModel.FK__CFRAcuria__Intro__7F179FED" />
         <AssociationConnector Association="ReportModel.FK__CFRAcuria__SoftS__00FFE85F" />
+        <EntityTypeShape EntityType="ReportModel.InvoiceType" Width="1.5" PointX="5.25" PointY="39.875" />
+        <AssociationConnector Association="ReportModel.FK_DomainMaster_InvoiceType" />
+        <AssociationConnector Association="ReportModel.fk_DomainMaster_InvoiceTypeID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

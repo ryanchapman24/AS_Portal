@@ -47,6 +47,7 @@
     <Property Name="AddDate" Type="date" Nullable="false" />
     <Property Name="AddTime" Type="time" Precision="7" Nullable="false" />
     <Property Name="AddByEmployeeID" Type="int" Nullable="false" />
+    <Property Name="InvoiceTypeID" Type="int" />
   </EntityType>
   <EntityType Name="DomainType">
     <Key>
@@ -256,6 +257,13 @@ warning 6002: The table/view 'Report.FREEDOM.FreedomHourlyCallMetrics' does not 
     <Property Name="DomainMasterID" Type="tinyint" Nullable="false" />
     <Property Name="EmployeeID" Type="int" Nullable="false" />
     <Property Name="TotalDuration" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvoiceType">
+    <Key>
+      <PropertyRef Name="InvoiceTypeID" />
+    </Key>
+    <Property Name="InvoiceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceTypeName" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="PayPeriod">
     <Key>
@@ -2675,6 +2683,18 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DomainMaster_InvoiceType">
+    <End Role="InvoiceType" Type="Self.InvoiceType" Multiplicity="0..1" />
+    <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvoiceType">
+        <PropertyRef Name="InvoiceTypeID" />
+      </Principal>
+      <Dependent Role="DomainMaster">
+        <PropertyRef Name="InvoiceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PAYROLL_AgentDailyHours_DomainMasterID">
     <End Role="DomainMaster" Type="Self.DomainMaster" Multiplicity="1" />
     <End Role="AgentDailyHours" Type="Self.AgentDailyHours" Multiplicity="*" />
@@ -3047,6 +3067,7 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <EntitySet Name="AgentDailyHoursToDomainMaster" EntityType="Self.AgentDailyHoursToDomainMaster" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="AgentTimeAdjustmentReason" EntityType="Self.AgentTimeAdjustmentReason" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="EmployeeHoursTotal" EntityType="Self.EmployeeHoursTotal" Schema="PAYROLL" store:Type="Tables" />
+    <EntitySet Name="InvoiceType" EntityType="Self.InvoiceType" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="PayPeriod" EntityType="Self.PayPeriod" Schema="PAYROLL" store:Type="Tables" />
     <EntitySet Name="AnswerKey" EntityType="Self.AnswerKey" Schema="QUALITY" store:Type="Tables" />
     <EntitySet Name="CFRAcurian" EntityType="Self.CFRAcurian" Schema="QUALITY" store:Type="Tables" />
@@ -3856,6 +3877,10 @@ warning 6002: The table/view 'Report.STAGE.PreciseLeadsHourlyCallLogMaster' does
     <AssociationSet Name="FK_COMPANY_EmployeeNoteType_AddByEmployeeID" Association="Self.FK_COMPANY_EmployeeNoteType_AddByEmployeeID">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="EmployeeNoteType" EntitySet="EmployeeNoteType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DomainMaster_InvoiceType" Association="Self.FK_DomainMaster_InvoiceType">
+      <End Role="InvoiceType" EntitySet="InvoiceType" />
+      <End Role="DomainMaster" EntitySet="DomainMaster" />
     </AssociationSet>
     <AssociationSet Name="FK_PAYROLL_AgentDailyHours_DomainMasterID" Association="Self.FK_PAYROLL_AgentDailyHours_DomainMasterID">
       <End Role="DomainMaster" EntitySet="DomainMaster" />

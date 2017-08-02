@@ -841,10 +841,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 11:43:35</publishTime>
     </File>
     <File Include="bin/AS_TestProject.dll">
-      <publishTime>08/01/2017 10:32:29</publishTime>
+      <publishTime>08/02/2017 12:33:59</publishTime>
     </File>
     <File Include="bin/AS_TestProject.pdb">
-      <publishTime>08/01/2017 10:32:29</publishTime>
+      <publishTime>08/02/2017 12:33:59</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 08:32:26</publishTime>
@@ -1273,7 +1273,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2016 11:29:48</publishTime>
     </File>
     <File Include="Entities/ReportModel.edmx.diagram">
-      <publishTime>07/24/2017 10:28:29</publishTime>
+      <publishTime>08/02/2017 12:12:52</publishTime>
     </File>
     <File Include="Entities/ReportModel.tt">
       <publishTime>06/27/2016 10:49:54</publishTime>
@@ -1624,13 +1624,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 17:55:37</publishTime>
     </File>
     <File Include="Views/Admin/DomainDetails.cshtml">
-      <publishTime>07/26/2016 17:56:40</publishTime>
+      <publishTime>08/02/2017 12:19:46</publishTime>
     </File>
     <File Include="Views/Admin/EditCustomer.cshtml">
       <publishTime>07/27/2016 13:41:30</publishTime>
     </File>
     <File Include="Views/Admin/EditDomain.cshtml">
-      <publishTime>07/27/2016 13:33:54</publishTime>
+      <publishTime>08/02/2017 12:20:31</publishTime>
     </File>
     <File Include="Views/Admin/EditPosition.cshtml">
       <publishTime>07/27/2016 14:44:27</publishTime>
@@ -1639,7 +1639,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 20:50:18</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>07/27/2017 10:32:45</publishTime>
+      <publishTime>08/02/2017 12:30:26</publishTime>
     </File>
     <File Include="Views/Employees/AcurianCFR_Delete.cshtml">
       <publishTime>07/27/2017 16:47:14</publishTime>

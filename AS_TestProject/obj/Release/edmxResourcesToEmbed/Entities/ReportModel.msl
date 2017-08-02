@@ -67,6 +67,7 @@
     <EntitySetMapping Name="DomainMasters">
       <EntityTypeMapping TypeName="ReportModel.DomainMaster">
         <MappingFragment StoreEntitySet="DomainMaster">
+          <ScalarProperty Name="InvoiceTypeID" ColumnName="InvoiceTypeID" />
           <ScalarProperty Name="AddByEmployeeID" ColumnName="AddByEmployeeID" />
           <ScalarProperty Name="AddTime" ColumnName="AddTime" />
           <ScalarProperty Name="AddDate" ColumnName="AddDate" />
@@ -1058,6 +1059,14 @@
           <ScalarProperty Name="DomainMasterID" ColumnName="DomainMasterID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="CFRAcurianID" ColumnName="CFRAcurianID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceTypes">
+      <EntityTypeMapping TypeName="ReportModel.InvoiceType">
+        <MappingFragment StoreEntitySet="InvoiceType">
+          <ScalarProperty Name="InvoiceTypeName" ColumnName="InvoiceTypeName" />
+          <ScalarProperty Name="InvoiceTypeID" ColumnName="InvoiceTypeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

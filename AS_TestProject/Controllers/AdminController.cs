@@ -32,6 +32,7 @@ namespace AS_TestProject.Controllers
             var customers = mb.Customers.Where(c => c.IsActive == true).OrderBy(c => c.CustomerName);
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName");
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName");
+            ViewBag.InvoiceTypeID = new SelectList(mb.InvoiceTypes, "InvoiceTypeID", "InvoiceTypeName");
 
             List<AdminUserListModels> activeUsers = new List<AdminUserListModels>();
             List<AdminUserListModels> blockedUsers = new List<AdminUserListModels>();
@@ -252,7 +253,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateDomain([Bind(Include = "DomainMasterID,DomainName,CustomerID,DomainTypeID,CostCode,FileMask,IsActive,DeactiveDate,AddDate,AddTime,AddByEmployeeID")] DomainMaster domain)
+        public ActionResult CreateDomain([Bind(Include = "DomainMasterID,DomainName,CustomerID,DomainTypeID,InvoiceTypeID,CostCode,FileMask,IsActive,DeactiveDate,AddDate,AddTime,AddByEmployeeID")] DomainMaster domain)
         {
             if (ModelState.IsValid)
             {
@@ -267,6 +268,7 @@ namespace AS_TestProject.Controllers
             var customers = mb.Customers.Where(c => c.IsActive == true);
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName");
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName");
+            ViewBag.InvoiceTypeID = new SelectList(mb.InvoiceTypes, "InvoiceTypeID", "InvoiceTypeName");
             return RedirectToAction("Index", "Admin");
         }
 
@@ -286,6 +288,7 @@ namespace AS_TestProject.Controllers
             var customers = mb.Customers.Where(c => c.IsActive == true);
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName", domain.CustomerID);
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName", domain.DomainTypeID);
+            ViewBag.InvoiceTypeID = new SelectList(mb.InvoiceTypes, "InvoiceTypeID", "InvoiceTypeName", domain.InvoiceTypeID);
             return View(domain);
         }
 
@@ -295,7 +298,7 @@ namespace AS_TestProject.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult EditDomain([Bind(Include = "DomainMasterID,DomainName,CustomerID,DomainTypeID,CostCode,FileMask,IsActive,DeactiveDate,AddDate,AddTime,AddByEmployeeID")] DomainMaster domain)
+        public ActionResult EditDomain([Bind(Include = "DomainMasterID,DomainName,CustomerID,DomainTypeID,InvoiceTypeID,CostCode,FileMask,IsActive,DeactiveDate,AddDate,AddTime,AddByEmployeeID")] DomainMaster domain)
         {
             if (ModelState.IsValid)
             {
@@ -303,6 +306,7 @@ namespace AS_TestProject.Controllers
                 mb.Entry(domain).Property("DomainName").IsModified = true;
                 mb.Entry(domain).Property("CustomerID").IsModified = true;
                 mb.Entry(domain).Property("DomainTypeID").IsModified = true;
+                mb.Entry(domain).Property("InvoiceTypeID").IsModified = true;
                 mb.Entry(domain).Property("CostCode").IsModified = true;
                 mb.Entry(domain).Property("FileMask").IsModified = true;
                 mb.Entry(domain).Property("IsActive").IsModified = true;
@@ -313,6 +317,7 @@ namespace AS_TestProject.Controllers
             var customers = mb.Customers.Where(c => c.IsActive == true);
             ViewBag.CustomerID = new SelectList(customers, "CustomerID", "CustomerName", domain.CustomerID);
             ViewBag.DomainTypeID = new SelectList(mb.DomainTypes, "DomainTypeID", "DomainTypeName", domain.DomainTypeID);
+            ViewBag.InvoiceTypeID = new SelectList(mb.InvoiceTypes, "InvoiceTypeID", "InvoiceTypeName", domain.InvoiceTypeID);
             return View(domain);
         }
 

@@ -745,6 +745,15 @@
       <End Role="CFRPerformanceAnalysi" EntitySet="CFRPerformanceAnalysis" />
       <End Role="CFRAcurian" EntitySet="CFRAcurians" />
     </AssociationSet>
+    <EntitySet Name="InvoiceTypes" EntityType="ReportModel.InvoiceType" />
+    <AssociationSet Name="FK_DomainMaster_InvoiceType" Association="ReportModel.FK_DomainMaster_InvoiceType">
+      <End Role="InvoiceType" EntitySet="InvoiceTypes" />
+      <End Role="DomainMaster" EntitySet="DomainMasters" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DomainMaster_InvoiceTypeID" Association="ReportModel.fk_DomainMaster_InvoiceTypeID">
+      <End Role="InvoiceType" EntitySet="InvoiceTypes" />
+      <End Role="DomainMaster" EntitySet="DomainMasters" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="uspInsertProblemMaster_Result">
     <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -820,6 +829,9 @@
     <NavigationProperty Name="AgentDailyHoursToDomainMasters" Relationship="ReportModel.FK_AgentDailyHoursToDomainMaster_DomainMaster" FromRole="DomainMaster" ToRole="AgentDailyHoursToDomainMaster" />
     <NavigationProperty Name="CFRSales" Relationship="ReportModel.FK_QUALITY_CFRSales_DomainMasterID" FromRole="DomainMaster" ToRole="CFRSale" />
     <NavigationProperty Name="CFRAcurians" Relationship="ReportModel.FK_QUALITY_CFRAcurian_DomainMasterID" FromRole="DomainMaster" ToRole="CFRAcurian" />
+    <Property Name="InvoiceTypeID" Type="Int32" />
+    <NavigationProperty Name="InvoiceType" Relationship="ReportModel.FK_DomainMaster_InvoiceType" FromRole="DomainMaster" ToRole="InvoiceType" />
+    <NavigationProperty Name="InvoiceType1" Relationship="ReportModel.fk_DomainMaster_InvoiceTypeID" FromRole="DomainMaster" ToRole="InvoiceType" />
   </EntityType>
   <EntityType Name="DomainType">
     <Key>
@@ -4052,6 +4064,39 @@
       </Principal>
       <Dependent Role="CFRAcurian">
         <PropertyRef Name="SoftSkillsRating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="InvoiceType">
+    <Key>
+      <PropertyRef Name="InvoiceTypeID" />
+    </Key>
+    <Property Name="InvoiceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DomainMasters" Relationship="ReportModel.FK_DomainMaster_InvoiceType" FromRole="InvoiceType" ToRole="DomainMaster" />
+    <NavigationProperty Name="DomainMasters1" Relationship="ReportModel.fk_DomainMaster_InvoiceTypeID" FromRole="InvoiceType" ToRole="DomainMaster" />
+  </EntityType>
+  <Association Name="FK_DomainMaster_InvoiceType">
+    <End Type="ReportModel.InvoiceType" Role="InvoiceType" Multiplicity="0..1" />
+    <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvoiceType">
+        <PropertyRef Name="InvoiceTypeID" />
+      </Principal>
+      <Dependent Role="DomainMaster">
+        <PropertyRef Name="InvoiceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DomainMaster_InvoiceTypeID">
+    <End Type="ReportModel.InvoiceType" Role="InvoiceType" Multiplicity="0..1" />
+    <End Type="ReportModel.DomainMaster" Role="DomainMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvoiceType">
+        <PropertyRef Name="InvoiceTypeID" />
+      </Principal>
+      <Dependent Role="DomainMaster">
+        <PropertyRef Name="InvoiceTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

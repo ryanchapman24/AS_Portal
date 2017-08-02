@@ -334,6 +334,9 @@
     <Compile Include="Entities\FreedomHourlyCallMetrics1.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\InvoiceType.cs">
+      <DependentUpon>ReportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\PayPeriod.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
